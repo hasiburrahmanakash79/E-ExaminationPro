@@ -41,7 +41,7 @@ const Achivement = () => {
             </div>
 
             <div>
-              <div className='text-[40px]'>
+              <div className='text-[42px]'>
                 {
 
                   inView ?
