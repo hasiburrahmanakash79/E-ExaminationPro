@@ -3,7 +3,7 @@ const Faq = () => {
   return (
 
     <div className=" my-10 md:my-20 px-5 lg:px-52 ">
-      <h2 className="md:ms-52 text-2xl md:text-3xl">Frequently Asked Questions</h2>
+      <h2 className="md:ms-52 text-xl md:text-3xl">Frequently Asked Questions</h2>
       <div className="collapse md:w-1/2 my-5 md:mx-auto collapse-plus bg-base-200">
         <input type="radio" name="my-accordion-3" checked="checked" />
         <div className="collapse-title text-xl font-medium">
@@ -19,7 +19,7 @@ const Faq = () => {
           Why Students choosing E-examPro platform?
         </div>
         <div className="collapse-content">
-          <p>E-examPro adapts to your learning level. The platform's intelligent algorithms present questions that match your competency, giving you a fair and accurate assessment that reflects your true understanding of the subject matter.</p>
+          <p>E-examPro adapts to your learning level. The platforms intelligent algorithms present questions that match your competency, giving you a fair and accurate assessment that reflects your true understanding of the subject matter.</p>
         </div>
       </div>
       <div className="collapse md:w-1/2 my-5 md:mx-auto  collapse-plus bg-base-200">
@@ -28,7 +28,7 @@ const Faq = () => {
           Is E-examPro easy for cheating?
         </div>
         <div className="collapse-content">
-          <p>The platform is equipped with anti-cheating measures, such as webcam monitoring and browser lockdown, ensuring that each student's performance is genuine and reflective of their own efforts.</p>
+          <p>The platform is equipped with anti-cheating measures, such as webcam monitoring and browser lockdown, ensuring that each students performance is genuine and reflective of their own efforts.</p>
         </div>
       </div>
       <div className="collapse md:w-1/2 my-5 md:mx-auto  collapse-plus bg-base-200">

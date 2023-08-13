@@ -1,8 +1,6 @@
-
 import CountUp from 'react-countup';
 import { useInView } from 'react-intersection-observer';
-import "../Achivement/Achivement.css";
-const Achivement = () => {
+const Achievement = () => {
 
   const [ref, inView] = useInView({
     threshold: 0.5,
@@ -79,4 +77,4 @@ const Achivement = () => {
   );
 };
 
-export default Achivement;
+export default Achievement;
