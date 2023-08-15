@@ -7,6 +7,8 @@ import QuizHomePage from '../Pages/Home/DemoTest/QuizHomePage'
 import ResultPage from '../Pages/Home/DemoTest/ResultPage'
 import Login from '../Pages/Authentication/Login/Login'
 import Registration from '../Pages/Authentication/Registration/Registration'
+import FreeCoursePage from '../Pages/FreeCoursePage/FreeCoursePage'
+import Exam from '../Pages/FreeCoursePage/ExamPage/Exam'
 
 const router = createBrowserRouter([
   {
@@ -28,9 +30,19 @@ const router = createBrowserRouter([
       {
         path: '/contact',
         element: <Contact></Contact>
-      }
+      },
+      {
+        path:'/free_courses',
+        element:<FreeCoursePage></FreeCoursePage>
+          },
+          {
+            path:'/exam',
+            element:<Exam></Exam>
+              }
+          
     ]
   },
+
   {
     path: '/login',
     element: <Login />

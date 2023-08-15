@@ -1,7 +1,7 @@
-import logo from "../../assets/logo.png";
+import logo from '../../assets/logo.png'
 import { Link } from "react-router-dom";
 import "./Navbar.css";
-import examPic from "../../assets/exam.jpg";
+
 import { useContext } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
 import Swal from "sweetalert2";
@@ -34,9 +34,9 @@ const Navbar = () => {
     <>
       <details className="z-[1]">
         <summary>Courses</summary>
-        <ul className="p-2 navigation-bar rounded-lg md:rounded-none">
+        <ul className="p-2 z-50 navigation-bar rounded-lg md:rounded-none">
           <li>
-            <Link>Free Courses</Link>
+            <Link to='/free_courses'>Free Courses</Link>
           </li>
           <li>
             <Link>Paid Courses</Link>
@@ -71,8 +71,8 @@ const Navbar = () => {
   };
 
   return (
-    <nav>
-      <div className="navbar z-[1] container sticky top-0 bg-base-100 navigation-bar text-white">
+    <nav className='navigation-bar'>
+      <div className="navbar z-[40]  container mx-auto  sticky top-0   text-white">
         <div className="navbar-start">
           <div className="dropdown">
             <label tabIndex={0} className="btn btn-ghost lg:hidden">
