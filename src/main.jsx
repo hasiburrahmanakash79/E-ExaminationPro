@@ -6,9 +6,11 @@ import router from "./Routes/Router";
 import AuthProvider from "./Provider/AuthProvider";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
+<div className="navigation-bar">
+<React.StrictMode>
     <AuthProvider>
       <RouterProvider router={router} />
     </AuthProvider>
   </React.StrictMode>
+</div>
 );
