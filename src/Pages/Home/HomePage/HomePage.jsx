@@ -7,6 +7,7 @@ import DemoTestSection from '../DemoTest/DemoTestSection'
 import Faq from '../Faq/Faq'
 import Testimonial from '../Testimonial/Testimonial'
 import TopSubjects from '../TopSubjects/TopSubjects'
+import ShortcutKey from '../../../Components/ShortcutKey/ShortcutKey'
 const HomePage = () => {
   console.log(window.localStorage.getItem('showMainContent'))
   const [showMainContent, setShowMainContent] = useState(window.localStorage.getItem('showMainContent') === null ? false : true);
@@ -55,6 +56,7 @@ const HomePage = () => {
         <Testimonial />
         <QuesAccordian></QuesAccordian>
         <Faq></Faq>
+        <ShortcutKey />
       </div>
     </div>
   )
