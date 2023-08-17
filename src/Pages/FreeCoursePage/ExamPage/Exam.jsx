@@ -1,13 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { jsQuizz, mathQues } from '../../../../public/question';
 import { useLocation } from 'react-router-dom';
 
 
-import AnsDataPage from './component/AnsDataPage';
+// import AnsDataPage from './component/AnsDataPage';
 import FillTheBlank from './component/FillTheBlank';
 import McqPage from './component/McqPage';
 import TimeRemain from './component/TimeRemain';
 import AllQues from './component/AllQues';
+import AnsDataPage from '../../../Components/examComponents/AnsDataPage';
 
 
 
