@@ -1,7 +1,7 @@
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import { useState } from "react";
-import "./TextEdit.css"
+import "./TextEditor.css"
 
 const modules = {
   toolbar: [
@@ -20,30 +20,27 @@ const modules = {
 }
 
 
-const TextEdit = () => {
+const TextEditor = () => {
   const [value, setValue] = useState("");
 
   const handlerInput = (content) => {
-    // const text = content.target.value;
     setValue(content)
     console.log(content);
   }
   return (
     <>
-      {/* saiful code start  */}
-      <div className="bg-[#5a386e] lg:w-4/5 mx-auto p-3 rounded-md">
+      <div className="bg-[#5a386e] lg:w-4/5 mx-auto h-[60vh] p-3 rounded-md">
         <ReactQuill theme="snow" value={value}
           onChange={setValue}
-          className="bg-white w-full h-64 rounded-md"
+          className="bg-white w-full h-full rounded-md"
           modules={modules}
         />
         <div className="mt-2">
           <button onClick={() => handlerInput(value)} className="bg-orange-600 py-2 px-6 rounded-md text-lg font-medium text-white tracking-wide">Ans Submit</button>
         </div>
       </div>
-      {/* saiful code end  */}
     </>
   );
 };
 
-export default TextEdit;
+export default TextEditor;

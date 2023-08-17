@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import examPic from '../../../assets/exam.jpg'
-import QuesAccordian from '../../QuesAccordian/QuesAccordian'
+import QuesAccordian from '../../../Components/QuesAccordian/QuesAccordian'
 import Achievement from '../Achievement/Achievement'
 import Banner from '../Banner/Banner'
 import DemoTestSection from '../DemoTest/DemoTestSection'
@@ -54,9 +54,7 @@ const HomePage = () => {
         <TopSubjects />
         <Achievement />
         <Testimonial />
-        <QuesAccordian></QuesAccordian>
-        <Faq></Faq>
-        <ShortcutKey />
+        <Faq />
       </div>
     </div>
   )
