@@ -7,12 +7,6 @@ import McqPage from '../../../components/examComponents/McqPage'
 import TimeRemain from '../../../components/examComponents/TimeRemain'
 import AllQues from '../../../components/examComponents/AllQues'
 
-import AnsDataPage from './component/AnsDataPage'
-import FillTheBlank from './component/FillTheBlank'
-import McqPage from './component/McqPage'
-import TimeRemain from './component/TimeRemain'
-import AllQues from './component/AllQues'
-
 const Exam = () => {
   const location = useLocation()
   const searchParams = new URLSearchParams(location.search)

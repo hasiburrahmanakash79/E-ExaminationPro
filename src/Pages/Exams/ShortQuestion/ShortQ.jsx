@@ -30,7 +30,7 @@ const ShortQ = () => {
       ans: 'The law of conservation of energy states that energy cannot be created or destroyed, only converted from one form to another.'
     }
   ]
-  shortQues = useSu
+  // shortQues = useShu
   const [shortQs, setShortQs] = useState(shortQues)
   const [questionIndex, setQuestionIndex] = useState(0)
 
