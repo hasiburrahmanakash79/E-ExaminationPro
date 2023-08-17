@@ -38,7 +38,7 @@ const FreeCoursePage = () => {
 
                 <div className="card  h-[280px] bg-base-100 shadow-xl image-full">
                     <div className='img '>
-
+ 
                     </div>
                     <div className='h1'>
                         <h1 className='text-white text-5xl'>Physics</h1>
