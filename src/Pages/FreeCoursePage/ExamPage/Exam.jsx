@@ -2,7 +2,12 @@ import React, { useEffect, useState } from 'react';
 import { jsQuizz, mathQues } from '../../../../public/question';
 import { useLocation } from 'react-router-dom';
 
-import '../ExamPage/Exam.css'
+
+import AnsDataPage from './component/AnsDataPage';
+import FillTheBlank from './component/FillTheBlank';
+import McqPage from './component/McqPage';
+import TimeRemain from './component/TimeRemain';
+import AllQues from './component/AllQues';
 
 
 
@@ -24,8 +29,8 @@ const Exam = () => {
     const [inputValue, setInputValue] = useState('')
 
     const [timerProgress, setTimerProgress] = useState(100) //progress bar state
-    const totalDuration = 30
-    const [timeRemaining, setTimeRemaining] = useState(30)
+    const totalDuration = 60
+    const [timeRemaining, setTimeRemaining] = useState(60)
 
     const [countdown, setCountdown] = useState(3) //countdown
 
@@ -78,7 +83,7 @@ const Exam = () => {
     }
 
 
-    const [optionMcq,setMcq]=useState(null)
+    const [optionMcq, setMcq] = useState(null)
 
 
     const handleInputChange = (event) => {
@@ -103,7 +108,7 @@ const Exam = () => {
         if (examType == 'fib') {
             const result1 = result.find(obj => obj.question === question)
             if (result1) {
-                result1.userAns = inputValue ;
+                result1.userAns = inputValue;
                 setInputValue("")
             }
             else {
@@ -113,9 +118,8 @@ const Exam = () => {
             }
         }
         else {
-            
-            /////////////////////////////////////////////////////////////////////////////////
-            if(optionMcq==null){
+
+            if (optionMcq == null) {
                 const newObject = { question: question, correctAnswer: correctAnswer, userAns: 'Skipped' }
                 setResult(prevArray => [...prevArray, newObject])
             }
@@ -157,8 +161,8 @@ const Exam = () => {
                         <div className='text-center  '>
 
                             <h1 className='   text-9xl font-bold text-red-600 my-1'> {countdown}</h1>
-                      
-                    
+
+
                             <h1 className='text-7xl'>Get Ready</h1>
                         </div>
                     </div>
@@ -170,59 +174,38 @@ const Exam = () => {
                                     {
                                         !view ?
                                             <div>
-                                                <div className="relative h-4 w-full bg-gray-200 rounded">
-                                                    <div
-                                                        className=" h-full mt-2 animate-progress rounded "
-                                                        style={{
-                                                            width: `${timerProgress}%`,
-                                                        }}
-                                                    ></div>
-                                                    <div className='text-3xl text-center my-7 font-semibold'>
-                                                        Time Remaining: {Math.floor(timeRemaining / 60)}:{timeRemaining % 60}
-                                                    </div>
+                                                <div >
+                                                    <TimeRemain
+                                                        timerProgress={timerProgress}
+                                                        timeRemaining={timeRemaining}
+                                                    ></TimeRemain>
                                                 </div>
                                                 <div className=' min-h-[70vh] flex justify-center md:mt-0 mt-10 md:items-center'>
 
+                                                    <McqPage
+                                                        choices={choices}
+                                                        answerIndx={answerIndx}
+                                                        questions={questions}
+                                                        currentQuestion={currentQuestion}
+                                                        question={question}
+                                                        onClickNext={onClickNext}
+                                                        onSelectOption={onSelectOption}
+                                                        onClickPrevious={onClickPrevious}
+                                                    ></McqPage>
 
-                                                    <div className='md:mx-20 mx-2 w-full'>
-                                                        <div className='max-w-[50px]  min-h-[50px] text-white bg-blue-900 rounded-full flex justify-center items-center'>
-                                                            <div>
-                                                                <span className='text-3xl font-semibold'>{currentQuestion + 1}</span>
-                                                                <span className='text-xl font-semibold'>/{questions.length}</span>
-                                                            </div>
-                                                        </div>
 
-                                                        <h1 className='text-3xl my-7  font-semibold'>{currentQuestion + 1}- {question}</h1>
 
-                                                        <ul className='grid grid-cols-1 sm:grid-cols-2 gap-4   mt-3'>
-                                                            {choices.map((option, index) => {
-                                                                return <li onClick={() => onSelectOption(index, option, question)} className={index === answerIndx ? "md:ms-10 text-white navigation-bar px-5 py-2 rounded-3xl box-border" : 'box-border md:ms-10 px-5 py-2 border-2 font-semibold border-blue-800 rounded-3xl'} key={option}> {option}</li>
-                                                            })}
-                                                        </ul>
-
-                                                        <div className='flex justify-between mt-10'>
-                                                            <button disabled={currentQuestion == 0} onClick={onClickPrevious} className='btn navigation-bar text-white hover:bg-blue-900 '>Previous</button>
-                                                            <button onClick={onClickNext} className='btn text-white  navigation-bar '>{currentQuestion == questions.length - 1 ? 'Finish' : 'Next'}</button>
-                                                        </div>
-
-                                                    </div>
                                                 </div>
                                             </div>
                                             :
                                             <div className='flex justify-center my-5'>
 
-                                                <div>
-                                                    <div className='max-w-[100px]   min-h-[60px] text-white bg-blue-900 rounded-full flex justify-center items-center'>
-                                                        <h1 className='text-3xl font-bold'> <span className='text-red-500'>{result.filter(ques => ques.correctAnswer == ques.userAns).length * 5}</span>/<span>25</span> </h1>
-                                                    </div>
+                                                <AnsDataPage
+                                                    questions={questions}
+                                                    result={result}
+                                                ></AnsDataPage>
 
-                                                    {result?.map((ques, index) => <div className='mt-4 border-2 border-blue-900 py-5 rounded-2xl px-5' key={index}>
-                                                        <h1 className='text-3xl font-bold'>{index + 1}- {ques.question}</h1>
-                                                        <p className='text-xl mt-3'><span className='  font-semibold me-4'>Your Ans: </span><span className={ques.userAns == ques.correctAnswer ? "text-white bg-green-600 rounded-3xl py-1 px-4" : 'text-white bg-red-600 rounded-3xl py-1 px-4'}>{ques.userAns}</span></p>
-                                                        <p className='text-xl mt-3'><span className='  font-semibold me-4'>Correct Ans:</span><span className='text-white bg-green-600 rounded-3xl py-1 px-4'>{ques.correctAnswer}</span></p>
 
-                                                    </div>)}
-                                                </div>
 
                                             </div>
                                     }
@@ -232,54 +215,33 @@ const Exam = () => {
                                     {
                                         !view ?
                                             <div>
-                                                <div className="relative h-4 w-full bg-gray-200 rounded">
-                                                    <div
-                                                        className=" mt-3 h-full animate-progress rounded"
-                                                        style={{ width: `${timerProgress}%` }}
-                                                    ></div>
-                                                    <div className='text-3xl text-center my-7 font-semibold'>
-                                                        Time Remaining: {Math.floor(timeRemaining / 60)}:{timeRemaining % 60}
-                                                    </div>
+                                                <div >
+                                                    <TimeRemain
+                                                        timerProgress={timerProgress}
+                                                        timeRemaining={timeRemaining}
+                                                    ></TimeRemain>
                                                 </div>
                                                 <div className=' min-h-[70vh] flex justify-center md:mt-0 mt-10 md:items-center'>
+                                                    <FillTheBlank
+                                                        questions={questions}
+                                                        currentQuestion={currentQuestion}
+                                                        question={question}
+                                                        onClickNext={onClickNext}
+                                                        inputValue={inputValue}
+                                                        handleInputChange={handleInputChange}
+                                                        onClickPrevious={onClickPrevious}
+                                                    ></FillTheBlank>
 
-
-
-                                                    <div className='md:mx-20 mx-2 w-full'>
-                                                        <div className='max-w-[50px]  min-h-[50px] text-white bg-blue-900 rounded-full flex justify-center items-center'>
-                                                            <div>
-                                                                <span className='text-3xl font-semibold'>{currentQuestion + 1}</span>
-                                                                <span className='text-xl font-semibold'>/{questions.length}</span>
-                                                            </div>
-                                                        </div>
-
-                                                        <h1 className='text-3xl my-7  font-semibold'>{currentQuestion + 1}- {question}</h1>
-
-                                                        <input className='input w-full bg-slate-600 text-white' type="text" placeholder='Answer' value={inputValue} onChange={handleInputChange} />
-
-                                                        <div className='flex justify-between mt-10'>
-                                                            <button disabled={currentQuestion == 0} onClick={onClickPrevious} className='btn navigation-bar text-white  '>Previous</button>
-                                                            <button onClick={onClickNext} className='btn text-white navigation-bar '>{currentQuestion == questions.length - 1 ? 'Finish' : 'Next'}</button>
-                                                        </div>
-
-                                                    </div>
+                                                    <AllQues questions={questions} setCurrentQuestion={setCurrentQuestion} setAnswerIndx={setAnswerIndx} ></AllQues>
                                                 </div>
                                             </div>
                                             :
                                             <div className='flex justify-center my-5'>
 
-                                                <div>
-                                                    <div className='max-w-[100px]   min-h-[60px] text-white bg-blue-900 rounded-full flex justify-center items-center'>
-                                                        <h1 className='text-3xl font-bold'> <span className='text-red-500'>{result.filter(ques => ques.userAns === ques.correctAnswer).length * 5}</span>/<span>{questions.length * 5}</span> </h1>
-                                                    </div>
-
-                                                    {result?.map((ques, index) => <div className='mt-4 border-2 border-blue-900 py-5 rounded-2xl px-5' key={index}>
-                                                        <h1 className='text-3xl font-bold'>{index + 1}- {ques.question}</h1>
-                                                        <p className='text-xl mt-3'><span className='  font-semibold me-4'>Your Ans: </span><span className={ques.userAns == ques.correctAnswer ? "text-white bg-green-600 rounded-3xl py-1 px-4" : 'text-white bg-red-600 rounded-3xl py-1 px-4'}>{ques.userAns}</span></p>
-                                                        <p className='text-xl mt-3'><span className='  font-semibold me-4'>Correct Ans:</span><span className='text-white bg-green-600 rounded-3xl py-1 px-4'>{ques.correctAnswer}</span></p>
-
-                                                    </div>)}
-                                                </div>
+                                                <AnsDataPage
+                                                    questions={questions}
+                                                    result={result}
+                                                ></AnsDataPage>
 
                                             </div>
                                     }
