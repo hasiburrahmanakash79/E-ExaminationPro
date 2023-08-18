@@ -32,14 +32,14 @@ const TextEditor = ({ shortQs, onAnswerSubmit }) => {
   }
 
   return (
-    <div className='bg-[#5a386e] lg:w-4/5 mx-auto my-6 min-h-[70vh] p-3 rounded-md'>
-      <div className='text-xl text-center '>{shortQs?.question}</div>{' '}
+    <div className='navigation-bar px-3 md:px-7 shadow-xl   mx-auto my-6 min-h-[40vh]  rounded-md'>
+      <div className='text-2xl text-center text-white p-4 '>Question: {shortQs?.question}</div>{' '}
       {/* Display the question */}
       <ReactQuill
         theme='snow'
         value={value}
         onChange={handleInput}
-        className='w-full min-h-full bg-white rounded-md'
+        className='w-full min-h-[30vh]  bg-white rounded-md'
         modules={modules}
       />
       <div className='mt-2'>

@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query'
 import axios from 'axios'
-const useShortQuestions = () => {
+const useShortQuestions = (Mathematics) => {
   const {
     data: shortQuestions = [],
     isLoading: loading,
@@ -8,7 +8,7 @@ const useShortQuestions = () => {
   } = useQuery({
     queryKey: ['shortQuestions'],
     queryFn: async () => {
-      const res = await axios.get('http://localhost:5000/shortQ')
+      const res = await axios.get(`http://localhost:5000/shortQ?subject=${Mathematics}`) // to todo add date subject code etc
       return res.data
     }
   })
