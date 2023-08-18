@@ -1,0 +1,19 @@
+
+.ql-container.ql-snow {
+    border: none;
+}
+
+.ql-toolbar.ql-snow {
+    border: none;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    border-bottom: 2px solid #c7c3c3;
+}
+
+.ql-container {
+     height: 80%; 
+}
+
+/* .ql-snow.ql-toolbar button:hover{
+    color: rgb(255, 255, 255) !important;
+} */
