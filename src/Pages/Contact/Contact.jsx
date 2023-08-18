@@ -7,7 +7,6 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'
 import { useRef, useState } from "react";
 import contact from '../../assets/contact.png'
-import FeedBack from "../../Components/Feedback/Feedback";
 
 const Contact = () => {
     const form = useRef();
@@ -74,9 +73,6 @@ const Contact = () => {
                     </form>
                 </div>
             </div>
-
-            
-            <FeedBack />
         </div>
 
 
