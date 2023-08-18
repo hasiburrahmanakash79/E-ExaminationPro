@@ -3,11 +3,11 @@ import { jsQuizz, mathQues } from '../../../../public/question';
 import { useLocation } from 'react-router-dom';
 
 
-import AnsDataPage from './component/AnsDataPage';
-import FillTheBlank from './component/FillTheBlank';
-import McqPage from './component/McqPage';
-import TimeRemain from './component/TimeRemain';
-import AllQues from './component/AllQues';
+import AnsDataPage from '../../../components/examComponents/AnsDataPage';
+import FillTheBlank from '../../../components/examComponents/FillTheBlank';
+import McqPage from '../../../components/examComponents/McqPage';
+import TimeRemain from '../../../components/examComponents/TimeRemain';
+import AllQues from '../../../components/examComponents/AllQues';
 
 
 

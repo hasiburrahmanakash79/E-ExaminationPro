@@ -3,7 +3,7 @@ import './FreeCoursePage.css'
 import { Link } from 'react-router-dom';
 const FreeCoursePage = () => {
     return (
-        <div className='mt-5 flex justify-center '>
+        <div className='my-5 flex justify-center '>
 
             <div className='grid grid-cols-1 md:grid-cols-2   lg:grid-cols-3 gap-10 mx-2'>
                 <div className="card  bg-base-100 h-[280px] shadow-xl image-full">
@@ -17,7 +17,7 @@ const FreeCoursePage = () => {
                     <div className="card-body1 w-full  items-center text-center">
                         <h1 className='text-4xl font-bold'>React</h1>
                         <p className='text-md my-3 mx-3 '>Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta, nihil. Illum blanditiis quo autem nobis nisi tempora tempore quisquam facere ?</p>
-                        <button className='btn btn-sm btn-primary'><Link to={'/exam?type=mcq'}>Exam</Link></button>
+                        <button className='btn  btn-primary'><Link to={'/exam?type=mcq'}>Exam</Link></button>
                     </div>
                 </div>
 
@@ -32,7 +32,7 @@ const FreeCoursePage = () => {
                     <div className="card-body1 w-full  items-center text-center">
                         <h1 className='text-4xl font-bold'>Math</h1>
                         <p className='text-md my-3 mx-3 '>Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta, nihil. Illum blanditiis quo autem nobis nisi tempora tempore quisquam facere ?</p>
-                        <button className='btn btn-sm btn-primary'><Link to={'/exam?type=fib'}>Exam</Link></button>
+                        <button className='btn  btn-primary'><Link to={'/exam?type=fib'}>Exam</Link></button>
                     </div>
                 </div>
 
@@ -47,7 +47,7 @@ const FreeCoursePage = () => {
                     <div className="card-body1 w-full  items-center text-center">
                         <h1 className='text-4xl font-bold'>Physics</h1>
                         <p className='text-md my-3 mx-3 '>Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta, nihil. Illum blanditiis quo autem nobis nisi tempora tempore quisquam facere ?</p>
-                        <button className='btn btn-sm btn-primary'><Link to={'/exam?type=fib'}>Exam</Link></button>
+                        <button className='btn  btn-primary'><Link to={'/exam?type=fib'}>Exam</Link></button>
                     </div>
                 </div>
 
@@ -62,7 +62,7 @@ const FreeCoursePage = () => {
                     <div className="card-body1 w-full  items-center text-center">
                         <h1 className='text-4xl font-bold'>Chemistry</h1>
                         <p className='text-md my-3 mx-3 '>Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta, nihil. Illum blanditiis quo autem nobis nisi tempora tempore quisquam facere ?</p>
-                        <button className='btn btn-sm btn-primary'><Link to={'/exam?type=fib'}>Exam</Link></button>
+                        <button className='btn  btn-primary'><Link to={'/exam?type=fib'}>Exam</Link></button>
                     </div>
                 </div>
 
