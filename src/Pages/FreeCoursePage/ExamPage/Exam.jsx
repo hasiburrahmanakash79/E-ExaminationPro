@@ -77,7 +77,7 @@ const Exam = () => {
         setTimerProgress(0)
         ///////////////End/////////////
 
-        fetch('http://localhost:5000/examdata', {
+        fetch('https://e-exam-pro-server.vercel.app/examdata', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -151,7 +151,7 @@ const Exam = () => {
 
             console.log('hit')
             console.log(result)
-            fetch('http://localhost:5000/examdata', {
+            fetch('https://e-exam-pro-server.vercel.app/examdata', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
