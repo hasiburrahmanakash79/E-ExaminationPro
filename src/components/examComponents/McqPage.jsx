@@ -19,8 +19,8 @@ const McqPage = ({currentQuestion,questions,question,onSelectOption,onClickPrevi
             </ul>
 
             <div className='flex justify-between mt-10'>
-                <button disabled={currentQuestion == 0} onClick={onClickPrevious} className='btn navigation-bar text-white hover:bg-blue-900 '>Previous</button>
-                <button onClick={onClickNext} className='btn text-white  navigation-bar '>{currentQuestion == questions.length - 1 ? 'Finish' : 'Next'}</button>
+                <button disabled={currentQuestion == 0} onClick={onClickPrevious} className='btn navigation-bar text-white border-none shadow-lg hover:bg-blue-900 '>Previous</button>
+                <button onClick={onClickNext} className='btn text-white shadow-lg border-none navigation-bar '>{currentQuestion == questions.length - 1 ? 'Finish' : 'Next'}</button>
             </div>
 
         </div>
