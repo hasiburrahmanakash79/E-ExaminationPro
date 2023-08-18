@@ -5,7 +5,7 @@
 .accordion {
   /* margin: 60px auto; */
   /* width: 600px; */
-  max-width: 100%;
+  width: 100%;
 }
 
 .accordion li {
@@ -30,7 +30,7 @@
   gap: 10px;
 }
 
-label::before {
+.label1::before {
   content: "+";
   color: #b21261;
   margin-right: 10px;
