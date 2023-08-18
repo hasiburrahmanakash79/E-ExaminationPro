@@ -1,46 +1,29 @@
-const ReviewAnswerAfterResult = () => {
-  const quizzes = [
-    { id: 1, name: 'a' },
-    { id: 2, name: 'b' }
-  ]
-  const shortQuestions = [
-    { id: 1, name: 'a' },
-    { id: 2, name: 'b' }
-  ]
-  const longQuestions = [
-    { id: 1, name: 'a' },
-    { id: 2, name: 'b' }
-  ]
-  const fillInTheBlanks = [
-    { id: 1, name: 'a' },
-    { id: 2, name: 'b' }
-  ]
-
+const ReviewAnswerAfterResult = ({ questions, userAnswers }) => {
   return (
     <>
-      {quizzes && (
-        <div className='grid grid-cols-1 md:grid-cols-3'>
-          <h1 className='text-xl font-semibold col-span-full'>Quiz Result</h1>
-          {quizzes.map((quiz, index) => (
-            <div key={quiz.id} className='hover:outline hover:scale-105'>
-              <h1 className='text-xl font-bold'>
-                {index + 1}. {quiz.text}
-              </h1>
+      {questions.map((question, index) => {
+        const userAnswer = userAnswers.find(
+          answer => answer.questionId === question.id
+        )
+        return (
+          <div className='w-1/2 mx-auto my-12' key={question.id}>
+            <h1 className='text-xl font-bold'>
+              {index + 1}. {question.text}
+            </h1>
 
+            {userAnswer && (
               <p className='my-2 ml-2 font-semibold'>
-                You Selected: {quiz.selectedOptionId}
+                You Selected: {userAnswer.selectedOptionId}
               </p>
+            )}
+            <p className='ml-2 font-semibold'>
+              Correct Answer: <span className=''>{question.correctAnswer}</span>
+            </p>
+          </div>
+        )
+      })}
 
-              <p className='ml-2 font-semibold'>
-                Correct Answer:
-                <span className=''>{quiz.correctAnswer}</span>
-              </p>
-            </div>
-          ))}
-        </div>
-      )}
-
-      {shortQuestions && (
+      {/* {shortQuestions && (
         <div>
           {shortQuestions.map(sq => (
             <article key={sq.id}>
@@ -70,7 +53,7 @@ const ReviewAnswerAfterResult = () => {
             </article>
           ))}
         </div>
-      )}
+      )} */}
     </>
   )
 }
