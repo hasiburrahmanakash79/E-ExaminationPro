@@ -111,6 +111,7 @@ const QuizHomePage = () => {
           className='col-span-1'
           questions={questions}
           currentQuestionIndex={currentQuestionIndex}
+          userAnswers={userAnswers}
           onQuestionIndexClick={handleQuestionIndicationClick}
         />
 
