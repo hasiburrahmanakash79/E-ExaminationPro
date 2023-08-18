@@ -7,7 +7,7 @@ const QuesAccordian = ({ sq }) => {
 
       <div className="accordion">
         <li>
-          <input type="radio" name="accordion" id="first" ></input>
+          <input type="radio" name="accordion" id="first" className="radios" ></input>
           <label htmlFor="first">{sq?.question}</label>
           <div className="content">
             <p>{sq?.ans}</p>

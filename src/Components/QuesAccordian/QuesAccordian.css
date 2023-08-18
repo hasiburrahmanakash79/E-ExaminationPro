@@ -1,6 +1,3 @@
-.body {
-
-}
 
 .accordion {
   /* margin: 60px auto; */
@@ -30,7 +27,7 @@
   gap: 10px;
 }
 
-label::before {
+.accordion li label::before {
   content: "+";
   color: #b21261;
   margin-right: 10px;
@@ -38,7 +35,7 @@ label::before {
   font-weight: 600;
 }
 
-input[type="radio"] {
+.accordion li input[type="radio"] {
   display: none;
 }
 
@@ -50,11 +47,11 @@ input[type="radio"] {
   transition: max-height 0.5s, padding 0.05s;
 }
 
-.accordion input[type="radio"]:checked + label + .content {
+.accordion li input[type="radio"]:checked + label + .content {
   max-height: 400px;
   padding: 10px 10px 20px;
 }
 
-input[type="radio"]:checked + label::before {
+.accordion li input[type="radio"]:checked + label::before {
   content: "-";
 }
