@@ -11,6 +11,7 @@ import FreeCoursePage from '../Pages/FreeCoursePage/FreeCoursePage'
 import Exam from '../Pages/FreeCoursePage/ExamPage/Exam'
 import ShortQ from '../Pages/Exams/ShortQuestion/ShortQ'
 
+
 const router = createBrowserRouter([
   {
     path: '/',
