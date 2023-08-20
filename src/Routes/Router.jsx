@@ -12,6 +12,7 @@ import Exam from '../Pages/FreeCoursePage/ExamPage/Exam'
 import ShortQ from '../Pages/Exams/ShortQuestion/ShortQ'
 import Instructors from '../Pages/InstuctorPage/Instructors'
 import Blog from '../Pages/BlogPage/Blog/Blog'
+import Notice from '../Pages/NoticePage/Notice/Notice'
 
 
 const router = createBrowserRouter([
@@ -30,6 +31,10 @@ const router = createBrowserRouter([
       {
         path: '/blog',
         element: <Blog/>
+      },
+      {
+        path: '/notice',
+        element: <Notice/>
       },
       {
         path: '/demo-test',

@@ -58,7 +58,7 @@ const Navbar = () => {
         <Link to="/contact">Contact Us</Link>
       </li>
       <li>
-        <Link>Notice</Link>
+        <Link to="/notice">Notice</Link>
       </li>
     </>
   );
