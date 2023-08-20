@@ -24,6 +24,35 @@ const Registration = () => {
       const loggedUser = result.user;
       navigate(from, { replace: true });
       console.log(loggedUser);
+
+      updateUserInfo(data.name, data.photo)
+      .then(() => {
+        const userInfo = {
+          displayName: data.name,
+          email: data.email,
+          photoURL: data.photo
+        };
+        fetch("http://localhost:5000/users", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json"
+          },
+          body: JSON.stringify(userInfo)
+        })
+        .then((res) => res.json())
+        .then((data) => {
+          if(data.insertedId) {
+            navigate(from, { replace: true });
+            Swal.fire({
+              showConfirmButton: false,
+              timer: 1500,
+              title: "Registration Successful",
+              icon: "success",
+            });
+          }
+        })
+      })
+      .catch((error) => console.log(error.message))
     });
   };
   return (

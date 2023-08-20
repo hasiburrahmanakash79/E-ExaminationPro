@@ -12,13 +12,13 @@ const ResultPage = ({ questions, userAnswers }) => {
   const totalQuestions = questions.length
 
   return (
-    <div className='grid justify-between w-9/12 grid-cols-1 mx-auto space-y-6 h-fit md:grid-cols-3 navigation-bar2 md:p-6 place-content-center text-slate-200'>
+    <div className='grid justify-between w-9/12 grid-cols-1 mx-auto space-y-6 h-fit md:grid-cols-3 primary-bg2 md:p-6 place-content-center text-slate-200'>
       <div className='col-span-1 space-y-4 md:col-span-2'>
         <h1 className='text-2xl font-semibold'>Quiz Results</h1>
         <p className='text-xl'>Total Questions: {totalQuestions}</p>
         <p className='text-xl'>Correct Answers: 3</p>
         <button
-          className=' btn_quiz navigation-bar'
+          className=' btn_quiz primary-bg'
           onClick={() => setShowReviewAnswers(!showReviewAnswers)}
         >
           Show Review Answers
@@ -31,7 +31,7 @@ const ResultPage = ({ questions, userAnswers }) => {
         )}
       </div>
       <div className='order-1'>
-        <Link to='/' className='btn_quiz navigation-bar'>
+        <Link to='/' className='btn_quiz primary-bg'>
           Go Back
         </Link>
       </div>

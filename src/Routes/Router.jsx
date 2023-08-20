@@ -10,6 +10,7 @@ import Registration from '../Pages/Authentication/Registration/Registration'
 import FreeCoursePage from '../Pages/FreeCoursePage/FreeCoursePage'
 import Exam from '../Pages/FreeCoursePage/ExamPage/Exam'
 import ShortQ from '../Pages/Exams/ShortQuestion/ShortQ'
+import Instructors from '../Pages/InstuctorPage/Instructors'
 
 
 const router = createBrowserRouter([
@@ -20,6 +21,10 @@ const router = createBrowserRouter([
       {
         path: '/',
         element: <HomePage />
+      },
+      {
+        path: '/instructors',
+        element: <Instructors/>
       },
       {
         path: '/demo-test',

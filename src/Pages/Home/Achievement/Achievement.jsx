@@ -3,7 +3,7 @@ import { useInView } from 'react-intersection-observer';
 const Achievement = () => {
 
   const [ref, inView] = useInView({
-    threshold: 0.5,
+    threshold: 0.2,
   })
 
   return (
@@ -11,7 +11,7 @@ const Achievement = () => {
 
     <section ref={ref} className='p-5'>
       <h1 className="text-center text-4xl font-bold pt-10">Out Achievement</h1>
-      <div className=' mt-10 pt-5 gap-20 md:flex justify-evenly md:mt-28 items-end rounded-xl  bg-slate-600'>
+      <div className=' mt-10 p-10 gap-20 md:flex justify-evenly md:mt-20 items-end rounded-xl  primary-bg'>
 
         <div className='px-5 md:px-0 full md:w-1/2 '>
           <div>
