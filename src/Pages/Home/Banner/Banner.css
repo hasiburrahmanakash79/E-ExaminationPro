@@ -1,0 +1,26 @@
+.awssld {
+  z-index: 0;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.awssld__content {
+  height: 100%;
+}
+
+.awssld__next,
+.awssld__prev {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.awssld__controls:hover .awssld__next,
+.awssld__controls:hover .awssld__prev {
+  opacity: 1;
+}
+
+@media (max-width: 767px) {
+  .awssld {
+    height: 50%;
+  }
+}
