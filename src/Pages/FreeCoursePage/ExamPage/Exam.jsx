@@ -6,6 +6,7 @@ import FillTheBlank from '../../../components/examComponents/FillTheBlank'
 import McqPage from '../../../components/examComponents/McqPage'
 import TimeRemain from '../../../components/examComponents/TimeRemain'
 import AllQues from '../../../components/examComponents/AllQues'
+import useShuffle from '../../../Hooks/useShuffle/useShuffle'
 
 const Exam = () => {
   const location = useLocation()
@@ -13,7 +14,9 @@ const Exam = () => {
   const examType = searchParams.get('type')
   console.log(examType)
 
-  const questions = examType == 'mcq' ? jsQuizz.question : mathQues.questions
+  const ques = examType == 'mcq' ? jsQuizz.question : mathQues.questions
+
+  const questions = useShuffle(ques);
 
   const [currentQuestion, setCurrentQuestion] = useState(0)
   const { question, choices, correctAnswer } = questions[currentQuestion]
