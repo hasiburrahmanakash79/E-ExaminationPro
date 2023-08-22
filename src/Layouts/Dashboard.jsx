@@ -1,11 +1,9 @@
 import { Link } from "react-router-dom";
-import { FaHome } from "react-icons/fa";
-
 
 const Dashboard = () => {
     return (
         <div className="drawer">
-  <input id="my-drawer" type="checkbox" className="drawer-toggle" />
+  <input id="my-drawer" type="checkbox"  defaultChecked className="drawer-toggle" />
   <div className="drawer-content">
     {/* Page content here */}
     <label htmlFor="my-drawer" className="btn btn-primary drawer-button">Open drawer</label>
@@ -22,6 +20,10 @@ const Dashboard = () => {
 			<span className="flex items-center space-x-1">
 				<a rel="noopener noreferrer" href="#" className="text-xs hover:underline dark:text-gray-400">View profile</a>
 			</span>
+            <input id="my-drawer" type="checkbox" className="drawer-toggle" />
+  <div className="drawer-content">
+       <label htmlFor="my-drawer" className="btn btn-xs btn-primary drawer-button">Close</label>
+  </div> 
 		</div>
 	</div>
 	<div className="divide-y divide-gray-700">
