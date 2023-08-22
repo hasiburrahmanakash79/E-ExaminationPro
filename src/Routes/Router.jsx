@@ -13,7 +13,7 @@ import ShortQ from '../Pages/Exams/ShortQuestion/ShortQ'
 import Instructors from '../Pages/InstuctorPage/Instructors'
 import Blog from '../Pages/BlogPage/Blog/Blog'
 import Notice from '../Pages/NoticePage/Notice/Notice'
-
+import ResultPageForMcqFib from '../components/QuestionRelated/ResultPageForMcqFib'
 
 const router = createBrowserRouter([
   {
@@ -26,15 +26,15 @@ const router = createBrowserRouter([
       },
       {
         path: '/instructors',
-        element: <Instructors/>
+        element: <Instructors />
       },
       {
         path: '/blog',
-        element: <Blog/>
+        element: <Blog />
       },
       {
         path: '/notice',
-        element: <Notice/>
+        element: <Notice />
       },
       {
         path: '/demo-test',
@@ -57,10 +57,13 @@ const router = createBrowserRouter([
         element: <Exam></Exam>
       },
       {
-        path: "/shortQ",
+        path: '/shortQ',
         element: <ShortQ />
+      },
+      {
+        path: '/result',
+        element: <ResultPageForMcqFib />
       }
-
     ]
   },
 
