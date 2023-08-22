@@ -9,6 +9,11 @@ import Login from '../Pages/Authentication/Login/Login'
 import Registration from '../Pages/Authentication/Registration/Registration'
 import FreeCoursePage from '../Pages/FreeCoursePage/FreeCoursePage'
 import Exam from '../Pages/FreeCoursePage/ExamPage/Exam'
+import ShortQ from '../Pages/Exams/ShortQuestion/ShortQ'
+import Instructors from '../Pages/InstuctorPage/Instructors'
+import Blog from '../Pages/BlogPage/Blog/Blog'
+import Notice from '../Pages/NoticePage/Notice/Notice'
+
 
 const router = createBrowserRouter([
   {
@@ -18,6 +23,18 @@ const router = createBrowserRouter([
       {
         path: '/',
         element: <HomePage />
+      },
+      {
+        path: '/instructors',
+        element: <Instructors/>
+      },
+      {
+        path: '/blog',
+        element: <Blog/>
+      },
+      {
+        path: '/notice',
+        element: <Notice/>
       },
       {
         path: '/demo-test',
@@ -32,14 +49,18 @@ const router = createBrowserRouter([
         element: <Contact></Contact>
       },
       {
-        path:'/free_courses',
-        element:<FreeCoursePage></FreeCoursePage>
-          },
-          {
-            path:'/exam',
-            element:<Exam></Exam>
-              }
-          
+        path: '/free_courses',
+        element: <FreeCoursePage></FreeCoursePage>
+      },
+      {
+        path: '/exam',
+        element: <Exam></Exam>
+      },
+      {
+        path: "/shortQ",
+        element: <ShortQ />
+      }
+
     ]
   },
 

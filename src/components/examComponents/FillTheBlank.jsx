@@ -15,8 +15,8 @@ const FillTheBlank = ({questions,currentQuestion,question,onClickNext,inputValue
         <input className='input w-full bg-slate-600 text-white' type="text" placeholder='Answer' value={inputValue} onChange={handleInputChange} />
 
         <div className='flex justify-between mt-10'>
-            <button disabled={currentQuestion == 0} onClick={onClickPrevious} className='btn navigation-bar text-white  '>Previous</button>
-            <button onClick={onClickNext} className='btn text-white navigation-bar '>{currentQuestion == questions.length - 1 ? 'Finish' : 'Next'}</button>
+            <button disabled={currentQuestion == 0} onClick={onClickPrevious} className='btn primary-bg text-white  shadow-lg border-none   '>Previous</button>
+            <button onClick={onClickNext} className='btn  shadow-lg border-none  text-white primary-bg '>{currentQuestion == questions.length - 1 ? 'Finish' : 'Next'}</button>
         </div>
     </div>
     );

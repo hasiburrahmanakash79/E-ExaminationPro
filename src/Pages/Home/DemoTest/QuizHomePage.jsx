@@ -1,9 +1,9 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import ResultPage from './ResultPage'
 import QuestionsPage from './QuestionsPage'
 import ProgressBar from './ProgressBar'
 import './demoTest.css'
-import { Link } from 'react-router-dom'
+import QuizProgressVisualizer from './QuizProgressVisualizer'
 
 const QuizHomePage = () => {
   const tempQuestions = [
@@ -20,6 +20,28 @@ const QuizHomePage = () => {
     },
     {
       id: 2,
+      text: "Which planet is known as the 'Red Planet'?",
+      choices: [
+        { id: 'venus', text: 'Venus' },
+        { id: 'mars', text: 'Mars' },
+        { id: 'jupiter', text: 'Jupiter' },
+        { id: 'saturn', text: 'Saturn' }
+      ],
+      correctAnswer: 'mars'
+    },
+    {
+      id: 3,
+      text: "Which planet is known as the 'Red Planet'?",
+      choices: [
+        { id: 'venus', text: 'Venus' },
+        { id: 'mars', text: 'Mars' },
+        { id: 'jupiter', text: 'Jupiter' },
+        { id: 'saturn', text: 'Saturn' }
+      ],
+      correctAnswer: 'mars'
+    },
+    {
+      id: 4,
       text: "Which planet is known as the 'Red Planet'?",
       choices: [
         { id: 'venus', text: 'Venus' },
@@ -56,6 +78,11 @@ const QuizHomePage = () => {
     }
   }
 
+  // handling navigation to other questions by clicking on the sidebar square that represents which question they are in
+  const handleQuestionIndicationClick = index => {
+    setCurrentQuestionIndex(index)
+  }
+
   //   handling submission
   const handleSubmit = () => {
     console.log('clicked')
@@ -78,50 +105,60 @@ const QuizHomePage = () => {
     return <ResultPage questions={questions} userAnswers={userAnswers} />
   }
   return (
-    <section className='w-full h-screen md:p-6 navigation-bar2'>
-      <div className='mx-auto rounded-lg shadow-lg question_card h-fit md:w-3/5 md:space-y-8'>
-        {currentQuestion && (
-          <>
-            <ProgressBar percent={currentProgress} />
-            <QuestionsPage
-              question={currentQuestion}
-              selectedOption={selectedOption}
-              onAnswerSelected={handleSelectOption}
-              isLastQuestion={isLastQuestion}
-            />
-            <div className='relative w-11/12 py-4 mx-auto '>
-              {currentQuestionIndex > 0 && (
-                <button
-                  className='md:absolute md:left-0 btn_quiz navigation-bar'
-                  onClick={() =>
-                    setCurrentQuestionIndex(currentQuestionIndex - 1)
-                  }
-                >
-                  Previous Question
-                </button>
-              )}
-              {currentQuestionIndex == totalQuestions - 1 ? (
-                <button
-                  className='md:absolute md:right-0 btn_quiz navigation-bar'
-                  disabled={!selectedOption}
-                  onClick={handleSubmit}
-                >
-                  Submit
-                </button>
-              ) : (
-                <button
-                  className='md:absolute md:right-0 navigation-bar btn_quiz'
-                  disabled={!selectedOption}
-                  onClick={() => {
-                    setCurrentQuestionIndex(currentQuestionIndex + 1)
-                  }}
-                >
-                  Next Question
-                </button>
-              )}
-            </div>
-          </>
-        )}
+    <section className='w-full h-screen md:p-6 primary-bg2'>
+      <div className='grid grid-cols-4'>
+        <QuizProgressVisualizer
+          className='col-span-1'
+          questions={questions}
+          currentQuestionIndex={currentQuestionIndex}
+          userAnswers={userAnswers}
+          onQuestionIndexClick={handleQuestionIndicationClick}
+        />
+
+        <div className='col-span-3 mx-auto rounded-lg shadow-lg question_card h-fit md:w-3/5 md:space-y-8'>
+          {currentQuestion && (
+            <>
+              <ProgressBar percent={currentProgress} />
+              <QuestionsPage
+                question={currentQuestion}
+                selectedOption={selectedOption}
+                onAnswerSelected={handleSelectOption}
+                isLastQuestion={isLastQuestion}
+              />
+              <div className='relative w-11/12 py-4 mx-auto '>
+                {currentQuestionIndex > 0 && (
+                  <button
+                    className='md:absolute md:left-0 btn_quiz primary-bg'
+                    onClick={() =>
+                      setCurrentQuestionIndex(currentQuestionIndex - 1)
+                    }
+                  >
+                    Previous Question
+                  </button>
+                )}
+                {currentQuestionIndex == totalQuestions - 1 ? (
+                  <button
+                    className='md:absolute md:right-0 btn_quiz primary-bg'
+                    disabled={!selectedOption}
+                    onClick={handleSubmit}
+                  >
+                    Submit
+                  </button>
+                ) : (
+                  <button
+                    className='md:absolute md:right-0 primary-bg btn_quiz'
+                    disabled={!selectedOption}
+                    onClick={() => {
+                      setCurrentQuestionIndex(currentQuestionIndex + 1)
+                    }}
+                  >
+                    Next Question
+                  </button>
+                )}
+              </div>
+            </>
+          )}
+        </div>
       </div>
     </section>
   )
