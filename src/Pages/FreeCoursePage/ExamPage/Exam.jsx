@@ -29,6 +29,8 @@ const Exam = () => {
 
   const [countdown, setCountdown] = useState(3) //countdown
 
+  const [timer,setTimer]=useState(null)
+
   useEffect(() => {
     if (countdown > 0) {
       const countdownTimer = setInterval(() => {
@@ -54,13 +56,15 @@ const Exam = () => {
       setTimerProgress((timeRemaining / totalDuration) * 100)
     }, 1000) // Decrease timeRemaining every 1 second
 
+    setTimer(timer)// send ttimer function to a variable timer 
+
     return () => clearInterval(timer) // Clean up the timer when component unmounts
   }, [timeRemaining, countdown])
 
   const handleFinishExam = () => {
     setView(true)
     setCurrentQuestion(0)
-
+    clearInterval(timer)///stop timer
     fetch('http://localhost:5000/examdata', {
       method: 'POST',
       headers: {
@@ -80,7 +84,7 @@ const Exam = () => {
     setAnswerIndx(index)
     const result1 = result.find(obj => obj.question === question)
     if (result1) {
-      result1.userAns = option
+      result1.userAns = option 
     } else {
       const newObject = {
         question: question,
@@ -125,15 +129,17 @@ const Exam = () => {
     } else {
       setView(true)
       setCurrentQuestion(0)
+      clearInterval(timer)
+   
       console.log('hit')
       console.log(result)
-      fetch('http://localhost:5000/examdata', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(result)
-      })
+      // fetch('http://localhost:5000/examdata', {
+      //   method: 'POST',
+      //   headers: {
+      //     'Content-Type': 'application/json'
+      //   },
+      //   body: JSON.stringify(result)
+      // })
     }
   }
   const onClickPrevious = () => {

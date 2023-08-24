@@ -10,6 +10,9 @@ import Registration from '../Pages/Authentication/Registration/Registration'
 import FreeCoursePage from '../Pages/FreeCoursePage/FreeCoursePage'
 import Exam from '../Pages/FreeCoursePage/ExamPage/Exam'
 import ShortQ from '../Pages/Exams/ShortQuestion/ShortQ'
+import Exam2 from '../Pages/FreeCoursePage/ExamPage/Exam2'
+import CreateQuesPaper from '../Pages/DashboardPages/InstructorPages/CreateQuesPaper/CreateQuesPaper'
+import AllExam from '../Pages/FreeCoursePage/ExamPage/allExam'
 
 const router = createBrowserRouter([
   {
@@ -38,11 +41,15 @@ const router = createBrowserRouter([
       },
       {
         path: '/exam',
-        element: <Exam></Exam>
+        element: <AllExam/>
       },
       {
         path: "/shortQ",
         element: <ShortQ />
+      }  ,
+      {
+        path: '/createQues',
+        element: <CreateQuesPaper />
       }
 
     ]
@@ -56,6 +63,7 @@ const router = createBrowserRouter([
     path: '/signUp',
     element: <Registration />
   }
+
 ])
 
 export default router

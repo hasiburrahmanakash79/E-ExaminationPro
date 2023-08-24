@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@emailjs/browser": "^3.11.0",
-    "@tanstack/react-query": "^4.32.6",
+    "@tanstack/react-query": "^4.33.0",
     "axios": "^1.4.0",
     "firebase": "^10.1.0",
     "localforage": "^1.10.0",
@@ -29,6 +29,7 @@
     "react-query": "^3.39.3",
     "react-quill": "^2.0.0",
     "react-router-dom": "^6.15.0",
+    "react-tabs": "^6.0.2",
     "react-toastify": "^9.1.3",
     "react-wavify": "^1.8.3",
     "sort-by": "^1.2.0",

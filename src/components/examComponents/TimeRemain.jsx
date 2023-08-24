@@ -1,6 +1,28 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './TimeRemain.css'
-const TimeRemain = ({timerProgress,timeRemaining}) => {
+const TimeRemain = ({  handleFinishExam,setTimer }) => {
+
+    const [timerProgress, setTimerProgress] = useState(100) //progress bar state
+    const totalDuration = 30 //define total duration
+    const [timeRemaining, setTimeRemaining] = useState(30) // time remain state
+    useEffect(() => {
+
+        if (timeRemaining <= 0) {
+            // Time is up, finish the exam 
+            handleFinishExam()
+            return
+        }
+        const timer = setInterval(() => {
+            setTimeRemaining(prevTime => prevTime - 1)
+            setTimerProgress((timeRemaining / totalDuration) * 100)
+        }, 1000) // Decrease timeRemaining every 1 second
+
+        setTimer(timer)// send timer function to a variable timer 
+
+        return () => clearInterval(timer) // Clean up the timer when component unmounts
+
+    }, [timeRemaining,totalDuration])
+
     return (
         <div className="relative h-4 w-full bg-gray-200 rounded">
             <div
