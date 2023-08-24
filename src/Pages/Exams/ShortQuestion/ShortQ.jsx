@@ -1,38 +1,45 @@
 import React, { useState } from 'react'
 import QuesAccordion from '../../../components/QuesAccordion/QuesAccordion'
-import TextEditor from '../../../Components/TextEditor/TextEditor'
 import useShortQuestions from '../../../Hooks/useShortQuestions/useShortQuestions'
+import TextEditor from '../../../components/TextEditor/TextEditor'
 
 const ShortQ = () => {
-
-  const [shortQuestions, loading, refetch] = useShortQuestions('English_Grammar') //todo
+  const [shortQuestions, loading, refetch] = useShortQuestions('Mathematics') //todo
   // const [questionIndex, setQuestionIndex] = useState(0)
+  const [answers, setAnswers] = useState([])
   if (loading) {
     return null
   }
-  console.log(shortQuestions)
+  // console.log(shortQuestions)
+  const handleAnswersSubmit = (questionId, answerContent) => {
+    const newAnswer = { questionId, answerContent }
+    setAnswers(prevAnswers => [...prevAnswers, newAnswer])
+  }
+  // console.log(answers)
 
   return (
-    <section className='py-20 mx-auto container '>
-      <h2 className='text-5xl text-center mb-5 '>Short Questions</h2>
+    <section className='container py-20 mx-auto '>
+      <h2 className='mb-5 text-5xl text-center '>Short Questions</h2>
 
-
-      <div className='md:grid  gap-10 grid-cols-5 '>
+      <div className='grid-cols-5 gap-10 md:grid '>
         <div className='col-span-3'>
           {shortQuestions?.map(sq => (
-            <div key={sq._id} className='  mb-8'>
-              {sq.questions?.map((shortQs, index) => (
-                <TextEditor key={index} shortQs={shortQs} />
+            <div key={sq._id} className='mb-8 '>
+              {sq.questions?.map(shortQs => (
+                <TextEditor
+                  key={shortQs.id}
+                  questionId={shortQs.id}
+                  onAnswerSubmit={handleAnswersSubmit}
+                  shortQs={shortQs}
+                />
               ))}
             </div>
           ))}
         </div>
         <div className='col-span-2 '>
-          <QuesAccordion shortQuestions={shortQuestions} />
+          <QuesAccordion shortQuestions={shortQuestions} answers={answers} />
         </div>
       </div>
-
-
     </section>
   )
 }
