@@ -13,7 +13,9 @@ import ShortQ from '../Pages/Exams/ShortQuestion/ShortQ'
 import Instructors from '../Pages/InstuctorPage/Instructors'
 import Blog from '../Pages/BlogPage/Blog/Blog'
 import Notice from '../Pages/NoticePage/Notice/Notice'
-import Dashboard from '../Layouts/Dashboard/Dashboard'
+import AdminHome from '../Pages/Dashboard/AdminHome/AdminHome'
+import Dashboard from '../Layouts/Dashboard'
+import ManageUsers from '../Pages/Dashboard/ManageUsers/ManageUsers'
 
 const router = createBrowserRouter([
   {
@@ -74,7 +76,17 @@ const router = createBrowserRouter([
   },
   {
     path: '/dashboard',
-    element: <Dashboard/>
+    element: <Dashboard/>,
+    children: [
+      {
+        path: '/dashboard/adminHome',
+        element: <AdminHome/>
+      },
+      {
+        path: '/dashboard/manageUsers',
+        element: <ManageUsers/>
+      },
+    ]
   },
   
 ])
