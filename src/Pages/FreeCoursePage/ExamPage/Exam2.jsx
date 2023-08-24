@@ -19,7 +19,7 @@ const Exam2 = () => {
     const ques=useLoaderData();
     const questions=ques.questions
     const examType=ques.type
-
+    const examTypess=ques.type
     console.log(questions,examType)
 
     // const questions = examType == 'mcq' ? jsQuizz.question : mathQues.questions ///store question based on type
