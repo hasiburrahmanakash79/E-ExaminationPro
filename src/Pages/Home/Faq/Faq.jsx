@@ -5,7 +5,7 @@ const Faq = () => {
     <div className=" py-5 md:py-20 px-5 lg:px-52 ">
       <h2 className="text-xl md:text-4xl text-center mb-10">Frequently Asked Questions</h2>
       <div className="collapse md:w-1/2 my-5 md:mx-auto collapse-plus bg-base-200">
-        <input type="radio" name="my-accordion-3" checked="checked" />
+        <input type="radio" name="my-accordion-1" checked="checked" />
         <div className="collapse-title text-xl font-medium">
           What is E-examPro?
         </div>
@@ -14,7 +14,7 @@ const Faq = () => {
         </div>
       </div>
       <div className="collapse md:w-1/2 my-5 md:mx-auto  collapse-plus bg-base-200">
-        <input type="radio" name="my-accordion-3" />
+        <input type="radio" name="my-accordion-2" />
         <div className="collapse-title text-xl font-medium">
           Why Students choosing E-examPro platform?
         </div>

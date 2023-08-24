@@ -13,10 +13,10 @@ import ShortQ from '../Pages/Exams/ShortQuestion/ShortQ'
 import Instructors from '../Pages/InstuctorPage/Instructors'
 import Blog from '../Pages/BlogPage/Blog/Blog'
 import Notice from '../Pages/NoticePage/Notice/Notice'
-import AdminHome from '../Pages/Dashboard/AdminHome/AdminHome'
 import Dashboard from '../Layouts/Dashboard'
-import ManageUsers from '../Pages/Dashboard/ManageUsers/ManageUsers'
 import ResultPageForMcqFib from '../components/QuestionRelated/ResultPageForMcqFib'
+import ManageUsers from '../Pages/Dashboard/AdminDashboard/ManageUser/ManageUsers'
+import AdminHome from '../Pages/Dashboard/AdminDashboard/AdminHome/AdminHome'
 
 const router = createBrowserRouter([
   {
