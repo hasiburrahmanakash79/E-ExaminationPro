@@ -105,12 +105,13 @@ const QuizHomePage = () => {
     return <ResultPage questions={questions} userAnswers={userAnswers} />
   }
   return (
-    <section className='w-full h-screen md:p-6 navigation-bar2'>
+    <section className='w-full h-screen md:p-6 primary-bg2'>
       <div className='grid grid-cols-4'>
         <QuizProgressVisualizer
           className='col-span-1'
           questions={questions}
           currentQuestionIndex={currentQuestionIndex}
+          userAnswers={userAnswers}
           onQuestionIndexClick={handleQuestionIndicationClick}
         />
 
@@ -127,7 +128,7 @@ const QuizHomePage = () => {
               <div className='relative w-11/12 py-4 mx-auto '>
                 {currentQuestionIndex > 0 && (
                   <button
-                    className='md:absolute md:left-0 btn_quiz navigation-bar'
+                    className='md:absolute md:left-0 btn_quiz primary-bg'
                     onClick={() =>
                       setCurrentQuestionIndex(currentQuestionIndex - 1)
                     }
@@ -137,7 +138,7 @@ const QuizHomePage = () => {
                 )}
                 {currentQuestionIndex == totalQuestions - 1 ? (
                   <button
-                    className='md:absolute md:right-0 btn_quiz navigation-bar'
+                    className='md:absolute md:right-0 btn_quiz primary-bg'
                     disabled={!selectedOption}
                     onClick={handleSubmit}
                   >
@@ -145,7 +146,7 @@ const QuizHomePage = () => {
                   </button>
                 ) : (
                   <button
-                    className='md:absolute md:right-0 navigation-bar btn_quiz'
+                    className='md:absolute md:right-0 primary-bg btn_quiz'
                     disabled={!selectedOption}
                     onClick={() => {
                       setCurrentQuestionIndex(currentQuestionIndex + 1)

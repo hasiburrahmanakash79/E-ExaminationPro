@@ -13,6 +13,13 @@ import ShortQ from '../Pages/Exams/ShortQuestion/ShortQ'
 import Exam2 from '../Pages/FreeCoursePage/ExamPage/Exam2'
 import CreateQuesPaper from '../Pages/DashboardPages/InstructorPages/CreateQuesPaper/CreateQuesPaper'
 import AllExam from '../Pages/FreeCoursePage/ExamPage/allExam'
+import Instructors from '../Pages/InstuctorPage/Instructors'
+import Blog from '../Pages/BlogPage/Blog/Blog'
+import Notice from '../Pages/NoticePage/Notice/Notice'
+import Dashboard from '../Layouts/Dashboard'
+import ResultPageForMcqFib from '../components/QuestionRelated/ResultPageForMcqFib'
+import ManageUsers from '../Pages/Dashboard/AdminDashboard/ManageUser/ManageUsers'
+import AdminHome from '../Pages/Dashboard/AdminDashboard/AdminHome/AdminHome'
 
 const router = createBrowserRouter([
   {
@@ -22,6 +29,18 @@ const router = createBrowserRouter([
       {
         path: '/',
         element: <HomePage />
+      },
+      {
+        path: '/instructors',
+        element: <Instructors />
+      },
+      {
+        path: '/blog',
+        element: <Blog />
+      },
+      {
+        path: '/notice',
+        element: <Notice />
       },
       {
         path: '/demo-test',
@@ -49,14 +68,17 @@ const router = createBrowserRouter([
         loader:({params})=>fetch(`http://localhost:5000/questionPaper/${params.id}`)
       },
       {
-        path: "/shortQ",
+        path: '/shortQ',
         element: <ShortQ />
       }  ,
       {
         path: '/createQues',
         element: <CreateQuesPaper />
+      },
+      {
+        path: '/result',
+        element: <ResultPageForMcqFib />
       }
-
     ]
   },
 
@@ -67,8 +89,22 @@ const router = createBrowserRouter([
   {
     path: '/signUp',
     element: <Registration />
-  }
-
+  },
+  {
+    path: '/dashboard',
+    element: <Dashboard/>,
+    children: [
+      {
+        path: '/dashboard/adminHome',
+        element: <AdminHome/>
+      },
+      {
+        path: '/dashboard/manageUsers',
+        element: <ManageUsers/>
+      },
+    ]
+  },
+  
 ])
 
 export default router
