@@ -13,7 +13,10 @@ import ShortQ from '../Pages/Exams/ShortQuestion/ShortQ'
 import Instructors from '../Pages/InstuctorPage/Instructors'
 import Blog from '../Pages/BlogPage/Blog/Blog'
 import Notice from '../Pages/NoticePage/Notice/Notice'
+import Dashboard from '../Layouts/Dashboard'
 import ResultPageForMcqFib from '../components/QuestionRelated/ResultPageForMcqFib'
+import ManageUsers from '../Pages/Dashboard/AdminDashboard/ManageUser/ManageUsers'
+import AdminHome from '../Pages/Dashboard/AdminDashboard/AdminHome/AdminHome'
 
 const router = createBrowserRouter([
   {
@@ -74,7 +77,22 @@ const router = createBrowserRouter([
   {
     path: '/signUp',
     element: <Registration />
-  }
+  },
+  {
+    path: '/dashboard',
+    element: <Dashboard/>,
+    children: [
+      {
+        path: '/dashboard/adminHome',
+        element: <AdminHome/>
+      },
+      {
+        path: '/dashboard/manageUsers',
+        element: <ManageUsers/>
+      },
+    ]
+  },
+  
 ])
 
 export default router
