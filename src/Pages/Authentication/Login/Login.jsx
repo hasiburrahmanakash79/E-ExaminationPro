@@ -46,7 +46,7 @@ const Login = () => {
         navigate(from, { replace: true });
         Swal.fire({
           showConfirmButton: false,
-          timer: 2000,
+          timer: 1500,
           title: "Login Successful",
           icon: "success",
         });

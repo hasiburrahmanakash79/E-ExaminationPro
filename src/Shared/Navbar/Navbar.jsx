@@ -34,7 +34,7 @@ const Navbar = () => {
     <>
       <details className="z-[1]">
         <summary>Courses</summary>
-        <ul className="p-2 z-50 navigation-bar rounded-lg md:rounded-none">
+        <ul className="p-2 z-50 primary-bg rounded-lg md:rounded-none">
           <li>
             <Link to='/free_courses'>Free Courses</Link>
           </li>
@@ -49,16 +49,16 @@ const Navbar = () => {
   const navbarLink_Last = (
     <>
       <li>
-        <Link>Instructors</Link>
+        <Link to="/instructors">Instructors</Link>
       </li>
       <li>
-        <Link>Blog</Link>
+        <Link to="/blog">Blog</Link>
       </li>
       <li>
         <Link to="/contact">Contact Us</Link>
       </li>
       <li>
-        <Link>Notice</Link>
+        <Link to="/notice">Notice</Link>
       </li>
     </>
   );
@@ -71,7 +71,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className='navigation-bar'>
+    <nav className='primary-bg'>
       <div className="navbar z-[40]  container mx-auto  sticky top-0   text-white">
         <div className="navbar-start">
           <div className="dropdown">
@@ -93,7 +93,7 @@ const Navbar = () => {
             </label>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52 navigation-bar"
+              className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52 primary-bg"
             >
               {/* navbarFirst */}
               {navbarLink_First}
@@ -159,7 +159,7 @@ const Navbar = () => {
           ) : (
             <Link
               to="/login"
-              className="btn navigation-bar border-none text-white shadow-md"
+              className="btn primary-bg border-none text-white shadow-md"
             >
               Login
             </Link>
@@ -171,7 +171,7 @@ const Navbar = () => {
           id="my_modal_3"
           className="modal modal-top max-w-[400px] mx-auto mt-[68px] "
         >
-          <form method="dialog" className="modal-box navigation-bar ">
+          <form method="dialog" className="modal-box primary-bg ">
             <button className="btn z-20 btn-sm btn-circle btn-ghost absolute right-2 top-2">
               ✕
             </button>

@@ -7,7 +7,7 @@ const QuesAccordion = ({ shortQuestions }) => {
         {shortQuestions?.map((sq, index) => (
           <div key={index}>
             {sq.questions.map((question, qIndex) => (
-              <div className=' shadow-2xl m-5 p-5 rounded-md navigation-bar' key={qIndex}>
+              <div className=' shadow-2xl m-5 p-5 rounded-md primary-bg' key={qIndex}>
                 <input
                   type='radio'
                   name={`accordion-${index}`}

@@ -10,6 +10,7 @@ import useShuffle from '../../../Hooks/useShuffle/useShuffle'
 import HintModal from '../../../components/HintModal/HintModal'
 
 
+
 const Exam = () => {
     const location = useLocation()
     const searchParams = new URLSearchParams(location.search)
@@ -234,11 +235,11 @@ const Exam = () => {
                                         <div>
                                             <div className="mx-5 my-3">
                                                 {hintStates[currentQuestion] ? (
-                                                    <button className="btn border-none navigation-bar" onClick={toggleHint}>
+                                                    <button className="btn border-none primary-bg" onClick={toggleHint}>
                                                         Show Hint
                                                     </button>
                                                 ) : (
-                                                    <button className=" btn shadow-lg border-none navigation-bar text-white " onClick={toggleHint}>
+                                                    <button className=" btn shadow-lg border-none primary-bg text-white " onClick={toggleHint}>
                                                         Show Hint
                                                     </button>
                                                 )}
@@ -293,11 +294,11 @@ const Exam = () => {
                                         <div>
                                             <div className="mx-5 my-3">
                                                 {hintStates[currentQuestion] ? (
-                                                    <button className="btn border-none navigation-bar" onClick={toggleHint}>
+                                                    <button className="btn border-none primary-bg" onClick={toggleHint}>
                                                         Show Hint
                                                     </button>
                                                 ) : (
-                                                    <button className=" btn shadow-lg border-none navigation-bar text-white " onClick={toggleHint}>
+                                                    <button className=" btn shadow-lg border-none primary-bg text-white " onClick={toggleHint}>
                                                         Show Hint
                                                     </button>
                                                 )}
