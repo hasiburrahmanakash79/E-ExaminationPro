@@ -10,7 +10,7 @@ const ManageUsers = () => {
   });
 
   const handleMakeAdmin = (user) => {
-    fetch(`http://localhost:5000/users/admin/${user._id}`, {
+    fetch(`https://e-exam-pro-server.vercel.app/users/admin/${user._id}`, {
       method: "PATCH",
     })
       .then((res) => res.json())
@@ -28,7 +28,7 @@ const ManageUsers = () => {
   }
 
   const handleMakeInstructor = (user) => {
-    fetch(`http://localhost:5000/users/instructor/${user._id}`, {
+    fetch(`https://e-exam-pro-server.vercel.app/users/instructor/${user._id}`, {
       method: "PATCH",
     })
       .then((res) => res.json())
@@ -71,7 +71,7 @@ const ManageUsers = () => {
                 <td>{user.displayName}</td>
                 <td>{user.email}</td>
                 <td>{user.role}</td>
-                <td className="flex justify-center">
+                <td className="">
                   {user.role === "instructor" ? (
                     <button className="btn btn-disabled btn-xs">
                       Instructor
