@@ -32,7 +32,7 @@ const Banner = () => {
           
           <h1 className="md:mb-10 font-semibold text-white text-2xl  md:text-7xl">E-ExamPro</h1>
 
-          <button className="mt-4 md:mt-8 text-sm md:text-lg font-bold rounded-full btn btn-sm md:btn-md navigation-bar">
+          <button className="mt-4 md:mt-8 text-sm md:text-lg font-bold rounded-full btn btn-sm md:btn-md primary-bg">
             Explore Exams 
           </button>
         </div>
@@ -54,7 +54,7 @@ const Banner = () => {
           
           <h1 className="md:mb-10 font-semibold text-white text-2xl  md:text-7xl">E-ExamPro</h1>
 
-          <button className="mt-4 md:mt-8 text-sm md:text-lg font-bold rounded-full btn btn-sm md:btn-md navigation-bar">
+          <button className="mt-4 md:mt-8 text-sm md:text-lg font-bold rounded-full btn btn-sm md:btn-md primary-bg">
             Explore Exams 
           </button>
         </div>
@@ -76,7 +76,7 @@ const Banner = () => {
           
           <h1 className="md:mb-10 font-semibold text-white text-2xl  md:text-7xl">E-ExamPro</h1>
 
-          <button className="mt-4 md:mt-8 text-sm md:text-lg font-bold rounded-full btn btn-sm md:btn-md navigation-bar">
+          <button className="mt-4 md:mt-8 text-sm md:text-lg font-bold rounded-full btn btn-sm md:btn-md primary-bg">
             Explore Exams 
           </button>
         </div>
@@ -98,7 +98,7 @@ const Banner = () => {
           
           <h1 className="md:mb-10 font-semibold text-white text-2xl  md:text-7xl">E-ExamPro</h1>
 
-          <button className="mt-4 md:mt-8 text-sm md:text-lg font-bold rounded-full btn btn-sm md:btn-md navigation-bar">
+          <button className="mt-4 md:mt-8 text-sm md:text-lg font-bold rounded-full btn btn-sm md:btn-md primary-bg">
             Explore Exams 
           </button>
         </div>

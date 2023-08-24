@@ -14,13 +14,13 @@ const McqPage = ({currentQuestion,questions,question,onSelectOption,onClickPrevi
 
             <ul className='grid grid-cols-1 sm:grid-cols-2 gap-4   mt-3'>
                 {choices.map((option, index) => {
-                    return <li onClick={() => onSelectOption(index, option, question)} className={index === answerIndx ? "md:ms-10 text-white navigation-bar px-5 py-2 rounded-3xl box-border" : 'box-border md:ms-10 px-5 py-2 border-2 font-semibold border-blue-800 rounded-3xl'} key={option}> {option}</li>
+                    return <li onClick={() => onSelectOption(index, option, question)} className={index === answerIndx ? "md:ms-10 text-white primary-bg px-5 py-2 rounded-3xl box-border" : 'box-border md:ms-10 px-5 py-2 border-2 font-semibold border-blue-800 rounded-3xl'} key={option}> {option}</li>
                 })}
             </ul>
 
             <div className='flex justify-between mt-10'>
-                <button disabled={currentQuestion == 0} onClick={onClickPrevious} className='btn navigation-bar text-white border-none shadow-lg hover:bg-blue-900 '>Previous</button>
-                <button onClick={onClickNext} className='btn text-white shadow-lg border-none navigation-bar '>{currentQuestion == questions.length - 1 ? 'Finish' : 'Next'}</button>
+                <button disabled={currentQuestion == 0} onClick={onClickPrevious} className='btn primary-bg text-white border-none shadow-lg hover:bg-blue-900 '>Previous</button>
+                <button onClick={onClickNext} className='btn text-white shadow-lg border-none primary-bg '>{currentQuestion == questions.length - 1 ? 'Finish' : 'Next'}</button>
             </div>
 
         </div>

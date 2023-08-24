@@ -8,7 +8,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 
 const queryClient = new QueryClient()
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <div className='navigation-bar'>
+  <div className='primary-bg'>
     <React.StrictMode>
       <AuthProvider>
         <QueryClientProvider client={queryClient}>
