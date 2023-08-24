@@ -6,9 +6,30 @@ import './Testimonial.css';
 import { EffectCoverflow, Pagination } from 'swiper/modules';
 
 import quote from "../../../assets/quote.png";
-import user from "../../../assets/user_img.png";
+import { useEffect, useState } from 'react';
+import { Rating } from '@smastrom/react-rating';
+import '@smastrom/react-rating/style.css'
 
 const Testimonial = () => {
+    const [testimonials, setTestimonials] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(
+          "https://e-exam-pro-server.vercel.app/testimonials"
+        );
+        const data = await response.json();
+
+        console.log(data);
+        setTestimonials(data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
     return (
         <div className='mx-5 pb-5 ' >
       <h1 className="text-center text-slate-200 text-4xl font-bold  mt-5">What Our Users Say</h1>
@@ -29,138 +50,34 @@ const Testimonial = () => {
                 modules={[EffectCoverflow, Pagination]}
                 className="mySwiper"
             >
-                <SwiperSlide>
-                    <div className='relative w-full md:px-8 md:pb-12 md:pt-8 py-7 px-5'>
-                        <img src={quote} alt="" className='w-14 h-14 absolute md:top-6 top-5 md:right-8 right-6 opacity-20 ' />
-                        <p className='mt-10 text-slate-800'>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Earum excepturi eum voluptas maxime omnis! Quis necessitatibus sunt laboriosam magnam iure alias magni adipisci qui ipsum?</p>
-                        <div className='flex items-center gap-4 pt-3'>
-                            <div className='w-20 h-20 object-cover '>
-                                <img className="mask mask-hexagon-2 border-2 " src={user}/>
-                            </div>
-                            <div className='pl-1 pt-2'>
-                                <h2 className='text-xl font-medium text-slate-900 leading-5'>Saiful Arafat <br /> <span className='text-sm font-normal text-slate-500'>Web Developer</span></h2>
-                                <div className="rating pt-2">
-                                    <input type="radio" name="rating-4" className="mask mask-star-2 bg-yellow-500" />
-                                    <input type="radio" name="rating-4" className="mask mask-star-2 bg-yellow-500" checked />
-                                    <input type="radio" name="rating-4" className="mask mask-star-2 bg-yellow-500" checked />
-                                    <input type="radio" name="rating-4" className="mask mask-star-2 bg-yellow-500" checked />
-                                    <input type="radio" name="rating-4" className="mask mask-star-2 bg-yellow-500" checked />
-                                    <span className='pl-2 text-lg text-slate-500 font-medium font-sans'>(5)</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </SwiperSlide>
-                <SwiperSlide>
+                
+                {testimonials.map((testimonial) => (<SwiperSlide key={testimonial._id}>
                     <div className='relative w-full md:px-8 md:pb-12 md:pt-8 py-7 px-5 '>
                         <img src={quote} alt="" className='w-14 h-14 absolute  md:top-6 top-5 md:right-8 right-6 opacity-20 ' />
-                        <p className='mt-10 text-slate-800'>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Earum excepturi eum voluptas maxime omnis! Quis necessitatibus sunt laboriosam magnam iure alias magni adipisci qui ipsum?</p>
+                        <p className='mt-10 text-slate-800'>{testimonial.feedback_message}</p>
                         <div className='flex items-center gap-4 pt-3'>
                             <div className='w-20 h-20 object-cover '>
-                                <img className="mask mask-hexagon-2 border-2 " src={user}/>
+                                <img className="mask mask-hexagon-2 border-2 " src={testimonial.image}/>
                             </div>
                             <div className='pl-1 pt-2'>
-                                <h2 className='text-xl font-medium text-slate-900 leading-5'>Saiful Arafat <br /> <span className='text-sm font-normal text-slate-500'>Web Developer</span></h2>
+                                <h2 className='text-xl font-medium text-slate-900 leading-5'>{testimonial.student_name} <br /> </h2>
                                 <div className="rating pt-2">
-                                    <input type="radio" name="rating-4" className="mask mask-star-2 bg-yellow-500" />
-                                    <input type="radio" name="rating-4" className="mask mask-star-2 bg-yellow-500" checked />
-                                    <input type="radio" name="rating-4" className="mask mask-star-2 bg-yellow-500" checked />
-                                    <input type="radio" name="rating-4" className="mask mask-star-2 bg-yellow-500" checked />
-                                    <input type="radio" name="rating-4" className="mask mask-star-2 bg-yellow-500" />
-                                    <span className='pl-2 text-lg text-slate-500 font-medium font-sans'>(4.3)</span>
+                                   
+                                    
+                                    <Rating
+                                    style={{maxWidth: 180}}
+                                    value={testimonial.rating}
+                                    readOnly
+                                    />
                                 </div>
                             </div>
                         </div>
                     </div>
                 </SwiperSlide>
-                <SwiperSlide>
-                    <div className='relative w-full md:px-8 md:pb-12 md:pt-8 py-7 px-5'>
-                        <img src={quote} alt="" className='w-14 h-14 absolute  md:top-6 top-5 md:right-8 right-6 opacity-20 ' />
-                        <p className='mt-10 text-slate-800'>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Earum excepturi eum voluptas maxime omnis! Quis necessitatibus sunt laboriosam magnam iure alias magni adipisci qui ipsum?</p>
-                        <div className='flex items-center gap-4 pt-3'>
-                            <div className='w-20 h-20 object-cover '>
-                                <img className="mask mask-hexagon-2 border-2 " src={user}/>
-                            </div>
-                            <div className='pl-1 pt-2'>
-                                <h2 className='text-xl font-medium text-slate-900 leading-5'>Saiful Arafat <br /> <span className='text-sm font-normal text-slate-500'>Web Developer</span></h2>
-                                <div className="rating pt-2">
-                                    <input type="radio" name="rating-4" className="mask mask-star-2 bg-yellow-500" />
-                                    <input type="radio" name="rating-4" className="mask mask-star-2 bg-yellow-500" checked />
-                                    <input type="radio" name="rating-4" className="mask mask-star-2 bg-yellow-500" checked />
-                                    <input type="radio" name="rating-4" className="mask mask-star-2 bg-yellow-500" checked />
-                                    <input type="radio" name="rating-4" className="mask mask-star-2 bg-yellow-500" checked />
-                                    <span className='pl-2 text-lg text-slate-500 font-medium font-sans'>(5)</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </SwiperSlide>
-                <SwiperSlide>
-                    <div className='relative w-full md:px-8 md:pb-12 md:pt-8 py-7 px-5'>
-                        <img src={quote} alt="" className='w-14 h-14 absolute  md:top-6 top-5 md:right-8 right-6 opacity-20 ' />
-                        <p className='mt-10 text-slate-800'>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Earum excepturi eum voluptas maxime omnis! Quis necessitatibus sunt laboriosam magnam iure alias magni adipisci qui ipsum?</p>
-                        <div className='flex items-center gap-4 pt-3'>
-                            <div className='w-20 h-20 object-cover '>
-                                <img className="mask mask-hexagon-2 border-2 " src={user}/>
-                            </div>
-                            <div className='pl-1 pt-2'>
-                                <h2 className='text-xl font-medium text-slate-900 leading-5'>Saiful Arafat <br /> <span className='text-sm font-normal text-slate-500'>Web Developer</span></h2>
-                                <div className="rating pt-2">
-                                    <input type="radio" name="rating-4" className="mask mask-star-2 bg-yellow-500" />
-                                    <input type="radio" name="rating-4" className="mask mask-star-2 bg-yellow-500" checked />
-                                    <input type="radio" name="rating-4" className="mask mask-star-2 bg-yellow-500" checked />
-                                    <input type="radio" name="rating-4" className="mask mask-star-2 bg-yellow-500" checked />
-                                    <input type="radio" name="rating-4" className="mask mask-star-2 bg-yellow-500"  />
-                                    <span className='pl-2 text-lg text-slate-500 font-medium font-sans'>(4)</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </SwiperSlide>
-                <SwiperSlide>
-                    <div className='relative w-full md:px-8 md:pb-12 md:pt-8 py-7 px-5'>
-                        <img src={quote} alt="" className='w-14 h-14 absolute  md:top-6 top-5 md:right-8 right-6 opacity-20 ' />
-                        <p className='mt-10 text-slate-800'>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Earum excepturi eum voluptas maxime omnis! Quis necessitatibus sunt laboriosam magnam iure alias magni adipisci qui ipsum?</p>
-                        <div className='flex items-center gap-4 pt-3'>
-                            <div className='w-20 h-20 object-cover '>
-                                <img className="mask mask-hexagon-2 border-2 " src={user}/>
-                            </div>
-                            <div className='pl-1 pt-2'>
-                                <h2 className='text-xl font-medium text-slate-900 leading-5'>Saiful Arafat <br /> <span className='text-sm font-normal text-slate-500'>Web Developer</span></h2>
-                                <div className="rating pt-2">
-                                    <input type="radio" name="rating-4" className="mask mask-star-2 bg-yellow-500" />
-                                    <input type="radio" name="rating-4" className="mask mask-star-2 bg-yellow-500" checked />
-                                    <input type="radio" name="rating-4" className="mask mask-star-2 bg-yellow-500"  />
-                                    <input type="radio" name="rating-4" className="mask mask-star-2 bg-yellow-500"  />
-                                    <input type="radio" name="rating-4" className="mask mask-star-2 bg-yellow-500"  />
-                                    <span className='pl-2 text-lg text-slate-500 font-medium font-sans'>(5)</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </SwiperSlide>
-                <SwiperSlide>
-                    <div className='relative w-full md:px-8 md:pb-12 md:pt-8 py-7 px-5'>
-                        <img src={quote} alt="" className='w-14 h-14 absolute  md:top-6 top-5 md:right-8 right-6 opacity-20 ' />
-                        <p className='mt-10 text-slate-800'>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Earum excepturi eum voluptas maxime omnis! Quis necessitatibus sunt laboriosam magnam iure alias magni adipisci qui ipsum?</p>
-                        <div className='flex items-center gap-4 pt-3'>
-                            <div className='w-20 h-20 object-cover '>
-                                <img className="mask mask-hexagon-2 border-2 " src={user}/>
-                            </div>
-                            <div className='pl-1 pt-2'>
-                                <h2 className='text-xl font-medium text-slate-900 leading-5'>Saiful Arafat <br /> <span className='text-sm font-normal text-slate-500'>Web Developer</span></h2>
-                                <div className="rating pt-2">
-                                    <input type="radio" name="rating-4" className="mask mask-star-2 bg-yellow-500" />
-                                    <input type="radio" name="rating-4" className="mask mask-star-2 bg-yellow-500" checked />
-                                    <input type="radio" name="rating-4" className="mask mask-star-2 bg-yellow-500" checked />
-                                    <input type="radio" name="rating-4" className="mask mask-star-2 bg-yellow-500" checked />
-                                    <input type="radio" name="rating-4" className="mask mask-star-2 bg-yellow-500" checked />
-                                    <span className='pl-2 text-lg text-slate-500 font-medium font-sans'>(5)</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </SwiperSlide>
+          
+        ))}
+                
+                
             </Swiper>
             </div>
         </div>
