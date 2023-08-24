@@ -1,4 +1,4 @@
-import logo from '../../assets/logo.png'
+import logo from "../../assets/logo.png";
 import { Link } from "react-router-dom";
 import "./Navbar.css";
 
@@ -36,7 +36,7 @@ const Navbar = () => {
         <summary>Courses</summary>
         <ul className="z-50 p-2 rounded-lg primary-bg md:rounded-none">
           <li>
-            <Link to='/free_courses'>Free Courses</Link>
+            <Link to="/free_courses">Free Courses</Link>
           </li>
           <li>
             <Link>Paid Courses</Link>
@@ -60,9 +60,6 @@ const Navbar = () => {
       <li>
         <Link to="/notice">Notice</Link>
       </li>
-      <li>
-        <Link to="/dashboard/adminHome">Dashboard</Link>
-      </li>
     </>
   );
 
@@ -74,7 +71,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className='primary-bg'>
+    <nav className="primary-bg">
       <div className="navbar z-[40]  container mx-auto  sticky top-0   text-white">
         <div className="navbar-start">
           <div className="dropdown">
@@ -127,8 +124,24 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="navbar-end">
-        <button onClick={() => window.my_modal_3.showModal()} className="btn btn-ghost btn-circle">
-            <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
+          <button
+            onClick={() => window.my_modal_3.showModal()}
+            className="btn btn-ghost btn-circle"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="w-5 h-5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+              />
+            </svg>
           </button>
           {user ? (
             <div className="z-50 ml-5 dropdown dropdown-end">
@@ -151,6 +164,9 @@ const Navbar = () => {
                   <Link className="justify-between w-full">
                     {user?.displayName}
                   </Link>
+                </li>
+                <li>
+                  <Link to="/dashboard/adminHome">Dashboard</Link>
                 </li>
                 <li>
                   <Link className="w-full" onClick={handleLogout}>
