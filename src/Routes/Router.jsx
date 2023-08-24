@@ -16,6 +16,7 @@ import Notice from '../Pages/NoticePage/Notice/Notice'
 import AdminHome from '../Pages/Dashboard/AdminHome/AdminHome'
 import Dashboard from '../Layouts/Dashboard'
 import ManageUsers from '../Pages/Dashboard/ManageUsers/ManageUsers'
+import ResultPageForMcqFib from '../components/QuestionRelated/ResultPageForMcqFib'
 
 const router = createBrowserRouter([
   {
@@ -28,15 +29,15 @@ const router = createBrowserRouter([
       },
       {
         path: '/instructors',
-        element: <Instructors/>
+        element: <Instructors />
       },
       {
         path: '/blog',
-        element: <Blog/>
+        element: <Blog />
       },
       {
         path: '/notice',
-        element: <Notice/>
+        element: <Notice />
       },
       {
         path: '/demo-test',
@@ -59,10 +60,13 @@ const router = createBrowserRouter([
         element: <Exam></Exam>
       },
       {
-        path: "/shortQ",
+        path: '/shortQ',
         element: <ShortQ />
+      },
+      {
+        path: '/result',
+        element: <ResultPageForMcqFib />
       }
-
     ]
   },
 
