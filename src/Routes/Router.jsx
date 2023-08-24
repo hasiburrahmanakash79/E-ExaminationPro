@@ -40,8 +40,13 @@ const router = createBrowserRouter([
         element: <FreeCoursePage></FreeCoursePage>
       },
       {
-        path: '/exam',
+        path: '/allexam',
         element: <AllExam/>
+      },
+      {
+        path: '/exam/:id',
+        element: <Exam2/>,
+        loader:({params})=>fetch(`http://localhost:5000/questionPaper/${params.id}`)
       },
       {
         path: "/shortQ",

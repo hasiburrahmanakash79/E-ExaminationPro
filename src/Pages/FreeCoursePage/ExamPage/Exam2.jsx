@@ -1,26 +1,31 @@
 import { useEffect, useState } from 'react'
 import { jsQuizz, mathQues } from '../../../../public/question'
-import { useLocation } from 'react-router-dom'
+import { useLoaderData, useLocation } from 'react-router-dom'
 import AnsDataPage from '../../../components/examComponents/AnsDataPage'
 import FillTheBlank from '../../../components/examComponents/FillTheBlank'
 import McqPage from '../../../components/examComponents/McqPage'
 import TimeRemain from '../../../components/examComponents/TimeRemain'
-import AllQues from '../../../components/examComponents/AllQues'
+
 
 import React from 'react';
 
 const Exam2 = () => {
     //////////////////////
-    const location = useLocation()
-    const searchParams = new URLSearchParams(location.search) /////get exam type from route
-    const examType = searchParams.get('type')
-    console.log(examType)
+    // const location = useLocation()
+    // const searchParams = new URLSearchParams(location.search) /////get exam type from route
+    // const examType = searchParams.get('type')
+    // console.log(examType)
     //////////////////
+    const ques=useLoaderData();
+    const questions=ques.questions
+    const examType=ques.type
 
-    const questions = examType == 'mcq' ? jsQuizz.question : mathQues.questions ///store question based on type
+    console.log(questions,examType)
+
+    // const questions = examType == 'mcq' ? jsQuizz.question : mathQues.questions ///store question based on type
 
     const [currentQuestion, setCurrentQuestion] = useState(0) // default current question 0, index of array
-    const { question, choices, correctAnswer } = questions[currentQuestion] //destructure array of objects
+    const { question, options, correctAnswer } = questions[currentQuestion] //destructure array of objects
     const [answerIndx, setAnswerIndx] = useState(null) // related with options index
 
     const [result, setResult] = useState([])
@@ -78,7 +83,7 @@ const Exam2 = () => {
     //////////// end
 
     const handleInputChange = event => {
-        setInputValue(parseFloat(event.target.value)) //store neumeric type value from input field
+        setInputValue(event.target.value) //store neumeric type value from input field
     }
     ///////////// when user select option in mcq ////////////////
     const onSelectOption = (index, option, question) => {
@@ -97,12 +102,15 @@ const Exam2 = () => {
         }
     }
     ////////////////////// END //////////////////
-
+    if(inputValue==NaN){
+        setInputValue(parseFloat(inputValue).toFixed(2))
+    }
+    
     ///////////// next button action ///////////////////
     const onClickNext = () => {
         setMcq(null) // set user selected option to null
-
-        if (examType == 'fib') { //for fill in the blank
+   
+        if (examType == 'FillInTheBlank') { //for fill in the blank
             const result1 = result.find(obj => obj.question === question) // check if answer stored or not
             if (result1) {
                 result1.userAns = inputValue || 'Skipped'
@@ -200,7 +208,7 @@ const Exam2 = () => {
                                             {
                                                 examType == 'mcq' ? // check exam type
                                                     <McqPage
-                                                        choices={choices}
+                                                        options={options}
                                                         answerIndx={answerIndx}
                                                         questions={questions}
                                                         currentQuestion={currentQuestion}

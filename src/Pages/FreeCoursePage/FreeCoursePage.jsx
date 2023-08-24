@@ -35,7 +35,7 @@ const FreeCoursePage = () => {
                 <div className="card-body1 w-full  items-center text-center">
                     <h1 className='text-4xl font-bold'>{subject.subject_code}</h1>
                     <p className='text-md my-3 mx-3 '>{subject.description}</p>
-                    <button className='btn btn-sm btn-primary'><Link to={`/exam?subject=${subject.subject_name}`}>View All Exam</Link></button>
+                    <button className='btn btn-sm btn-primary'><Link to={`/allexam?subject=${subject.subject_name}`}>View All Exam</Link></button>
                 </div>
             </div>)
              }

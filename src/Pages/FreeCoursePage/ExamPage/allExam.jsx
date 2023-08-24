@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 import { useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css'
 
@@ -45,7 +45,7 @@ const AllExam = () => {
                                     <h1 className='text-md font-bold'>Type: {exam.type}</h1>
                                     <h2 className='text-md font-bold'>Date: {exam.date}</h2>
                                 </div>
-                                <button className='btn w-1/3 ms-auto btn-sm btn-primary'>Exam</button>
+                                <button className='btn w-1/3 ms-auto btn-sm btn-primary'><Link to={`/exam/${exam._id}`}>Exam</Link></button>
                             </div>
                         </div>
                     </div>))}</h2>
@@ -63,7 +63,7 @@ const AllExam = () => {
                                     <h1 className='text-md font-bold'>Type: {exam.type}</h1>
                                     <h2 className='text-md font-bold'>Date: {exam.date}</h2>
                                 </div>
-                                <button className='btn w-1/3 ms-auto btn-sm btn-primary'>Exam</button>
+                                <button className='btn w-1/3 ms-auto btn-sm btn-primary'><Link to={`/exam/${exam._id}`}>Exam</Link></button>
                             </div>
                         </div>
                     </div>))}</h2>
@@ -81,7 +81,7 @@ const AllExam = () => {
                                     <h1 className='text-md font-bold'>Type: {exam.type}</h1>
                                     <h2 className='text-md font-bold'>Date: {exam.date}</h2>
                                 </div>
-                                <button className='btn w-1/3 ms-auto btn-sm btn-primary'>Exam</button>
+                                <button className='btn w-1/3 ms-auto btn-sm btn-primary'><Link to={`/exam/${exam._id}`}>Exam</Link></button>
                             </div>
                         </div>
                     </div>))}</h2>
