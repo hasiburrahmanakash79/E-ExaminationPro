@@ -15,6 +15,8 @@ import { useContext } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
 
 const Dashboard = () => {
+	// set user role dynamically
+	const isAdmin = true;
   const { user } = useContext(AuthContext);
   const [open, setOpen] = useState(true);
 
@@ -32,19 +34,24 @@ const Dashboard = () => {
       title: "Admin Home",
       path: "/dashboard/adminHome",
       icon: iconMappings.Home,
+	  role: "admin",
       gap: true,
     },
     {
       title: "Users",
       path: "/dashboard/manageUsers",
       icon: iconMappings.Users,
+	  role: "admin",
     },
-    { title: "Schedule ", icon: iconMappings.Schedule },
-    { title: "Search", icon: iconMappings.Search },
+    { title: "Schedule ", icon: iconMappings.Schedule, role: "instructor" },
+    { title: "Search", icon: iconMappings.Search, role: "instructor" },
     { title: "Analytics", icon: iconMappings.Analytics },
     { title: "Home ", path: "/", icon: iconMappings.Home, gap: true },
     { title: "Setting", icon: iconMappings.Setting },
   ];
+
+  const adminMenus = Menus.filter((menu) => menu.role === "admin");
+  const instructorMenus = Menus.filter((menu) => menu.role === "instructor");
 
   return (
     <div className="flex ">
@@ -70,7 +77,7 @@ const Dashboard = () => {
             open ? "" : " flex flex-col items-center justify-center"
           }`}
         >
-          {Menus.map((Menu, index) => (
+          {isAdmin ? (adminMenus.map((Menu, index) => (
             <li
               key={index}
               className={`flex rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4 ${
@@ -88,18 +95,39 @@ const Dashboard = () => {
                 </span>
               </Link>
             </li>
-          ))}
+          )))
+		  :
+		//  Instructor menus 
+		  (instructorMenus.map((Menu, index) => (
+            <li
+              key={index}
+              className={`flex rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4 ${
+                Menu.gap ? "mt-9" : "mt-2"
+              } ${index === 0 && "bg-light-white"}`}
+            >
+              <Link to={Menu.path} className="flex items-center gap-x-4">
+                <IconContext.Provider value={{ className: "react-icon" }}>
+                  <Menu.icon />
+                </IconContext.Provider>
+                <span
+                  className={`${!open && "hidden"} origin-left duration-200`}
+                >
+                  {Menu.title}
+                </span>
+              </Link>
+            </li>
+          )))}
         </ul>
 
         {/* User info */}
         <div className="absolute flex items-center space-x-4 mt-28 bottom-3">
           <img
-            src={user.photoURL}
+            src={user?.photoURL}
             alt=""
             className="bg-gray-500 rounded-full sm:w-4 md:w-12 md:h-12"
           />
           <div className={`${!open && "hidden"} origin-left duration-200`}>
-            <h2 className="text-sm font-semibold">{user.displayName}</h2>
+            <h2 className="text-sm font-semibold">{user?.displayName}</h2>
             <span className="flex items-center space-x-1">
               <a
                 rel="noopener noreferrer"
