@@ -11,8 +11,11 @@ import {
 import { IconContext } from "react-icons";
 import logo from "../assets/logo.png";
 import arrow from "../assets/control.png";
+import { useContext } from "react";
+import { AuthContext } from "../Provider/AuthProvider";
 
 const Dashboard = () => {
+  const { user } = useContext(AuthContext);
   const [open, setOpen] = useState(true);
 
   const iconMappings = {
@@ -25,7 +28,17 @@ const Dashboard = () => {
   };
 
   const Menus = [
-    { title: "Users", path: "/dashboard/manageUsers", icon: iconMappings.Users, gap: true },
+    {
+      title: "Admin Home",
+      path: "/dashboard/adminHome",
+      icon: iconMappings.Home,
+      gap: true,
+    },
+    {
+      title: "Users",
+      path: "/dashboard/manageUsers",
+      icon: iconMappings.Users,
+    },
     { title: "Schedule ", icon: iconMappings.Schedule },
     { title: "Search", icon: iconMappings.Search },
     { title: "Analytics", icon: iconMappings.Analytics },
@@ -81,12 +94,12 @@ const Dashboard = () => {
         {/* User info */}
         <div className="absolute flex items-center space-x-4 mt-28 bottom-3">
           <img
-            src="https://source.unsplash.com/100x100/?portrait"
+            src={user.photoURL}
             alt=""
             className="bg-gray-500 rounded-full sm:w-4 md:w-12 md:h-12"
           />
           <div className={`${!open && "hidden"} origin-left duration-200`}>
-            <h2 className="text-sm font-semibold">Leroy Jenkins</h2>
+            <h2 className="text-sm font-semibold">{user.displayName}</h2>
             <span className="flex items-center space-x-1">
               <a
                 rel="noopener noreferrer"
