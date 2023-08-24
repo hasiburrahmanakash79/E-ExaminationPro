@@ -14,9 +14,8 @@ import {
 } from 'recharts'
 import ReviewAnswerAfterResult from './ReviewAnswerAfterResult'
 import FeedBack from '../Feedback/Feedback'
-import { PDFViewer } from '@react-pdf/renderer'
+import { PDFDownloadLink, PDFViewer } from '@react-pdf/renderer'
 import ResultPdfConverter from './ResultPdfConverter'
-import { saveAs } from 'file-saver'
 
 const ResultPageForMcqFib = () => {
   /*========Answer Reviewing=======
@@ -24,23 +23,11 @@ const ResultPageForMcqFib = () => {
   const userAnswers = []
   const questions = [
     {
-      question: 'test1',
+      text: 'test1',
       correctAnswer: 'correct'
     }
   ]
-  // function to handle the result export
-  const handleExportResult = () => {
-    console.log('clicked from result page export')
-    const blob = new Blob(
-      [
-        <PDFViewer width={400} height={300}>
-          <ResultPdfConverter userAnswers={userAnswers} questions={questions} />
-        </PDFViewer>
-      ],
-      { type: 'application/pdf' }
-    )
-    saveAs(blob, 'result.pdf')
-  }
+
   //   temp data for bar chart
   const data = [
     {
@@ -99,9 +86,24 @@ const ResultPageForMcqFib = () => {
             TOP SCORE: 100%
           </h4>
           {/* handling the btn where when user clicks his result should be downloaded */}
-          <button onClick={handleExportResult} className='btn primary-bg'>
-            Export Result As PDF
-          </button>
+
+          <PDFDownloadLink
+            document={
+              <ResultPdfConverter
+                userAnswers={userAnswers}
+                questions={questions}
+              />
+            }
+            fileName='result.pdf'
+          >
+            {({ blob, url, loading, error }) =>
+              loading ? (
+                'Loading document...'
+              ) : (
+                <button className='btn primary-bg'>Export Result As PDF</button>
+              )
+            }
+          </PDFDownloadLink>
         </div>
         {/* visual progress showing section */}
         <div className='flex items-center justify-between w-full md:p-4 md:mt-16 h-fit'>

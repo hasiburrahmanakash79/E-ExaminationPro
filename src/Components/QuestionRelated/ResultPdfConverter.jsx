@@ -1,15 +1,25 @@
+import React from 'react'
 import { Document, Page, Text, View, StyleSheet } from '@react-pdf/renderer'
-import ReviewAnswerAfterResult from './ReviewAnswerAfterResult'
+
 const styles = StyleSheet.create({
   page: {
     fontFamily: 'Helvetica',
     padding: 20
   },
   header: {
-    marginBottom: 10
+    marginBottom: 10,
+    fontSize: 16,
+    fontWeight: 'bold'
   },
-  content: {
-    marginBottom: 20
+  questionContainer: {
+    marginVertical: 12
+  },
+  questionText: {
+    fontSize: 16,
+    fontWeight: 'bold'
+  },
+  answerText: {
+    marginVertical: 4
   }
 })
 
@@ -17,14 +27,31 @@ const ResultPdfConverter = ({ questions, userAnswers }) => (
   <Document>
     <Page size='A4' style={styles.page}>
       <View style={styles.header}>
-        <Text>Total Question:10, Answered:10, Correct: 08</Text>
+        <Text>Total Question: {questions.length}</Text>
       </View>
-      <View style={styles.content}>
+      <View>
         <Text>Review Answers:</Text>
-        <ReviewAnswerAfterResult
-          questions={questions}
-          userAnswers={userAnswers}
-        />
+        {questions.map((question, index) => {
+          const userAnswer = userAnswers.find(
+            answer => answer?.questionId === question?.id
+          )
+
+          return (
+            <View style={styles.questionContainer} key={question?.id}>
+              <Text style={styles.questionText}>
+                {index + 1}. {question?.text}
+              </Text>
+              {userAnswer && (
+                <Text style={styles.answerText}>
+                  You Selected: {userAnswer?.selectedOptionId}
+                </Text>
+              )}
+              <Text style={styles.answerText}>
+                Correct Answer: {question?.correctAnswer}
+              </Text>
+            </View>
+          )
+        })}
       </View>
     </Page>
   </Document>
