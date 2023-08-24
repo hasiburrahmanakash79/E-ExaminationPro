@@ -13,11 +13,33 @@ import {
   ResponsiveContainer
 } from 'recharts'
 import ReviewAnswerAfterResult from './ReviewAnswerAfterResult'
+import FeedBack from '../Feedback/Feedback'
+import { PDFViewer } from '@react-pdf/renderer'
+import ResultPdfConverter from './ResultPdfConverter'
+import { saveAs } from 'file-saver'
 
 const ResultPageForMcqFib = () => {
+  /*========Answer Reviewing=======
+      ========================*/
+  const userAnswers = []
+  const questions = [
+    {
+      question: 'test1',
+      correctAnswer: 'correct'
+    }
+  ]
   // function to handle the result export
   const handleExportResult = () => {
     console.log('clicked from result page export')
+    const blob = new Blob(
+      [
+        <PDFViewer width={400} height={300}>
+          <ResultPdfConverter userAnswers={userAnswers} questions={questions} />
+        </PDFViewer>
+      ],
+      { type: 'application/pdf' }
+    )
+    saveAs(blob, 'result.pdf')
   }
   //   temp data for bar chart
   const data = [
@@ -66,11 +88,6 @@ const ResultPageForMcqFib = () => {
   ]
   //   result data
   const percentage = 66
-  /*   ================ 
-========Answer Reviewing=======
-========================*/
-  const userAnswers = []
-  const questions = []
 
   return (
     <section className='grid w-full h-screen grid-cols-5 pt-6 m-auto'>
@@ -83,7 +100,7 @@ const ResultPageForMcqFib = () => {
           </h4>
           {/* handling the btn where when user clicks his result should be downloaded */}
           <button onClick={handleExportResult} className='btn primary-bg'>
-            Export Result
+            Export Result As PDF
           </button>
         </div>
         {/* visual progress showing section */}
@@ -141,14 +158,14 @@ const ResultPageForMcqFib = () => {
             {/* Open the modal using ID.showModal() method */}
             <button
               className='btn btn_quiz primary-bg'
-              onClick={() => window.my_modal_2.showModal()}
+              onClick={() => window.my_modal_1.showModal()}
             >
               View Answers
             </button>
-            <dialog id='my_modal_2' className=' modal'>
+            <dialog id='my_modal_1' className=' modal'>
               <form
                 method='dialog'
-                className='relative w-full h-screen modal-box primary-bg'
+                className='relative w-full h-screen rounded-lg shadow-lg modal-box primary-bg'
               >
                 <small className='top-0 right-0 text-xs'>
                   Press ESC key or click outside to close
@@ -158,6 +175,30 @@ const ResultPageForMcqFib = () => {
                   userAnswers={userAnswers}
                   questions={questions}
                 />
+              </form>
+              <form method='dialog' className='modal-backdrop'>
+                <button>close</button>
+              </form>
+            </dialog>
+          </div>
+          <div>
+            {/* Open the modal using ID.showModal() method */}
+            <button
+              className='btn btn_quiz primary-bg'
+              onClick={() => window.my_modal_2.showModal()}
+            >
+              Give FeedBack
+            </button>
+            <dialog id='my_modal_2' className=' modal'>
+              <form
+                method='dialog'
+                className='relative max-w-5xl p-0 border w-fit h-fit modal-box primary-bg'
+              >
+                <small className='absolute top-0 right-0 p-1 text-xs'>
+                  Press ESC key or click outside to close
+                </small>
+
+                <FeedBack />
               </form>
               <form method='dialog' className='modal-backdrop'>
                 <button>close</button>
