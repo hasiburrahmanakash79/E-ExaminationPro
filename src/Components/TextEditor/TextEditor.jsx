@@ -39,7 +39,7 @@ const TextEditor = ({ shortQs, onAnswerSubmit }) => {
         theme='snow'
         value={value}
         onChange={handleInput}
-        className='w-full min-h-[30vh]  bg-white rounded-md'
+        className='w-full min-h-[30vh]  bg-white text-black rounded-md'
         modules={modules}
       />
       <div className='mt-2'>
