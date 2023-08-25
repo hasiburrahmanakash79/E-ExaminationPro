@@ -3,13 +3,20 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import SocialLogin from "../../../Hooks/SocialLogin/SocialLogin";
 import { AuthContext } from "../../../Provider/AuthProvider";
+import Loading from "../../../Components/Loading/Loading";
+import useAuth from "../../../Components/useAuth.jsx/useAuth";
 
 const Registration = () => {
   const [passShow, setPassShow] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
-  const { signUpUser, updateUserInfo } = useContext(AuthContext);
+  const { signUpUser, updateUserInfo, loading } = useAuth();
+
+
+  if (loading) {
+    return <Loading />
+  }
 
   const {
     register,

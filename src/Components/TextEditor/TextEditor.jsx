@@ -1,56 +1,71 @@
-import ReactQuill from 'react-quill'
-import 'react-quill/dist/quill.snow.css'
-import { useState } from 'react'
+import React, { useState } from 'react'
 import './TextEditor.css'
 
-const modules = {
-  toolbar: [
-    [{ header: [1, 2, 3, 4, 5, 6, false] }],
-    [{ font: [] }],
-    [{ size: [] }],
-    ['bold', 'italic', 'underline', 'strike', 'blockquote'],
-    [
-      { list: 'ordered' },
-      { list: 'bullet' },
-      { indent: '-1' },
-      { indent: '+1' }
-    ],
-    ['link', 'image', 'video']
-  ]
-}
+const TextEditor = ({ shortQuestions, onAnswerSubmit }) => {
+  const [answers, setAnswers] = useState([]) // Store answer objects in an array
 
-const TextEditor = ({ shortQs, onAnswerSubmit }) => {
-  const [value, setValue] = useState('')
-  console.log(shortQs)
-  const handleInput = content => {
-    setValue(content)
-    console.log(content)
+  const handleTextareaChange = (questionId, value) => {
+    const existingAnswerIndex = answers.findIndex(
+      answer => answer.questionId === questionId
+    )
+
+    if (existingAnswerIndex !== -1) {
+      // If an answer object already exists for the question, update it
+      const updatedAnswers = [...answers]
+      updatedAnswers[existingAnswerIndex] = { questionId, answer: value }
+      setAnswers(updatedAnswers)
+    } else {
+      // If no answer object exists for the question, create a new one
+      setAnswers(prevAnswers => [...prevAnswers, { questionId, answer: value }])
+    }
   }
 
   const handleSubmit = () => {
-    onAnswerSubmit(value)
+    onAnswerSubmit(answers) // Pass all collected answer objects to the parent component
+    console.log(answers)
   }
 
   return (
-    <div className='primary-bg px-3 md:px-7 shadow-xl   mx-auto my-6 min-h-[40vh]  rounded-md'>
-      <div className='text-2xl text-center text-white p-4 '>Question: {shortQs?.question}</div>{' '}
-      {/* Display the question */}
-      <ReactQuill
-        theme='snow'
-        value={value}
-        onChange={handleInput}
-        className='w-full min-h-[30vh]  bg-white rounded-md'
-        modules={modules}
-      />
-      <div className='mt-2'>
-        <button
-          onClick={handleSubmit}
-          className='px-6 py-2 text-lg font-medium tracking-wide text-white bg-orange-600 rounded-md'
-        >
-          Ans Submit
-        </button>
-      </div>
-    </div>
+    <>
+      {shortQuestions?.map((sq, index) => (
+        <div key={index}>
+          {sq.questions.map(question => (
+            <form
+              key={question.id}
+              className='primary-bg px-3 md:px-7 shadow-xl mx-auto my-6 min-h-[40vh]  rounded-md'
+            >
+              <div className='p-4 text-2xl text-center text-white '>
+                Question: {question?.question}
+                Question: {question?.id}
+              </div>
+
+              <textarea
+                value={
+                  (
+                    answers.find(answer => answer.questionId === question.id) ||
+                    {}
+                  ).answer || ''
+                } // Get answer from state
+                onChange={e =>
+                  handleTextareaChange(question.id, e.target.value)
+                } // Update state on change
+                className='w-full min-h-[30vh] text-black bg-white rounded-md'
+              />
+
+              <div className='mt-2'>
+                <button
+                  type='button' // Use type='button' to prevent form submission
+                  onClick={handleSubmit}
+                  className='px-6 py-2 text-lg font-medium tracking-wide text-white bg-orange-600 rounded-md'
+                >
+                  Ans Submit
+                </button>
+              </div>
+            </form>
+          ))}
+        </div>
+      ))}
+    </>
   )
 }
 
