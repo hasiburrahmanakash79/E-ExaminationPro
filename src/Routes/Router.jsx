@@ -2,16 +2,17 @@ import { createBrowserRouter } from 'react-router-dom'
 import Main from '../Layouts/Main'
 import HomePage from '../Pages/Home/HomePage/HomePage'
 
-import Contact from '../Pages/Contact/Contact'
-import QuizHomePage from '../Pages/Home/DemoTest/QuizHomePage'
-import ResultPage from '../Pages/Home/DemoTest/ResultPage'
+import AboutUs from '../Pages/AboutUs/AboutUs'
 import Login from '../Pages/Authentication/Login/Login'
 import Registration from '../Pages/Authentication/Registration/Registration'
-import FreeCoursePage from '../Pages/FreeCoursePage/FreeCoursePage'
-import Exam from '../Pages/FreeCoursePage/ExamPage/Exam'
-import ShortQ from '../Pages/Exams/ShortQuestion/ShortQ'
-import Instructors from '../Pages/InstuctorPage/Instructors'
 import Blog from '../Pages/BlogPage/Blog/Blog'
+import Contact from '../Pages/Contact/Contact'
+import ShortQ from '../Pages/Exams/ShortQuestion/ShortQ'
+import Exam from '../Pages/FreeCoursePage/ExamPage/Exam'
+import FreeCoursePage from '../Pages/FreeCoursePage/FreeCoursePage'
+import QuizHomePage from '../Pages/Home/DemoTest/QuizHomePage'
+import ResultPage from '../Pages/Home/DemoTest/ResultPage'
+import Instructors from '../Pages/InstuctorPage/Instructors'
 import Notice from '../Pages/NoticePage/Notice/Notice'
 
 
@@ -26,15 +27,21 @@ const router = createBrowserRouter([
       },
       {
         path: '/instructors',
-        element: <Instructors/>
+        element: <Instructors />
       },
       {
         path: '/blog',
-        element: <Blog/>
+        element: <Blog />
       },
       {
         path: '/notice',
-        element: <Notice/>
+        element: <Notice />
+      },
+
+      {
+        path: '/about',
+        element: <AboutUs></AboutUs>
+
       },
       {
         path: '/demo-test',
