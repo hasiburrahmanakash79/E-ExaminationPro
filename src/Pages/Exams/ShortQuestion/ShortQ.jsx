@@ -11,9 +11,12 @@ const ShortQ = () => {
     return null
   }
   // console.log(shortQuestions)
-  const handleAnswersSubmit = (questionId, answerContent) => {
-    const newAnswer = { questionId, answerContent }
-    setAnswers(prevAnswers => [...prevAnswers, newAnswer])
+  const handleAnswersSubmit = answers => {
+    // const newAnswer = { questionId, answerContent }
+    // setAnswers(prevAnswers => [...prevAnswers, newAnswer])
+    setAnswers(answers)
+    console.log(answers)
+    // console.log(questionId)
   }
   // console.log(answers)
 
@@ -23,18 +26,11 @@ const ShortQ = () => {
 
       <div className='grid-cols-5 gap-10 md:grid '>
         <div className='col-span-3'>
-          {shortQuestions?.map(sq => (
-            <div key={sq._id} className='mb-8 '>
-              {sq.questions?.map(shortQs => (
-                <TextEditor
-                  key={shortQs.id}
-                  questionId={shortQs.id}
-                  onAnswerSubmit={handleAnswersSubmit}
-                  shortQs={shortQs}
-                />
-              ))}
-            </div>
-          ))}
+          <TextEditor
+            onAnswerSubmit={handleAnswersSubmit}
+            shortQuestions={shortQuestions}
+            // setAnswers={setAnswers}
+          />
         </div>
         <div className='col-span-2 '>
           <QuesAccordion shortQuestions={shortQuestions} answers={answers} />
