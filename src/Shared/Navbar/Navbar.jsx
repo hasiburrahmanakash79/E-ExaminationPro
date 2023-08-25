@@ -1,4 +1,4 @@
-import logo from '../../assets/logo.png'
+import logo from "../../assets/logo12.png";
 import { Link } from "react-router-dom";
 import "./Navbar.css";
 
@@ -34,9 +34,9 @@ const Navbar = () => {
     <>
       <details className="z-[1]">
         <summary>Courses</summary>
-        <ul className="p-2 z-50 navigation-bar rounded-lg md:rounded-none">
+        <ul className="z-50 p-2 rounded-lg primary-bg md:rounded-none">
           <li>
-            <Link to='/free_courses'>Free Courses</Link>
+            <Link to="/free_courses">Free Courses</Link>
           </li>
           <li>
             <Link>Paid Courses</Link>
@@ -49,16 +49,19 @@ const Navbar = () => {
   const navbarLink_Last = (
     <>
       <li>
-        <Link>Instructors</Link>
+        <Link to="/instructors">Instructors</Link>
       </li>
       <li>
-        <Link>Blog</Link>
+        <Link to="/blog">Blog</Link>
       </li>
       <li>
         <Link to="/contact">Contact Us</Link>
       </li>
       <li>
-        <Link>Notice</Link>
+        <Link to="/notice">Notice</Link>
+      </li>
+      <li>
+        <Link to="/about">About us</Link>
       </li>
     </>
   );
@@ -71,14 +74,14 @@ const Navbar = () => {
   };
 
   return (
-    <nav className='navigation-bar'>
+    <nav className="primary-bg">
       <div className="navbar z-[40]  container mx-auto  sticky top-0   text-white">
         <div className="navbar-start">
           <div className="dropdown">
             <label tabIndex={0} className="btn btn-ghost lg:hidden">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5"
+                className="w-5 h-5"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -93,7 +96,7 @@ const Navbar = () => {
             </label>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52 navigation-bar"
+              className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52 primary-bg"
             >
               {/* navbarFirst */}
               {navbarLink_First}
@@ -111,8 +114,8 @@ const Navbar = () => {
             alt=""
           />
         </div>
-        <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1">
+        <div className="hidden navbar-center lg:flex">
+          <ul className="px-1 menu menu-horizontal">
             {/* navbarFirst */}
             {navbarLink_First}
             <li tabIndex={0}>
@@ -124,11 +127,27 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="navbar-end">
-        <button onClick={() => window.my_modal_3.showModal()} className="btn btn-ghost btn-circle">
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
+          <button
+            onClick={() => window.my_modal_3.showModal()}
+            className="btn btn-ghost btn-circle"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="w-5 h-5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+              />
+            </svg>
           </button>
           {user ? (
-            <div className="dropdown z-50 dropdown-end ml-5">
+            <div className="z-50 ml-5 dropdown dropdown-end">
               <div
                 className="tooltip tooltip-left"
                 data-tip={user?.displayName}
@@ -142,12 +161,15 @@ const Navbar = () => {
 
               <ul
                 tabIndex={0}
-                className="mt-3 p-2 shadow  bg-black text-white menu menu-compact dropdown-content rounded-box w-52"
+                className="p-2 mt-3 text-white bg-black shadow menu menu-compact dropdown-content rounded-box w-52"
               >
                 <li>
                   <Link className="justify-between w-full">
                     {user?.displayName}
                   </Link>
+                </li>
+                <li>
+                  <Link to="/dashboard/adminHome">Dashboard</Link>
                 </li>
                 <li>
                   <Link className="w-full" onClick={handleLogout}>
@@ -159,7 +181,7 @@ const Navbar = () => {
           ) : (
             <Link
               to="/login"
-              className="btn navigation-bar border-none text-white shadow-md"
+              className="text-white border-none shadow-md btn primary-bg"
             >
               Login
             </Link>
@@ -171,8 +193,8 @@ const Navbar = () => {
           id="my_modal_3"
           className="modal modal-top max-w-[400px] mx-auto mt-[68px] "
         >
-          <form method="dialog" className="modal-box navigation-bar ">
-            <button className="btn z-20 btn-sm btn-circle btn-ghost absolute right-2 top-2">
+          <form method="dialog" className="modal-box primary-bg ">
+            <button className="absolute z-20 btn btn-sm btn-circle btn-ghost right-2 top-2">
               ✕
             </button>
             <input
@@ -180,12 +202,12 @@ const Navbar = () => {
               name="search"
               type="text"
               placeholder="Type here"
-              className="input bg-transparent top-20 z-10 input-bordered w-full max-w-xs"
+              className="z-10 w-full max-w-xs bg-transparent input top-20 input-bordered"
             />
-            <button onClick={searchData} className="p-4 absolute right-14">
+            <button onClick={searchData} className="absolute p-4 right-14">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5"
+                className="w-5 h-5"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
