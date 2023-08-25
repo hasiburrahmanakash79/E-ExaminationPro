@@ -13,10 +13,15 @@ import logo from "../assets/logo.png";
 import arrow from "../assets/control.png";
 import { useContext } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
+import useAdmin from "../Hooks/useAdmin/useAdmin";
+import useInstructor from "../Hooks/useInstructor/useInstructor";
 
 const Dashboard = () => {
-	// set user role dynamically
-	const isAdmin = true;
+  // const [isAdmin] = useAdmin();
+  // const [isInstructor] = useInstructor();
+
+  const isAdmin = true
+  // const isInstructor = false
   const { user } = useContext(AuthContext);
   const [open, setOpen] = useState(true);
 
@@ -34,24 +39,32 @@ const Dashboard = () => {
       title: "Admin Home",
       path: "/dashboard/adminHome",
       icon: iconMappings.Home,
-	  role: "admin",
+      role: "admin",
       gap: true,
     },
     {
       title: "Users",
       path: "/dashboard/manageUsers",
       icon: iconMappings.Users,
-	  role: "admin",
+      role: "admin",
     },
     { title: "Schedule ", icon: iconMappings.Schedule, role: "instructor" },
     { title: "Search", icon: iconMappings.Search, role: "instructor" },
-    { title: "Analytics", icon: iconMappings.Analytics },
-    { title: "Home ", path: "/", icon: iconMappings.Home, gap: true },
-    { title: "Setting", icon: iconMappings.Setting },
+    { title: "Analytics", icon: iconMappings.Analytics, role: "user" },
+    {
+      title: "Home ",
+      path: "/",
+      icon: iconMappings.Home,
+      role: "general",
+      gap: true,
+    },
+    { title: "Setting", icon: iconMappings.Setting, role: "general" },
   ];
 
   const adminMenus = Menus.filter((menu) => menu.role === "admin");
   const instructorMenus = Menus.filter((menu) => menu.role === "instructor");
+  const userMenus = Menus.filter((menu) => menu.role === "user");
+  const generalMenus = Menus.filter((menu) => menu.role === "general");
 
   return (
     <div className="flex ">
@@ -77,7 +90,74 @@ const Dashboard = () => {
             open ? "" : " flex flex-col items-center justify-center"
           }`}
         >
-          {isAdmin ? (adminMenus.map((Menu, index) => (
+          {isAdmin
+            ? adminMenus.map((Menu, index) => (
+                <li
+                  key={index}
+                  className={`flex rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4 ${
+                    Menu.gap ? "mt-9" : "mt-2"
+                  } ${index === 0 && "bg-light-white"}`}
+                >
+                  <Link to={Menu.path} className="flex items-center gap-x-4">
+                    <IconContext.Provider value={{ className: "react-icon" }}>
+                      <Menu.icon />
+                    </IconContext.Provider>
+                    <span
+                      className={`${
+                        !open && "hidden"
+                      } origin-left duration-200`}
+                    >
+                      {Menu.title}
+                    </span>
+                  </Link>
+                </li>
+              ))
+            : //  Instructor menus
+            isInstructor
+            ? instructorMenus.map((Menu, index) => (
+                <li
+                  key={index}
+                  className={`flex rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4 ${
+                    Menu.gap ? "mt-9" : "mt-2"
+                  } ${index === 0 && "bg-light-white"}`}
+                >
+                  <Link to={Menu.path} className="flex items-center gap-x-4">
+                    <IconContext.Provider value={{ className: "react-icon" }}>
+                      <Menu.icon />
+                    </IconContext.Provider>
+                    <span
+                      className={`${
+                        !open && "hidden"
+                      } origin-left duration-200`}
+                    >
+                      {Menu.title}
+                    </span>
+                  </Link>
+                </li>
+              ))
+            : // User menus
+              userMenus.map((Menu, index) => (
+                <li
+                  key={index}
+                  className={`flex rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4 ${
+                    Menu.gap ? "mt-9" : "mt-2"
+                  } ${index === 0 && "bg-light-white"}`}
+                >
+                  <Link to={Menu.path} className="flex items-center gap-x-4">
+                    <IconContext.Provider value={{ className: "react-icon" }}>
+                      <Menu.icon />
+                    </IconContext.Provider>
+                    <span
+                      className={`${
+                        !open && "hidden"
+                      } origin-left duration-200`}
+                    >
+                      {Menu.title}
+                    </span>
+                  </Link>
+                </li>
+              ))}
+          {generalMenus.map((Menu, index) => (
             <li
               key={index}
               className={`flex rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4 ${
@@ -95,28 +175,7 @@ const Dashboard = () => {
                 </span>
               </Link>
             </li>
-          )))
-		  :
-		//  Instructor menus 
-		  (instructorMenus.map((Menu, index) => (
-            <li
-              key={index}
-              className={`flex rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4 ${
-                Menu.gap ? "mt-9" : "mt-2"
-              } ${index === 0 && "bg-light-white"}`}
-            >
-              <Link to={Menu.path} className="flex items-center gap-x-4">
-                <IconContext.Provider value={{ className: "react-icon" }}>
-                  <Menu.icon />
-                </IconContext.Provider>
-                <span
-                  className={`${!open && "hidden"} origin-left duration-200`}
-                >
-                  {Menu.title}
-                </span>
-              </Link>
-            </li>
-          )))}
+          ))}
         </ul>
 
         {/* User info */}
