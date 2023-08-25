@@ -7,13 +7,15 @@ import Registration from '../Pages/Authentication/Registration/Registration'
 import Blog from '../Pages/BlogPage/Blog/Blog'
 import Contact from '../Pages/Contact/Contact'
 import ShortQ from '../Pages/Exams/ShortQuestion/ShortQ'
+import PrivateRouter from './PrivateRouter'
+import Error from '../Pages/Error/Error'
 import Exam from '../Pages/FreeCoursePage/ExamPage/Exam'
 import Instructors from '../Pages/InstuctorPage/Instructors'
 import Dashboard from '../Layouts/Dashboard'
 import ResultPageForMcqFib from '../components/QuestionRelated/ResultPageForMcqFib'
 import ManageUsers from '../Pages/Dashboard/AdminDashboard/ManageUser/ManageUsers'
 import AdminHome from '../Pages/Dashboard/AdminDashboard/AdminHome/AdminHome'
-// import FreeCoursePage from '../Pages/FreeCoursePage/FreeCoursePage'
+
 import QuizHomePage from '../Pages/Home/DemoTest/QuizHomePage'
 import ResultPage from '../Pages/Home/DemoTest/ResultPage'
 import Notice from '../Pages/NoticePage/Notice/Notice'
@@ -26,6 +28,7 @@ const router = createBrowserRouter([
   {
     path: '/',
     element: <Main />,
+    errorElement: <Error />,
     children: [
       {
         path: '/',
@@ -62,7 +65,12 @@ const router = createBrowserRouter([
       },
       {
         path: '/allSubjects',
-        element: <FreeCoursePage />
+
+        element: (
+          <PrivateRouter>
+            <FreeCoursePage />
+          </PrivateRouter>
+        )
       },
       {
         path: '/allexam',

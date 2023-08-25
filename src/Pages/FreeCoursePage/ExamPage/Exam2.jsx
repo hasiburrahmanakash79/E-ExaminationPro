@@ -19,7 +19,6 @@ const Exam2 = () => {
     const ques = useLoaderData();
     const questions = ques.questions
     const examType = ques.type
-    const examTypess = ques.type
     console.log(questions, examType)
 
     // const questions = examType == 'mcq' ? jsQuizz.question : mathQues.questions ///store question based on type
@@ -198,7 +197,7 @@ const Exam2 = () => {
                                         setTimer={setTimer}
                                     ></TimeRemain>}
                                     <div className=' min-h-[70vh] flex justify-center md:mt-0 mt-10 md:items-center'>
-                                        <div className='md:mx-20 mx-2 w-full'>
+                                        <div className='w-full mx-2 md:mx-20'>
 
                                             <div className='flex justify-center my-10 mb-5'>
 
@@ -215,7 +214,7 @@ const Exam2 = () => {
                                                     <span className='text-xl font-semibold'>/{questions.length}</span> {/* show total question in number */}
                                                 </div>
                                             </div>
-                                            {((examType == 'multimedia_mcq' && start==true)|| examType == 'mcq')?<h1 className='text-3xl my-7  font-semibold'>{currentQuestion + 1}- {question}</h1>:<h1 className='text-3xl my-7  font-semibold'>Are You Ready?? Please Start Exam</h1>}  {/* show question  */}
+                                            {((examType == 'multimedia_mcq' && start==true)|| examType == 'mcq')?<h1 className='text-3xl font-semibold my-7'>{currentQuestion + 1}- {question}</h1>:<h1 className='text-3xl font-semibold my-7'>Are You Ready?? Please Start Exam</h1>}  {/* show question  */}
 
                                             {
                                                 (examType == 'mcq' || examType == 'multimedia_mcq') ? // check exam type
@@ -240,11 +239,11 @@ const Exam2 = () => {
                                             }
                                             <div className=''>
                                             <div className='flex justify-between mt-10'>
-                                                <button disabled={((currentQuestion == 0)||(examType == 'multimedia_mcq' && start==false))} onClick={onClickPrevious} className='btn navigation-bar text-white hover:bg-blue-900 '>Previous</button>
-                                                <button disabled={(examType == 'multimedia_mcq' && start==false)} onClick={onClickNext} className='btn text-white  navigation-bar '>{currentQuestion == questions.length - 1 ? 'Finish' : 'Next'}</button>
+                                                <button disabled={((currentQuestion == 0)||(examType == 'multimedia_mcq' && start==false))} onClick={onClickPrevious} className='text-white btn navigation-bar hover:bg-blue-900 '>Previous</button>
+                                                <button disabled={(examType == 'multimedia_mcq' && start==false)} onClick={onClickNext} className='text-white btn navigation-bar '>{currentQuestion == questions.length - 1 ? 'Finish' : 'Next'}</button>
                                             </div>
                                             <div className='flex justify-center'>
-                                                {examType=='multimedia_mcq'&&<button className='btn btn-primary my-5' onClick={()=>setStart(true)} >Start</button>}
+                                                {examType=='multimedia_mcq'&&<button className='my-5 btn btn-primary' onClick={()=>setStart(true)} >Start</button>}
                                             </div>
                                             </div>
                                         </div>
