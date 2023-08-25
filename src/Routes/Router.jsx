@@ -10,8 +10,6 @@ import Contact from '../Pages/Contact/Contact'
 import ShortQ from '../Pages/Exams/ShortQuestion/ShortQ'
 import Exam from '../Pages/FreeCoursePage/ExamPage/Exam'
 import Instructors from '../Pages/InstuctorPage/Instructors'
-// import Blog from '../Pages/BlogPage/Blog/Blog'
-// import Notice from '../Pages/NoticePage/Notice/Notice'
 import Dashboard from '../Layouts/Dashboard'
 import ResultPageForMcqFib from '../components/QuestionRelated/ResultPageForMcqFib'
 import ManageUsers from '../Pages/Dashboard/AdminDashboard/ManageUser/ManageUsers'
@@ -19,9 +17,10 @@ import AdminHome from '../Pages/Dashboard/AdminDashboard/AdminHome/AdminHome'
 import FreeCoursePage from '../Pages/FreeCoursePage/FreeCoursePage'
 import QuizHomePage from '../Pages/Home/DemoTest/QuizHomePage'
 import ResultPage from '../Pages/Home/DemoTest/ResultPage'
-// import Instructors from '../Pages/InstuctorPage/Instructors'
 import Notice from '../Pages/NoticePage/Notice/Notice'
-
+import AllExam from '../Pages/FreeCoursePage/ExamPage/allExam'
+import Exam2 from '../Pages/FreeCoursePage/ExamPage/Exam2'
+import CreateQuesPaper from '../Pages/DashboardPages/InstructorPages/CreateQuesPaper/CreateQuesPaper'
 
 const router = createBrowserRouter([
   {
@@ -48,7 +47,6 @@ const router = createBrowserRouter([
       {
         path: '/about',
         element: <AboutUs></AboutUs>
-
       },
       {
         path: '/demo-test',
@@ -68,17 +66,18 @@ const router = createBrowserRouter([
       },
       {
         path: '/allexam',
-        element: <AllExam/>
+        element: <AllExam />
       },
       {
         path: '/exam/:id',
-        element: <Exam2/>,
-        loader:({params})=>fetch(`http://localhost:5000/questionPaper/${params.id}`)
+        element: <Exam2 />,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/questionPaper/${params.id}`)
       },
       {
         path: '/shortQ',
         element: <ShortQ />
-      }  ,
+      },
       {
         path: '/createQues',
         element: <CreateQuesPaper />
@@ -100,19 +99,18 @@ const router = createBrowserRouter([
   },
   {
     path: '/dashboard',
-    element: <Dashboard/>,
+    element: <Dashboard />,
     children: [
       {
         path: '/dashboard/adminHome',
-        element: <AdminHome/>
+        element: <AdminHome />
       },
       {
         path: '/dashboard/manageUsers',
-        element: <ManageUsers/>
-      },
+        element: <ManageUsers />
+      }
     ]
-  },
-  
+  }
 ])
 
 export default router
