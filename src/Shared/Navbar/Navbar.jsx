@@ -1,4 +1,4 @@
-import logo from "../../assets/logo.png";
+import logo from "../../assets/logo12.png";
 import { Link } from "react-router-dom";
 import "./Navbar.css";
 
@@ -59,6 +59,9 @@ const Navbar = () => {
       </li>
       <li>
         <Link to="/notice">Notice</Link>
+      </li>
+      <li>
+        <Link to="/about">About us</Link>
       </li>
     </>
   );

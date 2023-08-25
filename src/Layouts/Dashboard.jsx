@@ -13,12 +13,19 @@ import logo from "../assets/logo.png";
 import arrow from "../assets/control.png";
 import { useContext } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
+import useAdmin from "../Hooks/useAdmin/useAdmin";
+import useInstructor from "../Hooks/useInstructor/useInstructor";
 
 const Dashboard = () => {
 	// set user role dynamically
-	const isAdmin = true;
+	// const isAdmin = true;
   const { user } = useContext(AuthContext);
   const [open, setOpen] = useState(true);
+  const isAdmin = useAdmin()
+  const isInstructor = useInstructor()
+
+
+  console.log(isAdmin, isInstructor);
 
   const iconMappings = {
     Users: FaUser,
