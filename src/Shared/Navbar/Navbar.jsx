@@ -60,6 +60,9 @@ const Navbar = () => {
       <li>
         <Link to="/notice">Notice</Link>
       </li>
+      <li>
+        <Link to="/about">About us</Link>
+      </li>
     </>
   );
 
