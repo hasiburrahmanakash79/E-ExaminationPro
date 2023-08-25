@@ -1,4 +1,6 @@
 import React from "react";
+import { FaCommentDots, FaHeart, FaShareAltSquare } from "react-icons/fa";
+import { EmailIcon, EmailShareButton, FacebookIcon, FacebookShareButton, LineShareButton, LinkedinIcon, PinterestIcon, PinterestShareButton, TwitterIcon, TwitterShareButton } from "react-share";
 
 const Blog = () => {
   return (
@@ -27,10 +29,15 @@ const Blog = () => {
                   Ei delenit sensibus liberavisse pri. Quod suscipit no nam. Est
                   in graece fuisset, eos affert putent doctus id.
                 </p>
-                <div className="pt-5">
-                  <button className=" btn btn-outline btn-sm ">
-                    Read More
-                  </button>
+                <div>
+
+                  <div>
+                    <div className="pt-5">
+                      <button className=" btn btn-outline btn-sm ">
+                        Read More
+                      </button>
+                    </div>
+                  </div>
                 </div>
               </div>
             </a>
@@ -60,11 +67,83 @@ const Blog = () => {
                   vocent delicata indoctum pri.
                 </p>
 
-                <div className="pt-5 text-end">
-                  <button className=" btn btn-outline btn-sm ">
+                <div className="flex justify-between items-center gap-5 pt-6">
+                  <div className="flex gap-5 items-center">
+                    <FaHeart className="text-xl"></FaHeart>
+                    <FaCommentDots className="text-xl" onClick={() => window.my_modal_2.showModal()}></FaCommentDots>
+
+
+                    {/* Open the modal using ID.showModal() method */}
+
+                    <dialog id="my_modal_2" className="modal  ">
+                      <div method="dialog" className="modal-box dark:bg-gray-900 ">
+                        <div className="flex flex-col max-w-xl p-8 shadow-sm rounded-xl lg:p-12 dark:bg-gray-900 dark:text-gray-100">
+                          <div className="flex flex-col items-center w-full">
+                            <h2 className="text-3xl font-semibold text-center">Your opinion matters!</h2>
+                            <div className="flex flex-col items-center py-6 space-y-3">
+                              <span className="text-center">How was your experience on it?</span>
+                              <div className="flex space-x-3">
+
+
+
+
+
+                              </div>
+                            </div>
+                            <div className="flex flex-col w-full">
+                              <textarea rows="3" placeholder="Message..." className="p-4 rounded-md  resize-none dark:text-gray-100 dark:bg-gray-900"></textarea>
+                              <button type="button" className="py-4 my-8 font-semibold rounded-md dark:text-gray-900 dark:bg-violet-400">Leave feedback</button>
+                            </div>
+                          </div>
+
+                        </div>
+                      </div>
+                      <form method="dialog" className="modal-backdrop">
+                        <button>close</button>
+                      </form>
+                    </dialog>
+
+
+
+                    <FaShareAltSquare className="text-xl" onClick={() => window.my_modal_21.showModal()}></FaShareAltSquare>
+
+                    <dialog id="my_modal_21" className="modal">
+                      <form method="dialog" className="modal-box bg-gradient-to-r from-[#A8EB12]  to-[#042B66] ...">
+                        <div className="text-center ">
+                          <EmailShareButton url="https://e-exampro.web.app/blog" quote={"Blog by E-examPro"} hastag={"blog"}>
+                            <EmailIcon className="me-10" size={50} round={true}></EmailIcon>
+                          </EmailShareButton>
+                          <TwitterShareButton url="https://e-exampro.web.app/blog" quote={"Blog by E-examPro"} hastag={"blog"}>
+                            <TwitterIcon className="me-10" size={50} round={true}></TwitterIcon>
+                          </TwitterShareButton>
+                          <FacebookShareButton url="https://e-exampro.web.app/blog" quote={"Blog by E-examPro"} hastag={"blog"}>
+                            <FacebookIcon className="me-10" size={50} round={true}></FacebookIcon>
+                          </FacebookShareButton>
+                          <LineShareButton url="https://e-exampro.web.app/blog" quote={"Blog by E-examPro"} hastag={"blog"}>
+                            <LinkedinIcon className="me-10" size={50} round={true}></LinkedinIcon>
+                          </LineShareButton>
+                          <PinterestShareButton url="https://e-exampro.web.app/blog" quote={"Blog by E-examPro"} hastag={"blog"}>
+                            <PinterestIcon size={50} round={true}></PinterestIcon>
+                          </PinterestShareButton>
+                        </div>
+
+                      </form>
+                      <form method="dialog" className="modal-backdrop">
+                        <button>close</button>
+                      </form>
+                    </dialog>
+
+
+
+
+                  </div>
+
+                  <button className=" btn btn-outline btn-sm text-end">
                     Read More
                   </button>
+
                 </div>
+
               </div>
             </a>
             <a
@@ -91,11 +170,80 @@ const Blog = () => {
                   vocent delicata indoctum pri.
                 </p>
 
-                <div className="pt-5 text-end">
-                  <button className=" btn btn-outline btn-sm ">
+                <div className="flex justify-between items-center gap-5 pt-6">
+                  <div className="flex gap-5 items-center">
+                    <FaHeart className="text-xl"></FaHeart>
+                    <FaCommentDots className="text-xl" onClick={() => window.my_modal_10.showModal()}></FaCommentDots>
+
+
+                    {/* Open the modal using ID.showModal() method */}
+
+                    <dialog id="my_modal_10" className="modal  ">
+                      <div method="dialog" className="modal-box dark:bg-gray-900 ">
+                        <div className="flex flex-col w-full p-8 shadow-sm rounded-xl lg:p-12 dark:bg-gray-900 dark:text-gray-100">
+                          <div className="flex flex-col items-center w-full">
+                            <h2 className="text-3xl font-semibold text-center">Your opinion matters!</h2>
+                            <div className="flex flex-col items-center py-6 space-y-3">
+                              <span className="text-center">How was your experience on it?</span>
+                              <div className="flex space-x-3">
+
+
+
+
+
+                              </div>
+                            </div>
+                            <div className="flex flex-col w-full">
+                              <textarea rows="3" placeholder="Message..." className="p-4 rounded-md  resize-none dark:text-gray-100 dark:bg-gray-900"></textarea>
+                              <button type="button" className="py-4 my-8 font-semibold rounded-md dark:text-gray-900 dark:bg-violet-400">Leave feedback</button>
+                            </div>
+                          </div>
+
+                        </div>
+                      </div>
+                      <form method="dialog" className="modal-backdrop">
+                        <button>close</button>
+                      </form>
+                    </dialog>
+
+
+
+                    <FaShareAltSquare className="text-xl" onClick={() => window.my_modal_22.showModal()}></FaShareAltSquare>
+
+                    <dialog id="my_modal_22" className="modal">
+                      <form method="dialog" className="modal-box bg-gradient-to-r from-[#A8EB12]  to-[#042B66] ...">
+                        <div className="text-center ">
+                          <EmailShareButton url="https://e-exampro.web.app/blog" quote={"Blog by E-examPro"} hastag={"blog"}>
+                            <EmailIcon className="me-10" size={50} round={true}></EmailIcon>
+                          </EmailShareButton>
+                          <TwitterShareButton url="https://e-exampro.web.app/blog" quote={"Blog by E-examPro"} hastag={"blog"}>
+                            <TwitterIcon className="me-10" size={50} round={true}></TwitterIcon>
+                          </TwitterShareButton>
+                          <FacebookShareButton url="https://e-exampro.web.app/blog" quote={"Blog by E-examPro"} hastag={"blog"}>
+                            <FacebookIcon className="me-10" size={50} round={true}></FacebookIcon>
+                          </FacebookShareButton>
+                          <LineShareButton url="https://e-exampro.web.app/blog" quote={"Blog by E-examPro"} hastag={"blog"}>
+                            <LinkedinIcon className="me-10" size={50} round={true}></LinkedinIcon>
+                          </LineShareButton>
+                          <PinterestShareButton url="https://e-exampro.web.app/blog" quote={"Blog by E-examPro"} hastag={"blog"}>
+                            <PinterestIcon size={50} round={true}></PinterestIcon>
+                          </PinterestShareButton>
+                        </div>
+
+                      </form>
+                      <form method="dialog" className="modal-backdrop">
+                        <button>close</button>
+                      </form>
+                    </dialog>
+                  </div>
+
+                  <button className=" btn btn-outline btn-sm text-end">
                     Read More
                   </button>
+
                 </div>
+
+
               </div>
             </a>
             <a
@@ -122,11 +270,81 @@ const Blog = () => {
                   vocent delicata indoctum pri.
                 </p>
 
-                <div className="pt-5 text-end">
-                  <button className=" btn btn-outline btn-sm ">
+                <div className="flex justify-between items-center gap-5 pt-6">
+                  <div className="flex gap-5 items-center">
+                    <FaHeart className="text-xl"></FaHeart>
+                    <FaCommentDots className="text-xl" onClick={() => window.my_modal_11.showModal()}></FaCommentDots>
+
+
+                    {/* Open the modal using ID.showModal() method */}
+
+                    <dialog id="my_modal_11" className="modal  ">
+                      <div method="dialog" className="modal-box dark:bg-gray-900 ">
+                        <div className="flex flex-col w-full p-8 shadow-sm rounded-xl lg:p-12 dark:bg-gray-900 dark:text-gray-100">
+                          <div className="flex flex-col items-center w-full">
+                            <h2 className="text-3xl font-semibold text-center">Your opinion matters!</h2>
+                            <div className="flex flex-col items-center py-6 space-y-3">
+                              <span className="text-center">How was your experience on it?</span>
+                              <div className="flex space-x-3">
+
+
+
+
+
+                              </div>
+                            </div>
+                            <div className="flex flex-col w-full">
+                              <textarea rows="3" placeholder="Message..." className="p-4 rounded-md  resize-none dark:text-gray-100 dark:bg-gray-900"></textarea>
+                              <button type="button" className="py-4 my-8 font-semibold rounded-md dark:text-gray-900 dark:bg-violet-400">Leave feedback</button>
+                            </div>
+                          </div>
+
+                        </div>
+                      </div>
+                      <form method="dialog" className="modal-backdrop">
+                        <button>close</button>
+                      </form>
+                    </dialog>
+
+
+
+                    <FaShareAltSquare className="text-xl" onClick={() => window.my_modal_23.showModal()}></FaShareAltSquare>
+
+                    <dialog id="my_modal_23" className="modal">
+                      <form method="dialog" className="modal-box bg-gradient-to-r from-[#A8EB12]  to-[#042B66] ...">
+                        <div className="text-center ">
+                          <EmailShareButton url="https://e-exampro.web.app/blog" quote={"Blog by E-examPro"} hastag={"blog"}>
+                            <EmailIcon className="me-10" size={50} round={true}></EmailIcon>
+                          </EmailShareButton>
+                          <TwitterShareButton url="https://e-exampro.web.app/blog" quote={"Blog by E-examPro"} hastag={"blog"}>
+                            <TwitterIcon className="me-10" size={50} round={true}></TwitterIcon>
+                          </TwitterShareButton>
+                          <FacebookShareButton url="https://e-exampro.web.app/blog" quote={"Blog by E-examPro"} hastag={"blog"}>
+                            <FacebookIcon className="me-10" size={50} round={true}></FacebookIcon>
+                          </FacebookShareButton>
+                          <LineShareButton url="https://e-exampro.web.app/blog" quote={"Blog by E-examPro"} hastag={"blog"}>
+                            <LinkedinIcon className="me-10" size={50} round={true}></LinkedinIcon>
+                          </LineShareButton>
+                          <PinterestShareButton url="https://e-exampro.web.app/blog" quote={"Blog by E-examPro"} hastag={"blog"}>
+                            <PinterestIcon size={50} round={true}></PinterestIcon>
+                          </PinterestShareButton>
+                        </div>
+
+                      </form>
+                      <form method="dialog" className="modal-backdrop">
+                        <button>close</button>
+                      </form>
+                    </dialog>
+                  </div>
+
+                  <button className=" btn btn-outline btn-sm text-end">
                     Read More
                   </button>
+
                 </div>
+
+
+
               </div>
             </a>
             <a
@@ -153,11 +371,80 @@ const Blog = () => {
                   vocent delicata indoctum pri.
                 </p>
 
-                <div className="pt-5 text-end">
-                  <button className=" btn btn-outline btn-sm ">
+
+                <div className="flex justify-between items-center gap-5 pt-6">
+                  <div className="flex gap-5 items-center">
+                    <FaHeart className="text-xl"></FaHeart>
+                    <FaCommentDots className="text-xl" onClick={() => window.my_modal_12.showModal()}></FaCommentDots>
+
+
+                    {/* Open the modal using ID.showModal() method */}
+
+                    <dialog id="my_modal_12" className="modal  ">
+                      <div method="dialog" className="modal-box dark:bg-gray-900 ">
+                        <div className="flex flex-col w-full p-8 shadow-sm rounded-xl lg:p-12 dark:bg-gray-900 dark:text-gray-100">
+                          <div className="flex flex-col items-center w-full">
+                            <h2 className="text-3xl font-semibold text-center">Your opinion matters!</h2>
+                            <div className="flex flex-col items-center py-6 space-y-3">
+                              <span className="text-center">How was your experience on it?</span>
+                              <div className="flex space-x-3">
+
+
+
+
+
+                              </div>
+                            </div>
+                            <div className="flex flex-col w-full">
+                              <textarea rows="3" placeholder="Message..." className="p-4 rounded-md  resize-none dark:text-gray-100 dark:bg-gray-900"></textarea>
+                              <button type="button" className="py-4 my-8 font-semibold rounded-md dark:text-gray-900 dark:bg-violet-400">Leave feedback</button>
+                            </div>
+                          </div>
+
+                        </div>
+                      </div>
+                      <form method="dialog" className="modal-backdrop">
+                        <button>close</button>
+                      </form>
+                    </dialog>
+
+
+
+                    <FaShareAltSquare className="text-xl" onClick={() => window.my_modal_24.showModal()}></FaShareAltSquare>
+
+                    <dialog id="my_modal_24" className="modal">
+                      <form method="dialog" className="modal-box bg-gradient-to-r from-[#A8EB12]  to-[#042B66] ...">
+                        <div className="text-center ">
+                          <EmailShareButton url="https://e-exampro.web.app/blog" quote={"Blog by E-examPro"} hastag={"blog"}>
+                            <EmailIcon className="me-10" size={50} round={true}></EmailIcon>
+                          </EmailShareButton>
+                          <TwitterShareButton url="https://e-exampro.web.app/blog" quote={"Blog by E-examPro"} hastag={"blog"}>
+                            <TwitterIcon className="me-10" size={50} round={true}></TwitterIcon>
+                          </TwitterShareButton>
+                          <FacebookShareButton url="https://e-exampro.web.app/blog" quote={"Blog by E-examPro"} hastag={"blog"}>
+                            <FacebookIcon className="me-10" size={50} round={true}></FacebookIcon>
+                          </FacebookShareButton>
+                          <LineShareButton url="https://e-exampro.web.app/blog" quote={"Blog by E-examPro"} hastag={"blog"}>
+                            <LinkedinIcon className="me-10" size={50} round={true}></LinkedinIcon>
+                          </LineShareButton>
+                          <PinterestShareButton url="https://e-exampro.web.app/blog" quote={"Blog by E-examPro"} hastag={"blog"}>
+                            <PinterestIcon size={50} round={true}></PinterestIcon>
+                          </PinterestShareButton>
+                        </div>
+
+                      </form>
+                      <form method="dialog" className="modal-backdrop">
+                        <button>close</button>
+                      </form>
+                    </dialog>
+                  </div>
+
+                  <button className=" btn btn-outline btn-sm text-end">
                     Read More
                   </button>
+
                 </div>
+
               </div>
             </a>
             <a
@@ -183,11 +470,80 @@ const Blog = () => {
                   albucius perfecto, ei probatus consulatu patrioque mea, ei
                   vocent delicata indoctum pri.
                 </p>
-                <div className="pt-5 text-end">
-                  <button className=" btn btn-outline btn-sm ">
+
+                <div className="flex justify-between items-center gap-5 pt-6">
+                  <div className="flex gap-5 items-center">
+                    <FaHeart className="text-xl"></FaHeart>
+                    <FaCommentDots className="text-xl" onClick={() => window.my_modal_13.showModal()}></FaCommentDots>
+
+
+                    {/* Open the modal using ID.showModal() method */}
+
+                    <dialog id="my_modal_13" className="modal  ">
+                      <div method="dialog" className="modal-box dark:bg-gray-900 ">
+                        <div className="flex flex-col w-full p-8 shadow-sm rounded-xl lg:p-12 dark:bg-gray-900 dark:text-gray-100">
+                          <div className="flex flex-col items-center w-full">
+                            <h2 className="text-3xl font-semibold text-center">Your opinion matters!</h2>
+                            <div className="flex flex-col items-center py-6 space-y-3">
+                              <span className="text-center">How was your experience on it?</span>
+                              <div className="flex space-x-3">
+
+
+
+
+
+                              </div>
+                            </div>
+                            <div className="flex flex-col w-full">
+                              <textarea rows="3" placeholder="Message..." className="p-4 rounded-md  resize-none dark:text-gray-100 dark:bg-gray-900"></textarea>
+                              <button type="button" className="py-4 my-8 font-semibold rounded-md dark:text-gray-900 dark:bg-violet-400">Leave feedback</button>
+                            </div>
+                          </div>
+
+                        </div>
+                      </div>
+                      <form method="dialog" className="modal-backdrop">
+                        <button>close</button>
+                      </form>
+                    </dialog>
+
+
+
+                    <FaShareAltSquare className="text-xl" onClick={() => window.my_modal_25.showModal()}></FaShareAltSquare>
+
+                    <dialog id="my_modal_25" className="modal">
+                      <form method="dialog" className="modal-box bg-gradient-to-r from-[#A8EB12]  to-[#042B66] ...">
+                        <div className="text-center ">
+                          <EmailShareButton url="https://e-exampro.web.app/blog" quote={"Blog by E-examPro"} hastag={"blog"}>
+                            <EmailIcon className="me-10" size={50} round={true}></EmailIcon>
+                          </EmailShareButton>
+                          <TwitterShareButton url="https://e-exampro.web.app/blog" quote={"Blog by E-examPro"} hastag={"blog"}>
+                            <TwitterIcon className="me-10" size={50} round={true}></TwitterIcon>
+                          </TwitterShareButton>
+                          <FacebookShareButton url="https://e-exampro.web.app/blog" quote={"Blog by E-examPro"} hastag={"blog"}>
+                            <FacebookIcon className="me-10" size={50} round={true}></FacebookIcon>
+                          </FacebookShareButton>
+                          <LineShareButton url="https://e-exampro.web.app/blog" quote={"Blog by E-examPro"} hastag={"blog"}>
+                            <LinkedinIcon className="me-10" size={50} round={true}></LinkedinIcon>
+                          </LineShareButton>
+                          <PinterestShareButton url="https://e-exampro.web.app/blog" quote={"Blog by E-examPro"} hastag={"blog"}>
+                            <PinterestIcon size={50} round={true}></PinterestIcon>
+                          </PinterestShareButton>
+                        </div>
+
+                      </form>
+                      <form method="dialog" className="modal-backdrop">
+                        <button>close</button>
+                      </form>
+                    </dialog>
+                  </div>
+
+                  <button className=" btn btn-outline btn-sm text-end">
                     Read More
                   </button>
+
                 </div>
+
               </div>
             </a>
             <a
@@ -214,11 +570,80 @@ const Blog = () => {
                   vocent delicata indoctum pri.
                 </p>
 
-                <div className="pt-5 text-end">
-                  <button className=" btn btn-outline btn-sm ">
+                <div className="flex justify-between items-center gap-5 pt-6">
+                  <div className="flex gap-5 items-center">
+                    <FaHeart className="text-xl"></FaHeart>
+                    <FaCommentDots className="text-xl" onClick={() => window.my_modal_14.showModal()}></FaCommentDots>
+
+
+                    {/* Open the modal using ID.showModal() method */}
+
+                    <dialog id="my_modal_14" className="modal  ">
+                      <div method="dialog" className="modal-box dark:bg-gray-900 ">
+                        <div className="flex flex-col w-full p-8 shadow-sm rounded-xl lg:p-12 dark:bg-gray-900 dark:text-gray-100">
+                          <div className="flex flex-col items-center w-full">
+                            <h2 className="text-3xl font-semibold text-center">Your opinion matters!</h2>
+                            <div className="flex flex-col items-center py-6 space-y-3">
+                              <span className="text-center">How was your experience on it?</span>
+                              <div className="flex space-x-3">
+
+
+
+
+
+                              </div>
+                            </div>
+                            <div className="flex flex-col w-full">
+                              <textarea rows="3" placeholder="Message..." className="p-4 rounded-md  resize-none dark:text-gray-100 dark:bg-gray-900"></textarea>
+                              <button type="button" className="py-4 my-8 font-semibold rounded-md dark:text-gray-900 dark:bg-violet-400">Leave feedback</button>
+                            </div>
+                          </div>
+
+                        </div>
+                      </div>
+                      <form method="dialog" className="modal-backdrop">
+                        <button>close</button>
+                      </form>
+                    </dialog>
+
+
+
+                    <FaShareAltSquare className="text-xl" onClick={() => window.my_modal_26.showModal()}></FaShareAltSquare>
+
+                    <dialog id="my_modal_26" className="modal">
+                      <form method="dialog" className="modal-box bg-gradient-to-r from-[#A8EB12]  to-[#042B66] ...">
+                        <div className="text-center ">
+                          <EmailShareButton url="https://e-exampro.web.app/blog" quote={"Blog by E-examPro"} hastag={"blog"}>
+                            <EmailIcon className="me-10" size={50} round={true}></EmailIcon>
+                          </EmailShareButton>
+                          <TwitterShareButton url="https://e-exampro.web.app/blog" quote={"Blog by E-examPro"} hastag={"blog"}>
+                            <TwitterIcon className="me-10" size={50} round={true}></TwitterIcon>
+                          </TwitterShareButton>
+                          <FacebookShareButton url="https://e-exampro.web.app/blog" quote={"Blog by E-examPro"} hastag={"blog"}>
+                            <FacebookIcon className="me-10" size={50} round={true}></FacebookIcon>
+                          </FacebookShareButton>
+                          <LineShareButton url="https://e-exampro.web.app/blog" quote={"Blog by E-examPro"} hastag={"blog"}>
+                            <LinkedinIcon className="me-10" size={50} round={true}></LinkedinIcon>
+                          </LineShareButton>
+                          <PinterestShareButton url="https://e-exampro.web.app/blog" quote={"Blog by E-examPro"} hastag={"blog"}>
+                            <PinterestIcon size={50} round={true}></PinterestIcon>
+                          </PinterestShareButton>
+                        </div>
+
+                      </form>
+                      <form method="dialog" className="modal-backdrop">
+                        <button>close</button>
+                      </form>
+                    </dialog>
+                  </div>
+
+                  <button className=" btn btn-outline btn-sm text-end">
                     Read More
                   </button>
+
                 </div>
+
+
               </div>
             </a>
           </div>
@@ -232,6 +657,10 @@ const Blog = () => {
           </div>
         </div>
       </section>
+
+
+
+
     </div>
   );
 };
