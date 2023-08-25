@@ -10,12 +10,15 @@ import Registration from '../Pages/Authentication/Registration/Registration'
 import FreeCoursePage from '../Pages/FreeCoursePage/FreeCoursePage'
 import Exam from '../Pages/FreeCoursePage/ExamPage/Exam'
 import ShortQ from '../Pages/Exams/ShortQuestion/ShortQ'
+import PrivateRouter from './PrivateRouter'
+import Error from '../Pages/Error/Error'
 
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <Main />,
+    errorElement: <Error />,
     children: [
       {
         path: '/',
@@ -35,7 +38,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/free_courses',
-        element: <FreeCoursePage></FreeCoursePage>
+        element: <PrivateRouter><FreeCoursePage></FreeCoursePage></PrivateRouter>
       },
       {
         path: '/exam',
@@ -44,8 +47,7 @@ const router = createBrowserRouter([
       {
         path: "/shortQ",
         element: <ShortQ />
-      }
-
+      },
     ]
   },
 
