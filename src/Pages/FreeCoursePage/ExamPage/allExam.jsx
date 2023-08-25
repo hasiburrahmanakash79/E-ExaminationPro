@@ -16,7 +16,7 @@ const AllExam = () => {
 
     console.log(exams)
     useEffect(() => {
-        fetch(`http://localhost:5000/questionPaper?type=${type}&subject=${subject}`)
+        fetch(`https://e-exam-pro-server.vercel.app/questionPaper?type=${type}&subject=${subject}`)
             .then(res => res.json())
             .then(data => setExam(data))
     }, [subject, type])
