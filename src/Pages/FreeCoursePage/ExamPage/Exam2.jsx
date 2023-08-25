@@ -65,7 +65,7 @@ const Exam2 = () => {
     /////data sending function
 
     const sendData = (result) => {
-        fetch('http://localhost:5000/examdata', {
+        fetch('https://e-exam-pro-server.vercel.app/examdata', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
