@@ -28,7 +28,7 @@ const AllExam = () => {
                     <TabList>
                         <Tab onClick={() => setType('mcq')}>MCQ Exam</Tab>
                         <Tab onClick={() => setType('FillInTheBlank')} >Fill In The Blank Exam</Tab>
-                        <Tab onClick={() => setType('mcq')}>MCQ Based on Content Exam</Tab>
+                        <Tab onClick={() => setType('multimedia_mcq')}>MCQ Based on Content Exam</Tab>
                     </TabList>
                 </div>
 

@@ -16,11 +16,11 @@ const Exam2 = () => {
     // const examType = searchParams.get('type')
     // console.log(examType)
     //////////////////
-    const ques=useLoaderData();
-    const questions=ques.questions
-    const examType=ques.type
-    const examTypess=ques.type
-    console.log(questions,examType)
+    const ques = useLoaderData();
+    const questions = ques.questions
+    const examType = ques.type
+    const examTypess = ques.type
+    console.log(questions, examType)
 
     // const questions = examType == 'mcq' ? jsQuizz.question : mathQues.questions ///store question based on type
 
@@ -39,6 +39,7 @@ const Exam2 = () => {
 
     const [optionMcq, setMcq] = useState(null) // it use to store user selected option from mcq
 
+    const [start, setStart] = useState(false) // it use to store user selected option from mcq
 
 
     useEffect(() => {
@@ -58,7 +59,7 @@ const Exam2 = () => {
         }
         ////////////////
 
-    }, [ countdown])
+    }, [countdown])
 
 
     /////data sending function
@@ -102,14 +103,14 @@ const Exam2 = () => {
         }
     }
     ////////////////////// END //////////////////
-    if(inputValue==NaN){
+    if (inputValue == NaN) {
         setInputValue(parseFloat(inputValue).toFixed(2))
     }
-    
+
     ///////////// next button action ///////////////////
     const onClickNext = () => {
         setMcq(null) // set user selected option to null
-   
+
         if (examType == 'FillInTheBlank') { //for fill in the blank
             const result1 = result.find(obj => obj.question === question) // check if answer stored or not
             if (result1) {
@@ -168,12 +169,12 @@ const Exam2 = () => {
 
     return (
         <>  {/* show 3sec countdown before start exam */}
-            {  
+            {
                 countdown > 0 ?
                     <div className=' h-[80vh] flex flex-col justify-center items-center '>
                         <div className='text-center '>
                             <h1 className='my-1 font-bold text-red-600 text-9xl'>
-                            
+
                                 {countdown}
                             </h1>
 
@@ -190,12 +191,23 @@ const Exam2 = () => {
                                 ></AnsDataPage>
                             </div>
                                 : <>{/* show remaining time */}
-                                    <TimeRemain   
-                          handleFinishExam={handleFinishExam}
-                          setTimer={setTimer}
-                                    ></TimeRemain>
+                                    {((examType == 'multimedia_mcq' && start==true)||(examType == 'mcq')|| (examType=='FillInTheBlank'))&&<TimeRemain
+                                    examType={ques.type}
+                                    start={start}
+                                        handleFinishExam={handleFinishExam}
+                                        setTimer={setTimer}
+                                    ></TimeRemain>}
                                     <div className=' min-h-[70vh] flex justify-center md:mt-0 mt-10 md:items-center'>
                                         <div className='md:mx-20 mx-2 w-full'>
+
+                                            <div className='flex justify-center my-10 mb-5'>
+
+                                                {examType == 'multimedia_mcq' &&
+                                                    <>
+                                                        <iframe width="800" height="500" src={ques.video} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullscreen></iframe>
+                                                    </>
+                                                }
+                                            </div>
 
                                             <div className='max-w-[50px]  min-h-[50px] text-white bg-blue-900 rounded-full flex justify-center items-center'>
                                                 <div>
@@ -203,11 +215,13 @@ const Exam2 = () => {
                                                     <span className='text-xl font-semibold'>/{questions.length}</span> {/* show total question in number */}
                                                 </div>
                                             </div>
-                                            <h1 className='text-3xl my-7  font-semibold'>{currentQuestion + 1}- {question}</h1>  {/* show question  */}
+                                            {((examType == 'multimedia_mcq' && start==true)|| examType == 'mcq')?<h1 className='text-3xl my-7  font-semibold'>{currentQuestion + 1}- {question}</h1>:<h1 className='text-3xl my-7  font-semibold'>Are You Ready?? Please Start Exam</h1>}  {/* show question  */}
 
                                             {
-                                                examType == 'mcq' ? // check exam type
+                                                (examType == 'mcq' || examType == 'multimedia_mcq') ? // check exam type
                                                     <McqPage
+                                                    examType={ques.type}
+                                                    start={start}
                                                         options={options}
                                                         answerIndx={answerIndx}
                                                         questions={questions}
@@ -222,11 +236,16 @@ const Exam2 = () => {
                                                         question={question}
                                                         inputValue={inputValue}
                                                         handleInputChange={handleInputChange}
-                                                    ></FillTheBlank>              
+                                                    ></FillTheBlank>
                                             }
+                                            <div className=''>
                                             <div className='flex justify-between mt-10'>
-                                                <button disabled={currentQuestion == 0} onClick={onClickPrevious} className='btn navigation-bar text-white hover:bg-blue-900 '>Previous</button>
-                                                <button onClick={onClickNext} className='btn text-white  navigation-bar '>{currentQuestion == questions.length - 1 ? 'Finish' : 'Next'}</button>
+                                                <button disabled={((currentQuestion == 0)||(examType == 'multimedia_mcq' && start==false))} onClick={onClickPrevious} className='btn navigation-bar text-white hover:bg-blue-900 '>Previous</button>
+                                                <button disabled={(examType == 'multimedia_mcq' && start==false)} onClick={onClickNext} className='btn text-white  navigation-bar '>{currentQuestion == questions.length - 1 ? 'Finish' : 'Next'}</button>
+                                            </div>
+                                            <div className='flex justify-center'>
+                                                {examType=='multimedia_mcq'&&<button className='btn btn-primary my-5' onClick={()=>setStart(true)} >Start</button>}
+                                            </div>
                                             </div>
                                         </div>
                                     </div>
