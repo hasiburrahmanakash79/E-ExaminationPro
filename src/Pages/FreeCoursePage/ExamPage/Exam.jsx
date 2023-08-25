@@ -60,32 +60,20 @@ const Exam = () => {
             return
         }
 
-        const timer = setInterval(() => {
-            setTimeRemaining(prevTime => prevTime - 1)
-            setTimerProgress((timeRemaining / totalDuration) * 100)
-        }, 1000) // Decrease timeRemaining every 1 second
+    }, [countdown])
 
-        return () => clearInterval(timer) // Clean up the timer when component unmounts
-    }, [timeRemaining, countdown])
+  const handleFinishExam = () => {
+    setView(true)
+    setCurrentQuestion(0)
 
-    const handleFinishExam = () => {
-        setView(true)
-        setCurrentQuestion(0)
-
-        /////////////////Time////////////
-        setCountdown(0);
-        setTimeRemaining(0);
-        setTimerProgress(0)
-        ///////////////End/////////////
-
-        fetch('https://e-exam-pro-server.vercel.app/examdata', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(result)
-        })
-    }
+    fetch('http://localhost:5000/examdata', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(result)
+    })
+  }
 
     const [optionMcq, setMcq] = useState(null)
 
@@ -93,25 +81,25 @@ const Exam = () => {
         setInputValue(parseFloat(event.target.value))
     }
 
-    const onSelectOption = (index, option, question) => {
-        setAnswerIndx(index)
-        const result1 = result.find(obj => obj.question === question)
-        if (result1) {
-            result1.userAns = option
-        } else {
-            const newObject = {
-                question: question,
-                correctAnswer: correctAnswer,
-                userAns: option
-            }
-            setResult(prevArray => [...prevArray, newObject])
-            setMcq(option)
-        }
+  const onSelectOption = (index, option, question) => {
+    setAnswerIndx(index)
+    const result1 = result.find(obj => obj.question === question)
+    if (result1) {
+      result1.userAns = option
+    } else {
+      const newObject = {
+        question: question,
+        correctAnswer: correctAnswer,
+        userAns: option
+      }
+      setResult(prevArray => [...prevArray, newObject])
+      setMcq(option)
     }
+  }
 
     const onClickNext = () => {
         setMcq(null)
-        if (examType == 'fib') {
+        if (examType == 'FillInTheBlank') {
             const result1 = result.find(obj => obj.question === question)
             if (result1) {
                 result1.userAns = inputValue
@@ -136,74 +124,40 @@ const Exam = () => {
             }
         }
 
-        setAnswerIndx(null)
-        if (currentQuestion !== questions.length - 1) {
-            setCurrentQuestion(prev => prev + 1)
-        } else {
-
-            /////////////////Time////////////
-            setCountdown(0);
-            setTimeRemaining(0);
-            setTimerProgress(0)
-            ///////////////End/////////////
-
-            setView(true)
-            setCurrentQuestion(0)
-
-            console.log('hit')
-            console.log(result)
-            fetch('https://e-exam-pro-server.vercel.app/examdata', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(result)
-            })
-        }
+    setAnswerIndx(null)
+    if (currentQuestion !== questions.length - 1) {
+      setCurrentQuestion(prev => prev + 1)
+    } else {
+      setView(true)
+      setCurrentQuestion(0)
+      console.log('hit')
+      console.log(result)
+      fetch('http://localhost:5000/examdata', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(result)
+      })
     }
-    const onClickPrevious = () => {
-        setAnswerIndx(null)
-        if (currentQuestion !== 0) {
-            setCurrentQuestion(prev => prev - 1)
-        }
-        setInputValue('')
+  }
+  const onClickPrevious = () => {
+    setAnswerIndx(null)
+    if (currentQuestion !== 0) {
+      setCurrentQuestion(prev => prev - 1)
     }
-    console.log(inputValue)
-
-    ////modal hints////
-    const [hintStates, setHintStates] = useState(
-        questions.map(() => false) // Initialize hint states for all questions
-    );
-
-    const [isHintModalOpen, setIsHintModalOpen] = useState(false);
-
-    const toggleHint = () => {
-        const newHintStates = [...hintStates];
-        newHintStates[currentQuestion] = true;
-
-        setHintStates(newHintStates);
-        setIsHintModalOpen(true);
-    };
-
-    const closeHintModal = () => {
-        setHintStates((prevHintStates) =>
-            prevHintStates.map((state, index) =>
-                index === currentQuestion ? false : state
-            )
-        );
-    };
-
-
-
-    return (
-        <div className='container mx-auto '>
-            {countdown > 0 ? (
-                <div className=' h-[80vh] flex flex-col justify-center items-center '>
-                    <div className='text-center '>
-                        <h1 className='my-1 font-bold text-red-600 text-9xl'>
-                            {' '}
-                            {countdown}
-                        </h1>
+    setInputValue('')
+  }
+  console.log(inputValue)
+  return (
+    <div className='container mx-auto '>
+      {countdown > 0 ? (
+        <div className=' h-[80vh] flex flex-col justify-center items-center '>
+          <div className='text-center '>
+            <h1 className='my-1 font-bold text-red-600 text-9xl'>
+              {' '}
+              {countdown}
+            </h1>
 
                         <h1 className='text-7xl'>Get Ready</h1>
                     </div>

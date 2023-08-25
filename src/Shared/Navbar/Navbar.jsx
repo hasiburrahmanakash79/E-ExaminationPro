@@ -33,13 +33,13 @@ const Navbar = () => {
   const navbarLink_Middle = (
     <>
       <details className="z-[1]">
-        <summary>Courses</summary>
-        <ul className="z-50 p-2 rounded-lg primary-bg md:rounded-none">
+        <summary>Exam</summary>
+        <ul className="p-2 z-50 navigation-bar rounded-lg md:rounded-none">
           <li>
-            <Link to="/free_courses">Free Courses</Link>
+            <Link to='/free_courses'>All Subject</Link>
           </li>
           <li>
-            <Link>Paid Courses</Link>
+            <Link>Rules</Link>
           </li>
         </ul>
       </details>
@@ -58,7 +58,7 @@ const Navbar = () => {
         <Link to="/contact">Contact Us</Link>
       </li>
       <li>
-        <Link to="/notice">Notice</Link>
+        <Link to='/createQues'>Create Ques</Link>
       </li>
       <li>
         <Link to="/about">About us</Link>
