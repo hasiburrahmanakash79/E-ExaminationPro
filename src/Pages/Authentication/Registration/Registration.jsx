@@ -1,18 +1,17 @@
-import { useState, useContext } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
-import { useForm } from "react-hook-form";
-import SocialLogin from "../../../Hooks/SocialLogin/SocialLogin";
-import { AuthContext } from "../../../Provider/AuthProvider";
-import Loading from "../../../Components/Loading/Loading";
-import useAuth from "../../../Components/useAuth.jsx/useAuth";
-
+import { useState, useContext } from 'react'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
+import { useForm } from 'react-hook-form'
+import SocialLogin from '../../../Hooks/SocialLogin/SocialLogin'
+import { AuthContext } from '../../../Provider/AuthProvider'
+import Loading from '../../../Components/Loading/Loading'
+import useAuth from '../../../Components/useAuth.jsx/useAuth'
+import Swal from 'sweetalert2'
 const Registration = () => {
-  const [passShow, setPassShow] = useState(false);
-  const navigate = useNavigate();
-  const location = useLocation();
-  const from = location.state?.from?.pathname || "/";
-  const { signUpUser, updateUserInfo, loading } = useAuth();
-
+  const [passShow, setPassShow] = useState(false)
+  const navigate = useNavigate()
+  const location = useLocation()
+  const from = location.state?.from?.pathname || '/'
+  const { signUpUser, updateUserInfo, loading } = useAuth()
 
   if (loading) {
     return <Loading />
@@ -22,104 +21,104 @@ const Registration = () => {
     register,
     handleSubmit,
     watch,
-    formState: { errors },
-  } = useForm();
-  const password = watch("password");
+    formState: { errors }
+  } = useForm()
+  const password = watch('password')
 
-  const onSubmit = (data) => {
-    signUpUser(data.email, data.password).then((result) => {
-      const loggedUser = result.user;
-      navigate(from, { replace: true });
-      console.log(loggedUser);
+  const onSubmit = data => {
+    signUpUser(data.email, data.password).then(result => {
+      const loggedUser = result.user
+      navigate(from, { replace: true })
+      console.log(loggedUser)
 
       updateUserInfo(data.name, data.photo)
-      .then(() => {
-        const userInfo = {
-          displayName: data.name,
-          email: data.email,
-          photoURL: data.photo
-        };
-        fetch("https://e-exam-pro-server.vercel.app/users", {
-          method: "POST",
-          headers: {
-            "content-type": "application/json"
-          },
-          body: JSON.stringify(userInfo)
-        })
-        .then((res) => res.json())
-        .then((data) => {
-          if(data.insertedId) {
-            navigate(from, { replace: true });
-            Swal.fire({
-              showConfirmButton: false,
-              timer: 1500,
-              title: "Registration Successful",
-              icon: "success",
-            });
+        .then(() => {
+          const userInfo = {
+            displayName: data.name,
+            email: data.email,
+            photoURL: data.photo
           }
+          fetch('https://e-exam-pro-server.vercel.app/users', {
+            method: 'POST',
+            headers: {
+              'content-type': 'application/json'
+            },
+            body: JSON.stringify(userInfo)
+          })
+            .then(res => res.json())
+            .then(data => {
+              if (data.insertedId) {
+                navigate(from, { replace: true })
+                Swal.fire({
+                  showConfirmButton: false,
+                  timer: 1500,
+                  title: 'Registration Successful',
+                  icon: 'success'
+                })
+              }
+            })
         })
-      })
-      .catch((error) => console.log(error.message))
-    });
-  };
+        .catch(error => console.log(error.message))
+    })
+  }
   return (
-    <div className="Auth_bg">
-      <div className="hero min-h-screen">
-        <div className="md:flex justify-between items-center gap-10 px-3">
-          <div className="md:w-1/2">
-            <img src="https://i.ibb.co/jDMz1bj/login-page-banner.png" alt="" />
+    <div className='Auth_bg'>
+      <div className='min-h-screen hero'>
+        <div className='items-center justify-between gap-10 px-3 md:flex'>
+          <div className='md:w-1/2'>
+            <img src='https://i.ibb.co/jDMz1bj/login-page-banner.png' alt='' />
           </div>
-          <div className="md:w-1/2 rounded-lg card border border-black flex-shrink-0 w-full shadow-xl backdrop-blur-sm bg-transparent">
-            <div className=" text-center">
-              <h1 className="text-4xl my-5 font-bold text-white">
+          <div className='flex-shrink-0 w-full bg-transparent border border-black rounded-lg shadow-xl md:w-1/2 card backdrop-blur-sm'>
+            <div className='text-center '>
+              <h1 className='my-5 text-4xl font-bold text-white'>
                 Registration
               </h1>
             </div>
-            <div className="card-body text-white">
-              <form onSubmit={handleSubmit(onSubmit)} className="!text-white">
-                <div className="md:grid grid-cols-2 gap-3">
-                  <div className="form-control">
-                    <label className="label">
-                      <span className="label-text">Name</span>
+            <div className='text-white card-body'>
+              <form onSubmit={handleSubmit(onSubmit)} className='!text-white'>
+                <div className='grid-cols-2 gap-3 md:grid'>
+                  <div className='form-control'>
+                    <label className='label'>
+                      <span className='label-text'>Name</span>
                     </label>
                     <input
-                      {...register("name", { required: true })}
-                      type="text"
-                      placeholder="Enter your name"
-                      className="input input-bordered bg-transparent"
+                      {...register('name', { required: true })}
+                      type='text'
+                      placeholder='Enter your name'
+                      className='bg-transparent input input-bordered'
                     />
                     {errors.name && <span>This field is required</span>}
                   </div>
-                  <div className="form-control">
-                    <label className="label">
-                      <span className="label-text">Email</span>
+                  <div className='form-control'>
+                    <label className='label'>
+                      <span className='label-text'>Email</span>
                     </label>
                     <input
-                      {...register("email", { required: true })}
-                      type="email"
-                      placeholder="Enter your email"
-                      className="input input-bordered bg-transparent"
+                      {...register('email', { required: true })}
+                      type='email'
+                      placeholder='Enter your email'
+                      className='bg-transparent input input-bordered'
                     />
                     {errors.email && <span>This field is required</span>}
                   </div>
-                  <div className="form-control">
-                    <label className="label">
-                      <span className="label-text">Password</span>
+                  <div className='form-control'>
+                    <label className='label'>
+                      <span className='label-text'>Password</span>
                     </label>
                     <input
-                      {...register("password", {
-                        required: "Password field is required",
+                      {...register('password', {
+                        required: 'Password field is required',
                         minLength: {
                           value: 6,
-                          message: "Password must be at least 6 characters",
-                        },
+                          message: 'Password must be at least 6 characters'
+                        }
                       })}
-                      type={passShow ? "text" : "password"}
-                      placeholder="Enter your password"
-                      className="input input-bordered bg-transparent"
+                      type={passShow ? 'text' : 'password'}
+                      placeholder='Enter your password'
+                      className='bg-transparent input input-bordered'
                     />
-                    <label className="label">
-                      <a className="label-text-alt link link-hover">
+                    <label className='label'>
+                      <a className='label-text-alt link link-hover'>
                         <p onClick={() => setPassShow(!passShow)}>
                           <small>
                             {passShow ? (
@@ -134,70 +133,70 @@ const Registration = () => {
                     {errors.password && <span>{errors.password.message}</span>}
                   </div>
 
-                  <div className="form-control">
-                    <label className="label">
-                      <span className="label-text">Confirm Password</span>
+                  <div className='form-control'>
+                    <label className='label'>
+                      <span className='label-text'>Confirm Password</span>
                     </label>
                     <input
-                      {...register("confirm", {
-                        required: "Confirm password field is required",
-                        validate: (value) =>
-                          value === password || "Passwords do not match",
+                      {...register('confirm', {
+                        required: 'Confirm password field is required',
+                        validate: value =>
+                          value === password || 'Passwords do not match'
                       })}
-                      type={passShow ? "text" : "password"}
-                      placeholder="Confirm password"
-                      className="input input-bordered bg-transparent"
+                      type={passShow ? 'text' : 'password'}
+                      placeholder='Confirm password'
+                      className='bg-transparent input input-bordered'
                     />
                     {errors.confirm && <span>{errors.confirm.message}</span>}
                   </div>
-                  <div className="form-control">
-                    <label className="label">
-                      <span className="label-text">Contact Number</span>
+                  <div className='form-control'>
+                    <label className='label'>
+                      <span className='label-text'>Contact Number</span>
                     </label>
                     <input
-                      {...register("number", { required: true })}
-                      type="number"
-                      placeholder="+880"
-                      className="input input-bordered bg-transparent"
+                      {...register('number', { required: true })}
+                      type='number'
+                      placeholder='+880'
+                      className='bg-transparent input input-bordered'
                     />
                     {errors.number && <span>This field is required</span>}
                   </div>
-                  <div className="form-control">
-                    <label className="label">
-                      <span className="label-text">Photo URL</span>
+                  <div className='form-control'>
+                    <label className='label'>
+                      <span className='label-text'>Photo URL</span>
                     </label>
                     <input
-                      {...register("photo", { required: true })}
-                      type="text"
-                      placeholder="Photo URL"
-                      className="input input-bordered bg-transparent"
+                      {...register('photo', { required: true })}
+                      type='text'
+                      placeholder='Photo URL'
+                      className='bg-transparent input input-bordered'
                     />
                   </div>
                 </div>
-                <div className="form-control">
-                  <label className="label">
-                    <span className="label-text">Address</span>
+                <div className='form-control'>
+                  <label className='label'>
+                    <span className='label-text'>Address</span>
                   </label>
                   <input
-                    {...register("address", { required: true })}
-                    type="text"
-                    placeholder="Enter your Address"
-                    className="input input-bordered bg-transparent"
+                    {...register('address', { required: true })}
+                    type='text'
+                    placeholder='Enter your Address'
+                    className='bg-transparent input input-bordered'
                   />
                 </div>
-                <div className="form-control mt-5">
-                  <button className="btn btn-primary">Registration</button>
+                <div className='mt-5 form-control'>
+                  <button className='btn btn-primary'>Registration</button>
                 </div>
               </form>
-              <div className="text-center">
-                <div className="divider divide-red-50"></div>
-                <p className="font-semibold">Or Sign In with</p>
-                <div className="flex items-center justify-center gap-4 my-2">
+              <div className='text-center'>
+                <div className='divider divide-red-50'></div>
+                <p className='font-semibold'>Or Sign In with</p>
+                <div className='flex items-center justify-center gap-4 my-2'>
                   <SocialLogin></SocialLogin>
                 </div>
                 <p>
-                  Already Have Any Account?{" "}
-                  <Link className="link link-hover" to="/login">
+                  Already Have Any Account?{' '}
+                  <Link className='link link-hover' to='/login'>
                     Click Here
                   </Link>
                 </p>
@@ -207,7 +206,7 @@ const Registration = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Registration;
+export default Registration
