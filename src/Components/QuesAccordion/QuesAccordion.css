@@ -27,11 +27,7 @@
   gap: 10px;
 }
 
-<<<<<<< HEAD
-.label1::before {
-=======
 .accordion li label::before {
->>>>>>> ee473864415a94a84457c1c9a408288eeab52992
   content: "+";
   color: #b21261;
   margin-right: 10px;
