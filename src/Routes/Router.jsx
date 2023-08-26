@@ -9,12 +9,14 @@ import Blog from '../Pages/BlogPage/Blog/Blog'
 import Contact from '../Pages/Contact/Contact'
 import ShortQ from '../Pages/Exams/ShortQuestion/ShortQ'
 import Exam from '../Pages/FreeCoursePage/ExamPage/Exam'
-import FreeCoursePage from '../Pages/FreeCoursePage/FreeCoursePage'
-import QuizHomePage from '../Pages/Home/DemoTest/QuizHomePage'
-import ResultPage from '../Pages/Home/DemoTest/ResultPage'
+import ShortQ from '../Pages/Exams/ShortQuestion/ShortQ'
 import Instructors from '../Pages/InstuctorPage/Instructors'
+import Blog from '../Pages/BlogPage/Blog/Blog'
 import Notice from '../Pages/NoticePage/Notice/Notice'
-
+import Dashboard from '../Layouts/Dashboard'
+import ResultPageForMcqFib from '../components/QuestionRelated/ResultPageForMcqFib'
+import ManageUsers from '../Pages/Dashboard/AdminDashboard/ManageUser/ManageUsers'
+import AdminHome from '../Pages/Dashboard/AdminDashboard/AdminHome/AdminHome'
 
 const router = createBrowserRouter([
   {
@@ -37,12 +39,6 @@ const router = createBrowserRouter([
         path: '/notice',
         element: <Notice />
       },
-
-      {
-        path: '/about',
-        element: <AboutUs></AboutUs>
-
-      },
       {
         path: '/demo-test',
         element: <QuizHomePage />
@@ -64,10 +60,13 @@ const router = createBrowserRouter([
         element: <Exam></Exam>
       },
       {
-        path: "/shortQ",
+        path: '/shortQ',
         element: <ShortQ />
+      },
+      {
+        path: '/result',
+        element: <ResultPageForMcqFib />
       }
-
     ]
   },
 
@@ -78,7 +77,22 @@ const router = createBrowserRouter([
   {
     path: '/signUp',
     element: <Registration />
-  }
+  },
+  {
+    path: '/dashboard',
+    element: <Dashboard/>,
+    children: [
+      {
+        path: '/dashboard/adminHome',
+        element: <AdminHome/>
+      },
+      {
+        path: '/dashboard/manageUsers',
+        element: <ManageUsers/>
+      },
+    ]
+  },
+  
 ])
 
 export default router

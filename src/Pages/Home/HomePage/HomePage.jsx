@@ -39,8 +39,9 @@ const HomePage = () => {
   return (
     <div className="">
       <div
-        className={`hero min-h-[100vh]  transition-all duration-700 ${showMainContent ? "  opacity-0 hidden" : "opacity-100 "
-          }`}
+        className={`hero min-h-[100vh]  transition-all duration-700 ${
+          showMainContent ? "  opacity-0 hidden" : "opacity-100 "
+        }`}
         style={{ backgroundImage: `url(${examPic})` }}
       >
         <div className="hero-overlay bg-opacity-60"></div>
@@ -59,8 +60,9 @@ const HomePage = () => {
       </div>
 
       <div
-        className={`transition-opacity duration-700 ${showMainContent ? "  opacity-100" : "opacity-0"
-          } primary-bg2 `}
+        className={`transition-opacity duration-700 ${
+          showMainContent ? "  opacity-100" : "opacity-0"
+        } primary-bg2 `}
       >
         <Banner />
         <div className="container mx-auto">
@@ -68,10 +70,8 @@ const HomePage = () => {
           <TopSubjects />
           <Achievement />
           <Testimonial />
-          {/* <Modallls></Modallls> */}
         </div>
         <Faq />
-
       </div>
     </div>
   );
