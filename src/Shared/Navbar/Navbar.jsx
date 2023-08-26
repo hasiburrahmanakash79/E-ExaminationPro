@@ -36,7 +36,7 @@ const Navbar = () => {
         <summary>Exam</summary>
         <ul className="p-2 z-50 navigation-bar rounded-lg md:rounded-none">
           <li>
-            <Link to='/free_courses'>All Subject</Link>
+            <Link to='/allSubjects'>All Subject</Link>
           </li>
           <li>
             <Link>Rules</Link>
