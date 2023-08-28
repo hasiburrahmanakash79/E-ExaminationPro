@@ -8,7 +8,7 @@ const useAdmin = () => {
     const {data: isAdmin, isAdminLoading} = useQuery({
         queryKey: ['isAdmin', user?.email],
         queryFn: async() => {
-            res = await axios.get(`http://localhost:5000/users/admin/${user?.email}`)
+            res = await axios.get(`https://e-exam-pro-server.vercel.app/users/admin/${user?.email}`)
             return res.data.admin;
         }
     })

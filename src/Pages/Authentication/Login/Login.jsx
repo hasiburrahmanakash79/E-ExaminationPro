@@ -1,17 +1,20 @@
 import "./Authentication.css";
 import React, { useEffect, useState, useContext } from "react";
 import { Link, json, useLocation, useNavigate } from "react-router-dom";
+import { useEffect, useState, useContext } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import SocialLogin from "../../../Hooks/SocialLogin/SocialLogin";
 import { AuthContext } from "../../../Provider/AuthProvider";
 import Swal from "sweetalert2";
+import Loading from "../../../Components/Loading/Loading";
 
 const Login = () => {
   //code verification
   const [passShow, setPassShow] = useState(false);
   const [randomNumbers, setRandomNumbers] = useState([]);
   const [isButtonEnable, setIsButtonEnable] = useState(false);
-  const { logInUser } = useContext(AuthContext);
+  const { logInUser, loading } = useContext(AuthContext);
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -34,10 +37,13 @@ const Login = () => {
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
   } = useForm();
 
+  if (loading) {
+    return <Loading />
+  }
+  
   const onSubmit = (data) => {
     logInUser(data.email, data.password)
       .then((result) => {

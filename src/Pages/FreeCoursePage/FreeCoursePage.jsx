@@ -9,7 +9,7 @@ const FreeCoursePage = () => {
     // const { isLoading, isError, data, error } = useQuery({
     //     queryKey: ['allSubject'],
     //     queryFn: async ()=>{
-    //         const res=axios.get('http://localhost:5000/allSubjects')
+    //         const res=axios.get('https://e-exam-pro-server.vercel.app/allSubjects')
     //         return data=res.data
     //     },
     //   })
