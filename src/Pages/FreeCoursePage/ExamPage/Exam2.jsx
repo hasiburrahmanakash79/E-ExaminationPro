@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { jsQuizz, mathQues } from '../../../../public/question'
+
 import { useLoaderData, useLocation } from 'react-router-dom'
 import AnsDataPage from '../../../components/examComponents/AnsDataPage'
 import FillTheBlank from '../../../components/examComponents/FillTheBlank'

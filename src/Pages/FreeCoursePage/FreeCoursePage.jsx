@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import './FreeCoursePage.css'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useQuery } from 'react-query';
 import { useEffect } from 'react';
 import { useState } from 'react';
+import { AuthContext } from '../../Provider/AuthProvider';
 const FreeCoursePage = () => {
     // const { isLoading, isError, data, error } = useQuery({
     //     queryKey: ['allSubject'],
@@ -12,11 +13,24 @@ const FreeCoursePage = () => {
     //         return data=res.data
     //     },
     //   })
+    const {logOut}=useContext(AuthContext)
     const [data, setData] = useState([])
+    const navigate=useNavigate()
     useEffect(() => {
-        fetch('http://localhost:5000/allSubjects')
+        fetch('http://localhost:5000/allSubjects',{
+            headers:{
+                authorization:`bearar ${localStorage.getItem('access-token')}`
+            }
+        })
             .then(res => res.json())
-            .then(data => setData(data))
+            .then(data => {
+                console.log(data)
+
+                if(data.error==true){
+                    logOut()
+                    navigate('/login')
+                }
+                setData(data)})
     }, [])
     console.log(data)
     return (
@@ -24,7 +38,7 @@ const FreeCoursePage = () => {
 
             <div className='grid grid-cols-1 md:grid-cols-2   lg:grid-cols-3 gap-10 mx-2'>
                 {
-                    data?.map((subject, index) => <div className="card  bg-base-100 h-[280px] shadow-xl image-full">
+                    data?.map((subject, index) => <div key={index} className="card  bg-base-100 h-[280px] shadow-xl image-full">
                         <div className='img '>
 
                         </div>

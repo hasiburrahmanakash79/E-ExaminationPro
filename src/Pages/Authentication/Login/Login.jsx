@@ -1,6 +1,6 @@
 import "./Authentication.css";
 import React, { useEffect, useState, useContext } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, json, useLocation, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import SocialLogin from "../../../Hooks/SocialLogin/SocialLogin";
 import { AuthContext } from "../../../Provider/AuthProvider";
@@ -12,7 +12,7 @@ const Login = () => {
   const [randomNumbers, setRandomNumbers] = useState([]);
   const [isButtonEnable, setIsButtonEnable] = useState(false);
   const { logInUser } = useContext(AuthContext);
-  
+
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -54,7 +54,7 @@ const Login = () => {
       .catch((error) => {
         console.log(error);
       });
-    
+
   };
 
   return (

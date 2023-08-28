@@ -11,14 +11,13 @@ const Navbar = () => {
 
   const handleLogout = () => {
     logOut()
-      .then(
-        Swal.fire({
+      .then(()=>{ Swal.fire({
           icon: "success",
           title: "Log Out Successful",
           showConfirmButton: false,
           timer: 1500,
         })
-      )
+      })
       .catch((error) => console.log(error));
   };
 
