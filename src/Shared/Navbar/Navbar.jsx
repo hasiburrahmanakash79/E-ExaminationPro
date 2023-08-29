@@ -1,6 +1,6 @@
-import logo from "../../assets/logo.png";
+import { AiFillBell } from "react-icons/ai";
 import { Link } from "react-router-dom";
-import logo from '../../assets/logo.png';
+import logo from "../../assets/logo12.png";
 import "./Navbar.css";
 
 import { useContext } from "react";
@@ -34,13 +34,13 @@ const Navbar = () => {
   const navbarLink_Middle = (
     <>
       <details className="z-[1]">
-        <summary>Courses</summary>
-        <ul className="z-50 p-2 rounded-lg primary-bg md:rounded-none">
+        <summary>Exam</summary>
+        <ul className="p-2 z-50 navigation-bar rounded-lg md:rounded-none">
           <li>
-            <Link to="/free_courses">Free Courses</Link>
+            <Link to="/allSubjects">All Subject</Link>
           </li>
           <li>
-            <Link>Paid Courses</Link>
+            <Link>Rules</Link>
           </li>
         </ul>
       </details>
@@ -59,7 +59,10 @@ const Navbar = () => {
         <Link to="/contact">Contact Us</Link>
       </li>
       <li>
-        <Link to="/notice">Notice</Link>
+        <Link to="/createQues">Create Ques</Link>
+      </li>
+      <li>
+        <Link to="/about">About us</Link>
       </li>
     </>
   );
@@ -125,6 +128,13 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="navbar-end">
+          <div className="indicator me-4">
+            <span className="indicator-item  badge badge-secondary">1+</span>
+            <button>
+              <Link to="notice" className="text-2xl"> <AiFillBell></AiFillBell></Link>
+            </button>
+          </div>
+
           <button
             onClick={() => window.my_modal_3.showModal()}
             className="btn btn-ghost btn-circle"

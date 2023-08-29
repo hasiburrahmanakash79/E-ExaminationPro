@@ -1,0 +1,23 @@
+.images img {
+  animation: floaty 1.8s infinite alternate;
+}
+.shadow_image {
+  animation: shadow 1.8s infinite alternate;
+}
+
+@keyframes floaty {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(24px);
+  }
+}
+@keyframes shadow {
+  0% {
+    transform: scale(1, 1);
+  }
+  100% {
+    transform: scale(0.85, 0.85);
+  }
+}
