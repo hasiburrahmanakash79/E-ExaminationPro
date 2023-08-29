@@ -21,8 +21,8 @@ import ResultPage from '../Pages/Home/DemoTest/ResultPage'
 import Notice from '../Pages/NoticePage/Notice/Notice'
 import AllExam from '../Pages/FreeCoursePage/ExamPage/allExam'
 import Exam2 from '../Pages/FreeCoursePage/ExamPage/Exam2'
-import CreateQuesPaper from '../Pages/DashboardPages/InstructorPages/CreateQuesPaper/CreateQuesPaper'
 import FreeCoursePage from '../Pages/FreeCoursePage/FreeCoursePage'
+import CreateQuesPaper from '../Pages/Dashboard/InstructorDashboard/CreateQuestion/CreateQuesPaper'
 
 const router = createBrowserRouter([
   {
@@ -89,10 +89,6 @@ const router = createBrowserRouter([
         element: <ShortQ />
       },
       {
-        path: '/createQues',
-        element: <CreateQuesPaper />
-      },
-      {
         path: '/result',
         element: <ResultPageForMcqFib />
       }
@@ -118,6 +114,10 @@ const router = createBrowserRouter([
       {
         path: '/dashboard/manageUsers',
         element: <ManageUsers />
+      },
+      {
+        path: '/dashboard/createQues',
+        element: <CreateQuesPaper />
       }
     ]
   }

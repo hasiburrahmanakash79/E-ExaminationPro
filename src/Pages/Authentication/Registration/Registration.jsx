@@ -22,9 +22,9 @@ const Registration = () => {
   } = useForm();
   const password = watch("password");
 
-  if (loading) {
-    return <Loading />;
-  }
+  // if (loading) {
+  //   return <Loading />;
+  // }
   const onSubmit = (data) => {
     signUpUser(data.email, data.password).then((result) => {
       const loggedUser = result.user;

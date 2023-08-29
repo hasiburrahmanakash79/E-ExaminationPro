@@ -34,7 +34,7 @@ const Navbar = () => {
     <>
       <details className="z-[1]">
         <summary>Exam</summary>
-        <ul className="p-2 z-50 navigation-bar rounded-lg md:rounded-none">
+        <ul className="z-50 p-2 rounded-lg navigation-bar md:rounded-none">
           <li>
             <Link to="/allSubjects">All Subject</Link>
           </li>
@@ -56,9 +56,6 @@ const Navbar = () => {
       </li>
       <li>
         <Link to="/contact">Contact Us</Link>
-      </li>
-      <li>
-        <Link to="/createQues">Create Ques</Link>
       </li>
       <li>
         <Link to="/about">About us</Link>

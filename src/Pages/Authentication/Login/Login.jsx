@@ -38,15 +38,16 @@ const Login = () => {
     formState: { errors },
   } = useForm();
 
-  if (loading) {
-    return <Loading />
-  }
+  // if (loading) {
+  //   return <Loading />
+  // }
   
   const onSubmit = (data) => {
     logInUser(data.email, data.password)
       .then((result) => {
         const loggedUser = result.user;
         console.log(loggedUser);
+        
         navigate(from, { replace: true });
         Swal.fire({
           showConfirmButton: false,
