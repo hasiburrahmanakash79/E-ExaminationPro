@@ -1,6 +1,6 @@
 import "./Authentication.css";
-import { useEffect, useState, useContext } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import React, { useEffect, useState, useContext } from "react";
+import { Link, json, useLocation, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import SocialLogin from "../../../Hooks/SocialLogin/SocialLogin";
 import { AuthContext } from "../../../Provider/AuthProvider";
@@ -10,8 +10,8 @@ import Loading from "../../../Components/Loading/Loading";
 const Login = () => {
   //code verification
   const [passShow, setPassShow] = useState(false);
-  const [randomNumbers, setRandomNumbers] = useState([]);
-  const [isButtonEnable, setIsButtonEnable] = useState(false);
+  // const [randomNumbers, setRandomNumbers] = useState([]);
+  // const [isButtonEnable, setIsButtonEnable] = useState(false);
   const { logInUser, loading } = useContext(AuthContext);
 
   const navigate = useNavigate();
@@ -19,17 +19,17 @@ const Login = () => {
 
   const from = location.state?.from?.pathname || "/";
 
-  useEffect(() => {
-    const newRandomNumbers = Array.from({ length: 6 }, () =>
-      Math.floor(Math.random() * 10)
-    );
-    setRandomNumbers(newRandomNumbers);
-  }, []);
+  // useEffect(() => {
+  //   const newRandomNumbers = Array.from({ length: 6 }, () =>
+  //     Math.floor(Math.random() * 10)
+  //   );
+  //   setRandomNumbers(newRandomNumbers);
+  // }, []);
 
-  const handleInputChange = (event) => {
-    console.log(event.target.value);
-    setIsButtonEnable(event.target.value === randomNumbers.join(""));
-  };
+  // const handleInputChange = (event) => {
+  //   console.log(event.target.value);
+  //   setIsButtonEnable(event.target.value === randomNumbers.join(""));
+  // };
   //verification end
 
   const {
@@ -115,26 +115,26 @@ const Login = () => {
                 </div>
                 <div className="form-control ">
                   <input
-                    disabled={!isButtonEnable}
+                    // disabled={!isButtonEnable}
                     className="btn btn-primary "
                     type="submit"
                     value={"Login"}
                   />
                 </div>
               </form>
-              <div className="grid grid-cols-1 gap-4 mt-3 md:grid-cols-2">
+              {/* <div className="grid grid-cols-1 gap-4 mt-3 md:grid-cols-2">
                 <p className="w-1/3 px-2 py-1 mx-auto text-center text-white bg-green-500 rounded-lg md:w-full">
                   {" "}
                   {randomNumbers.join(" ")}
-                </p>
+                </p> */}
                 {/* varification input field */}
-                <input
+                {/* <input
                   onChange={handleInputChange}
                   type="text"
                   placeholder="Type Number"
                   className="input input-sm w-[117px] md:w-full mx-auto input-bordered bg-transparent"
                 />
-              </div>
+              </div> */}
               <div className="text-center mb-7">
                 <div className="divider divide-red-50"></div>
                 <p className="font-semibold">Or Sign In with</p>

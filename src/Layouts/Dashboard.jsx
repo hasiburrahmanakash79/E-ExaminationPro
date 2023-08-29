@@ -21,11 +21,12 @@ const Dashboard = () => {
   // const isAdmin = true
   const { user } = useContext(AuthContext)
   const [open, setOpen] = useState(true)
-  const isAdmin = useAdmin()
-  console.log(isAdmin);
-  // const isInstructor = useInstructor()
 
-  // console.log(isAdmin, isInstructor);
+  const [isAdmin, isAdminLoading] = useAdmin()
+  const [isInstructor, isInstructorLoading] = useInstructor()
+  console.log(isAdmin);
+
+  
 
   const iconMappings = {
     Users: FaUser,
