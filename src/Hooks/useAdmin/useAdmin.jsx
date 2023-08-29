@@ -4,11 +4,12 @@ import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 
 const useAdmin = () => {
-    const {user} = useContext(AuthContext)
-    const {data: isAdmin, isAdminLoading} = useQuery({
+    const {user, isLoading} = useContext(AuthContext)
+    const {data: isAdmin, isLoading: isAdminLoading} = useQuery({
         queryKey: ['isAdmin', user?.email],
+        enabled: !isLoading,
         queryFn: async() => {
-            res = await axios.get(`https://e-exam-pro-server.vercel.app/users/admin/${user?.email}`)
+            res = await axios.get(`http://localhost:5000/users/admin/${user?.email}`)
             return res.data.admin;
         }
     })

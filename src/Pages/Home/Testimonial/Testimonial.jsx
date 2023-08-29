@@ -17,7 +17,7 @@ const Testimonial = () => {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          "https://e-exam-pro-server.vercel.app/testimonials"
+          "http://localhost:5000/testimonials"
         );
         const data = await response.json();
 

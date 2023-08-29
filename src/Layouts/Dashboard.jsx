@@ -18,10 +18,11 @@ import useInstructor from '../Hooks/useInstructor/useInstructor'
 
 const Dashboard = () => {
   // set user role dynamically
-  const isAdmin = true
+  // const isAdmin = true
   const { user } = useContext(AuthContext)
   const [open, setOpen] = useState(true)
-  // const isAdmin = useAdmin()
+  const isAdmin = useAdmin()
+  console.log(isAdmin);
   // const isInstructor = useInstructor()
 
   // console.log(isAdmin, isInstructor);
