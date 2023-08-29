@@ -1,6 +1,6 @@
 import "./Authentication.css";
-import { useEffect, useState, useContext } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import React, { useEffect, useState, useContext } from "react";
+import { Link, json, useLocation, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import SocialLogin from "../../../Hooks/SocialLogin/SocialLogin";
 import { AuthContext } from "../../../Provider/AuthProvider";
@@ -115,26 +115,26 @@ const Login = () => {
                 </div>
                 <div className="form-control ">
                   <input
-                    disabled={!isButtonEnable}
+                    // disabled={!isButtonEnable}
                     className="btn btn-primary "
                     type="submit"
                     value={"Login"}
                   />
                 </div>
               </form>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-3">
+              {/* <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-3">
                 <p className="text-center bg-green-500 text-white w-1/3 md:w-full px-2 py-1 rounded-lg mx-auto">
                   {" "}
                   {randomNumbers.join(" ")}
-                </p>
+                </p> */}
                 {/* varification input field */}
-                <input
+                {/* <input
                   onChange={handleInputChange}
                   type="text"
                   placeholder="Type Number"
                   className="input input-sm w-[117px] md:w-full mx-auto input-bordered bg-transparent"
                 />
-              </div>
+              </div> */}
               <div className="text-center mb-7">
                 <div className="divider divide-red-50"></div>
                 <p className="font-semibold">Or Sign In with</p>

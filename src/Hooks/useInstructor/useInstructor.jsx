@@ -1,14 +1,17 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../../Provider/AuthProvider';
 import { useQuery } from '@tanstack/react-query';
-import axios from 'axios';
+import useAxiosSecure from '../useAxiosSecure.jsx/useAxiosSecure';
 
 const useInstructor = () => {
-    const {user} = useContext(AuthContext)
+    const {user, loading} = useContext(AuthContext)
+    const [axiosSecure] = useAxiosSecure()
     const {data: isInstructor, isLoading: isInstructorLoading} = useQuery({
         queryKey: ['isInstructor', user?.email],
+        enabled: !loading,
         queryFn: async () => {
-            const res = await axios.get(`https://e-exam-pro-server.vercel.app/users/instructor/${user?.email}`)
+            const res = await axiosSecure.get(`/users/instructor/${user?.email}`)
+            console.log(res.data);
             return res.data.instructor;
         }
     })
