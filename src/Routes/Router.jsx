@@ -23,6 +23,7 @@ import AllExam from '../Pages/FreeCoursePage/ExamPage/allExam'
 import Exam2 from '../Pages/FreeCoursePage/ExamPage/Exam2'
 import FreeCoursePage from '../Pages/FreeCoursePage/FreeCoursePage'
 import CreateQuesPaper from '../Pages/Dashboard/InstructorDashboard/CreateQuestion/CreateQuesPaper'
+import InstructorHome from '../Pages/Dashboard/InstructorDashboard/InstructorHome/InstructorHome'
 
 const router = createBrowserRouter([
   {
@@ -114,6 +115,10 @@ const router = createBrowserRouter([
       {
         path: '/dashboard/manageUsers',
         element: <ManageUsers />
+      },
+      {
+        path: '/dashboard/instructorHome',
+        element: <InstructorHome />
       },
       {
         path: '/dashboard/createQues',
