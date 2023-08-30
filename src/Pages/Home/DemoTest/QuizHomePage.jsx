@@ -4,8 +4,20 @@ import QuestionsPage from './QuestionsPage'
 import ProgressBar from './ProgressBar'
 import './demoTest.css'
 import QuizProgressVisualizer from './QuizProgressVisualizer'
+import { useDispatch, useSelector } from 'react-redux'
+import {
+  nextQuestion,
+  selectOption,
+  submitTest
+} from '../../../redux/features/demoExam/demoExamSlice'
 
 const QuizHomePage = () => {
+  const dispatch = useDispatch()
+  const { questions, userAnswers, currentQuestionIndex, isSubmitted } =
+    useSelector(state => state.demoExam)
+
+  // const { userAnswers } = useSelector(state => state.demoExamSlice)
+
   const tempQuestions = [
     {
       id: 1,
@@ -53,45 +65,64 @@ const QuizHomePage = () => {
     }
   ]
 
-  const [questions, setQuestions] = useState(tempQuestions)
-  const [userAnswers, setUserAnswers] = useState([])
-  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0)
-  const [isSubmitted, setIsSubmitted] = useState(false)
+  // const [questions, setQuestions] = useState(tempQuestions)
+  // const [userAnswers, setUserAnswers] = useState([])
+  // const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0)
+  // const [isSubmitted, setIsSubmitted] = useState(false)
   //   handling selecting ans
-  const handleSelectOption = (quesId, selectedOptionId) => {
-    const existingAnswerIndex = userAnswers.findIndex(
-      answer => answer.questionId === quesId
-    )
+  // const handleSelectOption = (quesId, selectedOptionId) => {
+  //   const existingAnswerIndex = userAnswers.findIndex(
+  //     answer => answer.questionId === quesId
+  //   )
 
-    if (existingAnswerIndex !== -1) {
-      const updatedAnswers = [...userAnswers]
-      updatedAnswers[existingAnswerIndex] = {
-        ...updatedAnswers[existingAnswerIndex],
-        selectedOptionId
-      }
-      setUserAnswers(updatedAnswers)
-    } else {
-      setUserAnswers(prevUserAnswers => [
-        ...prevUserAnswers,
-        { questionId: quesId, selectedOptionId }
-      ])
-    }
+  //   if (existingAnswerIndex !== -1) {
+  //     const updatedAnswers = [...userAnswers]
+  //     updatedAnswers[existingAnswerIndex] = {
+  //       ...updatedAnswers[existingAnswerIndex],
+  //       selectedOptionId
+  //     }
+  //     setUserAnswers(updatedAnswers)
+  //   } else {
+  //     setUserAnswers(prevUserAnswers => [
+  //       ...prevUserAnswers,
+  //       { questionId: quesId, selectedOptionId }
+  //     ])
+  //   }
+  // }
+  const handleSelectOption = (quesId, selectedOptionId) => {
+    dispatch(selectOption({ questionId: quesId, selectedOptionId }))
   }
 
   // handling navigation to other questions by clicking on the sidebar square that represents which question they are in
-  const handleQuestionIndicationClick = index => {
-    setCurrentQuestionIndex(index)
+  // const handleQuestionIndicationClick = index => {
+  //   setCurrentQuestionIndex(index)
+  // }
+  const handleNextQuestion = () => {
+    if (isLastQuestion) {
+      dispatch(submitTest())
+    } else {
+      dispatch(nextQuestion(1))
+    }
   }
-
+  // TODO:implement reset and start from first btn for starting from first question!!
+  const handlePreviousQuestion = () => {
+    if (currentQuestionIndex > 0) {
+      dispatch(selectOption({ questionId: quesId, selectedOptionId: null }))
+      dispatch(nextQuestion(-1))
+    }
+  }
   //   handling submission
+  // const handleSubmit = () => {
+  //   console.log('clicked')
+  //   setIsSubmitted(true)
+  // }
   const handleSubmit = () => {
-    console.log('clicked')
-    setIsSubmitted(true)
+    dispatch(submitTest())
   }
-  const answeredQuestions = userAnswers.length
-
   const currentQuestion = questions[currentQuestionIndex]
   const totalQuestions = questions.length
+  const answeredQuestions = userAnswers.length
+
   const selectedOption =
     userAnswers.find(answer => answer.questionId === currentQuestion?.id)
       ?.selectedOptionId || null
@@ -121,9 +152,9 @@ const QuizHomePage = () => {
               <ProgressBar percent={currentProgress} />
               <QuestionsPage
                 question={currentQuestion}
-                selectedOption={selectedOption}
-                onAnswerSelected={handleSelectOption}
-                isLastQuestion={isLastQuestion}
+                // selectedOption={selectedOption}
+                // onAnswerSelected={handleSelectOption}
+                // isLastQuestion={isLastQuestion}
               />
               <div className='relative w-11/12 py-4 mx-auto '>
                 {currentQuestionIndex > 0 && (
@@ -149,7 +180,7 @@ const QuizHomePage = () => {
                     className='md:absolute md:right-0 primary-bg btn_quiz'
                     disabled={!selectedOption}
                     onClick={() => {
-                      setCurrentQuestionIndex(currentQuestionIndex + 1)
+                      handleNextQuestion
                     }}
                   >
                     Next Question
