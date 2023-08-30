@@ -20,7 +20,7 @@ const Pricing = () => {
       packageAmount: 25,
       features: [
         { name: 'Everything from Free ', available: true },
-        { name: 'long question', available: false },
+        { name: 'long question', available: true },
         { name: 'online Exam Room', available: true },
         { name: 'instructor Access', available: false },
         { name: 'blog writing', available: true }
