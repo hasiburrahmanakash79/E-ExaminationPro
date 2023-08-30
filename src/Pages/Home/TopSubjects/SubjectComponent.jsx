@@ -1,3 +1,5 @@
+import {Link } from "react-router-dom"
+
 const SubjectComponent = ({ subject }) => {
   console.log(subject?.subject)
   return (
@@ -18,9 +20,9 @@ const SubjectComponent = ({ subject }) => {
           Lorem ipsum dolor sit.
         </p>
         <div className='flex gap-5 mt-5 text-xl text-white md:mt-10'>
-          <a href='#' target='_blank' rel='noreferrer'>
+          <Link to={`/payment/${subject?._id}`}>
             <button>View</button>
-          </a>
+          </Link>
         </div>
       </div>
     </div>

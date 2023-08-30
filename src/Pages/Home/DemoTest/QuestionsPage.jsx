@@ -1,8 +1,22 @@
 /* eslint-disable react/prop-types */
 
-const QuestionsPage = ({ question, selectedOption, onAnswerSelected }) => {
+import { useDispatch, useSelector } from 'react-redux'
+import { selectOption } from '../../../redux/features/demoExam/demoExamSlice'
+
+const QuestionsPage = ({ question }) => {
+  const dispatch = useDispatch()
+
+  const selectedOption = useSelector(
+    state =>
+      state.demoExam.userAnswers.find(
+        answer => answer.questionId == question.id
+      )?.selectedOptionId
+  )
   const handleRadioChange = choiceId => {
-    onAnswerSelected(question.id, choiceId)
+    // onAnswerSelected(question.id, choiceId)
+    dispatch(
+      selectOption({ questionId: question.id, selectedOptionId: choiceId })
+    )
   }
 
   return (
