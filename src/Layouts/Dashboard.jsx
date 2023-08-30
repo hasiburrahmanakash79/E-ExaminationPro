@@ -249,7 +249,7 @@ const Dashboard = () => {
       {/* Dashboard main content */}
       <div className={` ${
           open ?  "pl-52 pr-4": "pl-16 pr-2"
-        } flex-1  overflow-y-auto  duration-500 transition-all`}>
+        } flex-1  overflow-y-auto  duration-500 transition-all h-full`}>
         <Outlet></Outlet>
       </div>
     </div>
