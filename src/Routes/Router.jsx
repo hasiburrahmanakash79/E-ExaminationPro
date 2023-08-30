@@ -23,6 +23,7 @@ import AllExam from '../Pages/FreeCoursePage/ExamPage/allExam'
 import Exam2 from '../Pages/FreeCoursePage/ExamPage/Exam2'
 import CreateQuesPaper from '../Pages/DashboardPages/InstructorPages/CreateQuesPaper/CreateQuesPaper'
 import FreeCoursePage from '../Pages/FreeCoursePage/FreeCoursePage'
+import Payment from '../Pages/Dashboard/UserDashboard/Payment/Payment'
 
 const router = createBrowserRouter([
   {
@@ -62,6 +63,10 @@ const router = createBrowserRouter([
       {
         path: '/contact',
         element: <Contact></Contact>
+      },
+      {
+        path: '/payment/:id',
+        element: <Payment/>
       },
       {
         path: '/allSubjects',
@@ -118,7 +123,11 @@ const router = createBrowserRouter([
       {
         path: '/dashboard/manageUsers',
         element: <ManageUsers />
-      }
+      },
+      {
+        path: '/dashboard/payment/:id',
+        element: <Payment/>
+      },
     ]
   }
 ])
