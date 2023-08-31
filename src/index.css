@@ -7,6 +7,14 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.primary-btn{
+  background: linear-gradient(45deg,rgb(13, 91, 128), rgb(54, 2, 102), rgb(4, 64, 114), rgb(149, 6, 168));
+  background-size: 200% 200%;
+  animation: color 22s ease-in-out infinite;
+  color: white;
+}
+
 /* 
 *{
     border: 1px solid #fff;

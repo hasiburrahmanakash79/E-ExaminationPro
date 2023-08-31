@@ -18,7 +18,7 @@ const AboutUs = () => {
 
           <p className='text-lg pb-5 text-gray-300'>We recognize the importance of seamless and efficient examination processes, and that's why we have created a cutting-edge solution that allows students to take their exams from the comfort of their own space. Our platform is built on a foundation of innovation and user-centric design, ensuring a user-friendly experience.</p>
 
-          <Link to="/contact" className="btn primary-bg border-none text-white shadow-md">Contact Us</Link>
+          <Link to="/contact" className="btn primary-btn border-none text-white shadow-md">Contact Us</Link>
         </div>
 
         <div className='md:w-1/2'>
