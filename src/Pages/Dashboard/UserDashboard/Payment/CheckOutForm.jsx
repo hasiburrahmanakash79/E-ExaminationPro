@@ -14,18 +14,6 @@ const CheckOutForm = ({ price, packages }) => {
   const [clientSecret, setClientSecret] = useState("");
   const [processing, setProcessing] = useState(false);
 
-  // const handleClick = () => {
-  //   if (!processing) {
-  //     setProcessing(true);
-
-  //     // Simulate some processing using setTimeout
-  //     setTimeout(() => {
-  //       setProcessing(false);
-  //     }, 2000);
-  //   }
-  // };
-
-
   useEffect(() => {
     axiosSecure.post("/create-payment-intent", { price }).then((data) => {
       setClientSecret(data.data.clientSecret);
@@ -115,7 +103,7 @@ const CheckOutForm = ({ price, packages }) => {
             style: {
               base: {
                 fontSize: "16px",
-                color: "#724877",
+                color: "#aab7c4",
                 "::placeholder": {
                   color: "#aab7c4",
                 },
@@ -135,12 +123,12 @@ const CheckOutForm = ({ price, packages }) => {
           {processing ? 'Processing...' : 'Confirm Pay'}
         </button>
       </form>
-      <div>
+      <div className=" mt-5">
         {error && (
-          <p className="text-red-500 mt-5 text-center">Failed: {error}</p>
+          <p className="text-red-600 mt-5 text-center">Failed: {error}</p>
         )}
         {success && (
-        <p className="text-green-500 text-center">
+        <p className="text-green-700 text-center">
           Complete Your Payment. Your Transaction ID: {success}
         </p>
       )}

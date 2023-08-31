@@ -20,7 +20,7 @@ const SubjectComponent = ({ subject }) => {
           Lorem ipsum dolor sit.
         </p>
         <div className='flex gap-5 mt-5 text-xl text-white md:mt-10'>
-          <Link to={`/payment/${subject?._id}`}>
+          <Link to='/'>
             <button>View</button>
           </Link>
         </div>
