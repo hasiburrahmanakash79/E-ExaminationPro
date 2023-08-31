@@ -1,10 +1,11 @@
 import { FaCircleCheck } from 'react-icons/fa6'
 import { MdCancel } from 'react-icons/md'
+import { Link } from 'react-router-dom'
 const PricingCard = ({ price }) => {
   console.log(price)
   return (
     <div
-      className={`px-4 w-72  pb-3 mx-auto space-y-4 text-center transition-all border rounded-lg shadow-2xl primary-bg border-slate-200 ${
+      className={`hidden md:block px-4 w-72  pb-3 mx-auto space-y-4 text-center transition-all border rounded-lg shadow-2xl primary-bg border-slate-200 ${
         price.name === 'Premium'
           ? 'scale-110 hover:scale-110 '
           : 'hover:scale-105'
@@ -16,9 +17,9 @@ const PricingCard = ({ price }) => {
 
       {/* <ul className='flex flex-col divide-y divide-base-200 divider'> */}
       <div className='flex flex-col divider divide-purple-950 h-fit'>
-        {price.features?.map(feature => (
+        {price.features?.map((feature, index) => (
           <p
-            key={feature.id}
+            key={index}
             className='inline-flex items-center justify-center uppercase text-start'
           >
             {feature.name}
@@ -32,7 +33,8 @@ const PricingCard = ({ price }) => {
       </div>
       {/* </ul> */}
       <div className='pt-4 '>
-        <button
+        <Link
+          to='/'
           className={` btn ${
             price.name === 'Premium' ? 'btn-info' : 'btn-primary'
           }
@@ -40,7 +42,7 @@ const PricingCard = ({ price }) => {
         >
           {' '}
           Start by Signing Up!
-        </button>
+        </Link>
       </div>
     </div>
   )
