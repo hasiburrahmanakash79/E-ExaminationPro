@@ -27,6 +27,7 @@ import InstructorHome from '../Pages/Dashboard/InstructorDashboard/InstructorHom
 import Payment from '../Pages/Dashboard/UserDashboard/Payment/Payment'
 import UpdateProfile from '../Pages/Authentication/UpdateProfile/UpdateProfile'
 import UserHome from '../Pages/Dashboard/UserDashboard/UserHome/UserHome'
+import PaymentHistory from '../Pages/Dashboard/UserDashboard/PaymentHistory/PaymentHistory'
 
 const router = createBrowserRouter([
   {
@@ -142,6 +143,10 @@ const router = createBrowserRouter([
       {
         path: '/dashboard/userHome',
         element: <UserHome/>
+      },
+      {
+        path: '/dashboard/paymentHistory',
+        element: <PaymentHistory/>
       },
     ]
   }

@@ -104,7 +104,7 @@ const Dashboard = () => {
       role: "user",
       gap: true,
     },
-    { title: "User Home", icon: iconMappings.RoleHome, role: "user" },
+    { title: "Payment History", path: "/dashboard/paymentHistory", icon: iconMappings.RoleHome, role: "user" },
 
     {
       title: "Home ",
@@ -257,11 +257,9 @@ const Dashboard = () => {
         </div>
       </div>
       {/* Dashboard main content */}
-      <div
-        className={` ${
-          open ? "pl-52 pr-4" : "pl-16 pr-2"
-        } flex-1  overflow-y-auto  duration-500 transition-all h-[100vh]`}
-      >
+      <div className={` ${
+          open ?  "pl-52 pr-4": "pl-16 pr-2"
+        } flex-1  overflow-y-auto  duration-500 transition-all h-[100vh]`}>
         <Outlet></Outlet>
       </div>
     </div>
