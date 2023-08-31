@@ -21,8 +21,9 @@ import ResultPage from '../Pages/Home/DemoTest/ResultPage'
 import Notice from '../Pages/NoticePage/Notice/Notice'
 import AllExam from '../Pages/FreeCoursePage/ExamPage/allExam'
 import Exam2 from '../Pages/FreeCoursePage/ExamPage/Exam2'
-import CreateQuesPaper from '../Pages/DashboardPages/InstructorPages/CreateQuesPaper/CreateQuesPaper'
 import FreeCoursePage from '../Pages/FreeCoursePage/FreeCoursePage'
+import CreateQuesPaper from '../Pages/Dashboard/InstructorDashboard/CreateQuestion/CreateQuesPaper'
+import InstructorHome from '../Pages/Dashboard/InstructorDashboard/InstructorHome/InstructorHome'
 import Payment from '../Pages/Dashboard/UserDashboard/Payment/Payment'
 
 const router = createBrowserRouter([
@@ -86,16 +87,12 @@ const router = createBrowserRouter([
         element: <Exam2 />,
         loader: ({ params }) =>
           fetch(
-            `https://e-exam-pro-server.vercel.app/questionPaper/${params.id}`
+            `http://localhost:5000/questionPaper/${params.id}`
           )
       },
       {
         path: '/shortQ',
         element: <ShortQ />
-      },
-      {
-        path: '/createQues',
-        element: <CreateQuesPaper />
       },
       {
         path: '/result',
@@ -114,7 +111,7 @@ const router = createBrowserRouter([
   },
   {
     path: '/dashboard',
-    element: <Dashboard />,
+    element: <PrivateRouter><Dashboard /></PrivateRouter>,
     children: [
       {
         path: '/dashboard/adminHome',
@@ -123,6 +120,14 @@ const router = createBrowserRouter([
       {
         path: '/dashboard/manageUsers',
         element: <ManageUsers />
+      },
+      {
+        path: '/dashboard/instructorHome',
+        element: <InstructorHome />
+      },
+      {
+        path: '/dashboard/createQues',
+        element: <CreateQuesPaper />
       },
       {
         path: '/dashboard/payment/:id',

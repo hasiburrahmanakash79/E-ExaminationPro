@@ -6,9 +6,13 @@ import { AiFillBell } from "react-icons/ai";
 import { useContext } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
 import Swal from "sweetalert2";
+import useAdmin from "../../Hooks/useAdmin/useAdmin";
+import useInstructor from "../../Hooks/useInstructor/useInstructor";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
+  const [isAdmin] = useAdmin();
+    const [isInstructor] = useInstructor()
 
   const handleLogout = () => {
     logOut()
@@ -34,7 +38,7 @@ const Navbar = () => {
     <>
       <details className="z-[1]">
         <summary>Exam</summary>
-        <ul className="p-2 z-50 navigation-bar rounded-lg md:rounded-none">
+        <ul className="z-50 p-2 rounded-lg navigation-bar md:rounded-none">
           <li>
             <Link to="/allSubjects">All Subject</Link>
           </li>
@@ -56,9 +60,6 @@ const Navbar = () => {
       </li>
       <li>
         <Link to="/contact">Contact Us</Link>
-      </li>
-      <li>
-        <Link to="/createQues">Create Ques</Link>
       </li>
       <li>
         <Link to="/about">About us</Link>
@@ -175,9 +176,8 @@ const Navbar = () => {
                     {user?.displayName}
                   </Link>
                 </li>
-                <li>
-                  <Link to="/dashboard/adminHome">Dashboard</Link>
-                </li>
+                {/* Navigate to different dashboard route based on user role */}
+                {user && <li>{isAdmin?(<Link to="/dashboard/adminHome">Dashboard</Link>):isInstructor?(<Link to="/dashboard/instructorHome">Dashboard</Link>):<Link to="/dashboard/instructorHome">Dashboard</Link>}</li>}
                 <li>
                   <Link className="w-full" onClick={handleLogout}>
                     Log Out
