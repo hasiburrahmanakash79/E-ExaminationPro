@@ -1,43 +1,28 @@
 import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { examType, subjectInfo, quesPaper } from '../../../../redux/features/quesPaper/quesPaperSlice';
 
 const CreateQuesPaper = () => {
-    const [type, setType] = useState('')
 
-    const [formData, setFormData] = useState({
-        subjectName: '',
-        subjectCode: '',
-        semester: '',
-        date: '',
-        email: '',
-    });
-    const [questions, setQuestions] = useState([]);
+    /////redux////
+    const { type, formData, questions } = useSelector((state) => state.questionPaper)
+    const dispatch = useDispatch()
+    ////////
+
 
     // store basic info
     const handleInputChange = (event) => {
-        const { name, value } = event.target;
-        setFormData((prevData) => ({
-            ...prevData,
-            [name]: value,
-        }));
+        dispatch(subjectInfo(event)) // redux
     };
 
     //handle ques add
     const handleQuestionAdd = () => {
-
-        const newQuestion = {
-            question: '',
-            options: ['', '', '', ''],
-            correctAnswer: '',
-        };
-        setQuestions([...questions, newQuestion]);
-
+        dispatch(quesPaper()) // redux
     };
 
     // handle ques change
     const handleQuestionChange = (index, field, value) => {
-        const updatedQuestions = [...questions];
-        updatedQuestions[index][field] = value;
-        setQuestions(updatedQuestions);
+        dispatch(quesPaper({ index, field, value })) //redux 
     };
 
     //submit
@@ -60,8 +45,8 @@ const CreateQuesPaper = () => {
             },
             body: JSON.stringify(paperData)
         })
-        .then(res=>res.json())
-        .then(data=>console.log(data))
+            .then(res => res.json())
+            .then(data => console.log(data))
     };
 
     console.log(type)
@@ -77,11 +62,9 @@ const CreateQuesPaper = () => {
                     <span className="label-text">Exam Type</span>
                 </label>
                 <select onChange={(e) => {
-                    setQuestions([])
-                    setType('')
-                    setType(e.target.value)
-           
-
+                    //setQuestions([]) Redux
+                    dispatch(examType(''))
+                    dispatch(examType(e.target.value))
                 }} className="select select-bordered select-sm w-full max-w-xs">
                     <option disabled selected>Choose Type</option>
                     <option value='mcq'>MCQ</option>
@@ -179,7 +162,7 @@ const CreateQuesPaper = () => {
                                 />
                                 <div className='flex flex-col items-center gap-2 justify-center'>
                                     <div className='grid mt-4 gap-x-10 grid-cols-2'>
-                                        {(type === 'mcq' || type === 'multimedia_mcq')&&
+                                        {(type === 'mcq' || type === 'multimedia_mcq') &&
 
                                             question?.options?.map((option, optionIndex) => (
 
@@ -202,7 +185,7 @@ const CreateQuesPaper = () => {
                                     </div>
                                 </div>
                                 {
-                                   (type === 'mcq' || type === 'multimedia_mcq') && <>
+                                    (type === 'mcq' || type === 'multimedia_mcq') && <>
                                         <label className='label'>
                                             <span className='label-text text-xl'>Correct Answer:</span>
                                         </label>
@@ -265,3 +248,48 @@ const CreateQuesPaper = () => {
 };
 
 export default CreateQuesPaper;
+
+
+
+
+
+
+    // // const [type, setType] = useState('')
+
+    // // const [formData, setFormData] = useState({
+    // //     subjectName: '',
+    // //     subjectCode: '',
+    // //     semester: '',
+    // //     date: '',
+    // //     email: '',
+    // // });
+    // // const [questions, setQuestions] = useState([]);
+
+    // // store basic info
+    // const handleInputChange = (event) => {
+    //     // const { name, value } = event.target;
+    //     // setFormData((prevData) => ({
+    //     //     ...prevData,
+    //     //     [name]: value,
+    //     // }));
+    //     dispatch(subjectInfo(event))
+    // };
+
+    // //handle ques add
+    // const handleQuestionAdd = () => {
+    //     dispatch(quesPaper())
+    //     // const newQuestion = {
+    //     //     question: '',
+    //     //     options: ['', '', '', ''],
+    //     //     correctAnswer: '',
+    //     // };
+    //     //setQuestions([...questions, newQuestion]);
+    // };
+
+    // // handle ques change
+    // const handleQuestionChange = (index, field, value) => {
+    //     dispatch(quesPaper({ index, field, value }))
+    //     // const updatedQuestions = [...questions];
+    //     // updatedQuestions[index][field] = value;
+    //     //setQuestions(updatedQuestions);
+    // };
