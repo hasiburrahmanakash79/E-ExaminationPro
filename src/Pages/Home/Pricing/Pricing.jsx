@@ -1,4 +1,5 @@
 import PricingCard from './PricingCard'
+import PricingTab from './PricingTab'
 
 const Pricing = () => {
   const pricePackage = [
@@ -48,13 +49,12 @@ const Pricing = () => {
       <h1 className='py-4 text-2xl font-bold'>
         Meet our pricing plan that suit you
       </h1>
-      <div className='grid grid-cols-3 gap-1 pt-3 mx-auto w-fit'>
+      <div className='grid grid-cols-1 gap-1 pt-3 mx-auto md:grid-cols-3 w-fit'>
         {pricePackage.map(price => (
-          <PricingCard key={price.id} price={price} />
+          <PricingCard price={price} key={price.id} />
         ))}
+        <PricingTab pricePackage={pricePackage} />
       </div>
-      {/* <Pricing2 /> */}
-      {/* <Pricing3 /> */}
     </section>
   )
 }
