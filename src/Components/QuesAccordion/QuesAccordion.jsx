@@ -1,18 +1,18 @@
 import './QuesAccordion.css'
+import { useSelector } from 'react-redux'
 
-const QuesAccordion = ({ shortQuestions, answers }) => {
-  const answersArray = answers
-  console.log(answersArray)
+const QuesAccordion = ({ shortQuestions, userAnswers }) => {
+  console.log(userAnswers)
   return (
     <div className='container sticky text-2xl text-white top-44 body md:mx-auto'>
       <div className='accordion min-w-100'>
         {shortQuestions?.map((sq, index) => (
           <div key={index}>
             {sq.questions.map(question => {
-              const answer = answersArray?.find(
+              const answer = userAnswers?.find(
                 a => a?.questionId == question?.id
               )
-              console.log(question)
+              // console.log(question)
               console.log(question.question, answer)
 
               return (
