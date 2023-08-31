@@ -172,7 +172,7 @@ const Navbar = () => {
                 className="p-2 mt-3 text-white bg-black shadow menu menu-compact dropdown-content rounded-box w-52"
               >
                 <li>
-                  <Link className="justify-between w-full">
+                  <Link to="/updateProfile" className="justify-between w-full">
                     {user?.displayName}
                   </Link>
                 </li>
