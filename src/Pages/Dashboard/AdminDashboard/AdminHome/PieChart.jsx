@@ -21,7 +21,7 @@ const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, per
   );
 };
 
-const Piechart = () => {
+const PieChart = () => {
     return (
         <div>
             <PieChart width={400} height={400}>
@@ -52,4 +52,4 @@ const Piechart = () => {
     );
 };
 
-export default Piechart;
+export default PieChart;

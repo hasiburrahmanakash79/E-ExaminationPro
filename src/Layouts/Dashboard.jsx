@@ -28,20 +28,21 @@ const Dashboard = () => {
 
   const handleLogout = () => {
     logOut()
-      .then(()=>{ Swal.fire({
+      .then(() => {
+        Swal.fire({
           icon: "success",
           title: "Log Out Successful",
           showConfirmButton: false,
           timer: 1500,
-        })
+        });
       })
       .catch((error) => console.log(error));
   };
 
-   // Add an useEffect to detect screen width on component mount and resize
-   useEffect(() => {
+  // Add an useEffect to detect screen width on component mount and resize
+  useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth < 768) { 
+      if (window.innerWidth < 768) {
         setOpen(false);
       } else {
         setOpen(true);
@@ -96,7 +97,15 @@ const Dashboard = () => {
       icon: iconMappings.Question,
       role: "instructor",
     },
-    { title: "Analytics", icon: iconMappings.Analytics, role: "user" },
+    {
+      title: "User Home",
+      path: "/dashboard/userHome",
+      icon: iconMappings.RoleHome,
+      role: "user",
+      gap: true,
+    },
+    { title: "User Home", icon: iconMappings.RoleHome, role: "user" },
+
     {
       title: "Home ",
       path: "/",
@@ -235,7 +244,8 @@ const Dashboard = () => {
           <div className={`${!open && "hidden"} origin-left duration-200`}>
             <h2 className="text-sm font-semibold">{user?.displayName}</h2>
             <span className="flex items-center space-x-1">
-              <a onClick={handleLogout}
+              <a
+                onClick={handleLogout}
                 rel="noopener noreferrer"
                 href="#"
                 className="text-xs text-gray-600 hover:underline"
@@ -247,9 +257,11 @@ const Dashboard = () => {
         </div>
       </div>
       {/* Dashboard main content */}
-      <div className={` ${
-          open ?  "pl-52 pr-4": "pl-16 pr-2"
-        } flex-1  overflow-y-auto  duration-500 transition-all h-full`}>
+      <div
+        className={` ${
+          open ? "pl-52 pr-4" : "pl-16 pr-2"
+        } flex-1  overflow-y-auto  duration-500 transition-all h-[100vh]`}
+      >
         <Outlet></Outlet>
       </div>
     </div>
