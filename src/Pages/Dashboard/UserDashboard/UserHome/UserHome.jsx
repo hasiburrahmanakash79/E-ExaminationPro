@@ -1,12 +1,11 @@
-//
 import React from 'react';
 
-const UpdateProfile = () => {
+const UserHome = () => {
     return (
         <div>
-            
+            <h1>User Home</h1>
         </div>
     );
 };
 
-export default UpdateProfile;
+export default UserHome;

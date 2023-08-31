@@ -26,6 +26,7 @@ import CreateQuesPaper from '../Pages/Dashboard/InstructorDashboard/CreateQuesti
 import InstructorHome from '../Pages/Dashboard/InstructorDashboard/InstructorHome/InstructorHome'
 import Payment from '../Pages/Dashboard/UserDashboard/Payment/Payment'
 import UpdateProfile from '../Pages/Authentication/UpdateProfile/UpdateProfile'
+import UserHome from '../Pages/Dashboard/UserDashboard/UserHome/UserHome'
 
 const router = createBrowserRouter([
   {
@@ -137,6 +138,10 @@ const router = createBrowserRouter([
       {
         path: '/dashboard/payment/:id',
         element: <Payment/>
+      },
+      {
+        path: '/dashboard/userHome',
+        element: <UserHome/>
       },
     ]
   }
