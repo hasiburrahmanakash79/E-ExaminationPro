@@ -1,22 +1,23 @@
-import logo from "../../assets/logo12.png";
-import { Link } from "react-router-dom";
-import "./Navbar.css";
 import { AiFillBell } from "react-icons/ai";
+import { Link } from "react-router-dom";
+import logo from "../../assets/logo12.png";
+import "./Navbar.css";
 
 import { useContext } from "react";
-import { AuthContext } from "../../Provider/AuthProvider";
 import Swal from "sweetalert2";
 import useAdmin from "../../Hooks/useAdmin/useAdmin";
 import useInstructor from "../../Hooks/useInstructor/useInstructor";
+import { AuthContext } from "../../Provider/AuthProvider";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
   const [isAdmin] = useAdmin();
-    const [isInstructor] = useInstructor()
+  const [isInstructor] = useInstructor()
 
   const handleLogout = () => {
     logOut()
-      .then(()=>{ Swal.fire({
+      .then(() => {
+        Swal.fire({
           icon: "success",
           title: "Log Out Successful",
           showConfirmButton: false,
@@ -129,7 +130,7 @@ const Navbar = () => {
         </div>
         <div className="navbar-end">
           <div className="indicator me-4">
-            <span className="indicator-item badge badge-secondary">1+</span>
+            <span className="indicator-item  badge badge-secondary">1+</span>
             <button>
               <Link to="notice" className="text-2xl"> <AiFillBell></AiFillBell></Link>
             </button>
@@ -177,7 +178,7 @@ const Navbar = () => {
                   </Link>
                 </li>
                 {/* Navigate to different dashboard route based on user role */}
-                {user && <li>{isAdmin?(<Link to="/dashboard/adminHome">Dashboard</Link>):isInstructor?(<Link to="/dashboard/instructorHome">Dashboard</Link>):<Link to="/dashboard/userHome">Dashboard</Link>}</li>}
+                {user && <li>{isAdmin ? (<Link to="/dashboard/adminHome">Dashboard</Link>) : isInstructor ? (<Link to="/dashboard/instructorHome">Dashboard</Link>) : <Link to="/dashboard/userHome">Dashboard</Link>}</li>}
                 <li>
                   <Link className="w-full" onClick={handleLogout}>
                     Log Out
