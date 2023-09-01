@@ -179,6 +179,9 @@ const Navbar = () => {
                   <Link to="/dashboard/adminHome">Dashboard</Link>
                 </li>
                 <li>
+                  <Link to="/updateProfile">Profile Update</Link>
+                </li>
+                <li>
                   <Link className="w-full" onClick={handleLogout}>
                     Log Out
                   </Link>

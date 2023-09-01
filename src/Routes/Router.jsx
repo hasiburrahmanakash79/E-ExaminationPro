@@ -23,6 +23,7 @@ import Exam2 from '../Pages/FreeCoursePage/ExamPage/Exam2'
 import CreateQuesPaper from '../Pages/DashboardPages/InstructorPages/CreateQuesPaper/CreateQuesPaper'
 import FreeCoursePage from '../Pages/FreeCoursePage/FreeCoursePage'
 import Payment from '../Pages/Dashboard/UserDashboard/Payment/Payment'
+import UpdateProfile from '../Pages/UpdateProfile/UpdateProfile'
 
 const router = createBrowserRouter([
   {
@@ -99,6 +100,9 @@ const router = createBrowserRouter([
       {
         path: '/result',
         element: <ResultPageForMcqFib />
+      },{
+        path:'/updateProfile',
+        element:<UpdateProfile></UpdateProfile>
       }
     ]
   },
