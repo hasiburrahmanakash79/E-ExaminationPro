@@ -67,7 +67,7 @@ const AdminHome = () => {
         <h1 className="text-2xl">Admin home</h1>
         <button className="px-2 rounded-md btn-primary">Generate report</button>
       </div>
-      <div className="grid grid-cols-4 gap-3 pb-6 mt-4">
+      <div className="grid grid-cols-1 gap-3 pb-6 mt-4 md:grid-cols-4">
         <div className="flex items-center justify-between h-20 px-4 mx-3 transition duration-300 ease-out transform border-l-4 border-green-300 rounded-lg cursor-pointer hover:shadow-lg hover:scale-105">
           <div>
             <h2>Students</h2>
@@ -97,7 +97,7 @@ const AdminHome = () => {
           <RiQuestionAnswerLine fontSize={28} />
         </div>
       </div>
-      <div className="flex gap-2">
+      <div className="flex flex-col gap-2 md:flex-row">
         <div className="basis-[70%] my-8 w-full gap-6 shadow-xl rounded-md cursor-pointer border border-violet-900 p-3">
           <div>
             <h2 className="pb-3 text-center">Questions Overview</h2>
