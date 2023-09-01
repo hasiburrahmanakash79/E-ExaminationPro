@@ -55,7 +55,7 @@ const Comment = ({
             <div className="flex items-center gap-3">
               <input
                 type="text"
-                className="inputContainer__input first_input input input-bordered"
+                className="bg-transparent p-[10px] border border-violet-600 rounded-lg shadow-2xl"
                 autoFocus
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
@@ -63,7 +63,7 @@ const Comment = ({
               />
 
               <Action
-                className="reply comment text-white border-none shadow-md btn primary-bg"
+                className="reply comment btn primary-btn"
                 type="COMMENT"
                 handleClick={onAddComment}
               />
@@ -73,17 +73,13 @@ const Comment = ({
           <>
             {/* Avatar */}
             <div className=" flex items-center gap-2">
-              <div className="flex items-start mt-1 gap-5">
+              <div className="flex items-start mt-1 gap-5  bg-transparent border border-violet-500 px-5 py-3 rounded">
                 <img className=" avatar w-8 h-8 rounded-full"
 
                   src='https://static.vecteezy.com/system/resources/previews/005/112/745/original/cartoon-happy-little-boy-raising-hands-free-vector.jpg'
-
-
-
-
                 />
                 <div className="mt-0">
-                  <h2 className="font-semibold text-black">Name</h2>
+                  <h2 className="font-semibold">Name</h2>
                   <span
 
                     contentEditable={editMode}

@@ -5,10 +5,6 @@
 
 .commentContainer {
   margin-top: 6px;
-  /* background: linear-gradient(to right, #42275a, #734b6d); */
-  /* 
-   */
-  background: linear-gradient(to right, #019fd0, #b5b505);
   /* background: linear-gradient(45deg, rgb(17, 9, 83), rgb(54, 2, 102)); */
   display: flex;
   flex-direction: column;
@@ -18,9 +14,9 @@
   border-radius: 5px;
 }
 
-.commentContainer:hover {
+/* .commentContainer:hover {
   background-color: #d3d3d3bf;
-}
+} */
 
 .inputContainer {
   display: flex;

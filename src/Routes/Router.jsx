@@ -27,6 +27,7 @@ import Payment from '../Pages/Dashboard/UserDashboard/Payment/Payment'
 import UpdateProfile from '../Pages/Authentication/UpdateProfile/UpdateProfile'
 import UserHome from '../Pages/Dashboard/UserDashboard/UserHome/UserHome'
 import PaymentHistory from '../Pages/Dashboard/UserDashboard/PaymentHistory/PaymentHistory'
+import CommentApp from '../Pages/Furam/CommentApp'
 
 const router = createBrowserRouter([
   {
@@ -56,7 +57,7 @@ const router = createBrowserRouter([
         element: <AboutUs></AboutUs>
       },
       {
-        path: '/demo-test',
+        path: '/demoTest',
         element: <QuizHomePage />
       },
       {
@@ -99,6 +100,10 @@ const router = createBrowserRouter([
       {
         path: '/result',
         element: <ResultPageForMcqFib />
+      },
+      {
+        path: '/forum',
+        element: <CommentApp/>
       },
       {
         path: '/updateProfile',

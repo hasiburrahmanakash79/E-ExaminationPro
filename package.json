@@ -36,6 +36,7 @@
     "react-awesome-slider": "^4.1.0",
     "react-circular-progressbar": "^2.1.0",
     "react-countup": "^6.4.2",
+    "react-day-picker": "^8.8.1",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.45.4",
     "react-hot-keys": "^2.7.2",
