@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import { FaCommentDots, FaHeart, FaShareAltSquare } from "react-icons/fa";
 import { EmailIcon, EmailShareButton, FacebookIcon, FacebookShareButton, LineShareButton, LinkedinIcon, PinterestIcon, PinterestShareButton, TwitterIcon, TwitterShareButton } from "react-share";
+import ShowCommentApp from "../BlogComments/ShowCommentApp";
+
+
 
 const Blog = () => {
   const [color, setColor] = useState('white');
@@ -51,6 +54,9 @@ const Blog = () => {
                         Read More
                       </button>
                     </div>
+
+                    <ShowCommentApp></ShowCommentApp>
+
                   </div>
                 </div>
               </div>
@@ -89,9 +95,9 @@ const Blog = () => {
 
                     {/* Open the modal using ID.showModal() method */}
 
-                    <dialog id="my_modal_2" className="modal  ">
-                      <div method="dialog" className="modal-box dark:bg-gray-900 ">
-                        <div className="flex flex-col max-w-xl p-8 shadow-sm rounded-xl lg:p-12 dark:bg-gray-900 dark:text-gray-100">
+                    <dialog id="my_modal_2" className="modal mx-auto ">
+                      <div method="dialog" className="modal-box dark:bg-gray-900  ">
+                        {/* <div className="flex flex-col max-w-xl p-8 shadow-sm rounded-xl lg:p-12 dark:bg-gray-900 dark:text-gray-100">
                           <div className="flex flex-col items-center w-full">
                             <h2 className="text-3xl font-semibold text-center">Your opinion matters!</h2>
                             <div className="flex flex-col items-center py-6 space-y-3">
@@ -110,7 +116,15 @@ const Blog = () => {
                             </div>
                           </div>
 
+                        </div> */}
+
+
+
+
+                        <div className="ms-16 mb-3">
+                          <ShowCommentApp ></ShowCommentApp>
                         </div>
+
                       </div>
                       <form method="dialog" className="modal-backdrop">
                         <button>close</button>
@@ -186,7 +200,7 @@ const Blog = () => {
 
                 <div className="flex justify-between items-center gap-5 pt-6">
                   <div className="flex gap-5 items-center">
-                    <FaHeart  className="text-xl"></FaHeart>
+                    <FaHeart className="text-xl"></FaHeart>
                     <FaCommentDots className="text-xl" onClick={() => window.my_modal_10.showModal()}></FaCommentDots>
 
 
