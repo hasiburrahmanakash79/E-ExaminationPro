@@ -72,7 +72,11 @@ const router = createBrowserRouter([
       },
       {
         path: '/payment/:id',
-        element: <PrivateRouter><Payment/></PrivateRouter>
+        element: (
+          <PrivateRouter>
+            <Payment />
+          </PrivateRouter>
+        )
       },
       {
         path: '/allSubjects',
@@ -92,7 +96,7 @@ const router = createBrowserRouter([
         element: <Exam2 />,
         loader: ({ params }) =>
           fetch(
-            `http://localhost:5000/questionPaper/${params.id}`
+            `https://e-exam-pro-server.vercel.app/questionPaper/${params.id}`
           )
       },
       {
@@ -113,11 +117,15 @@ const router = createBrowserRouter([
       },
       {
         path: '/forum',
-        element: <CommentApp/>
+        element: <CommentApp />
       },
       {
         path: '/updateProfile',
-        element: <PrivateRouter><UpdateProfile></UpdateProfile></PrivateRouter>
+        element: (
+          <PrivateRouter>
+            <UpdateProfile></UpdateProfile>
+          </PrivateRouter>
+        )
       }
     ]
   },
@@ -132,7 +140,11 @@ const router = createBrowserRouter([
   },
   {
     path: '/dashboard',
-    element: <PrivateRouter><Dashboard /></PrivateRouter>,
+    element: (
+      <PrivateRouter>
+        <Dashboard />
+      </PrivateRouter>
+    ),
     children: [
       {
         path: '/dashboard/adminHome',
@@ -152,20 +164,18 @@ const router = createBrowserRouter([
       },
       {
         path: '/dashboard/payment/:id',
-        element: <Payment/>
+        element: <Payment />
       },
       {
         path: '/dashboard/userHome',
-        element: <UserHome/>
+        element: <UserHome />
       },
       {
         path: '/dashboard/paymentHistory',
-        element: <PaymentHistory/>
-      },
+        element: <PaymentHistory />
+      }
     ]
   }
 ])
 
 export default router
-
-

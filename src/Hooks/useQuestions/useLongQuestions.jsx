@@ -9,7 +9,7 @@ const useLongQuestions = History => {
     queryKey: ['longQuestions'],
     queryFn: async () => {
       const res = await axios.get(
-        `http://localhost:5000/longQ?subject=${History}`
+        `https://e-exam-pro-server.vercel.app/longQ?subject=${History}`
       ) // to todo add date subject code etc
       return res.data
     }

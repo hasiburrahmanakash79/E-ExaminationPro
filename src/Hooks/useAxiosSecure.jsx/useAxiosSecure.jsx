@@ -1,42 +1,41 @@
-import axios from "axios";
-import { useContext, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import { AuthContext } from "../../Provider/AuthProvider";
+import axios from 'axios'
+import { useContext, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { AuthContext } from '../../Provider/AuthProvider'
 
 const axiosSecure = axios.create({
-  baseURL: "http://localhost:5000",
-});
+  baseURL: 'https://e-exam-pro-server.vercel.app'
+})
 
 const useAxiosSecure = () => {
-  const { logOut } = useContext(AuthContext);
-  const navigate = useNavigate();
+  const { logOut } = useContext(AuthContext)
+  const navigate = useNavigate()
 
-  
   useEffect(() => {
-    axiosSecure.interceptors.request.use((config) => {
-      const token = localStorage.getItem("access-token");
+    axiosSecure.interceptors.request.use(config => {
+      const token = localStorage.getItem('access-token')
       if (token) {
-        config.headers.Authorization = `Bearer ${token}`;
+        config.headers.Authorization = `Bearer ${token}`
       }
-      return config;
-    });
+      return config
+    })
 
     axiosSecure.interceptors.response.use(
-      (response) => response,
-      async (error) => {
+      response => response,
+      async error => {
         if (
           error.response &&
           (error.response.status === 401 || error.response.status === 403)
         ) {
-          await logOut();
-          navigate("/login");
+          await logOut()
+          navigate('/login')
         }
-        return Promise.reject(error);
+        return Promise.reject(error)
       }
-    );
-  }, [logOut, navigate]);
+    )
+  }, [logOut, navigate])
 
-  return [axiosSecure];
-};
+  return [axiosSecure]
+}
 
-export default useAxiosSecure;
+export default useAxiosSecure
