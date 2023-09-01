@@ -24,7 +24,6 @@ import FreeCoursePage from '../Pages/FreeCoursePage/FreeCoursePage'
 import CreateQuesPaper from '../Pages/Dashboard/InstructorDashboard/CreateQuestion/CreateQuesPaper'
 import InstructorHome from '../Pages/Dashboard/InstructorDashboard/InstructorHome/InstructorHome'
 import Payment from '../Pages/Dashboard/UserDashboard/Payment/Payment'
-import UpdateProfile from '../Pages/UpdateProfile/UpdateProfile'
 import LongQuestion from '../Pages/Exams/LongQuestion/LongQuestion'
 import QuizDemo from '../Pages/Home/DemoTest/QuizDemo'
 import UpdateProfile from '../Pages/Authentication/UpdateProfile/UpdateProfile'
@@ -96,9 +95,7 @@ const router = createBrowserRouter([
         path: '/exam/:id',
         element: <Exam2 />,
         loader: ({ params }) =>
-          fetch(
-            `https://e-exam-pro-server.vercel.app/questionPaper/${params.id}`
-          )
+          fetch(`http://localhost:5000/questionPaper/${params.id}`)
       },
       {
         path: '/shortQ',
@@ -115,9 +112,6 @@ const router = createBrowserRouter([
       {
         path: '/result',
         element: <ResultPageForMcqFib />
-      },{
-        path:'/updateProfile',
-        element:<UpdateProfile></UpdateProfile>
       },
       {
         path: '/forum',
