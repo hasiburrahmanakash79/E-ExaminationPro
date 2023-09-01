@@ -38,7 +38,7 @@ const CreateQuesPaper = () => {
         console.log('Question Paper Data:', paperData);
 
 
-        fetch('https://e-exam-pro-server.vercel.app/questionPaper', {
+        fetch('http://localhost:5000/questionPaper', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

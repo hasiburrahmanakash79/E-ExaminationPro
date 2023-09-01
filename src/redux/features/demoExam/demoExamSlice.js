@@ -1,7 +1,52 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-    questions: [],
+    questions: [
+        {
+            id: 1,
+            text: 'What is the capital of France?',
+            choices: [
+                { id: 'paris', text: 'Paris' },
+                { id: 'london', text: 'London' },
+                { id: 'berlin', text: 'Berlin' },
+                { id: 'madrid', text: 'Madrid' }
+            ],
+            correctAnswer: 'paris'
+        },
+        {
+            id: 2,
+            text: "Which planet is known as the 'Red Planet'?",
+            choices: [
+                { id: 'venus', text: 'Venus' },
+                { id: 'mars', text: 'Mars' },
+                { id: 'jupiter', text: 'Jupiter' },
+                { id: 'saturn', text: 'Saturn' }
+            ],
+            correctAnswer: 'mars'
+        },
+        {
+            id: 3,
+            text: "Which planet is known as the Dwarf Planet?",
+            choices: [
+                { id: 'venus', text: 'Venus' },
+                { id: 'mars', text: 'Mars' },
+                { id: 'jupiter', text: 'Jupiter' },
+                { id: 'pluto', text: 'pluto' }
+            ],
+            correctAnswer: 'pluto'
+        },
+        {
+            id: 4,
+            text: "Which planet is known as the hottest planet?",
+            choices: [
+                { id: 'venus', text: 'Venus' },
+                { id: 'mars', text: 'Mars' },
+                { id: 'jupiter', text: 'Jupiter' },
+                { id: 'saturn', text: 'Saturn' }
+            ],
+            correctAnswer: 'venus'
+        }
+    ],
     userAnswers: [],
     currentQuestionIndex: 0,
     isSubmitted: false,
@@ -20,9 +65,8 @@ const demoTestSlice = createSlice(
 
                 const existingAnswerIndex = state.userAnswers.findIndex(answer => answer.questionId == questionId)
                 if (existingAnswerIndex !== -1) {
-                    state.userAnswers[existingAnswerIndex] = {
-                        ...state.userAnswers[existingAnswerIndex], selectedOptionId
-                    }
+                    state.userAnswers[existingAnswerIndex].selectedOptionId = selectedOptionId
+
 
                 } else {
                     state.userAnswers.push({ questionId, selectedOptionId })
@@ -42,30 +86,3 @@ const demoTestSlice = createSlice(
 )
 export const { setQuestions, selectOption, nextQuestion, submitTest } = demoTestSlice.actions
 export default demoTestSlice.reducer
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
