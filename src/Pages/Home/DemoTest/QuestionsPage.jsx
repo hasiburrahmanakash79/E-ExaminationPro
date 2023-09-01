@@ -3,7 +3,8 @@
 import { useDispatch, useSelector } from 'react-redux'
 import { selectOption } from '../../../redux/features/demoExam/demoExamSlice'
 
-const QuestionsPage = ({ question }) => {
+const QuestionsPage = ({ questions }) => {
+  console.log(questions)
   const dispatch = useDispatch()
 
   const selectedOption = useSelector(
@@ -23,7 +24,7 @@ const QuestionsPage = ({ question }) => {
     <div className='w-1/2 mx-auto text-white md:p-6'>
       <h2 className='pb-4 text-2xl'>{question.text}</h2>
       <ul>
-        {question.choices.map(choice => (
+        {questions.choices.map(choice => (
           <li key={choice.id} className='w-96'>
             <label
               className={`block cursor-pointer p-3 my-2 w-96 rounded-lg font-semibold hover:bg-slate-500 ${

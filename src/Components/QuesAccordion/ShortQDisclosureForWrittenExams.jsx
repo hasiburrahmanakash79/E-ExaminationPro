@@ -2,10 +2,8 @@ import { Disclosure } from '@headlessui/react'
 import { ChevronUpIcon } from '@heroicons/react/20/solid'
 import React from 'react'
 import {} from 'react-icons/fa'
-import { useSelector } from 'react-redux'
 
-const DisclosureForWrittenExams = ({ shortQuestions }) => {
-  const { userAnswers } = useSelector(state => state.shortQuestions)
+const ShortQDisclosureForWrittenExams = ({ shortQuestions, userAnswers }) => {
   console.log(userAnswers)
   return (
     <div className='container sticky text-2xl text-white top-44 body md:mx-auto'>
@@ -17,10 +15,10 @@ const DisclosureForWrittenExams = ({ shortQuestions }) => {
                 const answer = userAnswers?.find(
                   a => a?.questionId == question?.id
                 )
-                console.log(question.question, answer)
+                console.log(question?.question, answer)
 
                 return (
-                  <Disclosure key={question.id}>
+                  <Disclosure key={question?.id}>
                     {({ open }) => (
                       <>
                         <Disclosure.Button className='flex justify-between w-full px-4 py-2 text-sm font-medium text-left text-purple-900 bg-purple-100 rounded-lg hover:bg-purple-200 focus:outline-none focus-visible:ring focus-visible:ring-purple-500 focus-visible:ring-opacity-75'>
@@ -47,4 +45,4 @@ const DisclosureForWrittenExams = ({ shortQuestions }) => {
   )
 }
 
-export default DisclosureForWrittenExams
+export default ShortQDisclosureForWrittenExams

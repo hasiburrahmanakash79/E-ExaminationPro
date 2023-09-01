@@ -13,12 +13,13 @@ import {
 
 const QuizHomePage = () => {
   const dispatch = useDispatch()
-  const { questions, userAnswers, currentQuestionIndex, isSubmitted } =
-    useSelector(state => state.demoExam)
+  const { userAnswers, currentQuestionIndex, isSubmitted } = useSelector(
+    state => state.demoExam
+  )
 
   // const { userAnswers } = useSelector(state => state.demoExamSlice)
 
-  const tempQuestions = [
+  const questions = [
     {
       id: 1,
       text: 'What is the capital of France?',
@@ -138,20 +139,20 @@ const QuizHomePage = () => {
   return (
     <section className='w-full h-screen md:p-6 primary-bg2'>
       <div className='grid grid-cols-4'>
-        <QuizProgressVisualizer
+        {/* <QuizProgressVisualizer
           className='col-span-1'
           questions={questions}
           currentQuestionIndex={currentQuestionIndex}
           userAnswers={userAnswers}
-          onQuestionIndexClick={handleQuestionIndicationClick}
-        />
+          // onQuestionIndexClick={handleQuestionIndicationClick}
+        /> */}
 
         <div className='col-span-3 mx-auto rounded-lg shadow-lg question_card h-fit md:w-3/5 md:space-y-8'>
           {currentQuestion && (
             <>
               <ProgressBar percent={currentProgress} />
               <QuestionsPage
-                question={currentQuestion}
+                questions={questions}
                 // selectedOption={selectedOption}
                 // onAnswerSelected={handleSelectOption}
                 // isLastQuestion={isLastQuestion}
