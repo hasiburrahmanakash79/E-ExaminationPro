@@ -66,7 +66,7 @@ const PricingTab = ({ pricePackage }) => {
               </div>
               <div className='py-4 '>
                 <Link
-                  to='/'
+                  to={`/payment/${price?.id}`}
                   className={`btn ${
                     price.name === 'Premium' ? 'btn-info' : 'btn-primary'
                   }`}

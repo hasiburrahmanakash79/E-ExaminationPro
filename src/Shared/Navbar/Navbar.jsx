@@ -1,18 +1,23 @@
-import logo from "../../assets/logo12.png";
-import { Link } from "react-router-dom";
-import "./Navbar.css";
 import { AiFillBell } from "react-icons/ai";
+import { Link } from "react-router-dom";
+import logo from "../../assets/logo12.png";
+import "./Navbar.css";
 
 import { useContext } from "react";
-import { AuthContext } from "../../Provider/AuthProvider";
 import Swal from "sweetalert2";
+import useAdmin from "../../Hooks/useAdmin/useAdmin";
+import useInstructor from "../../Hooks/useInstructor/useInstructor";
+import { AuthContext } from "../../Provider/AuthProvider";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
+  const [isAdmin] = useAdmin();
+  const [isInstructor] = useInstructor()
 
   const handleLogout = () => {
     logOut()
-      .then(()=>{ Swal.fire({
+      .then(() => {
+        Swal.fire({
           icon: "success",
           title: "Log Out Successful",
           showConfirmButton: false,
@@ -34,7 +39,7 @@ const Navbar = () => {
     <>
       <details className="z-[1]">
         <summary>Exam</summary>
-        <ul className="p-2 z-50 navigation-bar rounded-lg md:rounded-none">
+        <ul className="z-50 p-2 rounded-lg navigation-bar md:rounded-none">
           <li>
             <Link to="/allSubjects">All Subject</Link>
           </li>
@@ -58,10 +63,10 @@ const Navbar = () => {
         <Link to="/contact">Contact Us</Link>
       </li>
       <li>
-        <Link to="/createQues">Create Ques</Link>
+        <Link to="/about">About us</Link>
       </li>
       <li>
-        <Link to="/about">About us</Link>
+        <Link to="/forum">Forum</Link>
       </li>
     </>
   );
@@ -128,7 +133,7 @@ const Navbar = () => {
         </div>
         <div className="navbar-end">
           <div className="indicator me-4">
-            <span className="indicator-item badge badge-secondary">1+</span>
+            <span className="indicator-item  badge badge-secondary">1+</span>
             <button>
               <Link to="notice" className="text-2xl"> <AiFillBell></AiFillBell></Link>
             </button>
@@ -171,13 +176,12 @@ const Navbar = () => {
                 className="p-2 mt-3 text-white bg-black shadow menu menu-compact dropdown-content rounded-box w-52"
               >
                 <li>
-                  <Link className="justify-between w-full">
+                  <Link to="/updateProfile" className="justify-between w-full">
                     {user?.displayName}
                   </Link>
                 </li>
-                <li>
-                  <Link to="/dashboard/adminHome">Dashboard</Link>
-                </li>
+                {/* Navigate to different dashboard route based on user role */}
+                {user && <li>{isAdmin ? (<Link to="/dashboard/adminHome">Dashboard</Link>) : isInstructor ? (<Link to="/dashboard/instructorHome">Dashboard</Link>) : <Link to="/dashboard/userHome">Dashboard</Link>}</li>}
                 <li>
                   <Link to="/updateProfile">Profile Update</Link>
                 </li>

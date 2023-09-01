@@ -16,17 +16,30 @@ import ReviewAnswerAfterResult from './ReviewAnswerAfterResult'
 import FeedBack from '../Feedback/Feedback'
 import { PDFDownloadLink, PDFViewer } from '@react-pdf/renderer'
 import ResultPdfConverter from './ResultPdfConverter'
+import { useSelector } from 'react-redux'
 
 const ResultPageForMcqFib = () => {
   /*========Answer Reviewing=======
-      ========================*/
-  const userAnswers = []
-  const questions = [
-    {
-      text: 'test1',
-      correctAnswer: 'correct'
-    }
-  ]
+  ========================*/
+  const { questions, userAnswers } = useSelector(state => state.demoExam)
+  // calculating percentage
+
+  const totalQuestions = questions.length
+  const correctAnswers = userAnswers.reduce((count, answer) => {
+    const question = questions.find(q => q.id === answer.questionId)
+    return question && answer.selectedOptionId === question.correctAnswer
+      ? count + 1
+      : count
+  }, 0)
+
+  const percentage = (correctAnswers / totalQuestions) * 100
+  console.log(percentage)
+  // const questions = [
+  //   {
+  //     text: 'test1',
+  //     correctAnswer: 'correct'
+  //   }
+  // ]
 
   //   temp data for bar chart
   const data = [
@@ -74,16 +87,14 @@ const ResultPageForMcqFib = () => {
     }
   ]
   //   result data
-  const percentage = 66
 
   return (
-    <section className='grid w-full h-screen grid-cols-5 pt-6 m-auto'>
-      <ResultSideBar></ResultSideBar>
+    <section className='grid w-9/12 h-screen grid-cols-5 pt-6 m-auto'>
       <div className='col-span-1 md:col-span-4'>
         {/* Top of the result page where we can show TOP SCORE, Export the result */}
         <div className='flex items-center justify-between h-fit'>
           <h4 className='p-3 font-semibold text-white rounded-lg outline'>
-            TOP SCORE: 100%
+            TOP SCORE: 97%
           </h4>
           {/* handling the btn where when user clicks his result should be downloaded */}
 
@@ -109,8 +120,11 @@ const ResultPageForMcqFib = () => {
         <div className='flex items-center justify-between w-full md:p-4 md:mt-16 h-fit'>
           {/* PieChart to show the performance of the exam based on time took in total , total correct answer  */}
           <div className='w-24 h-24'>
+            <h3 className='pb-4 text-lg font-semibold text-red-600 '>
+              Performance
+            </h3>
             <CircularProgressbar
-              value={75}
+              value={percentage}
               strokeWidth={50}
               styles={buildStyles({
                 strokeLinecap: 'butt'

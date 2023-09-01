@@ -23,7 +23,7 @@ const Exam2 = () => {
     const [start, setStart] = useState(false) // it use to store user selected option from mcq
 
     const sendData = (result) => {
-        fetch('https://e-exam-pro-server.vercel.app/examdata', {
+        fetch('http://localhost:5000/examdata', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

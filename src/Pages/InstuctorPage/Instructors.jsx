@@ -7,7 +7,7 @@ const Instructors = () => {
   const [displayCount, setDisplayCount] = useState(6);
 
   useEffect(() => {
-    fetch("https://e-exam-pro-server.vercel.app/instructors")
+    fetch("http://localhost:5000/instructors")
       .then((res) => res.json())
       .then((data) => setInstructors(data));
   }, []);
@@ -28,7 +28,7 @@ const Instructors = () => {
         {!seeMore && (
           <button
             onClick={handleSeeMore}
-            className="btn primary-bg"
+            className="btn primary-btn"
           >
             See More Instructors
           </button>
