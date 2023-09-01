@@ -73,6 +73,7 @@ const CheckOutForm = ({ price, packages }) => {
 
       const payment = {
         email: user?.email,
+        userName: user?.displayName,
         transactionId: paymentIntent?.id,
         price,
         Status: "Paid",
