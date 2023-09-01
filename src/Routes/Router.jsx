@@ -24,6 +24,7 @@ import FreeCoursePage from '../Pages/FreeCoursePage/FreeCoursePage'
 import CreateQuesPaper from '../Pages/Dashboard/InstructorDashboard/CreateQuestion/CreateQuesPaper'
 import InstructorHome from '../Pages/Dashboard/InstructorDashboard/InstructorHome/InstructorHome'
 import Payment from '../Pages/Dashboard/UserDashboard/Payment/Payment'
+import UpdateProfile from '../Pages/UpdateProfile/UpdateProfile'
 import LongQuestion from '../Pages/Exams/LongQuestion/LongQuestion'
 import QuizDemo from '../Pages/Home/DemoTest/QuizDemo'
 import UpdateProfile from '../Pages/Authentication/UpdateProfile/UpdateProfile'
@@ -114,6 +115,9 @@ const router = createBrowserRouter([
       {
         path: '/result',
         element: <ResultPageForMcqFib />
+      },{
+        path:'/updateProfile',
+        element:<UpdateProfile></UpdateProfile>
       },
       {
         path: '/forum',
