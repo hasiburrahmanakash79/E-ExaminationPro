@@ -24,7 +24,7 @@ const DemoTestSection = () => {
               aliquid possimus facilis reprehenderit illum recusandae
               consequatur, excepturi sint inventore voluptatum.
             </p>
-            <Link to="/demo-test" className="btn primary-bg">
+            <Link to="/demoTest" className="btn primary-btn">
               Explore How We Take Exams
             </Link>
           </div>

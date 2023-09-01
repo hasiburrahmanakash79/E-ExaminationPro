@@ -9,7 +9,6 @@ import Contact from '../Pages/Contact/Contact'
 import ShortQ from '../Pages/Exams/ShortQuestion/ShortQ'
 import PrivateRouter from './PrivateRouter'
 import Error from '../Pages/Error/Error'
-import Exam from '../Pages/FreeCoursePage/ExamPage/Exam'
 import Instructors from '../Pages/InstuctorPage/Instructors'
 import Dashboard from '../Layouts/Dashboard'
 import ResultPageForMcqFib from '../components/QuestionRelated/ResultPageForMcqFib'
@@ -28,6 +27,7 @@ import Payment from '../Pages/Dashboard/UserDashboard/Payment/Payment'
 import UpdateProfile from '../Pages/Authentication/UpdateProfile/UpdateProfile'
 import UserHome from '../Pages/Dashboard/UserDashboard/UserHome/UserHome'
 import PaymentHistory from '../Pages/Dashboard/UserDashboard/PaymentHistory/PaymentHistory'
+import CommentApp from '../Pages/Furam/CommentApp'
 
 const router = createBrowserRouter([
   {
@@ -57,7 +57,7 @@ const router = createBrowserRouter([
         element: <AboutUs></AboutUs>
       },
       {
-        path: '/demo-test',
+        path: '/demoTest',
         element: <QuizHomePage />
       },
       {
@@ -100,6 +100,10 @@ const router = createBrowserRouter([
       {
         path: '/result',
         element: <ResultPageForMcqFib />
+      },
+      {
+        path: '/forum',
+        element: <CommentApp/>
       },
       {
         path: '/updateProfile',
@@ -153,3 +157,5 @@ const router = createBrowserRouter([
 ])
 
 export default router
+
+

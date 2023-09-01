@@ -5,63 +5,22 @@ import AnsDataPage from '../../../components/examComponents/AnsDataPage'
 import FillTheBlank from '../../../components/examComponents/FillTheBlank'
 import McqPage from '../../../components/examComponents/McqPage'
 import TimeRemain from '../../../components/examComponents/TimeRemain'
-
-
+import { useDispatch, useSelector } from 'react-redux';
 import React from 'react';
+import { nextQues, prevQues, resetQues, setAnswerIndex, setResult, setInputValue, setMcq, setView } from '../../../redux/features/examPage/examPageSlice'
+import StartCountdowns from '../../../components/examComponents/startCountdowns'
+
 
 const Exam2 = () => {
-    //////////////////////
-    // const location = useLocation()
-    // const searchParams = new URLSearchParams(location.search) /////get exam type from route
-    // const examType = searchParams.get('type')
-    // console.log(examType)
-    //////////////////
+    const { currentQuestion, answerIndx, result, inputValue, optionMcq, view } = useSelector((state) => state.examPage)
+    const dispatch = useDispatch()
     const ques = useLoaderData();
-    const questions = ques.questions
+    const questions = ques?.questions
     const examType = ques.type
-    console.log(questions, examType)
-
-    // const questions = examType == 'mcq' ? jsQuizz.question : mathQues.questions ///store question based on type
-
-    const [currentQuestion, setCurrentQuestion] = useState(0) // default current question 0, index of array
     const { question, options, correctAnswer } = questions[currentQuestion] //destructure array of objects
-    const [answerIndx, setAnswerIndx] = useState(null) // related with options index
-
-    const [result, setResult] = useState([])
-
-    const [view, setView] = useState(false) // show exam page or result page based on state
-    const [inputValue, setInputValue] = useState('') // store user answer from input value
-
     const [countdown, setCountdown] = useState(3) // 3 sec countdown before start exam
-
     const [timer, setTimer] = useState(null)// store time interval to clear the time interval.
-
-    const [optionMcq, setMcq] = useState(null) // it use to store user selected option from mcq
-
     const [start, setStart] = useState(false) // it use to store user selected option from mcq
-
-
-    useEffect(() => {
-
-        ////////////////
-        if (countdown > 0) {
-            const countdownTimer = setInterval(() => {
-                if (countdown > 0) {
-                    setCountdown(prevCountdown => prevCountdown - 1) /// function for 3 sec countdown before start exam
-                    console.log(countdown)
-                } else {
-                    clearInterval(countdownTimer)
-                }
-            }, 1000)
-
-            return () => clearInterval(countdownTimer)
-        }
-        ////////////////
-
-    }, [countdown])
-
-
-    /////data sending function
 
     const sendData = (result) => {
         fetch('http://localhost:5000/examdata', {
@@ -73,21 +32,20 @@ const Exam2 = () => {
         })
     }
 
-    ////////// This code will execute when time remain for exam is 0.
-    const handleFinishExam = () => {
-        setView(true)
-        setCurrentQuestion(0)
+ const handleFinishExam = () => {  ////////// This code will execute when time remain for exam is 0.
+        dispatch(setView(true))//setView(true)
+        dispatch(resetQues()) //setCurrentQuestion(0)
         clearInterval(timer)///stop timer
         sendData(result)
     }
-    //////////// end
 
     const handleInputChange = event => {
-        setInputValue(event.target.value) //store neumeric type value from input field
+        dispatch(setInputValue(event.target.value))  // setInputValue(event.target.value) //store neumeric type value from input field
     }
+
     ///////////// when user select option in mcq ////////////////
     const onSelectOption = (index, option, question) => {
-        setAnswerIndx(index)
+        dispatch(setAnswerIndex(index))//redux // setAnswerIndx(index)
         const result1 = result.find(obj => obj.question === question) // check if the answer allready stored or not
         if (result1) {
             result1.userAns = option
@@ -97,32 +55,32 @@ const Exam2 = () => {
                 correctAnswer: correctAnswer,
                 userAns: option
             }
-            setResult(prevArray => [...prevArray, newObject])
-            setMcq(option) // store user selected option
+            dispatch(setResult(newObject))  //setResult(prevArray => [...prevArray, newObject])
+            dispatch(setMcq(option))// setMcq(option) // store user selected option
         }
     }
-    ////////////////////// END //////////////////
-    if (inputValue == NaN) {
-        setInputValue(parseFloat(inputValue).toFixed(2))
+
+    if (inputValue == NaN) { //check nan
+        dispatch(setInputValue(parseFloat(inputValue).toFixed(2)))   //setInputValue(parseFloat(inputValue).toFixed(2))
     }
 
     ///////////// next button action ///////////////////
     const onClickNext = () => {
-        setMcq(null) // set user selected option to null
+        dispatch(setMcq(null)) // setMcq(null) // set user selected option to null
 
         if (examType == 'FillInTheBlank') { //for fill in the blank
             const result1 = result.find(obj => obj.question === question) // check if answer stored or not
             if (result1) {
                 result1.userAns = inputValue || 'Skipped'
-                setInputValue('')
+                dispatch(setInputValue('')) // setInputValue('')
             } else {
                 const newObject = {
                     question: question,
                     correctAnswer: correctAnswer,
                     userAns: inputValue || 'Skipped'
                 }
-                setResult(prevArray => [...prevArray, newObject]) //store object in result array
-                setInputValue('')
+                dispatch(setResult(newObject))  // setResult(prevArray => [...prevArray, newObject]) //store object in result array
+                dispatch(setInputValue(''))  //setInputValue('')
             }
         } else {
             if (optionMcq == null) {
@@ -131,18 +89,24 @@ const Exam2 = () => {
                     correctAnswer: correctAnswer,
                     userAns: 'Skipped'
                 }
-                setResult(prevArray => [...prevArray, newObject]) //store object in result array
+                dispatch(setResult(newObject))     // setResult(prevArray => [...prevArray, newObject]) //store object in result array
             }
         } /// fill in the blank end
 
-        setAnswerIndx(null)
+        //setAnswerIndx(null)
+        dispatch(setAnswerIndex(null))//redux
 
         if (currentQuestion !== questions.length - 1) {
-            setCurrentQuestion(prev => prev + 1)
+
+            console.log(currentQuestion, questions)
+            dispatch(nextQues())
+            // set cur + 1
         }
         else {
-            setView(true)
-            setCurrentQuestion(0)
+            dispatch(setView(true)) //setView(true)
+            dispatch(resetQues())
+
+            //setCurrentQuestion(0)
             console.log('hit')
             console.log(result)
             clearInterval(timer)
@@ -151,11 +115,13 @@ const Exam2 = () => {
     }
     ///// previous button action
     const onClickPrevious = () => {
-        setAnswerIndx(null)
+        dispatch(setAnswerIndex(null)) //redux
+        //setAnswerIndx(null)
         if (currentQuestion !== 0) {
-            setCurrentQuestion(prev => prev - 1)
+            dispatch(prevQues())
+            //setCurrentQuestion(prev => prev - 1)
         }
-        setInputValue('')
+        dispatch(setInputValue('')) // setInputValue('')
     }
     /////end//////
 
@@ -170,15 +136,8 @@ const Exam2 = () => {
         <>  {/* show 3sec countdown before start exam */}
             {
                 countdown > 0 ?
-                    <div className=' h-[80vh] flex flex-col justify-center items-center '>
-                        <div className='text-center '>
-                            <h1 className='my-1 font-bold text-red-600 text-9xl'>
-
-                                {countdown}
-                            </h1>
-
-                            <h1 className='text-7xl'>Get Ready</h1>
-                        </div>
+                    <div>
+                        <StartCountdowns countdown={countdown} setCountdown={setCountdown}></StartCountdowns>
                     </div>
                     :
                     <div>
@@ -190,9 +149,9 @@ const Exam2 = () => {
                                 ></AnsDataPage>
                             </div>
                                 : <>{/* show remaining time */}
-                                    {((examType == 'multimedia_mcq' && start==true)||(examType == 'mcq')|| (examType=='FillInTheBlank'))&&<TimeRemain
-                                    examType={ques.type}
-                                    start={start}
+                                    {((examType == 'multimedia_mcq' && start == true) || (examType == 'mcq') || (examType == 'FillInTheBlank')) && <TimeRemain
+                                        examType={ques.type}
+                                        start={start}
                                         handleFinishExam={handleFinishExam}
                                         setTimer={setTimer}
                                     ></TimeRemain>}
@@ -214,13 +173,13 @@ const Exam2 = () => {
                                                     <span className='text-xl font-semibold'>/{questions.length}</span> {/* show total question in number */}
                                                 </div>
                                             </div>
-                                            {((examType == 'multimedia_mcq' && start==true)|| examType == 'mcq')?<h1 className='text-3xl font-semibold my-7'>{currentQuestion + 1}- {question}</h1>:<h1 className='text-3xl font-semibold my-7'>Are You Ready?? Please Start Exam</h1>}  {/* show question  */}
+                                            {((examType == 'multimedia_mcq' && start == true) || (examType == 'mcq') || (examType == 'FillInTheBlank')) ? <h1 className='text-3xl font-semibold my-7'>{currentQuestion + 1}- {question}</h1> : <h1 className='text-3xl font-semibold my-7'>Are You Ready?? Please Start Exam</h1>}  {/* show question  */}
 
                                             {
                                                 (examType == 'mcq' || examType == 'multimedia_mcq') ? // check exam type
                                                     <McqPage
-                                                    examType={ques.type}
-                                                    start={start}
+                                                        examType={ques.type}
+                                                        start={start}
                                                         options={options}
                                                         answerIndx={answerIndx}
                                                         questions={questions}
@@ -238,13 +197,13 @@ const Exam2 = () => {
                                                     ></FillTheBlank>
                                             }
                                             <div className=''>
-                                            <div className='flex justify-between mt-10'>
-                                                <button disabled={((currentQuestion == 0)||(examType == 'multimedia_mcq' && start==false))} onClick={onClickPrevious} className='text-white btn navigation-bar hover:bg-blue-900 '>Previous</button>
-                                                <button disabled={(examType == 'multimedia_mcq' && start==false)} onClick={onClickNext} className='text-white btn navigation-bar '>{currentQuestion == questions.length - 1 ? 'Finish' : 'Next'}</button>
-                                            </div>
-                                            <div className='flex justify-center'>
-                                                {examType=='multimedia_mcq'&&<button className='my-5 btn btn-primary' onClick={()=>setStart(true)} >Start</button>}
-                                            </div>
+                                                <div className='flex justify-between mt-10'>
+                                                    <button disabled={((currentQuestion == 0) || (examType == 'multimedia_mcq' && start == false))} onClick={onClickPrevious} className='text-white btn navigation-bar hover:bg-blue-900 '>Previous</button>
+                                                    <button disabled={(examType == 'multimedia_mcq' && start == false)} onClick={onClickNext} className='text-white btn navigation-bar '>{currentQuestion == questions.length - 1 ? 'Finish' : 'Next'}</button>
+                                                </div>
+                                                <div className='flex justify-center'>
+                                                    {examType == 'multimedia_mcq' && <button className='my-5 btn btn-primary' onClick={() => setStart(true)} >Start</button>}
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
