@@ -28,7 +28,7 @@ const Instructors = () => {
         {!seeMore && (
           <button
             onClick={handleSeeMore}
-            className="btn primary-bg"
+            className="btn primary-btn"
           >
             See More Instructors
           </button>

@@ -116,7 +116,7 @@ const CheckOutForm = ({ price, packages }) => {
         />
         <button
           // className="bg-gray-400 w-full p-2 mt-7 rounded"
-        className={processing ? 'processing bg-gray-400 w-full p-2 mt-7 rounded' : 'bg-gray-400 w-full p-2 mt-7 rounded'}
+        className={processing ? 'processing primary-btn w-full p-2 mt-7 rounded' : 'primary-btn w-full p-2 mt-7 rounded'}
           type="submit"
           disabled={!stripe || processing}
         >
