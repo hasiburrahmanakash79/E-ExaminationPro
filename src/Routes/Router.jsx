@@ -9,7 +9,6 @@ import Contact from '../Pages/Contact/Contact'
 import ShortQ from '../Pages/Exams/ShortQuestion/ShortQ'
 import PrivateRouter from './PrivateRouter'
 import Error from '../Pages/Error/Error'
-import Exam from '../Pages/FreeCoursePage/ExamPage/Exam'
 import Instructors from '../Pages/InstuctorPage/Instructors'
 import Dashboard from '../Layouts/Dashboard'
 import ResultPageForMcqFib from '../components/QuestionRelated/ResultPageForMcqFib'
@@ -21,11 +20,16 @@ import ResultPage from '../Pages/Home/DemoTest/ResultPage'
 import Notice from '../Pages/NoticePage/Notice/Notice'
 import AllExam from '../Pages/FreeCoursePage/ExamPage/allExam'
 import Exam2 from '../Pages/FreeCoursePage/ExamPage/Exam2'
-import CreateQuesPaper from '../Pages/DashboardPages/InstructorPages/CreateQuesPaper/CreateQuesPaper'
 import FreeCoursePage from '../Pages/FreeCoursePage/FreeCoursePage'
+import CreateQuesPaper from '../Pages/Dashboard/InstructorDashboard/CreateQuestion/CreateQuesPaper'
+import InstructorHome from '../Pages/Dashboard/InstructorDashboard/InstructorHome/InstructorHome'
 import Payment from '../Pages/Dashboard/UserDashboard/Payment/Payment'
 import LongQuestion from '../Pages/Exams/LongQuestion/LongQuestion'
 import QuizDemo from '../Pages/Home/DemoTest/QuizDemo'
+import UpdateProfile from '../Pages/Authentication/UpdateProfile/UpdateProfile'
+import UserHome from '../Pages/Dashboard/UserDashboard/UserHome/UserHome'
+import PaymentHistory from '../Pages/Dashboard/UserDashboard/PaymentHistory/PaymentHistory'
+import CommentApp from '../Pages/Furam/CommentApp'
 
 const router = createBrowserRouter([
   {
@@ -68,7 +72,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/payment/:id',
-        element: <Payment />
+        element: <PrivateRouter><Payment/></PrivateRouter>
       },
       {
         path: '/allSubjects',
@@ -88,7 +92,7 @@ const router = createBrowserRouter([
         element: <Exam2 />,
         loader: ({ params }) =>
           fetch(
-            `https://e-exam-pro-server.vercel.app/questionPaper/${params.id}`
+            `http://localhost:5000/questionPaper/${params.id}`
           )
       },
       {
@@ -106,6 +110,14 @@ const router = createBrowserRouter([
       {
         path: '/result',
         element: <ResultPageForMcqFib />
+      },
+      {
+        path: '/forum',
+        element: <CommentApp/>
+      },
+      {
+        path: '/updateProfile',
+        element: <PrivateRouter><UpdateProfile></UpdateProfile></PrivateRouter>
       }
     ]
   },
@@ -120,7 +132,7 @@ const router = createBrowserRouter([
   },
   {
     path: '/dashboard',
-    element: <Dashboard />,
+    element: <PrivateRouter><Dashboard /></PrivateRouter>,
     children: [
       {
         path: '/dashboard/adminHome',
@@ -131,11 +143,29 @@ const router = createBrowserRouter([
         element: <ManageUsers />
       },
       {
+        path: '/dashboard/instructorHome',
+        element: <InstructorHome />
+      },
+      {
+        path: '/dashboard/createQues',
+        element: <CreateQuesPaper />
+      },
+      {
         path: '/dashboard/payment/:id',
-        element: <Payment />
-      }
+        element: <Payment/>
+      },
+      {
+        path: '/dashboard/userHome',
+        element: <UserHome/>
+      },
+      {
+        path: '/dashboard/paymentHistory',
+        element: <PaymentHistory/>
+      },
     ]
   }
 ])
 
 export default router
+
+
