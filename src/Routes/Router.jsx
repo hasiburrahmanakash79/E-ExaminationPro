@@ -28,6 +28,8 @@ import UpdateProfile from '../Pages/Authentication/UpdateProfile/UpdateProfile'
 import UserHome from '../Pages/Dashboard/UserDashboard/UserHome/UserHome'
 import PaymentHistory from '../Pages/Dashboard/UserDashboard/PaymentHistory/PaymentHistory'
 import CommentApp from '../Pages/Furam/CommentApp'
+import CreateLiveExam from '../Pages/LiveExam/CreateLiveExam/CreateLiveExam'
+import JoinLiveExam from '../Pages/LiveExam/JoinLiveExam/JoinLiveExam'
 
 const router = createBrowserRouter([
   {
@@ -108,6 +110,14 @@ const router = createBrowserRouter([
       {
         path: '/updateProfile',
         element: <PrivateRouter><UpdateProfile></UpdateProfile></PrivateRouter>
+      },
+      {
+        path: '/createLiveExam',
+        element: <CreateLiveExam/>
+      },
+      {
+        path: '/joinLiveExam',
+        element: <JoinLiveExam/>
       }
     ]
   },
