@@ -111,7 +111,7 @@ const ResultPageForMcqFib = () => {
               loading ? (
                 'Loading document...'
               ) : (
-                <button className='btn primary-bg'>Export Result As PDF</button>
+                <button className='btn primary-btn'>Export Result As PDF</button>
               )
             }
           </PDFDownloadLink>
@@ -173,7 +173,7 @@ const ResultPageForMcqFib = () => {
           <div>
             {/* Open the modal using ID.showModal() method */}
             <button
-              className='btn btn_quiz primary-bg'
+              className='btn btn_quiz primary-btn'
               onClick={() => window.my_modal_1.showModal()}
             >
               View Answers
@@ -200,7 +200,7 @@ const ResultPageForMcqFib = () => {
           <div>
             {/* Open the modal using ID.showModal() method */}
             <button
-              className='btn btn_quiz primary-bg'
+              className='btn btn_quiz primary-btn'
               onClick={() => window.my_modal_2.showModal()}
             >
               Give FeedBack

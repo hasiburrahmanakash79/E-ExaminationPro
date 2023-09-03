@@ -73,5 +73,18 @@
     "postcss": "^8.4.27",
     "tailwindcss": "^3.3.3",
     "vite": "^4.4.5"
-  }
+  },
+  "description": "This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.",
+  "main": "postcss.config.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hasiburrahmanakash79/E-ExaminationPro.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hasiburrahmanakash79/E-ExaminationPro/issues"
+  },
+  "homepage": "https://github.com/hasiburrahmanakash79/E-ExaminationPro#readme"
 }
