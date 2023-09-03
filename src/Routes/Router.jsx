@@ -27,6 +27,8 @@ import PaymentHistory from '../Pages/Dashboard/UserDashboard/PaymentHistory/Paym
 import CommentApp from '../Pages/Furam/CommentApp'
 import WrittenExams from '../Pages/Exams/WrittenExams/WrittenExams'
 import ResultPageForMcqFib from '../components/examComponents/QuestionRelated/ResultPageForMcqFib'
+import Profile from '../Pages/Authentication/UpdateProfile/Profile'
+import UpdateProfile from '../Pages/Authentication/UpdateProfile/UpdateProfile'
 
 const router = createBrowserRouter([
   {
@@ -106,15 +108,23 @@ const router = createBrowserRouter([
       {
         path: '/forum',
         element: <CommentApp />
+      },
+      {
+        path: '/updateProfile',
+        element: (
+          <PrivateRouter>
+            <UpdateProfile></UpdateProfile>
+          </PrivateRouter>
+        )
+      },
+      {
+        path: '/profile',
+        element: (
+          <PrivateRouter>
+            <Profile></Profile>
+          </PrivateRouter>
+        )
       }
-      // {
-      //   path: '/updateProfile',
-      //   element: (
-      //     <PrivateRouter>
-      //       <UpdateProfile></UpdateProfile>
-      //     </PrivateRouter>
-      //   )
-      // }
     ]
   },
 
