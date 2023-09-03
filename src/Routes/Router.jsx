@@ -30,6 +30,8 @@ import PaymentHistory from '../Pages/Dashboard/UserDashboard/PaymentHistory/Paym
 import CommentApp from '../Pages/Furam/CommentApp'
 import CreateLiveExam from '../Pages/LiveExam/CreateLiveExam/CreateLiveExam'
 import JoinLiveExam from '../Pages/LiveExam/JoinLiveExam/JoinLiveExam'
+import AppliedLiveExam from '../Pages/Dashboard/UserDashboard/AppliedLiveExam/AppliedLiveExam'
+import StudentAnalytics from '../Pages/Dashboard/UserDashboard/StudentAnalytics/StudentAnalytics'
 
 const router = createBrowserRouter([
   {
@@ -134,6 +136,7 @@ const router = createBrowserRouter([
     path: '/dashboard',
     element: <PrivateRouter><Dashboard /></PrivateRouter>,
     children: [
+      // Admin Dashboard Routes
       {
         path: '/dashboard/adminHome',
         element: <AdminHome />
@@ -142,6 +145,7 @@ const router = createBrowserRouter([
         path: '/dashboard/manageUsers',
         element: <ManageUsers />
       },
+       // Instructor Dashboard Routes
       {
         path: '/dashboard/instructorHome',
         element: <InstructorHome />
@@ -150,6 +154,7 @@ const router = createBrowserRouter([
         path: '/dashboard/createQues',
         element: <CreateQuesPaper />
       },
+      // User Dashboard Routes
       {
         path: '/dashboard/payment/:id',
         element: <Payment/>
@@ -161,6 +166,14 @@ const router = createBrowserRouter([
       {
         path: '/dashboard/paymentHistory',
         element: <PaymentHistory/>
+      },
+      {
+        path: '/dashboard/appliedLiveExam',
+        element: <AppliedLiveExam/>
+      },
+      {
+        path: '/dashboard/studentAnalytics',
+        element: <StudentAnalytics/>
       },
     ]
   }
