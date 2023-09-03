@@ -13,10 +13,11 @@ import {
   ResponsiveContainer
 } from 'recharts'
 import ReviewAnswerAfterResult from './ReviewAnswerAfterResult'
-import FeedBack from '../Feedback/Feedback'
+
 import { PDFDownloadLink, PDFViewer } from '@react-pdf/renderer'
 import ResultPdfConverter from './ResultPdfConverter'
 import { useSelector } from 'react-redux'
+import FeedBack from '../../Feedback/Feedback'
 
 const ResultPageForMcqFib = () => {
   /*========Answer Reviewing=======
@@ -111,7 +112,7 @@ const ResultPageForMcqFib = () => {
               loading ? (
                 'Loading document...'
               ) : (
-                <button className='btn primary-bg'>Export Result As PDF</button>
+                <button className='btn primary-btn'>Export Result As PDF</button>
               )
             }
           </PDFDownloadLink>
@@ -173,7 +174,7 @@ const ResultPageForMcqFib = () => {
           <div>
             {/* Open the modal using ID.showModal() method */}
             <button
-              className='btn btn_quiz primary-bg'
+              className='btn btn_quiz primary-btn'
               onClick={() => window.my_modal_1.showModal()}
             >
               View Answers
@@ -200,7 +201,7 @@ const ResultPageForMcqFib = () => {
           <div>
             {/* Open the modal using ID.showModal() method */}
             <button
-              className='btn btn_quiz primary-bg'
+              className='btn btn_quiz primary-btn'
               onClick={() => window.my_modal_2.showModal()}
             >
               Give FeedBack

@@ -44,7 +44,7 @@ const Navbar = () => {
             <Link to="/allSubjects">All Subject</Link>
           </li>
           <li>
-            <Link>Rules</Link>
+            <Link to="/shortQ">ShortQ</Link>
           </li>
         </ul>
       </details>
@@ -183,7 +183,7 @@ const Navbar = () => {
                 {/* Navigate to different dashboard route based on user role */}
                 {user && <li>{isAdmin ? (<Link to="/dashboard/adminHome">Dashboard</Link>) : isInstructor ? (<Link to="/dashboard/instructorHome">Dashboard</Link>) : <Link to="/dashboard/userHome">Dashboard</Link>}</li>}
                 <li>
-                  <Link to="/updateProfile">Profile Update</Link>
+                  <Link to="/profile">Profile</Link>
                 </li>
                 <li>
                   <Link className="w-full" onClick={handleLogout}>
