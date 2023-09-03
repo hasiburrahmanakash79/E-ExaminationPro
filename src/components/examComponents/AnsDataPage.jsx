@@ -1,5 +1,6 @@
 
 const AnsDataPage = ({result,questions}) => {
+    console.log(result)
     return (
         <div>
             <div className='max-w-[100px]   min-h-[60px] text-white bg-blue-900 rounded-full flex justify-center items-center'>

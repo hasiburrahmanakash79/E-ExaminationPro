@@ -30,6 +30,7 @@ import UpdateProfile from '../Pages/Authentication/UpdateProfile/UpdateProfile'
 import UserHome from '../Pages/Dashboard/UserDashboard/UserHome/UserHome'
 import PaymentHistory from '../Pages/Dashboard/UserDashboard/PaymentHistory/PaymentHistory'
 import CommentApp from '../Pages/Furam/CommentApp'
+import Profile from '../Pages/Authentication/UpdateProfile/Profile'
 
 const router = createBrowserRouter([
   {
@@ -122,6 +123,14 @@ const router = createBrowserRouter([
         element: (
           <PrivateRouter>
             <UpdateProfile></UpdateProfile>
+          </PrivateRouter>
+        )
+      },
+      {
+        path: '/profile',
+        element: (
+          <PrivateRouter>
+            <Profile></Profile>
           </PrivateRouter>
         )
       }
