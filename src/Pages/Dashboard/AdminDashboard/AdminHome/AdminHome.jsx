@@ -65,9 +65,8 @@ const AdminHome = () => {
     <div className="px-4 pt-4">
       <div className="flex items-center justify-between">
         <h1 className="text-2xl">Admin home</h1>
-        <button className="px-2 rounded-md btn-primary">Generate report</button>
       </div>
-      <div className="grid grid-cols-4 gap-3 pb-6 mt-4">
+      <div className="grid grid-cols-1 gap-3 pb-6 mt-4 md:grid-cols-4">
         <div className="flex items-center justify-between h-20 px-4 mx-3 transition duration-300 ease-out transform border-l-4 border-green-300 rounded-lg cursor-pointer hover:shadow-lg hover:scale-105">
           <div>
             <h2>Students</h2>
@@ -97,32 +96,34 @@ const AdminHome = () => {
           <RiQuestionAnswerLine fontSize={28} />
         </div>
       </div>
-      <div className="flex gap-2">
+      <div className="flex flex-col gap-2 md:flex-row">
         <div className="basis-[70%] my-8 w-full gap-6 shadow-xl rounded-md cursor-pointer border border-violet-900 p-3">
           <div>
             <h2 className="pb-3 text-center">Questions Overview</h2>
           </div>
           <div>
-            <BarChart
-              width={650}
-              height={350}
-              data={data}
-              margin={{
-                top: 5,
-                right: 30,
-                left: 20,
-                bottom: 5,
-              }}
-            >
-              <CartesianGrid strokeDasharray="3 3" />
-              <XAxis dataKey="name" />
-              <YAxis />
-              <Tooltip />
-              <Legend />
-              <Bar dataKey="MCQ" fill="#8884d8" />
-              <Bar dataKey="Short-Q" fill="#82ca9d" />
-              <Bar dataKey="Long-Q" fill="#fcba03" />
-            </BarChart>
+            <ResponsiveContainer width="100%" height={350}>
+              <BarChart
+                width={650}
+                height={350}
+                data={data}
+                margin={{
+                  top: 5,
+                  right: 30,
+                  left: 20,
+                  bottom: 5,
+                }}
+              >
+                <CartesianGrid strokeDasharray="3 3" />
+                <XAxis dataKey="name" />
+                <YAxis />
+                <Tooltip />
+                <Legend />
+                <Bar dataKey="MCQ" fill="#8884d8" />
+                <Bar dataKey="Short-Q" fill="#82ca9d" />
+                <Bar dataKey="Long-Q" fill="#fcba03" />
+              </BarChart>
+            </ResponsiveContainer>
           </div>
         </div>
         <div className="basis-[30%] my-8 w-full gap-6 shadow-xl rounded-md cursor-pointer border border-violet-900 p-3">
