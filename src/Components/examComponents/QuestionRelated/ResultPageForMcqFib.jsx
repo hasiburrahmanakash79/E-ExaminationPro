@@ -13,10 +13,11 @@ import {
   ResponsiveContainer
 } from 'recharts'
 import ReviewAnswerAfterResult from './ReviewAnswerAfterResult'
-import FeedBack from '../Feedback/Feedback'
+
 import { PDFDownloadLink, PDFViewer } from '@react-pdf/renderer'
 import ResultPdfConverter from './ResultPdfConverter'
 import { useSelector } from 'react-redux'
+import FeedBack from '../../Feedback/Feedback'
 
 const ResultPageForMcqFib = () => {
   /*========Answer Reviewing=======

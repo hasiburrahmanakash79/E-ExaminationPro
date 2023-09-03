@@ -5,10 +5,7 @@ import './TextEditor.css'
 import { useForm } from 'react-hook-form'
 import { addUserAnswer } from '../../redux/features/shortQuestion/shortQuestionSlice'
 const TextEditor = ({ question }) => {
-  // const { userAnswers } = useSelector(state => state.shortQuestions)
-  // console.log(question)
   const dispatch = useDispatch()
-
   const { register, handleSubmit, reset } = useForm()
   const onSubmit = data => {
     console.log(data)
