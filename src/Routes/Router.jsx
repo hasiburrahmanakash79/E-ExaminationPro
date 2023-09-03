@@ -106,15 +106,15 @@ const router = createBrowserRouter([
       {
         path: '/forum',
         element: <CommentApp />
-      },
-      {
-        path: '/updateProfile',
-        element: (
-          <PrivateRouter>
-            <UpdateProfile></UpdateProfile>
-          </PrivateRouter>
-        )
       }
+      // {
+      //   path: '/updateProfile',
+      //   element: (
+      //     <PrivateRouter>
+      //       <UpdateProfile></UpdateProfile>
+      //     </PrivateRouter>
+      //   )
+      // }
     ]
   },
 
