@@ -22,7 +22,6 @@ import InstructorHome from '../Pages/Dashboard/InstructorDashboard/InstructorHom
 import Payment from '../Pages/Dashboard/UserDashboard/Payment/Payment'
 
 import QuizDemo from '../Pages/Home/DemoTest/QuizDemo'
-import UpdateProfile from '../Pages/Authentication/UpdateProfile/UpdateProfile'
 import UserHome from '../Pages/Dashboard/UserDashboard/UserHome/UserHome'
 import PaymentHistory from '../Pages/Dashboard/UserDashboard/PaymentHistory/PaymentHistory'
 import CommentApp from '../Pages/Furam/CommentApp'

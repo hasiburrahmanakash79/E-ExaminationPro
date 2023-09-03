@@ -62,9 +62,9 @@ const UserHome = () => {
 
   return (
     <div className="px-10 py-20">
-      <div className="flex gap-5 mb-5">
-        <div className="bg-transparent border border-violet-700 shadow-2xl w-full rounded-md">
-          <div className="flex justify-between items-center mt-5 px-5">
+      <div className="md:flex gap-5 mb-5">
+        <div className="bg-transparent border border-violet-700 shadow-2xl w-full rounded-md p-5">
+          <div className="flex justify-between items-center">
             <h2 className="text-2xl">Progress Overview</h2>
             <div>
               <FaInfoCircle
@@ -92,9 +92,9 @@ const UserHome = () => {
               </dialog>
             </div>
           </div>
-          <div className="px-5">
-            <div className="flex  ">
-              <PieChart width={400} height={400}>
+          <div className="">
+            <div className="md:flex justify-between items-center">
+              <PieChart width={300} height={300}>
                 <Pie
                   dataKey="value"
                   isAnimationActive={false}
@@ -116,19 +116,14 @@ const UserHome = () => {
                 />
                 <Tooltip />
               </PieChart>
-              <div
-                className="px-5 pt-36 
-              "
-              >
+              <div className="md:w-1/2 w-full mx-auto">
                 <h2 className="flex items-center gap-3 ">
                   <FaFileSignature className="text-xl text-white"></FaFileSignature>
                   Quiz Mark
                 </h2>
-
                 <h2 className="flex items-center gap-3 ">
                   <FaVideo className="text-xl text-white"></FaVideo>Multimedia mark
                 </h2>
-
                 <h2 className="flex items-center gap-3 pt-2">
                   <FaFileAlt className="text-xl text-white"></FaFileAlt>
                   Assignment Mark
@@ -141,12 +136,11 @@ const UserHome = () => {
             </div>
           </div>
         </div>
-
         <div className="bg-transparent border border-violet-700 shadow-2xl w-full rounded-md p-5">
           <h2 className="text-2xl">Quiz Participation</h2>
-          <div className="flex items-center gap-1">
+          <div className="md:flex items-center gap-10">
             <div>
-              <PieChart width={400} height={400}>
+              <PieChart width={300} height={300}>
                 <Pie
                   data={PieDataInfo}
                   dataKey="value"
@@ -182,15 +176,15 @@ const UserHome = () => {
           <div></div>
         </div>
       </div>
-      <div className="flex gap-5 rounded-md">
-        <div className="bg-transparent border border-violet-700 shadow-2xl md:w-1/3 w-full rounded-md p-5">
+      <div className="md:flex gap-5 rounded-md">
+        <div className="bg-transparent border border-violet-700 shadow-2xl w-full rounded-md p-5">
           <div className="flex items-center justify-between ">
             <div>
-              <h1 className="text-2xl font-extrabold text-white">
+              <h1 className="text-2xl">
                 Module Finish Track
               </h1>
             </div>
-            <div className="flex items-center gap-2">
+            <div className="">
               <FaInfoCircle
                 className="text-xl text-white "
                 onClick={() => window.my_modal_1.showModal()}
@@ -212,7 +206,7 @@ const UserHome = () => {
               </dialog>
             </div>
           </div>
-          <div className="ms-16 mt-16">
+          <div className="w-fit mx-auto mt-7">
             <DayPicker
               mode="single"
               selected={selected}
@@ -221,7 +215,7 @@ const UserHome = () => {
           </div>
         </div>
 
-        <div className="md:w-2/3 p-5 bg-transparent border border-violet-700 shadow-2xl w-full rounded-md">
+        <div className="md:w-2/3 p-5 bg-transparent border border-violet-700 shadow-2xl w-full rounded-md ">
           <div className="flex items-center justify-between ">
             <div>
               <h1 className="text-2xl font-extrabold text-white">
@@ -229,7 +223,7 @@ const UserHome = () => {
               </h1>
             </div>
             <div className="flex items-center gap-2">
-              <select className="select bg-transparent border border-violet-700">
+              <select className="select bg-transparent text-white border border-violet-700">
                 <option selected className="ps-10 ">
                   Weekly
                 </option>

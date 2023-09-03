@@ -24,7 +24,7 @@ const DemoTestSection = () => {
               options for your convenience. Practice and build your confidence
               in a real exam environment.
             </p>
-            <Link to='/demo-test' className='btn primary-bg'>
+            <Link to='/demo-test' className='btn primary-btn'>
               Explore How We Take Exams
             </Link>
           </div>
