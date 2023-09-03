@@ -6,7 +6,8 @@ import {
   FaChartBar,
   FaHome,
   FaCog,
-  FaWallet
+  FaWallet,
+  FaComment
 } from "react-icons/fa";
 import { RiLiveFill } from "react-icons/ri";
 import { FaClipboardQuestion } from "react-icons/fa6";
@@ -72,7 +73,8 @@ const Dashboard = () => {
     Home: FaHome,
     Setting: FaCog,
     Payment: FaWallet,
-    Live: RiLiveFill
+    Live: RiLiveFill,
+    Blog: FaComment
   };
 
   const Menus = [
@@ -101,6 +103,8 @@ const Dashboard = () => {
       icon: iconMappings.Question,
       role: "instructor",
     },
+    { title: "Create Live Exam", path: "/dashboard/createLiveExam", icon: iconMappings.Live, role: "instructor" },
+    { title: "Add Blog", path: "/dashboard/addBlog", icon: iconMappings.Blog, role: "instructor" },
     {
       title: "User Home",
       path: "/dashboard/userHome",

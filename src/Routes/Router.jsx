@@ -32,6 +32,7 @@ import CreateLiveExam from '../Pages/LiveExam/CreateLiveExam/CreateLiveExam'
 import JoinLiveExam from '../Pages/LiveExam/JoinLiveExam/JoinLiveExam'
 import AppliedLiveExam from '../Pages/Dashboard/UserDashboard/AppliedLiveExam/AppliedLiveExam'
 import StudentAnalytics from '../Pages/Dashboard/UserDashboard/StudentAnalytics/StudentAnalytics'
+import AddBlog from '../Pages/Dashboard/InstructorDashboard/AddBlog/AddBlog'
 
 const router = createBrowserRouter([
   {
@@ -174,6 +175,14 @@ const router = createBrowserRouter([
       {
         path: '/dashboard/studentAnalytics',
         element: <StudentAnalytics/>
+      },
+      {
+        path: '/dashboard/createLiveExam',
+        element: <CreateLiveExam/>
+      },
+      {
+        path: '/dashboard/addBlog',
+        element: <AddBlog/>
       },
     ]
   }
