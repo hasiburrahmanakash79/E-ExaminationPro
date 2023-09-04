@@ -37,7 +37,7 @@ const CreateLiveExam = () => {
         console.log('Question Paper Data:', paperData);
 
 
-        fetch('http://localhost:5000/questionPaper', {
+        fetch('http://localhost:5000/addLiveExam', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -55,13 +55,18 @@ const CreateLiveExam = () => {
     }
 
     return (
-        <div className='mx-2 my-5 md:container md:mx-auto'>
-            <div className='flex flex-col items-center'>
+        <div className='mx-2 my-5 border border-purple-800 P-8 rounded-2xl md:container md:mx-auto'>
+            <div className='flex flex-col items-center '>
                 <h1 className='text-3xl'>Question Paper</h1>
                 <p className='font-semibold'>{type == 'mcq' && "( MCQ )"}{type == 'FillInTheBlank' && "( Fill in the Blank )"}</p>
             </div>
 
-            <div className='mb-5'>
+            
+
+            <div className='flex justify-center mb-5 '>
+                
+                <div className='grid grid-cols-1 gap-x-4 md:grid-cols-3 '>
+                <div className='mb-5'>
                 <label className="label">
                     <span className="label-text">Exam Type</span>
                 </label>
@@ -76,9 +81,6 @@ const CreateLiveExam = () => {
                     <option value='FillInTheBlank'>Fill in the Blank</option>
                 </select>
             </div>
-
-            <div className='flex justify-center mb-5'>
-                <div className='grid grid-cols-1 gap-x-4 md:grid-cols-3 '>
                     <div className="w-full max-w-xs form-control">
                         <label className="label">
                             <span className="label-text">Subject Name</span>
