@@ -4,14 +4,14 @@ import React from 'react'
 import {} from 'react-icons/fa'
 import { useSelector } from 'react-redux'
 
-const DisclosureForWrittenExams = ({ shortQuestions }) => {
+const DisclosureForWrittenExams = ({ writtenQuestions }) => {
   const { userAnswers } = useSelector(state => state.shortQuestions)
   console.log(userAnswers)
   return (
     <div className='container sticky text-2xl text-white top-44 body md:mx-auto'>
       <div className='w-full px-4 pt-16'>
         <div className='w-full max-w-md p-2 mx-auto bg-white rounded-2xl'>
-          {shortQuestions?.map((sq, index) => (
+          {writtenQuestions?.map((sq, index) => (
             <div key={index}>
               {sq.questions.map(question => {
                 const answer = userAnswers?.find(

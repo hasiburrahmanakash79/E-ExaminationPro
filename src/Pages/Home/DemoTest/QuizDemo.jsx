@@ -82,7 +82,7 @@ const QuizDemo = () => {
         <div className='flex justify-end w-11/12 py-4 mx-auto '>
           {currentQuestionIndex === questions.length - 1 ? (
             <Link to='/result'>
-              <button className=' btn_quiz primary-bg' onClick={handleSubmit}>
+              <button className=' btn_quiz primary-btn' onClick={handleSubmit}>
                 Submit
               </button>
             </Link>
@@ -92,7 +92,7 @@ const QuizDemo = () => {
                 reduxSelectedOption === null ||
                 reduxSelectedOption === undefined
               }
-              className='primary-bg btn_quiz'
+              className='primary-btn btn_quiz'
               onClick={handleNextQuestion}
             >
               Next

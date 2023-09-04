@@ -44,7 +44,7 @@ const Navbar = () => {
             <Link to="/allSubjects">All Subject</Link>
           </li>
           <li>
-            <Link>Rules</Link>
+            <Link to="/shortQ">ShortQ</Link>
           </li>
         </ul>
       </details>

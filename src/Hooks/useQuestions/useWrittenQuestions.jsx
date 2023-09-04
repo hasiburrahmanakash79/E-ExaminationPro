@@ -1,8 +1,8 @@
 import { useQuery } from '@tanstack/react-query'
 import axios from 'axios'
-const useShortQuestions = Mathematics => {
+const useWrittenQuestions = Mathematics => {
   const {
-    data: shortQuestions = [],
+    data: writtenQuestions = [],
     isLoading: loading,
     refetch
   } = useQuery({
@@ -14,7 +14,7 @@ const useShortQuestions = Mathematics => {
       return res.data
     }
   })
-  return [shortQuestions, loading, refetch]
+  return [writtenQuestions, loading, refetch]
 }
 
-export default useShortQuestions
+export default useWrittenQuestions
