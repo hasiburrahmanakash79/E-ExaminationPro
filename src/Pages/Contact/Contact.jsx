@@ -95,7 +95,7 @@ const Contact = () => {
                 ></textarea>
               </div>
               <div className='mt-6'>
-                <button className='flex text-white btn hover:-translate-y-1 primary-bg'>
+                <button className=' btn hover:-translate-y-1 primary-btn'>
                   <span>Send Message</span> <HiRocketLaunch></HiRocketLaunch>
                 </button>
                 <p className='z-20 mt-3 text-green-600'>{msg}</p>

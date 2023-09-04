@@ -13,7 +13,7 @@ const TimeRemain = ({  handleFinishExam,setTimer,examType,start }) => {
             return
         }
 
-        if(((examType == 'multimedia_mcq' && start==true)||(examType == 'mcq')||(examType == 'FillInTheBlank'))){
+        if(((examType == 'multimedia_mcq' && start==true)||(examType == 'mcq')||(examType=='FillInTheBlank'))){
             const timer = setInterval(() => {
                 setTimeRemaining(prevTime => prevTime - 1)
                 setTimerProgress((timeRemaining / totalDuration) * 100)
