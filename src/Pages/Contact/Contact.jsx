@@ -51,7 +51,7 @@ const Contact = () => {
           <div>
             <img src={contact} alt='' />
           </div>
-          <form ref={form} onSubmit={sendEmail} className='pb-5 md:pt-20'>
+          <form ref={form} onSubmit={sendEmail} className='pb-5 md:pt-20 card-body border border-blue-500 rounded-lg'>
             <div className=''>
               <div className='form-control'>
                 <label className='label'>
@@ -64,7 +64,7 @@ const Contact = () => {
                   name='name'
                   type='text'
                   placeholder='Name'
-                  className='text-black border-2 input bg-slate-200 input-sm border-slate-600 '
+                  className='text-black border-2 bg-transparent input border-gray-200 '
                 />
               </div>
               <div className='form-control'>
@@ -78,7 +78,7 @@ const Contact = () => {
                   name='email'
                   type='text'
                   placeholder='Email'
-                  className='text-black border-2 input bg-slate-200 input-sm border-slate-600 '
+                  className='text-black border-2 bg-transparent input border-gray-200'
                 />
               </div>
               <div className='form-control'>
@@ -90,12 +90,12 @@ const Contact = () => {
                 <textarea
                   required
                   name='message'
-                  className='text-black border-2 textarea border-slate-600 bg-slate-200 '
+                  className='text-black border-2 textarea bg-transparent border-gray-200'
                   placeholder='Message'
                 ></textarea>
               </div>
               <div className='mt-6'>
-                <button className='flex text-white btn hover:-translate-y-1 btn-sm navigation-bar '>
+                <button className='flex text-white btn hover:-translate-y-1 primary-bg'>
                   <span>Send Message</span> <HiRocketLaunch></HiRocketLaunch>
                 </button>
                 <p className='z-20 mt-3 text-green-600'>{msg}</p>

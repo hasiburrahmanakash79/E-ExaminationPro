@@ -52,7 +52,7 @@ const ManageUsers = () => {
       <h2 className="text-2xl">Manage Users: {users.length}</h2>
       <div className="overflow-x-auto">
         <table className="table">
-          {/* head */}
+          {/* git */}
           <thead>
             <tr>
               <th>Serial</th>
