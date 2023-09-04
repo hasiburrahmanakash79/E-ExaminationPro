@@ -29,7 +29,6 @@ import WrittenExams from '../Pages/Exams/WrittenExams/WrittenExams'
 import ResultPageForMcqFib from '../components/examComponents/QuestionRelated/ResultPageForMcqFib'
 import Profile from '../Pages/Authentication/UpdateProfile/Profile'
 import UpdateProfile from '../Pages/Authentication/UpdateProfile/UpdateProfile'
-import ForumCommunity from '../Pages/Forum_Community/ForumCommunity'
 
 const router = createBrowserRouter([
   {
@@ -91,7 +90,7 @@ const router = createBrowserRouter([
         path: '/exam/:id',
         element: <Exam2 />,
         loader: ({ params }) =>
-          fetch(`https://e-exam-pro-server.vercel.app/questionPaper/${params.id}`)
+          fetch(`http://localhost:5000/questionPaper/${params.id}`)
       },
       {
         path: '/written',
