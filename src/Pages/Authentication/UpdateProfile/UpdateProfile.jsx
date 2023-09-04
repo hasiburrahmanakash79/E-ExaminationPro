@@ -31,6 +31,7 @@ const UpdateProfile = () => {
     const onSubmitData = (event) => {
 
         event.preventDefault();
+
         const form = event.target;
         const batch = form.batch.value;
         const mobile = form.mobile.value;
@@ -73,7 +74,7 @@ return <h1>Loading...........</h1>
             <h1 className='text-2xl mt-4  mx-4'>Edit Profile:</h1>
             <div className="card  mx-auto">
                 <div className="card-body">
-                    <form onSubmit={() => onSubmitData} className='grid md:gap-20 md:grid-cols-2 gap-5 grid-cols-1'>
+                    <form onSubmit={onSubmitData} className='grid md:gap-20 md:grid-cols-2 gap-5 grid-cols-1'>
                         <div className="text-center lg:text-left flex flex-col ">
 
                             <img src={info?.photoURL} className=' border-2 border-white rounded-lg mb-2 p-3 h-48   w-48  mx-auto' alt="" />
@@ -99,7 +100,7 @@ return <h1>Loading...........</h1>
                                     <label className="label  col-span-1">
                                         <span className="label-text text-white">Change Image</span>
                                     </label>
-                                    <input  type="file" className=' col-span-5 file-input file-input-sm w-full shadow-lg' />
+                                    <input name='image' type="file" className=' col-span-5 file-input file-input-sm w-full shadow-lg' />
                                 </div>
 
 
@@ -111,7 +112,7 @@ return <h1>Loading...........</h1>
                                     <span className="label-text text-white">Batch:</span>
                                 </label>
                                 <input
-                                    name='batch' className='col-span-5 input input-sm text-slate-900 bg-slate-200 shadow-lg' value={info?.batch}
+                                    name='batch' className='col-span-5 input input-sm text-slate-900 bg-slate-200 shadow-lg'
                                 />
                             </div>
                             <div className="form-control  grid grid-cols-6 my-2">
@@ -119,7 +120,7 @@ return <h1>Loading...........</h1>
                                     <span className="label-text text-white">Gender:</span>
                                 </label>
                                 <input
-                                    name='gender' className=' col-span-5 input input-sm text-slate-900 bg-slate-200 shadow-lg' value={info?.gender}
+                                    name='gender' className=' col-span-5 input input-sm text-slate-900 bg-slate-200 shadow-lg'
                                 />
 
                             </div>
@@ -128,7 +129,7 @@ return <h1>Loading...........</h1>
                                     <span className="label-text text-white">Address:</span>
                                 </label>
                                 <input
-                                    name='address' className='col-span-5 input input-sm text-slate-900 bg-slate-200 shadow-lg' value={info?.address}
+                                    name='address' className='col-span-5 input input-sm text-slate-900 bg-slate-200 shadow-lg'
                                 />
                             </div>
                             <div className="form-control grid  grid-cols-6 my-2">
@@ -136,7 +137,7 @@ return <h1>Loading...........</h1>
                                     <span className="label-text text-white">Mobile:</span>
                                 </label>
                                 <input
-                                 value={info?.mobile}   className='col-span-5 input input-sm text-slate-900 bg-slate-200 shadow-lg' name='mobile'
+                                   className='col-span-5 input input-sm text-slate-900 bg-slate-200 shadow-lg' name='mobile'
                                 />
 
                             </div>

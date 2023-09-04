@@ -3,10 +3,12 @@ import { createSlice } from "@reduxjs/toolkit";
 export const quesPaperSlice = createSlice({
     name: 'quesPaper',
     initialState: {
-        type: '',
+        allSubject:[],
+        type: null,
         formData: {
             subjectName: '',
-            subjectCode: '',
+            exam_code: '',
+            subject_code:'',
             semester: '',
             date: '',
             email: '',
@@ -14,9 +16,22 @@ export const quesPaperSlice = createSlice({
         questions: [],
     },
     reducers: {
+        setSubject:(state,{payload})=>{
+            state.allSubject=[...payload]
+        },
         examType: (state, { payload }) => {
             state.type = payload
         },
+        setSubjectCode:(state,{payload})=>{
+            console.log(payload)
+            state.formData.subject_code=payload
+        }
+        ,
+        setEmail:(state,{payload})=>{
+            
+                state.formData.email=payload
+        }
+        ,
         subjectInfo: (state, { payload }) => {
             const { name, value } = payload.target
             state.formData = {
@@ -25,22 +40,26 @@ export const quesPaperSlice = createSlice({
             }
         },
         quesPaper: (state, { payload }) => {
-           const newQues={
+          if(payload?.add=='add'){
+            const newQues={
                 question: '',
                 options: ['', '', '', ''],
                 correctAnswer: '',
             }
             state.questions = [...state.questions, newQues ]
-            if(payload){
-                const updatedQuestions = [...state.questions];
-                updatedQuestions[payload?.index][payload?.field] = payload?.value
-                state.questions = updatedQuestions
-            }
+          }
+      else{
+    
+            const updatedQuestions = [...state.questions];
+            updatedQuestions[payload?.index][payload?.field] = payload?.value
+            state.questions = updatedQuestions
+    
+      }
         }
     }
 })
 
 // Action creators are generated for each case reducer function
-export const { examType, subjectInfo, quesPaper } = quesPaperSlice.actions
+export const { examType,setSubject, subjectInfo, quesPaper,setEmail,setSubjectCode } = quesPaperSlice.actions
 
 export default quesPaperSlice.reducer

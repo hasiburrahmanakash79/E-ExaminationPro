@@ -4,7 +4,7 @@ const AnsDataPage = ({result,questions}) => {
     return (
         <div>
             <div className='max-w-[100px]   min-h-[60px] text-white bg-blue-900 rounded-full flex justify-center items-center'>
-                <h1 className='text-3xl font-bold'> <span className='text-red-500'>{result.filter(ques => ques.userAns.toLowerCase() === ques.correctAnswer.toLowerCase()).length * 5}</span>/<span>{questions.length * 5}</span> </h1>
+                <h1 className='text-3xl font-bold'> <span className='text-red-500'>{result.filter(ques => ques.userAns?.toLowerCase() == ques.correctAnswer.toLowerCase()).length * 5}</span>/<span>{questions.length * 5}</span> </h1>
             </div>
 
             {result?.map((ques, index) => <div className='mt-4 border-2 border-blue-900 py-5 rounded-2xl px-5' key={index}>

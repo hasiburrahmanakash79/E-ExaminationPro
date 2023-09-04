@@ -31,6 +31,7 @@ import UserHome from '../Pages/Dashboard/UserDashboard/UserHome/UserHome'
 import PaymentHistory from '../Pages/Dashboard/UserDashboard/PaymentHistory/PaymentHistory'
 import CommentApp from '../Pages/Furam/CommentApp'
 import Profile from '../Pages/Authentication/UpdateProfile/Profile'
+import ExamResult from '../Pages/ExamResult/ExamResult'
 
 const router = createBrowserRouter([
   {
@@ -97,6 +98,10 @@ const router = createBrowserRouter([
         element: <Exam2 />,
         loader: ({ params }) =>
           fetch(`http://localhost:5000/questionPaper/${params.id}`)
+      },
+      {
+        path: '/result',
+        element: <ExamResult/>,
       },
       {
         path: '/shortQ',
