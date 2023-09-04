@@ -1,16 +1,13 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import LiveExamModal from "../../../../Components/LiveExamModal/LiveExamModal";
 
 const AppliedLiveExam = () => {
-    const [isOpen, setIsOpen] = useState(false)
   return (
     <div className="flex flex-col justify-center items-center">
       <h2 className="text-2xl">AppliedLiveExam</h2>
       <div>
         <li>
-          <button onClick={() => setIsOpen(!isOpen)}>Add Task</button>
-          <LiveExamModal isOpen={isOpen} setIsOpen={setIsOpen}></LiveExamModal>
+          <Link to="/dashboard/examRoom">Math</Link>
         </li>
         <li>
           <Link>Physics</Link>

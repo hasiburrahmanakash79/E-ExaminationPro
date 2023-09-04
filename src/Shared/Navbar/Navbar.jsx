@@ -3,13 +3,15 @@ import { Link } from "react-router-dom";
 import logo from "../../assets/logo12.png";
 import "./Navbar.css";
 
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import Swal from "sweetalert2";
 import useAdmin from "../../Hooks/useAdmin/useAdmin";
 import useInstructor from "../../Hooks/useInstructor/useInstructor";
 import { AuthContext } from "../../Provider/AuthProvider";
+import LiveExamModal from "../../Components/LiveExamModal/LiveExamModal";
 
 const Navbar = () => {
+  const [isOpen, setIsOpen] = useState(false)
   const { user, logOut } = useContext(AuthContext);
   const [isAdmin] = useAdmin();
   const [isInstructor] = useInstructor();

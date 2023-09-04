@@ -7,12 +7,9 @@ const LiveExamModal = ({ isOpen, setIsOpen }) => {
 
   const cancelSubmit = () => {
     reset();
-    setIsOpen(false);
   };
 
   const onSubmit = (data) => {
-    dispatch(addTask(data));
-    cancelSubmit();
     console.log(data);
   };
 
