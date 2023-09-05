@@ -50,16 +50,13 @@ import InstructorChatRoom from '../Pages/LiveExam/InstructorChatRoom/InstructorC
 import CreateNotice from '../Pages/Dashboard/AdminDashboard/CreateNotice/CreateNotice'
 import ResultPage from '../Pages/Home/DemoTest/ResultPage'
 import TempClassRoom from '../Pages/TempClassRoom/TempClassRoom'
+
 const router = createBrowserRouter([
   {
     path: '/',
     element: <Main />,
     errorElement: <Error />,
     children: [
-      {
-        path: '/live',
-        element: <TempClassRoom />
-      },
       {
         path: '/',
         element: <HomePage />
@@ -105,6 +102,11 @@ const router = createBrowserRouter([
         path: '/home-quiz-result',
         element: <ResultPage />
       },
+      {
+        path: '/live',
+        element: <TempClassRoom />
+      },
+      ,
       {
         path: '/contact',
         element: <Contact></Contact>
