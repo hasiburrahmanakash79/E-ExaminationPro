@@ -11,12 +11,12 @@ import { useEffect, useState } from "react";
 
 export default function Notice() {
 
-  const [notice, setNotice] = useState([]);
+  const [notices, setNotices] = useState([]);
   useEffect(() => {
     fetch("http://localhost:5000/notice")
       .then((res) => res.json())
       .then((data) => {
-        setNotice(data[0]);
+        setNotices(data);
       });
   }, []);
 
@@ -30,20 +30,25 @@ export default function Notice() {
   //   },
   // });
   return (
-    <div className="py-20">
-      <div className="card w-96 bg-white/10 border-2 shadow-xl mx-auto">
+    <div className="container mx-auto bg-white/5 p-5 rounded-2xl mt-5">
+      <h1 className="text-3xl text-center">Upcoming Exam Schedule</h1>
+      <div className="my-7 grid grid-cols-4 gap-5 ">
+      {
+        notices.map(notice => <div key={notice._id} className="card w-full bg-white/10 border-2 shadow-xl ">
         <div className="card-body">
           <p>Subject Name:<span className="text-purple-300"> {notice?.subjectName} </span></p>
           <p>Subject Code:<span className="text-purple-300 uppercase"> {notice?.code}</span></p>
           <p>Group: <span className="text-purple-300"> {notice?.group}</span></p>
           <p>Exam Date : <span className="text-purple-300">{notice?.date}</span> </p>
-          <p>Instructor Name:<span className="text-purple-300"> {notice?.instructor}</span> </p>
+          <p>Instructor:<span className="text-purple-300"> {notice?.instructor}</span> </p>
 
-          <Link to="/dashboard/upcomingLiveExam" className="mt-5">
+          <Link to="/upcomingLiveExam" className="mt-5">
             <button className="primary-btn btn">Apply For Live class</button>
           </Link>
         </div>
-      </div>
+      </div>)
+      }
+    </div>
     </div>
   );
 }
