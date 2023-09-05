@@ -1,12 +1,11 @@
 import { Link } from "react-router-dom";
 import { FaArrowCircleRight } from "react-icons/fa";
 
-
-const StudentAnalytics = () => {
+const NoticeBoard = () => {
   return (
     <>
       <div>
-        <h2 className="text-2xl">Student Analytics</h2>
+        <h2 className="text-2xl">Notice Board</h2>
       </div>
 
       <div className="overflow-x-auto">
@@ -15,8 +14,8 @@ const StudentAnalytics = () => {
           <thead>
             <tr>
               <th className="text-center text-xl">Subject</th>
-              <th className="text-center text-xl">Exam Given</th>
-              <th className="text-center text-xl">View Result</th>
+              <th className="text-center text-xl">Date</th>
+              <th className="text-center text-xl">Apply</th>
             </tr>
           </thead>
           <tbody>
@@ -27,7 +26,7 @@ const StudentAnalytics = () => {
               <td className="text-center text-lg font-medium">14-09-2023</td>
               <td className="text-center">
                 <Link
-                  to="/result"
+                  to="/dashboard/upcomingLiveExam"
                   className="hover:text-accent"
                 >
                   <button>
@@ -41,7 +40,7 @@ const StudentAnalytics = () => {
               <td className="text-center text-lg font-medium">14-09-2023</td>
               <td className="text-center">
                 <Link
-                  to="/result"
+                  to="/dashboard/upcomingLiveExam"
                   className="hover:text-accent"
                 >
                   <button>
@@ -55,7 +54,7 @@ const StudentAnalytics = () => {
               <td className="text-center text-lg font-medium">14-09-2023</td>
               <td className="text-center">
                 <Link
-                  to="/result"
+                  to="/dashboard/upcomingLiveExam"
                   className="hover:text-accent"
                 >
                   <button>
@@ -71,4 +70,4 @@ const StudentAnalytics = () => {
   );
 };
 
-export default StudentAnalytics;
+export default NoticeBoard;

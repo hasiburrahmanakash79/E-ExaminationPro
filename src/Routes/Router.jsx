@@ -49,6 +49,7 @@ import UpcomingLiveExam from "../Pages/LiveExam/UpcomingLiveExam/UpcomingLiveExa
 import InstructorChatRoom from "../Pages/LiveExam/InstructorChatRoom/InstructorChatRoom";
 import CreateNotice from "../Pages/Dashboard/AdminDashboard/CreateNotice/CreateNotice";
 import ResultPage from "../Pages/Home/DemoTest/ResultPage";
+import NoticeBoard from "../Pages/Dashboard/UserDashboard/NoticeBoard/NoticeBoard";
 
 const router = createBrowserRouter([
   {
@@ -245,6 +246,10 @@ const router = createBrowserRouter([
       {
         path: "/dashboard/paymentHistory",
         element: <PaymentHistory />,
+      },
+      {
+        path: "/dashboard/noticeBoard",
+        element: <NoticeBoard />,
       },
       {
         path: "/dashboard/appliedLiveExam",

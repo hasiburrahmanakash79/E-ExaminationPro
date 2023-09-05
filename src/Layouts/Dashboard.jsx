@@ -121,6 +121,7 @@ const Dashboard = () => {
       gap: true,
     },
     { title: "Payment History", path: "/dashboard/paymentHistory", icon: iconMappings.Payment, role: "user" },
+    { title: "Notice Board", path: "/dashboard/noticeBoard", icon: iconMappings.Notice, role: "user" },
     { title: "Upcoming Live Exam", path: "/dashboard/upcomingLiveExam", icon: iconMappings.Live, role: "user" },
     { title: "Applied Live Exam", path: "/dashboard/appliedLiveExam", icon: iconMappings.Live, role: "user" },
     { title: "Student Analytics", path: "/dashboard/studentAnalytics", icon: iconMappings.Analytics, role: "user" },
