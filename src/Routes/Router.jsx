@@ -170,10 +170,10 @@ const router = createBrowserRouter([
         path: "/createLiveExam",
         element: <CreateLiveExam />,
       },
-      // {
-      //   path: "/createLiveExam",
-      //   element: <CreateLiveExam />,
-      // },
+      {
+        path: "/upcomingLiveExam",
+        element: <UpcomingLiveExam />,
+      },
       {
         path: "/joinLiveExam",
         element: <JoinLiveExam />,
