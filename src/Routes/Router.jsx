@@ -29,6 +29,7 @@ import WrittenExams from '../Pages/Exams/WrittenExams/WrittenExams'
 import ResultPageForMcqFib from '../components/examComponents/QuestionRelated/ResultPageForMcqFib'
 import Profile from '../Pages/Authentication/UpdateProfile/Profile'
 import UpdateProfile from '../Pages/Authentication/UpdateProfile/UpdateProfile'
+import TempClassRoom from '../Pages/TempClassRoom/TempClassRoom'
 
 const router = createBrowserRouter([
   {
@@ -36,6 +37,10 @@ const router = createBrowserRouter([
     element: <Main />,
     errorElement: <Error />,
     children: [
+      {
+        path: '/live',
+        element: <TempClassRoom />
+      },
       {
         path: '/',
         element: <HomePage />
