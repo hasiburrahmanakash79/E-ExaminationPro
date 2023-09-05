@@ -1,12 +1,10 @@
 import React from "react";
-import { useForm } from "react-hook-form";
-import profile from "../../../assets/up.png";
-
 import { useContext } from "react";
-
 import useAxiosSecure from "../../../Hooks/useAxiosSecure.jsx/useAxiosSecure";
 import { AuthContext } from "../../../Provider/AuthProvider";
 import { useQuery } from "@tanstack/react-query";
+import Loading from "../../../Components/Loading/Loading";
+import Swal from "sweetalert2";
 
 const UpdateProfile = () => {
   const img_token = import.meta.env.VITE_Image_Key;
@@ -61,6 +59,12 @@ const UpdateProfile = () => {
               if (data.data.modifiedCount) {
                 refetch();
                 console.log("updated");
+                Swal.fire({
+                  showConfirmButton: false,
+                  timer: 1500,
+                  title: "Login Successful",
+                  icon: "success",
+                });
               }
             });
         }
@@ -68,14 +72,15 @@ const UpdateProfile = () => {
   };
 
   if (p_loading) {
-    return <h1>Loading...........</h1>;
+    return <Loading />;
   }
 
   return (
-    <div className="navigation-bar2 container mx-auto">
-      <h1 className="text-2xl mt-4 text-center mx-4">Edit Profile</h1>
+    <div className="navigation-bar2 md:mx-20">
+      <h1 className="text-2xl mt-4  mx-4">Edit Profile:</h1>
       <div className="card  mx-auto">
         <div className="card-body">
+          
           <form
             onSubmit={onSubmitData}
             className="grid md:gap-20 md:grid-cols-2 gap-5 grid-cols-1"
