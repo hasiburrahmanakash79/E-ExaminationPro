@@ -23,7 +23,10 @@ const TopSubjects = () => {
   }, [])
   return (
     <div className='p-5'>
-      <h1 className='text-center text-slate-200 text-4xl font-bold pt-10 md:pt-0 pb-10'>
+      <h1
+        data-aos="zoom-in-down"
+        data-aos-duration="600"
+        className='text-center text-slate-200 text-4xl font-bold pt-10 md:pt-0 pb-10'>
         Our Top subjects
       </h1>
       <div className='grid grid-cols-1 md:grid-cols-4 gap-5  '>

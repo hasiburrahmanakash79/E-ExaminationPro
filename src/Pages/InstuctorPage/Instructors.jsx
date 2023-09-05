@@ -29,7 +29,7 @@ const Instructors = () => {
           ></InstructorCard>
         ))}
       </div>
-      <div className='text-center my-5'>
+      <div className='text-center my-5 animate-pulse hover:animate-none'>
         {!seeMore && (
           <button onClick={handleSeeMore} className='btn primary-btn'>
             See More Instructors

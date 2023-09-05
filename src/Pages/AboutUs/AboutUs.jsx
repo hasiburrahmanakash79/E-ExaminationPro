@@ -5,40 +5,62 @@ const AboutUs = () => {
   return (
     <div className='container mx-auto'>
       <div className='md:flex justify-between items-center md:gap-20 py-20'>
-        <div className='md:w-1/2'>
-          <h2 className='text-sm pb-3'>About E-ExamPro</h2>
+        <div className='md:w-1/2 overflow-x-hidden'>
+          <h2
+            data-aos="zoom-in"
+            data-aos-duration="1000"
+            className='text-sm pb-3'>About E-ExamPro</h2>
           {/* <h2 className='md:text-7xl font-bold tracking-wide  '><span >Reach your peak. </span><br />
             <span className='leading-4' >  We'll help you get there.</span>
           </h2> */}
 
-          <div className='pb-5'>
+          <div
+            data-aos="fade-right"
+            // data-aos="fade-left"
+            data-aos-easing="ease-in-sine"
+            className='pb-5'>
             <h2 className='md:text-7xl font-bold tracking-wide pb-3 ' >Reach your peak.</h2>
             <h2 className='md:text-7xl font-bold tracking-wide'>We'll help you get there.</h2>
           </div>
 
-          <p className='text-lg pb-5 text-gray-300'>We recognize the importance of seamless and efficient examination processes, and that's why we have created a cutting-edge solution that allows students to take their exams from the comfort of their own space. Our platform is built on a foundation of innovation and user-centric design, ensuring a user-friendly experience.</p>
-
-          <Link to="/contact" className="btn primary-btn border-none text-white shadow-md">Contact Us</Link>
+          <p
+            data-aos="fade-right"
+            data-aos-easing="ease-in-sine"
+            className='text-lg pb-5 text-gray-300'>We recognize the importance of seamless and efficient examination processes, and that's why we have created a cutting-edge solution that allows students to take their exams from the comfort of their own space. Our platform is built on a foundation of innovation and user-centric design, ensuring a user-friendly experience.</p>
+          <Link
+            data-aos="fade-down"
+            data-aos-duration="1000"
+            to="/contact" className="btn primary-btn border-none text-white shadow-md">Contact Us</Link>
         </div>
 
-        <div className='md:w-1/2'>
+        <div
+          // data-aos="fade-right"
+          data-aos="fade-left"
+          data-aos-easing="ease-in-sine"
+          className='md:w-1/2'>
           <img className='w-2/3 mx-auto mt-10' src="https://i.ibb.co/sPdHD97/45397-removebg.png" alt="" />
         </div>
       </div>
 
-
-      <div className='container md:mt-10 md:mb-10 '>
+      <div
+        data-aos="fade-up"
+        data-aos-duration="1500"
+        className='container md:mt-10 md:mb-10 '>
         <p className='w-full md:w-1/2 text-center mx-auto '>Our commitment extends beyond convenience. We strive to create an inclusive platform that accommodates various subjects, disciplines, and formats, providing an expansive repository of resources for comprehensive preparation. We take pride in supporting the educational ecosystem by partnering with schools, colleges, universities, and educators to facilitate a new era of examination that aligns with the digital age.</p>
       </div>
 
-
       <div className='md:flex justify-center items-center gap-20 mt-20'>
-        <div className='w-1/2 mb-10 mx-auto '>
+        <div
+          data-aos="fade-left"
+          data-aos-easing="ease-in-sine"
+          className='w-1/2 mb-10 mx-auto '>
           <img className='md:w-2/4 md:mt-20 md:mx-auto' src="https://i.ibb.co/bPGHBsD/tswv-dzjb-230710.png" alt="" />
         </div>
 
-        <div className='md:w-1/2 md:mt-10 px-5'>
-
+        <div
+          data-aos="fade-right"
+          data-aos-easing="ease-in-sine"
+          className='md:w-1/2 md:mt-10 px-5'>
           <h1 className='w-full text-5xl font-bold ' >E-ExamPro plays a huge role <br /> by  providing unique, <br />authentic peer advice in <br /> study field.</h1>
           <p className='mt-5 text-gray-400 m'>Our commitment extends beyond convenience. We strive to create an inclusive platform that accommodates various subjects, disciplines, and formats, providing an expansive repository of resources for comprehensive preparation. We take pride in supporting the educational ecosystem by partnering with schools, colleges, universities, and educators to facilitate a new era of examination that aligns with the digital age.</p>
         </div>
@@ -46,10 +68,18 @@ const AboutUs = () => {
 
       <div className="py-6 md:mt-20  dark:text-gray-100">
         <div className="container flex flex-col items-center justify-center p-4 mx-auto sm:p-10">
-          <p className="p-2 text-sm font-medium tracki text-center uppercase">Development team</p>
-          <h1 className="text-4xl font-bold leadi text-center sm:text-5xl">The talented people behind the scenes</h1>
+          <p
+            data-aos="fade-down"
+            data-aos-duration="700"
+            className="p-2 text-sm font-medium tracki text-center uppercase">Development team</p>
+          <h1
+            data-aos="fade-down"
+            data-aos-duration="1500"
+            className="text-4xl font-bold leadi text-center sm:text-5xl">The talented people behind the scenes</h1>
           <div className="flex flex-row flex-wrap-reverse justify-center mt-20">
-            <div className="flex flex-col justify-center w-full px-8 mx-6 my-12 text-center rounded-md md:w-96 lg:w-80 xl:w-64 bg-white/20 hover:bg-white/30 shadow-2xl dark:text-white">
+            <div
+              data-aos="fade-right"
+              className="flex flex-col justify-center w-full px-8 mx-6 my-12 text-center rounded-md md:w-96 lg:w-80 xl:w-64 bg-white/20 hover:bg-white/30 shadow-2xl dark:text-white">
               <img alt="" className="border-4 border-pink-500 self-center flex-shrink-0 w-24 h-24 -mt-12 bg-center bg-cover rounded-full dark:bg-gray-500" src="https://source.unsplash.com/100x100/?portrait?0" />
               <div className="flex-1 my-4">
                 <p className="text-xl font-semibold leadi">Leroy Jenkins</p>
@@ -79,7 +109,10 @@ const AboutUs = () => {
                 </a>
               </div>
             </div>
-            <div className="flex flex-col justify-center w-full px-8 mx-6 my-12 text-center rounded-md md:w-96 lg:w-80 xl:w-64 dark:bg-gray-100 dark:text-gray-800">
+            <div
+              data-aos="fade-up"
+              data-aos-duration="900"
+              className="flex flex-col justify-center w-full px-8 mx-6 my-12 text-center rounded-md md:w-96 lg:w-80 xl:w-64 dark:bg-gray-100 dark:text-gray-800">
               <img alt="" className="self-center border-4  flex-shrink-0 w-24 h-24 -mt-12 bg-center bg-cover rounded-full dark:bg-gray-500" src="https://source.unsplash.com/100x100/?portrait?1" />
               <div className="flex-1 my-4">
                 <p className="text-xl font-semibold leadi">Leroy Jenkins</p>
@@ -109,7 +142,10 @@ const AboutUs = () => {
                 </a>
               </div>
             </div>
-            <div className="flex flex-col justify-center w-full px-8 mx-6 my-12 text-center rounded-md md:w-96 lg:w-80 xl:w-64 dark:bg-gray-100 dark:text-gray-800">
+            <div
+              data-aos="fade-left"
+              data-aos-duration="900"
+              className="flex flex-col justify-center w-full px-8 mx-6 my-12 text-center rounded-md md:w-96 lg:w-80 xl:w-64 dark:bg-gray-100 dark:text-gray-800">
               <img alt="" className="self-center flex-shrink-0 w-24 h-24 -mt-12 bg-center bg-cover rounded-full dark:bg-gray-500" src="https://source.unsplash.com/100x100/?portrait?2" />
               <div className="flex-1 my-4">
                 <p className="text-xl font-semibold leadi">Leroy Jenkins</p>
@@ -139,7 +175,10 @@ const AboutUs = () => {
                 </a>
               </div>
             </div>
-            <div className="flex flex-col justify-center w-full px-8 mx-6 my-12 text-center rounded-md md:w-96 lg:w-80 xl:w-64 dark:bg-gray-100 dark:text-gray-800">
+            <div
+              data-aos="fade-left"
+              data-aos-duration="900"
+              className="flex flex-col justify-center w-full px-8 mx-6 my-12 text-center rounded-md md:w-96 lg:w-80 xl:w-64 dark:bg-gray-100 dark:text-gray-800">
               <img alt="" className="self-center flex-shrink-0 w-24 h-24 -mt-12 bg-center bg-cover rounded-full dark:bg-gray-500" src="https://source.unsplash.com/100x100/?portrait?3" />
               <div className="flex-1 my-4">
                 <p className="text-xl font-semibold leadi">Leroy Jenkins</p>
@@ -169,7 +208,10 @@ const AboutUs = () => {
                 </a>
               </div>
             </div>
-            <div className="flex flex-col justify-center w-full px-8 mx-6 my-12 text-center rounded-md md:w-96 lg:w-80 xl:w-64 dark:bg-gray-100 dark:text-gray-800">
+            <div
+              data-aos="fade-down"
+              data-aos-duration="900"
+              className="flex flex-col justify-center w-full px-8 mx-6 my-12 text-center rounded-md md:w-96 lg:w-80 xl:w-64 dark:bg-gray-100 dark:text-gray-800">
               <img alt="" className="self-center flex-shrink-0 w-24 h-24 -mt-12 bg-center bg-cover rounded-full dark:bg-gray-500" src="https://source.unsplash.com/100x100/?portrait?4" />
               <div className="flex-1 my-4">
                 <p className="text-xl font-semibold leadi">Leroy Jenkins</p>
@@ -199,7 +241,10 @@ const AboutUs = () => {
                 </a>
               </div>
             </div>
-            <div className="flex flex-col justify-center w-full px-8 mx-6 my-12 text-center rounded-md md:w-96 lg:w-80 xl:w-64 dark:bg-gray-100 dark:text-gray-800">
+            <div
+              data-aos="fade-right"
+              data-aos-duration="900"
+              className="flex flex-col justify-center w-full px-8 mx-6 my-12 text-center rounded-md md:w-96 lg:w-80 xl:w-64 dark:bg-gray-100 dark:text-gray-800">
               <img alt="" className="self-center flex-shrink-0 w-24 h-24 -mt-12 bg-center bg-cover rounded-full dark:bg-gray-500" src="https://source.unsplash.com/100x100/?portrait?5" />
               <div className="flex-1 my-4">
                 <p className="text-xl font-semibold leadi">Leroy Jenkins</p>

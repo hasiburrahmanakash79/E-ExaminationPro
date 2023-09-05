@@ -17,8 +17,6 @@ const CommentField = ({ label, type }) => {
                 <button className="bg-blue-500 py-2 px-5 text-white rounded-lg ml-2">Comment</button>
             </div>
 
-
-
             <Accordion>
                 <AccordionSummary
                     expandIcon={<ExpandMoreIcon />}
@@ -30,15 +28,23 @@ const CommentField = ({ label, type }) => {
                 <AccordionDetails>
                     <Typography>
                         {/* First Comment */}
-                        <div className="p-3 shadow-md rounded-md mb-3">
-                            <div className="flex items-center justify-between">
-                                <div className="flex items-center">
+                        <div
+                            className="p-3 shadow-md rounded-md mb-3">
+                            <div
+                                data-aos="fade-down"
+                                data-aos-duration="1500"
+                                className="flex items-center justify-between">
+                                <div
+                                    className="flex items-center">
                                     <p className="w-7 h-7 rounded-full bg-sky-600"></p>
-                                    <p className="pl-3 leading-1 text-white">First Comment</p>
+                                    <p className="pl-3 leading-1 text-slate-900">First Comment</p>
                                 </div>
                                 <p className="text-slate-600 md:text-sm text-xs">sep 04 2023, 3:47AM </p>
                             </div>
-                            <div className="pt-2 md:pl-9 pl-4">
+                            <div
+
+
+                                className="pt-2 md:pl-9 pl-4">
                                 <p className="text-sm ">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
                                 <div className="flex items-center justify-between mt-5">
                                     <div className="flex items-center gap-5">

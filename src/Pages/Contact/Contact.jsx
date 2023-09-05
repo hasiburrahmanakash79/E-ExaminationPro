@@ -45,13 +45,19 @@ const Contact = () => {
   }
 
   return (
-    <div className='navigation-bar2 min-h-[50vh] '>
+    <div className='navigation-bar2 min-h-[50vh] py-16'>
       <div className='flex justify-center pt-3 mx-2'>
         <div className='grid items-center grid-cols-1 gap-5 md:grid-cols-2 md:gap-10'>
-          <div>
+          <div 
+          data-aos="fade-up"
+           data-aos-duration="1400"
+          >
             <img src={contact} alt='' />
           </div>
-          <form ref={form} onSubmit={sendEmail} className='pb-5 md:pt-20 card-body border border-blue-500 rounded-lg'>
+          <form 
+          data-aos="fade-down" 
+           data-aos-duration="1000"
+          ref={form} onSubmit={sendEmail} className='pb-5 md:pt-20 card-body border border-blue-500 rounded-lg'>
             <div className=''>
               <div className='form-control'>
                 <label className='label'>

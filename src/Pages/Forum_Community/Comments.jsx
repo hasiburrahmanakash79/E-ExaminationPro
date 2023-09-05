@@ -2,7 +2,11 @@
 const Comments = ({ postComments }) => {
     console.log(postComments);
     return (
-        <div className="mt-8 border rounded-md shadow-md p-5 mb-6">
+        <div
+            data-aos="fade-down"
+            data-aos-easing="linear"
+            data-aos-duration="1500"
+            className="mt-8 border rounded-md shadow-md p-5 mb-6">
             <div className="flex items-center justify-between">
                 <div className="flex items-center">
                     <div className="avatar">

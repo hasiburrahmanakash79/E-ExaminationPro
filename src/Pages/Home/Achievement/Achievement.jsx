@@ -10,9 +10,15 @@ const Achievement = () => {
 
 
     <section ref={ref} className='p-5'>
-      <h1 className="text-center text-4xl font-bold pt-10">Out Achievement</h1>
-      <div className=' mt-10 p-10 gap-20 md:flex justify-evenly md:mt-20 items-end rounded-xl  primary-bg'>
-
+      <h1
+        data-aos="zoom-in-down"
+        data-aos-duration="800"
+        className="text-center text-4xl font-bold pt-10">Out Achievement</h1>
+      <div
+        data-aos="fade-up"
+        data-aos-duration="1000"
+        data-aos-anchor-placement="center-bottom"
+        className=' mt-10 p-10 gap-20 md:flex justify-evenly md:mt-20 items-end rounded-xl  primary-bg'>
         <div className='px-5 md:px-0 full md:w-1/2 '>
           <div>
             <h2 className='font-bold text-orange-600'>Why Ours</h2>
@@ -21,8 +27,6 @@ const Achievement = () => {
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint repellendus aliquid dolorem minima. Quas, aperiam nemo maxime error dolorum perspiciatis exercitationem pariatur, quo optio dolor odit ipsam repellat possimus laborum?
             </p>
           </div>
-
-
           <div className='md:flex gap-20 md:pb-5'>
             <div>
               <div className='text-[40px]'>

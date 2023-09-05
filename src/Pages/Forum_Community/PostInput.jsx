@@ -15,12 +15,14 @@ const PostInput = () => {
 
     const onSubmit = (data) => {
         const article = data.postField;
-        axios.post("https://e-exam-pro-server.vercel.app/forumPost", {
-            article,
-            userName: user?.displayName,
-            userImage: user?.photoURL,
-            timeDate: createdAtDate,
-        })
+        // axios.post("https://e-exam-pro-server.vercel.app/forumPost",
+        axios.post("http://localhost:5000/forumPost",
+            {
+                article,
+                userName: user?.displayName,
+                userImage: user?.photoURL,
+                timeDate: createdAtDate,
+            })
             .then(res => {
                 console.log(res)
                 if (res.data.insertedId) {
@@ -57,7 +59,7 @@ const PostInput = () => {
                         />
                     )}
                 />
-                <button type="submit" className="bg-blue-500 px-4 py-2 mt-2 text-white text-sm font-semibold tracking-wide rounded-md uppercase">
+                <button type="submit" className="bg-blue-500 px-4 py-2 mt-2 mb-4 text-white text-sm font-semibold tracking-wide rounded-md uppercase">
                     Post
                 </button>
             </form>
