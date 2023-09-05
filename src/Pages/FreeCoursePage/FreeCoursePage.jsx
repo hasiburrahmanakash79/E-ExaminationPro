@@ -5,14 +5,10 @@ import { useQuery } from 'react-query'
 import { useEffect } from 'react'
 import { useState } from 'react'
 import { AuthContext } from '../../Provider/AuthProvider'
+import { useDispatch } from 'react-redux'
+import { setSubject } from '../../redux/features/quesPaper/quesPaperSlice'
 const FreeCoursePage = () => {
-  // const { isLoading, isError, data, error } = useQuery({
-  //     queryKey: ['allSubject'],
-  //     queryFn: async ()=>{
-  //         const res=axios.get('https://e-exam-pro-server.vercel.app/allSubjects')
-  //         return data=res.data
-  //     },
-  //   })
+  const dispatch = useDispatch()
   const { logOut } = useContext(AuthContext)
   const [data, setData] = useState([])
   const navigate = useNavigate()
@@ -31,6 +27,8 @@ const FreeCoursePage = () => {
           navigate('/login')
         }
         setData(data)
+        dispatch(setSubject(data))
+        
       })
   }, [])
   console.log(data)

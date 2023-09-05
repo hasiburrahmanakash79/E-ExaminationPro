@@ -24,6 +24,7 @@ const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, per
 const Piechart = () => {
     return (
         <div>
+          <ResponsiveContainer width="100%" height={350}>
             <PieChart width={400} height={400}>
           <Pie
             data={data}
@@ -31,7 +32,7 @@ const Piechart = () => {
             cy="50%"
             labelLine={false}
             label={renderCustomizedLabel}
-            outerRadius={150}
+            outerRadius={100}
             fill="#8884d8"
             dataKey="value"
           >
@@ -40,6 +41,7 @@ const Piechart = () => {
             ))}
           </Pie>
         </PieChart>
+        </ResponsiveContainer>
         <div className='grid grid-cols-2'>
                 {data.map((item,index) =>(<p key={index} className='text-center cursor-pointer'>{item.name}</p>))}
         </div>

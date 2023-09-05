@@ -4,8 +4,8 @@ import { useNavigate } from 'react-router-dom'
 import { AuthContext } from '../../Provider/AuthProvider'
 
 const axiosSecure = axios.create({
- // baseURL: 'https://e-exam-pro-server.vercel.app'
-  baseURL: 'http://localhost:5000/'
+ baseURL: 'https://e-exam-pro-server.vercel.app'
+  // baseURL: 'http://localhost:5000/'
 })
 
 const useAxiosSecure = () => {
@@ -18,7 +18,7 @@ const useAxiosSecure = () => {
       if (token) {
         config.headers.Authorization = `Bearer ${token}`
       }
-      return config
+      return config;
     })
 
     axiosSecure.interceptors.response.use(
@@ -28,9 +28,10 @@ const useAxiosSecure = () => {
           error.response &&
           (error.response.status === 401 || error.response.status === 403)
         ) {
-          await logOut()
-          navigate('/login')
+          // await logOut()
+          // navigate('/login')
         }
+        //TODO
         return Promise.reject(error)
       }
     )
