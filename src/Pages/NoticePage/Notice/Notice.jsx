@@ -1,14 +1,55 @@
-import { Accordion } from '@mui/material';
-import AccordionDetails from '@mui/material/AccordionDetails';
-import AccordionSummary from '@mui/material/AccordionSummary';
-import Typography from '@mui/material/Typography';
-import * as React from 'react';
-import { FaAngleDown, FaCaretRight } from 'react-icons/fa';
-
+// import { Accordion } from '@mui/material';
+// import AccordionDetails from '@mui/material/AccordionDetails';
+// import AccordionSummary from '@mui/material/AccordionSummary';
+// import Typography from '@mui/material/Typography';
+// import * as React from 'react';
+// import { FaAngleDown, FaCaretRight } from 'react-icons/fa';
+import { useQuery } from "@tanstack/react-query";
+import useAxiosSecure from "../../../Hooks/useAxiosSecure.jsx/useAxiosSecure";
+import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 export default function Notice() {
+
+  const [notice, setNotice] = useState([]);
+  useEffect(() => {
+    fetch("http://localhost:5000/notice")
+      .then((res) => res.json())
+      .then((data) => {
+        setNotice(data[0]);
+      });
+  }, []);
+
+  // const [axiosSecure] = useAxiosSecure();
+  // const { data: notice, refetch } = useQuery({
+  //   queryKey: ["notices"],
+  //   queryFn: async () => {
+  //     const res = await axiosSecure.get("/notice");
+  //     console.log(res.data);
+  //     return res.data;
+  //   },
+  // });
   return (
-    <div className='py-32 text-white'>
+    <div className="py-20">
+      <div className="card w-96 bg-white/10 border-2 shadow-xl mx-auto">
+        <div className="card-body">
+          <p>Subject Name:<span className="text-purple-300"> {notice?.subjectName} </span></p>
+          <p>Subject Code:<span className="text-purple-300 uppercase"> {notice?.code}</span></p>
+          <p>Group: <span className="text-purple-300"> {notice?.group}</span></p>
+          <p>Exam Date : <span className="text-purple-300">{notice?.date}</span> </p>
+          <p>Instructor Name:<span className="text-purple-300"> {notice?.instructor}</span> </p>
+
+          <Link to="/dashboard/upcomingLiveExam" className="mt-5">
+            <button className="primary-btn btn">Apply For Live class</button>
+          </Link>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+{
+  /* <div className='py-32 text-white'>
       <div className=' px-5 md:w-1/2 mx-auto'>
         <Accordion className='mb-2 bg-black'>
           <AccordionSummary
@@ -94,6 +135,5 @@ export default function Notice() {
           </AccordionDetails>
         </Accordion>
       </div>
-    </div>
-  );
+</div> */
 }
