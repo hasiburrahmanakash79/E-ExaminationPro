@@ -1,259 +1,272 @@
 import { useEffect, useState } from 'react'
-import { jsQuizz, mathQues } from '../../../../public/question'
-import { useLoaderData, useLocation } from 'react-router-dom'
+
+import { useLoaderData, useLocation, useNavigate } from 'react-router-dom'
 import AnsDataPage from '../../../components/examComponents/AnsDataPage'
 import FillTheBlank from '../../../components/examComponents/FillTheBlank'
 import McqPage from '../../../components/examComponents/McqPage'
 import TimeRemain from '../../../components/examComponents/TimeRemain'
-
-
-import React from 'react';
+import { useDispatch, useSelector } from 'react-redux'
+import React from 'react'
+import {
+  nextQues,
+  prevQues,
+  resetQues,
+  setAnswerIndex,
+  setResult,
+  setInputValue,
+  setMcq,
+  setView,
+  setQuestion,
+  setCorrectAns,
+  setExamType,
+  sendResult
+} from '../../../redux/features/examPage/examPageSlice'
+import StartCountdowns from '../../../components/examComponents/startCountdowns'
+import { useContext } from 'react'
+import { AuthContext } from '../../../Provider/AuthProvider'
 
 const Exam2 = () => {
-    //////////////////////
-    // const location = useLocation()
-    // const searchParams = new URLSearchParams(location.search) /////get exam type from route
-    // const examType = searchParams.get('type')
-    // console.log(examType)
-    //////////////////
-    const ques = useLoaderData();
-    const questions = ques.questions
-    const examType = ques.type
-    console.log(questions, examType)
-
-    // const questions = examType == 'mcq' ? jsQuizz.question : mathQues.questions ///store question based on type
-
-    const [currentQuestion, setCurrentQuestion] = useState(0) // default current question 0, index of array
-    const { question, options, correctAnswer } = questions[currentQuestion] //destructure array of objects
-    const [answerIndx, setAnswerIndx] = useState(null) // related with options index
-
-    const [result, setResult] = useState([])
-
-    const [view, setView] = useState(false) // show exam page or result page based on state
-    const [inputValue, setInputValue] = useState('') // store user answer from input value
-
-    const [countdown, setCountdown] = useState(3) // 3 sec countdown before start exam
-
-    const [timer, setTimer] = useState(null)// store time interval to clear the time interval.
-
-    const [optionMcq, setMcq] = useState(null) // it use to store user selected option from mcq
-
-    const [start, setStart] = useState(false) // it use to store user selected option from mcq
 
 
-    useEffect(() => {
+  const [timerProgress, setTimerProgress] = useState(100) //progress bar state
+  const totalDuration = 30 //define total duration
+  const [timeRemaining, setTimeRemaining] = useState(30) // time remain state
+  const [takingTime,setTakingTime]=useState(0)
 
-        ////////////////
-        if (countdown > 0) {
-            const countdownTimer = setInterval(() => {
-                if (countdown > 0) {
-                    setCountdown(prevCountdown => prevCountdown - 1) /// function for 3 sec countdown before start exam
-                    console.log(countdown)
-                } else {
-                    clearInterval(countdownTimer)
-                }
-            }, 1000)
+  const { currentQuestion, answerIndx, result, inputValue, optionMcq, view } =
+    useSelector(state => state.examPage)
+  const dispatch = useDispatch()
+  const ques = useLoaderData()
+  const { user } = useContext(AuthContext)
+  const navigate = useNavigate();
 
-            return () => clearInterval(countdownTimer)
-        }
-        ////////////////
+  //console.log(ques)
+  const questions = ques?.questions
+  const examType = ques.type
+  dispatch(setExamType(ques.type))
+  const { question, options, correctAnswer } = questions[currentQuestion] //destructure array of objects
+  const [countdown, setCountdown] = useState(3) // 3 sec countdown before start exam
+  const [timer, setTimer] = useState(null) // store time interval to clear the time interval.
+  const [start, setStart] = useState(false) // it use to store user selected option from mcq
 
-    }, [countdown])
+  const examInfo = { examID: ques._id, subjectName: ques.subjectName, semester: ques.semester, ins_email: ques.email, stu_email: user?.email, date: ques.date, exam_code: ques.exam_code, subject: ques.subjectName, sub_code: ques.subject_code, examType: ques.type,timeConsume:takingTime,totalQuestion:questions.length,totalMark:questions.length*5}
 
+  console.log(result, 'send data2')
 
-    /////data sending function
+  
 
-    const sendData = (result) => {
-        fetch('https://e-exam-pro-server.vercel.app/examdata', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(result)
-        })
-    }
+  const sendData = () => {
+    dispatch(sendResult(examInfo))
+  }
 
+  const handleFinishExam = () => {
     ////////// This code will execute when time remain for exam is 0.
-    const handleFinishExam = () => {
-        setView(true)
-        setCurrentQuestion(0)
-        clearInterval(timer)///stop timer
-        sendData(result)
+    dispatch(setView(true)) //setView(true)
+    dispatch(resetQues()) //setCurrentQuestion(0)
+    clearInterval(timer) ///stop timer
+    setTimeout(() => {
+      sendData()
+      dispatch(setView(false))
+      navigate(`/result?id=${ques?._id}`);
+    }, 3000);
+
+  }
+
+  const handleInputChange = event => {
+    dispatch(setInputValue(event.target.value)) // setInputValue(event.target.value) //store neumeric type value from input field
+  }
+
+  ///////////// when user select option in mcq ////////////////
+  const onSelectOption = (index, option, question, correctAnswer) => {
+    dispatch(setAnswerIndex(index))
+    //console.log(question, option, correctAnswer)
+    dispatch(setMcq(option)) // setMcq(option) // store user selected option
+    //setResult(prevArray => [...prevArray, newObject])
+
+
+  }
+
+  if (inputValue == NaN) {
+    //check nan
+    dispatch(setInputValue(parseFloat(inputValue).toFixed(2))) //setInputValue(parseFloat(inputValue).toFixed(2))
+  }
+
+  ///////////// next button action ///////////////////
+  const onClickNext = () => {
+    dispatch(setQuestion(question))
+    dispatch(setCorrectAns(correctAnswer))
+    dispatch(setResult())
+    dispatch(setAnswerIndex(null))
+
+    if (currentQuestion !== questions.length - 1) {
+     // console.log(currentQuestion, questions)
+      dispatch(nextQues())
     }
-    //////////// end
-
-    const handleInputChange = event => {
-        setInputValue(event.target.value) //store neumeric type value from input field
+    else {
+      dispatch(setView(true)) //setView(true)
+      dispatch(resetQues())
+      //sendData(resultData)
+     // console.log('hit')
+     // console.log(result, 'ghghgjgjh')
+      clearInterval(timer)
+        handleFinishExam()
     }
-    ///////////// when user select option in mcq ////////////////
-    const onSelectOption = (index, option, question) => {
-        setAnswerIndx(index)
-        const result1 = result.find(obj => obj.question === question) // check if the answer allready stored or not
-        if (result1) {
-            result1.userAns = option
-        } else {
-            const newObject = {
-                question: question,
-                correctAnswer: correctAnswer,
-                userAns: option
-            }
-            setResult(prevArray => [...prevArray, newObject])
-            setMcq(option) // store user selected option
-        }
+  }
+
+
+
+  ///// previous button action
+  const onClickPrevious = () => {
+    dispatch(setAnswerIndex(null)) //redux
+    //setAnswerIndx(null)
+    if (currentQuestion !== 0) {
+      dispatch(prevQues())
+      //setCurrentQuestion(prev => prev - 1)
     }
-    ////////////////////// END //////////////////
-    if (inputValue == NaN) {
-        setInputValue(parseFloat(inputValue).toFixed(2))
-    }
+    dispatch(setInputValue(null)) // setInputValue('')
+  }
 
-    ///////////// next button action ///////////////////
-    const onClickNext = () => {
-        setMcq(null) // set user selected option to null
-
-        if (examType == 'FillInTheBlank') { //for fill in the blank
-            const result1 = result.find(obj => obj.question === question) // check if answer stored or not
-            if (result1) {
-                result1.userAns = inputValue || 'Skipped'
-                setInputValue('')
-            } else {
-                const newObject = {
-                    question: question,
-                    correctAnswer: correctAnswer,
-                    userAns: inputValue || 'Skipped'
-                }
-                setResult(prevArray => [...prevArray, newObject]) //store object in result array
-                setInputValue('')
-            }
-        } else {
-            if (optionMcq == null) {
-                const newObject = {
-                    question: question,
-                    correctAnswer: correctAnswer,
-                    userAns: 'Skipped'
-                }
-                setResult(prevArray => [...prevArray, newObject]) //store object in result array
-            }
-        } /// fill in the blank end
-
-        setAnswerIndx(null)
-
-        if (currentQuestion !== questions.length - 1) {
-            setCurrentQuestion(prev => prev + 1)
-        }
-        else {
-            setView(true)
-            setCurrentQuestion(0)
-            console.log('hit')
-            console.log(result)
-            clearInterval(timer)
-            //  sendData(result) /// send data to backend server
-        }
-    }
-    ///// previous button action
-    const onClickPrevious = () => {
-        setAnswerIndx(null)
-        if (currentQuestion !== 0) {
-            setCurrentQuestion(prev => prev - 1)
-        }
-        setInputValue('')
-    }
-    /////end//////
-
-    useEffect(() => {
-        // This effect will run whenever the `result` state changes 
-        if (result.length == questions.length) {
-            sendData(result);
-        }
-    }, [result])
-
-    return (
-        <>  {/* show 3sec countdown before start exam */}
-            {
-                countdown > 0 ?
-                    <div className=' h-[80vh] flex flex-col justify-center items-center '>
-                        <div className='text-center '>
-                            <h1 className='my-1 font-bold text-red-600 text-9xl'>
-
-                                {countdown}
-                            </h1>
-
-                            <h1 className='text-7xl'>Get Ready</h1>
-                        </div>
-                    </div>
-                    :
+  return (
+    <>
+      {/* show 3sec countdown before start exam */}
+      {countdown > 0 ? (
+        <div>
+          <StartCountdowns
+            countdown={countdown}
+            setCountdown={setCountdown}
+          ></StartCountdowns>
+        </div>
+      ) : (
+        <div>
+          {view == true ? (
+            <div className='flex justify-center my-5'>
+              <h1 className='text-xl'>Your Result is now Processing....</h1>
+            </div>
+          ) : (
+            <>
+              {/* show remaining time */}
+              {((examType == 'multimedia_mcq' && start == true) ||
+                examType == 'mcq' ||
+                examType == 'FillInTheBlank') && (
+                  <TimeRemain
+                  timerProgress={timerProgress}
+                  setTimerProgress={setTimerProgress}
+                  totalDuration={totalDuration}
+                  timeRemaining={timeRemaining}
+                  setTimeRemaining={setTimeRemaining}
+                    examType={ques.type}
+                    start={start}
+                    handleFinishExam={handleFinishExam}
+                    setTimer={setTimer}
+                    takingTime={takingTime}
+                    setTakingTime={setTakingTime}
+                  ></TimeRemain>
+                )}
+              <div className=' min-h-[70vh] flex justify-center md:mt-0 mt-10 md:items-center'>
+                <div className='w-full mx-2 md:mx-20'>
+                  <div className='flex justify-center my-10 mb-5'>
+                    {examType == 'multimedia_mcq' && (
+                      <>
+                        <iframe
+                          width='800'
+                          height='500'
+                          src={ques.video}
+                          title='YouTube video player'
+                          frameborder='0'
+                          allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
+                          allowFullscreen
+                        ></iframe>
+                      </>
+                    )}
+                  </div>
+                  <div className='max-w-[50px]  min-h-[50px] text-white bg-blue-900 rounded-full flex justify-center items-center'>
                     <div>
-                        {
-                            view ? <div className='flex justify-center my-5'> {/* show result when view true */}
-                                <AnsDataPage
-                                    questions={questions}
-                                    result={result}
-                                ></AnsDataPage>
-                            </div>
-                                : <>{/* show remaining time */}
-                                    {((examType == 'multimedia_mcq' && start==true)||(examType == 'mcq')|| (examType=='FillInTheBlank'))&&<TimeRemain
-                                    examType={ques.type}
-                                    start={start}
-                                        handleFinishExam={handleFinishExam}
-                                        setTimer={setTimer}
-                                    ></TimeRemain>}
-                                    <div className=' min-h-[70vh] flex justify-center md:mt-0 mt-10 md:items-center'>
-                                        <div className='w-full mx-2 md:mx-20'>
-
-                                            <div className='flex justify-center my-10 mb-5'>
-
-                                                {examType == 'multimedia_mcq' &&
-                                                    <>
-                                                        <iframe width="800" height="500" src={ques.video} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullscreen></iframe>
-                                                    </>
-                                                }
-                                            </div>
-
-                                            <div className='max-w-[50px]  min-h-[50px] text-white bg-blue-900 rounded-full flex justify-center items-center'>
-                                                <div>
-                                                    <span className='text-3xl font-semibold'>{currentQuestion + 1}</span>{/* show current question number */}
-                                                    <span className='text-xl font-semibold'>/{questions.length}</span> {/* show total question in number */}
-                                                </div>
-                                            </div>
-                                            {((examType == 'multimedia_mcq' && start==true)|| examType == 'mcq')?<h1 className='text-3xl font-semibold my-7'>{currentQuestion + 1}- {question}</h1>:<h1 className='text-3xl font-semibold my-7'>Are You Ready?? Please Start Exam</h1>}  {/* show question  */}
-
-                                            {
-                                                (examType == 'mcq' || examType == 'multimedia_mcq') ? // check exam type
-                                                    <McqPage
-                                                    examType={ques.type}
-                                                    start={start}
-                                                        options={options}
-                                                        answerIndx={answerIndx}
-                                                        questions={questions}
-                                                        currentQuestion={currentQuestion}
-                                                        question={question}
-                                                        onSelectOption={onSelectOption}
-                                                    ></McqPage>
-                                                    :
-                                                    <FillTheBlank
-                                                        questions={questions}
-                                                        currentQuestion={currentQuestion}
-                                                        question={question}
-                                                        inputValue={inputValue}
-                                                        handleInputChange={handleInputChange}
-                                                    ></FillTheBlank>
-                                            }
-                                            <div className=''>
-                                            <div className='flex justify-between mt-10'>
-                                                <button disabled={((currentQuestion == 0)||(examType == 'multimedia_mcq' && start==false))} onClick={onClickPrevious} className='text-white btn navigation-bar hover:bg-blue-900 '>Previous</button>
-                                                <button disabled={(examType == 'multimedia_mcq' && start==false)} onClick={onClickNext} className='text-white btn navigation-bar '>{currentQuestion == questions.length - 1 ? 'Finish' : 'Next'}</button>
-                                            </div>
-                                            <div className='flex justify-center'>
-                                                {examType=='multimedia_mcq'&&<button className='my-5 btn btn-primary' onClick={()=>setStart(true)} >Start</button>}
-                                            </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </>
-                        }
+                      <span className='text-3xl font-semibold'>
+                        {currentQuestion + 1}
+                      </span>
+                      {/* show current question number */}
+                      <span className='text-xl font-semibold'>
+                        /{questions.length}
+                      </span>{' '}
+                      {/* show total question in number */}
                     </div>
-            }
-        </>
-    );
-};
+                  </div>
+                  {(examType == 'multimedia_mcq' && start == true) ||
+                    examType == 'mcq' ||
+                    examType == 'FillInTheBlank' ? (
+                    <h1 className='text-3xl font-semibold my-7'>
+                      {currentQuestion + 1}- {question}
+                    </h1>
+                  ) : (
+                    <h1 className='text-3xl font-semibold my-7'>
+                      Are You Ready?? Please Start Exam
+                    </h1>
+                  )}
+                  {/* show question  */}
+                  {examType == 'mcq' || examType == 'multimedia_mcq' ? ( // check exam type
+                    <McqPage
+                      correctAnswer={correctAnswer}
+                      examType={ques.type}
+                      start={start}
+                      options={options}
+                      answerIndx={answerIndx}
+                      questions={questions}
+                      currentQuestion={currentQuestion}
+                      question={question}
+                      onSelectOption={onSelectOption}
+                    ></McqPage>
+                  ) : (
+                    <FillTheBlank
+                      questions={questions}
+                      currentQuestion={currentQuestion}
+                      question={question}
+                      inputValue={inputValue}
+                      handleInputChange={handleInputChange}
+                    ></FillTheBlank>
+                  )}
+                  <div className=''>
+                    <div className='flex justify-between mt-10'>
+                      <button
+                        disabled={
+                          currentQuestion == 0 ||
+                          (examType == 'multimedia_mcq' && start == false)
+                        }
+                        onClick={onClickPrevious}
+                        className='text-white btn navigation-bar hover:bg-blue-900 '
+                      >
+                        Previous
+                      </button>
+                      <button
+                        disabled={
+                          examType == 'multimedia_mcq' && start == false
+                        }
+                        onClick={onClickNext}
+                        className='text-white btn navigation-bar '
+                      >
+                        {currentQuestion == questions.length - 1
+                          ? 'Finish'
+                          : 'Next'}
+                      </button>
+                    </div>
+                    <div className='flex justify-center'>
+                      {examType == 'multimedia_mcq' && (
+                        <button
+                          className='my-5 btn btn-primary'
+                          onClick={() => setStart(true)}
+                        >
+                          Start
+                        </button>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </>
+          )}
+        </div>
+      )}
+    </>
+  )
+}
 
-export default Exam2;
+export default Exam2

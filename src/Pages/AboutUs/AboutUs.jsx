@@ -18,7 +18,7 @@ const AboutUs = () => {
 
           <p className='text-lg pb-5 text-gray-300'>We recognize the importance of seamless and efficient examination processes, and that's why we have created a cutting-edge solution that allows students to take their exams from the comfort of their own space. Our platform is built on a foundation of innovation and user-centric design, ensuring a user-friendly experience.</p>
 
-          <Link to="/contact" className="btn primary-bg border-none text-white shadow-md">Contact Us</Link>
+          <Link to="/contact" className="btn primary-btn border-none text-white shadow-md">Contact Us</Link>
         </div>
 
         <div className='md:w-1/2'>
@@ -49,7 +49,7 @@ const AboutUs = () => {
           <p className="p-2 text-sm font-medium tracki text-center uppercase">Development team</p>
           <h1 className="text-4xl font-bold leadi text-center sm:text-5xl">The talented people behind the scenes</h1>
           <div className="flex flex-row flex-wrap-reverse justify-center mt-20">
-            <div className="flex flex-col justify-center w-full px-8 mx-6 my-12 text-center rounded-md md:w-96 lg:w-80 xl:w-64 dark:bg-gray-100 dark:text-gray-800">
+            <div className="flex flex-col justify-center w-full px-8 mx-6 my-12 text-center rounded-md md:w-96 lg:w-80 xl:w-64 bg-white/20 hover:bg-white/30 shadow-2xl dark:text-white">
               <img alt="" className="border-4 border-pink-500 self-center flex-shrink-0 w-24 h-24 -mt-12 bg-center bg-cover rounded-full dark:bg-gray-500" src="https://source.unsplash.com/100x100/?portrait?0" />
               <div className="flex-1 my-4">
                 <p className="text-xl font-semibold leadi">Leroy Jenkins</p>

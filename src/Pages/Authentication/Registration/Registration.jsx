@@ -1,21 +1,18 @@
-import { useState, useContext } from 'react'
+import { useContext, useState } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import SocialLogin from '../../../Hooks/SocialLogin/SocialLogin'
-import { AuthContext } from '../../../Provider/AuthProvider'
 import Loading from '../../../Components/Loading/Loading'
-import useAuth from '../../../Components/useAuth.jsx/useAuth'
 import Swal from 'sweetalert2'
+import useAuth from '../../../Hooks/useAuth/useAuth'
+import { AuthContext } from '../../../Provider/AuthProvider'
 const Registration = () => {
   const [passShow, setPassShow] = useState(false)
+  const { signUpUser, updateUserInfo, loading } = useContext(AuthContext)
+
   const navigate = useNavigate()
   const location = useLocation()
   const from = location.state?.from?.pathname || '/'
-  const { signUpUser, updateUserInfo, loading } = useAuth()
-
-  if (loading) {
-    return <Loading />
-  }
 
   const {
     register,
@@ -25,6 +22,9 @@ const Registration = () => {
   } = useForm()
   const password = watch('password')
 
+  // if (loading) {
+  //   return <Loading />;
+  // }
   const onSubmit = data => {
     signUpUser(data.email, data.password).then(result => {
       const loggedUser = result.user
@@ -36,7 +36,8 @@ const Registration = () => {
           const userInfo = {
             displayName: data.name,
             email: data.email,
-            photoURL: data.photo
+            photoURL: data.photo,
+            role: 'user'
           }
           fetch('https://e-exam-pro-server.vercel.app/users', {
             method: 'POST',

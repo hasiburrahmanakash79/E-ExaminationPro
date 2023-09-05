@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useEffect, useState } from 'react'
 import {
   GoogleAuthProvider,
   createUserWithEmailAndPassword,
@@ -7,51 +7,65 @@ import {
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
-  updateProfile,
-} from "firebase/auth";
-import app from "../firebase/firebase.config";
+  updateProfile
+} from 'firebase/auth'
+import app from '../firebase/firebase.config'
+import axios from 'axios'
 
-export const AuthContext = createContext();
-const auth = getAuth(app);
+export const AuthContext = createContext()
+const auth = getAuth(app)
 
 const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const [user, setUser] = useState(null)
+  const [loading, setLoading] = useState(true)
 
-  const googleProvider = new GoogleAuthProvider();
+  const googleProvider = new GoogleAuthProvider()
 
   const signUpUser = (email, password) => {
-    setLoading(true);
-    return createUserWithEmailAndPassword(auth, email, password);
-  };
+    setLoading(true)
+    return createUserWithEmailAndPassword(auth, email, password)
+  }
 
   const logInUser = (email, password) => {
-    setLoading(true);
-    return signInWithEmailAndPassword(auth, email, password);
-  };
+    setLoading(true)
+    return signInWithEmailAndPassword(auth, email, password)
+  }
 
   const updateUserInfo = (name, photo) =>
-    updateProfile(auth.currentUser, { displayName: name, photoURL: photo });
+    updateProfile(auth.currentUser, { displayName: name, photoURL: photo })
 
   const googleSignIn = () => {
-    setLoading(true);
-    return signInWithPopup(auth, googleProvider);
-  };
+    setLoading(true)
+    return signInWithPopup(auth, googleProvider)
+  }
 
   const logOut = () => {
-    setLoading(true);
-    return signOut(auth);
-  };
+    setLoading(true)
+    return signOut(auth)
+  }
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      setUser(currentUser);
-      setLoading(false);
-    });
+    const unsubscribe = onAuthStateChanged(auth, currentUser => {
+      setUser(currentUser)
+      setLoading(false)
+      if (currentUser) {
+        axios
+          .post('https://e-exam-pro-server.vercel.app/jwt', {
+            email: currentUser.email
+          })
+          .then(data => {
+            const token = data.data.token;
+            localStorage.setItem('access-token', token)
+            setLoading(false)
+          })
+      } else {
+        localStorage.removeItem('access-token')
+      }
+    })
     return () => {
-      return unsubscribe();
-    };
-  }, []);
+      return unsubscribe()
+    }
+  }, [])
 
   const authInfo = {
     user,
@@ -60,11 +74,11 @@ const AuthProvider = ({ children }) => {
     signUpUser,
     logInUser,
     updateUserInfo,
-    logOut,
-  };
+    logOut
+  }
   return (
     <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>
-  );
-};
+  )
+}
 
-export default AuthProvider;
+export default AuthProvider

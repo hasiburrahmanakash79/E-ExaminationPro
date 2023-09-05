@@ -9,7 +9,9 @@ const useQuotes = () => {
   } = useQuery({
     queryKey: ['quotes'],
     queryFn: async () => {
-      const res = await axios.get('https://e-exam-pro-server.vercel.app/api/quotes')
+      const res = await axios.get(
+        'https://e-exam-pro-server.vercel.app/api/quotes'
+      )
       return res.data
     }
   })
