@@ -29,6 +29,7 @@ import WrittenExams from '../Pages/Exams/WrittenExams/WrittenExams'
 import ResultPageForMcqFib from '../components/examComponents/QuestionRelated/ResultPageForMcqFib'
 import Profile from '../Pages/Authentication/UpdateProfile/Profile'
 import UpdateProfile from '../Pages/Authentication/UpdateProfile/UpdateProfile'
+import ForumCommunity from '../Pages/Forum_Community/ForumCommunity'
 
 const router = createBrowserRouter([
   {
