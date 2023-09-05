@@ -9,6 +9,7 @@ import {
   FaWallet,
   FaComment
 } from "react-icons/fa";
+import { AiFillNotification } from "react-icons/ai";
 import { RiLiveFill } from "react-icons/ri";
 import { FaClipboardQuestion } from "react-icons/fa6";
 import { MdHomeWork } from "react-icons/md";
@@ -74,7 +75,8 @@ const Dashboard = () => {
     Setting: FaCog,
     Payment: FaWallet,
     Live: RiLiveFill,
-    Blog: FaComment
+    Blog: FaComment,
+    Notice: AiFillNotification,
   };
 
   const Menus = [
@@ -89,6 +91,12 @@ const Dashboard = () => {
       title: "Users",
       path: "/dashboard/manageUsers",
       icon: iconMappings.Users,
+      role: "admin",
+    },
+    {
+      title: "Create Notice",
+      path: "/dashboard/createNotice",
+      icon: iconMappings.Notice,
       role: "admin",
     },
     {

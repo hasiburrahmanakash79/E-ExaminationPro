@@ -35,6 +35,7 @@ import StudentAnalytics from "../Pages/Dashboard/UserDashboard/StudentAnalytics/
 import AddBlog from "../Pages/Dashboard/InstructorDashboard/AddBlog/AddBlog";
 import UpcomingLiveExam from "../Pages/LiveExam/UpcomingLiveExam/UpcomingLiveExam";
 import InstructorChatRoom from "../Pages/LiveExam/InstructorChatRoom/InstructorChatRoom";
+import CreateNotice from "../Pages/Dashboard/AdminDashboard/CreateNotice/CreateNotice";
 
 const router = createBrowserRouter([
   {
@@ -157,6 +158,10 @@ const router = createBrowserRouter([
       {
         path: "/dashboard/manageUsers",
         element: <ManageUsers />,
+      },
+      {
+        path: "/dashboard/createNotice",
+        element: <CreateNotice />,
       },
       // Instructor Dashboard Routes
       {
