@@ -13,7 +13,7 @@ const UpcomingLiveExam = () => {
   const e_ID = searchParams.get('examID')
   console.log(e_ID)
   const { user, loading } = useContext(AuthContext)
- 
+
   const [axiosSecure] = useAxiosSecure()
   const { data, isLoading } = useQuery({
     queryKey: ['noticeDATA', e_ID],

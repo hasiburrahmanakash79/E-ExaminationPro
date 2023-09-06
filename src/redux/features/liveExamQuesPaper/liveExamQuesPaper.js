@@ -5,6 +5,7 @@ export const liveExamQuesPaper = createSlice({
     initialState: {
         allSubject:[],
         type: null,
+        examData:null,
         formData: {
             subjectName: '',
             exam_code: '',
@@ -16,12 +17,18 @@ export const liveExamQuesPaper = createSlice({
         questions: [],
     },
     reducers: {
+        setExamData:(state,{payload})=>{
+            console.log(payload ,'....................................')
+          //state.examData= payload
+          
+        },
         setSubject:(state,{payload})=>{
             state.allSubject=[...payload]
         },
         examType: (state, { payload }) => {
             state.type = payload
         },
+        
         setSubjectCode:(state,{payload})=>{
             console.log(payload)
             state.formData.subject_code=payload
@@ -60,6 +67,6 @@ export const liveExamQuesPaper = createSlice({
 })
 
 // Action creators are generated for each case reducer function
-export const { examType,setSubject, subjectInfo, quesPaper,setEmail,setSubjectCode } = liveExamQuesPaper.actions
+export const { examType,setSubject, subjectInfo, quesPaper,setEmail,setSubjectCode,  setExamData } = liveExamQuesPaper.actions
 
 export default liveExamQuesPaper.reducer

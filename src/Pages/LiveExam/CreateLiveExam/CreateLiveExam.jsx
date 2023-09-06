@@ -6,21 +6,26 @@ import {
   quesPaper,
   setSubject,
   setEmail,
-  setSubjectCode
+  setSubjectCode,
+  setExamData,
 } from '../../../redux/features/liveExamQuesPaper/liveExamQuesPaper'
 import { useEffect } from 'react'
 import { useContext } from 'react'
 import { AuthContext } from '../../../Provider/AuthProvider'
+import useLiveExam from '../../../Hooks/useLiveExam/useLiveExam'
 
 
-const CreateLiveExam= () => {
+const CreateLiveExam = () => {
+  const [notices, isNoticeLoading] = useLiveExam()
+  console.log(notices, 'line-----------------------------------------------19')
   const { user } = useContext(AuthContext)
   const dispatch = useDispatch()
-  const { type, formData, questions, allSubject } = useSelector(
-    state => state.questionPaper
+  const { type, formData, questions, allSubject, examData } = useSelector(
+    state => state.liveExam
   )
+  console.log(examData, '-----------------------------------------------line 26')
   useEffect(() => {
-    fetch('https://e-exam-pro-server.vercel.app/allSubjects', {
+    fetch('http://localhost:5000/allSubjects', {
       headers: {
         authorization: `bearar ${localStorage.getItem('access-token')}`
       }
@@ -52,7 +57,7 @@ const CreateLiveExam= () => {
     const selectedValue = event.target.value;
     const selectedSubjectData = allSubject.find(subject => subject.subject_name === selectedValue);
     console.log(selectedSubjectData?.subject_code)
-    const code=selectedSubjectData?.subject_code
+    const code = selectedSubjectData?.subject_code
     dispatch(setSubjectCode(code))
     dispatch(subjectInfo(event))
   };
@@ -80,7 +85,7 @@ const CreateLiveExam= () => {
 
     console.log('Question Paper Data:', paperData)
 
-    // fetch('https://e-exam-pro-server.vercel.app/questionPaper', {
+    // fetch('http://localhost:5000/questionPaper', {
     //   method: 'POST',
     //   headers: {
     //     'Content-Type': 'application/json'
@@ -102,25 +107,54 @@ const CreateLiveExam= () => {
         </p>
       </div>
 
-      <div className='mb-5'>
-        <label className='label'>
-          <span className='label-text'>Exam Type</span>
-        </label>
-        <select
-          onChange={e => {
-            //setQuestions([]) Redux
-            dispatch(examType(''))
-            dispatch(examType(e.target.value))
-          }}
-          className='select select-bordered select-sm w-full max-w-xs'
-        >
-          <option disabled selected>
-            Choose Type
-          </option>
-          <option value='mcq'>MCQ</option>
-          <option value='multimedia_mcq'>Multimedia MCQ</option>
-          <option value='FillInTheBlank'>Fill in the Blank</option>
-        </select>
+      <div className='grid grid-cols-2'>
+        <div className='mb-5'>
+          <label className='label'>
+            <span className='label-text'>Exam Type</span>
+          </label>
+          <select
+            onChange={e => {
+              //setQuestions([]) Redux
+              dispatch(examType(''))
+              dispatch(examType(e.target.value))
+            }}
+            className='select select-bordered select-sm w-full max-w-xs'
+          >
+            <option disabled selected>
+              Choose Type
+            </option>
+            <option value='mcq'>MCQ</option>
+            <option value='multimedia_mcq'>Multimedia MCQ</option>
+            <option value='FillInTheBlank'>Fill in the Blank</option>
+          </select>
+        </div>
+
+        <div className='mb-5 ms-auto'>
+          <label className='label'>
+            <span className='label-text'>Choose Exam</span>
+          </label>
+          <select
+            onChange={e => {
+              //setQuestions([]) Redux
+              dispatch(setExamData(null))
+              dispatch(setExamData(e.target.value))
+            }}
+            className='select select-bordered select-sm w-full max-w-xs'
+          >
+            <option disabled selected>
+              Choose Type
+            </option>
+
+            {
+              notices?.map(notice => {
+                console.log(notice)
+              return <option className='text-white' key={notice._id} value={notice}>{notice?.subjectName}</option>
+            }
+              )
+            }
+
+          </select>
+        </div>
       </div>
 
       <div className='flex justify-center mb-5'>
@@ -314,11 +348,11 @@ const CreateLiveExam= () => {
 
       <div className='flex flex-col gap-3 items-center justify-center'>
         <button
-        disabled={type==null?true:false}
+          disabled={type == null ? true : false}
           onClick={handleQuestionAdd}
           className='btn btn-sm btn-primary mt-2'
         >
-         { type!==null ?'Add Question':'Select Exam Type'}
+          {type !== null ? 'Add Question' : 'Select Exam Type'}
         </button>
         <button
           onClick={handleSubmit}

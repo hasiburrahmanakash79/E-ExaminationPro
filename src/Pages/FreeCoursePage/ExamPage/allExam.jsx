@@ -16,7 +16,7 @@ const AllExam = () => {
     const dispatch=useDispatch()
    
     useEffect(() => {
-        fetch(`https://e-exam-pro-server.vercel.app/questionPaper?type=${type ||'mcq'}&subject=${subject}`)
+        fetch(`http://localhost:5000/questionPaper?type=${type ||'mcq'}&subject=${subject}`)
             .then(res => res.json())
     .then(data => {
         dispatch(allExam(data))})
