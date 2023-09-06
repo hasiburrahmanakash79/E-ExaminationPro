@@ -146,8 +146,8 @@ const Dashboard = () => {
       {/* Dashboard Sidebar content */}
       <div
         className={` ${
-          open ? "w-48" : "w-14 text-center "
-        } bg-black h-screen  fixed left-0 top-0 bottom-0 z-50 pt-8  duration-500 transition-all`}
+          open ? "w-56 p-4" : "w-14 text-center "
+        } bg-white/10 h-screen  fixed left-0 top-0 bottom-0 z-50 pt-8  duration-500 transition-all`}
       >
         <img
           src={arrow}
@@ -278,7 +278,7 @@ const Dashboard = () => {
       </div>
       {/* Dashboard main content */}
       <div className={` ${
-          open ?  "pl-52 pr-4": "pl-16 pr-2"
+          open ?  "pl-60 pr-4": "pl-16 pr-2"
         } flex-1  overflow-y-auto  duration-500 transition-all h-[100vh]`}>
         <Outlet></Outlet>
       </div>

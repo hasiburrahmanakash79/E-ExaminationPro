@@ -11,7 +11,7 @@ const UpcomingLiveExam = () => {
     }
     return (
         <div>
-            <div className="mt-6 text-2xl font-semibold text-center">Apply for Online Exam</div>
+            <div className="mt-6 text-2xl md:text-6xl py-5 text-orange-400 font-semibold text-center">Apply for Online Exam</div>
       <form onSubmit={handleSubmit(onSubmit)}  className="mx-auto max-w-[600px] border-4 border-purple-900 rounded-xl p-4 my-4">
         <div className="w-full mb-4 form-control">
           <label className="label">
