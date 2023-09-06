@@ -7,18 +7,36 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure.jsx/useAxiosSecure";
 import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { AuthContext } from "../../../Provider/AuthProvider";
+import useInstructor from "../../../Hooks/useInstructor/useInstructor";
 
 export default function Notice() {
+  const {user,loading}=useContext(AuthContext)
+  const [isInstructor] = useInstructor()
 
-  const [notices, setNotices] = useState([]);
-  useEffect(() => {
-    fetch("http://localhost:5000/notice")
-      .then((res) => res.json())
-      .then((data) => {
-        setNotices(data);
-      });
-  }, []);
+
+  const [axiosSecure] = useAxiosSecure()
+  const { data:notices, isLoading } = useQuery({
+    queryKey: ['noticeDATA', user?.email],
+    enabled: !loading,
+    queryFn: async () => {
+      const res = await axiosSecure.get(`notice?instructor=${user?.email}`);
+      return res.data;
+    }
+  })
+
+
+  // const [notices, setNotices] = useState([]);
+  // useEffect(() => {
+  //   fetch(`http://localhost:5000/notice?instructor=${user?.email}`)
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       setNotices(data);
+  //     });
+  // }, []);
+
+
 
   // const [axiosSecure] = useAxiosSecure();
   // const { data: notice, refetch } = useQuery({
@@ -34,15 +52,16 @@ export default function Notice() {
       <h1 className="text-3xl text-center">Upcoming Exam Schedule</h1>
       <div className="my-7 grid grid-cols-4 gap-5 ">
       {
-        notices.map(notice => <div key={notice._id} className="card w-full bg-white/10 border-2 shadow-xl ">
+        notices?.map(notice => <div key={notice._id} className="card w-full bg-white/10 border-2 shadow-xl ">
         <div className="card-body">
           <p>Subject Name:<span className="text-purple-300"> {notice?.subjectName} </span></p>
-          <p>Subject Code:<span className="text-purple-300 uppercase"> {notice?.code}</span></p>
+          <p>Exam Code:<span className="text-purple-300 uppercase"> {notice?.exam_code}</span></p>
+          <p>Subject Code:<span className="text-purple-300 uppercase"> {notice?.subject_code}</span></p>
           <p>Group: <span className="text-purple-300"> {notice?.group}</span></p>
           <p>Exam Date : <span className="text-purple-300">{notice?.date}</span> </p>
           <p>Instructor:<span className="text-purple-300"> {notice?.instructor}</span> </p>
 
-          <Link to="/upcomingLiveExam" className="mt-5">
+          <Link to={`/upcomingLiveExam?examID=${notice._id}&email=${user?.email}`} className="mt-5">
             <button className="primary-btn btn">Apply For Live class</button>
           </Link>
         </div>
