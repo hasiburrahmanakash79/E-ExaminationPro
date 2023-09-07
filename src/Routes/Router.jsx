@@ -1,33 +1,35 @@
 import { createBrowserRouter } from 'react-router-dom'
 import Main from '../Layouts/Main'
-import HomePage from '../Pages/Home/HomePage/HomePage'
 import AboutUs from '../Pages/AboutUs/AboutUs'
 import Login from '../Pages/Authentication/Login/Login'
 import Registration from '../Pages/Authentication/Registration/Registration'
-import Blog from '../Pages/BlogPage/Blog/Blog'
-import Contact from '../Pages/Contact/Contact'
-import ShortQ from '../Pages/Exams/ShortQuestion/ShortQ'
-import PrivateRouter from './PrivateRouter'
-import Error from '../Pages/Error/Error'
-import Exam from '../Pages/FreeCoursePage/ExamPage/Exam'
-import Instructors from '../Pages/InstuctorPage/Instructors'
+import HomePage from '../Pages/Home/HomePage/HomePage'
+// import Blog from '../Pages/BlogPage/Blog/Blog'
 import Dashboard from '../Layouts/Dashboard'
-import ResultPageForMcqFib from '../components/QuestionRelated/ResultPageForMcqFib'
-import ManageUsers from '../Pages/Dashboard/AdminDashboard/ManageUser/ManageUsers'
+import Contact from '../Pages/Contact/Contact'
 import AdminHome from '../Pages/Dashboard/AdminDashboard/AdminHome/AdminHome'
+import ManageUsers from '../Pages/Dashboard/AdminDashboard/ManageUser/ManageUsers'
+import Error from '../Pages/Error/Error'
+import ShortQ from '../Pages/Exams/ShortQuestion/ShortQ'
+import Instructors from '../Pages/InstuctorPage/Instructors'
+import ResultPageForMcqFib from '../components/QuestionRelated/ResultPageForMcqFib'
+import PrivateRouter from './PrivateRouter'
 
-import QuizHomePage from '../Pages/Home/DemoTest/QuizHomePage'
-import ResultPage from '../Pages/Home/DemoTest/ResultPage'
-import Notice from '../Pages/NoticePage/Notice/Notice'
-import AllExam from '../Pages/FreeCoursePage/ExamPage/allExam'
-import Exam2 from '../Pages/FreeCoursePage/ExamPage/Exam2'
-import FreeCoursePage from '../Pages/FreeCoursePage/FreeCoursePage'
+import UpdateProfile from '../Pages/Authentication/UpdateProfile/UpdateProfile'
+import NewBlog from '../Pages/BlogPage/NewBlog/NewBlog'
+import NewBlogDetails from '../Pages/BlogPage/NewBlog/NewBlogDetails'
+import UnderBlog from '../Pages/BlogPage/NewBlog/UnderBlog'
 import CreateQuesPaper from '../Pages/Dashboard/InstructorDashboard/CreateQuestion/CreateQuesPaper'
 import InstructorHome from '../Pages/Dashboard/InstructorDashboard/InstructorHome/InstructorHome'
 import Payment from '../Pages/Dashboard/UserDashboard/Payment/Payment'
-import UpdateProfile from '../Pages/Authentication/UpdateProfile/UpdateProfile'
-import UserHome from '../Pages/Dashboard/UserDashboard/UserHome/UserHome'
 import PaymentHistory from '../Pages/Dashboard/UserDashboard/PaymentHistory/PaymentHistory'
+import UserHome from '../Pages/Dashboard/UserDashboard/UserHome/UserHome'
+import Exam2 from '../Pages/FreeCoursePage/ExamPage/Exam2'
+import AllExam from '../Pages/FreeCoursePage/ExamPage/allExam'
+import FreeCoursePage from '../Pages/FreeCoursePage/FreeCoursePage'
+import QuizHomePage from '../Pages/Home/DemoTest/QuizHomePage'
+import ResultPage from '../Pages/Home/DemoTest/ResultPage'
+import Notice from '../Pages/NoticePage/Notice/Notice'
 
 const router = createBrowserRouter([
   {
@@ -44,9 +46,25 @@ const router = createBrowserRouter([
         element: <Instructors />
       },
       {
-        path: '/blog',
-        element: <Blog />
+        path: "/blog",
+        element: <NewBlog></NewBlog>
       },
+
+      {
+        path: "/blogDetails/:id",
+        element: <NewBlogDetails></NewBlogDetails>
+      },
+      // {
+      //   path: "/blogDetails/:id",
+      //   element: <NewBlogDetails></NewBlogDetails>
+      // },
+
+
+      {
+        path: "/blogUnderDetails/:id",
+        element: <UnderBlog></UnderBlog>
+      },
+
       {
         path: '/notice',
         element: <Notice />
@@ -70,7 +88,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/payment/:id',
-        element: <PrivateRouter><Payment/></PrivateRouter>
+        element: <PrivateRouter><Payment /></PrivateRouter>
       },
       {
         path: '/allSubjects',
@@ -138,15 +156,15 @@ const router = createBrowserRouter([
       },
       {
         path: '/dashboard/payment/:id',
-        element: <Payment/>
+        element: <Payment />
       },
       {
         path: '/dashboard/userHome',
-        element: <UserHome/>
+        element: <UserHome />
       },
       {
         path: '/dashboard/paymentHistory',
-        element: <PaymentHistory/>
+        element: <PaymentHistory />
       },
     ]
   }

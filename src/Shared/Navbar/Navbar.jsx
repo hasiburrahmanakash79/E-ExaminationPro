@@ -189,7 +189,7 @@ const Navbar = () => {
           ) : (
             <Link
               to="/login"
-              className="text-white border-none shadow-md btn primary-bg"
+              className="text-white  border-none shadow-md btn primary-bg"
             >
               Login
             </Link>
