@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 
 const DemoTestSection = () => {
   return (
-    <section className='my-10 md:my-20'>
+    <section className='my-10 md:my-24'>
       <div className='p-10 mx-4 rounded-lg primary-bg'>
         <h1
           data-aos="zoom-in-down"

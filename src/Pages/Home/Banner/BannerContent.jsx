@@ -25,7 +25,7 @@ const BannerContent = () => {
                 <button
                     data-aos="fade-down-right"
                     data-aos-duration="3000"
-                    className="mt-4 md:mt-8 md:text-lg rounded-full btn-sm md:btn-md primary-btn">
+                    className="mt-4 md:mt-6 md:text-lg rounded-full btn-sm md:btn-md primary-btn">
                     Explore Exams
                 </button>
             </Link>

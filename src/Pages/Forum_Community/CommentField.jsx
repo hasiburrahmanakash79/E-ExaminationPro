@@ -14,7 +14,7 @@ const CommentField = ({ label, type }) => {
                     placeholder="Comment"
                     className="w-10/12 bg-zinc-300 text-slate-900 focus:outline-none border rounded-md py-2 px-4 "
                 />
-                <button className="bg-blue-500 py-2 px-5 text-white rounded-lg ml-2">Comment</button>
+                <button className="bg-blue-500 py-2 px-5 text-white rounded-lg md:ml-2 my-3">Comment</button>
             </div>
 
             <Accordion>

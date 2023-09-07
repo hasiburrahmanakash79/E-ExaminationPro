@@ -13,6 +13,7 @@ import {
   TwitterShareButton
 } from 'react-share'
 import ShowCommentApp from '../BlogComments/ShowCommentApp'
+import { Helmet } from 'react-helmet-async'
 
 const Blog = () => {
   const [color, setColor] = useState('white')
@@ -29,6 +30,7 @@ const Blog = () => {
 
   return (
     <div>
+      <Helmet><title>E-ExamPro | Blog</title></Helmet>
       <section className='text-white'>
         <div className='container p-5 py-20 mx-auto space-y-6 sm:space-y-12'>
           <div

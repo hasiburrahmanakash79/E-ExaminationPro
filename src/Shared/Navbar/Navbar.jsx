@@ -70,9 +70,9 @@ const Navbar = () => {
       <li>
         <Link to="/forum">Forum</Link>
       </li>
-      {user && <li>{isAdmin?"":isInstructor?<Link to="/createLiveExam">Create Live Exam</Link>:<Link to="/joinLiveExam">Join Live Exam</Link>
-        }
-       
+      {user && <li>{isAdmin ? "" : isInstructor ? <Link to="/createLiveExam">Create Live Exam</Link> : <Link to="/joinLiveExam">Join Live Exam</Link>
+      }
+
       </li>}
     </>
   );
@@ -119,11 +119,13 @@ const Navbar = () => {
               {navbarLink_Last}
             </ul>
           </div>
-          <img
-            className="w-[200px] hover:-translate-y-0.5 duration-200"
-            src={logo}
-            alt=""
-          />
+          <Link to="/">
+            <img
+              className="w-[200px] hover:-translate-y-0.5 duration-200"
+              src={logo}
+              alt=""
+            />
+          </Link>
         </div>
         <div className="hidden navbar-center lg:flex">
           <ul className="px-1 menu menu-horizontal">
@@ -147,7 +149,7 @@ const Navbar = () => {
               </Link>
             </button>
           </div>
-          
+
           <button
             onClick={() => window.my_modal_3.showModal()}
             className="btn btn-ghost btn-circle"

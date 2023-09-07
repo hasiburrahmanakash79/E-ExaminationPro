@@ -22,7 +22,7 @@ const TopSubjects = () => {
     fetchData()
   }, [])
   return (
-    <div className='p-5'>
+    <div className='my-16'>
       <h1
         data-aos="zoom-in-down"
         data-aos-duration="600"

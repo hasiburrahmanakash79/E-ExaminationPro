@@ -55,7 +55,7 @@ const PostInput = () => {
                         <textarea
                             {...field}
                             placeholder="Write your comment"
-                            className="md:h-24 h-16 md:w-full p-3 bg-zinc-300 focus:outline-teal-700 text-black rounded-md block"
+                            className="h-24 w-full p-3 bg-zinc-300 focus:outline-teal-700 text-black rounded-md block"
                         />
                     )}
                 />

@@ -42,7 +42,7 @@ const Testimonial = () => {
         data-aos="zoom-in"
         data-aos-easing="ease-out-cubic"
         data-aos-duration="2000"
-        className='bg-gradient-to-tr overflow-hidden from-[#0B0728] to-[#491A66] py-16 mt-6 rounded-lg'
+        className='bg-gradient-to-tr overflow-hidden from-[#0B0728] to-[#491A66] my-16 mt-6 rounded-lg'
         style={{
           background:
             'linear-gradient(45deg,rgb(17, 9, 83), rgb(54, 2, 102), rgb(4, 64, 114), rgb(73, 1, 114))'

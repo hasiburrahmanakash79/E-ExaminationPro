@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import InstructorCard from './InstructorCard'
+import { Helmet } from 'react-helmet-async'
 
 const Instructors = () => {
   const [instructors, setInstructors] = useState([])
@@ -18,6 +19,7 @@ const Instructors = () => {
   }
   return (
     <div className='py-8 container mx-auto'>
+      <Helmet><title>E-ExamPro | Instructor</title></Helmet>
       <h1 className='mb-10 text-4xl font-bold text-center text-white'>
         Our Instructors
       </h1>

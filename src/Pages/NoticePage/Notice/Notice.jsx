@@ -3,12 +3,14 @@ import AccordionDetails from '@mui/material/AccordionDetails';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import Typography from '@mui/material/Typography';
 import * as React from 'react';
+import { Helmet } from 'react-helmet-async';
 import { FaAngleDown, FaCaretRight } from 'react-icons/fa';
 
 
 export default function Notice() {
   return (
     <div className='py-32 text-white'>
+      <Helmet><title>E-ExamPro | Notice</title></Helmet>
       <div className=' px-5 md:w-1/2 mx-auto'>
         <Accordion className='mb-2 bg-black'>
           <AccordionSummary

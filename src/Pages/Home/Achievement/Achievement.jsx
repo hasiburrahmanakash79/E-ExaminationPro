@@ -18,7 +18,7 @@ const Achievement = () => {
         data-aos="fade-up"
         data-aos-duration="1000"
         data-aos-anchor-placement="center-bottom"
-        className=' mt-10 p-10 gap-20 md:flex justify-evenly md:mt-20 items-end rounded-xl  primary-bg'>
+        className=' mt-6 p-10 gap-20 md:flex justify-evenly md:mt-10 items-end rounded-xl  primary-bg'>
         <div className='px-5 md:px-0 full md:w-1/2 '>
           <div>
             <h2 className='font-bold text-orange-600'>Why Ours</h2>

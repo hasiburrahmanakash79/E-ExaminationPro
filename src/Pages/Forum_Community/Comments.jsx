@@ -1,6 +1,29 @@
+import { useState } from "react";
+import Swal from "sweetalert2";
 
 const Comments = ({ postComments }) => {
+    const [editMode, setEditMode] = useState(false);
     console.log(postComments);
+
+    const handleEdit = () => {
+        fetch("http://localhost:5000/forumPost/:", {
+            method: 'PATCH'
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if (data.modifiedCount) {
+                    refetch();
+                    Swal.fire({
+                        position: 'top-center',
+                        icon: 'success',
+                        title: 'Your work has been saved',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                }
+            })
+    }
     return (
         <div
             data-aos="fade-down"

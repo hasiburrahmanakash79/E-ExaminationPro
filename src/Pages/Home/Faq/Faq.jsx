@@ -2,7 +2,7 @@ import * as React from "react";
 
 export default function Faq() {
   return (
-    <div className="container mx-auto">
+    <div className="container mx-auto md:pb-16 pb-8">
       <h1
         data-aos="zoom-in-down"
         data-aos-duration="500"

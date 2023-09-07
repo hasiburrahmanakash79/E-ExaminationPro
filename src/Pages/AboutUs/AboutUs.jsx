@@ -1,9 +1,11 @@
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 
 const AboutUs = () => {
   return (
     <div className='container mx-auto'>
+      <Helmet><title>E-ExamPro | About Us</title></Helmet>
       <div className='md:flex justify-between items-center md:gap-20 py-20'>
         <div className='md:w-1/2 overflow-x-hidden'>
           <h2
