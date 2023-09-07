@@ -171,7 +171,7 @@ const CreateLiveExam = () => {
             {
               notices?.map(notice => {
                 console.log(notice)
-                return <option className='text-white' key={notice._id} value={notice._id}>{notice?.subjectName}</option>
+                return <option className='text-white' key={notice._id} value={notice._id}>{notice?.subjectName} ({notice?.date})</option>
               }
               )
             }
