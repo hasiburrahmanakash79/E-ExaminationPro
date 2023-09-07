@@ -81,7 +81,7 @@ const QuizDemo = () => {
         </RadioGroup>
         <div className='flex justify-end w-11/12 py-4 mx-auto '>
           {currentQuestionIndex === questions.length - 1 ? (
-            <Link to='/result'>
+            <Link to='/result?result="demoQuiz"'>
               <button className=' btn_quiz primary-btn' onClick={handleSubmit}>
                 Submit
               </button>
