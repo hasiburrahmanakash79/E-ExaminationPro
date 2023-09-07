@@ -18,7 +18,7 @@ export default function Notice() {
   const [isInstructor] = useInstructor()
 
   const[notices,isNoticeLoading]=useLiveExam()
-
+console.log(notices)
   return (
     <div className="container mx-auto bg-white/5 p-5 rounded-2xl mt-5">
       <h1 className="text-3xl text-center">Upcoming Exam Schedule</h1>

@@ -9,18 +9,21 @@ import {
   setSubjectCode,
   setExamData,
 } from '../../../redux/features/liveExamQuesPaper/liveExamQuesPaper'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useContext } from 'react'
 import { AuthContext } from '../../../Provider/AuthProvider'
 import useLiveExam from '../../../Hooks/useLiveExam/useLiveExam'
-
+import { FaKey } from 'react-icons/fa'
 
 const CreateLiveExam = () => {
+  const [data, setData] = useState(null)
+  const [randomNumbers, setRandomNumbers] = useState([]);
+  const [numDigits, setNumDigits] = useState(8);
   const [notices, isNoticeLoading] = useLiveExam()
   console.log(notices, 'line-----------------------------------------------19')
   const { user } = useContext(AuthContext)
   const dispatch = useDispatch()
-  const { type, formData, questions, allSubject, examData } = useSelector(
+  const { type, formData, questions, allSubject, examData, e_id } = useSelector(
     state => state.liveExam
   )
   console.log(examData, '-----------------------------------------------line 26')
@@ -52,15 +55,6 @@ const CreateLiveExam = () => {
     dispatch(subjectInfo(event)) // redux
   }
 
-  // Function to handle changes in the selected subject
-  const handleSubjectChange = event => {
-    const selectedValue = event.target.value;
-    const selectedSubjectData = allSubject.find(subject => subject.subject_name === selectedValue);
-    console.log(selectedSubjectData?.subject_code)
-    const code = selectedSubjectData?.subject_code
-    dispatch(setSubjectCode(code))
-    dispatch(subjectInfo(event))
-  };
 
 
   //handle ques add
@@ -74,29 +68,57 @@ const CreateLiveExam = () => {
     dispatch(quesPaper({ index, field, value })) //redux
   }
 
+  const subjectInfo={subjectName:data?.subjectName,subjectCode:data?.subject_code,examCode:data?.exam_code,batch:data?.batch,date:data?.date,instructorEmail:data?.email,group:data?.group,examID:data?._id }
   //submit
   const handleSubmit = event => {
     event.preventDefault()
     const paperData = {
-      ...formData,
+      ...subjectInfo,...formData,
       type,
-      questions
+      questions,
+      mode:'live',secretCode:randomNumbers
     }
 
     console.log('Question Paper Data:', paperData)
 
-    // fetch('http://localhost:5000/questionPaper', {
-    //   method: 'POST',
-    //   headers: {
-    //     'Content-Type': 'application/json'
-    //   },
-    //   body: JSON.stringify(paperData)
-    // })
-    //   .then(res => res.json())
-    //   .then(data => console.log(data))
+    fetch('http://localhost:5000/liveQuestionPaper', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(paperData)
+    })
+      .then(res => res.json())
+      .then(data => console.log(data))
   }
 
   console.log(type)
+ 
+  useEffect(() => {
+    if (e_id !== null) {
+      fetch(`http://localhost:5000/notice?selectedID=${e_id}`)
+        .then(res => res.json())
+        .then(data => setData(data))
+    }
+  }, [e_id])
+
+  console.log(data, '----------------------------------------------------yay')
+
+
+
+  // Function to generate random numbers
+  const generateRandomNumbers = () => {
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    let randomString = '';
+  
+    for (let i = 0; i < 10; i++) {
+      const randomIndex = Math.floor(Math.random() * characters.length);
+      randomString += characters.charAt(randomIndex);
+    }
+  
+    setRandomNumbers(randomString);
+  }
+
   return (
     <div className='my-5 mx-2 md:container md:mx-auto'>
       <div className='flex flex-col items-center'>
@@ -138,6 +160,7 @@ const CreateLiveExam = () => {
               //setQuestions([]) Redux
               dispatch(setExamData(null))
               dispatch(setExamData(e.target.value))
+
             }}
             className='select select-bordered select-sm w-full max-w-xs'
           >
@@ -148,8 +171,8 @@ const CreateLiveExam = () => {
             {
               notices?.map(notice => {
                 console.log(notice)
-              return <option className='text-white' key={notice._id} value={notice}>{notice?.subjectName}</option>
-            }
+                return <option className='text-white' key={notice._id} value={notice._id}>{notice?.subjectName}</option>
+              }
               )
             }
 
@@ -163,94 +186,57 @@ const CreateLiveExam = () => {
             <label className='label'>
               <span className='label-text'>Subject Name</span>
             </label>
-            {/* <input
-              name='subjectName'
-              value={formData.subjectName}
-              onChange={handleInputChange}
-              type='text'
-              placeholder='Type here'
-              className='input input-bordered w-full max-w-xs'
-            /> */}
-            <select
-              name='subjectName'
-              value={formData.subjectName}
-              onChange={handleSubjectChange}
-              className='select select-bordered w-full max-w-xs'
-            >
-              <option disabled value=''>
-                Select Subject
-              </option>
-              {allSubject?.map(subject => (
-                <option key={subject.subject_name} value={subject.subject_name}>
-                  {subject.subject_name}
-                </option>
-              ))}
-            </select>
+            <h1 className="w-full input flex items-center input-bordered ">{data?.subjectName}</h1>
           </div>
           <div className='form-control w-full max-w-xs'>
             <label className='label'>
               <span className='label-text'>Exam Code</span>
             </label>
-            <input
-              name='exam_code'
-              value={formData.exam_code}
-              onChange={handleInputChange}
-              type='text'
-              placeholder='Type here'
-              className='input input-bordered w-full max-w-xs'
-            />
+
+            <h1 className="w-full input flex items-center input-bordered ">{data?.exam_code}</h1>
           </div>
           <div className='form-control w-full max-w-xs'>
             <label className='label'>
               <span className='label-text'>Subject Code</span>
             </label>
-            <input
-              name='subject_code'
-              value={formData.subject_code}
-              readOnly
-              type='text'
-              placeholder='Type here'
-              className='input input-bordered w-full max-w-xs'
-            />
+
+            <h1 className="w-full input flex items-center input-bordered ">{data?.subject_code}</h1>
           </div>
           <div className='form-control w-full max-w-xs'>
             <label className='label'>
-              <span className='label-text'>Semester</span>
+              <span className='label-text'>Batch</span>
             </label>
-            <input
-              name='semester'
-              value={formData.semester}
-              onChange={handleInputChange}
-              type='text'
-              placeholder='Type here'
-              className='input input-bordered w-full max-w-xs'
-            />
+
+            <h1 className="w-full input flex items-center input-bordered ">{data?.batch}</h1>
           </div>
           <div className='form-control w-full max-w-xs'>
             <label className='label'>
               <span className='label-text'>Date</span>
             </label>
-            <input
-              name='date'
-              value={formData.date}
-              onChange={handleInputChange}
-              type='date'
-              placeholder='Type here'
-              className='input input-bordered w-full max-w-xs'
-            />
+
+            <h1 className="w-full input flex items-center input-bordered ">{data?.date}</h1>
           </div>
           <div className='form-control w-full max-w-xs'>
             <label className='label'>
               <span className='label-text'>Email:</span>
             </label>
-            <input
-              name='email'
-              value={user?.email}
-              readOnly
-              type='text'
-              placeholder='Type here'
-              className='input input-bordered w-full max-w-xs'
-            />
+
+            <h1 className="w-full input flex items-center input-bordered ">{data?.email == user?.email && data?.email}</h1>
+          </div>
+          <div className='form-control w-full max-w-xs'>
+            <label className='label'>
+              <span className='label-text'>Secrete Key:</span>
+            </label>
+
+        <div className='relative'>
+        <h1 className="w-full input flex items-center input-bordered pe-20">{randomNumbers}</h1>
+            <button
+              onClick={generateRandomNumbers}
+              className=" absolute top-0 bottom-0  right-2"
+            >
+              <FaKey></FaKey>
+            </button>
+        </div>
           </div>
 
           {type == 'multimedia_mcq' && (
@@ -355,6 +341,7 @@ const CreateLiveExam = () => {
           {type !== null ? 'Add Question' : 'Select Exam Type'}
         </button>
         <button
+          disabled={questions.length < 3}
           onClick={handleSubmit}
           className='btn btn-sm btn-warning'
           type='submit'
@@ -368,42 +355,4 @@ const CreateLiveExam = () => {
 
 export default CreateLiveExam
 
-// // const [type, setType] = useState('')
 
-// // const [formData, setFormData] = useState({
-// //     subjectName: '',
-// //     subjectCode: '',
-// //     semester: '',
-// //     date: '',
-// //     email: '',
-// // });
-// // const [questions, setQuestions] = useState([]);
-
-// // store basic info
-// const handleInputChange = (event) => {
-//     // const { name, value } = event.target;
-//     // setFormData((prevData) => ({
-//     //     ...prevData,
-//     //     [name]: value,
-//     // }));
-//     dispatch(subjectInfo(event))
-// };
-
-// //handle ques add
-// const handleQuestionAdd = () => {
-//     dispatch(quesPaper())
-//     // const newQuestion = {
-//     //     question: '',
-//     //     options: ['', '', '', ''],
-//     //     correctAnswer: '',
-//     // };
-//     //setQuestions([...questions, newQuestion]);
-// };
-
-// // handle ques change
-// const handleQuestionChange = (index, field, value) => {
-//     dispatch(quesPaper({ index, field, value }))
-//     // const updatedQuestions = [...questions];
-//     // updatedQuestions[index][field] = value;
-//     //setQuestions(updatedQuestions);
-// };

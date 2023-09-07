@@ -4,10 +4,12 @@ import { AuthContext } from "../../../Provider/AuthProvider";
 import { useLocation } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure.jsx/useAxiosSecure";
+import { useEffect } from "react";
 
 
 const UpcomingLiveExam = () => {
   const [msg, setMsg] = useState('')
+  const [isActive,setActive]=useState(true)
   const location = useLocation()
   const searchParams = new URLSearchParams(location.search)
   const e_ID = searchParams.get('examID')
@@ -15,7 +17,7 @@ const UpcomingLiveExam = () => {
   const { user, loading } = useContext(AuthContext)
 
   const [axiosSecure] = useAxiosSecure()
-  const { data, isLoading } = useQuery({
+  const { data,refetch, isLoading } = useQuery({
     queryKey: ['noticeDATA', e_ID],
     enabled: !loading,
     queryFn: async () => {
@@ -23,6 +25,8 @@ const UpcomingLiveExam = () => {
       return res.data;
     }
   })
+  console.log(data)
+
 
   const { data: studentData, isLoading: dataloding } = useQuery({
     queryKey: ['studentInfo', user?.email],
@@ -35,7 +39,7 @@ const UpcomingLiveExam = () => {
 
 
   console.log(studentData,'line 38')
-  const data1 = { examID: e_ID, subjectName: data?.subjectName, subject_code: data?.subject_code, student_name: user?.displayName, student_email: user?.email, date: data?.date, instuctor_email: data?.email, group: data?.group }
+  const data1 = { examID: e_ID,examCode:data?.exam_code, subjectName: data?.subjectName, subject_code: data?.subject_code, student_name: user?.displayName, student_email: user?.email, date: data?.date, instuctor_email: data?.email, group: data?.group }
 
   const { register, handleSubmit, reset, formState: { errors } } = useForm();
   const onSubmit = (data) => {
@@ -43,23 +47,31 @@ const UpcomingLiveExam = () => {
 
     const info = { ...data1, ...data }
 
-    console.log(info);
-    fetch(`http://localhost:5000/appliedLiveExam?examId=${e_ID}&studentEmail=${user?.email}`,{
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(info)
-    })
-      .then(res => res.json())
-      .then(data => {
-        if (data.insertedId) {
-          setMsg('Successfully Applied')
-        }
-        else if(data.msg){
-          setMsg(data.msg)
-        }
+
+
+      fetch(`http://localhost:5000/appliedLiveExam?examId=${e_ID}&studentEmail=${user?.email}`,{
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(info)
       })
+        .then(res => res.json())
+        .then(data => {
+          if (data.insertedId) {
+            setMsg('Successfully Applied')
+            refetch()
+          }
+          else if(data.msg){
+            setActive(false)
+            setMsg(data.msg)
+          }
+        })
+    
+
+
+
+
   }
 
   return (

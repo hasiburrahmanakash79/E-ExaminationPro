@@ -1,26 +1,24 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { useQuery } from "@tanstack/react-query";
 
+
+import axios from "axios";
 export const liveExamQuesPaper = createSlice({
     name: 'quesPaper',
     initialState: {
         allSubject:[],
         type: null,
+        e_id:null,
         examData:null,
         formData: {
-            subjectName: '',
-            exam_code: '',
-            subject_code:'',
-            semester: '',
-            date: '',
-            email: '',
+            video:null,
         },
         questions: [],
     },
     reducers: {
         setExamData:(state,{payload})=>{
-            console.log(payload ,'....................................')
+            state.e_id=payload
           //state.examData= payload
-          
         },
         setSubject:(state,{payload})=>{
             state.allSubject=[...payload]
