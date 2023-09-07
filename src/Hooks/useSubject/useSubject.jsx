@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 const useSubject = () => {
     const [subjects, setSubjects] = useState([]);
   useEffect(() => {
-    fetch("https://e-exam-pro-server.vercel.app/subjects")
+    fetch("http://localhost:5000/subjects")
       .then((res) => res.json())
       .then((data) => {
         setSubjects(data);

@@ -5,6 +5,7 @@ import examPageReducer from './features/examPage/examPageSlice'
 import demoExamSlice from "./features/demoExam/demoExamSlice";
 import shortQuestionSlice from "./features/shortQuestion/shortQuestionSlice";
 import longQuestionSlice from "./features/LongQuestion/longQuestionSlice";
+import liveExamSlice from "./features/liveExamQuesPaper/liveExamQuesPaper";
 
 
 
@@ -16,7 +17,9 @@ const store = configureStore({
         allExam: allExamReducer,
         examPage: examPageReducer,
         demoExam: demoExamSlice,
-        shortQuestions: shortQuestionSlice
+        shortQuestions: shortQuestionSlice,
+        liveExam:liveExamSlice
+        
     },
 })
 

@@ -6,7 +6,11 @@ import {
   FaChartBar,
   FaHome,
   FaCog,
+  FaWallet,
+  FaComment
 } from "react-icons/fa";
+import { AiFillNotification } from "react-icons/ai";
+import { RiLiveFill } from "react-icons/ri";
 import { FaClipboardQuestion } from "react-icons/fa6";
 import { MdHomeWork } from "react-icons/md";
 import { IconContext } from "react-icons";
@@ -69,6 +73,10 @@ const Dashboard = () => {
     Analytics: FaChartBar,
     Home: FaHome,
     Setting: FaCog,
+    Payment: FaWallet,
+    Live: RiLiveFill,
+    Blog: FaComment,
+    Notice: AiFillNotification,
   };
 
   const Menus = [
@@ -86,6 +94,12 @@ const Dashboard = () => {
       role: "admin",
     },
     {
+      title: "Create Notice",
+      path: "/dashboard/createNotice",
+      icon: iconMappings.Notice,
+      role: "admin",
+    },
+    {
       title: "Instructor Home ",
       icon: iconMappings.RoleHome,
       role: "instructor",
@@ -97,6 +111,8 @@ const Dashboard = () => {
       icon: iconMappings.Question,
       role: "instructor",
     },
+    { title: "Create Live Exam", path: "/dashboard/createLiveExam", icon: iconMappings.Live, role: "instructor" },
+    { title: "Add Blog", path: "/dashboard/addBlog", icon: iconMappings.Blog, role: "instructor" },
     {
       title: "User Home",
       path: "/dashboard/userHome",
@@ -104,7 +120,10 @@ const Dashboard = () => {
       role: "user",
       gap: true,
     },
-    { title: "Payment History", path: "/dashboard/paymentHistory", icon: iconMappings.RoleHome, role: "user" },
+    { title: "Payment History", path: "/dashboard/paymentHistory", icon: iconMappings.Payment, role: "user" },
+    { title: "Upcoming Live Exam", path: "/dashboard/upcomingLiveExam", icon: iconMappings.Live, role: "user" },
+    { title: "Applied Live Exam", path: "/dashboard/appliedLiveExam", icon: iconMappings.Live, role: "user" },
+    { title: "Student Analytics", path: "/dashboard/studentAnalytics", icon: iconMappings.Analytics, role: "user" },
 
     {
       title: "Home ",

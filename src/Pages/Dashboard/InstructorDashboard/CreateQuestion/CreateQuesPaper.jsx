@@ -3,25 +3,64 @@ import { useDispatch, useSelector } from 'react-redux'
 import {
   examType,
   subjectInfo,
-  quesPaper
+  quesPaper,
+  setSubject,
+  setEmail,
+  setSubjectCode
 } from '../../../../redux/features/quesPaper/quesPaperSlice'
+import { useEffect } from 'react'
+import { useContext } from 'react'
+import { AuthContext } from '../../../../Provider/AuthProvider'
 
 const CreateQuesPaper = () => {
-  /////redux////
-  const { type, formData, questions } = useSelector(
+  const { user } = useContext(AuthContext)
+  const dispatch = useDispatch()
+  const { type, formData, questions, allSubject } = useSelector(
     state => state.questionPaper
   )
-  const dispatch = useDispatch()
-  ////////
+  useEffect(() => {
+    fetch('http://localhost:5000/allSubjects', {
+      headers: {
+        authorization: `bearar ${localStorage.getItem('access-token')}`
+      }
+    })
+      .then(res => res.json())
+      .then(data => {
+        console.log(data)
 
+        if (data.error == true) {
+          logOut()
+          navigate('/login')
+        }
+        dispatch(setSubject(data))
+        dispatch(setEmail(user?.email))
+      })
+  }, [])
+  /////redux////
+
+  ////////
+  console.log(allSubject)
   // store basic info
   const handleInputChange = event => {
+    event.preventDefault()
     dispatch(subjectInfo(event)) // redux
   }
 
+  // Function to handle changes in the selected subject
+  const handleSubjectChange = event => {
+    const selectedValue = event.target.value;
+    const selectedSubjectData = allSubject.find(subject => subject.subject_name === selectedValue);
+    console.log(selectedSubjectData?.subject_code)
+    const code=selectedSubjectData?.subject_code
+    dispatch(setSubjectCode(code))
+    dispatch(subjectInfo(event))
+  };
+
+
   //handle ques add
-  const handleQuestionAdd = () => {
-    dispatch(quesPaper()) // redux
+  const handleQuestionAdd = (event) => {
+    event.preventDefault()
+    dispatch(quesPaper({ add: 'add' })) // redux
   }
 
   // handle ques change
@@ -40,15 +79,15 @@ const CreateQuesPaper = () => {
 
     console.log('Question Paper Data:', paperData)
 
-    fetch('https://e-exam-pro-server.vercel.app/questionPaper', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(paperData)
-    })
-      .then(res => res.json())
-      .then(data => console.log(data))
+    // fetch('http://localhost:5000/questionPaper', {
+    //   method: 'POST',
+    //   headers: {
+    //     'Content-Type': 'application/json'
+    //   },
+    //   body: JSON.stringify(paperData)
+    // })
+    //   .then(res => res.json())
+    //   .then(data => console.log(data))
   }
 
   console.log(type)
@@ -89,9 +128,37 @@ const CreateQuesPaper = () => {
             <label className='label'>
               <span className='label-text'>Subject Name</span>
             </label>
-            <input
+            {/* <input
               name='subjectName'
               value={formData.subjectName}
+              onChange={handleInputChange}
+              type='text'
+              placeholder='Type here'
+              className='input input-bordered w-full max-w-xs'
+            /> */}
+            <select
+              name='subjectName'
+              value={formData.subjectName}
+              onChange={handleSubjectChange}
+              className='select select-bordered w-full max-w-xs'
+            >
+              <option disabled value=''>
+                Select Subject
+              </option>
+              {allSubject?.map(subject => (
+                <option key={subject.subject_name} value={subject.subject_name}>
+                  {subject.subject_name}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div className='form-control w-full max-w-xs'>
+            <label className='label'>
+              <span className='label-text'>Exam Code</span>
+            </label>
+            <input
+              name='exam_code'
+              value={formData.exam_code}
               onChange={handleInputChange}
               type='text'
               placeholder='Type here'
@@ -103,9 +170,9 @@ const CreateQuesPaper = () => {
               <span className='label-text'>Subject Code</span>
             </label>
             <input
-              name='subjectCode'
-              value={formData.subjectCode}
-              onChange={handleInputChange}
+              name='subject_code'
+              value={formData.subject_code}
+              readOnly
               type='text'
               placeholder='Type here'
               className='input input-bordered w-full max-w-xs'
@@ -132,7 +199,7 @@ const CreateQuesPaper = () => {
               name='date'
               value={formData.date}
               onChange={handleInputChange}
-              type='text'
+              type='date'
               placeholder='Type here'
               className='input input-bordered w-full max-w-xs'
             />
@@ -143,13 +210,14 @@ const CreateQuesPaper = () => {
             </label>
             <input
               name='email'
-              value={formData.email}
-              onChange={handleInputChange}
+              value={user?.email}
+              readOnly
               type='text'
               placeholder='Type here'
               className='input input-bordered w-full max-w-xs'
             />
           </div>
+
           {type == 'multimedia_mcq' && (
             <div className='form-control w-full max-w-xs'>
               <label className='label'>
@@ -245,10 +313,11 @@ const CreateQuesPaper = () => {
 
       <div className='flex flex-col gap-3 items-center justify-center'>
         <button
+        disabled={type==null?true:false}
           onClick={handleQuestionAdd}
           className='btn btn-sm btn-primary mt-2'
         >
-          Add Question
+         { type!==null ?'Add Question':'Select Exam Type'}
         </button>
         <button
           onClick={handleSubmit}

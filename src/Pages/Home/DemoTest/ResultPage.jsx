@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import ReviewAnswerAfterResult from '../../../components/QuestionRelated/ReviewAnswerAfterResult'
+import ReviewAnswerAfterResult from '../../../components/examComponents/QuestionRelated/ReviewAnswerAfterResult'
+// import ReviewAnswerAfterResult from '../../../components/QuestionRelated/ReviewAnswerAfterResult'
 
 const ResultPage = ({ questions, userAnswers }) => {
   const [showReviewAnswers, setShowReviewAnswers] = useState(false)
