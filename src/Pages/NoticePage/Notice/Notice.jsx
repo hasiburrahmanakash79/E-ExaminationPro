@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { Accordion } from '@mui/material';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import AccordionSummary from '@mui/material/AccordionSummary';
@@ -6,11 +7,63 @@ import * as React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { FaAngleDown, FaCaretRight } from 'react-icons/fa';
 
+=======
+// import { Accordion } from '@mui/material';
+// import AccordionDetails from '@mui/material/AccordionDetails';
+// import AccordionSummary from '@mui/material/AccordionSummary';
+// import Typography from '@mui/material/Typography';
+// import * as React from 'react';
+// import { FaAngleDown, FaCaretRight } from 'react-icons/fa';
+import { useQuery } from "@tanstack/react-query";
+import useAxiosSecure from "../../../Hooks/useAxiosSecure.jsx/useAxiosSecure";
+import { Link } from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
+import { AuthContext } from "../../../Provider/AuthProvider";
+import useInstructor from "../../../Hooks/useInstructor/useInstructor";
+import useLiveExam from "../../../Hooks/useLiveExam/useLiveExam";
+>>>>>>> 49823edac291a04f5e8c1c237819d5b85407383c
 
 export default function Notice() {
+  const {user,loading}=useContext(AuthContext)
+
+  const [isInstructor] = useInstructor()
+
+  const[notices,isNoticeLoading]=useLiveExam()
+console.log(notices)
   return (
+<<<<<<< HEAD
     <div className='py-32 text-white'>
       <Helmet><title>E-ExamPro | Notice</title></Helmet>
+=======
+    <div className="container mx-auto bg-white/5 p-5 rounded-2xl mt-5">
+      <h1 className="text-3xl text-center">Upcoming Exam Schedule</h1>
+      <div className="my-7 grid grid-cols-4 gap-5 ">
+      {
+        notices?.map(notice => <div key={notice._id} className="card w-full bg-white/10 border-2 shadow-xl">
+        <div className="card-body">
+          <p>Subject Name:<span className="text-purple-300"> {notice?.subjectName} </span></p>
+          <p>Exam Code:<span className="text-purple-300 uppercase"> {notice?.exam_code}</span></p>
+          <p>Subject Code:<span className="text-purple-300 uppercase"> {notice?.subject_code}</span></p>
+          <p>Group: <span className="text-purple-300"> {notice?.group}</span></p>
+          <p>Exam Date : <span className="text-purple-300">{notice?.date}</span> </p>
+          <p>Instructor:<span className="text-purple-300"> {notice?.instructor}</span> </p>
+{
+   !isInstructor? <Link to={`/upcomingLiveExam?examID=${notice._id}&email=${user?.email}`} className="mt-5">
+          <button className="primary-btn btn">Apply For Live class</button>
+        </Link>:<button className="primary-btn btn">See Applied Students</button>
+}
+  
+        </div>
+      </div>)
+      }
+    </div>
+    </div>
+  );
+}
+
+{
+  /* <div className='py-32 text-white'>
+>>>>>>> 49823edac291a04f5e8c1c237819d5b85407383c
       <div className=' px-5 md:w-1/2 mx-auto'>
         <Accordion className='mb-2 bg-black'>
           <AccordionSummary
@@ -96,6 +149,5 @@ export default function Notice() {
           </AccordionDetails>
         </Accordion>
       </div>
-    </div>
-  );
+</div> */
 }

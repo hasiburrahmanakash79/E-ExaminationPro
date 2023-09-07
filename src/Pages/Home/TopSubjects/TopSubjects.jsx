@@ -8,7 +8,7 @@ const TopSubjects = () => {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          'https://e-exam-pro-server.vercel.app/subjects'
+          'http://localhost:5000/subjects'
         )
         const data = await response.json()
 

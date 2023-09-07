@@ -1,4 +1,4 @@
-const ReviewAnswerAfterResult = ({ questions, index, userAnswers }) => {
+const ReviewAnswerAfterResult2 = ({ questions, index, userAnswers }) => {
   // console.log(questions);
   return (
     <>
@@ -65,4 +65,4 @@ const ReviewAnswerAfterResult = ({ questions, index, userAnswers }) => {
   )
 }
 
-export default ReviewAnswerAfterResult
+export default ReviewAnswerAfterResult2;

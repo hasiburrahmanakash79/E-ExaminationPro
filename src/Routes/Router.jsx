@@ -49,7 +49,11 @@ import UpcomingLiveExam from "../Pages/LiveExam/UpcomingLiveExam/UpcomingLiveExa
 import InstructorChatRoom from "../Pages/LiveExam/InstructorChatRoom/InstructorChatRoom";
 import CreateNotice from "../Pages/Dashboard/AdminDashboard/CreateNotice/CreateNotice";
 import ResultPage from "../Pages/Home/DemoTest/ResultPage";
+<<<<<<< HEAD
 import ForumCommunity from "../Pages/Forum_Community/ForumCommunity";
+=======
+import ExamResult from "../Pages/ExamResult/ExamResult";
+>>>>>>> 49823edac291a04f5e8c1c237819d5b85407383c
 
 const router = createBrowserRouter([
   {
@@ -172,13 +176,19 @@ const router = createBrowserRouter([
         path: "/createLiveExam",
         element: <CreateLiveExam />,
       },
-      // {
-      //   path: "/createLiveExam",
-      //   element: <CreateLiveExam />,
-      // },
+      {
+        path: "/upcomingLiveExam",
+        element: <UpcomingLiveExam />,
+      },
       {
         path: "/joinLiveExam",
         element: <JoinLiveExam />,
+      },
+      ,
+      {
+        path: "/examResults",
+        element: <ExamResult />,
+
       },
     ],
   },

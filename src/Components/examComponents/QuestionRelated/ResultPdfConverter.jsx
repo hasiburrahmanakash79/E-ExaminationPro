@@ -55,6 +55,7 @@ const ResultPdfConverter = ({ questions, userAnswers }) => (
       </View>
     </Page>
   </Document>
-)
+  )
+
 
 export default ResultPdfConverter
