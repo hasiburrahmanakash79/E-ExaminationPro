@@ -6,12 +6,10 @@ import Login from '../Pages/Authentication/Login/Login'
 import Registration from '../Pages/Authentication/Registration/Registration'
 import Blog from '../Pages/BlogPage/Blog/Blog'
 import Contact from '../Pages/Contact/Contact'
-// import ShortQ from "../Pages/Exams/ShortQuestion/ShortQ";
 import PrivateRouter from './PrivateRouter'
 import Error from '../Pages/Error/Error'
 import Instructors from '../Pages/InstuctorPage/Instructors'
 import Dashboard from '../Layouts/Dashboard'
-
 import ManageUsers from '../Pages/Dashboard/AdminDashboard/ManageUser/ManageUsers'
 import AdminHome from '../Pages/Dashboard/AdminDashboard/AdminHome/AdminHome'
 import Notice from '../Pages/NoticePage/Notice/Notice'
@@ -39,7 +37,7 @@ import UpcomingLiveExam from '../Pages/LiveExam/UpcomingLiveExam/UpcomingLiveExa
 import InstructorChatRoom from '../Pages/LiveExam/InstructorChatRoom/InstructorChatRoom'
 import CreateNotice from '../Pages/Dashboard/AdminDashboard/CreateNotice/CreateNotice'
 import ResultPage from '../Pages/Home/DemoTest/ResultPage'
-import App from '../Pages/TempClassRoom/Agora/App'
+import ExamResult from '../Pages/ExamResult/ExamResult'
 
 const router = createBrowserRouter([
   {
@@ -150,12 +148,17 @@ const router = createBrowserRouter([
         element: <CreateLiveExam />
       },
       {
-        path: "/upcomingLiveExam",
-        element: <UpcomingLiveExam />,
+        path: '/upcomingLiveExam',
+        element: <UpcomingLiveExam />
       },
       {
         path: '/joinLiveExam',
         element: <JoinLiveExam />
+      },
+      ,
+      {
+        path: '/examResults',
+        element: <ExamResult />
       }
     ]
   },

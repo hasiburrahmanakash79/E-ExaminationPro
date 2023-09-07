@@ -58,8 +58,8 @@ const AllExam = () => {
                                         <h1 className='text-md font-bold'>Type: {exam.type}</h1>
                                         <h2 className='text-md font-bold'>Date: {exam.date}</h2>
                                     </div>
-                                   { 
-                                   isInstructor ? <button className='btn w-1/3 ms-auto btn-sm btn-primary'><Link to={`/examResult/${exam._id}`}>Exam</Link></button> :  exam.isCompleted ? <button className='btn w-1/3 ms-auto btn-sm btn-primary'>Allready Given</button>:<button className='btn w-1/3 ms-auto btn-sm btn-primary'><Link to={`/exam/${exam._id}`}>Exam</Link></button> 
+                                    { 
+                                   isInstructor ? <button className='btn w-1/3 ms-auto btn-sm btn-primary'><Link to={`/examResults?id=${exam._id}`}>See Exam Result</Link></button> : exam.isCompleted ? <button className='btn w-1/3 ms-auto btn-sm btn-primary'>Allready Given</button>:<button className='btn w-1/3 ms-auto btn-sm btn-primary'><Link to={`/exam/${exam._id}`}>Exam</Link></button> 
                                    }
                                 </div>
                             </div>
@@ -83,8 +83,7 @@ const AllExam = () => {
                                         <h2 className='text-md font-bold'>Date: {exam.date}</h2>
                                     </div>
                                     { 
-                                   isInstructor?<button className='btn w-1/3 ms-auto btn-sm btn-primary'>See Student Result</button>:
-                                   <button className='btn w-1/3 ms-auto btn-sm btn-primary'><Link to={`/exam/${exam._id}`}>Exam</Link></button>
+                                   isInstructor ? <button className='btn w-1/3 ms-auto btn-sm btn-primary'><Link to={`/examResults?id=${exam._id}`}>See Exam Result</Link></button> : exam.isCompleted ? <button className='btn w-1/3 ms-auto btn-sm btn-primary'>Allready Given</button>:<button className='btn w-1/3 ms-auto btn-sm btn-primary'><Link to={`/exam/${exam._id}`}>Exam</Link></button> 
                                    }
                                 </div>
                             </div>
@@ -108,8 +107,7 @@ const AllExam = () => {
                                         <h2 className='text-md font-bold'>Date: {exam.date}</h2>
                                     </div>
                                     { 
-                                   isInstructor?<button className='btn w-1/3 ms-auto btn-sm btn-primary'>See Student Result</button>:
-                                   <button className='btn w-1/3 ms-auto btn-sm btn-primary'><Link to={`/exam/${exam._id}`}>Exam</Link></button>
+                                   isInstructor ? <button className='btn w-1/3 ms-auto btn-sm btn-primary'><Link to={`/examResults?id=${exam._id}`}>See Exam Result</Link></button> : exam.isCompleted ? <button className='btn w-1/3 ms-auto btn-sm btn-primary'>Allready Given</button>:<button className='btn w-1/3 ms-auto btn-sm btn-primary'><Link to={`/exam/${exam._id}`}>Exam</Link></button> 
                                    }
                                 </div>
                             </div>
