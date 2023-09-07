@@ -49,7 +49,7 @@ const Exam2 = () => {
   const [timer, setTimer] = useState(null) // store time interval to clear the time interval.
   const [start, setStart] = useState(false) // it use to store user selected option from mcq
 
-  const examInfo = { examID: ques._id, subjectName: ques.subjectName, semester: ques.semester, ins_email: ques.email, stu_email: user?.email, date: ques.date, exam_code: ques.exam_code, subject: ques.subjectName, sub_code: ques.subject_code, examType: ques.type,timeConsume:takingTime,totalQuestion:questions.length,totalMark:questions.length*5}
+  const examInfo = { examID: ques._id, subjectName: ques.subjectName, semester: ques.semester, ins_email: ques.email, stu_email: user?.email,stu_name:user?.displayName, date: ques.date, exam_code: ques.exam_code, subject: ques.subjectName, sub_code: ques.subject_code, examType: ques.type,timeConsume:takingTime,totalQuestion:questions.length,totalMark:questions.length*5}
 
   console.log(result, 'send data2')
 
@@ -270,3 +270,11 @@ const Exam2 = () => {
 }
 
 export default Exam2
+
+{/* <FillTheBlank
+questions={questions}
+currentQuestion={currentQuestion}
+question={question}
+inputValue={inputValue}
+handleInputChange={handleInputChange}
+></FillTheBlank> */}
