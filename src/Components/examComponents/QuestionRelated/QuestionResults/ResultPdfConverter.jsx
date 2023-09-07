@@ -23,11 +23,12 @@ const styles = StyleSheet.create({
   }
 })
 
-const ResultPdfConverter = ({ questions, userAnswers }) => (
-  <Document>
-    <Page size='A4' style={styles.page}>
-      <View style={styles.header}>
-        <Text>Total Question: {questions.length}</Text>
+const ResultPdfConverter = ({ questions }) => (
+  // console.log(questions);
+<Document>
+  <Page size='A4' style={styles.page}>
+    {/* <View style={styles.header}>
+        <Text>Total Question: {questions?.length}</Text>
       </View>
       <View>
         <Text>Review Answers:</Text>
@@ -52,10 +53,29 @@ const ResultPdfConverter = ({ questions, userAnswers }) => (
             </View>
           )
         })}
+      </View> */}
+    <View>
+      <View style={styles.header}>
+        <Text>Total Question: {questions?.length || 5}</Text>
       </View>
-    </Page>
-  </Document>
-  )
-
+      <View>
+        return(
+        <View style={styles.questionContainer}>
+          <Text style={styles.questionText}>
+            <span className="pl-2">{questions?.question}</span>
+          </Text>
+          <Text style={styles.answerText}>
+            You Selected: {questions?.userAns}
+          </Text>
+          <Text style={styles.answerText}>
+            Correct Answer: {questions?.correctAnswer}
+          </Text>
+          )
+        </View>
+      </View>
+    </View>
+  </Page>
+</Document>
+)
 
 export default ResultPdfConverter

@@ -38,7 +38,6 @@ import InstructorChatRoom from '../Pages/LiveExam/InstructorChatRoom/InstructorC
 import CreateNotice from '../Pages/Dashboard/AdminDashboard/CreateNotice/CreateNotice'
 import ResultPage from '../Pages/Home/DemoTest/ResultPage'
 import ExamResult from '../Pages/ExamResult/ExamResult'
-
 const router = createBrowserRouter([
   {
     path: '/',

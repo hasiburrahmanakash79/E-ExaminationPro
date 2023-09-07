@@ -1,7 +1,13 @@
-const ReviewAnswerAfterResult = ({ questions, userAnswers }) => {
+const ReviewAnswerAfterResult2 = ({ questions, index, userAnswers }) => {
+  // console.log(questions);
   return (
     <>
-      {questions?.map((question, index) => {
+      <div className="py-2">
+        <p><span className="text-xl font-semibold">{index + 1}.</span> <span className="text-lg font-semibold text-slate-100">{questions?.question}</span></p>
+        <p className="text-sm">User Answer : {questions?.userAns}</p>
+        <p className="text-sm">Correct Answer : <span className=" text-green-600 text-base"> {questions?.correctAnswer}</span></p>
+      </div>
+      {/* {questions?.map((question, index) => {
         const userAnswer = userAnswers.find(
           answer => answer?.questionId === question?.id
         )
@@ -22,7 +28,7 @@ const ReviewAnswerAfterResult = ({ questions, userAnswers }) => {
             </p>
           </div>
         )
-      })}
+      })} */}
 
       {/* {shortQuestions && (
         <div>
@@ -59,4 +65,4 @@ const ReviewAnswerAfterResult = ({ questions, userAnswers }) => {
   )
 }
 
-export default ReviewAnswerAfterResult
+export default ReviewAnswerAfterResult2;

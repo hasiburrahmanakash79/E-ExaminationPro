@@ -13,6 +13,7 @@ import {
   TwitterShareButton
 } from 'react-share'
 import ShowCommentApp from '../BlogComments/ShowCommentApp'
+import { Helmet } from 'react-helmet-async'
 
 const Blog = () => {
   const [color, setColor] = useState('white')
@@ -29,20 +30,30 @@ const Blog = () => {
 
   return (
     <div>
+      <Helmet><title>E-ExamPro | Blog</title></Helmet>
       <section className='text-white'>
         <div className='container p-5 py-20 mx-auto space-y-6 sm:space-y-12'>
-          <div className='p-5 border border-blue-600 rounded-xl'>
+          <div
+            data-aos="fade-down"
+            data-aos-duration="1300"
+            data-aos-easing="ease-in-sine"
+            className='p-5 border border-blue-600 rounded-xl'>
             <a
               rel='noopener noreferrer'
               href='#'
               className='items-center block max-w-sm gap-3 mx-auto sm:max-w-full group hover:no-underline focus:no-underline lg:grid lg:grid-cols-12'
             >
               <img
+                data-aos="fade-left"
+                data-aos-duration="2400"
                 src='https://static-cse.canva.com/blob/571589/blogheaderdesign.jpg'
-                alt=''
+                alt='blog image'
                 className='w-full rounded md:h-96 lg:col-span-7'
               />
-              <div className='p-6 space-y-2 lg:col-span-5'>
+              <div
+                data-aos="fade-right"
+                data-aos-duration="2400"
+                className='p-6 space-y-2 lg:col-span-5'>
                 <h3 className='text-2xl font-semibold sm:text-4xl hover:translate-y-2 group-focus:underline md:pb-5'>
                   Noster tincidunt reprimique ad pro
                 </h3>
@@ -55,7 +66,10 @@ const Blog = () => {
                 </p>
                 <div>
                   <div>
-                    <div className='pt-5'>
+                    <div
+                      data-aos="fade-up"
+                      data-aos-duration="2600"
+                      className='pt-5'>
                       <button className=' btn btn-outline btn-sm'>
                         Read More
                       </button>
@@ -69,14 +83,17 @@ const Blog = () => {
           </div>
           <div className='grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4'>
             <a
+              data-aos="fade-right"
+              data-aos-duration="900"
               rel='noopener noreferrer'
               href='#'
-              className='mx-auto group hover:no-underline focus:no-underline dark:bg-gray-900'
+              className='hover:shadow-2xl p-1 rounded-md mx-auto group hover:no-underline focus:no-underline dark:bg-gray-900'
             >
               <img
                 role='presentation'
                 className='object-cover w-full rounded h-44 dark:bg-gray-500'
                 src='https://source.unsplash.com/random/480x360?1'
+                alt='blog image'
               />
               <div className='p-6 space-y-2'>
                 <h3 className='text-2xl font-semibold group-hover:underline group-focus:underline'>
@@ -221,14 +238,17 @@ const Blog = () => {
               </div>
             </a>
             <a
+              data-aos="fade-down"
+              data-aos-duration="900"
               rel='noopener noreferrer'
               href='#'
-              className='mx-auto group hover:no-underline focus:no-underline dark:bg-gray-900'
+              className='hover:shadow-2xl p-1 rounded-md mx-auto group hover:no-underline focus:no-underline dark:bg-gray-900'
             >
               <img
                 role='presentation'
                 className='object-cover w-full rounded h-44 dark:bg-gray-500'
                 src='https://source.unsplash.com/random/480x360?2'
+                alt='blog image'
               />
               <div className='p-6 space-y-2'>
                 <h3 className='text-2xl font-semibold group-hover:underline group-focus:underline'>
@@ -371,14 +391,17 @@ const Blog = () => {
               </div>
             </a>
             <a
+              data-aos="fade-up"
+              data-aos-duration="1000"
               rel='noopener noreferrer'
               href='#'
-              className='mx-auto group hover:no-underline focus:no-underline dark:bg-gray-900'
+              className='hover:shadow-2xl p-1 rounded-md mx-auto group hover:no-underline focus:no-underline dark:bg-gray-900'
             >
               <img
                 role='presentation'
                 className='object-cover w-full rounded h-44 dark:bg-gray-500'
                 src='https://source.unsplash.com/random/480x360?3'
+                alt='blog image'
               />
               <div className='p-6 space-y-2'>
                 <h3 className='text-2xl font-semibold group-hover:underline group-focus:underline'>
@@ -521,9 +544,12 @@ const Blog = () => {
               </div>
             </a>
             <a
+              data-aos="fade-left"
+              data-aos-duration="800"
               rel='noopener noreferrer'
               href='#'
-              className='mx-auto group hover:no-underline focus:no-underline dark:bg-gray-900'
+              alt='blog image'
+              className='hover:shadow-2xl p-1 rounded-md mx-auto group hover:no-underline focus:no-underline dark:bg-gray-900'
             >
               <img
                 role='presentation'
@@ -671,14 +697,17 @@ const Blog = () => {
               </div>
             </a>
             <a
+              data-aos="fade-right"
+              data-aos-duration="1000"
               rel='noopener noreferrer'
               href='#'
-              className='mx-auto group hover:no-underline focus:no-underline dark:bg-gray-900'
+              className='hover:shadow-2xl p-1 rounded-md mx-auto group hover:no-underline focus:no-underline dark:bg-gray-900'
             >
               <img
                 role='presentation'
                 className='object-cover w-full rounded h-44 dark:bg-gray-500'
                 src='https://source.unsplash.com/random/480x360?5'
+                alt='blog image'
               />
               <div className='p-6 space-y-2'>
                 <h3 className='text-2xl font-semibold group-hover:underline group-focus:underline'>
@@ -821,14 +850,17 @@ const Blog = () => {
               </div>
             </a>
             <a
+              data-aos="fade-down"
+              data-aos-duration="800"
               rel='noopener noreferrer'
               href='#'
-              className='mx-auto group hover:no-underline focus:no-underline dark:bg-gray-900'
+              className='hover:shadow-2xl p-1 rounded-md mx-auto group hover:no-underline focus:no-underline dark:bg-gray-900'
             >
               <img
                 role='presentation'
                 className='object-cover w-full rounded h-44 dark:bg-gray-500'
                 src='https://source.unsplash.com/random/480x360?6'
+                alt='blog image'
               />
               <div className='p-6 space-y-2'>
                 <h3 className='text-2xl font-semibold group-hover:underline group-focus:underline'>
@@ -971,10 +1003,13 @@ const Blog = () => {
               </div>
             </a>
           </div>
-          <div className='flex justify-center'>
+          <div
+            data-aos="fade-down"
+            data-aos-duration="1000"
+            className='flex justify-center'>
             <button
               type='button'
-              className='px-6 py-3 text-sm rounded-md hover:underline hover:bg-white hover:text-black btn btn-accent dark:bg-gray-900 dark:text-gray-400'
+              className='px-6 py-3 animate-pulse hover:animate-none text-sm rounded-md hover:bg-white hover:text-black btn btn-accent dark:bg-gray-900 dark:text-gray-400 transition duration-300'
             >
               Load more posts...
             </button>
