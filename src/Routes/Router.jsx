@@ -49,6 +49,7 @@ import UpcomingLiveExam from "../Pages/LiveExam/UpcomingLiveExam/UpcomingLiveExa
 import InstructorChatRoom from "../Pages/LiveExam/InstructorChatRoom/InstructorChatRoom";
 import CreateNotice from "../Pages/Dashboard/AdminDashboard/CreateNotice/CreateNotice";
 import ResultPage from "../Pages/Home/DemoTest/ResultPage";
+import ExamResult from "../Pages/ExamResult/ExamResult";
 
 const router = createBrowserRouter([
   {
@@ -177,6 +178,12 @@ const router = createBrowserRouter([
       {
         path: "/joinLiveExam",
         element: <JoinLiveExam />,
+      },
+      ,
+      {
+        path: "/examResults",
+        element: <ExamResult />,
+
       },
     ],
   },
