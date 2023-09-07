@@ -1,41 +1,45 @@
-import { useEffect, useState } from "react";
-import InstructorCard from "./InstructorCard";
+import { useEffect, useState } from 'react'
+import InstructorCard from './InstructorCard'
+import { Helmet } from 'react-helmet-async'
 
 const Instructors = () => {
-  const [instructors, setInstructors] = useState([]);
-  const [seeMore, setSeeMore] = useState(false);
-  const [displayCount, setDisplayCount] = useState(6);
+  const [instructors, setInstructors] = useState([])
+  const [seeMore, setSeeMore] = useState(false)
+  const [displayCount, setDisplayCount] = useState(6)
 
   useEffect(() => {
-    fetch("http://localhost:5000/instructors")
-      .then((res) => res.json())
-      .then((data) => setInstructors(data));
-  }, []);
+    fetch('http://localhost:5000/instructors')
+      .then(res => res.json())
+      .then(data => setInstructors(data))
+  }, [])
 
   const handleSeeMore = () => {
-    setSeeMore(true);
-    setDisplayCount(instructors.length);
-  };
+    setSeeMore(true)
+    setDisplayCount(instructors.length)
+  }
   return (
-    <div className="py-8 container mx-auto">
-      <h1 className="mb-10 text-4xl font-bold text-center text-white">Our Instructors</h1>
-      <div className="md:grid grid-cols-3 gap-5 py-5">
-        {instructors.slice(0, displayCount).map((instructor) => (
-          <InstructorCard key={instructor.id} instructor={instructor}></InstructorCard>
+    <div className='py-8 container mx-auto'>
+      <Helmet><title>E-ExamPro | Instructor</title></Helmet>
+      <h1 className='mb-10 text-4xl font-bold text-center text-white'>
+        Our Instructors
+      </h1>
+      <div className='md:grid grid-cols-3 gap-5 py-5'>
+        {instructors.slice(0, displayCount).map(instructor => (
+          <InstructorCard
+            key={instructor.id}
+            instructor={instructor}
+          ></InstructorCard>
         ))}
       </div>
-      <div className="text-center my-5">
+      <div className='text-center my-5 animate-pulse hover:animate-none'>
         {!seeMore && (
-          <button
-            onClick={handleSeeMore}
-            className="btn primary-bg"
-          >
+          <button onClick={handleSeeMore} className='btn primary-btn'>
             See More Instructors
           </button>
         )}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Instructors;
+export default Instructors

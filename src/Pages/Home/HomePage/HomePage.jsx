@@ -7,6 +7,8 @@ import Faq from '../Faq/Faq'
 import Pricing from '../Pricing/Pricing'
 import Testimonial from '../Testimonial/Testimonial'
 import TopSubjects from '../TopSubjects/TopSubjects'
+import Pricing from '../Pricing/Pricing'
+import { Helmet } from 'react-helmet-async'
 // import ShortcutKey from "../../../Components/ShortcutKey/ShortcutKey";
 const HomePage = () => {
   console.log(window.localStorage.getItem('showMainContent'))
@@ -39,6 +41,7 @@ const HomePage = () => {
 
   return (
     <div className=''>
+      <Helmet><title>E-ExamPro </title></Helmet>
       <div
         className={`hero min-h-[100vh]  transition-all duration-700 ${showMainContent ? '  opacity-0 hidden' : 'opacity-100 '
           }`}
@@ -69,8 +72,7 @@ const HomePage = () => {
           <TopSubjects />
           <Achievement />
           <Testimonial />
-          <Pricing></Pricing>
-
+          <Pricing />
         </div>
         <Faq />
 

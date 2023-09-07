@@ -5,11 +5,12 @@ import "react-awesome-slider/dist/styles.css";
 
 const AutoplaySlider = withAutoplay(AwesomeSlider);
 import "./Banner.css";
+import BannerContent from "./BannerContent";
 
 const Banner = () => {
   const [isHovered, setIsHovered] = useState(false);
-    return (
-        <AutoplaySlider
+  return (
+    <AutoplaySlider
       play={true}
       cancelOnInteraction={false}
       interval={6000}
@@ -23,18 +24,7 @@ const Banner = () => {
           className="w-full h-full"
         />
         <div className="absolute flex flex-col items-center justify-center w-full h-full bg-gradient-to-r from-[#582f6e] to-[rgba(151, 40, 202, 0.9)] ">
-          <h4 className="mb-2 md:mb-6 text-lg md:text-3xl text-white text-center">
-            Get Ready For The Battle Of Examination
-          </h4>
-          <h4 className="md:mb-6 text-sm md:text-xl text-white">
-            with
-          </h4>
-          
-          <h1 className="md:mb-10 font-semibold text-white text-2xl  md:text-7xl">E-ExamPro</h1>
-
-          <button className="mt-4 md:mt-8 text-sm md:text-lg font-bold rounded-full btn btn-sm md:btn-md primary-bg">
-            Explore Exams 
-          </button>
+          <BannerContent />
         </div>
         <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2"></div>
       </div>
@@ -45,18 +35,7 @@ const Banner = () => {
           className="w-full h-full"
         />
         <div className="absolute flex flex-col items-center justify-center w-full h-full bg-gradient-to-r  from-[#582f6e] to-[rgba(21, 21, 21, 0)]">
-        <h4 className="mb-2 md:mb-6 text-lg md:text-3xl text-white text-center">
-            Get Ready For The Battle Of Examination
-          </h4>
-          <h4 className="md:mb-6 text-sm md:text-xl text-white">
-            with
-          </h4>
-          
-          <h1 className="md:mb-10 font-semibold text-white text-2xl  md:text-7xl">E-ExamPro</h1>
-
-          <button className="mt-4 md:mt-8 text-sm md:text-lg font-bold rounded-full btn btn-sm md:btn-md primary-bg">
-            Explore Exams 
-          </button>
+          <BannerContent />
         </div>
         <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2"></div>
       </div>
@@ -67,18 +46,7 @@ const Banner = () => {
           className="w-full h-full"
         />
         <div className="absolute flex flex-col items-center justify-center w-full h-full bg-gradient-to-r  from-[#582f6e] to-[rgba(21, 21, 21, 0)]">
-        <h4 className="mb-2 md:mb-6 text-lg md:text-3xl text-white text-center">
-            Get Ready For The Battle Of Examination
-          </h4>
-          <h4 className="md:mb-6 text-sm md:text-xl text-white">
-            with
-          </h4>
-          
-          <h1 className="md:mb-10 font-semibold text-white text-2xl  md:text-7xl">E-ExamPro</h1>
-
-          <button className="mt-4 md:mt-8 text-sm md:text-lg font-bold rounded-full btn btn-sm md:btn-md primary-bg">
-            Explore Exams 
-          </button>
+          <BannerContent />
         </div>
         <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2"></div>
       </div>
@@ -89,23 +57,12 @@ const Banner = () => {
           className="w-full h-full"
         />
         <div className="absolute flex flex-col items-center justify-center w-full h-full bg-gradient-to-r  from-[#582f6e] to-[rgba(21, 21, 21, 0)]">
-          <h4 className="mb-2 md:mb-6 text-lg md:text-3xl text-white text-center">
-            Get Ready For The Battle Of Examination
-          </h4>
-          <h4 className="md:mb-6 text-sm md:text-xl text-white">
-            with
-          </h4>
-          
-          <h1 className="md:mb-10 font-semibold text-white text-2xl  md:text-7xl">E-ExamPro</h1>
-
-          <button className="mt-4 md:mt-8 text-sm md:text-lg font-bold rounded-full btn btn-sm md:btn-md primary-bg">
-            Explore Exams 
-          </button>
+          <BannerContent />
         </div>
         <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2"></div>
       </div>
     </AutoplaySlider>
-    );
+  );
 };
 
 export default Banner;

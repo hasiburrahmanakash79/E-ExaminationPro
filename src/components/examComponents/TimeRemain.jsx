@@ -1,12 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import './TimeRemain.css'
-const TimeRemain = ({  handleFinishExam,setTimer,examType,start }) => {
+const TimeRemain = ({  handleFinishExam,setTimer,examType,start,timerProgress,setTimerProgress,totalDuration,timeRemaining,setTimeRemaining,setTakingTime }) => {
 
-    const [timerProgress, setTimerProgress] = useState(100) //progress bar state
-    const totalDuration = 30 //define total duration
-    const [timeRemaining, setTimeRemaining] = useState(30) // time remain state
+
     useEffect(() => {
-
         if (timeRemaining <= 0) {
             // Time is up, finish the exam 
             handleFinishExam()
@@ -17,6 +14,7 @@ const TimeRemain = ({  handleFinishExam,setTimer,examType,start }) => {
             const timer = setInterval(() => {
                 setTimeRemaining(prevTime => prevTime - 1)
                 setTimerProgress((timeRemaining / totalDuration) * 100)
+                setTakingTime(prevTime=>prevTime+1)
             }, 1000) // Decrease timeRemaining every 1 second
     
             setTimer(timer)// send timer function to a variable timer 

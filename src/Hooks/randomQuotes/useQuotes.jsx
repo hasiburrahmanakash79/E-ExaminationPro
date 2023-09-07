@@ -9,7 +9,9 @@ const useQuotes = () => {
   } = useQuery({
     queryKey: ['quotes'],
     queryFn: async () => {
-      const res = await axios.get('http://localhost:5000/api/quotes')
+      const res = await axios.get(
+        'http://localhost:5000/api/quotes'
+      )
       return res.data
     }
   })

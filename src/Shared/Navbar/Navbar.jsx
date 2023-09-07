@@ -3,16 +3,18 @@ import { Link } from "react-router-dom";
 import logo from "../../assets/logo12.png";
 import "./Navbar.css";
 
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import Swal from "sweetalert2";
 import useAdmin from "../../Hooks/useAdmin/useAdmin";
 import useInstructor from "../../Hooks/useInstructor/useInstructor";
 import { AuthContext } from "../../Provider/AuthProvider";
+import LiveExamModal from "../../Components/LiveExamModal/LiveExamModal";
 
 const Navbar = () => {
+  const [isOpen, setIsOpen] = useState(false)
   const { user, logOut } = useContext(AuthContext);
   const [isAdmin] = useAdmin();
-  const [isInstructor] = useInstructor()
+  const [isInstructor] = useInstructor();
 
   const handleLogout = () => {
     logOut()
@@ -22,7 +24,7 @@ const Navbar = () => {
           title: "Log Out Successful",
           showConfirmButton: false,
           timer: 1500,
-        })
+        });
       })
       .catch((error) => console.log(error));
   };
@@ -44,7 +46,7 @@ const Navbar = () => {
             <Link to="/allSubjects">All Subject</Link>
           </li>
           <li>
-            <Link>Rules</Link>
+            <Link to="/shortQ">ShortQ</Link>
           </li>
         </ul>
       </details>
@@ -65,6 +67,13 @@ const Navbar = () => {
       <li>
         <Link to="/about">About us</Link>
       </li>
+      <li>
+        <Link to="/forum">Forum</Link>
+      </li>
+      {user && <li>{isAdmin ? "" : isInstructor ? <Link to="/createLiveExam">Create Live Exam</Link> : <Link to="/joinLiveExam">Join Live Exam</Link>
+      }
+
+      </li>}
     </>
   );
 
@@ -110,11 +119,13 @@ const Navbar = () => {
               {navbarLink_Last}
             </ul>
           </div>
-          <img
-            className="w-[200px] hover:-translate-y-0.5 duration-200"
-            src={logo}
-            alt=""
-          />
+          <Link to="/">
+            <img
+              className="w-[200px] hover:-translate-y-0.5 duration-200"
+              src={logo}
+              alt=""
+            />
+          </Link>
         </div>
         <div className="hidden navbar-center lg:flex">
           <ul className="px-1 menu menu-horizontal">
@@ -130,9 +141,12 @@ const Navbar = () => {
         </div>
         <div className="navbar-end">
           <div className="indicator me-4">
-            <span className="indicator-item  badge badge-secondary">1+</span>
+            <span className="indicator-item badge badge-secondary">1+</span>
             <button>
-              <Link to="notice" className="text-2xl"> <AiFillBell></AiFillBell></Link>
+              <Link to="notice" className="text-2xl">
+                {" "}
+                <AiFillBell></AiFillBell>
+              </Link>
             </button>
           </div>
 
@@ -163,7 +177,7 @@ const Navbar = () => {
               >
                 <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
                   <div className="w-10 rounded-full">
-                    <img src={user.photoURL} />
+                    <img src={user?.photoURL} />
                   </div>
                 </label>
               </div>
@@ -178,7 +192,20 @@ const Navbar = () => {
                   </Link>
                 </li>
                 {/* Navigate to different dashboard route based on user role */}
-                {user && <li>{isAdmin ? (<Link to="/dashboard/adminHome">Dashboard</Link>) : isInstructor ? (<Link to="/dashboard/instructorHome">Dashboard</Link>) : <Link to="/dashboard/userHome">Dashboard</Link>}</li>}
+                {user && (
+                  <li>
+                    {isAdmin ? (
+                      <Link to="/dashboard/adminHome">Dashboard</Link>
+                    ) : isInstructor ? (
+                      <Link to="/dashboard/instructorHome">Dashboard</Link>
+                    ) : (
+                      <Link to="/dashboard/userHome">Dashboard</Link>
+                    )}
+                  </li>
+                )}
+                <li>
+                  <Link to="/profile">Profile</Link>
+                </li>
                 <li>
                   <Link className="w-full" onClick={handleLogout}>
                     Log Out
