@@ -20,13 +20,13 @@
   text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3);
   box-shadow: 5px 5px 5px rgba(20, 0, 0, 0.3);
   animation: color 22s ease-in-out infinite;
-  color: white;
+  /* color: white; */
+  @apply hover:scale-105 text-slate-300 hover:text-slate-50
 }
 
-/* 
-*{
+
+/* *{
     border: 1px solid #fff;
-    overflow-x: hidden;
 } */
 
 /* body {

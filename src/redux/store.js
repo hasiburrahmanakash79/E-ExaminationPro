@@ -5,8 +5,9 @@ import examPageReducer from './features/examPage/examPageSlice'
 import demoExamSlice from "./features/demoExam/demoExamSlice";
 import shortQuestionSlice from "./features/shortQuestion/shortQuestionSlice";
 import longQuestionSlice from "./features/LongQuestion/longQuestionSlice";
-import ExamRoomControllerReducer from './features/ExamRoomController/ExamRoomControllerSlice';
+// import ExamRoomControllerReducer from './features/ExamRoomController/ExamRoomControllerSlice';
 import liveExamSlice from "./features/liveExamQuesPaper/liveExamQuesPaper";
+import ExamRoomControllerSlice from './features/ExamRoomController/ExamRoomControllerSlice';
 
 
 
@@ -19,7 +20,7 @@ const store = configureStore({
                 examPage: examPageReducer,
                 demoExam: demoExamSlice,
                 shortQuestions: shortQuestionSlice,
-                examRoomControls: ExamRoomControllerReducer,
+                examRoomControls: ExamRoomControllerSlice,
                 liveExam: liveExamSlice
 
         },
