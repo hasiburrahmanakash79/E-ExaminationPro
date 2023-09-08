@@ -1,10 +1,11 @@
 import { createBrowserRouter } from 'react-router-dom'
 import Main from '../Layouts/Main'
-import HomePage from '../Pages/Home/HomePage/HomePage'
 import AboutUs from '../Pages/AboutUs/AboutUs'
 import Login from '../Pages/Authentication/Login/Login'
 import Registration from '../Pages/Authentication/Registration/Registration'
-import Blog from '../Pages/BlogPage/Blog/Blog'
+import NewBlog from '../Pages/BlogPage/NewBlog/NewBlog'
+import NewBlogDetails from '../Pages/BlogPage/NewBlog/NewBlogDetails'
+import UnderBlog from '../Pages/BlogPage/NewBlog/UnderBlog'
 import Contact from '../Pages/Contact/Contact'
 import PrivateRouter from './PrivateRouter'
 import Error from '../Pages/Error/Error'
@@ -54,9 +55,25 @@ const router = createBrowserRouter([
         element: <Instructors />
       },
       {
-        path: '/blog',
-        element: <Blog />
+        path: "/blog",
+        element: <NewBlog></NewBlog>
       },
+
+      {
+        path: "/blogDetails/:id",
+        element: <NewBlogDetails></NewBlogDetails>
+      },
+      // {
+      //   path: "/blogDetails/:id",
+      //   element: <NewBlogDetails></NewBlogDetails>
+      // },
+
+
+      {
+        path: "/blogUnderDetails/:id",
+        element: <UnderBlog></UnderBlog>
+      },
+
       {
         path: '/notice',
         element: <Notice />

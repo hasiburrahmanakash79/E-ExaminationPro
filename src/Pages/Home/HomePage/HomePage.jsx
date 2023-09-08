@@ -4,6 +4,7 @@ import Achievement from '../Achievement/Achievement'
 import Banner from '../Banner/Banner'
 import DemoTestSection from '../DemoTest/DemoTestSection'
 import Faq from '../Faq/Faq'
+import Pricing from '../Pricing/Pricing'
 import Testimonial from '../Testimonial/Testimonial'
 import TopSubjects from '../TopSubjects/TopSubjects'
 import Pricing from '../Pricing/Pricing'
@@ -74,6 +75,7 @@ const HomePage = () => {
           <Pricing />
         </div>
         <Faq />
+
       </div>
     </div>
   )
