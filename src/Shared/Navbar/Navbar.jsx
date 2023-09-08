@@ -149,7 +149,7 @@ const Navbar = () => {
               </Link>
             </button>
           </div>
-
+{/* 
           <button
             onClick={() => window.my_modal_3.showModal()}
             className="btn btn-ghost btn-circle"
@@ -168,7 +168,7 @@ const Navbar = () => {
                 d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
               />
             </svg>
-          </button>
+          </button> */}
           {user ? (
             <div className="z-50 ml-5 dropdown dropdown-end">
               <div
