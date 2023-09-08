@@ -9,7 +9,7 @@ import UnderBlog from '../Pages/BlogPage/NewBlog/UnderBlog'
 import Contact from '../Pages/Contact/Contact'
 import PrivateRouter from './PrivateRouter'
 import Error from '../Pages/Error/Error'
-import Instructors from '../Pages/InstuctorPage/Instructors'
+import Instructors from '../Pages/InstructorPage/Instructors'
 import Dashboard from '../Layouts/Dashboard'
 import ManageUsers from '../Pages/Dashboard/AdminDashboard/ManageUser/ManageUsers'
 import AdminHome from '../Pages/Dashboard/AdminDashboard/AdminHome/AdminHome'
@@ -23,9 +23,7 @@ import Payment from '../Pages/Dashboard/UserDashboard/Payment/Payment'
 import QuizDemo from '../Pages/Home/DemoTest/QuizDemo'
 import UserHome from '../Pages/Dashboard/UserDashboard/UserHome/UserHome'
 import PaymentHistory from '../Pages/Dashboard/UserDashboard/PaymentHistory/PaymentHistory'
-import CommentApp from '../Pages/Furam/CommentApp'
 import WrittenExams from '../Pages/Exams/WrittenExams/WrittenExams'
-// import ResultPageForMcqFib from '../components/examComponents/QuestionRelated/ResultPageForMcqFib'
 import Profile from '../Pages/Authentication/UpdateProfile/Profile'
 import UpdateProfile from '../Pages/Authentication/UpdateProfile/UpdateProfile'
 import CreateLiveExam from '../Pages/LiveExam/CreateLiveExam/CreateLiveExam'
@@ -40,6 +38,8 @@ import CreateNotice from '../Pages/Dashboard/AdminDashboard/CreateNotice/CreateN
 import ResultPage from '../Pages/Home/DemoTest/ResultPage'
 import ExamResult from '../Pages/ExamResult/ExamResult'
 import ResultPageForMcqFib from '../components/examComponents/QuestionRelated/QuestionResults/ResultPageForMcqFib'
+import HomePage from '../Pages/Home/HomePage/HomePage'
+import ForumCommunity from '../Pages/Forum_Community/ForumCommunity'
 const router = createBrowserRouter([
   {
     path: '/',
@@ -55,22 +55,16 @@ const router = createBrowserRouter([
         element: <Instructors />
       },
       {
-        path: "/blog",
+        path: '/blog',
         element: <NewBlog></NewBlog>
       },
 
       {
-        path: "/blogDetails/:id",
+        path: '/blogDetails/:id',
         element: <NewBlogDetails></NewBlogDetails>
       },
-      // {
-      //   path: "/blogDetails/:id",
-      //   element: <NewBlogDetails></NewBlogDetails>
-      // },
-
-
       {
-        path: "/blogUnderDetails/:id",
+        path: '/blogUnderDetails/:id',
         element: <UnderBlog></UnderBlog>
       },
 
@@ -142,7 +136,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/forum',
-        element: <CommentApp />
+        element: <ForumCommunity />
       },
       {
         path: '/updateProfile',
