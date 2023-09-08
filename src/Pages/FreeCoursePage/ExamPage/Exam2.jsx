@@ -269,16 +269,4 @@ const Exam2 = () => {
   )
 }
 
-<<<<<<< HEAD
 export default Exam2
-=======
-export default Exam2
-
-{/* <FillTheBlank
-questions={questions}
-currentQuestion={currentQuestion}
-question={question}
-inputValue={inputValue}
-handleInputChange={handleInputChange}
-></FillTheBlank> */}
->>>>>>> 49823edac291a04f5e8c1c237819d5b85407383c

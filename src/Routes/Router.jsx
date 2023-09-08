@@ -32,7 +32,8 @@ import UserHome from "../Pages/Dashboard/UserDashboard/UserHome/UserHome";
 import PaymentHistory from "../Pages/Dashboard/UserDashboard/PaymentHistory/PaymentHistory";
 import CommentApp from "../Pages/Furam/CommentApp";
 import WrittenExams from "../Pages/Exams/WrittenExams/WrittenExams";
-import ResultPageForMcqFib from "../components/examComponents/QuestionRelated/ResultPageForMcqFib";
+// import ResultPageForMcqFib from "../components/examComponents/QuestionRelated/ResultPageForMcqFib";
+import ResultPageForMcqFib from "../components/examComponents/QuestionRelated/QuestionResults/ResultPageForMcqFib";
 import Profile from "../Pages/Authentication/UpdateProfile/Profile";
 import UpdateProfile from "../Pages/Authentication/UpdateProfile/UpdateProfile";
 // import UpdateProfile from "../Pages/Authentication/UpdateProfile/UpdateProfile";
@@ -49,11 +50,8 @@ import UpcomingLiveExam from "../Pages/LiveExam/UpcomingLiveExam/UpcomingLiveExa
 import InstructorChatRoom from "../Pages/LiveExam/InstructorChatRoom/InstructorChatRoom";
 import CreateNotice from "../Pages/Dashboard/AdminDashboard/CreateNotice/CreateNotice";
 import ResultPage from "../Pages/Home/DemoTest/ResultPage";
-<<<<<<< HEAD
 import ForumCommunity from "../Pages/Forum_Community/ForumCommunity";
-=======
 import ExamResult from "../Pages/ExamResult/ExamResult";
->>>>>>> 49823edac291a04f5e8c1c237819d5b85407383c
 
 const router = createBrowserRouter([
   {

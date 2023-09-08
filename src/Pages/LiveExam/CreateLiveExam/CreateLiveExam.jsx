@@ -1,9 +1,3 @@
-<<<<<<< HEAD
-import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { examType, subjectInfo, quesPaper } from '../../../redux/features/quesPaper/quesPaperSlice';
-import { Helmet } from 'react-helmet-async';
-=======
 
 import { useDispatch, useSelector } from 'react-redux'
 import {
@@ -20,7 +14,6 @@ import { useContext } from 'react'
 import { AuthContext } from '../../../Provider/AuthProvider'
 import useLiveExam from '../../../Hooks/useLiveExam/useLiveExam'
 import { FaKey } from 'react-icons/fa'
->>>>>>> 49823edac291a04f5e8c1c237819d5b85407383c
 
 const CreateLiveExam = () => {
   const [data, setData] = useState(null)
@@ -75,131 +68,6 @@ const CreateLiveExam = () => {
     dispatch(quesPaper({ index, field, value })) //redux
   }
 
-<<<<<<< HEAD
-    //submit
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        const paperData = {
-            ...formData,
-            type,
-            questions,
-        };
-
-
-        console.log('Question Paper Data:', paperData);
-
-
-        fetch('http://localhost:5000/addLiveExam', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(paperData)
-        })
-            .then(res => res.json())
-            .then(data => console.log(data))
-    };
-
-    console.log(type)
-
-    const handleGenerateLink = () => {
-        console.log('Generate live Link');
-    }
-
-    return (
-        <div className='mx-2 my-5 border border-purple-800 P-8 rounded-2xl md:container md:mx-auto'>
-            <Helmet><title>E-ExamPro | Live Exam</title></Helmet>
-            <div className='flex flex-col items-center '>
-                <h1 className='text-3xl'>Question Paper</h1>
-                <p className='font-semibold'>{type == 'mcq' && "( MCQ )"}{type == 'FillInTheBlank' && "( Fill in the Blank )"}</p>
-            </div>
-
-
-
-            <div className='flex justify-center mb-5 '>
-
-                <div className='grid grid-cols-1 gap-x-4 md:grid-cols-3 '>
-                    <div className='mb-5'>
-                        <label className="label">
-                            <span className="label-text">Exam Type</span>
-                        </label>
-                        <select onChange={(e) => {
-                            //setQuestions([]) Redux
-                            dispatch(examType(''))
-                            dispatch(examType(e.target.value))
-                        }} className="w-full max-w-xs select select-bordered select-sm">
-                            <option disabled selected>Choose Type</option>
-                            <option value='mcq'>MCQ</option>
-                            <option value='multimedia_mcq'>Multimedia MCQ</option>
-                            <option value='FillInTheBlank'>Fill in the Blank</option>
-                        </select>
-                    </div>
-                    <div className="w-full max-w-xs form-control">
-                        <label className="label">
-                            <span className="label-text">Subject Name</span>
-                        </label>
-                        <input
-                            name="subjectName"
-                            value={formData.subjectName}
-                            onChange={handleInputChange}
-                            type="text" placeholder="Type here" className="w-full max-w-xs input input-bordered"
-                        />
-                    </div>
-                    <div className="w-full max-w-xs form-control">
-                        <label className="label">
-                            <span className="label-text">Subject Code</span>
-                        </label>
-                        <input
-                            name="subjectCode"
-                            value={formData.subjectCode}
-                            onChange={handleInputChange}
-                            type="text" placeholder="Type here" className="w-full max-w-xs input input-bordered" />
-                    </div>
-                    <div className="w-full max-w-xs form-control">
-                        <label className="label">
-                            <span className="label-text">Semester</span>
-                        </label>
-                        <input
-                            name="semester"
-                            value={formData.semester}
-                            onChange={handleInputChange}
-                            type="text" placeholder="Type here" className="w-full max-w-xs input input-bordered" />
-                    </div>
-                    <div className="w-full max-w-xs form-control">
-                        <label className="label">
-                            <span className="label-text">Date</span>
-                        </label>
-                        <input
-                            name="date"
-                            value={formData.date}
-                            onChange={handleInputChange}
-                            type="text" placeholder="Type here" className="w-full max-w-xs input input-bordered" />
-                    </div>
-                    <div className="w-full max-w-xs form-control">
-                        <label className="label">
-                            <span className="label-text">Email:</span>
-                        </label>
-                        <input
-                            name="email"
-                            value={formData.email}
-                            onChange={handleInputChange}
-                            type="text" placeholder="Type here" className="w-full max-w-xs input input-bordered" />
-                    </div>
-                    {
-                        type == 'multimedia_mcq' &&
-                        <div className="w-full max-w-xs form-control">
-                            <label className="label">
-                                <span className="label-text">Video URL:</span>
-                            </label>
-                            <input
-                                name="video"
-                                value={formData.video}
-                                onChange={handleInputChange}
-                                type="text" placeholder="Type here" className="w-full max-w-xs input input-bordered" />
-                        </div>
-                    }
-                </div>
-=======
   const subjectInfo={subjectName:data?.subjectName,subjectCode:data?.subject_code,examCode:data?.exam_code,batch:data?.batch,date:data?.date,instructorEmail:data?.email,group:data?.group,examID:data?._id }
   //submit
   const handleSubmit = event => {
@@ -233,7 +101,6 @@ const CreateLiveExam = () => {
         .then(data => setData(data))
     }
   }, [e_id])
->>>>>>> 49823edac291a04f5e8c1c237819d5b85407383c
 
   console.log(data, '----------------------------------------------------yay')
 
@@ -487,5 +354,4 @@ const CreateLiveExam = () => {
 }
 
 export default CreateLiveExam
-
 

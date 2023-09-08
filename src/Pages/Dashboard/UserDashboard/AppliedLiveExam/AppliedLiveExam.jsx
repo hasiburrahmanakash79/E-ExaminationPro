@@ -1,10 +1,5 @@
-<<<<<<< HEAD
 import { useState } from "react";
 import { Helmet } from "react-helmet-async";
-=======
-import { useContext, useState } from "react";
-
->>>>>>> 49823edac291a04f5e8c1c237819d5b85407383c
 import { Link } from "react-router-dom";
 import useAxiosSecure from "../../../../Hooks/useAxiosSecure.jsx/useAxiosSecure";
 import { AuthContext } from "../../../../Provider/AuthProvider";
@@ -32,12 +27,8 @@ const AppliedLiveExam = () => {
   }
 
   return (
-<<<<<<< HEAD
     <div className="flex flex-col justify-center items-center">
       <Helmet><title>E-ExamPro | Apply Live Exam </title></Helmet>
-=======
-    <div className="flex flex-col ">
->>>>>>> 49823edac291a04f5e8c1c237819d5b85407383c
       <h2 className="text-2xl">AppliedLiveExam</h2>
       {
         appliedExam?.map(exam => <div key={exam._id} className=" w-full grid grid-cols-1">
