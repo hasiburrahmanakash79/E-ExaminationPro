@@ -7,6 +7,7 @@ import { useState } from 'react'
 import { AuthContext } from '../../Provider/AuthProvider'
 import { useDispatch } from 'react-redux'
 import { setSubject } from '../../redux/features/quesPaper/quesPaperSlice'
+import { Helmet } from 'react-helmet-async'
 const FreeCoursePage = () => {
   const dispatch = useDispatch()
   const { logOut } = useContext(AuthContext)
@@ -28,12 +29,13 @@ const FreeCoursePage = () => {
         }
         setData(data)
         dispatch(setSubject(data))
-        
+
       })
   }, [])
   console.log(data)
   return (
     <div className='mt-5 flex justify-center '>
+      <Helmet><title>E-ExamPro | Exam</title></Helmet>
       <div className='grid grid-cols-1 md:grid-cols-2   lg:grid-cols-3 gap-10 mx-2'>
         {data?.map((subject, index) => (
           <div

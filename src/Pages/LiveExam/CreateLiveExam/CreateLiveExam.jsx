@@ -1,4 +1,3 @@
-
 import { useDispatch, useSelector } from 'react-redux'
 import {
   examType,
@@ -7,7 +6,7 @@ import {
   setSubject,
   setEmail,
   setSubjectCode,
-  setExamData,
+  setExamData
 } from '../../../redux/features/liveExamQuesPaper/liveExamQuesPaper'
 import { useEffect, useState } from 'react'
 import { useContext } from 'react'
@@ -17,8 +16,8 @@ import { FaKey } from 'react-icons/fa'
 
 const CreateLiveExam = () => {
   const [data, setData] = useState(null)
-  const [randomNumbers, setRandomNumbers] = useState([]);
-  const [numDigits, setNumDigits] = useState(8);
+  const [randomNumbers, setRandomNumbers] = useState([])
+  const [numDigits, setNumDigits] = useState(8)
   const [notices, isNoticeLoading] = useLiveExam()
   console.log(notices, 'line-----------------------------------------------19')
   const { user } = useContext(AuthContext)
@@ -26,7 +25,10 @@ const CreateLiveExam = () => {
   const { type, formData, questions, allSubject, examData, e_id } = useSelector(
     state => state.liveExam
   )
-  console.log(examData, '-----------------------------------------------line 26')
+  console.log(
+    examData,
+    '-----------------------------------------------line 26'
+  )
   useEffect(() => {
     fetch('http://localhost:5000/allSubjects', {
       headers: {
@@ -55,10 +57,8 @@ const CreateLiveExam = () => {
     dispatch(subjectInfo(event)) // redux
   }
 
-
-
   //handle ques add
-  const handleQuestionAdd = (event) => {
+  const handleQuestionAdd = event => {
     event.preventDefault()
     dispatch(quesPaper({ add: 'add' })) // redux
   }
@@ -68,15 +68,26 @@ const CreateLiveExam = () => {
     dispatch(quesPaper({ index, field, value })) //redux
   }
 
-  const subjectInfo={subjectName:data?.subjectName,subjectCode:data?.subject_code,examCode:data?.exam_code,batch:data?.batch,date:data?.date,instructorEmail:data?.email,group:data?.group,examID:data?._id }
+  const subjectInfo = {
+    subjectName: data?.subjectName,
+    subjectCode: data?.subject_code,
+    examCode: data?.exam_code,
+    batch: data?.batch,
+    date: data?.date,
+    instructorEmail: data?.email,
+    group: data?.group,
+    examID: data?._id
+  }
   //submit
   const handleSubmit = event => {
     event.preventDefault()
     const paperData = {
-      ...subjectInfo,...formData,
+      ...subjectInfo,
+      ...formData,
       type,
       questions,
-      mode:'live',secretCode:randomNumbers
+      mode: 'live',
+      secretCode: randomNumbers
     }
 
     console.log('Question Paper Data:', paperData)
@@ -93,7 +104,7 @@ const CreateLiveExam = () => {
   }
 
   console.log(type)
- 
+
   useEffect(() => {
     if (e_id !== null) {
       fetch(`http://localhost:5000/notice?selectedID=${e_id}`)
@@ -104,23 +115,22 @@ const CreateLiveExam = () => {
 
   console.log(data, '----------------------------------------------------yay')
 
-
-
   // Function to generate random numbers
   const generateRandomNumbers = () => {
-    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    let randomString = '';
-  
+    const characters =
+      'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
+    let randomString = ''
+
     for (let i = 0; i < 10; i++) {
-      const randomIndex = Math.floor(Math.random() * characters.length);
-      randomString += characters.charAt(randomIndex);
+      const randomIndex = Math.floor(Math.random() * characters.length)
+      randomString += characters.charAt(randomIndex)
     }
-  
-    setRandomNumbers(randomString);
+
+    setRandomNumbers(randomString)
   }
 
   return (
-    <div className='my-5 mx-2 md:container md:mx-auto'>
+    <div className='mx-2 my-5 md:container md:mx-auto'>
       <div className='flex flex-col items-center'>
         <h1 className='text-3xl'>Question Paper</h1>
         <p className='font-semibold'>
@@ -140,7 +150,7 @@ const CreateLiveExam = () => {
               dispatch(examType(''))
               dispatch(examType(e.target.value))
             }}
-            className='select select-bordered select-sm w-full max-w-xs'
+            className='w-full max-w-xs select select-bordered select-sm'
           >
             <option disabled selected>
               Choose Type
@@ -160,87 +170,104 @@ const CreateLiveExam = () => {
               //setQuestions([]) Redux
               dispatch(setExamData(null))
               dispatch(setExamData(e.target.value))
-
             }}
-            className='select select-bordered select-sm w-full max-w-xs'
+            className='w-full max-w-xs select select-bordered select-sm'
           >
             <option disabled selected>
               Choose Type
             </option>
 
-            {
-              notices?.map(notice => {
-                console.log(notice)
-                return <option className='text-white' key={notice._id} value={notice._id}>{notice?.subjectName} ({notice?.date})</option>
-              }
+            {notices?.map(notice => {
+              console.log(notice)
+              return (
+                <option
+                  className='text-white'
+                  key={notice._id}
+                  value={notice._id}
+                >
+                  {notice?.subjectName} ({notice?.date})
+                </option>
               )
-            }
-
+            })}
           </select>
         </div>
       </div>
 
       <div className='flex justify-center mb-5'>
-        <div className='grid grid-cols-1 gap-x-4  md:grid-cols-3 '>
-          <div className='form-control w-full max-w-xs'>
+        <div className='grid grid-cols-1 gap-x-4 md:grid-cols-3 '>
+          <div className='w-full max-w-xs form-control'>
             <label className='label'>
               <span className='label-text'>Subject Name</span>
             </label>
-            <h1 className="w-full input flex items-center input-bordered ">{data?.subjectName}</h1>
+            <h1 className='flex items-center w-full input input-bordered '>
+              {data?.subjectName}
+            </h1>
           </div>
-          <div className='form-control w-full max-w-xs'>
+          <div className='w-full max-w-xs form-control'>
             <label className='label'>
               <span className='label-text'>Exam Code</span>
             </label>
 
-            <h1 className="w-full input flex items-center input-bordered ">{data?.exam_code}</h1>
+            <h1 className='flex items-center w-full input input-bordered '>
+              {data?.exam_code}
+            </h1>
           </div>
-          <div className='form-control w-full max-w-xs'>
+          <div className='w-full max-w-xs form-control'>
             <label className='label'>
               <span className='label-text'>Subject Code</span>
             </label>
 
-            <h1 className="w-full input flex items-center input-bordered ">{data?.subject_code}</h1>
+            <h1 className='flex items-center w-full input input-bordered '>
+              {data?.subject_code}
+            </h1>
           </div>
-          <div className='form-control w-full max-w-xs'>
+          <div className='w-full max-w-xs form-control'>
             <label className='label'>
               <span className='label-text'>Batch</span>
             </label>
 
-            <h1 className="w-full input flex items-center input-bordered ">{data?.batch}</h1>
+            <h1 className='flex items-center w-full input input-bordered '>
+              {data?.batch}
+            </h1>
           </div>
-          <div className='form-control w-full max-w-xs'>
+          <div className='w-full max-w-xs form-control'>
             <label className='label'>
               <span className='label-text'>Date</span>
             </label>
 
-            <h1 className="w-full input flex items-center input-bordered ">{data?.date}</h1>
+            <h1 className='flex items-center w-full input input-bordered '>
+              {data?.date}
+            </h1>
           </div>
-          <div className='form-control w-full max-w-xs'>
+          <div className='w-full max-w-xs form-control'>
             <label className='label'>
               <span className='label-text'>Email:</span>
             </label>
 
-            <h1 className="w-full input flex items-center input-bordered ">{data?.email == user?.email && data?.email}</h1>
+            <h1 className='flex items-center w-full input input-bordered '>
+              {data?.email == user?.email && data?.email}
+            </h1>
           </div>
-          <div className='form-control w-full max-w-xs'>
+          <div className='w-full max-w-xs form-control'>
             <label className='label'>
               <span className='label-text'>Secrete Key:</span>
             </label>
 
-        <div className='relative'>
-        <h1 className="w-full input flex items-center input-bordered pe-20">{randomNumbers}</h1>
-            <button
-              onClick={generateRandomNumbers}
-              className=" absolute top-0 bottom-0  right-2"
-            >
-              <FaKey></FaKey>
-            </button>
-        </div>
+            <div className='relative'>
+              <h1 className='flex items-center w-full input input-bordered pe-20'>
+                {randomNumbers}
+              </h1>
+              <button
+                onClick={generateRandomNumbers}
+                className='absolute top-0 bottom-0  right-2'
+              >
+                <FaKey></FaKey>
+              </button>
+            </div>
           </div>
 
           {type == 'multimedia_mcq' && (
-            <div className='form-control w-full max-w-xs'>
+            <div className='w-full max-w-xs form-control'>
               <label className='label'>
                 <span className='label-text'>Video URL:</span>
               </label>
@@ -250,7 +277,7 @@ const CreateLiveExam = () => {
                 onChange={handleInputChange}
                 type='text'
                 placeholder='Type here'
-                className='input input-bordered w-full max-w-xs'
+                className='w-full max-w-xs input input-bordered'
               />
             </div>
           )}
@@ -262,7 +289,7 @@ const CreateLiveExam = () => {
           {questions?.map((question, index) => (
             <div key={index} className='mb-3'>
               <label className='label'>
-                <span className='label-text text-xl'>Question {index + 1}</span>
+                <span className='text-xl label-text'>Question {index + 1}</span>
               </label>
               <input
                 type='text'
@@ -270,11 +297,11 @@ const CreateLiveExam = () => {
                 onChange={e =>
                   handleQuestionChange(index, 'question', e.target.value)
                 }
-                className='input input-bordered w-full'
+                className='w-full input input-bordered'
                 placeholder='Type the question'
               />
-              <div className='flex flex-col items-center gap-2 justify-center'>
-                <div className='grid mt-4 gap-x-10 grid-cols-2'>
+              <div className='flex flex-col items-center justify-center gap-2'>
+                <div className='grid grid-cols-2 mt-4 gap-x-10'>
                   {(type === 'mcq' || type === 'multimedia_mcq') &&
                     question?.options?.map((option, optionIndex) => (
                       <input
@@ -290,7 +317,7 @@ const CreateLiveExam = () => {
                             )
                           )
                         }
-                        className='input input-bordered  mt-2'
+                        className='mt-2 input input-bordered'
                         placeholder={`Option ${optionIndex + 1}`}
                       />
                     ))}
@@ -299,7 +326,7 @@ const CreateLiveExam = () => {
               {(type === 'mcq' || type === 'multimedia_mcq') && (
                 <>
                   <label className='label'>
-                    <span className='label-text text-xl'>Correct Answer:</span>
+                    <span className='text-xl label-text'>Correct Answer:</span>
                   </label>
                   <input
                     type='text'
@@ -311,7 +338,7 @@ const CreateLiveExam = () => {
                         e.target.value
                       )
                     }
-                    className='input w-1/2 input-sm input-bordered  mt-2'
+                    className='w-1/2 mt-2 input input-sm input-bordered'
                     placeholder='Correct Answer'
                   />
                 </>
@@ -323,7 +350,7 @@ const CreateLiveExam = () => {
                   onChange={e =>
                     handleQuestionChange(index, 'correctAnswer', e.target.value)
                   }
-                  className='input input-bordered w-full mt-2'
+                  className='w-full mt-2 input input-bordered'
                   placeholder='Correct Answer'
                 />
               )}
@@ -332,11 +359,11 @@ const CreateLiveExam = () => {
         </div>
       )}
 
-      <div className='flex flex-col gap-3 items-center justify-center'>
+      <div className='flex flex-col items-center justify-center gap-3'>
         <button
           disabled={type == null ? true : false}
           onClick={handleQuestionAdd}
-          className='btn btn-sm btn-primary mt-2'
+          className='mt-2 btn btn-sm btn-primary'
         >
           {type !== null ? 'Add Question' : 'Select Exam Type'}
         </button>
@@ -354,5 +381,3 @@ const CreateLiveExam = () => {
 }
 
 export default CreateLiveExam
-
-

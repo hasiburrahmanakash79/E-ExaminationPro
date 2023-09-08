@@ -18,17 +18,35 @@ import { PDFDownloadLink, PDFViewer } from '@react-pdf/renderer'
 import ResultPdfConverter from './ResultPdfConverter'
 import { useSelector } from 'react-redux'
 import FeedBack from '../../Feedback/Feedback'
+import { useLocation } from 'react-router-dom'
+import useResult from '../../../Hooks/useResult/useResult'
 
 const ResultPageForMcqFib = () => {
+  const location = useLocation()
+  const searchParams = new URLSearchParams(location.search)
+  const types = searchParams.get('result')
+  const questionId = searchParams.get('id')
+  // console.log(searchParams)
+  // console.log(typeof questionId)
+  // console.log(types)
+  const { result, refetch, loading } = useResult('64e8b9586f2385caa12fd4c7')
+
+  console.log(result)
   /*========Answer Reviewing=======
   ========================*/
-  const { questions, userAnswers } = useSelector(state => state.demoExam)
+
+  if (types === 'demoQuiz') {
+    const { questions, userAnswers } = useSelector(state => state.demoExam)
+  } else if (questionId) {
+  }
+  let questions = []
+  let userAnswers = []
   // calculating percentage
 
-  const totalQuestions = questions.length
-  const correctAnswers = userAnswers.reduce((count, answer) => {
-    const question = questions.find(q => q.id === answer.questionId)
-    return question && answer.selectedOptionId === question.correctAnswer
+  const totalQuestions = questions?.length
+  const correctAnswers = userAnswers?.reduce((count, answer) => {
+    const question = questions?.find(q => q.id === answer.questionId)
+    return question && answer?.selectedOptionId === question.correctAnswer
       ? count + 1
       : count
   }, 0)
@@ -112,7 +130,9 @@ const ResultPageForMcqFib = () => {
               loading ? (
                 'Loading document...'
               ) : (
-                <button className='btn primary-btn'>Export Result As PDF</button>
+                <button className='btn primary-btn'>
+                  Export Result As PDF
+                </button>
               )
             }
           </PDFDownloadLink>

@@ -31,12 +31,18 @@ const Testimonial = () => {
     fetchData()
   }, [])
   return (
-    <div className='pb-5 mx-5 '>
-      <h1 className='mt-5 text-4xl font-bold text-center text-slate-200'>
+    <div className='pb-5 mx-5 md:mt-28 mt-16'>
+      <h1
+        data-aos="zoom-in-down"
+        data-aos-duration="800"
+        className='mt-5 text-4xl font-bold text-center text-slate-200'>
         What Our Users Say
       </h1>
       <div
-        className='bg-gradient-to-tr overflow-hidden from-[#0B0728] to-[#491A66] py-10 mt-6 rounded-lg'
+        data-aos="zoom-in"
+        data-aos-easing="ease-out-cubic"
+        data-aos-duration="2000"
+        className='bg-gradient-to-tr overflow-hidden from-[#0B0728] to-[#491A66] my-16 mt-6 rounded-lg'
         style={{
           background:
             'linear-gradient(45deg,rgb(17, 9, 83), rgb(54, 2, 102), rgb(4, 64, 114), rgb(73, 1, 114))'
@@ -75,12 +81,6 @@ const Testimonial = () => {
                       <img src={testimonial.image} />
                     </div>
                   </div>
-                  {/* <div className="w-20">
-                    <img
-                      className="border-2 "
-                      src={testimonial.image}
-                    />
-                  </div> */}
                   <div className='pt-2 pl-1'>
                     <h2 className='text-xl font-medium leading-5 text-slate-900'>
                       {testimonial.student_name} <br />{' '}

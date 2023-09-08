@@ -1,5 +1,6 @@
-import { useContext, useState } from "react";
 
+import { Helmet } from "react-helmet-async";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import useAxiosSecure from "../../../../Hooks/useAxiosSecure.jsx/useAxiosSecure";
 import { AuthContext } from "../../../../Provider/AuthProvider";
@@ -27,17 +28,18 @@ const AppliedLiveExam = () => {
   }
 
   return (
-    <div className="flex flex-col ">
+    <div className="flex flex-col items-center justify-center">
+      <Helmet><title>E-ExamPro | Apply Live Exam </title></Helmet>
       <h2 className="text-2xl">AppliedLiveExam</h2>
       {
-        appliedExam?.map(exam => <div key={exam._id} className=" w-full grid grid-cols-1">
-          <div  className="  card mx-5 mt-5 md:mx-20 navigation-bar  shadow-2xl">
+        appliedExam?.map(exam => <div key={exam._id} className="grid w-full grid-cols-1 ">
+          <div  className="mx-5 mt-5 shadow-2xl  card md:mx-20 navigation-bar">
             <div className="card-body">
               <h2 className="card-title">Subject: {exam.subjectName}</h2>
               <p>ExamCode: {exam?.examCode}</p>
               <p>Subject Code: {exam?.subject_code}</p>
 
-              <div className="flex  justify-end">
+              <div className="flex justify-end">
                 <div>
                   <p className="mb-2">Date: {exam?.date}</p>
 
@@ -46,7 +48,7 @@ const AppliedLiveExam = () => {
                    { code==null?
                    <button onClick={() => getCode(exam?.examID, exam?.examCode)} className="btn btn-sm">Get Code</button>
                   :
-                  <button  className="btn btn-sm bg-white text-black hover:bg-white">{code}</button>
+                  <button  className="text-black bg-white btn btn-sm hover:bg-white">{code}</button>
                   }
                     </div>
                 </div>
