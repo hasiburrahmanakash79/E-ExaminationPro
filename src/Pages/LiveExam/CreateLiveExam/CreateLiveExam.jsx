@@ -259,7 +259,7 @@ const CreateLiveExam = () => {
               </h1>
               <button
                 onClick={generateRandomNumbers}
-                className='absolute top-0 bottom-0  right-2'
+                className='absolute top-0 bottom-0 right-2'
               >
                 <FaKey></FaKey>
               </button>

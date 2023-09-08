@@ -1,4 +1,4 @@
-const ReviewAnswerAfterResult2 = ({ questions, index, userAnswers }) => {
+const ReviewAnswerAfterResult2 = ({ questions, index }) => {
   // console.log(questions);
   return (
     <>

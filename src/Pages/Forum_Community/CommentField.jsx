@@ -49,7 +49,7 @@ const CommentField = ({ label, type }) => {
                                 <div className="flex items-center justify-between mt-5">
                                     <div className="flex items-center gap-5">
                                         <p className="cursor-pointer text-sm text-slate-600"><span className="text-sm text-red-500">4 </span> Like</p>
-                                        <p className="cursor-pointer text-sm text-slate-600"><span className="text-sm text-yellow-500">5 </span> reply</p>
+                                        <p className="cursor-pointer text-sm text-slate-600"><span className="text-sm text-yellow-500">5 </span> Comment</p>
                                     </div>
                                 </div>
                             </div>
@@ -87,7 +87,7 @@ const CommentField = ({ label, type }) => {
                                 <div className="flex items-center justify-between mt-5">
                                     <div className="flex items-center gap-5">
                                         <p className="cursor-pointer text-sm text-slate-600"><span className="text-sm text-red-500">4 </span> Like</p>
-                                        <p className="cursor-pointer text-sm text-slate-600"><span className="text-sm text-yellow-500">5 </span> reply</p>
+                                        <p className="cursor-pointer text-sm text-slate-600"><span className="text-sm text-yellow-500">5 </span> Comment</p>
                                     </div>
                                 </div>
                             </div>

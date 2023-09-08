@@ -1,6 +1,6 @@
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar'
 import 'react-circular-progressbar/dist/styles.css'
-import ResultSideBar from './ResultSideBar'
+// import ResultSideBar from './ResultSideBar'
 // import {
 //   BarChart,
 //   Bar,
@@ -12,14 +12,18 @@ import ResultSideBar from './ResultSideBar'
 //   Legend,
 //   ResponsiveContainer
 // } from 'recharts'
-import ReviewAnswerAfterResult from './QuestionResults/ReviewAnswerAfterResult'
+// import ReviewAnswerAfterResult from './QuestionResults/ReviewAnswerAfterResult'
 
 import { PDFDownloadLink, PDFViewer } from '@react-pdf/renderer'
-import ResultPdfConverter from './QuestionResults/ResultPdfConverter'
+import ResultPdfConverter from './ResultPdfConverter'
+import FeedBack from '../../../Feedback/Feedback'
+// import ResultPdfConverter from './QuestionResults/ResultPdfConverter'
 // import { useSelector } from 'react-redux'
-import FeedBack from '../../Feedback/Feedback'
+// import FeedBack from '../../Feedback/Feedback'
 import { useEffect, useState } from 'react'
 import QuestionTimeChart from './QuestionTimeChart'
+// import ReviewAnswerAfterResult from '../ReviewAnswerAfterResult'
+import ReviewAnswerAfterResult2 from './ReviewAnswerAfterResult2'
 
 const ResultPageForMcqFib = () => {
   /*========Answer Reviewing=======
@@ -35,9 +39,11 @@ const ResultPageForMcqFib = () => {
       .then(data => setQuestions(data))
   }, [])
 
-  if (questions?.resutData) {
-    setResults(questions?.resutData)
-  }
+  useEffect(() => {
+    if (questions?.resutData) {
+      setResults(questions?.resutData)
+    }
+  }, [questions])
   console.log(results);
 
   // const totalQuestions = questions.length
@@ -79,7 +85,7 @@ const ResultPageForMcqFib = () => {
   //   result data
 
   return (
-    <section className='grid w-9/12 md:h-screen grid-cols-5 pt-6 m-auto'>
+    <section className='grid w-9/12 grid-cols-5 pt-6 m-auto'>
       <div className='col-span-1 md:col-span-4'>
         {/* Top of the result page where we can show TOP SCORE, Export the result */}
         <div className='md:flex items-center justify-between h-fit'>
@@ -116,15 +122,12 @@ const ResultPageForMcqFib = () => {
           </PDFDownloadLink>
         </div>
         {/* visual progress showing section */}
-        <div className='md:flex items-center justify-between w-full mx-auto md:mx-0 md:p-4 md:mt-16 h-fit'>
+        <div className='md:flex items-center justify-between w-full mx-auto md:mx-0 md:p-4 md:mt-5 h-fit'>
           {/* PieChart to show the performance of the exam based on time took in total , total correct answer  */}
-          <div className='md:w-28 md:h-28 w-32 h-32 pt-6 md:pt-0'>
+          {/* <div className='md:w-28 md:h-28 w-32 h-32 pt-6 md:pt-0'>
             <h3 className='pb-4 md:text-lg text-xl font-semibold text-white '>
               Performance
             </h3>
-            {
-
-            }
             <CircularProgressbar
               // value={percentage}
               value={qLength}
@@ -133,49 +136,62 @@ const ResultPageForMcqFib = () => {
                 strokeLinecap: 'butt'
               })}
             />
-          </div>
+            <div className='w-28 my-24'>
+              <CircularProgressbar
+                // value={percentage}
+                // text={`${percentage}%`}
+                value={qLength}
+                text={`${qLength}%`}
+                styles={buildStyles({
+                  strokeLinecap: 'butt'
+                })}
+              />
+            </div>
+          </div> */}
           {/* adding a bar to show each question time to answer */}
           {/* Chart section */}
-          <div style={{ width: '100%', height: 250 }}>
-            {/* <ResponsiveContainer>
-              <BarChart
-                width={500}
-                height={300}
-                data={data}
-                margin={{
-                  top: 5,
-                  right: 30,
-                  left: 20,
-                  bottom: 5
-                }}
-              >
-                <CartesianGrid strokeDasharray='3 3' />
-                <XAxis dataKey='name' />
-                <YAxis />
-                <Tooltip />
-                <Legend />
-                <Bar dataKey='pv' fill='#8884d8' />
-                <Bar dataKey='uv' fill='#82ca9d' />
-              </BarChart>
-            </ResponsiveContainer> */}
+          <div >
             <QuestionTimeChart data={data} />
           </div>
           {/* exam result showing in percentage using react-circular-progressbar. Using animation to do that */}
           {/* TODO:make this progressbar animated and dynamic */}
-          {/* <div className='w-28'>
+        </div>
+        <div className='flex items-center justify-center mt-8'>
+          <div className='w-1/3 mx-auto text-center mt-0 mb-6 bg-gradient-to-r from-[#052b83] to-[#25176A] hover:bg-gradient-to-r hover:from-[#18125d] hover:to-[#05418f] p-6 rounded-lg shadow-2xl transition duration-300'>
+            <h3 className='pb-4 tracking-wider text-white md:text-lg text-xl font-semibold'>
+              Activates
+            </h3>
             <CircularProgressbar
               // value={percentage}
               // text={`${percentage}%`}
               value={qLength}
               text={`${qLength}%`}
               styles={buildStyles({
-                strokeLinecap: 'butt'
+                strokeLinecap: 'butt',
+                textColor: '#fff',
+                pathColor: "#8884D8",
+                trailColor: "#fff"
               })}
             />
-          </div> */}
+          </div>
+          <div className='w-1/3 mx-auto text-center mt-0 mb-6 bg-gradient-to-r from-[#052b83] to-[#25176A] hover:bg-gradient-to-r hover:from-[#211B6B] hover:to-[#0c438c] p-6 rounded-lg shadow-2xl transition duration-300'>
+            <h3 className='pb-4 tracking-widest text-white md:text-lg text-xl font-semibold'>
+              Performance
+            </h3>
+            <CircularProgressbar
+              // value={percentage}
+              value={qLength}
+              strokeWidth={50}
+              styles={buildStyles({
+                strokeLinecap: 'butt',
+                pathColor: "#8884D8",
+                trailColor: "#fff"
+              })}
+            />
+          </div>
         </div>
         {/* bottom options like review answered questions, giving feedback, sharing the result with other social platforms */}
-        <div className='grid md:grid-cols-2 gap-3 py-6 md:py-0'>
+        <div className='grid md:grid-cols-2 gap-3 md:w-9/12 mx-auto md:mb-12 my-6'>
           {/* modal to show review answers */}
           <div>
             {/* Open the modal using ID.showModal() method */}
@@ -198,7 +214,7 @@ const ResultPageForMcqFib = () => {
                 questions={questions}
                 /> */}
                 {
-                  questions?.resutData?.map((data, index) => <ReviewAnswerAfterResult
+                  questions?.resutData?.map((data, index) => <ReviewAnswerAfterResult2
                     // userAnswers={userAnswers}
                     key={index}
                     questions={data}
@@ -212,7 +228,7 @@ const ResultPageForMcqFib = () => {
               </form>
             </dialog>
           </div>
-          <div>
+          <div className='w-12/12 mx-auto md:pl-12'>
             {/* Open the modal using ID.showModal() method */}
             <button
               className='btn btn_quiz primary-btn w-44'
