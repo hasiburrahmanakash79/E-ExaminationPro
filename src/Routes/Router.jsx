@@ -24,7 +24,7 @@ import UserHome from '../Pages/Dashboard/UserDashboard/UserHome/UserHome'
 import PaymentHistory from '../Pages/Dashboard/UserDashboard/PaymentHistory/PaymentHistory'
 import CommentApp from '../Pages/Furam/CommentApp'
 import WrittenExams from '../Pages/Exams/WrittenExams/WrittenExams'
-import ResultPageForMcqFib from '../components/examComponents/QuestionRelated/ResultPageForMcqFib'
+// import ResultPageForMcqFib from '../components/examComponents/QuestionRelated/ResultPageForMcqFib'
 import Profile from '../Pages/Authentication/UpdateProfile/Profile'
 import UpdateProfile from '../Pages/Authentication/UpdateProfile/UpdateProfile'
 import CreateLiveExam from '../Pages/LiveExam/CreateLiveExam/CreateLiveExam'
@@ -38,6 +38,7 @@ import InstructorChatRoom from '../Pages/LiveExam/InstructorChatRoom/InstructorC
 import CreateNotice from '../Pages/Dashboard/AdminDashboard/CreateNotice/CreateNotice'
 import ResultPage from '../Pages/Home/DemoTest/ResultPage'
 import ExamResult from '../Pages/ExamResult/ExamResult'
+import ResultPageForMcqFib from '../components/examComponents/QuestionRelated/QuestionResults/ResultPageForMcqFib'
 const router = createBrowserRouter([
   {
     path: '/',
