@@ -6,20 +6,12 @@ import Login from "../Pages/Authentication/Login/Login";
 import Registration from "../Pages/Authentication/Registration/Registration";
 import Blog from "../Pages/BlogPage/Blog/Blog";
 import Contact from "../Pages/Contact/Contact";
-// import ShortQ from "../Pages/Exams/ShortQuestion/ShortQ";
 import PrivateRouter from "./PrivateRouter";
 import Error from "../Pages/Error/Error";
 import Instructors from "../Pages/InstuctorPage/Instructors";
 import Dashboard from "../Layouts/Dashboard";
-
-// import ManageUsers from "../Pages/Dashboard/AdminDashboard/ManageUser/ManageUsers";
-// import AdminHome from "../Pages/Dashboard/AdminDashboard/AdminHome/AdminHome";
-// import ResultPageForMcqFib from "../components/QuestionRelated/ResultPageForMcqFib";
 import ManageUsers from "../Pages/Dashboard/AdminDashboard/ManageUser/ManageUsers";
 import AdminHome from "../Pages/Dashboard/AdminDashboard/AdminHome/AdminHome";
-
-// import QuizHomePage from "../Pages/Home/DemoTest/QuizHomePage";
-// import ResultPage from "../Pages/Home/DemoTest/ResultPage";
 import Notice from "../Pages/NoticePage/Notice/Notice";
 import AllExam from "../Pages/FreeCoursePage/ExamPage/allExam";
 import Exam2 from "../Pages/FreeCoursePage/ExamPage/Exam2";
@@ -35,10 +27,6 @@ import WrittenExams from "../Pages/Exams/WrittenExams/WrittenExams";
 import ResultPageForMcqFib from "../components/examComponents/QuestionRelated/ResultPageForMcqFib";
 import Profile from "../Pages/Authentication/UpdateProfile/Profile";
 import UpdateProfile from "../Pages/Authentication/UpdateProfile/UpdateProfile";
-// import UpdateProfile from "../Pages/Authentication/UpdateProfile/UpdateProfile";
-// import UserHome from "../Pages/Dashboard/UserDashboard/UserHome/UserHome";
-// import PaymentHistory from "../Pages/Dashboard/UserDashboard/PaymentHistory/PaymentHistory";
-// import CommentApp from "../Pages/Furam/CommentApp";
 import CreateLiveExam from "../Pages/LiveExam/CreateLiveExam/CreateLiveExam";
 import JoinLiveExam from "../Pages/LiveExam/JoinLiveExam/JoinLiveExam";
 import AppliedLiveExam from "../Pages/Dashboard/UserDashboard/AppliedLiveExam/AppliedLiveExam";
@@ -85,18 +73,6 @@ const router = createBrowserRouter([
         path: "/contact",
         element: <Contact></Contact>,
       },
-      // {
-      //   path: "/payment/:id",
-      //   element: (
-      //     <PrivateRouter>
-      //       <Payment />
-      //     </PrivateRouter>
-      //   ),
-      // },
-      // {
-      //   path: "/demoTest",
-      //   element: <QuizHomePage />,
-      // },
       {
         path: "/home-quiz-result",
         element: <ResultPage />,

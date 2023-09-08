@@ -21,7 +21,7 @@ export default function Notice() {
   }, []);
 
   // const [axiosSecure] = useAxiosSecure();
-  // const { data: notice, refetch } = useQuery({
+  // const { data: notices, refetch } = useQuery({
   //   queryKey: ["notices"],
   //   queryFn: async () => {
   //     const res = await axiosSecure.get("/notice");

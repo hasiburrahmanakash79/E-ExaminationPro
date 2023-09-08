@@ -5,15 +5,17 @@ import useSubject from "../../../../Hooks/useSubject/useSubject";
 import { useParams } from "react-router-dom";
 import CheckOutForm from "./CheckOutForm";
 import PaymentCard from "./PaymentCard";
+import usePrice from "../../../../Hooks/usePrice/usePrice";
 
 // TODO
 const stripePromise = loadStripe(import.meta.env.VITE_Payment_Gateway_key);
 
 const Payment = () => {
-  const [subjects]= useSubject()
-  const {id} = useParams()
-  const packages = subjects.filter(subject => subject._id == id) 
-  const price = 10
+  const [pricePackage ]= usePrice()
+  const id = useParams()
+  const packages = pricePackage.filter(pricing => pricing._id == id) 
+  // const price = 
+  console.log(id);
   return (
     <div className="px-5 mt-5">
       <div className=" bg-white/5 flex flex-col lg:w-4/12 md:w-8/12 lg:mt-52  mx-auto p-12 text-white rounded-3xl shadow-2xl">
@@ -23,7 +25,7 @@ const Payment = () => {
       <h1 className="text-3xl text-center m-10">Payment</h1>
       
       <Elements stripe={stripePromise}>
-        <CheckOutForm price={price} packages={packages}></CheckOutForm>
+        <CheckOutForm  packages={packages}></CheckOutForm>
       </Elements>
     </div>
     </div>
