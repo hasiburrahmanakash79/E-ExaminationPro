@@ -3,7 +3,7 @@ import { BarChart, Bar, XAxis, YAxis, Tooltip, Legend } from 'recharts';
 // import "./Chart.css"
 const QuestionTimeChart = ({ data }) => {
     return (
-        <BarChart width={640} height={300} data={data}>
+        <BarChart width={700} height={300} data={data}>
             <XAxis dataKey="Ques" />
             <YAxis />
             <Tooltip />
