@@ -31,7 +31,7 @@ const AllExam = () => {
         }
     }, [subject, type,loading])
     console.log(exams)
-
+    console.log(type)
     return (
         <div className='min-h-[60vh] container mx-auto'>
             <Tabs>
@@ -39,7 +39,7 @@ const AllExam = () => {
                     <TabList>
                         <Tab onClick={() => dispatch(dispatch(examType('mcq')))}>MCQ Exam</Tab>
                         <Tab onClick={() => dispatch(dispatch(examType('FillInTheBlank')))}>Fill In The Blank Exam</Tab>
-                        <Tab onClick={() => dispatch(dispatch(examType('multisubjectCodemedia_mcq')))}>MCQ Based on Content Exam</Tab>
+                        <Tab onClick={() => dispatch(dispatch(examType('multimedia_mcq')))}>MCQ Based on Content Exam</Tab>
                     </TabList>
                 </div>
 

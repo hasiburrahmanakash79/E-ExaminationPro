@@ -33,7 +33,7 @@ const AppliedLiveExam = () => {
       <h2 className="text-2xl">AppliedLiveExam</h2>
       {
         appliedExam?.map(exam => <div key={exam._id} className="grid w-full grid-cols-1 ">
-          <div  className="mx-5 mt-5 shadow-2xl  card md:mx-20 navigation-bar">
+          <div  className="mx-5 mt-5 shadow-2xl card md:mx-20 navigation-bar">
             <div className="card-body">
               <h2 className="card-title">Subject: {exam.subjectName}</h2>
               <p>ExamCode: {exam?.examCode}</p>
