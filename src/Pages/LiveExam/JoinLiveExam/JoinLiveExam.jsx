@@ -1,53 +1,67 @@
-import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { useForm } from 'react-hook-form'
+import { Link } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+import { toggleCall } from '../../../redux/features/ExamRoomController/ExamRoomControllerSlice'
 
 const JoinLiveExam = () => {
-  const { register, handleSubmit, reset } = useForm();
+  const dispatch = useDispatch()
+  const { inCall } = useSelector(state => state.examRoomControls)
+  console.log(inCall)
+  // const [inCall, setInCall] = useState(false)
+  const { register, handleSubmit, reset } = useForm()
 
   const cancelSubmit = () => {
-    reset();
-  };
+    reset()
+  }
 
-  const onSubmit = (data) => {
-    console.log(data);
-  };
-
+  const onSubmit = data => {
+    // dispatch(toggleCall())
+    // setInCall(true)
+    console.log(data)
+  }
+  const handleClick = () => {
+    dispatch(toggleCall())
+  }
   return (
-    <div className="p-5">
-      <div className="md:w-1/4 mx-auto border-4 p-7 rounded-2xl mt-10 border-violet-700">
-        <form onSubmit={handleSubmit(onSubmit)} className="">
-          <div className="flex flex-col ">
-            <h2 className="text-center text-2xl my-3">Live Exam Join Code</h2>
+    <div className='p-5'>
+      <div className='mx-auto mt-10 border-4 md:w-1/4 p-7 rounded-2xl border-violet-700'>
+        <form onSubmit={handleSubmit(onSubmit)} className=''>
+          <div className='flex flex-col '>
+            <h2 className='my-3 text-2xl text-center'>Live Exam Join Code</h2>
             <input
-              {...register("name", { required: true })}
-              type="text"
-              placeholder="Please enter your join Code"
-              className="bg-white/10 rounded-md input input-bordered"
+              {...register('name', { required: true })}
+              type='text'
+              placeholder='Please enter your join Code'
+              className='rounded-md bg-white/10 input input-bordered'
             />
           </div>
 
-          <div className="mt-5 flex justify-end gap-5">
-            <div className="mt-5 ">
+          <div className='flex justify-end gap-5 mt-5'>
+            <div className='mt-5 '>
               <button
                 onClick={() => cancelSubmit()}
-                className="btn primary-bg"
-                type="submit"
+                className='btn primary-bg'
+                type='submit'
               >
                 Cancel
               </button>
             </div>
-            <div className="mt-5 ">
-              <Link to="/examRoom">
-                  <button className="btn primary-btn" type="submit">
-                    Submit
-                  </button>
+            <div className='mt-5 '>
+              <Link to='/examRoom'>
+                <button
+                  onClick={() => handleClick()}
+                  className='btn primary-btn'
+                  type='submit'
+                >
+                  Submit
+                </button>
               </Link>
             </div>
           </div>
         </form>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default JoinLiveExam;
+export default JoinLiveExam

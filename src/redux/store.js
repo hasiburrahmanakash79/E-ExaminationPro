@@ -5,19 +5,25 @@ import examPageReducer from './features/examPage/examPageSlice'
 import demoExamSlice from "./features/demoExam/demoExamSlice";
 import shortQuestionSlice from "./features/shortQuestion/shortQuestionSlice";
 import longQuestionSlice from "./features/LongQuestion/longQuestionSlice";
+// import ExamRoomControllerReducer from './features/ExamRoomController/ExamRoomControllerSlice';
+import liveExamSlice from "./features/liveExamQuesPaper/liveExamQuesPaper";
+import ExamRoomControllerSlice from './features/ExamRoomController/ExamRoomControllerSlice';
 
 
 
 
 const store = configureStore({
-    reducer: {
-        questionPaper: quesPaperReducer,
-        longQuestions: longQuestionSlice,
-        allExam: allExamReducer,
-        examPage: examPageReducer,
-        demoExam: demoExamSlice,
-        shortQuestions: shortQuestionSlice
-    },
+        reducer: {
+                questionPaper: quesPaperReducer,
+                longQuestions: longQuestionSlice,
+                allExam: allExamReducer,
+                examPage: examPageReducer,
+                demoExam: demoExamSlice,
+                shortQuestions: shortQuestionSlice,
+                examRoomControls: ExamRoomControllerSlice,
+                liveExam: liveExamSlice
+
+        },
 })
 
 export default store

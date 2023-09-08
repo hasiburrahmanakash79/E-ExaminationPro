@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import InstructorCard from './InstructorCard'
+import { Helmet } from 'react-helmet-async'
 
 const Instructors = () => {
   const [instructors, setInstructors] = useState([])
@@ -7,7 +8,7 @@ const Instructors = () => {
   const [displayCount, setDisplayCount] = useState(6)
 
   useEffect(() => {
-    fetch('https://e-exam-pro-server.vercel.app/instructors')
+    fetch('http://localhost:5000/instructors')
       .then(res => res.json())
       .then(data => setInstructors(data))
   }, [])
@@ -18,6 +19,7 @@ const Instructors = () => {
   }
   return (
     <div className='py-8 container mx-auto'>
+      <Helmet><title>E-ExamPro | Instructor</title></Helmet>
       <h1 className='mb-10 text-4xl font-bold text-center text-white'>
         Our Instructors
       </h1>
@@ -29,7 +31,7 @@ const Instructors = () => {
           ></InstructorCard>
         ))}
       </div>
-      <div className='text-center my-5'>
+      <div className='text-center my-5 animate-pulse hover:animate-none'>
         {!seeMore && (
           <button onClick={handleSeeMore} className='btn primary-btn'>
             See More Instructors

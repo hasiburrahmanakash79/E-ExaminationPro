@@ -52,7 +52,10 @@ const Comment = ({
         {comment.id === 1 ? (
           <>
 
-            <div className="flex items-center gap-3">
+            <div
+              data-aos="fade-down"
+              data-aos-duration="3000"
+              className="flex items-center gap-3">
               <input
                 type="text"
                 className="bg-transparent p-[10px] border border-violet-600 rounded-lg shadow-2xl"

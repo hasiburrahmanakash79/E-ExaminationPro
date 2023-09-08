@@ -25,10 +25,10 @@
 
 @media only screen and (max-width: 480px) and (min-width: 320px) {
   .swiper {
-    width: 320px;
+    width: 96%;
   }
   .swiper-slide {
-    width: 300px;
+    width: 280px;
   }
 }
 @media only screen and (max-width: 1080px) and (min-width: 480px) {

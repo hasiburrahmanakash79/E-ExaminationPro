@@ -1,260 +1,383 @@
-import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { examType, subjectInfo, quesPaper } from '../../../redux/features/quesPaper/quesPaperSlice';
+import { useDispatch, useSelector } from 'react-redux'
+import {
+  examType,
+  subjectInfo,
+  quesPaper,
+  setSubject,
+  setEmail,
+  setSubjectCode,
+  setExamData
+} from '../../../redux/features/liveExamQuesPaper/liveExamQuesPaper'
+import { useEffect, useState } from 'react'
+import { useContext } from 'react'
+import { AuthContext } from '../../../Provider/AuthProvider'
+import useLiveExam from '../../../Hooks/useLiveExam/useLiveExam'
+import { FaKey } from 'react-icons/fa'
 
 const CreateLiveExam = () => {
-    /////redux////
-    const { type, formData, questions } = useSelector((state) => state.questionPaper)
-    const dispatch = useDispatch()
-    ////////
+  const [data, setData] = useState(null)
+  const [randomNumbers, setRandomNumbers] = useState([])
+  const [numDigits, setNumDigits] = useState(8)
+  const [notices, isNoticeLoading] = useLiveExam()
+  console.log(notices, 'line-----------------------------------------------19')
+  const { user } = useContext(AuthContext)
+  const dispatch = useDispatch()
+  const { type, formData, questions, allSubject, examData, e_id } = useSelector(
+    state => state.liveExam
+  )
+  console.log(
+    examData,
+    '-----------------------------------------------line 26'
+  )
+  useEffect(() => {
+    fetch('http://localhost:5000/allSubjects', {
+      headers: {
+        authorization: `bearar ${localStorage.getItem('access-token')}`
+      }
+    })
+      .then(res => res.json())
+      .then(data => {
+        console.log(data)
 
+        if (data.error == true) {
+          logOut()
+          navigate('/login')
+        }
+        dispatch(setSubject(data))
+        dispatch(setEmail(user?.email))
+      })
+  }, [])
+  /////redux////
 
-    // store basic info
-    const handleInputChange = (event) => {
-        dispatch(subjectInfo(event)) // redux
-    };
+  ////////
+  console.log(allSubject)
+  // store basic info
+  const handleInputChange = event => {
+    event.preventDefault()
+    dispatch(subjectInfo(event)) // redux
+  }
 
-    //handle ques add
-    const handleQuestionAdd = () => {
-        dispatch(quesPaper()) // redux
-    };
+  //handle ques add
+  const handleQuestionAdd = event => {
+    event.preventDefault()
+    dispatch(quesPaper({ add: 'add' })) // redux
+  }
 
-    // handle ques change
-    const handleQuestionChange = (index, field, value) => {
-        dispatch(quesPaper({ index, field, value })) //redux 
-    };
+  // handle ques change
+  const handleQuestionChange = (index, field, value) => {
+    dispatch(quesPaper({ index, field, value })) //redux
+  }
 
-    //submit
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        const paperData = {
-            ...formData,
-            type,
-            questions,
-        };
-
-
-        console.log('Question Paper Data:', paperData);
-
-
-        fetch('http://localhost:5000/addLiveExam', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(paperData)
-        })
-            .then(res => res.json())
-            .then(data => console.log(data))
-    };
-
-    console.log(type)
-
-    const handleGenerateLink = ()=>{
-        console.log('Generate live Link');
+  const subjectInfo = {
+    subjectName: data?.subjectName,
+    subjectCode: data?.subject_code,
+    examCode: data?.exam_code,
+    batch: data?.batch,
+    date: data?.date,
+    instructorEmail: data?.email,
+    group: data?.group,
+    examID: data?._id
+  }
+  //submit
+  const handleSubmit = event => {
+    event.preventDefault()
+    const paperData = {
+      ...subjectInfo,
+      ...formData,
+      type,
+      questions,
+      mode: 'live',
+      secretCode: randomNumbers
     }
 
-    return (
-        <div className='mx-2 my-5 border border-purple-800 P-8 rounded-2xl md:container md:mx-auto'>
-            <div className='flex flex-col items-center '>
-                <h1 className='text-3xl'>Question Paper</h1>
-                <p className='font-semibold'>{type == 'mcq' && "( MCQ )"}{type == 'FillInTheBlank' && "( Fill in the Blank )"}</p>
-            </div>
+    console.log('Question Paper Data:', paperData)
 
-            
+    fetch('http://localhost:5000/liveQuestionPaper', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(paperData)
+    })
+      .then(res => res.json())
+      .then(data => console.log(data))
+  }
 
-            <div className='flex justify-center mb-5 '>
-                
-                <div className='grid grid-cols-1 gap-x-4 md:grid-cols-3 '>
-                <div className='mb-5'>
-                <label className="label">
-                    <span className="label-text">Exam Type</span>
-                </label>
-                <select onChange={(e) => {
-                    //setQuestions([]) Redux
-                    dispatch(examType(''))
-                    dispatch(examType(e.target.value))
-                }} className="w-full max-w-xs select select-bordered select-sm">
-                    <option disabled selected>Choose Type</option>
-                    <option value='mcq'>MCQ</option>
-                    <option value='multimedia_mcq'>Multimedia MCQ</option>
-                    <option value='FillInTheBlank'>Fill in the Blank</option>
-                </select>
-            </div>
-                    <div className="w-full max-w-xs form-control">
-                        <label className="label">
-                            <span className="label-text">Subject Name</span>
-                        </label>
-                        <input
-                            name="subjectName"
-                            value={formData.subjectName}
-                            onChange={handleInputChange}
-                            type="text" placeholder="Type here" className="w-full max-w-xs input input-bordered"
-                        />
-                    </div>
-                    <div className="w-full max-w-xs form-control">
-                        <label className="label">
-                            <span className="label-text">Subject Code</span>
-                        </label>
-                        <input
-                            name="subjectCode"
-                            value={formData.subjectCode}
-                            onChange={handleInputChange}
-                            type="text" placeholder="Type here" className="w-full max-w-xs input input-bordered" />
-                    </div>
-                    <div className="w-full max-w-xs form-control">
-                        <label className="label">
-                            <span className="label-text">Semester</span>
-                        </label>
-                        <input
-                            name="semester"
-                            value={formData.semester}
-                            onChange={handleInputChange}
-                            type="text" placeholder="Type here" className="w-full max-w-xs input input-bordered" />
-                    </div>
-                    <div className="w-full max-w-xs form-control">
-                        <label className="label">
-                            <span className="label-text">Date</span>
-                        </label>
-                        <input
-                            name="date"
-                            value={formData.date}
-                            onChange={handleInputChange}
-                            type="text" placeholder="Type here" className="w-full max-w-xs input input-bordered" />
-                    </div>
-                    <div className="w-full max-w-xs form-control">
-                        <label className="label">
-                            <span className="label-text">Email:</span>
-                        </label>
-                        <input
-                            name="email"
-                            value={formData.email}
-                            onChange={handleInputChange}
-                            type="text" placeholder="Type here" className="w-full max-w-xs input input-bordered" />
-                    </div>
-                    {
-                        type == 'multimedia_mcq' &&
-                        <div className="w-full max-w-xs form-control">
-                            <label className="label">
-                                <span className="label-text">Video URL:</span>
-                            </label>
-                            <input
-                                name="video"
-                                value={formData.video}
-                                onChange={handleInputChange}
-                                type="text" placeholder="Type here" className="w-full max-w-xs input input-bordered" />
-                        </div>
-                    }
-                </div>
+  console.log(type)
 
-            </div>
+  useEffect(() => {
+    if (e_id !== null) {
+      fetch(`http://localhost:5000/notice?selectedID=${e_id}`)
+        .then(res => res.json())
+        .then(data => setData(data))
+    }
+  }, [e_id])
 
-            {
-                type && (
-                    <div className='mt-5'>
-                        {questions?.map((question, index) => (
-                            <div key={index} className='mb-3'>
-                                <label className='label'>
-                                    <span className='text-xl label-text'>Question {index + 1}</span>
-                                </label>
-                                <input
-                                    type='text'
-                                    value={question.question}
-                                    onChange={(e) =>
-                                        handleQuestionChange(index, 'question', e.target.value)
-                                    }
-                                    className='w-full input input-bordered'
-                                    placeholder='Type the question'
-                                />
-                                <div className='flex flex-col items-center justify-center gap-2'>
-                                    <div className='grid grid-cols-2 mt-4 gap-x-10'>
-                                        {(type === 'mcq' || type === 'multimedia_mcq') &&
+  console.log(data, '----------------------------------------------------yay')
 
-                                            question?.options?.map((option, optionIndex) => (
+  // Function to generate random numbers
+  const generateRandomNumbers = () => {
+    const characters =
+      'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
+    let randomString = ''
 
-                                                <input
-                                                    key={optionIndex}
-                                                    type='text'
-                                                    value={option}
-                                                    onChange={(e) =>
-                                                        handleQuestionChange(
-                                                            index,
-                                                            'options',
-                                                            question.options.map((opt, i) => i === optionIndex ? e.target.value : opt)
-                                                        )
-                                                    }
-                                                    className='mt-2 input input-bordered'
-                                                    placeholder={`Option ${optionIndex + 1}`}
-                                                />
+    for (let i = 0; i < 10; i++) {
+      const randomIndex = Math.floor(Math.random() * characters.length)
+      randomString += characters.charAt(randomIndex)
+    }
 
-                                            ))}
-                                    </div>
-                                </div>
-                                {
-                                    (type === 'mcq' || type === 'multimedia_mcq') && <>
-                                        <label className='label'>
-                                            <span className='text-xl label-text'>Correct Answer:</span>
-                                        </label>
-                                        <input
-                                            type='text'
-                                            value={question.correctAnswer}
-                                            onChange={(e) =>
-                                                handleQuestionChange(
-                                                    index,
-                                                    'correctAnswer',
-                                                    e.target.value
-                                                )
-                                            }
-                                            className='w-1/2 mt-2 input input-sm input-bordered'
-                                            placeholder='Correct Answer'
-                                        />
-                                    </>
-                                }
-                                {type === 'FillInTheBlank' && (
-                                    <input
-                                        type='text'
-                                        value={question.correctAnswer}
-                                        onChange={(e) =>
-                                            handleQuestionChange(
-                                                index,
-                                                'correctAnswer',
-                                                e.target.value
-                                            )
-                                        }
-                                        className='w-full mt-2 input input-bordered'
-                                        placeholder='Correct Answer'
-                                    />
-                                )}
-                            </div>
-                        ))}
+    setRandomNumbers(randomString)
+  }
 
-                    </div>
-                )
-            }
+  return (
+    <div className='mx-2 my-5 md:container md:mx-auto'>
+      <div className='flex flex-col items-center'>
+        <h1 className='text-3xl'>Question Paper</h1>
+        <p className='font-semibold'>
+          {type == 'mcq' && '( MCQ )'}
+          {type == 'FillInTheBlank' && '( Fill in the Blank )'}
+        </p>
+      </div>
 
-            <div className='flex flex-col items-center justify-center gap-3'>
-                <button
-                    onClick={handleQuestionAdd}
-                    className='mt-2 btn btn-sm btn-primary'
-                >
-                    Add Question
-                </button>
-                <button onClick={handleSubmit} className='btn btn-sm btn-warning' type='submit'>
-                    Save Questions Paper
-                </button>
-                <button onClick={handleGenerateLink} className='btn btn-sm btn-warning' type='submit'>
-                    Create Live Class Link
-                </button>
-            </div>
-
-
-
-
-
-
+      <div className='grid grid-cols-2'>
+        <div className='mb-5'>
+          <label className='label'>
+            <span className='label-text'>Exam Type</span>
+          </label>
+          <select
+            onChange={e => {
+              //setQuestions([]) Redux
+              dispatch(examType(''))
+              dispatch(examType(e.target.value))
+            }}
+            className='w-full max-w-xs select select-bordered select-sm'
+          >
+            <option disabled selected>
+              Choose Type
+            </option>
+            <option value='mcq'>MCQ</option>
+            <option value='multimedia_mcq'>Multimedia MCQ</option>
+            <option value='FillInTheBlank'>Fill in the Blank</option>
+          </select>
         </div>
-    );
-};
 
+        <div className='mb-5 ms-auto'>
+          <label className='label'>
+            <span className='label-text'>Choose Exam</span>
+          </label>
+          <select
+            onChange={e => {
+              //setQuestions([]) Redux
+              dispatch(setExamData(null))
+              dispatch(setExamData(e.target.value))
+            }}
+            className='w-full max-w-xs select select-bordered select-sm'
+          >
+            <option disabled selected>
+              Choose Type
+            </option>
 
-export default CreateLiveExam;
+            {notices?.map(notice => {
+              console.log(notice)
+              return (
+                <option
+                  className='text-white'
+                  key={notice._id}
+                  value={notice._id}
+                >
+                  {notice?.subjectName} ({notice?.date})
+                </option>
+              )
+            })}
+          </select>
+        </div>
+      </div>
+
+      <div className='flex justify-center mb-5'>
+        <div className='grid grid-cols-1 gap-x-4 md:grid-cols-3 '>
+          <div className='w-full max-w-xs form-control'>
+            <label className='label'>
+              <span className='label-text'>Subject Name</span>
+            </label>
+            <h1 className='flex items-center w-full input input-bordered '>
+              {data?.subjectName}
+            </h1>
+          </div>
+          <div className='w-full max-w-xs form-control'>
+            <label className='label'>
+              <span className='label-text'>Exam Code</span>
+            </label>
+
+            <h1 className='flex items-center w-full input input-bordered '>
+              {data?.exam_code}
+            </h1>
+          </div>
+          <div className='w-full max-w-xs form-control'>
+            <label className='label'>
+              <span className='label-text'>Subject Code</span>
+            </label>
+
+            <h1 className='flex items-center w-full input input-bordered '>
+              {data?.subject_code}
+            </h1>
+          </div>
+          <div className='w-full max-w-xs form-control'>
+            <label className='label'>
+              <span className='label-text'>Batch</span>
+            </label>
+
+            <h1 className='flex items-center w-full input input-bordered '>
+              {data?.batch}
+            </h1>
+          </div>
+          <div className='w-full max-w-xs form-control'>
+            <label className='label'>
+              <span className='label-text'>Date</span>
+            </label>
+
+            <h1 className='flex items-center w-full input input-bordered '>
+              {data?.date}
+            </h1>
+          </div>
+          <div className='w-full max-w-xs form-control'>
+            <label className='label'>
+              <span className='label-text'>Email:</span>
+            </label>
+
+            <h1 className='flex items-center w-full input input-bordered '>
+              {data?.email == user?.email && data?.email}
+            </h1>
+          </div>
+          <div className='w-full max-w-xs form-control'>
+            <label className='label'>
+              <span className='label-text'>Secrete Key:</span>
+            </label>
+
+            <div className='relative'>
+              <h1 className='flex items-center w-full input input-bordered pe-20'>
+                {randomNumbers}
+              </h1>
+              <button
+                onClick={generateRandomNumbers}
+                className='absolute top-0 bottom-0  right-2'
+              >
+                <FaKey></FaKey>
+              </button>
+            </div>
+          </div>
+
+          {type == 'multimedia_mcq' && (
+            <div className='w-full max-w-xs form-control'>
+              <label className='label'>
+                <span className='label-text'>Video URL:</span>
+              </label>
+              <input
+                name='video'
+                value={formData.video}
+                onChange={handleInputChange}
+                type='text'
+                placeholder='Type here'
+                className='w-full max-w-xs input input-bordered'
+              />
+            </div>
+          )}
+        </div>
+      </div>
+
+      {type && (
+        <div className='mt-5'>
+          {questions?.map((question, index) => (
+            <div key={index} className='mb-3'>
+              <label className='label'>
+                <span className='text-xl label-text'>Question {index + 1}</span>
+              </label>
+              <input
+                type='text'
+                value={question.question}
+                onChange={e =>
+                  handleQuestionChange(index, 'question', e.target.value)
+                }
+                className='w-full input input-bordered'
+                placeholder='Type the question'
+              />
+              <div className='flex flex-col items-center justify-center gap-2'>
+                <div className='grid grid-cols-2 mt-4 gap-x-10'>
+                  {(type === 'mcq' || type === 'multimedia_mcq') &&
+                    question?.options?.map((option, optionIndex) => (
+                      <input
+                        key={optionIndex}
+                        type='text'
+                        value={option}
+                        onChange={e =>
+                          handleQuestionChange(
+                            index,
+                            'options',
+                            question.options.map((opt, i) =>
+                              i === optionIndex ? e.target.value : opt
+                            )
+                          )
+                        }
+                        className='mt-2 input input-bordered'
+                        placeholder={`Option ${optionIndex + 1}`}
+                      />
+                    ))}
+                </div>
+              </div>
+              {(type === 'mcq' || type === 'multimedia_mcq') && (
+                <>
+                  <label className='label'>
+                    <span className='text-xl label-text'>Correct Answer:</span>
+                  </label>
+                  <input
+                    type='text'
+                    value={question.correctAnswer}
+                    onChange={e =>
+                      handleQuestionChange(
+                        index,
+                        'correctAnswer',
+                        e.target.value
+                      )
+                    }
+                    className='w-1/2 mt-2 input input-sm input-bordered'
+                    placeholder='Correct Answer'
+                  />
+                </>
+              )}
+              {type === 'FillInTheBlank' && (
+                <input
+                  type='text'
+                  value={question.correctAnswer}
+                  onChange={e =>
+                    handleQuestionChange(index, 'correctAnswer', e.target.value)
+                  }
+                  className='w-full mt-2 input input-bordered'
+                  placeholder='Correct Answer'
+                />
+              )}
+            </div>
+          ))}
+        </div>
+      )}
+
+      <div className='flex flex-col items-center justify-center gap-3'>
+        <button
+          disabled={type == null ? true : false}
+          onClick={handleQuestionAdd}
+          className='mt-2 btn btn-sm btn-primary'
+        >
+          {type !== null ? 'Add Question' : 'Select Exam Type'}
+        </button>
+        <button
+          disabled={questions.length < 3}
+          onClick={handleSubmit}
+          className='btn btn-sm btn-warning'
+          type='submit'
+        >
+          Save Questions Paper
+        </button>
+      </div>
+    </div>
+  )
+}
+
+export default CreateLiveExam
