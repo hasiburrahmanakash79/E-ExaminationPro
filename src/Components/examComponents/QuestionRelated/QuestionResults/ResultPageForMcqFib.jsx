@@ -167,7 +167,10 @@ const ResultPageForMcqFib = () => {
               value={qLength}
               text={`${qLength}%`}
               styles={buildStyles({
-                strokeLinecap: 'butt'
+                strokeLinecap: 'butt',
+                textColor: '#fff',
+                pathColor: "#8884D8",
+                trailColor: "#fff"
               })}
             />
           </div>
@@ -180,7 +183,9 @@ const ResultPageForMcqFib = () => {
               value={qLength}
               strokeWidth={50}
               styles={buildStyles({
-                strokeLinecap: 'butt'
+                strokeLinecap: 'butt',
+                pathColor: "#8884D8",
+                trailColor: "#fff"
               })}
             />
           </div>
