@@ -70,29 +70,29 @@ const [value,setValue]= useState(null);
       </button>
       {isOpen && (
         <div
-          className="absolute top-full left-0 mt-2 w-48 bg-primary border text-white border-gray-300 shadow-lg rounded-lg"
+          className="absolute top-full primary-bg text-white rounded-lg"
           onClick={hideDropdown}
         >
-          <ul className="">
-            <li>
+          <div className="space-y-3 p-5">
+            <button className="hover:bg-purple-100/10 px-2 py-1 rounded">
               <Link
                  to="/allSubjects"
-                className="block px-4 py-2  hover:bg-blue-100"
+                
                 onClick={hideDropdown}
               >
                 All Subject
               </Link>
-            </li>
-            <li>
+            </button>
+            <button  className="hover:bg-purple-100/10 px-2 py-1 rounded">
               <Link
              to="/written"
-                className="block px-4 py-2 hover:bg-blue-100"
+                className=""
                 onClick={hideDropdown}
               >
               Written Exam
               </Link>
-            </li>
-          </ul>
+            </button>
+          </div>
         </div>
       )}
     </div>

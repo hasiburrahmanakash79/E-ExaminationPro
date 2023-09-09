@@ -14,7 +14,7 @@ const FreeCoursePage = () => {
   const [data, setData] = useState([])
   const navigate = useNavigate()
   useEffect(() => {
-    fetch('http://localhost:5000/allSubjects', {
+    fetch('https://e-exam-pro-server.vercel.app/allSubjects', {
       headers: {
         authorization: `bearar ${localStorage.getItem('access-token')}`
       }

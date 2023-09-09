@@ -8,7 +8,7 @@ const Instructors = () => {
   const [displayCount, setDisplayCount] = useState(6)
 
   useEffect(() => {
-    fetch('http://localhost:5000/instructors')
+    fetch('https://e-exam-pro-server.vercel.app/instructors')
       .then(res => res.json())
       .then(data => setInstructors(data))
   }, [])

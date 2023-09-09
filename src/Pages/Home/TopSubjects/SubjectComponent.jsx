@@ -23,7 +23,7 @@ const SubjectComponent = ({ subject }) => {
           Lorem ipsum dolor sit.
         </p>
         <div className='flex gap-5 mt-5 text-xl primary-btn p-2 rounded-md md:mt-10'>
-          <Link to='/'>
+          <Link to="/allSubjects">
             <button>View</button>
           </Link>
         </div>

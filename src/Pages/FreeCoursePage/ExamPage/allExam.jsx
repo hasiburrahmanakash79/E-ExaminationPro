@@ -22,7 +22,7 @@ const AllExam = () => {
 
     useEffect(() => {
         if (!loading) {
-            fetch(`http://localhost:5000/questionPaper?type=${type || 'mcq'}&subject=${subject}&instructor_email=${user?.email}`)
+            fetch(`https://e-exam-pro-server.vercel.app/questionPaper?type=${type || 'mcq'}&subject=${subject}&instructor_email=${user?.email}`)
                 .then(res => res.json())
                 .then(data => {
                     console.log(data, '----------line 25')
