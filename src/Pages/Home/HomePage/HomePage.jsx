@@ -8,6 +8,7 @@ import Testimonial from '../Testimonial/Testimonial'
 import TopSubjects from '../TopSubjects/TopSubjects'
 import Pricing from '../Pricing/Pricing'
 import { Helmet } from 'react-helmet-async'
+import MainContact from '../../Contact/MainContact'
 // import ShortcutKey from "../../../Components/ShortcutKey/ShortcutKey";
 const HomePage = () => {
   console.log(window.localStorage.getItem('showMainContent'))
@@ -74,6 +75,7 @@ const HomePage = () => {
           <DemoTestSection />
           <TopSubjects />
           <Achievement />
+          <MainContact />
           <Testimonial />
           <Pricing />
         </div>

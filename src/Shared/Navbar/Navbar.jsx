@@ -9,13 +9,14 @@ import useAdmin from "../../Hooks/useAdmin/useAdmin";
 import useInstructor from "../../Hooks/useInstructor/useInstructor";
 import { AuthContext } from "../../Provider/AuthProvider";
 import LiveExamModal from "../../Components/LiveExamModal/LiveExamModal";
+import { Hidden } from "@mui/material";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false)
   const { user, logOut } = useContext(AuthContext);
   const [isAdmin] = useAdmin();
   const [isInstructor] = useInstructor();
-
+const [value,setValue]= useState(null);
   const handleLogout = () => {
     logOut()
       .then(() => {
@@ -37,20 +38,64 @@ const Navbar = () => {
     </>
   );
 
+  
+    const toggleDropdown = () => {
+      setIsOpen(!isOpen);
+    };
+  
+    const hideDropdown = () => {
+      setIsOpen(false);
+      };
+
   const navbarLink_Middle = (
-    <>
-      <details className="z-[1]">
-        <summary>Exam</summary>
-        <ul className="z-50 p-2 rounded-lg navigation-bar md:rounded-none">
-          <li>
-            <Link to="/allSubjects">All Subject</Link>
-          </li>
-          <li>
-            <Link to="/shortQ">ShortQ</Link>
-          </li>
-        </ul>
-      </details>
-    </>
+    // <>
+    //   <details className="z-[1]">
+    //     <summary onClick={()=>setValue(null)}>Exam</summary>
+    //     <ul  className={`z-50 p-2 rounded-lg navigation-bar md:rounded-none ${value}`}>
+    //       <li onClick={()=>setValue('hidden')}>
+    //         <Link to="/allSubjects">All Subject</Link>
+    //       </li>
+    //       <li onClick={()=>setValue('hidden')}>
+    //         <Link to="/written">Written Exam</Link>
+    //       </li>
+    //     </ul>
+    //   </details>
+    // </>
+    <div className="relative">
+      <button
+        onClick={toggleDropdown}
+        className=""
+      >
+        Exam
+      </button>
+      {isOpen && (
+        <div
+          className="absolute top-full primary-bg text-white rounded-lg"
+          onClick={hideDropdown}
+        >
+          <div className="space-y-3 p-5">
+            <button className="hover:bg-purple-100/10 px-2 py-1 rounded">
+              <Link
+                 to="/allSubjects"
+                
+                onClick={hideDropdown}
+              >
+                All Subject
+              </Link>
+            </button>
+            <button  className="hover:bg-purple-100/10 px-2 py-1 rounded">
+              <Link
+             to="/written"
+                className=""
+                onClick={hideDropdown}
+              >
+              Written Exam
+              </Link>
+            </button>
+          </div>
+        </div>
+      )}
+    </div>
   );
 
   const navbarLink_Last = (
