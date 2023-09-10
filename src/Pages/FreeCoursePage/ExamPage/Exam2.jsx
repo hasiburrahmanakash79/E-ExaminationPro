@@ -26,19 +26,17 @@ import { useContext } from 'react'
 import { AuthContext } from '../../../Provider/AuthProvider'
 
 const Exam2 = () => {
-
-
   const [timerProgress, setTimerProgress] = useState(100) //progress bar state
   const totalDuration = 30 //define total duration
   const [timeRemaining, setTimeRemaining] = useState(30) // time remain state
-  const [takingTime,setTakingTime]=useState(0)
+  const [takingTime, setTakingTime] = useState(0)
 
   const { currentQuestion, answerIndx, result, inputValue, optionMcq, view } =
     useSelector(state => state.examPage)
   const dispatch = useDispatch()
   const ques = useLoaderData()
   const { user } = useContext(AuthContext)
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
   //console.log(ques)
   const questions = ques?.questions
@@ -49,11 +47,24 @@ const Exam2 = () => {
   const [timer, setTimer] = useState(null) // store time interval to clear the time interval.
   const [start, setStart] = useState(false) // it use to store user selected option from mcq
 
-  const examInfo = { examID: ques._id, subjectName: ques.subjectName, semester: ques.semester, ins_email: ques.email, stu_email: user?.email, date: ques.date, exam_code: ques.exam_code, subject: ques.subjectName, sub_code: ques.subject_code, examType: ques.type,timeConsume:takingTime,totalQuestion:questions.length,totalMark:questions.length*5}
+  const examInfo = {
+    examID: ques._id,
+    subjectName: ques.subjectName,
+    semester: ques.semester,
+    ins_email: ques.email,
+    stu_email: user?.email,
+    stu_name: user?.displayName,
+    date: ques.date,
+    exam_code: ques.exam_code,
+    subject: ques.subjectName,
+    sub_code: ques.subject_code,
+    examType: ques.type,
+    timeConsume: takingTime,
+    totalQuestion: questions.length,
+    totalMark: questions.length * 5
+  }
 
   console.log(result, 'send data2')
-
-  
 
   const sendData = () => {
     dispatch(sendResult(examInfo))
@@ -67,9 +78,8 @@ const Exam2 = () => {
     setTimeout(() => {
       sendData()
       dispatch(setView(false))
-      navigate(`/result?id=${ques?._id}`);
-    }, 3000);
-
+      navigate(`/result?id=${ques?._id}`)
+    }, 3000)
   }
 
   const handleInputChange = event => {
@@ -82,8 +92,6 @@ const Exam2 = () => {
     //console.log(question, option, correctAnswer)
     dispatch(setMcq(option)) // setMcq(option) // store user selected option
     //setResult(prevArray => [...prevArray, newObject])
-
-
   }
 
   if (inputValue == NaN) {
@@ -99,21 +107,18 @@ const Exam2 = () => {
     dispatch(setAnswerIndex(null))
 
     if (currentQuestion !== questions.length - 1) {
-     // console.log(currentQuestion, questions)
+      // console.log(currentQuestion, questions)
       dispatch(nextQues())
-    }
-    else {
+    } else {
       dispatch(setView(true)) //setView(true)
       dispatch(resetQues())
       //sendData(resultData)
-     // console.log('hit')
-     // console.log(result, 'ghghgjgjh')
+      // console.log('hit')
+      // console.log(result, 'ghghgjgjh')
       clearInterval(timer)
-        handleFinishExam()
+      handleFinishExam()
     }
   }
-
-
 
   ///// previous button action
   const onClickPrevious = () => {
@@ -148,20 +153,20 @@ const Exam2 = () => {
               {((examType == 'multimedia_mcq' && start == true) ||
                 examType == 'mcq' ||
                 examType == 'FillInTheBlank') && (
-                  <TimeRemain
+                <TimeRemain
                   timerProgress={timerProgress}
                   setTimerProgress={setTimerProgress}
                   totalDuration={totalDuration}
                   timeRemaining={timeRemaining}
                   setTimeRemaining={setTimeRemaining}
-                    examType={ques.type}
-                    start={start}
-                    handleFinishExam={handleFinishExam}
-                    setTimer={setTimer}
-                    takingTime={takingTime}
-                    setTakingTime={setTakingTime}
-                  ></TimeRemain>
-                )}
+                  examType={ques.type}
+                  start={start}
+                  handleFinishExam={handleFinishExam}
+                  setTimer={setTimer}
+                  takingTime={takingTime}
+                  setTakingTime={setTakingTime}
+                ></TimeRemain>
+              )}
               <div className=' min-h-[70vh] flex justify-center md:mt-0 mt-10 md:items-center'>
                 <div className='w-full mx-2 md:mx-20'>
                   <div className='flex justify-center my-10 mb-5'>
@@ -192,8 +197,8 @@ const Exam2 = () => {
                     </div>
                   </div>
                   {(examType == 'multimedia_mcq' && start == true) ||
-                    examType == 'mcq' ||
-                    examType == 'FillInTheBlank' ? (
+                  examType == 'mcq' ||
+                  examType == 'FillInTheBlank' ? (
                     <h1 className='text-3xl font-semibold my-7'>
                       {currentQuestion + 1}- {question}
                     </h1>

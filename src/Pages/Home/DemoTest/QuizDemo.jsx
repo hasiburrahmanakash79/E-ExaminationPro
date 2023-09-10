@@ -9,6 +9,7 @@ import {
 } from '../../../redux/features/demoExam/demoExamSlice'
 import { CheckIcon } from '@heroicons/react/20/solid'
 import { Link } from 'react-router-dom'
+import { Helmet } from 'react-helmet-async'
 
 const QuizDemo = () => {
   const dispatch = useDispatch()
@@ -29,7 +30,10 @@ const QuizDemo = () => {
     dispatch(submitTest())
   }
   return (
-    <div className='w-1/3 h-full mx-auto md:pt-12'>
+    <div className='w-2/4 h-full mx-auto md:pt-12'>
+      <Helmet>
+        <title>E-ExamPro | Exams </title>
+      </Helmet>
       <div className='space-y-2'>
         <h2 className='text-lg font-semibold text-orange-400'>
           Question {currentQuestionIndex + 1} :
@@ -44,15 +48,15 @@ const QuizDemo = () => {
               <RadioGroup.Option key={choice.id} value={choice.id}>
                 {({ active, checked }) => (
                   <div
-                    className={`${
+                    className={`bg-transparent ${
                       active
-                        ? 'ring-2 ring-sky-300 ring-opacity-60 ring-offset-2 ring-offset-sky-300'
+                        ? 'ring-2 ring-sky-400 ring-opacity-60 ring-offset-2 ring-offset-sky-300'
                         : 'my-4'
                     } ${
                       checked
-                        ? 'bg-sky-700 bg-opacity-75 text-white'
-                        : 'bg-white'
-                    } relative flex cursor-pointer rounded-lg px-5 py-4 shadow-md focus:outline-none`}
+                        ? 'bg-sky-700 bg-opacity-75 outline-none bg-white/20'
+                        : 'text-red-100'
+                    } relative outline  outline-purple-600  flex cursor-pointer rounded-lg px-5 py-4 shadow-md focus:outline`}
                   >
                     <div className='flex items-center justify-between w-full'>
                       <div className='flex items-center'>
@@ -60,7 +64,7 @@ const QuizDemo = () => {
                           <RadioGroup.Label
                             as='p'
                             className={`font-medium ${
-                              checked ? 'text-white' : 'text-gray-900'
+                              checked ? 'text-white' : 'text-slate-400'
                             }`}
                           >
                             {choice.text}
@@ -81,7 +85,7 @@ const QuizDemo = () => {
         </RadioGroup>
         <div className='flex justify-end w-11/12 py-4 mx-auto '>
           {currentQuestionIndex === questions.length - 1 ? (
-            <Link to='/result'>
+            <Link to='/result?result="demoQuiz"'>
               <button className=' btn_quiz primary-btn' onClick={handleSubmit}>
                 Submit
               </button>

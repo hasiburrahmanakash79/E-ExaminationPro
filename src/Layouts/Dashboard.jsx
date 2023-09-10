@@ -9,6 +9,7 @@ import {
   FaWallet,
   FaComment
 } from "react-icons/fa";
+import { GiWallet } from "react-icons/gi";
 import { AiFillNotification } from "react-icons/ai";
 import { RiLiveFill } from "react-icons/ri";
 import { FaClipboardQuestion } from "react-icons/fa6";
@@ -91,6 +92,12 @@ const Dashboard = () => {
       title: "Users",
       path: "/dashboard/manageUsers",
       icon: iconMappings.Users,
+      role: "admin",
+    },
+    {
+      title: "All Payments",
+      path: "/dashboard/allPayments",
+      icon: iconMappings.Payment,
       role: "admin",
     },
     {

@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { FaArrowCircleRight } from "react-icons/fa";
+import { Helmet } from "react-helmet-async";
 
 
 const StudentAnalytics = () => {
@@ -14,17 +15,17 @@ const StudentAnalytics = () => {
           {/* head */}
           <thead>
             <tr>
-              <th className="text-center text-xl">Subject</th>
-              <th className="text-center text-xl">Exam Given</th>
-              <th className="text-center text-xl">View Result</th>
+              <th className="text-xl text-center">Subject</th>
+              <th className="text-xl text-center">Exam Given</th>
+              <th className="text-xl text-center">View Result</th>
             </tr>
           </thead>
           <tbody>
             {/* row 1 */}
 
             <tr>
-              <td className="text-center text-lg font-medium">English</td>
-              <td className="text-center text-lg font-medium">14-09-2023</td>
+              <td className="text-lg font-medium text-center">English</td>
+              <td className="text-lg font-medium text-center">14-09-2023</td>
               <td className="text-center">
                 <Link
                   to="/result"
@@ -37,8 +38,8 @@ const StudentAnalytics = () => {
               </td>
             </tr>
             <tr>
-              <td className="text-center text-lg font-medium">Chemistry</td>
-              <td className="text-center text-lg font-medium">14-09-2023</td>
+              <td className="text-lg font-medium text-center">Chemistry</td>
+              <td className="text-lg font-medium text-center">14-09-2023</td>
               <td className="text-center">
                 <Link
                   to="/result"
@@ -51,8 +52,8 @@ const StudentAnalytics = () => {
               </td>
             </tr>
             <tr>
-              <td className="text-center text-lg font-medium">Physics</td>
-              <td className="text-center text-lg font-medium">14-09-2023</td>
+              <td className="text-lg font-medium text-center">Physics</td>
+              <td className="text-lg font-medium text-center">14-09-2023</td>
               <td className="text-center">
                 <Link
                   to="/result"
@@ -67,6 +68,10 @@ const StudentAnalytics = () => {
           </tbody>
         </table>
       </div>
+    <div>
+      <Helmet><title>E-ExamPro | Analytics </title></Helmet>
+      <h2 className="text-2xl">Student Analytics</h2>
+    </div>
     </>
   );
 };

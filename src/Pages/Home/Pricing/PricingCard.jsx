@@ -5,7 +5,7 @@ const PricingCard = ({ price }) => {
   console.log(price)
   return (
     <div
-      className={`hidden md:block px-4 w-72  pb-3 mx-auto space-y-4 text-center transition-all border rounded-lg shadow-2xl primary-bg border-slate-200 ${
+      className={`hidden md:block w-72  pb-3 mx-auto space-y-4 text-center transition-all border rounded-lg shadow-2xl primary-bg border-slate-200 ${
         price.name === 'Premium'
           ? 'scale-110 hover:scale-110 '
           : 'hover:scale-105'

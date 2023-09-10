@@ -1,11 +1,9 @@
 import ContentLoader from "react-content-loader";
 import { Link } from "react-router-dom";
-import Container from "../Container";
 
 const LoadingAdmin = () => {
     return (
         <div className='bg-gradient-to-tr from-[#0B0728] to-[#491A66] '>
-            <Container>
                 <ContentLoader
                     height={640}
                     width={1260}
@@ -35,7 +33,6 @@ const LoadingAdmin = () => {
                 </ContentLoader>
 
                 <Link to="/lflgkfpdo" className="py-2 mb-3 ml-24 text-black bg-orange-500 px-7 rounded-2xl">Error</Link>
-            </Container>
         </div>
     );
 };

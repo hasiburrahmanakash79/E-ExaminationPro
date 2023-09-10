@@ -78,11 +78,13 @@ const CheckOutForm = ({ price, packages }) => {
         price,
         Status: "Paid",
         date: new Date(),
-        packageName: packages?.subject,
-        paymentId: packages?._id
+        packageName: packages[0]?.name,
+        features: packages[0]?.features,
+        paymentId: packages[0]?.id
       };
       axiosSecure.post("/payments", payment).then((res) => {
         console.log(res?.data);
+        console.log("sendData", payment);
         if (res?.data?.insertResult?.insertedId) {
           Swal.fire({
             showConfirmButton: false,
