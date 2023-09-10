@@ -25,7 +25,7 @@ const AllUserPayment = () => {
               <th>Transaction ID</th>
               <th>Package Name</th>
               <th>Date</th>
-              <th>Atatus</th>
+              <th>Status</th>
             </tr>
           </thead>
           <tbody>
@@ -38,7 +38,7 @@ const AllUserPayment = () => {
                 <td>{history.transactionId}</td>
                 <td>{history.packageName}</td>
                 <td>{history.date}</td>
-                <td>{history.Status}</td>
+                <td className='bg-red-500 p-2 rounded'>{history.Status}</td>
               </tr>
             ))}
           </tbody>

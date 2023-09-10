@@ -77,7 +77,6 @@ function CommentSection() {
 
   return (
     <div >
-
       <div className='mx-auto text-start'>
         <input
           className="input w-full max-w-xs bg-transparent border-white"
@@ -97,8 +96,6 @@ function CommentSection() {
             >{c.comment}</li>
           ))}
         </ul>
-
-
       </div>
     </div>
   );

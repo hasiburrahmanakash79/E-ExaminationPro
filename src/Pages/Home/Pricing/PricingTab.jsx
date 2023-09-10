@@ -13,7 +13,7 @@ const PricingTab = ({pricePackage}) => {
   const [selectedTab, setSelectedTab] = useState(0)
   const defaultTab = pricePackage.findIndex(price => price.name === 'Premium')
   return (
-    <div className='px-2 min-w-[85vw] md:hidden'>
+    <div className=' min-w-[85vw] md:hidden'>
       <Tab.Group defaultIndex={defaultTab}>
         <Tab.List className='flex p-1 space-x-1 min-w-9/12 max-w-96 rounded-xl bg-blue-900/20'>
           {pricePackage.map(price => (

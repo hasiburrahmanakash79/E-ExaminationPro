@@ -1,8 +1,7 @@
-import * as React from "react";
 
 export default function Faq() {
   return (
-    <div className="container mx-auto md:pb-16 pb-8 overflow-x-hidden">
+    <div className="md:py-16 py-8 overflow-x-hidden">
       <h1
         data-aos="zoom-in-down"
         data-aos-duration="500"
