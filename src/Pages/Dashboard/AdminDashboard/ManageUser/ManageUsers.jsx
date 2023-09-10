@@ -1,4 +1,5 @@
 import { useQuery } from '@tanstack/react-query'
+import { FaTrashAlt } from 'react-icons/fa'
 import Swal from 'sweetalert2'
 
 const ManageUsers = () => {
@@ -44,6 +45,36 @@ const ManageUsers = () => {
       })
   }
 
+  const handleDeleteUser = (user) =>{
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to remove this user!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    })
+    .then((result) => {
+      if(result.isConfirmed){
+        fetch(`http://localhost:5000/users/${user._id}`, {
+          method: "DELETE",
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            refetch();
+            if (data.deletedCount > 0) {
+              Swal.fire(
+                "Deleted!",
+                "User has been deleted.",
+                "success"
+              );
+            }
+          });
+      }
+    })
+  }
+
   return (
     <div>
       <h2 className='text-2xl'>Manage Users: {users.length}</h2>
@@ -58,6 +89,7 @@ const ManageUsers = () => {
               <th>Role</th>
               <th>Make Instructor</th>
               <th>Make Admin</th>
+              <th>Delete user</th>
             </tr>
           </thead>
           <tbody>
@@ -93,6 +125,14 @@ const ManageUsers = () => {
                       Admin
                     </button>
                   )}
+                </td>
+                <td>
+                    <button
+                      onClick={() => handleDeleteUser(user)}
+                      className='btn bg-red-600 btn-ghost btn-sm'
+                    >
+                      <FaTrashAlt/>
+                    </button>
                 </td>
               </tr>
             ))}
