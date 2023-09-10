@@ -16,25 +16,24 @@ const TextEditor = ({ question }) => {
     <form
       onSubmit={handleSubmit(onSubmit)}
       key={question.id}
-      className='primary-bg px-3 md:px-7 shadow-xl mx-auto my-6 min-h-[40vh]  rounded-md'
+      className='primary-bg p-3  md:px-7 shadow-xl mx-auto my-6 min-h-[40vh]  rounded-md'
     >
-      <div className='p-4 text-2xl text-center text-white '>
-        Question: {question?.question}
-        Question: {question?.id}
-      </div>
+      <p className='text-xl text-center md:mb-2 text-slate-100 '>
+        Question {question?.id} - {question?.question}
+      </p>
 
       <textarea
         {...register('answer')}
         id='answer'
-        className='w-full min-h-[30vh] text-black bg-white rounded-md'
+        className='w-full min-h-[25vh] outline-none text-slate-100 p-3 bg-transparent border rounded-lg'
       />
 
       <div className='mt-2'>
         <button
           type='submit'
-          className='px-6 py-2 text-lg font-medium tracking-wide text-white bg-orange-600 rounded-md'
+          className='px-6 py-2 text-white rounded-md primary-btn'
         >
-          Ans Submit
+          Next
         </button>
       </div>
     </form>

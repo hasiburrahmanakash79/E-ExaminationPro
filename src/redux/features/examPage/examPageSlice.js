@@ -74,7 +74,7 @@ export const examPageSlice = createSlice({
 
             const resutData=state.result
            const results =  {...payload, resutData,mark:data}
-           fetch('http://localhost:5000/examdata', {
+           fetch('https://e-exam-pro-server.vercel.app/examdata', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json'

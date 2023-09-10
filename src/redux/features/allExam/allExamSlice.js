@@ -5,7 +5,7 @@ export const allExamSlice=createSlice({
     name:'allExam',
     initialState:{
         exams:[],
-        type:''
+        type:'mcq'
     },
     reducers:{
         examType:(state,{payload})=>{

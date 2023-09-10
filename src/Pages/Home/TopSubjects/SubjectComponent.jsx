@@ -1,9 +1,12 @@
-import {Link } from "react-router-dom"
+import { Link } from "react-router-dom"
 
 const SubjectComponent = ({ subject }) => {
   console.log(subject?.subject)
   return (
-    <div className='relative items-center justify-center overflow-hidden transition-shadow cursor-pointer group hover:shadow-xl hover:shadow-black/30 rounded-xl'>
+    <div
+      data-aos="zoom-in-up"
+      data-aos-duration="1200"
+      className='relative items-center justify-center overflow-hidden transition-shadow cursor-pointer group hover:shadow-xl hover:shadow-black/30 rounded-xl'>
       <div className=''>
         <img
           className='object-cover w-full h-full transition-transform duration-500 group-hover:rotate-3 group-hover:scale-125'
@@ -20,7 +23,7 @@ const SubjectComponent = ({ subject }) => {
           Lorem ipsum dolor sit.
         </p>
         <div className='flex gap-5 mt-5 text-xl primary-btn p-2 rounded-md md:mt-10'>
-          <Link to='/'>
+          <Link to="/allSubjects">
             <button>View</button>
           </Link>
         </div>

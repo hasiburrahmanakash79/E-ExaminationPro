@@ -11,6 +11,7 @@ import {
 import { useEffect } from 'react'
 import { useContext } from 'react'
 import { AuthContext } from '../../../../Provider/AuthProvider'
+import { Helmet } from 'react-helmet-async'
 
 const CreateQuesPaper = () => {
   const { user } = useContext(AuthContext)
@@ -51,7 +52,7 @@ const CreateQuesPaper = () => {
     const selectedValue = event.target.value;
     const selectedSubjectData = allSubject.find(subject => subject.subject_name === selectedValue);
     console.log(selectedSubjectData?.subject_code)
-    const code=selectedSubjectData?.subject_code
+    const code = selectedSubjectData?.subject_code
     dispatch(setSubjectCode(code))
     dispatch(subjectInfo(event))
   };
@@ -93,6 +94,7 @@ const CreateQuesPaper = () => {
   console.log(type)
   return (
     <div className='my-5 mx-2 md:container md:mx-auto'>
+      <Helmet><title>E-ExamPro | Create Question</title></Helmet>
       <div className='flex flex-col items-center'>
         <h1 className='text-3xl'>Question Paper</h1>
         <p className='font-semibold'>
@@ -313,11 +315,11 @@ const CreateQuesPaper = () => {
 
       <div className='flex flex-col gap-3 items-center justify-center'>
         <button
-        disabled={type==null?true:false}
+          disabled={type == null ? true : false}
           onClick={handleQuestionAdd}
           className='btn btn-sm btn-primary mt-2'
         >
-         { type!==null ?'Add Question':'Select Exam Type'}
+          {type !== null ? 'Add Question' : 'Select Exam Type'}
         </button>
         <button
           onClick={handleSubmit}

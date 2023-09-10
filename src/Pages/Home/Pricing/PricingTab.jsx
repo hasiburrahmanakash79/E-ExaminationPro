@@ -3,15 +3,17 @@ import { Tab } from '@headlessui/react'
 import { FaCircleCheck } from 'react-icons/fa6'
 import { MdCancel } from 'react-icons/md'
 import { Link } from 'react-router-dom'
+// import usePrice from '../../../Hooks/usePrice/usePrice'
 
 function classNames (...classes) {
   return classes.filter(Boolean).join(' ')
 }
-const PricingTab = ({ pricePackage }) => {
+const PricingTab = ({pricePackage}) => {
+  // const [pricePackage] = usePrice()
   const [selectedTab, setSelectedTab] = useState(0)
   const defaultTab = pricePackage.findIndex(price => price.name === 'Premium')
   return (
-    <div className='px-2 min-w-[85vw] md:hidden'>
+    <div className=' min-w-[85vw] md:hidden'>
       <Tab.Group defaultIndex={defaultTab}>
         <Tab.List className='flex p-1 space-x-1 min-w-9/12 max-w-96 rounded-xl bg-blue-900/20'>
           {pricePackage.map(price => (
