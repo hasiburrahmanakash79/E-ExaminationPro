@@ -22,7 +22,7 @@ const SocialLogin = () => {
           email: signInUser.email,
           photoURL: signInUser.photoURL,
         };
-        fetch("https://e-exam-pro-server.vercel.app/users", {
+        fetch("http://localhost:4000/users", {
           method: "POST",
           headers: {
             "content-type": "application/json",

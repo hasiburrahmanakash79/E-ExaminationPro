@@ -33,8 +33,8 @@ const ResultPageForMcqFib = () => {
   const [questions, setQuestions] = useState([])
   const [results, setResults] = useState([])
   useEffect(() => {
-    fetch("https://e-exam-pro-server.vercel.app/result?id=64e8b9586f2385caa12fd4c5")
-      // fetch(`https://e-exam-pro-server.vercel.app/result?id=${id}`)
+    fetch("http://localhost:4000/result?id=64e8b9586f2385caa12fd4c5")
+      // fetch(`http://localhost:4000/result?id=${id}`)
       .then(res => res.json())
       .then(data => setQuestions(data))
   }, [])

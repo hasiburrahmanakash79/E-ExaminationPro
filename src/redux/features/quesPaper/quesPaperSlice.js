@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { useEffect } from "react";
 
 export const quesPaperSlice = createSlice({
     name: 'quesPaper',
@@ -6,14 +7,16 @@ export const quesPaperSlice = createSlice({
         allSubject:[],
         type: null,
         formData: {
-            subjectName: '',
-            exam_code: '',
-            subject_code:'',
-            semester: '',
-            date: '',
-            email: '',
+            subjectName: null,
+            exam_code: null,
+            subject_code:null,
+            batch: null,
+            date: null,
+            email: null,
+            videoURL:null,
         },
         questions: [],
+        codeReapet:null,
     },
     reducers: {
         setSubject:(state,{payload})=>{
@@ -33,12 +36,25 @@ export const quesPaperSlice = createSlice({
         }
         ,
         subjectInfo: (state, { payload }) => {
+           
             const { name, value } = payload.target
+            console.log(name,value,'sssssssssssss')
+
+
+    if(name==='exam_code'){
+        console.log(name,'------------------------------------------44')
+        state.codeReapet=value
+
+    }
+       
+
             state.formData = {
                 ...state.formData
                 , [name]: value
             }
         },
+   
+
         quesPaper: (state, { payload }) => {
           if(payload?.add=='add'){
             const newQues={

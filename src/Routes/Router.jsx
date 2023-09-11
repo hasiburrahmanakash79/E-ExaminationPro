@@ -114,7 +114,7 @@ const router = createBrowserRouter([
         path: '/exam/:id',
         element: <Exam2 />,
         loader: ({ params }) =>
-          fetch(`https://e-exam-pro-server.vercel.app/questionPaper/${params.id}`)
+          fetch(`http://localhost:4000/questionPaper/${params.id}`)
       },
       {
         path: '/written',

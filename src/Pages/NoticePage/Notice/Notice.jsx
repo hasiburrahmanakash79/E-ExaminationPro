@@ -46,6 +46,10 @@ export default function Notice () {
                   </span>
                 </p>
                 <p>
+                  Batch: <span className='text-purple-300 uppercase'>{notice?.batch}
+                  </span>
+                </p>
+                <p>
                   Group:
                   <span className='text-purple-300'> {notice?.group}</span>
                 </p>

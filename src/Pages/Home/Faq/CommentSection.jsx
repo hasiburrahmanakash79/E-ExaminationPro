@@ -27,7 +27,7 @@ function CommentSection() {
           time: currentTime,
         };
 
-        const response = await fetch('https://e-exam-pro-server.vercel.app/comments', {
+        const response = await fetch('http://localhost:4000/comments', {
           method: 'POST',
           headers: {
             'content-type': 'application/json',
@@ -53,7 +53,7 @@ function CommentSection() {
   // useEffect(() => {
   //   const fetchComments = async () => {
   //     try {
-  //       const response = await fetch('https://e-exam-pro-server.vercel.app/comments');
+  //       const response = await fetch('http://localhost:4000/comments');
 
   //       if (response.ok) {
   //         const data = await response.json();

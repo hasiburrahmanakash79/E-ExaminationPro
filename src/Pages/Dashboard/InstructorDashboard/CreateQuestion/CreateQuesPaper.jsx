@@ -12,15 +12,17 @@ import { useEffect } from 'react'
 import { useContext } from 'react'
 import { AuthContext } from '../../../../Provider/AuthProvider'
 import { Helmet } from 'react-helmet-async'
+import { LocalToastTarget, useLocalToast } from 'react-local-toast'
 
 const CreateQuesPaper = () => {
+  const {showToast, removeToast} = useLocalToast()
   const { user } = useContext(AuthContext)
   const dispatch = useDispatch()
-  const { type, formData, questions, allSubject } = useSelector(
+  const { type, formData, questions, allSubject,codeReapet } = useSelector(
     state => state.questionPaper
   )
   useEffect(() => {
-    fetch('https://e-exam-pro-server.vercel.app/allSubjects', {
+    fetch('http://localhost:4000/allSubjects', {
       headers: {
         authorization: `bearar ${localStorage.getItem('access-token')}`
       }
@@ -40,7 +42,16 @@ const CreateQuesPaper = () => {
   /////redux////
 
   ////////
-  console.log(allSubject)
+  console.log(codeReapet,'----------------------43')
+  const [isCodeReapet,setIsCodeReapet]=useState(null)
+  useEffect(()=>{
+
+        fetch(`http://localhost:4000/questionCode?code=${codeReapet}`)
+        .then(res=>res.json())
+        .then(data=>setIsCodeReapet(data.result))
+
+  },[codeReapet])
+  console.log(isCodeReapet,'------------------------------------------------------------52')
   // store basic info
   const handleInputChange = event => {
     event.preventDefault()
@@ -68,10 +79,20 @@ const CreateQuesPaper = () => {
   const handleQuestionChange = (index, field, value) => {
     dispatch(quesPaper({ index, field, value })) //redux
   }
+ 
+
+
+
+  const [errorQues,setErrorQues]=useState(false)
+  const [errorOption,setErrorOption]=useState(false)
+  const [errorCorrect,setErrorCorrect]=useState(false)
 
   //submit
   const handleSubmit = event => {
     event.preventDefault()
+    setErrorQues(false)
+    setErrorOption(false)
+    setErrorCorrect(false)
     const paperData = {
       ...formData,
       type,
@@ -80,15 +101,61 @@ const CreateQuesPaper = () => {
 
     console.log('Question Paper Data:', paperData)
 
-    // fetch('https://e-exam-pro-server.vercel.app/questionPaper', {
-    //   method: 'POST',
-    //   headers: {
-    //     'Content-Type': 'application/json'
-    //   },
-    //   body: JSON.stringify(paperData)
+    if((paperData.subjectName==null) ||( paperData.exam_code==null) ||  (paperData.batch==null) || (paperData.date==null) || (type=='multimedia_mcq' && paperData.videoURL==null)){
+      return  showToast('btn',"All Input Field Should Be Filled Up",{type:'error'})
+    }
+    
+    //   paperData.questions.map(ques=>{
+
+    //   if(ques.question==''){
+    //     setErrorQues(true)
+    //     return  
+      
+    //   }
+    // ques.options.map(option=>{
+
+    //   if(option==''){
+    //     setErrorOption(true)
+    //     return  
+    //   }
     // })
-    //   .then(res => res.json())
-    //   .then(data => console.log(data))
+    // if(ques.correctAnswer==''){
+    //   setErrorCorrect(true)
+    //   return 
+    // }
+
+    // })
+
+    // if(errorQues==true){
+    //   return showToast('btn',"You Have To Added Question In Question Field",{type:'error'})
+    // }
+    // if(errorOption==true){
+    //   return showToast('btn',"You Have To Added Option In Option Field",{type:'error'})
+    // }
+    // if(errorCorrect==true){
+    //   return  showToast('btn',"You Have To Added Correct Question In Correct Question Field",{type:'error'})
+    // }
+
+    if(paperData.questions.length<5){
+      return  showToast('btn',"You Have To Added Atlest Five Question",{type:'error'})
+    }
+
+    fetch('http://localhost:4000/questionPaper', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(paperData)
+    })
+      .then(res => res.json())
+      .then(data => {console.log(data)
+      if(data.insertedId){
+        showToast('btn',"Question Created Successfully",{type:'success'})
+      }
+      else{
+        showToast('btn',"Exam Code Duplicated",{type:'error'})
+      }
+      })
   }
 
   console.log(type)
@@ -144,7 +211,7 @@ const CreateQuesPaper = () => {
               onChange={handleSubjectChange}
               className='select select-bordered w-full max-w-xs'
             >
-              <option disabled value=''>
+              <option  value={null}>
                 Select Subject
               </option>
               {allSubject?.map(subject => (
@@ -159,6 +226,7 @@ const CreateQuesPaper = () => {
               <span className='label-text'>Exam Code</span>
             </label>
             <input
+             required
               name='exam_code'
               value={formData.exam_code}
               onChange={handleInputChange}
@@ -166,6 +234,7 @@ const CreateQuesPaper = () => {
               placeholder='Type here'
               className='input input-bordered w-full max-w-xs'
             />
+            {isCodeReapet==true && <h1 className='text-red-500 mt-2'>Try Another Code</h1>}
           </div>
           <div className='form-control w-full max-w-xs'>
             <label className='label'>
@@ -182,11 +251,12 @@ const CreateQuesPaper = () => {
           </div>
           <div className='form-control w-full max-w-xs'>
             <label className='label'>
-              <span className='label-text'>Semester</span>
+              <span className='label-text'>Batch</span>
             </label>
             <input
-              name='semester'
-              value={formData.semester}
+            required
+              name='batch'
+              value={formData.batch}
               onChange={handleInputChange}
               type='text'
               placeholder='Type here'
@@ -198,6 +268,7 @@ const CreateQuesPaper = () => {
               <span className='label-text'>Date</span>
             </label>
             <input
+              required
               name='date'
               value={formData.date}
               onChange={handleInputChange}
@@ -226,6 +297,7 @@ const CreateQuesPaper = () => {
                 <span className='label-text'>Video URL:</span>
               </label>
               <input
+                required
                 name='video'
                 value={formData.video}
                 onChange={handleInputChange}
@@ -321,13 +393,16 @@ const CreateQuesPaper = () => {
         >
           {type !== null ? 'Add Question' : 'Select Exam Type'}
         </button>
+        <LocalToastTarget name="btn">
         <button
+        disabled={isCodeReapet==true}
           onClick={handleSubmit}
           className='btn btn-sm btn-warning'
           type='submit'
         >
           Save Questions Paper
         </button>
+        </LocalToastTarget>
       </div>
     </div>
   )
@@ -335,42 +410,3 @@ const CreateQuesPaper = () => {
 
 export default CreateQuesPaper
 
-// // const [type, setType] = useState('')
-
-// // const [formData, setFormData] = useState({
-// //     subjectName: '',
-// //     subjectCode: '',
-// //     semester: '',
-// //     date: '',
-// //     email: '',
-// // });
-// // const [questions, setQuestions] = useState([]);
-
-// // store basic info
-// const handleInputChange = (event) => {
-//     // const { name, value } = event.target;
-//     // setFormData((prevData) => ({
-//     //     ...prevData,
-//     //     [name]: value,
-//     // }));
-//     dispatch(subjectInfo(event))
-// };
-
-// //handle ques add
-// const handleQuestionAdd = () => {
-//     dispatch(quesPaper())
-//     // const newQuestion = {
-//     //     question: '',
-//     //     options: ['', '', '', ''],
-//     //     correctAnswer: '',
-//     // };
-//     //setQuestions([...questions, newQuestion]);
-// };
-
-// // handle ques change
-// const handleQuestionChange = (index, field, value) => {
-//     dispatch(quesPaper({ index, field, value }))
-//     // const updatedQuestions = [...questions];
-//     // updatedQuestions[index][field] = value;
-//     //setQuestions(updatedQuestions);
-// };

@@ -29,7 +29,7 @@ const Comments = ({ postComments }) => {
         setEditMode(false);
 
         // Make a network request to save the edited comment (replace with your actual endpoint)
-        fetch(`https://e-exam-pro-server.vercel.app/forumPost/${postComments?._id}`, {
+        fetch(`http://localhost:4000/forumPost/${postComments?._id}`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',

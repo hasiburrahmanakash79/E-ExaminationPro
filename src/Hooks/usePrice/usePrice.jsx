@@ -10,7 +10,7 @@ const usePrice = () => {
     queryKey: ['price'],
     queryFn: async () => {
       const res = await axios.get(
-        'https://e-exam-pro-server.vercel.app/price'
+        'http://localhost:4000/price'
       )
       return res.data
     }

@@ -13,7 +13,7 @@ const ExamResult = () => {
     console.log(id)
 
     useEffect(() => {
-        fetch(`https://e-exam-pro-server.vercel.app/result?examId=${id}`)
+        fetch(`http://localhost:4000/result?examId=${id}`)
             .then(res => res.json())
             .then(data => setResults(data))
     }, [])
