@@ -5,6 +5,7 @@ import { AuthContext } from "../../../Provider/AuthProvider";
 import { useQuery } from "@tanstack/react-query";
 import Loading from "../../../Components/Loading/Loading";
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 
 const UpdateProfile = () => {
   const img_token = import.meta.env.VITE_Image_Key;
@@ -77,88 +78,91 @@ const UpdateProfile = () => {
 
   return (
     <div className="navigation-bar2 md:mx-20">
-      <h1 className="text-2xl mt-4  mx-4">Edit Profile:</h1>
-      <div className="card  mx-auto">
+      <h1 className="mx-4 mt-4 text-2xl">Edit Profile:</h1>
+      <div className="mx-auto card">
         <div className="card-body">
           
           <form
             onSubmit={onSubmitData}
-            className="grid md:gap-20 md:grid-cols-2 gap-5 grid-cols-1"
+            className="grid grid-cols-1 gap-5 md:gap-20 md:grid-cols-2"
           >
-            <div className="text-center lg:text-left flex flex-col ">
-              <div className="w-80 mx-auto">
+            <div className="flex flex-col text-center lg:text-left ">
+              <div className="mx-auto w-80">
                 <img
                   src={info?.photoURL}
-                  className=" border-2 border-violet-600 rounded-lg mb-2 p-3 "
+                  className="p-3 mb-2 border-2 rounded-lg border-violet-600"
                   alt=""
                 />
-                <div className="form-control rounded-lg border-2 border-violet-600 items-center my-5">
-                  <input
+                <Link to="/updateProfilePicture">
+                <button className="items-center px-24 py-3 mx-auto my-5 border-2 rounded-lg form-control border-violet-600">
+                  {/* <input
                     name="image"
                     type="file"
-                    className=" col-span-5 file-input w-full bg-transparent"
-                  />
-                </div>
+                    className="w-full col-span-5 bg-transparent file-input"
+                  /> */}
+                   Update Picture
+                </button>
+                 </Link>
               </div>
             </div>
             <div>
-              <div className="form-control  grid grid-cols-6 mt-2">
-                <label className="label col-span-1">
-                  <span className="label-text text-white">Name:</span>
+              <div className="grid grid-cols-6 mt-2 form-control">
+                <label className="col-span-1 label">
+                  <span className="text-white label-text">Name:</span>
                 </label>
-                <h1 className=" col-span-5 input input-sm text-slate-900 bg-slate-200 shadow-lg">
+                <h1 className="col-span-5 shadow-lg input input-sm text-slate-900 bg-slate-200">
                   {info?.displayName}
                 </h1>
               </div>
 
-              <div className="form-control  grid grid-cols-6 my-2">
-                <label className="label col-span-1">
-                  <span className="label-text text-white">Email:</span>
+              <div className="grid grid-cols-6 my-2 form-control">
+                <label className="col-span-1 label">
+                  <span className="text-white label-text">Email:</span>
                 </label>
-                <h1 className=" col-span-5 input input-sm text-slate-900 bg-slate-200 shadow-lg">
+                <h1 className="col-span-5 shadow-lg input input-sm text-slate-900 bg-slate-200">
                   {info?.email}
                 </h1>
               </div>
-              <div className="form-control grid grid-cols-6 my-2">
-                <label className="label col-span-1">
-                  <span className="label-text text-white">Batch:</span>
+              <div className="grid grid-cols-6 my-2 form-control">
+                <label className="col-span-1 label">
+                  <span className="text-white label-text">Batch:</span>
                 </label>
                 <input
                   name="batch"
-                  className="col-span-5 input input-sm text-slate-900 bg-slate-200 shadow-lg"
+                  className="col-span-5 shadow-lg input input-sm text-slate-900 bg-slate-200"
                 />
               </div>
-              <div className="form-control  grid grid-cols-6 my-2">
-                <label className="label col-span-1">
-                  <span className="label-text text-white">Gender:</span>
+              <div className="grid grid-cols-6 my-2 form-control">
+                <label className="col-span-1 label">
+                  <span className="text-white label-text">Gender:</span>
                 </label>
                 <input
                   name="gender"
-                  className=" col-span-5 input input-sm text-slate-900 bg-slate-200 shadow-lg"
+                  className="col-span-5 shadow-lg input input-sm text-slate-900 bg-slate-200"
                 />
               </div>
-              <div className="form-control grid grid-cols-6 my-2">
-                <label className="label col-span-1">
-                  <span className="label-text text-white">Address:</span>
+              <div className="grid grid-cols-6 my-2 form-control">
+                <label className="col-span-1 label">
+                  <span className="text-white label-text">Address:</span>
                 </label>
                 <input
                   name="address"
-                  className="col-span-5 input input-sm text-slate-900 bg-slate-200 shadow-lg"
+                  className="col-span-5 shadow-lg input input-sm text-slate-900 bg-slate-200"
                 />
               </div>
-              <div className="form-control grid  grid-cols-6 my-2">
-                <label className="label col-span-1">
-                  <span className="label-text text-white">Mobile:</span>
+              <div className="grid grid-cols-6 my-2 form-control">
+                <label className="col-span-1 label">
+                  <span className="text-white label-text">Mobile:</span>
                 </label>
                 <input
-                  className="col-span-5 input input-sm text-slate-900 bg-slate-200 shadow-lg"
+                  className="col-span-5 shadow-lg input input-sm text-slate-900 bg-slate-200"
                   name="mobile"
                 />
               </div>
-              <div className="form-control mt-6">
+              <div className="mt-6 form-control">
                 <input
                   type="submit"
-                  className="btn w-1/2 mx-auto btn-primary"
+                  className="w-1/2 mx-auto btn btn-primary"
                   value="Update Profile"
                 />
               </div>

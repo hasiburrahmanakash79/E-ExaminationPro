@@ -10,6 +10,7 @@ import useInstructor from "../../Hooks/useInstructor/useInstructor";
 import { AuthContext } from "../../Provider/AuthProvider";
 import LiveExamModal from "../../Components/LiveExamModal/LiveExamModal";
 import { Hidden } from "@mui/material";
+import Goo from 'gooey-react'
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false)
@@ -70,11 +71,11 @@ const [value,setValue]= useState(null);
       </button>
       {isOpen && (
         <div
-          className="absolute top-full primary-bg text-white rounded-lg"
+          className="absolute text-white rounded-lg top-full primary-bg"
           onClick={hideDropdown}
         >
-          <div className="space-y-3 p-5">
-            <button className="hover:bg-purple-100/10 px-2 py-1 rounded">
+          <div className="p-5 space-y-3">
+            <button className="px-2 py-1 rounded hover:bg-purple-100/10">
               <Link
                  to="/allSubjects"
                 
@@ -83,7 +84,7 @@ const [value,setValue]= useState(null);
                 All Subject
               </Link>
             </button>
-            <button  className="hover:bg-purple-100/10 px-2 py-1 rounded">
+            <button  className="px-2 py-1 rounded hover:bg-purple-100/10">
               <Link
              to="/written"
                 className=""
@@ -261,7 +262,7 @@ const [value,setValue]= useState(null);
           ) : (
             <Link
               to="/login"
-              className="text-white  border-none shadow-md btn primary-bg"
+              className="text-white border-none shadow-md btn primary-bg"
             >
               Login
             </Link>

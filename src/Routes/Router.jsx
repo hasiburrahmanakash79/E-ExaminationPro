@@ -41,6 +41,7 @@ import ResultPageForMcqFib from '../components/examComponents/QuestionRelated/Qu
 import HomePage from '../Pages/Home/HomePage/HomePage'
 import ForumCommunity from '../Pages/Forum_Community/ForumCommunity'
 import AllUserPayment from '../Pages/Dashboard/AdminDashboard/AllUserPayment/AllUserPayment'
+import UpdateProfilePicture from '../Pages/Authentication/UpdateProfile/UpdateProfilePicture'
 const router = createBrowserRouter([
   {
     path: '/',
@@ -140,6 +141,14 @@ const router = createBrowserRouter([
           <PrivateRouter>
             <UpdateProfile></UpdateProfile>
           </PrivateRouter>
+        )
+      },
+      {
+        path: '/updateProfilePicture',
+        element: (
+          <PrivateRouter>
+            <UpdateProfilePicture></UpdateProfilePicture>
+            </PrivateRouter>
         )
       },
       {
