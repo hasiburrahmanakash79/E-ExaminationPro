@@ -40,6 +40,8 @@ import ExamResult from '../Pages/ExamResult/ExamResult'
 import ResultPageForMcqFib from '../components/examComponents/QuestionRelated/QuestionResults/ResultPageForMcqFib'
 import HomePage from '../Pages/Home/HomePage/HomePage'
 import ForumCommunity from '../Pages/Forum_Community/ForumCommunity'
+import CreateSubject from '../Pages/Dashboard/AdminDashboard/CreateSubject/CreateSubject'
+import AppliedLiveExamAdmin_Instructor from '../Pages/AppliedLiveExamAdmin_Instructor/AppliedLiveExamAdmin_Instructor'
 const router = createBrowserRouter([
   {
     path: '/',
@@ -165,7 +167,11 @@ const router = createBrowserRouter([
       {
         path: '/examResults',
         element: <ExamResult />
-      }
+      },
+      {
+        path: '/allAplliedLiveExam',
+        element: <AppliedLiveExamAdmin_Instructor />
+      },
     ]
   },
 
@@ -204,6 +210,10 @@ const router = createBrowserRouter([
         path: '/dashboard/createNotice',
         element: <CreateNotice />
       },
+      {
+        path: '/dashboard/createSubject',
+        element: <CreateSubject />
+      },
       // Instructor Dashboard Routes
       {
         path: '/dashboard/instructorHome',
@@ -217,6 +227,7 @@ const router = createBrowserRouter([
         path: '/dashboard/createLiveExam',
         element: <CreateLiveExam />
       },
+
       {
         path: '/dashboard/addBlog',
         element: <AddBlog />

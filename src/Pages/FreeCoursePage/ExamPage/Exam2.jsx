@@ -50,7 +50,7 @@ const Exam2 = () => {
   const examInfo = {
     examID: ques._id,
     subjectName: ques.subjectName,
-    semester: ques.semester,
+    batch: ques.batch,
     ins_email: ques.email,
     stu_email: user?.email,
     stu_name: user?.displayName,

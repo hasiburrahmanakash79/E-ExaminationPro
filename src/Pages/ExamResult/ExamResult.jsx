@@ -41,7 +41,7 @@ const ExamResult = () => {
                         <div className='' >
                             <h1 className='text-xl font-bold'>Student Name: {result.stu_name}</h1>
                             <h1 className='text-xl font-bold'>Email: {result.stu_email}</h1>
-                            <h3>Semester: 8th</h3>
+                            <h3>Batch: {result.batch}</h3>
 
                         </div>
 

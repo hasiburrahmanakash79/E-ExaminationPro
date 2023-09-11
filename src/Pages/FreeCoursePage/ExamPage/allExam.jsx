@@ -10,14 +10,22 @@ import { useContext } from 'react';
 import { AuthContext } from '../../../Provider/AuthProvider';
 import useInstructor from '../../../Hooks/useInstructor/useInstructor';
 import Typewriter from 'react-ts-typewriter';
+import useAdmin from '../../../Hooks/useAdmin/useAdmin';
 
 const AllExam = () => {
+
+    const [isAdmin, isAdminLoading] = useAdmin()
     const [isInstructor, isInstructorLoading] = useInstructor()
     const { user, loading } = useContext(AuthContext)
+
+
     const location = useLocation()
     const searchParams = new URLSearchParams(location.search)
     const subject = searchParams.get('subject')
     console.log(subject)
+
+
+
     const { type, exams, batch } = useSelector((state) => state.allExam)
     const dispatch = useDispatch()
 
@@ -34,7 +42,8 @@ const AllExam = () => {
     console.log(batch, '---------------------------------\\\\\\\------------------------------------------34')
     useEffect(() => {
         if (!loading) {
-            if (batch) {
+
+            if (isAdmin ? isAdmin : isInstructor ? isInstructor : batch) {
                 fetch(`http://localhost:4000/questionPaper?type=${type || 'mcq'}&subject=${subject}&instructor_email=${user?.email}&batch=${batch}`)
                     .then(res => res.json())
                     .then(data => {
@@ -43,14 +52,17 @@ const AllExam = () => {
                     })
             }
         }
-    }, [subject, type, loading,batch])
+    }, [subject, type, loading, batch,isInstructor,isAdmin])
     console.log(exams)
     console.log(type)
+    console.log(isAdmin)
     return (
         <>
 
             {
-                !batch ? <div className='text-red-400 text-4xl flex justify-center items-center h-[70vh]'><h1><Typewriter speed={200} delay={900} loop={true} text='Please Add Your Batch In Update Profile Section...' /></h1></div> : <div className='min-h-[60vh] container mx-auto'>
+          isAdmin || isInstructor || batch ? 
+           
+                 <div className='min-h-[60vh] container mx-auto'>
                     <Tabs>
                         <div className='text-center'>
                             <TabList>
@@ -76,7 +88,7 @@ const AllExam = () => {
                                                 <h2 className='text-md font-bold'>Date: {exam.date}</h2>
                                             </div>
                                             {
-                                                isInstructor ? <button className='btn w-1/3 ms-auto btn-sm btn-primary'><Link to={`/examResults?id=${exam._id}`}>See Exam Result</Link></button> : exam.isCompleted ? <button className='btn w-1/3 ms-auto btn-sm btn-primary'>Allready Given</button> : <button className='btn w-1/3 ms-auto btn-sm btn-primary'><Link to={`/exam/${exam._id}`}>Exam</Link></button>
+                                                isInstructor ? <button className='btn w-1/3 ms-auto btn-sm btn-primary'><Link to={`/examResults?id=${exam._id}`}>See Exam Result</Link></button> : isAdmin ? <button className='btn w-1/3 ms-auto btn-sm btn-primary'><Link to={`/examResults?id=${exam._id}`}>See Exam Result</Link></button> : exam.isCompleted ? <button className='btn w-1/3 ms-auto btn-sm btn-primary'>Allready Given</button> : <button className='btn w-1/3 ms-auto btn-sm btn-primary'><Link to={`/exam/${exam._id}`}>Exam</Link></button>
                                             }
                                         </div>
                                     </div>
@@ -99,7 +111,7 @@ const AllExam = () => {
                                                 <h2 className='text-md font-bold'>Date: {exam.date}</h2>
                                             </div>
                                             {
-                                                isInstructor ? <button className='btn w-1/3 ms-auto btn-sm btn-primary'><Link to={`/examResults?id=${exam._id}`}>See Exam Result</Link></button> : exam.isCompleted ? <button className='btn w-1/3 ms-auto btn-sm btn-primary'>Allready Given</button> : <button className='btn w-1/3 ms-auto btn-sm btn-primary'><Link to={`/exam/${exam._id}`}>Exam</Link></button>
+                                                isInstructor ? <button className='btn w-1/3 ms-auto btn-sm btn-primary'><Link to={`/examResults?id=${exam._id}`}>See Exam Result</Link></button> :isAdmin?<button className='btn w-1/3 ms-auto btn-sm btn-primary'><Link to={`/examResults?id=${exam._id}`}>See Exam Result</Link></button> :exam.isCompleted ? <button className='btn w-1/3 ms-auto btn-sm btn-primary'>Allready Given</button> : <button className='btn w-1/3 ms-auto btn-sm btn-primary'><Link to={`/exam/${exam._id}`}>Exam</Link></button>
                                             }
                                         </div>
                                     </div>
@@ -134,6 +146,9 @@ const AllExam = () => {
                     </Tabs>
 
                 </div>
+:
+<div className='text-red-400 text-4xl flex justify-center items-center h-[70vh]'><h1><Typewriter speed={200} delay={900} loop={true} text='Please Add Your Batch In Update Profile Section...' /></h1></div> 
+
 
             }
 

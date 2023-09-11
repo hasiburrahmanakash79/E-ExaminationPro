@@ -34,7 +34,7 @@ const FreeCoursePage = () => {
   }, [])
   console.log(data)
   return (
-    <div className='mt-5 flex justify-center '>
+    <div className='mt-5 flex justify-center my-5 '>
       <Helmet><title>E-ExamPro | Exam</title></Helmet>
       <div className='grid grid-cols-1 md:grid-cols-2   lg:grid-cols-3 gap-10 mx-2'>
         {data?.map((subject, index) => (

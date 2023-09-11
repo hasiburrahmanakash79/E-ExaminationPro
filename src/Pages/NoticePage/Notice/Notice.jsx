@@ -6,11 +6,14 @@ import { useContext } from 'react'
 import { AuthContext } from '../../../Provider/AuthProvider'
 import useInstructor from '../../../Hooks/useInstructor/useInstructor'
 import useLiveExam from '../../../Hooks/useLiveExam/useLiveExam'
+import useAdmin from '../../../Hooks/useAdmin/useAdmin'
 
 export default function Notice () {
   const { user, loading } = useContext(AuthContext)
 
   const [isInstructor] = useInstructor()
+  const [isAdmin,isAdminLoading] = useAdmin()
+    console.log(isAdmin)
 
   const [notices, isNoticeLoading] = useLiveExam()
   console.log(notices)
@@ -61,19 +64,21 @@ export default function Notice () {
                   Instructor:
                   <span className='text-purple-300'> {notice?.instructor}</span>
                 </p>
-                {!isInstructor ? (
-                  <Link
-                    to={`/upcomingLiveExam?examID=${notice._id}&email=${user?.email}`}
-                    className='mt-5'
-                  >
-                    <button className='primary-btn btn'>
-                      Apply For Live class
-                    </button>
-                  </Link>
-                ) : (
-                  <button className='primary-btn btn'>
-                    See Applied Students
-                  </button>
+                { isAdmin ? (
+                  <Link to={`/allAplliedLiveExam?examID=${notice._id}`}><button className='primary-btn btn'>
+                  See Applied Students
+                </button></Link> 
+                ) : isInstructor?    <Link to={`/allAplliedLiveExam?examID=${notice._id}&instructor_email=${user?.email}`}><button className='primary-btn btn'>
+                See Applied Students
+              </button></Link> :  (
+                   <Link
+                   to={`/upcomingLiveExam?examID=${notice._id}&email=${user?.email}`}
+                   className='mt-5'
+                 >
+                   <button className='primary-btn btn'>
+                     Apply For Live class
+                   </button>
+                 </Link>
                 )}
               </div>
             </div>
