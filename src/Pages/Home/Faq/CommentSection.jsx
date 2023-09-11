@@ -1,11 +1,12 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Loading from '../../../Components/Loading/Loading';
 import useAuth from '../../../Hooks/useAuth/useAuth';
 import useComments from '../../../Hooks/useComments/useComments';
 
-function CommentSection() {
+function CommentSection({ blogId }) {
   const [comment, setComment] = useState('');
   const [message, setMessage] = useState('');
+
   const { user } = useAuth()
   console.log(user);
   // const [comments, setComments] = useState([]);
@@ -25,9 +26,10 @@ function CommentSection() {
           comment,
           username: user.displayName, // Assuming the user object has a "username" property
           time: currentTime,
+          blogId
         };
 
-        const response = await fetch('http://localhost:5000/comments', {
+        const response = await fetch(`http://localhost:5000/comments`, {
           method: 'POST',
           headers: {
             'content-type': 'application/json',
@@ -50,27 +52,27 @@ function CommentSection() {
     }
   };
 
-  // useEffect(() => {
-  //   const fetchComments = async () => {
-  //     try {
-  //       const response = await fetch('http://localhost:5000/comments');
+  useEffect(() => {
+    const fetchComments = async () => {
+      try {
+        const response = await fetch(`http://localhost:5000/comments?blogId=${blogId}`);
 
-  //       if (response.ok) {
-  //         const data = await response.json();
-  //         console.log(data);
-  //         setComments(data)
-  //       }
-  //       else {
-  //         setMessage('Failed to fetch comments')
-  //       }
-  //     } catch (error) {
-  //       setMessage('Error: ' + error.message);
-  //     }
-  //   };
+        if (response.ok) {
+          const data = await response.json();
+          console.log(data);
+          setComments(data)
+        }
+        else {
+          setMessage('Failed to fetch comments')
+        }
+      } catch (error) {
+        setMessage('Error: ' + error.message);
+      }
+    };
 
-  //   fetchComments();
-  // },
-  //   []);
+    fetchComments();
+  },
+    []);
   if (loading) {
     return <Loading></Loading>
   }
@@ -104,4 +106,8 @@ function CommentSection() {
   );
 }
 
+
+
+
 export default CommentSection;
+

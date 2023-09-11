@@ -7,7 +7,7 @@ import Faq from '../Faq/Faq'
 import Pricing from '../Pricing/Pricing'
 import Testimonial from '../Testimonial/Testimonial'
 import TopSubjects from '../TopSubjects/TopSubjects'
-import Pricing from '../Pricing/Pricing'
+// import Pricing from '../Pricing/Pricing'
 import { Helmet } from 'react-helmet-async'
 // import ShortcutKey from "../../../Components/ShortcutKey/ShortcutKey";
 const HomePage = () => {

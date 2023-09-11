@@ -23,7 +23,7 @@ const SingleBlogCard = ({ newBlog }) => {
 
 
 
-  const { id, image_url, title, publishing_date, content } = newBlog;
+  const { _id, image_url, title, publishing_date, content } = newBlog;
   return (
     <div>
       {/* <div className="card card-compact w-96 bg-base-100 shadow-xl mx-auto">
@@ -40,6 +40,7 @@ const SingleBlogCard = ({ newBlog }) => {
 
 
       <div className='mb-5'>
+
         <div rel="noopener noreferrer" href="#" className="max-w-sm mx-auto group hover:no-underline focus:no-underline dark:bg-gray-900">
           <img role="presentation" className="object-cover w-full rounded-b h-60 dark:bg-gray-500 " src={image_url} />
           <div className="p-6 space-y-2">
@@ -51,7 +52,7 @@ const SingleBlogCard = ({ newBlog }) => {
             <div className='flex items-center justify-between'>
 
               <div className='mt-10 flex gap-5'>
-                <Link to={`/blogDetails/${id}`}>
+                <Link to={`/blogDetails/${_id}?_id=${_id}`}>
                   <FaRegCommentDots className='text-2xl'></FaRegCommentDots>
                 </Link>
                 <FaRegHeart className={`text-2xl ${isLiked ? 'text-red-500' : ''}`}
@@ -61,7 +62,7 @@ const SingleBlogCard = ({ newBlog }) => {
                 {/* <FaShareAltSquare className='text-2xl'></FaShareAltSquare> */}
                 <FaShareAltSquare className="text-2xl" onClick={() => openModal(id)}></FaShareAltSquare>
 
-                <dialog id={`my_modals_${id}`} className="modal">
+                <dialog id={`my_modals_${_id}`} className="modal">
                   <form method="dialog" className="modal-box bg-gradient-to-r from-[#A8EB12]  to-[#042B66] ...">
                     <div className="text-center ">
                       <EmailShareButton url="https://e-exampro.web.app/blog" quote={"Blog by E-examPro"} hastag={"blog"}>
@@ -91,7 +92,7 @@ const SingleBlogCard = ({ newBlog }) => {
               </div>
               <div className=''>
                 <Link
-                  to={`/blogDetails/${id}`}
+                  to={`/blogDetails/${_id}`}
                   className="text-end btn btn-outline btn-sm  mt-10 ml-auto"
                 >
                   Read More
