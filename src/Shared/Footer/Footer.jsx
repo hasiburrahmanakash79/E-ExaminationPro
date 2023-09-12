@@ -11,12 +11,16 @@ const Footer = () => {
             <img
               data-aos="fade-up"
               data-aos-duration="600"
-              src={logo} alt="" className="md:w-auto w-2/4 mx-auto" />
+              src={logo}
+              alt=""
+              className="md:w-auto w-2/4 mx-auto"
+            />
           </Link>
           <p
             data-aos="fade-down"
             data-aos-duration="1000"
-            className="text-sm text-justify md:mt-0 mt-2">
+            className="text-sm text-justify md:mt-0 mt-2"
+          >
             It’s a special day when our beloved someone like any of our
             students, friends, College or University have to sit for their
             exams. Whether it is a exam for school, college just tell them to
@@ -40,80 +44,90 @@ const Footer = () => {
           <h2
             data-aos="fade-down"
             data-aos-duration="500"
-            className="text-xl font-bold border-b-2 w-1/2 mx-auto border-slate-600 rounded-md md:mt-0 mt-6">
+            className="text-xl font-bold border-b-2 w-1/2 mx-auto border-slate-600 rounded-md md:mt-0 mt-6"
+          >
             Exam Platform
           </h2>
-          <p
-            data-aos="fade-down"
-            data-aos-duration="500"
-            className="hover:underline">MCQ Exam</p>
-          <p
-            data-aos="fade-down"
-            data-aos-duration="900"
-            className="hover:underline">Cheating</p>
-          <p
-            data-aos="fade-down"
-            data-aos-duration="1300"
-            className="hover:underline">Student</p>
-          <p
-            data-aos="fade-down"
-            data-aos-duration="1800"
-            className="hover:underline">Teachers</p>
-          <p
-            data-aos="fade-down"
-            data-aos-duration="2200"
-            className="hover:underline">Testimonial</p>
+          <p className="hover:underline">MCQ Exam</p>
+          <p className="hover:underline">Cheating</p>
+          <p className="hover:underline">Student</p>
+          <p className="hover:underline">Teachers</p>
+          <p className="hover:underline">Testimonial</p>
         </div>
         <div className="text-center text-white space-y-3">
           <h2
             data-aos="fade-down"
             data-aos-duration="500"
-            className="text-xl font-bold border-b-2 w-3/5 mx-auto border-slate-600 rounded-md md:mt-0 mt-6">
+            className="text-xl font-bold border-b-2 w-3/5 mx-auto border-slate-600 rounded-md md:mt-0 mt-6"
+          >
             Who we service
           </h2>
           <p
             data-aos="fade-down"
             data-aos-duration="500"
-            className="hover:underline">Schools</p>
+            className="hover:underline"
+          >
+            Schools
+          </p>
           <p
             data-aos="fade-down"
             data-aos-duration="900"
-            className="hover:underline">Higher education</p>
+            className="hover:underline"
+          >
+            Higher education
+          </p>
           <p
             data-aos="fade-down"
             data-aos-duration="1300"
-            className="hover:underline">University</p>
+            className="hover:underline"
+          >
+            University
+          </p>
           <p
-
-
             data-aos="fade-down"
             data-aos-duration="1800"
-            className="hover:underline">Companies &Organizations</p>
+            className="hover:underline"
+          >
+            Companies &Organizations
+          </p>
         </div>
         <div className="text-center text-white space-y-3">
           <h2
             data-aos="fade-down"
             data-aos-duration="500"
-            className="text-xl font-bold border-b-2 w-1/2 mx-auto border-slate-600 rounded-md md:mt-0 mt-6">
+            className="text-xl font-bold border-b-2 w-1/2 mx-auto border-slate-600 rounded-md md:mt-0 mt-6"
+          >
             Resources
           </h2>
 
           <p
             data-aos="fade-down"
             data-aos-duration="500"
-            className="hover:underline">Support</p>
+            className="hover:underline"
+          >
+            Support
+          </p>
           <p
             data-aos="fade-down"
             data-aos-duration="900"
-            className="hover:underline">Exams Videos</p>
+            className="hover:underline"
+          >
+            Exams Videos
+          </p>
           <p
             data-aos="fade-down"
             data-aos-duration="1300"
-            className="hover:underline">Groups Chat</p>
+            className="hover:underline"
+          >
+            Groups Chat
+          </p>
           <p
             data-aos="fade-down"
             data-aos-duration="1800"
-            className="hover:underline">Technology</p>
+            className="hover:underline"
+          >
+            Technology
+          </p>
         </div>
       </div>
       <p className="text-center text-slate-500 py-2">

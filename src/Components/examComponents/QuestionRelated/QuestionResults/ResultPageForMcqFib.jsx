@@ -1,5 +1,5 @@
-import { CircularProgressbar, buildStyles } from 'react-circular-progressbar'
-import 'react-circular-progressbar/dist/styles.css'
+import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
+import "react-circular-progressbar/dist/styles.css";
 // import ResultSideBar from './ResultSideBar'
 // import {
 //   BarChart,
@@ -14,36 +14,38 @@ import 'react-circular-progressbar/dist/styles.css'
 // } from 'recharts'
 // import ReviewAnswerAfterResult from './QuestionResults/ReviewAnswerAfterResult'
 
-import { PDFDownloadLink, PDFViewer } from '@react-pdf/renderer'
-import ResultPdfConverter from './ResultPdfConverter'
-import FeedBack from '../../../Feedback/Feedback'
+import { PDFDownloadLink, PDFViewer } from "@react-pdf/renderer";
+import ResultPdfConverter from "./ResultPdfConverter";
+import FeedBack from "../../../Feedback/Feedback";
 // import ResultPdfConverter from './QuestionResults/ResultPdfConverter'
 // import { useSelector } from 'react-redux'
 // import FeedBack from '../../Feedback/Feedback'
-import { useEffect, useState } from 'react'
-import QuestionTimeChart from './QuestionTimeChart'
+import { useEffect, useState } from "react";
+import QuestionTimeChart from "./QuestionTimeChart";
 // import ReviewAnswerAfterResult from '../ReviewAnswerAfterResult'
-import ReviewAnswerAfterResult2 from './ReviewAnswerAfterResult2'
+import ReviewAnswerAfterResult2 from "./ReviewAnswerAfterResult2";
 
 const ResultPageForMcqFib = () => {
   /*========Answer Reviewing=======
   ========================*/
   // const { questions, userAnswers } = useSelector(state => state.demoExam)
   // calculating percentage
-  const [questions, setQuestions] = useState([])
-  const [results, setResults] = useState([])
+  const [questions, setQuestions] = useState([]);
+  const [results, setResults] = useState([]);
   useEffect(() => {
-    fetch("https://e-exam-pro-server.vercel.app/result?id=64e8b9586f2385caa12fd4c5")
+    fetch(
+      "https://e-exam-pro-server.vercel.app/result?id=64e8b9586f2385caa12fd4c5"
+    )
       // fetch(`https://e-exam-pro-server.vercel.app/result?id=${id}`)
-      .then(res => res.json())
-      .then(data => setQuestions(data))
-  }, [])
+      .then((res) => res.json())
+      .then((data) => setQuestions(data));
+  }, []);
 
   useEffect(() => {
     if (questions?.resutData) {
-      setResults(questions?.resutData)
+      setResults(questions?.resutData);
     }
-  }, [questions])
+  }, [questions]);
   console.log(results);
 
   // const totalQuestions = questions.length
@@ -85,12 +87,12 @@ const ResultPageForMcqFib = () => {
   //   result data
 
   return (
-    <section className='grid w-9/12 grid-cols-5 pt-6 m-auto'>
-      <div className='col-span-1 md:col-span-4'>
+    <section className="grid w-9/12 grid-cols-5 pt-6 m-auto">
+      <div className="col-span-1 md:col-span-5">
         {/* Top of the result page where we can show TOP SCORE, Export the result */}
-        <div className='md:flex items-center justify-between h-fit'>
-          <h4 className='w-44  md:mb-0 mb-3 p-3 font-semibold text-white rounded-lg outline'>
-            TOP SCORE: 97%
+        <div className="md:flex items-center justify-between">
+          <h4 className="w-44  md:mb-0 mb-3 p-3 font-semibold text-white rounded-lg outline">
+            TOP SCORE: 92%
           </h4>
           {/* handling the btn where when user clicks his result should be downloaded */}
           {/* <span>Saifuk</span> */}
@@ -110,19 +112,22 @@ const ResultPageForMcqFib = () => {
             //     index={index}
             //   />)
             // }
-            fileName='result.pdf'
+            fileName="result.pdf"
           >
             {({ blob, url, loading, error }) =>
               loading ? (
-                'Loading document...'
+                "Loading document..."
               ) : (
-                <button className='btn primary-btn w-44'>Export Result As PDF</button>
+                <button className="btn primary-btn w-44">
+                  Export Result As PDF
+                </button>
               )
             }
           </PDFDownloadLink>
         </div>
+
         {/* visual progress showing section */}
-        <div className='md:flex items-center justify-between w-full mx-auto md:mx-0 md:p-4 md:mt-5 h-fit'>
+        <div className="md:flex items-center justify-between w-full mx-auto md:mx-0 md:p-4 md:mt-5 h-fit">
           {/* PieChart to show the performance of the exam based on time took in total , total correct answer  */}
           {/* <div className='md:w-28 md:h-28 w-32 h-32 pt-6 md:pt-0'>
             <h3 className='pb-4 md:text-lg text-xl font-semibold text-white '>
@@ -150,15 +155,21 @@ const ResultPageForMcqFib = () => {
           </div> */}
           {/* adding a bar to show each question time to answer */}
           {/* Chart section */}
-          <div >
+
+
+          {/* <div>
             <QuestionTimeChart data={data} />
-          </div>
+          </div> */}
+
           {/* exam result showing in percentage using react-circular-progressbar. Using animation to do that */}
           {/* TODO:make this progressbar animated and dynamic */}
         </div>
-        <div className='flex items-center justify-center mt-8'>
-          <div className='w-1/3 mx-auto text-center mt-0 mb-6 bg-gradient-to-r from-[#052b83] to-[#25176A] hover:bg-gradient-to-r hover:from-[#18125d] hover:to-[#05418f] p-6 rounded-lg shadow-2xl transition duration-300'>
-            <h3 className='pb-4 tracking-wider text-white md:text-lg text-xl font-semibold'>
+        <div className="flex items-center justify-between mt-8">
+          <div>
+            <QuestionTimeChart data={data} />
+          </div>
+          <div className="md:w-1/3 text-center mt-0 mb-6 bg-gradient-to-r from-[#052b83] to-[#25176A] hover:bg-gradient-to-r hover:from-[#18125d] hover:to-[#05418f] p-6 rounded-lg shadow-2xl transition duration-300">
+            <h3 className="pb-4 tracking-wider text-white md:text-lg text-xl font-semibold">
               Activates
             </h3>
             <CircularProgressbar
@@ -167,14 +178,14 @@ const ResultPageForMcqFib = () => {
               value={qLength}
               text={`${qLength}%`}
               styles={buildStyles({
-                strokeLinecap: 'butt',
-                textColor: '#fff',
+                strokeLinecap: "butt",
+                textColor: "#fff",
                 pathColor: "#8884D8",
-                trailColor: "#fff"
+                trailColor: "#fff",
               })}
             />
           </div>
-          <div className='w-1/3 mx-auto text-center mt-0 mb-6 bg-gradient-to-r from-[#052b83] to-[#25176A] hover:bg-gradient-to-r hover:from-[#211B6B] hover:to-[#0c438c] p-6 rounded-lg shadow-2xl transition duration-300'>
+          {/* <div className='w-1/3 mx-auto text-center mt-0 mb-6 bg-gradient-to-r from-[#052b83] to-[#25176A] hover:bg-gradient-to-r hover:from-[#211B6B] hover:to-[#0c438c] p-6 rounded-lg shadow-2xl transition duration-300'>
             <h3 className='pb-4 tracking-widest text-white md:text-lg text-xl font-semibold'>
               Performance
             </h3>
@@ -188,74 +199,73 @@ const ResultPageForMcqFib = () => {
                 trailColor: "#fff"
               })}
             />
-          </div>
+          </div> */}
         </div>
         {/* bottom options like review answered questions, giving feedback, sharing the result with other social platforms */}
-        <div className='grid md:grid-cols-2 gap-3 md:w-9/12 mx-auto md:mb-12 my-6'>
+        <div className="flex justify-between items-center gap-3  md:mb-12 my-6">
           {/* modal to show review answers */}
           <div>
             {/* Open the modal using ID.showModal() method */}
             <button
-              className='btn btn_quiz primary-btn w-44'
+              className="btn btn_quiz primary-btn w-44"
               onClick={() => window.my_modal_1.showModal()}
             >
               View Answers
             </button>
-            <dialog id='my_modal_1' className=' modal'>
+            <dialog id="my_modal_1" className=" modal">
               <form
-                method='dialog'
-                className='relative w-full h-screen rounded-lg shadow-lg modal-box primary-bg'
+                method="dialog"
+                className="relative w-full h-screen rounded-lg shadow-lg modal-box primary-bg"
               >
-                <small className='top-0 right-0 text-xs'>
+                <small className="top-0 right-0 text-xs">
                   Press ESC key or click outside to close
                 </small>
                 {/* <ReviewAnswerAfterResult
                 userAnswers={userAnswers}
                 questions={questions}
                 /> */}
-                {
-                  questions?.resutData?.map((data, index) => <ReviewAnswerAfterResult2
+                {questions?.resutData?.map((data, index) => (
+                  <ReviewAnswerAfterResult2
                     // userAnswers={userAnswers}
                     key={index}
                     questions={data}
                     index={index}
-                  />)
-                }
-
+                  />
+                ))}
               </form>
-              <form method='dialog' className='modal-backdrop'>
+              <form method="dialog" className="modal-backdrop">
                 <button>close</button>
               </form>
             </dialog>
           </div>
-          <div className='w-12/12 mx-auto md:pl-12'>
+          <div>
             {/* Open the modal using ID.showModal() method */}
             <button
-              className='btn btn_quiz primary-btn w-44'
+              className="btn btn_quiz primary-btn w-44"
               onClick={() => window.my_modal_2.showModal()}
             >
               Give FeedBack
             </button>
-            <dialog id='my_modal_2' className=' modal'>
+            <dialog id="my_modal_2" className=" modal">
               <form
-                method='dialog'
-                className='relative max-w-5xl p-0 border w-fit h-fit modal-box primary-bg'
+                method="dialog"
+                className="relative max-w-5xl p-0 border w-fit h-fit modal-box primary-bg"
               >
-                <small className='absolute top-0 right-0 p-1 text-xs'>
+                <small className="absolute top-0 right-0 p-1 text-xs">
                   Press ESC key or click outside to close
                 </small>
 
                 <FeedBack />
               </form>
-              <form method='dialog' className='modal-backdrop'>
+              <form method="dialog" className="modal-backdrop">
                 <button>close</button>
               </form>
             </dialog>
           </div>
         </div>
       </div>
-    </section >
-  )
-}
+    </section>
+  );
+};
 
 export default ResultPageForMcqFib;
