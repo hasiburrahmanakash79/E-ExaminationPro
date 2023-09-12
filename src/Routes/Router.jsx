@@ -3,8 +3,9 @@ import Main from '../Layouts/Main'
 import AboutUs from '../Pages/AboutUs/AboutUs'
 import Login from '../Pages/Authentication/Login/Login'
 import Registration from '../Pages/Authentication/Registration/Registration'
+import Profile from '../Pages/Authentication/UpdateProfile/Profile'
+import UpdateProfile from '../Pages/Authentication/UpdateProfile/UpdateProfile'
 import NewBlog from '../Pages/BlogPage/NewBlog/NewBlog'
-import NewBlogDetails from '../Pages/BlogPage/NewBlog/NewBlogDetails'
 import UnderBlog from '../Pages/BlogPage/NewBlog/UnderBlog'
 import Contact from '../Pages/Contact/Contact'
 import PrivateRouter from './PrivateRouter'
@@ -24,8 +25,6 @@ import QuizDemo from '../Pages/Home/DemoTest/QuizDemo'
 import UserHome from '../Pages/Dashboard/UserDashboard/UserHome/UserHome'
 import PaymentHistory from '../Pages/Dashboard/UserDashboard/PaymentHistory/PaymentHistory'
 import WrittenExams from '../Pages/Exams/WrittenExams/WrittenExams'
-import Profile from '../Pages/Authentication/UpdateProfile/Profile'
-import UpdateProfile from '../Pages/Authentication/UpdateProfile/UpdateProfile'
 import CreateLiveExam from '../Pages/LiveExam/CreateLiveExam/CreateLiveExam'
 import JoinLiveExam from '../Pages/LiveExam/JoinLiveExam/JoinLiveExam'
 import AppliedLiveExam from '../Pages/Dashboard/UserDashboard/AppliedLiveExam/AppliedLiveExam'
@@ -41,6 +40,7 @@ import ForumCommunity from '../Pages/Forum_Community/ForumCommunity'
 import DemoResult from '../components/examComponents/QuestionRelated/DemoQuesResult/DemoResult'
 import CreateSubject from '../Pages/Dashboard/AdminDashboard/CreateSubject/CreateSubject'
 import AppliedLiveExamAdmin_Instructor from '../Pages/AppliedLiveExamAdmin_Instructor/AppliedLiveExamAdmin_Instructor'
+import BlogDetails from '../Pages/BlogPage/BlogDetails/BlogDetails'
 const router = createBrowserRouter([
   {
     path: '/',
@@ -62,7 +62,7 @@ const router = createBrowserRouter([
 
       {
         path: '/blogDetails/:id',
-        element: <NewBlogDetails></NewBlogDetails>
+        element: <BlogDetails></BlogDetails>
       },
       {
         path: '/blogUnderDetails/:id',
