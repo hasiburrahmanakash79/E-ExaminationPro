@@ -6,7 +6,10 @@ const ReviewAnswerAfterResult = ({ questions, userAnswers }) => {
           answer => answer?.questionId === question?.id
         )
         return (
-          <div className='w-1/2 mx-auto my-12' key={question?.id}>
+          <div
+            className='p-2 my-2 space-y-3 transition-all border-2 rounded shadow-xl hover:border-slate-200 border-slate-500'
+            key={question.id}
+          >
             <h1 className='text-xl font-bold'>
               {index + 1}. {question?.text}
             </h1>

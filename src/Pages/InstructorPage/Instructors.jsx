@@ -8,7 +8,7 @@ const Instructors = () => {
   const [displayCount, setDisplayCount] = useState(6)
 
   useEffect(() => {
-    fetch('http://localhost:5000/instructors')
+    fetch('https://e-exam-pro-server.vercel.app/instructors')
       .then(res => res.json())
       .then(data => setInstructors(data))
   }, [])
@@ -19,7 +19,9 @@ const Instructors = () => {
   }
   return (
     <div className='py-8 container mx-auto'>
-      <Helmet><title>E-ExamPro | Instructor</title></Helmet>
+      <Helmet>
+        <title>E-ExamPro | Instructor</title>
+      </Helmet>
       <h1 className='mb-10 text-4xl font-bold text-center text-white'>
         Our Instructors
       </h1>

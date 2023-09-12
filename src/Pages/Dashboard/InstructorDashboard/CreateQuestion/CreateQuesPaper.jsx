@@ -20,7 +20,7 @@ const CreateQuesPaper = () => {
     state => state.questionPaper
   )
   useEffect(() => {
-    fetch('http://localhost:5000/allSubjects', {
+    fetch('https://e-exam-pro-server.vercel.app/allSubjects', {
       headers: {
         authorization: `bearar ${localStorage.getItem('access-token')}`
       }
@@ -49,17 +49,18 @@ const CreateQuesPaper = () => {
 
   // Function to handle changes in the selected subject
   const handleSubjectChange = event => {
-    const selectedValue = event.target.value;
-    const selectedSubjectData = allSubject.find(subject => subject.subject_name === selectedValue);
+    const selectedValue = event.target.value
+    const selectedSubjectData = allSubject.find(
+      subject => subject.subject_name === selectedValue
+    )
     console.log(selectedSubjectData?.subject_code)
     const code = selectedSubjectData?.subject_code
     dispatch(setSubjectCode(code))
     dispatch(subjectInfo(event))
-  };
-
+  }
 
   //handle ques add
-  const handleQuestionAdd = (event) => {
+  const handleQuestionAdd = event => {
     event.preventDefault()
     dispatch(quesPaper({ add: 'add' })) // redux
   }
@@ -80,7 +81,7 @@ const CreateQuesPaper = () => {
 
     console.log('Question Paper Data:', paperData)
 
-    // fetch('http://localhost:5000/questionPaper', {
+    // fetch('https://e-exam-pro-server.vercel.app/questionPaper', {
     //   method: 'POST',
     //   headers: {
     //     'Content-Type': 'application/json'
@@ -94,7 +95,9 @@ const CreateQuesPaper = () => {
   console.log(type)
   return (
     <div className='my-5 mx-2 md:container md:mx-auto'>
-      <Helmet><title>E-ExamPro | Create Question</title></Helmet>
+      <Helmet>
+        <title>E-ExamPro | Create Question</title>
+      </Helmet>
       <div className='flex flex-col items-center'>
         <h1 className='text-3xl'>Question Paper</h1>
         <p className='font-semibold'>

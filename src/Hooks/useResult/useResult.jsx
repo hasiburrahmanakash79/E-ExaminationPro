@@ -2,12 +2,12 @@ import { useQuery } from '@tanstack/react-query'
 import useAxiosSecure from '../useAxiosSecure.jsx/useAxiosSecure'
 import axios from 'axios'
 
-const useResult = () => {
+const useResult = examId => {
   // const { user, loading } = useContext(AuthContext)
   //   const [axiosSecure] = useAxiosSecure()
-  //   console.log(id)
-  const id = '64e8b9586f2385caa12fd4c7'
+  // const id = '64e8b9586f2385caa12fd4c7'
 
+  console.log(examId)
   const {
     data: result,
     refetch,
@@ -15,7 +15,9 @@ const useResult = () => {
   } = useQuery({
     queryKey: ['result'],
     queryFn: async () => {
-      const res = await axios.get(`/result?id=${id}`)
+      const res = await axios.get(
+        `http://localhost:5000/result?examId=${examId}`
+      )
       console.log(res)
       return res.data
     }

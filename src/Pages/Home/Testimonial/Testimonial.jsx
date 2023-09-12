@@ -17,7 +17,7 @@ const Testimonial = () => {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          'http://localhost:5000/testimonials'
+          'https://e-exam-pro-server.vercel.app/testimonials'
         )
         const data = await response.json()
 
@@ -33,15 +33,16 @@ const Testimonial = () => {
   return (
     <div className='pb-5 mx-5 md:mt-28 mt-16'>
       <h1
-        data-aos="zoom-in-down"
-        data-aos-duration="800"
-        className='mt-5 text-4xl font-bold text-center text-slate-200'>
+        data-aos='zoom-in-down'
+        data-aos-duration='800'
+        className='mt-5 text-4xl font-bold text-center text-slate-200'
+      >
         What Our Users Say
       </h1>
       <div
-        data-aos="zoom-in"
-        data-aos-easing="ease-out-cubic"
-        data-aos-duration="2000"
+        data-aos='zoom-in'
+        data-aos-easing='ease-out-cubic'
+        data-aos-duration='2000'
         className='bg-gradient-to-tr overflow-hidden from-[#0B0728] to-[#491A66] my-16 mt-6 rounded-lg'
         style={{
           background:

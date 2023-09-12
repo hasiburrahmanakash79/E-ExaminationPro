@@ -35,11 +35,11 @@ import AddBlog from '../Pages/Dashboard/InstructorDashboard/AddBlog/AddBlog'
 import UpcomingLiveExam from '../Pages/LiveExam/UpcomingLiveExam/UpcomingLiveExam'
 import InstructorChatRoom from '../Pages/LiveExam/InstructorChatRoom/InstructorChatRoom'
 import CreateNotice from '../Pages/Dashboard/AdminDashboard/CreateNotice/CreateNotice'
-import ResultPage from '../Pages/Home/DemoTest/ResultPage'
 import ExamResult from '../Pages/ExamResult/ExamResult'
 import ResultPageForMcqFib from '../components/examComponents/QuestionRelated/QuestionResults/ResultPageForMcqFib'
 import HomePage from '../Pages/Home/HomePage/HomePage'
 import ForumCommunity from '../Pages/Forum_Community/ForumCommunity'
+import DemoResult from '../components/examComponents/QuestionRelated/DemoQuesResult/DemoResult'
 const router = createBrowserRouter([
   {
     path: '/',
@@ -82,14 +82,14 @@ const router = createBrowserRouter([
         element: <QuizDemo />
       },
       {
+        path: '/demo-result',
+        element: <DemoResult />
+      },
+
+      {
         path: '/contact',
         element: <Contact></Contact>
       },
-      {
-        path: '/home-quiz-result',
-        element: <ResultPage />
-      },
-      ,
       {
         path: '/contact',
         element: <Contact></Contact>
@@ -119,7 +119,9 @@ const router = createBrowserRouter([
         path: '/exam/:id',
         element: <Exam2 />,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/questionPaper/${params.id}`)
+          fetch(
+            `https://e-exam-pro-server.vercel.app/questionPaper/${params.id}`
+          )
       },
       {
         path: '/written',

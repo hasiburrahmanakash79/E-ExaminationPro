@@ -1,34 +1,35 @@
-import { AiFillBell } from "react-icons/ai";
-import { Link } from "react-router-dom";
-import logo from "../../assets/logo12.png";
-import "./Navbar.css";
+import { AiFillBell } from 'react-icons/ai'
+import { Link } from 'react-router-dom'
+import logo from '../../assets/logo12.png'
+import './Navbar.css'
 
-import { useContext, useState } from "react";
-import Swal from "sweetalert2";
-import useAdmin from "../../Hooks/useAdmin/useAdmin";
-import useInstructor from "../../Hooks/useInstructor/useInstructor";
-import { AuthContext } from "../../Provider/AuthProvider";
-import LiveExamModal from "../../Components/LiveExamModal/LiveExamModal";
-import { Hidden } from "@mui/material";
+import { useContext, useState } from 'react'
+import Swal from 'sweetalert2'
+import useAdmin from '../../Hooks/useAdmin/useAdmin'
+import useInstructor from '../../Hooks/useInstructor/useInstructor'
+import { AuthContext } from '../../Provider/AuthProvider'
+import LiveExamModal from '../../Components/LiveExamModal/LiveExamModal'
+import { Hidden } from '@mui/material'
+import Headroom from 'react-headroom'
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false)
-  const { user, logOut } = useContext(AuthContext);
-  const [isAdmin] = useAdmin();
-  const [isInstructor] = useInstructor();
-const [value,setValue]= useState(null);
+  const { user, logOut } = useContext(AuthContext)
+  const [isAdmin] = useAdmin()
+  const [isInstructor] = useInstructor()
+  const [value, setValue] = useState(null)
   const handleLogout = () => {
     logOut()
       .then(() => {
         Swal.fire({
-          icon: "success",
-          title: "Log Out Successful",
+          icon: 'success',
+          title: 'Log Out Successful',
           showConfirmButton: false,
-          timer: 1500,
-        });
+          timer: 1500
+        })
       })
-      .catch((error) => console.log(error));
-  };
+      .catch(error => console.log(error))
+  }
 
   const navbarLink_First = (
     <>
@@ -36,16 +37,15 @@ const [value,setValue]= useState(null);
         <Link>Home</Link>
       </li>
     </>
-  );
+  )
 
-  
-    const toggleDropdown = () => {
-      setIsOpen(!isOpen);
-    };
-  
-    const hideDropdown = () => {
-      setIsOpen(false);
-      };
+  const toggleDropdown = () => {
+    setIsOpen(!isOpen)
+  }
+
+  const hideDropdown = () => {
+    setIsOpen(false)
+  }
 
   const navbarLink_Middle = (
     // <>
@@ -61,23 +61,20 @@ const [value,setValue]= useState(null);
     //     </ul>
     //   </details>
     // </>
-    <div className="relative">
-      <button
-        onClick={toggleDropdown}
-        className=""
-      >
+    <div className='relative'>
+      <button onClick={toggleDropdown} className=''>
         Exam
       </button>
       {isOpen && (
         <div
-          className="absolute top-full left-0 mt-2 w-48 bg-primary border text-white border-gray-300 shadow-lg rounded-lg"
+          className='absolute left-0 w-48 mt-2 text-white border border-gray-300 rounded-lg shadow-lg top-full bg-primary'
           onClick={hideDropdown}
         >
-          <ul className="">
+          <ul className=''>
             <li>
               <Link
-                 to="/allSubjects"
-                className="block px-4 py-2  hover:bg-blue-100"
+                to='/allSubjects'
+                className='block px-4 py-2 hover:bg-blue-100'
                 onClick={hideDropdown}
               >
                 All Subject
@@ -85,78 +82,113 @@ const [value,setValue]= useState(null);
             </li>
             <li>
               <Link
-             to="/written"
-                className="block px-4 py-2 hover:bg-blue-100"
+                to='/written'
+                className='block px-4 py-2 hover:bg-blue-100'
                 onClick={hideDropdown}
               >
-              Written Exam
+                Written Exam
               </Link>
             </li>
           </ul>
         </div>
       )}
     </div>
-  );
+  )
 
   const navbarLink_Last = (
     <>
       <li>
-        <Link to="/instructors">Instructors</Link>
+        <Link to='/instructors'>Instructors</Link>
       </li>
       <li>
-        <Link to="/blog">Blog</Link>
+        <Link to='/blog'>Blog</Link>
       </li>
       <li>
-        <Link to="/contact">Contact Us</Link>
+        <Link to='/contact'>Contact Us</Link>
       </li>
       <li>
-        <Link to="/about">About us</Link>
+        <Link to='/about'>About us</Link>
       </li>
       <li>
-        <Link to="/forum">Forum</Link>
+        <Link to='/forum'>Forum</Link>
       </li>
-      {user && <li>{isAdmin ? "" : isInstructor ? <Link to="/createLiveExam">Create Live Exam</Link> : <Link to="/joinLiveExam">Join Live Exam</Link>
-      }
-
-      </li>}
+      {user && (
+        <li>
+          {isAdmin ? (
+            ''
+          ) : isInstructor ? (
+            <Link to='/createLiveExam'>Create Live Exam</Link>
+          ) : (
+            <Link to='/joinLiveExam'>Join Live Exam</Link>
+          )}
+        </li>
+      )}
     </>
-  );
+  )
 
-  const searchData = (e) => {
-    e.preventDefault();
-    const data = document.getElementById("search").value;
+  const searchData = e => {
+    e.preventDefault()
+    const data = document.getElementById('search').value
 
-    console.log(data);
-  };
+    console.log(data)
+  }
 
   return (
-    <nav className="primary-bg">
-      <div className="navbar z-[40]  container mx-auto  sticky top-0   text-white">
-        <div className="navbar-start">
-          <div className="dropdown">
-            <label tabIndex={0} className="btn btn-ghost lg:hidden">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="w-5 h-5"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
+    <Headroom
+      style={{
+        WebkitTransition: 'all .5s ease-in-out',
+        MozTransition: 'all .5s ease-in-out',
+        OTransition: 'all .5s ease-in-out',
+        transition: 'all .5s ease-in-out'
+      }}
+    >
+      <nav className='backdrop-blur primary-nav'>
+        <div className='navbar z-[40]  container mx-auto  sticky top-0   text-white'>
+          <div className='navbar-start'>
+            <div className='dropdown'>
+              <label tabIndex={0} className='btn btn-ghost lg:hidden'>
+                <svg
+                  xmlns='http://www.w3.org/2000/svg'
+                  className='w-5 h-5'
+                  fill='none'
+                  viewBox='0 0 24 24'
+                  stroke='currentColor'
+                >
+                  <path
+                    strokeLinecap='round'
+                    strokeLinejoin='round'
+                    strokeWidth='2'
+                    d='M4 6h16M4 12h8m-8 6h16'
+                  />
+                </svg>
+              </label>
+              <ul
+                tabIndex={0}
+                className='menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52 primary-bg'
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M4 6h16M4 12h8m-8 6h16"
-                />
-              </svg>
-            </label>
-            <ul
-              tabIndex={0}
-              className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52 primary-bg"
-            >
+                {/* navbarFirst */}
+                {navbarLink_First}
+                <li>
+                  {/* navbar_middle */}
+                  {navbarLink_Middle}
+                </li>
+                {/* navbar Last */}
+                {navbarLink_Last}
+              </ul>
+            </div>
+            <Link to='/'>
+              <img
+                className='w-[200px] hover:-translate-y-0.5 duration-200'
+                src={logo}
+                alt=''
+              />
+            </Link>
+          </div>
+          <div className='hidden navbar-center lg:flex'>
+            <ul className='px-1 menu menu-horizontal'>
               {/* navbarFirst */}
               {navbarLink_First}
-              <li>
+              <li tabIndex={0}>
                 {/* navbar_middle */}
                 {navbarLink_Middle}
               </li>
@@ -164,147 +196,134 @@ const [value,setValue]= useState(null);
               {navbarLink_Last}
             </ul>
           </div>
-          <Link to="/">
-            <img
-              className="w-[200px] hover:-translate-y-0.5 duration-200"
-              src={logo}
-              alt=""
-            />
-          </Link>
-        </div>
-        <div className="hidden navbar-center lg:flex">
-          <ul className="px-1 menu menu-horizontal">
-            {/* navbarFirst */}
-            {navbarLink_First}
-            <li tabIndex={0}>
-              {/* navbar_middle */}
-              {navbarLink_Middle}
-            </li>
-            {/* navbar Last */}
-            {navbarLink_Last}
-          </ul>
-        </div>
-        <div className="navbar-end">
-          <div className="indicator me-4">
-            <span className="indicator-item badge badge-secondary">1+</span>
-            <button>
-              <Link to="notice" className="text-2xl">
-                {" "}
-                <AiFillBell></AiFillBell>
-              </Link>
-            </button>
-          </div>
-{/* 
-          <button
-            onClick={() => window.my_modal_3.showModal()}
-            className="btn btn-ghost btn-circle"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="w-5 h-5"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-              />
-            </svg>
-          </button> */}
-          {user ? (
-            <div className="z-50 ml-5 dropdown dropdown-end">
-              <div
-                className="tooltip tooltip-left"
-                data-tip={user?.displayName}
-              >
-                <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-                  <div className="w-10 rounded-full">
-                    <img src={user?.photoURL} />
-                  </div>
-                </label>
-              </div>
-
-              <ul
-                tabIndex={0}
-                className="p-2 mt-3 text-white bg-black shadow menu menu-compact dropdown-content rounded-box w-52"
-              >
-                <li>
-                  <Link to="/updateProfile" className="justify-between w-full">
-                    {user?.displayName}
-                  </Link>
-                </li>
-                {/* Navigate to different dashboard route based on user role */}
-                {user && (
-                  <li>
-                    {isAdmin ? (
-                      <Link to="/dashboard/adminHome">Dashboard</Link>
-                    ) : isInstructor ? (
-                      <Link to="/dashboard/instructorHome">Dashboard</Link>
-                    ) : (
-                      <Link to="/dashboard/userHome">Dashboard</Link>
-                    )}
-                  </li>
-                )}
-                <li>
-                  <Link to="/profile">Profile</Link>
-                </li>
-                <li>
-                  <Link className="w-full" onClick={handleLogout}>
-                    Log Out
-                  </Link>
-                </li>
-              </ul>
+          <div className='navbar-end'>
+            <div className='indicator me-4'>
+              <span className='indicator-item badge badge-secondary'>1+</span>
+              <button>
+                <Link to='notice' className='text-2xl'>
+                  {' '}
+                  <AiFillBell></AiFillBell>
+                </Link>
+              </button>
             </div>
-          ) : (
-            <Link
-              to="/login"
-              className="text-white  border-none shadow-md btn primary-bg"
-            >
-              Login
-            </Link>
-          )}
-        </div>
-      </div>
-      <div>
-        <dialog
-          id="my_modal_3"
-          className="modal modal-top max-w-[400px] mx-auto mt-[68px] "
+            {/* 
+        <button
+          onClick={() => window.my_modal_3.showModal()}
+          className="btn btn-ghost btn-circle"
         >
-          <form method="dialog" className="modal-box primary-bg ">
-            <button className="absolute z-20 btn btn-sm btn-circle btn-ghost right-2 top-2">
-              ✕
-            </button>
-            <input
-              id="search"
-              name="search"
-              type="text"
-              placeholder="Type here"
-              className="z-10 w-full max-w-xs bg-transparent input top-20 input-bordered"
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="w-5 h-5"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
             />
-            <button onClick={searchData} className="absolute p-4 right-14">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="w-5 h-5"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                />
-              </svg>
-            </button>
-          </form>
-        </dialog>
-      </div>
-    </nav>
-  );
-};
+          </svg>
+        </button> */}
+            {user ? (
+              <div className='z-50 ml-5 dropdown dropdown-end'>
+                <div
+                  className='tooltip tooltip-left'
+                  data-tip={user?.displayName}
+                >
+                  <label
+                    tabIndex={0}
+                    className='btn btn-ghost btn-circle avatar'
+                  >
+                    <div className='w-10 rounded-full'>
+                      <img src={user?.photoURL} />
+                    </div>
+                  </label>
+                </div>
 
-export default Navbar;
+                <ul
+                  tabIndex={0}
+                  className='p-2 mt-3 text-white bg-black shadow menu menu-compact dropdown-content rounded-box w-52'
+                >
+                  <li>
+                    <Link
+                      to='/updateProfile'
+                      className='justify-between w-full'
+                    >
+                      {user?.displayName}
+                    </Link>
+                  </li>
+                  {/* Navigate to different dashboard route based on user role */}
+                  {user && (
+                    <li>
+                      {isAdmin ? (
+                        <Link to='/dashboard/adminHome'>Dashboard</Link>
+                      ) : isInstructor ? (
+                        <Link to='/dashboard/instructorHome'>Dashboard</Link>
+                      ) : (
+                        <Link to='/dashboard/userHome'>Dashboard</Link>
+                      )}
+                    </li>
+                  )}
+                  <li>
+                    <Link to='/profile'>Profile</Link>
+                  </li>
+                  <li>
+                    <Link className='w-full' onClick={handleLogout}>
+                      Log Out
+                    </Link>
+                  </li>
+                </ul>
+              </div>
+            ) : (
+              <Link
+                to='/login'
+                className='text-white border-none shadow-md btn primary-bg'
+              >
+                Login
+              </Link>
+            )}
+          </div>
+        </div>
+        <div>
+          <dialog
+            id='my_modal_3'
+            className='modal modal-top max-w-[400px] mx-auto mt-[68px] '
+          >
+            <form method='dialog' className='modal-box primary-bg '>
+              <button className='absolute z-20 btn btn-sm btn-circle btn-ghost right-2 top-2'>
+                ✕
+              </button>
+              <input
+                id='search'
+                name='search'
+                type='text'
+                placeholder='Type here'
+                className='z-10 w-full max-w-xs bg-transparent input top-20 input-bordered'
+              />
+              <button onClick={searchData} className='absolute p-4 right-14'>
+                <svg
+                  xmlns='http://www.w3.org/2000/svg'
+                  className='w-5 h-5'
+                  fill='none'
+                  viewBox='0 0 24 24'
+                  stroke='currentColor'
+                >
+                  <path
+                    strokeLinecap='round'
+                    strokeLinejoin='round'
+                    strokeWidth='2'
+                    d='M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z'
+                  />
+                </svg>
+              </button>
+            </form>
+          </dialog>
+        </div>
+      </nav>
+    </Headroom>
+  )
+}
+
+export default Navbar

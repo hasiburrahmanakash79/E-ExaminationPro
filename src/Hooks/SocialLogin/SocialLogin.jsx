@@ -1,54 +1,54 @@
-import React, { useContext } from "react";
-import { AuthContext } from "../../Provider/AuthProvider";
-import { useLocation, useNavigate } from "react-router-dom";
-import Swal from "sweetalert2";
+import React, { useContext } from 'react'
+import { AuthContext } from '../../Provider/AuthProvider'
+import { useLocation, useNavigate } from 'react-router-dom'
+import Swal from 'sweetalert2'
 
 const SocialLogin = () => {
-  const navigate = useNavigate();
-  const location = useLocation();
+  const navigate = useNavigate()
+  const location = useLocation()
 
-  const from = location.state?.from?.pathname || "/";
+  const from = location.state?.from?.pathname || '/'
 
-  const { googleSignIn } = useContext(AuthContext);
+  const { googleSignIn } = useContext(AuthContext)
 
   // googleLogin
   const handleGoogleLogin = () => {
     googleSignIn()
-      .then((result) => {
-        const signInUser = result.user;
+      .then(result => {
+        const signInUser = result.user
 
         const userInfo = {
           displayName: signInUser.displayName,
           email: signInUser.email,
-          photoURL: signInUser.photoURL,
-        };
-        fetch("http://localhost:5000/users", {
-          method: "POST",
+          photoURL: signInUser.photoURL
+        }
+        fetch('https://e-exam-pro-server.vercel.app/users', {
+          method: 'POST',
           headers: {
-            "content-type": "application/json",
+            'content-type': 'application/json'
           },
-          body: JSON.stringify(userInfo),
+          body: JSON.stringify(userInfo)
         })
-          .then((res) => res.json())
+          .then(res => res.json())
           .then(() => {
-            navigate(from, { replace: true });
+            navigate(from, { replace: true })
             Swal.fire({
               showConfirmButton: false,
               timer: 2000,
-              title: "Login Successful",
-              icon: "success",
-            });
-          });
+              title: 'Login Successful',
+              icon: 'success'
+            })
+          })
       })
-      .catch((error) => console.log(error));
-  };
+      .catch(error => console.log(error))
+  }
   return (
     <div>
       <button onClick={() => handleGoogleLogin()}>
-        <img src="https://i.ibb.co/KjQdbSD/image.png" alt="" className="w-6" />
+        <img src='https://i.ibb.co/KjQdbSD/image.png' alt='' className='w-6' />
       </button>
     </div>
-  );
-};
+  )
+}
 
-export default SocialLogin;
+export default SocialLogin

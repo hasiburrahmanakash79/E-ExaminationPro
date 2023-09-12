@@ -8,7 +8,7 @@ const TopSubjects = () => {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          'http://localhost:5000/subjects'
+          'https://e-exam-pro-server.vercel.app/subjects'
         )
         const data = await response.json()
 
@@ -24,9 +24,10 @@ const TopSubjects = () => {
   return (
     <div className='my-16'>
       <h1
-        data-aos="zoom-in-down"
-        data-aos-duration="600"
-        className='text-center text-slate-200 text-4xl font-bold pt-10 md:pt-0 pb-10'>
+        data-aos='zoom-in-down'
+        data-aos-duration='600'
+        className='text-center text-slate-200 text-4xl font-bold pt-10 md:pt-0 pb-10'
+      >
         Our Top subjects
       </h1>
       <div className='grid grid-cols-1 md:grid-cols-4 gap-5  '>
