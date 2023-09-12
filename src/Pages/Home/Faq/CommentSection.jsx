@@ -28,13 +28,16 @@ function CommentSection ({ blogId }) {
           blogId
         }
 
-        const response = await fetch(`http://localhost:4000/comments`, {
-          method: 'POST',
-          headers: {
-            'content-type': 'application/json'
-          },
-          body: JSON.stringify({ requestBody })
-        })
+        const response = await fetch(
+          `https://e-exam-pro-server.vercel.app/comments`,
+          {
+            method: 'POST',
+            headers: {
+              'content-type': 'application/json'
+            },
+            body: JSON.stringify({ requestBody })
+          }
+        )
 
         if (response.ok) {
           setMessage('Comment added successfully')
@@ -55,7 +58,7 @@ function CommentSection ({ blogId }) {
     const fetchComments = async () => {
       try {
         const response = await fetch(
-          `http://localhost:4000/comments?blogId=${blogId}`
+          `https://e-exam-pro-server.vercel.app/comments?blogId=${blogId}`
         )
 
         if (response.ok) {

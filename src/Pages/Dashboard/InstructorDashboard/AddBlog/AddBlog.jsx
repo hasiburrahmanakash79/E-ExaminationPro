@@ -1,80 +1,97 @@
-import React from 'react';
-import { Helmet } from 'react-helmet-async';
-import Swal from 'sweetalert2';
+import React from 'react'
+import { Helmet } from 'react-helmet-async'
+import Swal from 'sweetalert2'
 
 const AddBlog = () => {
+  const handleBlogAdding = event => {
+    event.preventDefault()
 
-    const handleBlogAdding = (event) => {
-        event.preventDefault();
+    const form = event.target
+    const image_url = form.image_url.value
+    const title = form.title.value
+    const publishing_date = form.publishing_date.value
+    const content = form.content.value
+    const instructorName = form.instructorName.value
 
-        const form = event.target;
-        const image_url = form.image_url.value;
-        const title = form.title.value;
-        const publishing_date = form.publishing_date.value;
-        const content = form.content.value;
-        const instructorName = form.instructorName.value
-
-        const order = {
-            image_url,
-            instructorName,
-            title,
-            publishing_date,
-            content,
-
-        }
-        console.log(order);
-
-        fetch('http://localhost:4000/blogs', {
-            method: "POST",
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(order)
-        })
-            .then(res => res.json())
-            .then(data => {
-                console.log(data);
-                if (data.insertedId) {
-                    Swal.fire({
-                        position: 'middle-center',
-                        icon: 'success',
-                        title: 'Added Successfully',
-                        showConfirmButton: true,
-                        timer: 1500,
-
-                    })
-
-
-                }
-
-                form.reset()
-            })
-
+    const order = {
+      image_url,
+      instructorName,
+      title,
+      publishing_date,
+      content
     }
+    console.log(order)
 
+    fetch('https://e-exam-pro-server.vercel.app/blogs', {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json'
+      },
+      body: JSON.stringify(order)
+    })
+      .then(res => res.json())
+      .then(data => {
+        console.log(data)
+        if (data.insertedId) {
+          Swal.fire({
+            position: 'middle-center',
+            icon: 'success',
+            title: 'Added Successfully',
+            showConfirmButton: true,
+            timer: 1500
+          })
+        }
 
-    return (
-        <div>
-            <Helmet><title>E-ExamPro | Add Blog </title></Helmet>
-            <h2 className='text-2xl'>Add Blog</h2>
+        form.reset()
+      })
+  }
 
-            <form onSubmit={handleBlogAdding} className='text-center pb-20'>
-                <div className='p-5 pb-20-20 grid gap-5 grid-cols-2 '>
-                    <input type="text"
-                        name='image_url' placeholder="Photo URL" className="input input-bordered" />
-                    <input type="text" name='title' placeholder="Your Title" className="input input-bordered w-full " />
-                    <input type="date" name='publishing_date' placeholder="Publishing Date" className="input input-bordered w-full " />
-                    <input type="text" name='instructorName' placeholder="Publisher Name" className="input input-bordered w-full " />
-                    <textarea className="textarea w-full textarea-bordered" name='content' placeholder="Your content"></textarea>
-                    {/* <button className='flex justify-self-end text-end btn btn-primary w-1/3 mt-6'>Submit</button> */}
+  return (
+    <div>
+      <Helmet>
+        <title>E-ExamPro | Add Blog </title>
+      </Helmet>
+      <h2 className='text-2xl'>Add Blog</h2>
 
-                </div>
-                <div>
-                    <input className='btn btn-primary ' type="submit" value="Submit" />
-                </div>
-            </form>
+      <form onSubmit={handleBlogAdding} className='text-center pb-20'>
+        <div className='p-5 pb-20-20 grid gap-5 grid-cols-2 '>
+          <input
+            type='text'
+            name='image_url'
+            placeholder='Photo URL'
+            className='input input-bordered'
+          />
+          <input
+            type='text'
+            name='title'
+            placeholder='Your Title'
+            className='input input-bordered w-full '
+          />
+          <input
+            type='date'
+            name='publishing_date'
+            placeholder='Publishing Date'
+            className='input input-bordered w-full '
+          />
+          <input
+            type='text'
+            name='instructorName'
+            placeholder='Publisher Name'
+            className='input input-bordered w-full '
+          />
+          <textarea
+            className='textarea w-full textarea-bordered'
+            name='content'
+            placeholder='Your content'
+          ></textarea>
+          {/* <button className='flex justify-self-end text-end btn btn-primary w-1/3 mt-6'>Submit</button> */}
         </div>
-    );
-};
+        <div>
+          <input className='btn btn-primary ' type='submit' value='Submit' />
+        </div>
+      </form>
+    </div>
+  )
+}
 
-export default AddBlog;
+export default AddBlog
