@@ -49,7 +49,7 @@ const UpcomingLiveExam = () => {
 
 
 
-      fetch(`http://localhost:5000/appliedLiveExam?examId=${e_ID}&studentEmail=${user?.email}`,{
+      fetch(`http://localhost:4000/appliedLiveExam?examId=${e_ID}&studentEmail=${user?.email}`,{
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

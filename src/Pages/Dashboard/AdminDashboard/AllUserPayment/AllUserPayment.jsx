@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 const AllUserPayment = () => {
   const [paymentInfo, setPaymentInfo] = useState([])
   useEffect(() => {
-    fetch(`http://localhost:5000/history`)
+    fetch(`http://localhost:4000/history`)
       .then(res => res.json())
       .then(data => {
         setPaymentInfo(data)

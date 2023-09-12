@@ -17,7 +17,7 @@ const NewBlogDetails = () => {
   const [displayCard, setDisplayCard] = useState(4)
 
   useEffect(() => {
-    fetch('http://localhost:5000/blogs')
+    fetch('http://localhost:4000/blogs')
       .then(res => res.json())
       .then(data => setSmallCard(data))
   }, [])

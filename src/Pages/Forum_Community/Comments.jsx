@@ -6,7 +6,7 @@ const Comments = ({ postComments }) => {
     console.log(postComments);
 
     const handleEdit = () => {
-        fetch("http://localhost:5000/forumPost/:", {
+        fetch("http://localhost:4000/forumPost/:", {
             method: 'PATCH'
         })
             .then(res => res.json())

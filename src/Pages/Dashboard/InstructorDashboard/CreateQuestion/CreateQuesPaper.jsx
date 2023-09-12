@@ -20,7 +20,7 @@ const CreateQuesPaper = () => {
     state => state.questionPaper
   )
   useEffect(() => {
-    fetch('http://localhost:5000/allSubjects', {
+    fetch('http://localhost:4000/allSubjects', {
       headers: {
         authorization: `bearar ${localStorage.getItem('access-token')}`
       }
@@ -80,7 +80,7 @@ const CreateQuesPaper = () => {
 
     console.log('Question Paper Data:', paperData)
 
-    // fetch('http://localhost:5000/questionPaper', {
+    // fetch('http://localhost:4000/questionPaper', {
     //   method: 'POST',
     //   headers: {
     //     'Content-Type': 'application/json'

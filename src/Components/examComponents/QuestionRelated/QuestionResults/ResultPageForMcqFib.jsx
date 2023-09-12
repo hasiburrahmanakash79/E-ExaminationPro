@@ -29,8 +29,8 @@ const ResultPageForMcqFib = () => {
   const [questions, setQuestions] = useState([])
   const [results, setResults] = useState([])
   useEffect(() => {
-    fetch("http://localhost:5000/result?id=64e8b9586f2385caa12fd4c5")
-      // fetch(`http://localhost:5000/result?id=${id}`)
+    fetch("http://localhost:4000/result?id=64e8b9586f2385caa12fd4c5")
+      // fetch(`http://localhost:4000/result?id=${id}`)
       .then(res => res.json())
       .then(data => setQuestions(data))
   }, [])

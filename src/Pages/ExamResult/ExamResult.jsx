@@ -13,7 +13,7 @@ const ExamResult = () => {
     console.log(id)
 
     useEffect(() => {
-        fetch(`http://localhost:5000/result?examId=${id}`)
+        fetch(`http://localhost:4000/result?examId=${id}`)
             .then(res => res.json())
             .then(data => setResults(data))
     }, [])

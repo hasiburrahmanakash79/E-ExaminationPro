@@ -40,6 +40,7 @@ import UpcomingLiveExam from '../Pages/LiveExam/UpcomingLiveExam/UpcomingLiveExa
 import Notice from '../Pages/NoticePage/Notice/Notice'
 import ResultPageForMcqFib from '../components/examComponents/QuestionRelated/ResultPageForMcqFib'
 import PrivateRouter from './PrivateRouter'
+import BlogDetails from '../Pages/BlogPage/BlogDetails/BlogDetails'
 const router = createBrowserRouter([
   {
     path: '/',
@@ -61,7 +62,8 @@ const router = createBrowserRouter([
 
       {
         path: "/blogDetails/:id",
-        element: <NewBlogDetails></NewBlogDetails>
+        // element: <NewBlogDetails></NewBlogDetails>
+        element:<BlogDetails></BlogDetails>
       },
       // {
       //   path: "/blogDetails/:id",
@@ -125,7 +127,7 @@ const router = createBrowserRouter([
         path: '/exam/:id',
         element: <Exam2 />,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/questionPaper/${params.id}`)
+          fetch(`http://localhost:4000/questionPaper/${params.id}`)
       },
       {
         path: '/written',

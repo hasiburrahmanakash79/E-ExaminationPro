@@ -16,7 +16,7 @@ const PostInput = () => {
     const onSubmit = (data) => {
         const article = data.postField;
         // axios.post("https://e-exam-pro-server.vercel.app/forumPost",
-        axios.post("http://localhost:5000/forumPost",
+        axios.post("http://localhost:4000/forumPost",
             {
                 article,
                 userName: user?.displayName,

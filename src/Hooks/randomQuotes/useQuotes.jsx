@@ -10,7 +10,7 @@ const useQuotes = () => {
     queryKey: ['quotes'],
     queryFn: async () => {
       const res = await axios.get(
-        'http://localhost:5000/api/quotes'
+        'http://localhost:4000/api/quotes'
       )
       return res.data
     }

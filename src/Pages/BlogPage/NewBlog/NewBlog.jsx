@@ -10,7 +10,7 @@ const NewBlog = () => {
   const blogsPerPage = 8;
 
   useEffect(() => {
-    fetch('http://localhost:5000/blogs')
+    fetch('http://localhost:4000/blogs')
       .then((res) => res.json())
       .then((data) => setNewBlogs(data));
   }, []);
@@ -37,7 +37,7 @@ const NewBlog = () => {
         <div className='md:grid md:grid-cols-4 md:gap-5 md:px-12'>
           {currentBlogs.map((newBlog) => (
             <SingleBlogCard key={newBlog._id} newBlog={newBlog}
-            
+
             />
           ))}
         </div>
@@ -59,3 +59,11 @@ const NewBlog = () => {
 };
 
 export default NewBlog;
+
+
+
+
+
+
+
+

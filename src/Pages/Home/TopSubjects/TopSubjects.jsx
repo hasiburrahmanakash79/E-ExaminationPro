@@ -8,7 +8,7 @@ const TopSubjects = () => {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          'http://localhost:5000/subjects'
+          'http://localhost:4000/subjects'
         )
         const data = await response.json()
 

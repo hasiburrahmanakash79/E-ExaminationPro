@@ -14,7 +14,7 @@ const FreeCoursePage = () => {
   const [data, setData] = useState([])
   const navigate = useNavigate()
   useEffect(() => {
-    fetch('http://localhost:5000/allSubjects', {
+    fetch('http://localhost:4000/allSubjects', {
       headers: {
         authorization: `bearar ${localStorage.getItem('access-token')}`
       }

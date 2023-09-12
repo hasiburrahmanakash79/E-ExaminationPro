@@ -17,7 +17,7 @@ const Testimonial = () => {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          'http://localhost:5000/testimonials'
+          'http://localhost:4000/testimonials'
         )
         const data = await response.json()
 

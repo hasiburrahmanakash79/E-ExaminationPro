@@ -29,7 +29,7 @@ function CommentSection({ blogId }) {
           blogId
         };
 
-        const response = await fetch(`http://localhost:5000/comments`, {
+        const response = await fetch(`http://localhost:4000/comments`, {
           method: 'POST',
           headers: {
             'content-type': 'application/json',
@@ -55,12 +55,12 @@ function CommentSection({ blogId }) {
   useEffect(() => {
     const fetchComments = async () => {
       try {
-        const response = await fetch(`http://localhost:5000/comments?blogId=${blogId}`);
+        const response = await fetch(`http://localhost:4000/comments?blogId=${blogId}`);
 
         if (response.ok) {
           const data = await response.json();
           console.log(data);
-          setComments(data)
+          setComment(data)
         }
         else {
           setMessage('Failed to fetch comments')
@@ -94,10 +94,10 @@ function CommentSection({ blogId }) {
       <div>
 
         <ul className='mt-2 ms-10'>
-          {comments?.map((c) => (
+          {/* {comments?.map((c) => (
             <li key={c._id}
             >{c.comment}</li>
-          ))}
+          ))} */}
         </ul>
 
 

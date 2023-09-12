@@ -5,7 +5,7 @@ import { AuthContext } from '../../Provider/AuthProvider'
 
 const axiosSecure = axios.create({
 //  baseURL: 'https://e-exam-pro-server.vercel.app'
-  baseURL: 'http://localhost:5000'
+  baseURL: 'http://localhost:4000'
 })
 
 const useAxiosSecure = () => {

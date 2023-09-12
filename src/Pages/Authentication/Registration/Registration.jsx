@@ -39,7 +39,7 @@ const Registration = () => {
             photoURL: data.photo,
             role: 'user'
           }
-          fetch('http://localhost:5000/users', {
+          fetch('http://localhost:4000/users', {
             method: 'POST',
             headers: {
               'content-type': 'application/json'
