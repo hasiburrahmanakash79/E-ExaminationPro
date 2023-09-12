@@ -33,7 +33,7 @@ export const examPageSlice = createSlice({
             ////////////////
 
 
-            const result1 = state.result.find(obj => obj.question === state.question) // check if the answer allready stored or not
+            const result1 = state.result.find(obj => obj.question === state.question) // check if the answer already stored or not
             if (result1) {
                 if ((state.examType == 'mcq') || (state.examType == 'multimedia_mcq')) {
                     result1.userAns = state.optionMcq == null ? 'Skipped' : state.optionMcq
@@ -64,8 +64,6 @@ export const examPageSlice = createSlice({
                     state.inputValue = null
                 }
             }
-            // state.optionMcq = null
-            // state.inputValue=null
 
         },
         sendResult: (state, { payload }) => {

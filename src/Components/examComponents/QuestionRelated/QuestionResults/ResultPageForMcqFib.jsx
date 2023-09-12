@@ -13,24 +13,12 @@ const ResultPageForMcqFib = () => {
   const location = useLocation()
   const searchParams = new URLSearchParams(location.search)
   const examId = searchParams.get('id')
-  const [questions, setQuestions] = useState([])
-  // const [results, setResults] = useState([])
   const [result, refetch, loading] = useResult(examId)
   if (loading) {
     return <p>Loading..</p>
   }
 
   const percentage = (result.mark / result.totalMark) * 100
-  // const getColor = percentage => {
-  //   if (percentage >= 90) {
-  //     return '#4CAF50'
-  //   } else if (percentage >= 60) {
-  //     return '#FFC107'
-  //   } else {
-  //     return '#F44336'
-  //   }
-  // }
-
   return (
     <section className='grid w-11/12 pt-6 mx-auto '>
       {result && (
@@ -82,7 +70,6 @@ const ResultPageForMcqFib = () => {
           </div>
           {/* Feedback */}
           <div className='mx-auto mb-6 md:ml-auto md:absolute md:right-0 md:bottom-28'>
-            {/* Open the modal using ID.showModal() method */}
             <button
               className='btn btn_quiz primary-btn'
               onClick={() => window.my_modal_2.showModal()}

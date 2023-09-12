@@ -48,39 +48,26 @@ const Navbar = () => {
   }
 
   const navbarLink_Middle = (
-    // <>
-    //   <details className="z-[1]">
-    //     <summary onClick={()=>setValue(null)}>Exam</summary>
-    //     <ul  className={`z-50 p-2 rounded-lg navigation-bar md:rounded-none ${value}`}>
-    //       <li onClick={()=>setValue('hidden')}>
-    //         <Link to="/allSubjects">All Subject</Link>
-    //       </li>
-    //       <li onClick={()=>setValue('hidden')}>
-    //         <Link to="/written">Written Exam</Link>
-    //       </li>
-    //     </ul>
-    //   </details>
-    // </>
     <div className='relative'>
       <button onClick={toggleDropdown} className=''>
         Exam
       </button>
       {isOpen && (
         <div
-          className='absolute left-0 w-48 mt-2 text-white border border-gray-300 rounded-lg shadow-lg top-full bg-primary'
+          className="absolute text-white rounded-lg top-full primary-bg"
           onClick={hideDropdown}
         >
-          <ul className=''>
-            <li>
+          <div className="p-5 space-y-3">
+            <button className="px-2 py-1 rounded hover:bg-purple-100/10">
               <Link
-                to='/allSubjects'
-                className='block px-4 py-2 hover:bg-blue-100'
+                 to="/allSubjects"
+                
                 onClick={hideDropdown}
               >
                 All Subject
               </Link>
-            </li>
-            <li>
+            </button>
+            <button  className="px-2 py-1 rounded hover:bg-purple-100/10">
               <Link
                 to='/written'
                 className='block px-4 py-2 hover:bg-blue-100'
@@ -88,8 +75,8 @@ const Navbar = () => {
               >
                 Written Exam
               </Link>
-            </li>
-          </ul>
+            </button>
+          </div>
         </div>
       )}
     </div>
@@ -206,26 +193,6 @@ const Navbar = () => {
                 </Link>
               </button>
             </div>
-            {/* 
-        <button
-          onClick={() => window.my_modal_3.showModal()}
-          className="btn btn-ghost btn-circle"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="w-5 h-5"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-            />
-          </svg>
-        </button> */}
             {user ? (
               <div className='z-50 ml-5 dropdown dropdown-end'>
                 <div

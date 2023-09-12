@@ -31,7 +31,7 @@ const Testimonial = () => {
     fetchData()
   }, [])
   return (
-    <div className='pb-5 mx-5 md:mt-28 mt-16'>
+    <div className='pb-5 mx-5 mt-16 md:mt-28'>
       <h1
         data-aos='zoom-in-down'
         data-aos-duration='800'

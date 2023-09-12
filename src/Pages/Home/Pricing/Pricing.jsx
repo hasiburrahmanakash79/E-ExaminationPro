@@ -1,5 +1,7 @@
-import PricingCard from './PricingCard'
-import PricingTab from './PricingTab'
+import Loading from "../../../Components/Loading/Loading";
+// import usePrice from "../../../Hooks/usePrice/usePrice";
+import PricingCard from "./PricingCard";
+import PricingTab from "./PricingTab";
 
 const Pricing = () => {
   const pricePackage = [
@@ -42,6 +44,11 @@ const Pricing = () => {
     }
   ]
 
+  // const [pricePackage, loading] = usePrice();
+
+  // if (loading) {
+  //   return <Loading/>;
+  // }
 
   return (
     <section className='w-full min-h-screen mx-auto space-y-3 text-center md:my-28 my-16'>
@@ -65,7 +72,7 @@ const Pricing = () => {
         <PricingTab pricePackage={pricePackage} />
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default Pricing
+export default Pricing;

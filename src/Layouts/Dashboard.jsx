@@ -100,6 +100,12 @@ const Dashboard = () => {
       role: "admin",
     },
     {
+      title: "Create Subject",
+      path: "/dashboard/createSubject",
+      icon: iconMappings.Notice,
+      role: "admin",
+    },
+    {
       title: "Instructor Home ",
       icon: iconMappings.RoleHome,
       role: "instructor",

@@ -14,7 +14,6 @@ const PostInput = () => {
 
   const onSubmit = data => {
     const article = data.postField
-    // axios.post("https://e-exam-pro-server.vercel.app/forumPost",
     axios
       .post('https://e-exam-pro-server.vercel.app/forumPost', {
         article,

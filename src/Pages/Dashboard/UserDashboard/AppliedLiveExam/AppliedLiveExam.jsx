@@ -4,8 +4,10 @@ import { Link } from 'react-router-dom'
 import useAxiosSecure from '../../../../Hooks/useAxiosSecure.jsx/useAxiosSecure'
 import { AuthContext } from '../../../../Provider/AuthProvider'
 import { useQuery } from '@tanstack/react-query'
+import { LocalToastTarget, useLocalToast } from 'react-local-toast'
 
 const AppliedLiveExam = () => {
+  const { showToast, removeToast } = useLocalToast()
   const { user, loading } = useContext(AuthContext)
   const [code, setCode] = useState(null)
   const [axiosSecure] = useAxiosSecure()
@@ -30,9 +32,16 @@ const AppliedLiveExam = () => {
       `https://e-exam-pro-server.vercel.app/liveQuestionPaper?id=${id}&examCode=${code}`
     )
       .then(res => res.json())
-      .then(code => setCode(code.code))
+      .then(code => {
+        if (code.code == undefined) {
+          showToast('btn', 'Wait For Instructor to Generate Code', {
+            type: 'warning'
+          })
+        }
+        setCode(code.code)
+      })
   }
-
+  console.log(code)
   return (
     <div className='flex flex-col items-center justify-center'>
       <Helmet>
@@ -54,12 +63,14 @@ const AppliedLiveExam = () => {
                   <div className='grid grid-cols-2 '>
                     <h1 className='text-red-500 '>Code: </h1>
                     {code == null ? (
-                      <button
-                        onClick={() => getCode(exam?.examID, exam?.examCode)}
-                        className='btn btn-sm'
-                      >
-                        Get Code
-                      </button>
+                      <LocalToastTarget name='btn'>
+                        <button
+                          onClick={() => getCode(exam?.examID, exam?.examCode)}
+                          className='btn btn-sm'
+                        >
+                          Get Code
+                        </button>
+                      </LocalToastTarget>
                     ) : (
                       <button className='text-black bg-white btn btn-sm hover:bg-white'>
                         {code}

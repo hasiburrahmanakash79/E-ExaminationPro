@@ -19,7 +19,7 @@ const PaymentHistory = () => {
       <Helmet>
         <title>E-ExamPro | Payment History </title>
       </Helmet>
-      <h1 className='md:text-4xl text-2xl text-center my-5'>
+      <h1 className='my-5 text-2xl text-center md:text-4xl'>
         Your Payment history
       </h1>
       <div className='overflow-x-auto'>

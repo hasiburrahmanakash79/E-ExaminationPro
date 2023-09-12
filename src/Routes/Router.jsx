@@ -14,7 +14,7 @@ import Dashboard from '../Layouts/Dashboard'
 import ManageUsers from '../Pages/Dashboard/AdminDashboard/ManageUser/ManageUsers'
 import AdminHome from '../Pages/Dashboard/AdminDashboard/AdminHome/AdminHome'
 import Notice from '../Pages/NoticePage/Notice/Notice'
-import AllExam from '../Pages/FreeCoursePage/ExamPage/allExam'
+import AllExam from '../Pages/FreeCoursePage/ExamPage/AllExam'
 import Exam2 from '../Pages/FreeCoursePage/ExamPage/Exam2'
 import FreeCoursePage from '../Pages/FreeCoursePage/FreeCoursePage'
 import CreateQuesPaper from '../Pages/Dashboard/InstructorDashboard/CreateQuestion/CreateQuesPaper'
@@ -35,11 +35,12 @@ import AddBlog from '../Pages/Dashboard/InstructorDashboard/AddBlog/AddBlog'
 import UpcomingLiveExam from '../Pages/LiveExam/UpcomingLiveExam/UpcomingLiveExam'
 import InstructorChatRoom from '../Pages/LiveExam/InstructorChatRoom/InstructorChatRoom'
 import CreateNotice from '../Pages/Dashboard/AdminDashboard/CreateNotice/CreateNotice'
-import ExamResult from '../Pages/ExamResult/ExamResult'
 import ResultPageForMcqFib from '../components/examComponents/QuestionRelated/QuestionResults/ResultPageForMcqFib'
 import HomePage from '../Pages/Home/HomePage/HomePage'
 import ForumCommunity from '../Pages/Forum_Community/ForumCommunity'
 import DemoResult from '../components/examComponents/QuestionRelated/DemoQuesResult/DemoResult'
+import CreateSubject from '../Pages/Dashboard/AdminDashboard/CreateSubject/CreateSubject'
+import AppliedLiveExamAdmin_Instructor from '../Pages/AppliedLiveExamAdmin_Instructor/AppliedLiveExamAdmin_Instructor'
 const router = createBrowserRouter([
   {
     path: '/',
@@ -168,10 +169,10 @@ const router = createBrowserRouter([
         path: '/joinLiveExam',
         element: <JoinLiveExam />
       },
-      ,
+
       {
-        path: '/examResults',
-        element: <ExamResult />
+        path: '/allAppliedLiveExam',
+        element: <AppliedLiveExamAdmin_Instructor />
       }
     ]
   },
@@ -211,6 +212,10 @@ const router = createBrowserRouter([
         path: '/dashboard/createNotice',
         element: <CreateNotice />
       },
+      {
+        path: '/dashboard/createSubject',
+        element: <CreateSubject />
+      },
       // Instructor Dashboard Routes
       {
         path: '/dashboard/instructorHome',
@@ -224,6 +229,7 @@ const router = createBrowserRouter([
         path: '/dashboard/createLiveExam',
         element: <CreateLiveExam />
       },
+
       {
         path: '/dashboard/addBlog',
         element: <AddBlog />

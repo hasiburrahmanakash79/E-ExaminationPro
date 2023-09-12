@@ -5,6 +5,7 @@ import useSubject from "../../../../Hooks/useSubject/useSubject";
 import { useParams } from "react-router-dom";
 import CheckOutForm from "./CheckOutForm";
 import PaymentCard from "./PaymentCard";
+// import usePrice from "../../../../Hooks/usePrice/usePrice";
 
 // TODO
 const stripePromise = loadStripe(import.meta.env.VITE_Payment_Gateway_key);

@@ -93,7 +93,7 @@ const Comments = ({ postComments }) => {
   }
 
   return (
-    <div className='mt-8 border relative rounded-md shadow-md p-5 mb-6'>
+    <div className='relative p-5 mt-8 mb-6 border rounded-md shadow-md'>
       <div className='flex items-center justify-between'>
         <div className='flex items-center'>
           <div className='avatar'>
@@ -101,7 +101,7 @@ const Comments = ({ postComments }) => {
               <img src={postComments?.userImage} alt='User Avatar' />
             </div>
           </div>
-          <p className='leading-1 pl-4 text-slate-400 text-lg font-medium'>
+          <p className='pl-4 text-lg font-medium leading-1 text-slate-400'>
             {postComments?.userName}
           </p>
         </div>
@@ -110,7 +110,7 @@ const Comments = ({ postComments }) => {
             {postComments?.timeDate}
           </span>
           <button
-            className='font-bold text-lg'
+            className='text-lg font-bold'
             onClick={() => setShowContextMenu(!showContextMenu)}
           >
             <BiDotsVertical />
@@ -127,13 +127,13 @@ const Comments = ({ postComments }) => {
           />
           <button
             onClick={handleSaveEdit}
-            className='mt-2 bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-full'
+            className='px-4 py-2 mt-2 text-white bg-blue-500 rounded-full hover:bg-blue-600'
           >
             Save
           </button>
         </div>
       ) : (
-        <p className='pt-2 text-left pl-3'>{postComments?.article}</p>
+        <p className='pt-2 pl-3 text-left'>{postComments?.article}</p>
       )}
       {showContextMenu && (
         <div className='absolute top-6 right-10 bg-[#25176A] p-3 w-28 rounded-md shadow-md'>
@@ -195,8 +195,8 @@ const Comments = ({ postComments }) => {
           </button>
         </div>
         <div className='text-center'>
-          <span className='text-slate-400 text-xs '>244</span>
-          <p className='text-slate-500 text-sm'>View</p>
+          <span className='text-xs text-slate-400 '>244</span>
+          <p className='text-sm text-slate-500'>View</p>
         </div>
       </div>
       <div></div>

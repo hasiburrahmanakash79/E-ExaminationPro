@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router-dom'
 import { AuthContext } from '../../Provider/AuthProvider'
 
 const axiosSecure = axios.create({
-  //  baseURL: 'https://e-exam-pro-server.vercel.app'
   baseURL: 'https://e-exam-pro-server.vercel.app'
 })
 

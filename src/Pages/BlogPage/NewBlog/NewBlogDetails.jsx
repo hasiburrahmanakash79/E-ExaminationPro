@@ -1,7 +1,5 @@
 import { FaClock } from 'react-icons/fa'
 import { useParams } from 'react-router-dom'
-// import details from '../../../../public/fakeblog.json';
-// import ShowCommentApp from "../ForComments/ShowCommentApp";
 import { useEffect, useState } from 'react'
 import UnderSingleBlog from '../../../Pages/BlogPage/NewBlog/UnderSingleBlog'
 import CommentSection from '../../Home/Faq/CommentSection'

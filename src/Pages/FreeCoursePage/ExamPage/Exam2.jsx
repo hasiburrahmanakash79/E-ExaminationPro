@@ -50,7 +50,7 @@ const Exam2 = () => {
   const examInfo = {
     examID: ques._id,
     subjectName: ques.subjectName,
-    semester: ques.semester,
+    batch: ques.batch,
     ins_email: ques.email,
     stu_email: user?.email,
     stu_name: user?.displayName,
@@ -83,7 +83,7 @@ const Exam2 = () => {
   }
 
   const handleInputChange = event => {
-    dispatch(setInputValue(event.target.value)) // setInputValue(event.target.value) //store neumeric type value from input field
+    dispatch(setInputValue(event.target.value)) // setInputValue(event.target.value) //store numeric type value from input field
   }
 
   ///////////// when user select option in mcq ////////////////

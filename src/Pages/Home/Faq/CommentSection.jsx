@@ -52,27 +52,6 @@ function CommentSection () {
     }
   }
 
-  // useEffect(() => {
-  //   const fetchComments = async () => {
-  //     try {
-  //       const response = await fetch('https://e-exam-pro-server.vercel.app/comments');
-
-  //       if (response.ok) {
-  //         const data = await response.json();
-  //         console.log(data);
-  //         setComments(data)
-  //       }
-  //       else {
-  //         setMessage('Failed to fetch comments')
-  //       }
-  //     } catch (error) {
-  //       setMessage('Error: ' + error.message);
-  //     }
-  //   };
-
-  //   fetchComments();
-  // },
-  //   []);
   if (loading) {
     return <Loading></Loading>
   }
@@ -81,14 +60,14 @@ function CommentSection () {
     <div>
       <div className='mx-auto text-start'>
         <input
-          className='input w-full max-w-xs bg-transparent border-white'
+          className='w-full max-w-xs bg-transparent border-white input'
           type='text'
           placeholder='Enter your comment'
           value={comment}
           onChange={handleCommentChange}
         />
         <button
-          className='btn primary-bg bg-transparent border-none ms-2'
+          className='bg-transparent border-none btn primary-bg ms-2'
           onClick={handleCommentSubmit}
         >
           Comment
