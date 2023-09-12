@@ -54,7 +54,7 @@ const UpcomingLiveExam = () => {
     student_name: user?.displayName,
     student_email: user?.email,
     date: data?.date,
-    instuctor_email: data?.email,
+    instructor_email: data?.email,
     group: data?.group
   }
 
