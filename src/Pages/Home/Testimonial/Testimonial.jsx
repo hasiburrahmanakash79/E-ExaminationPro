@@ -21,7 +21,7 @@ const Testimonial = () => {
         );
         const data = await response.json();
 
-        console.log(data);
+        // console.log(data);
         setTestimonials(data);
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -31,11 +31,24 @@ const Testimonial = () => {
     fetchData();
   }, []);
   return (
-    <div className="py-16">
-      <div className="primary-bg rounded-lg py-10">
-        <h1 className="mt-5 text-4xl font-bold text-center text-slate-200">
-          What Our Users Say
-        </h1>
+    <div className='pb-5 mx-5 mt-16 md:mt-28'>
+      <h1
+        data-aos='zoom-in-down'
+        data-aos-duration='800'
+        className='mt-5 text-4xl font-bold text-center text-slate-200'
+      >
+        What Our Users Say
+      </h1>
+      <div
+        data-aos='zoom-in'
+        data-aos-easing='ease-out-cubic'
+        data-aos-duration='2000'
+        className='bg-gradient-to-tr overflow-hidden from-[#0B0728] to-[#491A66] my-16 mt-6 rounded-lg'
+        style={{
+          background:
+            'linear-gradient(45deg,rgb(17, 9, 83), rgb(54, 2, 102), rgb(4, 64, 114), rgb(73, 1, 114))'
+        }}
+      >
         <Swiper
           effect={"coverflow"}
           grabCursor={true}

@@ -22,8 +22,8 @@ const SubjectComponent = ({ subject }) => {
         <p className='mb-3 italic text-white transition-opacity duration-300 opacity-0 group-hover:opacity-100'>
           Lorem ipsum dolor sit.
         </p>
-        <div className='flex gap-5 mt-5 text-xl primary-btn p-2 rounded-md md:mt-10'>
-          <Link to="/allSubjects">
+        <div className='flex gap-5 mt-5 text-xl rounded-md md:mt-10'>
+          <Link to="/allSubjects" className="primary-btn btn ">
             <button>View</button>
           </Link>
         </div>

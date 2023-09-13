@@ -84,8 +84,8 @@ const Profile = () => {
                   {info?.mobile ? info.mobile : "Add Mobile in Edit Profile"}
                 </h1>
               </div>
-              <Link to="/updateProfile">
-                <button className="btn primary-btn mt-5">Edit Profile</button>
+              <Link to="/updateProfile" className="btn primary-btn mt-5">
+                Edit Profile
               </Link>
             </div>
           </div>

@@ -12,7 +12,7 @@ const AllUserPayment = () => {
   console.log(paymentInfo)
   return (
     <div>
-      <h1 className='md:text-4xl text-2xl text-center my-5'>
+      <h1 className='my-5 text-2xl text-center md:text-4xl'>
         All User Payment History
       </h1>
       <div className='overflow-x-auto'>

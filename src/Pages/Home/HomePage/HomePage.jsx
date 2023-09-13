@@ -1,14 +1,15 @@
-import { useEffect, useState } from "react";
-import examPic from "../../../assets/exam.jpg";
-import Achievement from "../Achievement/Achievement";
-import Banner from "../Banner/Banner";
-import DemoTestSection from "../DemoTest/DemoTestSection";
-import Faq from "../Faq/Faq";
-import Testimonial from "../Testimonial/Testimonial";
-import TopSubjects from "../TopSubjects/TopSubjects";
-import Pricing from "../Pricing/Pricing";
-import { Helmet } from "react-helmet-async";
-import MainContact from "../../Contact/MainContact";
+import { useEffect, useState } from 'react'
+import examPic from '../../../assets/exam.jpg'
+import Achievement from '../Achievement/Achievement'
+import Banner from '../Banner/Banner'
+import DemoTestSection from '../DemoTest/DemoTestSection'
+import Faq from '../Faq/Faq'
+import Testimonial from '../Testimonial/Testimonial'
+import TopSubjects from '../TopSubjects/TopSubjects'
+// import Pricing from '../Pricing/Pricing'
+import { Helmet } from 'react-helmet-async'
+import MainContact from '../../Contact/MainContact'
+import Pricing from '../Pricing/Pricing'
 // import ShortcutKey from "../../../Components/ShortcutKey/ShortcutKey";
 const HomePage = () => {
   console.log(window.localStorage.getItem("showMainContent"));

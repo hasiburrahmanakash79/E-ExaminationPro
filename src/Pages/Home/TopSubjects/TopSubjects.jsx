@@ -12,7 +12,6 @@ const TopSubjects = () => {
         )
         const data = await response.json()
 
-        console.log(data)
         setSubjects(data)
       } catch (error) {
         console.error('Error fetching data:', error)
@@ -24,12 +23,13 @@ const TopSubjects = () => {
   return (
     <div className='my-16'>
       <h1
-        data-aos="zoom-in-down"
-        data-aos-duration="600"
-        className='text-center text-slate-200 text-4xl font-bold pt-10 md:pt-0 pb-10'>
+        data-aos='zoom-in-down'
+        data-aos-duration='600'
+        className='pt-10 pb-10 text-4xl font-bold text-center text-slate-200 md:pt-0'
+      >
         Our Top subjects
       </h1>
-      <div className='grid grid-cols-1 md:grid-cols-4 gap-5  '>
+      <div className='grid grid-cols-1 gap-5 md:grid-cols-4 '>
         {subjects.map(subject => (
           <SubjectComponent key={subject._id} subject={subject} />
         ))}
