@@ -1,104 +1,109 @@
-import React, { useState } from 'react';
-import Loading from '../../../Components/Loading/Loading';
-import useAuth from '../../../Hooks/useAuth/useAuth';
-import useComments from '../../../Hooks/useComments/useComments';
+import React, { useEffect, useState } from 'react'
+import Loading from '../../../Components/Loading/Loading'
+import useAuth from '../../../Hooks/useAuth/useAuth'
+import useComments from '../../../Hooks/useComments/useComments'
 
-function CommentSection() {
-  const [comment, setComment] = useState('');
-  const [message, setMessage] = useState('');
+function CommentSection ({ blogId }) {
+  const [comment, setComment] = useState('')
+  const [message, setMessage] = useState('')
+
   const { user } = useAuth()
-  console.log(user);
+  console.log(user)
   // const [comments, setComments] = useState([]);
-  const [comments, loading, refetch] = useComments();
+  const [comments, loading, refetch] = useComments()
 
-  const handleCommentChange = (e) => {
-    setComment(e.target.value);
-  };
-  console.log(comments);
+  const handleCommentChange = e => {
+    setComment(e.target.value)
+  }
+  console.log(comments)
 
   const handleCommentSubmit = async () => {
     if (comment.trim() !== '') {
       try {
-
-        const currentTime = new Date().toISOString(); // Get the current time in ISO format
+        const currentTime = new Date().toISOString() // Get the current time in ISO format
         const requestBody = {
           comment,
           username: user.displayName, // Assuming the user object has a "username" property
           time: currentTime,
-        };
+          blogId
+        }
 
-        const response = await fetch('https://e-exam-pro-server.vercel.app/comments', {
+        const response = await fetch(`https://e-exam-pro-server.vercel.app/comments`, {
           method: 'POST',
           headers: {
-            'content-type': 'application/json',
+            'content-type': 'application/json'
           },
-          body: JSON.stringify({ requestBody }),
-        });
+          body: JSON.stringify({ requestBody })
+        })
 
         if (response.ok) {
-          setMessage('Comment added successfully');
-          setComment('');
+          setMessage('Comment added successfully')
+          setComment('')
           refetch()
         } else {
-          setMessage('Failed to add comment');
+          setMessage('Failed to add comment')
         }
       } catch (error) {
-        setMessage('Error: ' + error.message);
+        setMessage('Error: ' + error.message)
       }
     } else {
-      setMessage('Please enter a comment');
+      setMessage('Please enter a comment')
     }
-  };
+  }
 
-  // useEffect(() => {
-  //   const fetchComments = async () => {
-  //     try {
-  //       const response = await fetch('https://e-exam-pro-server.vercel.app/comments');
+  useEffect(() => {
+    const fetchComments = async () => {
+      try {
+        const response = await fetch(
+          `https://e-exam-pro-server.vercel.app/comments?blogId=${blogId}`
+        )
 
-  //       if (response.ok) {
-  //         const data = await response.json();
-  //         console.log(data);
-  //         setComments(data)
-  //       }
-  //       else {
-  //         setMessage('Failed to fetch comments')
-  //       }
-  //     } catch (error) {
-  //       setMessage('Error: ' + error.message);
-  //     }
-  //   };
+        if (response.ok) {
+          const data = await response.json()
+          console.log(data)
+          setComment(data)
+        } else {
+          setMessage('Failed to fetch comments')
+        }
+      } catch (error) {
+        setMessage('Error: ' + error.message)
+      }
+    }
 
-  //   fetchComments();
-  // },
-  //   []);
+    fetchComments()
+  }, [])
   if (loading) {
     return <Loading></Loading>
   }
 
   return (
-    <div >
+    <div>
       <div className='mx-auto text-start'>
         <input
-          className="input w-full max-w-xs bg-transparent border-white"
-          type="text"
-          placeholder="Enter your comment"
+          className='w-full max-w-xs bg-transparent border-white input'
+          type='text'
+          placeholder='Enter your comment'
           value={comment}
           onChange={handleCommentChange}
         />
-        <button className='btn primary-bg bg-transparent border-none ms-2' onClick={handleCommentSubmit}>Comment</button>
+        <button
+          className='bg-transparent border-none btn primary-bg ms-2'
+          onClick={handleCommentSubmit}
+        >
+          Comment
+        </button>
       </div>
       <div>{message}</div>
       <div>
-
         <ul className='mt-2 ms-10'>
-          {comments?.map((c) => (
+          {/* {comments?.map((c) => (
             <li key={c._id}
             >{c.comment}</li>
-          ))}
+          ))} */}
         </ul>
       </div>
     </div>
-  );
+  )
 }
 
-export default CommentSection;
+export default CommentSection

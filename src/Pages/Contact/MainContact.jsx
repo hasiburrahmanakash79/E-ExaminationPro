@@ -19,7 +19,7 @@ const MainContact = () => {
               alt=""
             />
           </div>
-          <div>
+          <div className='text-center md:text-left'>
             <p className="text-2xl text-orange-600 mt-4">{getCurrentDate()}</p>
             <h1 className="text-2xl my-3 uppercase">Lorem, ipsum dolor.</h1>
             <p>

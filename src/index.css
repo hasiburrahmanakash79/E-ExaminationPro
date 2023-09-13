@@ -28,10 +28,13 @@
 /* *{
     border: 1px solid #fff;
 } */
-
-/* body {
-  overflow-x: hidden;
-} */
+.primary-nav{
+  background: linear-gradient(45deg,rgb(17, 9, 83), rgb(54, 2, 102), rgb(4, 64, 114), rgb(73, 1, 114));
+  background-size: 200% 200%;
+  animation: color 22s ease-in-out infinite;
+  color: rgba(255, 255, 255, 0.492);
+  opacity: .9;
+}
 
 @media only screen and (max-width: 1040px) and (min-width: 320px) {
   body {

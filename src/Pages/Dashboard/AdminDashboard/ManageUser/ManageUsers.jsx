@@ -57,7 +57,7 @@ const ManageUsers = () => {
     })
     .then((result) => {
       if(result.isConfirmed){
-        fetch(`http://localhost:5000/users/${user._id}`, {
+        fetch(`https://e-exam-pro-server.vercel.app/users/${user._id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
