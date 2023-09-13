@@ -3,7 +3,7 @@ import { AuthContext } from "../../../Provider/AuthProvider";
 import { CircleStencil, Cropper } from "react-advanced-cropper";
 import "react-advanced-cropper/dist/style.css";
 
-const UpdateProfilePicture = () => {
+const UpdateProfilePicture = ({ onImageCrop }) => {
   const inputRef = useRef(null);
   const [image, setImage] = useState(null);
   const { user, loading } = useContext(AuthContext);
@@ -20,6 +20,7 @@ const UpdateProfilePicture = () => {
 
   const onChange = (cropper) => {
     console.log(cropper.getCoordinates(), cropper.getCanvas());
+    onImageCrop(cropper.getCroppedImageBlob());
   };
 
   return (

@@ -5,7 +5,6 @@ import { AuthContext } from "../../../Provider/AuthProvider";
 import { useQuery } from "@tanstack/react-query";
 import Loading from "../../../Components/Loading/Loading";
 import Swal from "sweetalert2";
-import { Link } from "react-router-dom";
 
 const UpdateProfile = () => {
   const img_token = import.meta.env.VITE_Image_Key;
@@ -90,19 +89,16 @@ const UpdateProfile = () => {
               <div className="mx-auto w-80">
                 <img
                   src={info?.photoURL}
-                  className="p-3 mb-2 border-2 rounded-lg border-violet-600"
+                  className="p-3 mb-2 border-2 rounded-lg  border-violet-600"
                   alt=""
                 />
-                <Link to="/updateProfilePicture">
-                <button className="items-center px-24 py-3 mx-auto my-5 border-2 rounded-lg form-control border-violet-600">
-                  {/* <input
+                <div className="items-center my-5 border-2 rounded-lg form-control border-violet-600">
+                  <input
                     name="image"
                     type="file"
-                    className="w-full col-span-5 bg-transparent file-input"
-                  /> */}
-                   Update Picture
-                </button>
-                 </Link>
+                    className="w-full col-span-5 bg-transparent  file-input"
+                  />
+                </div>
               </div>
             </div>
             <div>
@@ -110,7 +106,7 @@ const UpdateProfile = () => {
                 <label className="col-span-1 label">
                   <span className="text-white label-text">Name:</span>
                 </label>
-                <h1 className="col-span-5 shadow-lg input input-sm text-slate-900 bg-slate-200">
+                <h1 className="col-span-5 shadow-lg  input input-sm text-slate-900 bg-slate-200">
                   {info?.displayName}
                 </h1>
               </div>
@@ -119,7 +115,7 @@ const UpdateProfile = () => {
                 <label className="col-span-1 label">
                   <span className="text-white label-text">Email:</span>
                 </label>
-                <h1 className="col-span-5 shadow-lg input input-sm text-slate-900 bg-slate-200">
+                <h1 className="col-span-5 shadow-lg  input input-sm text-slate-900 bg-slate-200">
                   {info?.email}
                 </h1>
               </div>
@@ -138,7 +134,7 @@ const UpdateProfile = () => {
                 </label>
                 <input
                   name="gender"
-                  className="col-span-5 shadow-lg input input-sm text-slate-900 bg-slate-200"
+                  className="col-span-5 shadow-lg  input input-sm text-slate-900 bg-slate-200"
                 />
               </div>
               <div className="grid grid-cols-6 my-2 form-control">
