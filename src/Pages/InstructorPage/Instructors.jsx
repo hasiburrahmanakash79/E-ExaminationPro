@@ -25,7 +25,7 @@ const Instructors = () => {
       <h1 className='mb-10 text-4xl font-bold text-center text-white'>
         Our Instructors
       </h1>
-      <div className='grid-cols-3 gap-5 py-5 md:grid'>
+      <div className='md:grid-cols-2 lg:grid-cols-3 gap-5 py-5 px-6 grid'>
         {instructors.slice(0, displayCount).map(instructor => (
           <InstructorCard
             key={instructor.id}

@@ -16,7 +16,7 @@ const WrittenExams = () => {
         Written Exam
       </h2>
 
-      <div className='grid-cols-5 gap-10 md:grid '>
+      <div className='grid-cols-5 gap-10 md:grid text-center md:text-left'>
         <div className='col-span-3 gap:2'>
           {writtenQuestions?.map((sq, index) => (
             <div key={index}>
