@@ -77,8 +77,8 @@ const ManageUsers = () => {
 
   return (
     <div>
-      <h2 className='text-2xl'>Manage Users: {users.length}</h2>
-      <div className='overflow-x-auto'>
+      <h2 className='text-2xl my-3'>Manage Users: {users.length}</h2>
+      <div className='overflow-x-auto p-4'>
         <table className='table'>
           {/* git */}
           <thead>

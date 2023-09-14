@@ -6,7 +6,9 @@ import { Helmet } from "react-helmet-async";
 const StudentAnalytics = () => {
   return (
     <>
+    <Helmet><title>E-ExamPro | Analytics </title></Helmet>
       <div>
+
         <h2 className="text-2xl">Student Analytics</h2>
       </div>
 
@@ -68,10 +70,7 @@ const StudentAnalytics = () => {
           </tbody>
         </table>
       </div>
-    <div>
-      <Helmet><title>E-ExamPro | Analytics </title></Helmet>
-      <h2 className="text-2xl">Student Analytics</h2>
-    </div>
+   
     </>
   );
 };
