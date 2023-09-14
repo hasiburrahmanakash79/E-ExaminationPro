@@ -107,6 +107,7 @@ const Dashboard = () => {
     },
     {
       title: "Instructor Home ",
+      path: "/dashboard/instructorHome",
       icon: iconMappings.RoleHome,
       role: "instructor",
       gap: true,

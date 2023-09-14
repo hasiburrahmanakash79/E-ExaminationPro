@@ -44,6 +44,9 @@ import BlogDetails from '../Pages/BlogPage/BlogDetails/BlogDetails'
 import JoinLiveExam from '../Pages/LiveExam/JoinLiveExam/JoinLiveExam'
 import AllGivenExam from '../Pages/Dashboard/UserDashboard/AllGivenExam/AllGivenExam'
 
+import SSLCart from '../Pages/Home/Pricing/SSLCart'
+import SSLCommerzSuccess from '../Pages/Dashboard/UserDashboard/Payment/SSLPage/SSLCommerzSuccess/SSLCommerzSuccess'
+import SSLCommerzFail from '../Pages/Dashboard/UserDashboard/Payment/SSLPage/SSLCommerzFail/SSLCommerzFail'
 const router = createBrowserRouter([
   {
     path: '/',
@@ -103,8 +106,17 @@ const router = createBrowserRouter([
         element: (
           <PrivateRouter>
             <Payment />
+            {/* <SSLCart /> */}
           </PrivateRouter>
         )
+      },
+      {
+        path: '/paymentOrder/success/:tranId',
+        element: <SSLCommerzSuccess />
+      },
+      {
+        path: '/paymentOrder/fail/:tranId',
+        element: <SSLCommerzFail />
       },
       {
         path: '/allSubjects',

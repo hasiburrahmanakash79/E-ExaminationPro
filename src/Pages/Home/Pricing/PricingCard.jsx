@@ -34,7 +34,7 @@ const PricingCard = ({ price }) => {
       {/* </ul> */}
       <div className='pt-4 '>
         <Link
-          to={`/payment/${price?.id}`}
+          to={`/payment/${price?._id}`}
           className={` btn ${
             price.name === 'Premium' ? 'btn-info' : 'btn-primary'
           }
