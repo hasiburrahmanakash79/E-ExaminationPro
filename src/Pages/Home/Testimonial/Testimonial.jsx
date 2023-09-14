@@ -33,7 +33,10 @@ const Testimonial = () => {
   return (
     <div className="py-16">
       <div className="primary-bg rounded-lg py-10">
-        <h1 className="mt-5 text-4xl font-bold text-center text-slate-200">
+        <h1
+          data-aos="zoom-in-down"
+          data-aos-duration="500"
+          className="mt-5 text-4xl font-bold text-center text-slate-200">
           What Our Users Say
         </h1>
         <Swiper

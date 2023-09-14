@@ -40,6 +40,9 @@ import ExamResult from '../Pages/ExamResult/ExamResult'
 import ResultPageForMcqFib from '../components/examComponents/QuestionRelated/QuestionResults/ResultPageForMcqFib'
 import HomePage from '../Pages/Home/HomePage/HomePage'
 import ForumCommunity from '../Pages/Forum_Community/ForumCommunity'
+import SSLCart from '../Pages/Home/Pricing/SSLCart'
+import SSLCommerzSuccess from '../Pages/Dashboard/UserDashboard/Payment/SSLPage/SSLCommerzSuccess/SSLCommerzSuccess'
+import SSLCommerzFail from '../Pages/Dashboard/UserDashboard/Payment/SSLPage/SSLCommerzFail/SSLCommerzFail'
 const router = createBrowserRouter([
   {
     path: '/',
@@ -93,9 +96,18 @@ const router = createBrowserRouter([
         path: '/payment/:id',
         element: (
           <PrivateRouter>
-            <Payment />
+            {/* <Payment /> */}
+            <SSLCart />
           </PrivateRouter>
         )
+      },
+      {
+        path: '/paymentOrder/success/:tranId',
+        element: <SSLCommerzSuccess />
+      },
+      {
+        path: '/paymentOrder/fail/:tranId',
+        element: <SSLCommerzFail />
       },
       {
         path: '/allSubjects',

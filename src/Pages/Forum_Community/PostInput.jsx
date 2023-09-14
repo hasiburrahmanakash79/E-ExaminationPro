@@ -22,6 +22,7 @@ const PostInput = () => {
                 userName: user?.displayName,
                 userImage: user?.photoURL,
                 timeDate: createdAtDate,
+                replies: [],
             })
             .then(res => {
                 console.log(res)

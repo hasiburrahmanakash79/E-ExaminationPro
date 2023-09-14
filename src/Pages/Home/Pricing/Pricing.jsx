@@ -47,7 +47,7 @@ const Pricing = () => {
   const [pricePackage, loading] = usePrice();
 
   if (loading) {
-    return <Loading/>;
+    return <Loading />;
   }
 
   return (
@@ -68,6 +68,7 @@ const Pricing = () => {
         className='grid grid-cols-1 gap-1 pt-6 mx-auto md:grid-cols-3 w-fit'>
         {pricePackage.map(price => (
           <PricingCard price={price} key={price.id}  />
+          // <SSLCart price={price} key={price.id} />
         ))}
         <PricingTab pricePackage={pricePackage} />
       </div>

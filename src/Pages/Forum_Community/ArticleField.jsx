@@ -1,8 +1,8 @@
 // import CommentField from "./CommentField";
 
 import { allPostComment } from "../../Hooks/useForum/useForum";
-import CommentField from "./CommentField";
 import Comments from "./Comments";
+import ShowComment from "./ShowComment";
 
 
 const ArticleField = () => {
@@ -11,16 +11,23 @@ const ArticleField = () => {
     return (
         <div>
             {/* <div className="mt-8 border rounded-md shadow-md p-5 mb-6"> */}
+            {
+                allCommentPosts?.map(postComments => <Comments
+                    key={postComments?._id}
+                    refetch={refetch}
+                    postComments={postComments}
+                />)
+            }
+            {/* </div> */}
+            {/* <div>
                 {
-                    allCommentPosts?.map(postComments => <Comments
+                    allCommentPosts?.map(postComments => <ShowComment
                         key={postComments?._id}
+                        refetch={refetch}
                         postComments={postComments}
                     />)
                 }
-            {/* </div> */}
-            <div>
-                <CommentField />
-            </div>
+            </div> */}
         </div>
     );
 };
