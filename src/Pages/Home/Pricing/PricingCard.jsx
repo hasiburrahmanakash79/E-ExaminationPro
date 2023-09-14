@@ -2,7 +2,7 @@ import { FaCircleCheck } from 'react-icons/fa6'
 import { MdCancel } from 'react-icons/md'
 import { Link } from 'react-router-dom'
 const PricingCard = ({ price }) => {
-  console.log(price)
+  // console.log(price)
   return (
     <div
       className={`hidden md:block w-72  pb-3 mx-auto space-y-4 text-center transition-all border rounded-lg shadow-2xl primary-bg border-slate-200 ${
