@@ -59,7 +59,7 @@ const AddBlog = () => {
             <h2 className='text-2xl'>Add Blog</h2>
 
             <form onSubmit={handleBlogAdding} className='text-center pb-20'>
-                <div className='p-5 pb-20-20 grid gap-5 grid-cols-2 '>
+                <div className='p-5 pb-20-20 grid gap-5 md:grid-cols-2 '>
                     <input type="text"
                         name='image_url' placeholder="Photo URL" className="input input-bordered" />
                     <input type="text" name='title' placeholder="Your Title" className="input input-bordered w-full " />

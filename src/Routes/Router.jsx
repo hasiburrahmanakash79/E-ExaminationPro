@@ -44,6 +44,7 @@ import BlogDetails from '../Pages/BlogPage/BlogDetails/BlogDetails'
 import JoinLiveExam from '../Pages/LiveExam/JoinLiveExam/JoinLiveExam'
 import UpdateProfilePicture from '../Pages/Authentication/UpdateProfile/UpdateProfilePicture'
 import AllUserPayment from '../Pages/Dashboard/AdminDashboard/AllUserPayment/AllUserPayment'
+import NoticeBoard from '../Pages/Dashboard/UserDashboard/NoticeBoard/NoticeBoard'
 
 const router = createBrowserRouter([
   {
@@ -262,6 +263,10 @@ const router = createBrowserRouter([
       {
         path: '/dashboard/paymentHistory',
         element: <PaymentHistory />
+      },
+      {
+        path: '/dashboard/noticeBoard',
+        element: <NoticeBoard />
       },
       {
         path: '/dashboard/appliedLiveExam',

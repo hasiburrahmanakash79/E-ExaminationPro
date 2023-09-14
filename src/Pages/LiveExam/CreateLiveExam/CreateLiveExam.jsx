@@ -139,7 +139,7 @@ const CreateLiveExam = () => {
         </p>
       </div>
 
-      <div className='grid grid-cols-2'>
+      <div className='grid md:grid-cols-2 grid-cols-1'>
         <div className='mb-5'>
           <label className='label'>
             <span className='label-text'>Exam Type</span>
@@ -150,7 +150,7 @@ const CreateLiveExam = () => {
               dispatch(examType(''))
               dispatch(examType(e.target.value))
             }}
-            className='w-full max-w-xs select select-bordered select-sm'
+            className='w-full  select select-bordered select-sm'
           >
             <option disabled selected>
               Choose Type
@@ -161,7 +161,7 @@ const CreateLiveExam = () => {
           </select>
         </div>
 
-        <div className='mb-5 ms-auto'>
+        <div className='mb-5 md:ms-auto'>
           <label className='label'>
             <span className='label-text'>Choose Exam</span>
           </label>
@@ -171,7 +171,7 @@ const CreateLiveExam = () => {
               dispatch(setExamData(null))
               dispatch(setExamData(e.target.value))
             }}
-            className='w-full max-w-xs select select-bordered select-sm'
+            className='w-full  select select-bordered select-sm'
           >
             <option disabled selected>
               Choose Type
@@ -193,9 +193,10 @@ const CreateLiveExam = () => {
         </div>
       </div>
 
-      <div className='flex justify-center mb-5'>
-        <div className='grid grid-cols-1 gap-x-4 md:grid-cols-3 '>
-          <div className='w-full max-w-xs form-control'>
+
+    <div className='flex w-full  justify-center mb-5'>
+        <div className='grid  w-full md:w-1/2 grid-cols-1 gap-x-4 md:grid-cols-3 '>
+          <div className='w-full  form-control'>
             <label className='label'>
               <span className='label-text'>Subject Name</span>
             </label>
@@ -203,7 +204,7 @@ const CreateLiveExam = () => {
               {data?.subjectName}
             </h1>
           </div>
-          <div className='w-full max-w-xs form-control'>
+          <div className='w-full  form-control'>
             <label className='label'>
               <span className='label-text'>Exam Code</span>
             </label>
@@ -212,7 +213,7 @@ const CreateLiveExam = () => {
               {data?.exam_code}
             </h1>
           </div>
-          <div className='w-full max-w-xs form-control'>
+          <div className='w-full  form-control'>
             <label className='label'>
               <span className='label-text'>Subject Code</span>
             </label>
@@ -221,7 +222,7 @@ const CreateLiveExam = () => {
               {data?.subject_code}
             </h1>
           </div>
-          <div className='w-full max-w-xs form-control'>
+          <div className='w-full  form-control'>
             <label className='label'>
               <span className='label-text'>Batch</span>
             </label>
@@ -230,7 +231,7 @@ const CreateLiveExam = () => {
               {data?.batch}
             </h1>
           </div>
-          <div className='w-full max-w-xs form-control'>
+          <div className='w-full  form-control'>
             <label className='label'>
               <span className='label-text'>Date</span>
             </label>
@@ -239,7 +240,7 @@ const CreateLiveExam = () => {
               {data?.date}
             </h1>
           </div>
-          <div className='w-full max-w-xs form-control'>
+          <div className='w-full  form-control'>
             <label className='label'>
               <span className='label-text'>Email:</span>
             </label>
@@ -248,7 +249,7 @@ const CreateLiveExam = () => {
               {data?.email == user?.email && data?.email}
             </h1>
           </div>
-          <div className='w-full max-w-xs form-control'>
+          <div className='w-full  form-control'>
             <label className='label'>
               <span className='label-text'>Secrete Key:</span>
             </label>
@@ -267,7 +268,7 @@ const CreateLiveExam = () => {
           </div>
 
           {type == 'multimedia_mcq' && (
-            <div className='w-full max-w-xs form-control'>
+            <div className='w-full  form-control'>
               <label className='label'>
                 <span className='label-text'>Video URL:</span>
               </label>
@@ -277,12 +278,13 @@ const CreateLiveExam = () => {
                 onChange={handleInputChange}
                 type='text'
                 placeholder='Type here'
-                className='w-full max-w-xs input input-bordered'
+                className='w-full  input input-bordered'
               />
             </div>
           )}
         </div>
       </div>
+
 
       {type && (
         <div className='mt-5'>

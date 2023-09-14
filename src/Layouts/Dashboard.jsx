@@ -9,6 +9,7 @@ import {
   FaWallet,
   FaComment
 } from "react-icons/fa";
+import { BiBookAdd } from "react-icons/bi";
 import { GiWallet } from "react-icons/gi";
 import { AiFillNotification } from "react-icons/ai";
 import { RiLiveFill } from "react-icons/ri";
@@ -78,6 +79,7 @@ const Dashboard = () => {
     Live: RiLiveFill,
     Blog: FaComment,
     Notice: AiFillNotification,
+    BookAdd: BiBookAdd
   };
 
   const Menus = [
@@ -109,7 +111,7 @@ const Dashboard = () => {
     {
       title: "Create Subject",
       path: "/dashboard/createSubject",
-      icon: iconMappings.Notice,
+      icon: iconMappings.BookAdd,
       role: "admin",
     },
     {
@@ -145,8 +147,7 @@ const Dashboard = () => {
       icon: iconMappings.Home,
       role: "general",
       gap: true,
-    },
-    { title: "Setting", icon: iconMappings.Setting, role: "general" },
+    }
   ];
 
   const adminMenus = Menus.filter((menu) => menu.role === "admin");
