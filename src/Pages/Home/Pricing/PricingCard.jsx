@@ -1,7 +1,10 @@
+import { useContext } from 'react'
 import { FaCircleCheck } from 'react-icons/fa6'
 import { MdCancel } from 'react-icons/md'
 import { Link } from 'react-router-dom'
+import { AuthContext } from '../../../Provider/AuthProvider'
 const PricingCard = ({ price }) => {
+  const {user} =useContext(AuthContext)
   // console.log(price)
   return (
     <div
@@ -33,16 +36,22 @@ const PricingCard = ({ price }) => {
       </div>
       {/* </ul> */}
       <div className='pt-4 '>
-        <Link
+        {price.name === "Free" ? <Link
           to={`/payment/${price?._id}`}
+          className='btn-primary btn hover:outline-blue-400 hover:outline translate'
+        >
+          {' '}
+          Start by Signing Up!
+        </Link> : <Link
+          to={`/paymentOption/${price?._id}`}
           className={` btn ${
-            price.name === 'Premium' ? 'btn-info' : 'btn-primary'
+            price.name === 'Premium' ? 'btn-info' : ''
           }
        hover:outline-blue-400 hover:outline translate `}
         >
           {' '}
           Start by Signing Up!
-        </Link>
+        </Link> }
       </div>
     </div>
   )

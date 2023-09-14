@@ -59,7 +59,7 @@ const Contact = () => {
           <form
             data-aos="fade-down"
             data-aos-duration="1000"
-            ref={form} onSubmit={sendEmail} className='pb-5 md:pt-20 card-body border border-blue-500 rounded-lg'>
+            ref={form} onSubmit={sendEmail} className='pb-5 border border-blue-500 rounded-lg md:pt-20 card-body'>
             <div className=''>
               <div className='form-control'>
                 <label className='label'>
@@ -72,7 +72,7 @@ const Contact = () => {
                   name='name'
                   type='text'
                   placeholder='Name'
-                  className='text-black border-2 bg-transparent input border-gray-200 '
+                  className='text-black bg-transparent border-2 border-gray-200 input '
                 />
               </div>
               <div className='form-control'>
@@ -86,7 +86,7 @@ const Contact = () => {
                   name='email'
                   type='text'
                   placeholder='Email'
-                  className='text-black border-2 bg-transparent input border-gray-200'
+                  className='text-black bg-transparent border-2 border-gray-200 input'
                 />
               </div>
               <div className='form-control'>
@@ -98,7 +98,7 @@ const Contact = () => {
                 <textarea
                   required
                   name='message'
-                  className='text-black border-2 textarea bg-transparent border-gray-200'
+                  className='text-black bg-transparent border-2 border-gray-200 textarea'
                   placeholder='Message'
                 ></textarea>
               </div>

@@ -28,7 +28,7 @@ const DemoResult = () => {
         result experience
       </h2>
       <div className='relative grid w-full py-12'>
-        <div className='absolute right-0'>
+        <div className='text-center md:absolute md:right-0'>
           {/* handling the btn where when user clicks his result should be downloaded */}
 
           <PDFDownloadLink

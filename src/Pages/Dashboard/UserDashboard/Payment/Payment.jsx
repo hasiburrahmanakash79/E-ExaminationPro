@@ -18,10 +18,10 @@ const Payment = () => {
   const price = packages[0]?.packageAmount
   console.log(price);
   return (
-    <div className="px-5 mt-5">
+    <div className="p-5 mt-5">
       {/* <Helmet><title>E-ExamPro | Payment </title></Helmet> */}
-      <div className=" bg-white/5 flex flex-col lg:w-4/12 md:w-8/12 lg:mt-52  mx-auto p-12 text-white rounded-3xl shadow-2xl">
-        <div className="lg:-mt-32 mx-auto">
+      <div className=" bg-white/5 flex flex-col lg:w-5/12 md:w-8/12 lg:mt-32 lg:mb-16  mx-auto p-12 text-white rounded-3xl shadow-2xl">
+        <div className="lg:-mt-32 md:-mt-16 mx-auto md:block hidden">
           <PaymentCard />
         </div>
         <h1 className="text-3xl text-center m-10">Payment</h1>

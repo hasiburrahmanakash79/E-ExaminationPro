@@ -58,13 +58,14 @@ const AddBlog = () => {
             <Helmet><title>E-ExamPro | Add Blog </title></Helmet>
             <h2 className='text-3xl my-10'>Add Blog</h2>
 
-            <form onSubmit={handleBlogAdding} className='text-center pb-20 card-body border w-1/2 mx-auto rounded-2xl border-purple-700 shadow-2xl'>
-                <div className='p-5 pb-20-20 grid gap-5 grid-cols-2 '>
-                    <input type="text" name='image_url' placeholder="Photo URL" className="input input-bordered bg-white/10 border shadow-lg" />
-                    <input type="text" name='title' placeholder="Your Title" className="input input-bordered bg-transparent border shadow-lg" />
-                    <input type="date" name='publishing_date' placeholder="Publishing Date" className="input input-bordered w-full bg-transparent border shadow-lg" />
-                    <input type="text" name='instructorName' placeholder="Publisher Name" className="input input-bordered w-full bg-transparent border shadow-lg" />
-                    <textarea className="textarea w-full textarea-bordered bg-transparent border shadow-lg" name='content' placeholder="Your content"></textarea>
+            <form onSubmit={handleBlogAdding} className='text-center pb-20'>
+                <div className='p-5 pb-20-20 grid gap-5 md:grid-cols-2 '>
+                    <input type="text"
+                        name='image_url' placeholder="Photo URL" className="input input-bordered" />
+                    <input type="text" name='title' placeholder="Your Title" className="input input-bordered w-full " />
+                    <input type="date" name='publishing_date' placeholder="Publishing Date" className="input input-bordered w-full " />
+                    <input type="text" name='instructorName' placeholder="Publisher Name" className="input input-bordered w-full " />
+                    <textarea className="textarea w-full textarea-bordered" name='content' placeholder="Your content"></textarea>
                     {/* <button className='flex justify-self-end text-end btn btn-primary w-1/3 mt-6'>Submit</button> */}
 
                 </div>

@@ -9,6 +9,8 @@ import {
   FaWallet,
   FaComment
 } from "react-icons/fa";
+import { BiBookAdd } from "react-icons/bi";
+import { GiWallet } from "react-icons/gi";
 import { AiFillNotification } from "react-icons/ai";
 import { RiLiveFill } from "react-icons/ri";
 import { FaClipboardQuestion } from "react-icons/fa6";
@@ -77,6 +79,7 @@ const Dashboard = () => {
     Live: RiLiveFill,
     Blog: FaComment,
     Notice: AiFillNotification,
+    BookAdd: BiBookAdd
   };
 
   const Menus = [
@@ -94,6 +97,12 @@ const Dashboard = () => {
       role: "admin",
     },
     {
+      title: "All Payments",
+      path: "/dashboard/allPayments",
+      icon: iconMappings.Payment,
+      role: "admin",
+    },
+    {
       title: "Create Notice",
       path: "/dashboard/createNotice",
       icon: iconMappings.Notice,
@@ -102,7 +111,7 @@ const Dashboard = () => {
     {
       title: "Create Subject",
       path: "/dashboard/createSubject",
-      icon: iconMappings.Notice,
+      icon: iconMappings.BookAdd,
       role: "admin",
     },
     {
@@ -128,6 +137,7 @@ const Dashboard = () => {
       gap: true,
     },
     { title: "Payment History", path: "/dashboard/paymentHistory", icon: iconMappings.Payment, role: "user" },
+    { title: "Notice Board", path: "/dashboard/noticeBoard", icon: iconMappings.Notice, role: "user" },
     { title: "Upcoming Live Exam", path: "/dashboard/upcomingLiveExam", icon: iconMappings.Live, role: "user" },
     { title: "Applied Live Exam", path: "/dashboard/appliedLiveExam", icon: iconMappings.Live, role: "user" },
     { title: "Student Analytics", path: "/dashboard/studentAnalytics", icon: iconMappings.Analytics, role: "user" },
@@ -139,8 +149,7 @@ const Dashboard = () => {
       icon: iconMappings.Home,
       role: "general",
       gap: true,
-    },
-    { title: "Setting", icon: iconMappings.Setting, role: "general" },
+    }
   ];
 
   const adminMenus = Menus.filter((menu) => menu.role === "admin");
@@ -153,8 +162,8 @@ const Dashboard = () => {
       {/* Dashboard Sidebar content */}
       <div
         className={` ${
-          open ? "w-48" : "w-14 text-center "
-        } bg-black h-screen  fixed left-0 top-0 bottom-0 z-50 pt-8  duration-500 transition-all`}
+          open ? "w-56 p-4" : "w-14 text-center "
+        } bg-white/10 h-screen  fixed left-0 top-0 bottom-0 z-50 pt-8  duration-500 transition-all`}
       >
         <img
           src={arrow}
@@ -285,8 +294,8 @@ const Dashboard = () => {
       </div>
       {/* Dashboard main content */}
       <div className={` ${
-          open ?  "pl-52 pr-4": "pl-16 pr-2"
-        } flex-1  overflow-y-auto  duration-500 transition-all h-[100vh]`}>
+          open ?  "pl-60 pr-4": "pl-16 pr-2"
+        }  flex-1  overflow-y-auto  duration-500 transition-all h-[100vh] ${isAdmin?'bg-slate-800':isInstructor?'bg-teal-950':'bg-violet-950'}`}>
         <Outlet></Outlet>
       </div>
     </div>

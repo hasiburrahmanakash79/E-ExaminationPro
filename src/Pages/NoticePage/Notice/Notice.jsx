@@ -25,7 +25,7 @@ export default function Notice () {
 
       <div className='container p-5 mx-auto mt-5 bg-white/5 rounded-2xl'>
         <h1 className='text-3xl text-center'>Upcoming Exam Schedule</h1>
-        <div className='grid grid-cols-4 gap-5 my-7 '>
+        <div className='grid lg:grid-cols-4 md:grid-cols-3 gap-5 my-7 '>
           {notices?.map(notice => (
             <div
               key={notice._id}

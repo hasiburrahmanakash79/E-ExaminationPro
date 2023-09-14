@@ -43,10 +43,14 @@ import AppliedLiveExamAdmin_Instructor from '../Pages/AppliedLiveExamAdmin_Instr
 import BlogDetails from '../Pages/BlogPage/BlogDetails/BlogDetails'
 import JoinLiveExam from '../Pages/LiveExam/JoinLiveExam/JoinLiveExam'
 import AllGivenExam from '../Pages/Dashboard/UserDashboard/AllGivenExam/AllGivenExam'
+import UpdateProfilePicture from '../Pages/Authentication/UpdateProfile/UpdateProfilePicture'
+import AllUserPayment from '../Pages/Dashboard/AdminDashboard/AllUserPayment/AllUserPayment'
+import NoticeBoard from '../Pages/Dashboard/UserDashboard/NoticeBoard/NoticeBoard'
 
 import SSLCart from '../Pages/Home/Pricing/SSLCart'
 import SSLCommerzSuccess from '../Pages/Dashboard/UserDashboard/Payment/SSLPage/SSLCommerzSuccess/SSLCommerzSuccess'
 import SSLCommerzFail from '../Pages/Dashboard/UserDashboard/Payment/SSLPage/SSLCommerzFail/SSLCommerzFail'
+import PaymentOption from '../Pages/Dashboard/UserDashboard/Payment/PaymentOption'
 const router = createBrowserRouter([
   {
     path: '/',
@@ -92,14 +96,13 @@ const router = createBrowserRouter([
         path: '/demo-result',
         element: <DemoResult />
       },
-
       {
         path: '/contact',
         element: <Contact></Contact>
       },
       {
-        path: '/contact',
-        element: <Contact></Contact>
+        path: '/paymentOption/:id',
+        element: <PaymentOption/>
       },
       {
         path: '/payment/:id',
@@ -165,6 +168,14 @@ const router = createBrowserRouter([
         )
       },
       {
+        path: '/updateProfilePicture',
+        element: (
+          <PrivateRouter>
+            <UpdateProfilePicture></UpdateProfilePicture>
+            </PrivateRouter>
+        )
+      },
+      {
         path: '/profile',
         element: (
           <PrivateRouter>
@@ -225,6 +236,10 @@ const router = createBrowserRouter([
         element: <ManageUsers />
       },
       {
+        path: '/dashboard/allPayments',
+        element: <AllUserPayment />
+      },
+      {
         path: '/dashboard/createNotice',
         element: <CreateNotice />
       },
@@ -251,10 +266,10 @@ const router = createBrowserRouter([
         element: <AddBlog />
       },
       // User Dashboard Routes
-      {
-        path: '/dashboard/payment/:id',
-        element: <Payment />
-      },
+      // {
+      //   path: '/dashboard/payment/:id',
+      //   element: <Payment />
+      // },
       {
         path: '/dashboard/userHome',
         element: <UserHome />
@@ -262,6 +277,10 @@ const router = createBrowserRouter([
       {
         path: '/dashboard/paymentHistory',
         element: <PaymentHistory />
+      },
+      {
+        path: '/dashboard/noticeBoard',
+        element: <NoticeBoard />
       },
       {
         path: '/dashboard/appliedLiveExam',

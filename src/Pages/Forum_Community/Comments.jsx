@@ -113,12 +113,12 @@ const Comments = ({ postComments, refetch }) => {
                             <img src={postComments?.userImage} alt="User Avatar" />
                         </div>
                     </div>
-                    <p className="leading-1 pl-4 text-slate-400 text-lg font-medium">
+                    <p className="pl-4 text-slate-400 text-lg font-medium">
                         {postComments?.userName}
                     </p>
                 </div>
                 <div>
-                    <span className="text-slate-400 md:pr-8">
+                    <span className="text-slate-300 md:pr-8 md:inline-block hidden">
                         {/* {postComments?.timeDate} */}
                         {new Date(postComments.timeDate).toLocaleString()}
                     </span>
@@ -136,7 +136,7 @@ const Comments = ({ postComments, refetch }) => {
                         value={commentText}
                         onChange={(e) => setCommentText(e.target.value)}
                         rows={4}
-                        className="w-full p-2 border rounded-md"
+                        className="w-full p-2 border bg-transparent  rounded-md"
                     />
                     <div className=" flex items-center gap-4">
                         <button
@@ -159,7 +159,7 @@ const Comments = ({ postComments, refetch }) => {
             }
             {
                 showContextMenu && (
-                    <div className="absolute top-6 right-10 bg-[#25176A] p-3 w-28 rounded-md shadow-md">
+                    <div className="absolute top-6 right-10 bg-primary p-3 w-28 rounded-md shadow-md">
                         <ul>
                             <li onClick={() => handleContextMenuClick("Edit")} className="cursor-pointer">
                                 Edit
@@ -219,7 +219,7 @@ const Comments = ({ postComments, refetch }) => {
 
                 </div>
                 <div className="text-center">
-                    <span className="text-slate-400 text-xs">{postComments?.replies?.length + 2}</span>
+                    <span className="text-slate-400 text-xs">{postComments?.replies?.length + 100}</span>
                     <p className="text-slate-500 text-sm">Views</p>
                 </div>
             </div>
