@@ -42,6 +42,7 @@ import CreateSubject from '../Pages/Dashboard/AdminDashboard/CreateSubject/Creat
 import AppliedLiveExamAdmin_Instructor from '../Pages/AppliedLiveExamAdmin_Instructor/AppliedLiveExamAdmin_Instructor'
 import BlogDetails from '../Pages/BlogPage/BlogDetails/BlogDetails'
 import JoinLiveExam from '../Pages/LiveExam/JoinLiveExam/JoinLiveExam'
+import AllGivenExam from '../Pages/Dashboard/UserDashboard/AllGivenExam/AllGivenExam'
 
 const router = createBrowserRouter([
   {
@@ -176,6 +177,7 @@ const router = createBrowserRouter([
         path: '/allAppliedLiveExam',
         element: <AppliedLiveExamAdmin_Instructor />
       }
+      
     ]
   },
 
@@ -260,6 +262,11 @@ const router = createBrowserRouter([
       {
         path: '/dashboard/studentAnalytics',
         element: <StudentAnalytics />
+      }
+      ,
+      {
+        path: '/dashboard/allgivenExam',
+        element: <AllGivenExam />
       }
     ]
   },

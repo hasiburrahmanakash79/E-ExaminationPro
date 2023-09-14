@@ -39,60 +39,37 @@ const Navbar = () => {
     </>
   );
 
-  const toggleDropdown = () => {
-    setIsOpen(!isOpen);
-  };
+  const toggleDropdown = (data) => {
+    setIsOpen(data)
+  }
 
   const hideDropdown = () => {
     setIsOpen(false);
   };
 
   const navbarLink_Middle = (
-    // <div className="dropdown dropdown-hover">
-    //   <label tabIndex={0} className="">
-    //     Exam
-    //   </label>
-    //   <ul
-    //     tabIndex={0}
-    //     className="dropdown-content z-[100] mt-48 menu p-4 shadow bg-base-100 rounded-box"
-    //   >
-    //     <li>
-    //       <button className="px-2 py-1 rounded hover:bg-purple-100/10">
-    //         <Link to="/allSubjects">All Subject</Link>
-    //       </button>
-    //     </li>
-    //     <li>
-    //       <button className="px-2 py-1 rounded hover:bg-purple-100/10">
-    //         <Link to="/written">Written Exam</Link>
-    //       </button>
-    //     </li>
-    //   </ul>
-    // </div>
-
-    <div className='relative'>
-      <button onClick={toggleDropdown} className=''>
+    <div onMouseEnter={() => toggleDropdown(true)} onMouseLeave={() => toggleDropdown(false)} className='relative'>
+      <button className=''>
         Exam
       </button>
       {isOpen && (
         <div
-          className="absolute text-white rounded-lg top-full primary-bg"
-          onClick={hideDropdown}
+
+          className="absolute z-50 text-white rounded-lg top-full primary-bg"
+
         >
           <div className="p-5 space-y-3">
             <button className="px-2 py-1 rounded hover:bg-purple-100/10">
               <Link
-                 to="/allSubjects"
-
-                onClick={hideDropdown}
+                to="/allSubjects"
               >
                 All Subject
               </Link>
             </button>
-            <button  className="px-2 py-1 rounded hover:bg-purple-100/10">
+
+            <button className="px-2 py-1 rounded hover:bg-purple-100/10">
               <Link
                 to='/written'
-                className='block px-4 py-2 hover:bg-blue-100'
-                onClick={hideDropdown}
               >
                 Written Exam
               </Link>
@@ -144,17 +121,18 @@ const Navbar = () => {
   return (
     <Headroom
       style={{
-        WebkitTransition: "all .5s ease-in-out",
-        MozTransition: "all .5s ease-in-out",
-        OTransition: "all .5s ease-in-out",
-        transition: "all .5s ease-in-out",
+        zIndex: '100',
+        WebkitTransition: 'all .5s ease-in-out',
+        MozTransition: 'all .5s ease-in-out',
+        OTransition: 'all .5s ease-in-out',
+        transition: 'all .5s ease-in-out'
       }}
     >
-      <nav className="backdrop-blur primary-nav">
-        <div className="navbar z-[40]  container mx-auto  sticky top-0   text-white">
-          <div className="navbar-start">
-            <div className="dropdown">
-              <label tabIndex={0} className="btn btn-ghost lg:hidden">
+      <nav className='backdrop-blur primary-nav z-50'>
+        <div className='navbar z-[40]  container mx-auto  sticky top-0   text-white'>
+          <div className='navbar-start'>
+            <div className='dropdown'>
+              <label tabIndex={0} className='btn btn-ghost lg:hidden'>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="w-5 h-5"
@@ -172,7 +150,7 @@ const Navbar = () => {
               </label>
               <ul
                 tabIndex={0}
-                className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52 primary-bg"
+                className='menu z-50 menu-sm dropdown-content mt-3  p-2 shadow bg-base-100 rounded-box w-52 primary-bg'
               >
                 {/* navbarFirst */}
                 {navbarLink_First}
@@ -204,9 +182,9 @@ const Navbar = () => {
               {navbarLink_Last}
             </ul>
           </div>
-          <div className="navbar-end">
-            <div className="indicator me-4">
-              <span className="indicator-item badge badge-secondary">1+</span>
+          <div className='navbar-end '>
+            <div className='indicator me-4'>
+              <span className='indicator-item badge badge-secondary'>1+</span>
               <button>
                 <Link to="notice" className="text-2xl">
                   {" "}
@@ -215,7 +193,7 @@ const Navbar = () => {
               </button>
             </div>
             {user ? (
-              <div className="z-50 ml-5 dropdown dropdown-end">
+              <div className=' ml-5 dropdown dropdown-end '>
                 <div
                   className="tooltip tooltip-left"
                   data-tip={info?.displayName}
@@ -224,37 +202,47 @@ const Navbar = () => {
                     tabIndex={0}
                     className="btn btn-ghost btn-circle avatar"
                   >
-                    <div className="w-10 rounded-full">
-                      <img src={info?.photoURL} />
+                    <div className='w-10  rounded-full'>
+                      <img src={user?.photoURL} />
                     </div>
                   </label>
                 </div>
 
-                <ul
-                  tabIndex={0}
-                  className="p-2 mt-3 text-white bg-black shadow menu menu-compact dropdown-content rounded-box w-52"
-                >
-                  {/* Navigate to different dashboard route based on user role */}
-                  {user && (
-                    <li>
-                      {isAdmin ? (
-                        <Link to="/dashboard/adminHome">Dashboard</Link>
-                      ) : isInstructor ? (
-                        <Link to="/dashboard/instructorHome">Dashboard</Link>
-                      ) : (
-                        <Link to="/dashboard/userHome">Dashboard</Link>
-                      )}
+                <div className=''>
+                  <ul
+                    tabIndex={0}
+                    className='  p-2 mt-3 text-white bg-black shadow menu menu-compact dropdown-content rounded-box w-52'
+                  >
+                    <li className=''>
+                      <Link
+                        to='/updateProfile'
+                        className='justify-between w-full'
+                      >
+                        {user?.displayName}
+                      </Link>
                     </li>
-                  )}
-                  <li>
-                    <Link to="/profile">Profile</Link>
-                  </li>
-                  <li>
-                    <Link className="w-full" onClick={handleLogout}>
-                      Log Out
-                    </Link>
-                  </li>
-                </ul>
+                    {/* Navigate to different dashboard route based on user role */}
+                    {user && (
+                      <li>
+                        {isAdmin ? (
+                          <Link to='/dashboard/adminHome'>Dashboard</Link>
+                        ) : isInstructor ? (
+                          <Link to='/dashboard/instructorHome'>Dashboard</Link>
+                        ) : (
+                          <Link to='/dashboard/userHome'>Dashboard</Link>
+                        )}
+                      </li>
+                    )}
+                    <li>
+                      <Link to='/profile'>Profile</Link>
+                    </li>
+                    <li>
+                      <Link className='w-full' onClick={handleLogout}>
+                        Log Out
+                      </Link>
+                    </li>
+                  </ul>
+                </div>
               </div>
             ) : (
               <Link
