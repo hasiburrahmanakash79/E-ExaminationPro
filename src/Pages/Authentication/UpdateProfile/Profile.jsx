@@ -4,7 +4,7 @@ import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../Provider/AuthProvider";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure.jsx/useAxiosSecure";
-
+import defaultPic from '../../../assets/userPro.png'
 const Profile = () => {
   const { user, loading } = useContext(AuthContext);
   const [axiosSecure] = useAxiosSecure();
@@ -28,7 +28,7 @@ const Profile = () => {
           <div className="flex justify-center md:gap-10 gap-5 items-center">
             <div className="text-center lg:text-left flex flex-col ">
               <img
-                src={info?.photoURL}
+                src={info?.photoURL?info?.photoURL:defaultPic}
                 className=" border-2 border-violet-600 rounded-lg mb-2 p-3 w-80"
                 alt=""
               />
@@ -84,8 +84,8 @@ const Profile = () => {
                   {info?.mobile ? info.mobile : "Add Mobile in Edit Profile"}
                 </h1>
               </div>
-              <Link to="/updateProfile" className="btn primary-btn mt-5">
-                Edit Profile
+              <Link to="/updateProfile">
+                <button className="btn primary-btn mt-5">Edit Profile</button>
               </Link>
             </div>
           </div>

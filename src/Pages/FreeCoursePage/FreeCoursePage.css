@@ -33,6 +33,8 @@
   .card:hover .card-body1 {
     transform: translate(-50%, -50%);
     color: white;
+
+
   }
 
   .img{
