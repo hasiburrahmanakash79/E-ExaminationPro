@@ -23,7 +23,7 @@ const Comments = ({ postComments, refetch }) => {
 
     const handleSaveEdit = () => {
         setEditMode(false);
-        fetch(`http://localhost:5000/forumPost/${postComments?._id}`, {
+        fetch(`http://localhost:4000/forumPost/${postComments?._id}`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',
@@ -88,7 +88,7 @@ const Comments = ({ postComments, refetch }) => {
         setShowContextMenu(false);
     };
     const handleDelete = (postComments) => {
-        axios.delete(`http://localhost:5000/forumPost/${postComments._id}`)
+        axios.delete(`http://localhost:4000/forumPost/${postComments._id}`)
             .then(data => {
                 console.log(data);
                 if (data.data.deletedCount > 0) {

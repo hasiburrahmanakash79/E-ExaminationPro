@@ -17,7 +17,7 @@ const ReplyField = ({ postId, refetch, setCommentPostText, comment, setReplyHide
         };
         try {
             const response = await fetch(
-                `http://localhost:5000/forumPost/${postId}/replies`,
+                `http://localhost:4000/forumPost/${postId}/replies`,
                 {
                     method: "POST",
                     headers: {
@@ -107,7 +107,7 @@ export default ReplyField;
 //             replies: [],
 //         }
 //         try {
-//             const response = await fetch(`http://localhost:5000/forumPost/${postId}/replies`, {
+//             const response = await fetch(`http://localhost:4000/forumPost/${postId}/replies`, {
 //                 method: "POST",
 //                 headers: {
 //                     "Content-Type": "application/json",

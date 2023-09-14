@@ -4,7 +4,7 @@ import Swal from "sweetalert2";
 
 const [postComments, refetch] = allPostComment()
 export const handleDelete = () => {
-    axios.delete(`http://localhost:5000/forumPost/${postComments._id}`)
+    axios.delete(`http://localhost:4000/forumPost/${postComments._id}`)
         .then(data => {
             console.log(data);
             if (data.data.deletedCount > 0) {

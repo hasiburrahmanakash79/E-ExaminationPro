@@ -57,7 +57,7 @@ const ManageUsers = () => {
     })
     .then((result) => {
       if(result.isConfirmed){
-        fetch(`http://localhost:5000/users/${user._id}`, {
+        fetch(`http://localhost:4000/users/${user._id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
