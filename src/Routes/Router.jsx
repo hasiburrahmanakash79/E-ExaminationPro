@@ -41,6 +41,7 @@ import DemoResult from '../components/examComponents/QuestionRelated/DemoQuesRes
 import CreateSubject from '../Pages/Dashboard/AdminDashboard/CreateSubject/CreateSubject'
 import AppliedLiveExamAdmin_Instructor from '../Pages/AppliedLiveExamAdmin_Instructor/AppliedLiveExamAdmin_Instructor'
 import BlogDetails from '../Pages/BlogPage/BlogDetails/BlogDetails'
+import Bot from '../Pages/Home/ChatBot/Bot'
 const router = createBrowserRouter([
   {
     path: '/',
@@ -85,6 +86,10 @@ const router = createBrowserRouter([
       {
         path: '/demo-result',
         element: <DemoResult />
+      },
+      {
+        path: '/bot',
+        element: <Bot />
       },
 
       {

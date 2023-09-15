@@ -10,6 +10,7 @@ import TopSubjects from '../TopSubjects/TopSubjects'
 import { Helmet } from 'react-helmet-async'
 import MainContact from '../../Contact/MainContact'
 import Pricing from '../Pricing/Pricing'
+import ChatButton from '../ChatBot/ChatButton'
 // import ShortcutKey from "../../../Components/ShortcutKey/ShortcutKey";
 const HomePage = () => {
   console.log(window.localStorage.getItem('showMainContent'))
@@ -41,7 +42,7 @@ const HomePage = () => {
   console.log(showMainContent)
 
   return (
-    <div className=''>
+    <div className='relative'>
       <Helmet>
         <title>E-ExamPro </title>
       </Helmet>
@@ -82,6 +83,7 @@ const HomePage = () => {
         </div>
         <Faq />
       </div>
+      <ChatButton />
     </div>
   )
 }
