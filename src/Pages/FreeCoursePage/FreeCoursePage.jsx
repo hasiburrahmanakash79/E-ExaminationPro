@@ -33,7 +33,7 @@ const FreeCoursePage = () => {
   }, []);
   console.log(data);
   return (
-    <div className="flex justify-center my-5 mt-5 ">
+    <div className="flex justify-center my-5 mt-5 container mx-auto">
       <Helmet>
         <title>E-ExamPro | Exam</title>
       </Helmet>
