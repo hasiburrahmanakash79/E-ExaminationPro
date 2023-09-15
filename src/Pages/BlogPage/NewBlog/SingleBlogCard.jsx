@@ -48,33 +48,11 @@ const SingleBlogCard = ({ newBlog }) => {
       .then(data => setAllUserComments(data))
   }
 
-  console.log(allUserComments)
-
-  // const { data: comments, refetch } = useQuery({
-  //     queryKey: ['comments', _id],
-  //     enabled: !loading,
-  //     queryFn: async () => {
-  //         const res = await axiosSecure.get(`/comments?id=${_id}&userEmail=${user?.email}`);
-  //         return res.data;
-  //     }
-  // })
-  // console.log(comments)
+  //console.log(allUserComments)
 
   return (
     <div>
-      {/* <div className="card card-compact w-96 bg-base-100 shadow-xl mx-auto">
-        <figure><img className='h-[250px] w-full' src={image_url} alt="Shoes" /></figure>
-        <div className="card-body">
-          <h2 className="card-title">{title}</h2>
-          <p>{publishing_date}</p>
-          <p>{content}</p>
-          <div className="card-actions justify-end">
-            <button className="btn btn-primary">Buy Now</button>
-          </div>
-        </div>
-      </div> */}
-
-      <div className='mb-5  '>
+      <div className='mb-5 '>
         <div
           rel='noopener noreferrer'
           href='#'
@@ -107,7 +85,7 @@ const SingleBlogCard = ({ newBlog }) => {
             >
               <h1 className='text-center text-red-500'>All Comments</h1>
               {allUserComments?.allUserComments?.map((comment, index) => (
-                <div key={index} className='m-2 p-2 shadow-md'>
+                <div key={index} className='p-2 m-2 shadow-md'>
                   <h1>
                     <span className='text-yellow-400'>User:</span>
                     {}
@@ -122,10 +100,7 @@ const SingleBlogCard = ({ newBlog }) => {
             </div>
 
             <div className='flex items-center justify-between p-5'>
-              <div className='mt-10 flex gap-5'>
-                {/* <Link to={`/blogDetails/${_id}?_id=${_id}`}>
-                  <FaRegCommentDots className='text-2xl'></FaRegCommentDots> 
-                </Link> */}
+              <div className='flex gap-5 mt-10'>
                 <FaRegCommentDots
                   onClick={() => {
                     showComment(_id)
@@ -139,7 +114,6 @@ const SingleBlogCard = ({ newBlog }) => {
                   onClick={toggleLike}
                 ></FaRegHeart>
 
-                {/* <FaShareAltSquare className='text-2xl'></FaShareAltSquare> */}
                 <FaShareAltSquare
                   className='text-2xl'
                   onClick={() => openModal(id)}
@@ -212,7 +186,7 @@ const SingleBlogCard = ({ newBlog }) => {
               <div className=''>
                 <Link
                   to={`/blogDetails/${_id}`}
-                  className='text-end btn btn-outline btn-sm  mt-10 ml-auto'
+                  className='mt-10 ml-auto text-end btn btn-outline btn-sm'
                 >
                   Read More
                 </Link>

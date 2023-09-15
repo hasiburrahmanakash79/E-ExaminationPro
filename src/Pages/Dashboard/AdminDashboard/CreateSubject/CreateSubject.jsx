@@ -17,10 +17,10 @@ const CreateSubject = () => {
   // }
 
   const onSubmit = data => {
-    console.log(data)
+    //console.log(data);
     const formData = new FormData()
     formData.append('image', data.image[0])
-    console.log(formData)
+    //console.log(formData);
 
     fetch(img_hosting_url, {
       method: 'POST',
@@ -28,7 +28,7 @@ const CreateSubject = () => {
     })
       .then(res => res.json())
       .then(imgResponse => {
-        console.log(imgResponse)
+        //console.log(imgResponse);
         const imgURL = imgResponse.data.display_url
         const subjectInfo = {
           subject_name: data.subject,
@@ -37,7 +37,7 @@ const CreateSubject = () => {
           img_link: imgURL
         }
         if (imgResponse.success === true) {
-          console.log(subjectInfo)
+          //console.log(subjectInfo);
           fetch('https://e-exam-pro-server.vercel.app/allsubjects', {
             method: 'POST',
             headers: {
@@ -47,7 +47,7 @@ const CreateSubject = () => {
           })
             .then(res => res.json())
             .then(data => {
-              console.log(data)
+              //console.log(data);
               if (data.insertedId) {
                 showToast('btn', 'Subject Created', { type: 'success' })
               } else {

@@ -8,7 +8,7 @@ const TextEditor = ({ question }) => {
   const dispatch = useDispatch()
   const { register, handleSubmit, reset } = useForm()
   const onSubmit = data => {
-    console.log(data)
+    //console.log(data)
     dispatch(addUserAnswer({ questionId: question.id, answer: data.answer }))
   }
 

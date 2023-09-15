@@ -1,4 +1,4 @@
-import { HiRocketLaunch, HiMapPin } from 'react-icons/hi2'
+import { HiRocketLaunch } from 'react-icons/hi2'
 import { Link } from 'react-router-dom'
 import { FaLinkedin, FaFacebookSquare, FaGithubSquare } from 'react-icons/fa'
 import emailjs from '@emailjs/browser'
@@ -36,10 +36,8 @@ const Contact = () => {
               theme: 'colored'
             })
           }
-          console.log(result.text)
         },
         error => {
-          console.log(error.text)
           setMsg('Message Limit is Over')
         }
       )
@@ -47,19 +45,21 @@ const Contact = () => {
 
   return (
     <div className='navigation-bar2 min-h-[50vh] py-16'>
-      <Helmet><title>E-ExamPro | Contact Us</title></Helmet>
+      <Helmet>
+        <title>E-ExamPro | Contact Us</title>
+      </Helmet>
       <div className='flex justify-center pt-3 mx-2'>
         <div className='grid items-center grid-cols-1 gap-5 md:grid-cols-2 md:gap-10'>
-          <div
-            data-aos="fade-up"
-            data-aos-duration="1400"
-          >
+          <div data-aos='fade-up' data-aos-duration='1400'>
             <img src={contact} alt='' />
           </div>
           <form
-            data-aos="fade-down"
-            data-aos-duration="1000"
-            ref={form} onSubmit={sendEmail} className='pb-5 md:pt-20 card-body border border-blue-500 rounded-lg'>
+            data-aos='fade-down'
+            data-aos-duration='1000'
+            ref={form}
+            onSubmit={sendEmail}
+            className='pb-5 border border-blue-500 rounded-lg md:pt-20 card-body'
+          >
             <div className=''>
               <div className='form-control'>
                 <label className='label'>
@@ -72,7 +72,7 @@ const Contact = () => {
                   name='name'
                   type='text'
                   placeholder='Name'
-                  className='text-black border-2 bg-transparent input border-gray-200 '
+                  className='bg-transparent border-2 border-gray-200 input'
                 />
               </div>
               <div className='form-control'>
@@ -84,9 +84,9 @@ const Contact = () => {
                 <input
                   required
                   name='email'
-                  type='text'
+                  type='email'
                   placeholder='Email'
-                  className='text-black border-2 bg-transparent input border-gray-200'
+                  className='bg-transparent border-2 border-gray-200 input'
                 />
               </div>
               <div className='form-control'>
@@ -98,7 +98,7 @@ const Contact = () => {
                 <textarea
                   required
                   name='message'
-                  className='text-black border-2 textarea bg-transparent border-gray-200'
+                  className='bg-transparent border-2 border-gray-200 textarea'
                   placeholder='Message'
                 ></textarea>
               </div>

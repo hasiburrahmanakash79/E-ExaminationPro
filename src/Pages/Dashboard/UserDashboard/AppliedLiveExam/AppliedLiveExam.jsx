@@ -25,7 +25,7 @@ const AppliedLiveExam = () => {
       return res.data
     }
   })
-  console.log(appliedExam)
+  //console.log(appliedExam)
 
   const getCode = (id, code) => {
     fetch(
@@ -41,7 +41,7 @@ const AppliedLiveExam = () => {
         setCode(code.code)
       })
   }
-  console.log(code)
+  //console.log(code)
   return (
     <div className='flex flex-col items-center justify-center'>
       <Helmet>

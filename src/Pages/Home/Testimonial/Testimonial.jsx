@@ -21,7 +21,7 @@ const Testimonial = () => {
         )
         const data = await response.json()
 
-        console.log(data)
+        // //console.log(data);
         setTestimonials(data)
       } catch (error) {
         console.error('Error fetching data:', error)
@@ -73,7 +73,7 @@ const Testimonial = () => {
                   alt=''
                   className='absolute w-14 h-14 md:top-6 top-5 md:right-8 right-6 opacity-20 '
                 />
-                <p className='mt-10 text-slate-800'>
+                <p className='mt-10 h-40 text-slate-800'>
                   {testimonial.feedback_message}
                 </p>
                 <div className='flex items-center gap-4 pt-3'>

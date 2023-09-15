@@ -9,7 +9,7 @@ const NewBlogDetails = () => {
   const location = useLocation()
   const searchParams = new URLSearchParams(location.search)
   const blogId = searchParams.get('_id')
-  console.log(blogId)
+  //console.log(blogId)
   const [smallCards, setSmallCard] = useState([])
   const [displayCard, setDisplayCard] = useState(4)
 
@@ -20,10 +20,10 @@ const NewBlogDetails = () => {
   }, [])
 
   const { id, image_url, publishing_date, content } = useParams()
-  console.log(id)
+  //console.log(id)
 
   // const { _id, image_url, publishing_date, content } = useParams();
-  // console.log(_id);
+  // //console.log(_id);
 
   const info = smallCards.find(smallCard => smallCard._id == blogId)
   return (

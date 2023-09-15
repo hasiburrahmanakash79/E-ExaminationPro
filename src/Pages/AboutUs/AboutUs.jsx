@@ -4,9 +4,9 @@ import { Link } from 'react-router-dom';
 
 const AboutUs = () => {
   return (
-    <div className='container mx-auto'>
+    <div className='container mx-auto px-6'>
       <Helmet><title>E-ExamPro | About Us</title></Helmet>
-      <div className='md:flex justify-between items-center md:gap-20 py-20'>
+      <div className='md:flex justify-between items-center md:gap-20 py-20 text-center md:text-left'>
         <div className='md:w-1/2 overflow-x-hidden'>
           <h2
             data-aos="zoom-in"
@@ -21,8 +21,8 @@ const AboutUs = () => {
             // data-aos="fade-left"
             data-aos-easing="ease-in-sine"
             className='pb-5'>
-            <h2 className='md:text-7xl font-bold tracking-wide pb-3 ' >Reach your peak.</h2>
-            <h2 className='md:text-7xl font-bold tracking-wide'>We'll help you get there.</h2>
+            <h2 className='text-4xl xl:text-7xl font-bold tracking-wide pb-3' >Reach your peak.</h2>
+            <h2 className='text-4xl xl:text-7xl font-bold tracking-wide'>We'll help you get there.</h2>
           </div>
 
           <p
@@ -62,8 +62,8 @@ const AboutUs = () => {
         <div
           data-aos="fade-right"
           data-aos-easing="ease-in-sine"
-          className='md:w-1/2 md:mt-10 px-5'>
-          <h1 className='w-full text-5xl font-bold ' >E-ExamPro plays a huge role <br /> by  providing unique, <br />authentic peer advice in <br /> study field.</h1>
+          className='md:w-1/2 md:mt-10 px-5  text-center md:text-left'>
+          <h1 className='w-full text-3xl xl:text-5xl font-bold ' >E-ExamPro plays a huge role <br /> by  providing unique, <br />authentic peer advice in <br /> study field.</h1>
           <p className='mt-5 text-gray-400 m'>Our commitment extends beyond convenience. We strive to create an inclusive platform that accommodates various subjects, disciplines, and formats, providing an expansive repository of resources for comprehensive preparation. We take pride in supporting the educational ecosystem by partnering with schools, colleges, universities, and educators to facilitate a new era of examination that aligns with the digital age.</p>
         </div>
       </div>
@@ -77,7 +77,7 @@ const AboutUs = () => {
           <h1
             data-aos="fade-down"
             data-aos-duration="1500"
-            className="text-4xl font-bold leadi text-center sm:text-5xl">The talented people behind the scenes</h1>
+            className=" font-bold leadi text-center text-3xl xl:text-5xl">The talented people behind the scenes</h1>
           <div className="flex flex-row flex-wrap-reverse justify-center mt-20">
             <div
               data-aos="fade-right"

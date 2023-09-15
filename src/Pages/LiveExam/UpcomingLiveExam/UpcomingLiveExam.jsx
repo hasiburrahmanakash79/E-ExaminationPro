@@ -19,7 +19,7 @@ const UpcomingLiveExam = () => {
   const location = useLocation()
   const searchParams = new URLSearchParams(location.search)
   const e_ID = searchParams.get('examID')
-  ////console.log(e_ID)
+  //////console.log(e_ID)
   const { user, loading } = useContext(AuthContext)
 
   const [axiosSecure] = useAxiosSecure()
@@ -28,11 +28,11 @@ const UpcomingLiveExam = () => {
     queryKey: ['studentInfo', user?.email],
     enabled: !loading,
     queryFn: async () => {
-      const res = await axiosSecure.get(`users?email=${user?.email}`)
+      const res = await axiosSecure.get(`/users?email=${user?.email}`)
       return res.data
     }
   })
-  //console.log(studentData?.batch,'line 38')
+  ////console.log(studentData?.batch,'line 38')
 
   const { data, refetch, isLoading } = useQuery({
     queryKey: ['noticeDATA', e_ID],
@@ -105,7 +105,7 @@ const UpcomingLiveExam = () => {
         })
     }
   }
-  console.log(noticeBatch, stuBatch)
+  //console.log(noticeBatch, stuBatch)
   return (
     <>
       {isLoading || dataLoading ? (

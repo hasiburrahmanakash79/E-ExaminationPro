@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom'
 
 const UnderBlog = () => {
   const { id, image_url, publishing_date, content } = useParams()
-  console.log(id)
+  //console.log(id)
 
   const info = details.find(detail => detail.id == id)
   return (

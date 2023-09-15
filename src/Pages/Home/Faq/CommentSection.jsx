@@ -8,14 +8,14 @@ function CommentSection ({ blogId }) {
   const [message, setMessage] = useState('')
 
   const { user } = useAuth()
-  console.log(user)
+  //console.log(user)
   // const [comments, setComments] = useState([]);
   const [comments, loading, refetch] = useComments()
 
   const handleCommentChange = e => {
     setComment(e.target.value)
   }
-  console.log(comments)
+  //console.log(comments)
 
   const handleCommentSubmit = async () => {
     if (comment.trim() !== '') {
@@ -63,7 +63,7 @@ function CommentSection ({ blogId }) {
 
         if (response.ok) {
           const data = await response.json()
-          console.log(data)
+          //console.log(data)
           setComment(data)
         } else {
           setMessage('Failed to fetch comments')

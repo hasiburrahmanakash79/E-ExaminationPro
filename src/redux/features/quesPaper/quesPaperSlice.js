@@ -26,7 +26,7 @@ export const quesPaperSlice = createSlice({
             state.type = payload
         },
         setSubjectCode: (state, { payload }) => {
-            console.log(payload)
+            //console.log(payload)
             state.formData.subject_code = payload
         }
         ,
@@ -38,11 +38,11 @@ export const quesPaperSlice = createSlice({
         subjectInfo: (state, { payload }) => {
 
             const { name, value } = payload.target
-            console.log(name, value, 'sssssssssssss')
+            //console.log(name, value, 'sssssssssssss')
 
 
             if (name === 'exam_code') {
-                console.log(name, '------------------------------------------44')
+                //console.log(name, '------------------------------------------44')
                 state.codeRepeat = value
 
             }

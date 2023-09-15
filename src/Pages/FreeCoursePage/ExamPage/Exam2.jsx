@@ -38,7 +38,7 @@ const Exam2 = () => {
   const { user } = useContext(AuthContext)
   const navigate = useNavigate()
 
-  //console.log(ques)
+  ////console.log(ques)
   const questions = ques?.questions
   const examType = ques.type
   dispatch(setExamType(ques.type))
@@ -64,7 +64,7 @@ const Exam2 = () => {
     totalMark: questions.length * 5
   }
 
-  console.log(result, 'send data2')
+  //console.log(result, 'send data2')
 
   const sendData = () => {
     dispatch(sendResult(examInfo))
@@ -89,7 +89,7 @@ const Exam2 = () => {
   ///////////// when user select option in mcq ////////////////
   const onSelectOption = (index, option, question, correctAnswer) => {
     dispatch(setAnswerIndex(index))
-    //console.log(question, option, correctAnswer)
+    ////console.log(question, option, correctAnswer)
     dispatch(setMcq(option)) // setMcq(option) // store user selected option
     //setResult(prevArray => [...prevArray, newObject])
   }
@@ -107,14 +107,14 @@ const Exam2 = () => {
     dispatch(setAnswerIndex(null))
 
     if (currentQuestion !== questions.length - 1) {
-      // console.log(currentQuestion, questions)
+      // //console.log(currentQuestion, questions)
       dispatch(nextQues())
     } else {
       dispatch(setView(true)) //setView(true)
       dispatch(resetQues())
       //sendData(resultData)
-      // console.log('hit')
-      // console.log(result, 'ghghgjgjh')
+      // //console.log('hit')
+      // //console.log(result, 'ghghgjgjh')
       clearInterval(timer)
       handleFinishExam()
     }

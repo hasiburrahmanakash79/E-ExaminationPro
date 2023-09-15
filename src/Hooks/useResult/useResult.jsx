@@ -7,7 +7,7 @@ const useResult = examId => {
   //   const [axiosSecure] = useAxiosSecure()
   // const id = '64e8b9586f2385caa12fd4c7'
 
-  console.log(examId)
+  //console.log(examId)
   const {
     data: result,
     refetch,
@@ -16,9 +16,9 @@ const useResult = examId => {
     queryKey: ['result'],
     queryFn: async () => {
       const res = await axios.get(
-        `http://localhost:5000/result?examId=${examId}`
+        `https://e-exam-pro-server.vercel.app/result?examId=${examId}`
       )
-      console.log(res)
+      //console.log(res)
       return res.data
     }
   })

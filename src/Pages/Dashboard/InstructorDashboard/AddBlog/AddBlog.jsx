@@ -20,7 +20,7 @@ const AddBlog = () => {
       publishing_date,
       content
     }
-    console.log(order)
+    //console.log(order)
 
     fetch('https://e-exam-pro-server.vercel.app/blogs', {
       method: 'POST',
@@ -31,7 +31,7 @@ const AddBlog = () => {
     })
       .then(res => res.json())
       .then(data => {
-        console.log(data)
+        //console.log(data)
         if (data.insertedId) {
           Swal.fire({
             position: 'middle-center',
@@ -47,14 +47,14 @@ const AddBlog = () => {
   }
 
   return (
-    <div>
+    <div className='p-5 text-center'>
       <Helmet>
         <title>E-ExamPro | Add Blog </title>
       </Helmet>
-      <h2 className='text-2xl'>Add Blog</h2>
+      <h2 className='my-10 text-3xl'>Add Blog</h2>
 
-      <form onSubmit={handleBlogAdding} className='text-center pb-20'>
-        <div className='p-5 pb-20-20 grid gap-5 grid-cols-2 '>
+      <form onSubmit={handleBlogAdding} className='pb-20 text-center'>
+        <div className='grid gap-5 p-5 pb-20-20 md:grid-cols-2 '>
           <input
             type='text'
             name='image_url'
@@ -65,26 +65,25 @@ const AddBlog = () => {
             type='text'
             name='title'
             placeholder='Your Title'
-            className='input input-bordered w-full '
+            className='w-full input input-bordered '
           />
           <input
             type='date'
             name='publishing_date'
             placeholder='Publishing Date'
-            className='input input-bordered w-full '
+            className='w-full input input-bordered '
           />
           <input
             type='text'
             name='instructorName'
             placeholder='Publisher Name'
-            className='input input-bordered w-full '
+            className='w-full input input-bordered '
           />
           <textarea
-            className='textarea w-full textarea-bordered'
+            className='w-full textarea textarea-bordered'
             name='content'
             placeholder='Your content'
           ></textarea>
-          {/* <button className='flex justify-self-end text-end btn btn-primary w-1/3 mt-6'>Submit</button> */}
         </div>
         <div>
           <input className='btn btn-primary ' type='submit' value='Submit' />

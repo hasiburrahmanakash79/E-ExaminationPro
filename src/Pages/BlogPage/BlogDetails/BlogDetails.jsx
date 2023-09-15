@@ -3,18 +3,12 @@ import { useParams } from 'react-router-dom'
 import useAxiosSecure from '../../../Hooks/useAxiosSecure.jsx/useAxiosSecure'
 import { AuthContext } from '../../../Provider/AuthProvider'
 import { useQuery } from '@tanstack/react-query'
-import { FaCommentDots } from 'react-icons/fa'
-
 const BlogDetails = () => {
   const [allComment, setAllComment] = useState(true)
   const [userComment, setUserComment] = useState(false)
-
   const [showTooltip_success, setTooltip_success] = useState(false)
   const [showTooltip_error, setTooltip_error] = useState(false)
-
   const { id } = useParams()
-  console.log(id)
-
   const { user, loading } = useContext(AuthContext)
   const [axiosSecure] = useAxiosSecure()
   const { data: blog, isLoading: isBlogLoading } = useQuery({
@@ -25,8 +19,6 @@ const BlogDetails = () => {
       return res.data
     }
   })
-  console.log(blog)
-
   const { data: comments, refetch } = useQuery({
     queryKey: ['comments', id],
     enabled: !loading,
@@ -37,9 +29,7 @@ const BlogDetails = () => {
       return res.data
     }
   })
-  console.log(comments)
-
-  const commnetSubmit = e => {
+  const commentSubmit = e => {
     e.preventDefault()
     const form = e.target
     const comment = form.comment.value
@@ -66,7 +56,6 @@ const BlogDetails = () => {
         }
       })
   }
-
   return (
     <div
       onClick={() => {
@@ -74,18 +63,18 @@ const BlogDetails = () => {
         showTooltip_error(false)
       }}
     >
-      <div className='flex flex-col items-center justify-center mx-2 mt-5  md:mx-10'>
+      <div className='flex flex-col items-center justify-center mx-2 mt-5 md:mx-10'>
         <figure className='rounded-lg '>
           <img className='rounded-lg ' src={blog?.image_url} alt='Album' />
         </figure>
-        <div className='mt-3  md:w-1/2'>
+        <div className='mt-3 md:w-1/2'>
           <h2 className='text-3xl'>{blog?.title}</h2>
           <p>{blog?.publishing_date}</p>
           <p className='mt-5'>{blog?.content}</p>
         </div>
       </div>
       <div className='flex justify-center'>
-        <div className='grid grid-cols-1 p-5 rounded-lg  md:w-1/2'>
+        <div className='grid grid-cols-1 p-5 rounded-lg md:w-1/2'>
           <hr />
           <h1 className='mt-5 text-3xl text-center'>Comment Section</h1>
           <button
@@ -107,7 +96,7 @@ const BlogDetails = () => {
                     <span className='text-green-400'> {comment.name}</span>
                   </h1>
                   <p>
-                    <span className='text-yellow-400'>Commnet:</span>{' '}
+                    <span className='text-yellow-400'>Comment:</span>{' '}
                     {comment.comment}
                   </p>
                 </div>
@@ -122,7 +111,7 @@ const BlogDetails = () => {
                     <span className='text-green-400'> {comment.name}</span>
                   </h1>
                   <p>
-                    <span className='text-yellow-400'>Commnet:</span>{' '}
+                    <span className='text-yellow-400'>Comment:</span>{' '}
                     {comment.comment}
                   </p>
                 </div>
@@ -130,7 +119,7 @@ const BlogDetails = () => {
             </div>
           </div>
 
-          <form onSubmit={commnetSubmit} className=' mt-7'>
+          <form onSubmit={commentSubmit} className=' mt-7'>
             <div className='flex items-center w-auto gap-3 '>
               <textarea
                 required
@@ -155,7 +144,6 @@ const BlogDetails = () => {
                     : ''
                 }
               >
-                {/* <input type='submit' className=' btn primary-bg' value={FaCommentDots} /> */}
                 <button className='text-lg btn btn-sm primary-btn hover:text-red-500'>
                   Comment
                 </button>

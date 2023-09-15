@@ -7,7 +7,7 @@ const FeedBack = () => {
     const message = form.message.value
     const quality = form.quality.value
     const time = form.timeManage.value
-    console.log(message, quality, time)
+
 
     // axios.post("", {
     //     message: message,
@@ -20,7 +20,7 @@ const FeedBack = () => {
     //         }
     //     })
     //     .catch(err => {
-    //         console.log(err.message);
+    //
     //     })
   }
 

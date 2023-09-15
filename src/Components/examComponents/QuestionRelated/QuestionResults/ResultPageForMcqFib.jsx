@@ -76,18 +76,18 @@ const ResultPageForMcqFib = () => {
             >
               Give FeedBack
             </button>
-            <dialog id='my_modal_2' className=' modal'>
+            <dialog id="my_modal_2" className=" modal">
               <form
-                method='dialog'
-                className='relative max-w-5xl p-0 border w-fit h-fit modal-box primary-bg'
+                method="dialog"
+                className="relative max-w-5xl p-0 border w-fit h-fit modal-box primary-bg"
               >
-                <small className='absolute top-0 right-0 p-1 text-xs'>
+                <small className="absolute top-0 right-0 p-1 text-xs">
                   Press ESC key or click outside to close
                 </small>
 
                 <FeedBack />
               </form>
-              <form method='dialog' className='modal-backdrop'>
+              <form method="dialog" className="modal-backdrop">
                 <button>close</button>
               </form>
             </dialog>

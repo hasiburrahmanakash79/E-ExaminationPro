@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
 })
 
 const ResultPdfConverter = ({ resultInfo }) => (
-  // console.log(questions);
+
   <Document>
     <Page size='A4' style={styles.page}>
       <View>

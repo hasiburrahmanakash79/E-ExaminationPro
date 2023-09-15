@@ -39,7 +39,6 @@ const ReviewAnswerAfterResult2 = ({ singleQ }) => {
           </div>
         )
       })} */}
-      6
       {/* {shortQuestions && (
         <div>
           {shortQuestions.map(sq => (

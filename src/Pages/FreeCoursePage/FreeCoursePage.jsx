@@ -21,7 +21,7 @@ const FreeCoursePage = () => {
     })
       .then(res => res.json())
       .then(data => {
-        console.log(data)
+        //console.log(data);
 
         if (data.error == true) {
           logOut()
@@ -31,7 +31,7 @@ const FreeCoursePage = () => {
         dispatch(setSubject(data))
       })
   }, [])
-  console.log(data)
+  //console.log(data);
   return (
     <div className='flex justify-center my-5 mt-5 '>
       <Helmet>
@@ -57,11 +57,13 @@ const FreeCoursePage = () => {
             <div className='items-center w-full text-center card-body1'>
               <h1 className='text-4xl font-bold'>{subject.subject_code}</h1>
               <p className='mx-3 my-3 text-md '>{subject.description}</p>
-              <button className='btn btn-sm btn-primary'>
-                <Link to={`/allexam?subject=${subject.subject_name}`}>
-                  View All Exam
-                </Link>
-              </button>
+
+              <Link
+                to={`/allexam?subject=${subject.subject_name}`}
+                className='btn btn-sm btn-primary'
+              >
+                View All Exam
+              </Link>
             </div>
           </div>
         ))}
