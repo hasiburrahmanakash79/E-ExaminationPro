@@ -15,7 +15,7 @@ import Dashboard from '../Layouts/Dashboard'
 import ManageUsers from '../Pages/Dashboard/AdminDashboard/ManageUser/ManageUsers'
 import AdminHome from '../Pages/Dashboard/AdminDashboard/AdminHome/AdminHome'
 import Notice from '../Pages/NoticePage/Notice/Notice'
-import AllExam from '../Pages/FreeCoursePage/ExamPage/AllExam'
+
 import Exam2 from '../Pages/FreeCoursePage/ExamPage/Exam2'
 import FreeCoursePage from '../Pages/FreeCoursePage/FreeCoursePage'
 import CreateQuesPaper from '../Pages/Dashboard/InstructorDashboard/CreateQuestion/CreateQuesPaper'
@@ -51,6 +51,8 @@ import SSLCart from '../Pages/Home/Pricing/SSLCart'
 import SSLCommerzSuccess from '../Pages/Dashboard/UserDashboard/Payment/SSLPage/SSLCommerzSuccess/SSLCommerzSuccess'
 import SSLCommerzFail from '../Pages/Dashboard/UserDashboard/Payment/SSLPage/SSLCommerzFail/SSLCommerzFail'
 import PaymentOption from '../Pages/Dashboard/UserDashboard/Payment/PaymentOption'
+import AllExam from '../Pages/FreeCoursePage/ExamPage/allExam'
+import ExamResult from '../Pages/ExamResult/ExamResult'
 const router = createBrowserRouter([
   {
     path: '/',
@@ -105,11 +107,19 @@ const router = createBrowserRouter([
         element: <PaymentOption/>
       },
       {
-        path: '/payment/:id',
+        path: '/stripePayment',
         element: (
           <PrivateRouter>
             <Payment />
             {/* <SSLCart /> */}
+          </PrivateRouter>
+        )
+      },{
+        path: '/sslPayment',
+        element: (
+          <PrivateRouter>
+            {/* <Payment /> */}
+            <SSLCart />
           </PrivateRouter>
         )
       },
@@ -199,7 +209,11 @@ const router = createBrowserRouter([
       {
         path: '/allAppliedLiveExam',
         element: <AppliedLiveExamAdmin_Instructor />
-      }
+      },
+      {
+        path: '/examResults',
+        element: <ExamResult />
+      },
       
     ]
   },
@@ -215,7 +229,7 @@ const router = createBrowserRouter([
   {
     path: '/examRoom',
     element: <ExamRoom />
-  },
+  },   
 
   ///// DASHBOARD /////
   {

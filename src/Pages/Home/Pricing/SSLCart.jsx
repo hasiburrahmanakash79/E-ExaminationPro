@@ -43,27 +43,25 @@ const SSLCart = () => {
 
 
     return (
-        <div className="grid grid-cols-5 m-7 ">
-            <div className="col-span-2">
-
-            </div>
+        <div className=" mx-auto mt-10 ">
+            <h1 className=" text-3xl text-center mb-10 mt-5">SSL Payment Gatway</h1>
             <form onSubmit={handleSubmit(onSubmit)}
-                className="col-span-3 space-y-3"
+                className=" space-y-6 md:w-1/2 mx-auto  "
             >
                 <div className="flex items-center gap-5">
                     <div className="w-1/2">
                         <label htmlFor="name" className=""> Name  </label> <br />
                         <input
-                            className="bg-white p-3 w-full text-slate-800 rounded-md"
+                   className="bg-transparent border-2 focus:outline-none shadow-2xl border-violet-800 p-3 w-full rounded-md"
                             defaultValue={user?.displayName}
                             required
                             {...register("name")}
                         />
                     </div>
                     <div className="w-1/2">
-                        <label htmlFor="email" className="text-lg font-bold text-slate-400 tracking-wider"> Email  </label> <br />
+                        <label htmlFor="email" className="text-lg  text-slate-100 tracking-wider "> Email  </label> <br />
                         <input
-                            className="bg-white p-3 w-full text-slate-800 rounded-md"
+                     className="bg-transparent border-2 focus:outline-none shadow-2xl border-violet-800 p-3 w-full rounded-md"
                             required
                             defaultValue={user?.email}
                             {...register("email")}
@@ -74,17 +72,18 @@ const SSLCart = () => {
                     <div className="w-1/2">
                         <label htmlFor="phone" className=""> Phone Number  </label> <br />
                         <input
-                            className="bg-white p-3 w-full text-slate-800 rounded-md"
+                            type="number"
+                            className="bg-transparent border-2 focus:outline-none shadow-2xl border-violet-800 p-3 w-full rounded-md"
                             // defaultValue={user?.displayName}
-                            placeholder="+88 010 00-000 00 0"
+                            placeholder="+8801000-000000"
                             required
                             {...register("phone")}
                         />
                     </div>
                     <div className="w-1/2">
-                        <label htmlFor="address" className="text-lg font-bold text-slate-400 tracking-wider"> Address  </label> <br />
+                        <label htmlFor="address" className="text-lg  text-slate-100 tracking-wider"> Address  </label> <br />
                         <input
-                            className="bg-white p-3 w-full text-slate-800 rounded-md"
+                            className="bg-transparent border-2 focus:outline-none shadow-2xl border-violet-800 p-3 w-full rounded-md"
                             defaultValue={user?.address}
                             placeholder="Please your address"
                             required
@@ -96,31 +95,33 @@ const SSLCart = () => {
                     <div className="w-1/2">
                         <label htmlFor="postCode" className=""> Post Code  </label> <br />
                         <input
-                            className="bg-white p-3 w-full text-slate-800 rounded-md"
+                               className="bg-transparent border-2 focus:outline-none shadow-2xl border-violet-800 p-3 w-full rounded-md"
                             // defaultValue={user?.displayName}
-                            placeholder="price"
+                            placeholder="Post Code"
                             required
                             {...register("postCode")}
                         />
                     </div>
                     <div className="w-1/2">
-                        <label htmlFor="adders" className="text-lg font-bold text-slate-400 tracking-wider"> Currency  </label> <br />
-                        <select {...register("currency")} required className="bg-white p-3 w-1/2 text-slate-800 rounded-md z-10">
-                            <option value="USD">USD</option>
-                            <option value="BDT">BDT</option>
-                            <option value="EUR">EUR</option>
-                            <option value="IND">IND</option>
-                            <option value="PAK">PAK</option>
+                        <label htmlFor="adders" className="text-lg  text-slate-100 tracking-wider"> Currency  </label> <br />
+                        <select {...register("currency")} required      className="bg-transparent border-2 focus:outline-none shadow-2xl border-violet-800 p-3 w-full rounded-md">
+                            <option className="text-black" value="USD">USD</option>
+                            <option className="text-black" value="BDT">BDT</option>
+                            <option className="text-black" value="EUR">EUR</option>
+                            <option className="text-black"value="IND">IND</option>
+                            <option className="text-black" value="PAK">PAK</option>
                         </select>
                     </div>
                 </div>
                 {errors.exampleRequired && <span>This field is required</span>}
 
-                <input
-                    type="submit"
-                    value="Payment Bay"
-                    className="w-full bg-slate-400 text-center rounded-md py-3 cursor-pointer"
-                />
+                <div className="flex justify-center ">
+                    <input
+                        type="submit"
+                        value="Pay Now"
+                        className=" duration-300 primary-btn mx-auto w-1/2 text-center rounded-md py-3 cursor-pointer"
+                    />
+                </div>
 
             </form>
         </div>

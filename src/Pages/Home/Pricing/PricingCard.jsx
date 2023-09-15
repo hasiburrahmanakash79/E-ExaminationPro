@@ -5,6 +5,13 @@ import { Link } from 'react-router-dom'
 import { AuthContext } from '../../../Provider/AuthProvider'
 const PricingCard = ({ price }) => {
   const {user} =useContext(AuthContext)
+
+ const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth' // This smoothens the scroll animation
+    });
+  }
   // console.log(price)
   return (
     <div
@@ -37,7 +44,8 @@ const PricingCard = ({ price }) => {
       {/* </ul> */}
       <div className='pt-4 '>
         {price.name === "Free" ? <Link
-          to={`/payment/${price?._id}`}
+          onClick={ user?.email&& scrollToTop}
+          to={!user?.email &&'/login'}
           className='btn-primary btn hover:outline-blue-400 hover:outline translate'
         >
           {' '}

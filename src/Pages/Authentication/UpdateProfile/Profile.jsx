@@ -22,19 +22,19 @@ const Profile = () => {
     },
   });
   return (
-    <div className="navigation-bar2 container mx-auto p-10">
+    <div className="navigation-bar2 container mx-auto md:p-10">
       <div className="card  mx-auto">
         <div className="card-body">
-          <div className="flex justify-center md:gap-10 gap-5 items-center">
+          <div className="md:flex justify-center md:gap-10 gap-5 items-center">
             <div className="text-center lg:text-left flex flex-col ">
               <img
                 src={info?.photoURL?info?.photoURL:defaultPic}
-                className=" border-2 border-violet-600 rounded-lg mb-2 p-3 w-80"
+                className=" h-80  border-2 border-violet-600 rounded-lg mb-2 p-3 w-80"
                 alt=""
               />
             </div>
             <div>
-              <div className="form-control  grid grid-cols-6 mt-2">
+              <div className="form-control  grid sm:grid-cols-6 mt-2">
                 <label className="label col-span-1">
                   <span className="label-text text-white">Name:</span>
                 </label>
@@ -43,7 +43,7 @@ const Profile = () => {
                 </h1>
               </div>
 
-              <div className="form-control  grid grid-cols-6 my-2">
+              <div className="form-control  grid sm:grid-cols-6 my-2">
                 <label className="label col-span-1">
                   <span className="label-text text-white">Email:</span>
                 </label>
@@ -52,7 +52,7 @@ const Profile = () => {
                 </h1>
               </div>
 
-              <div className="form-control grid grid-cols-6 my-2">
+              <div className="form-control grid sm:grid-cols-6 my-2">
                 <label className="label col-span-1">
                   <span className="label-text text-white">Batch:</span>
                 </label>
@@ -60,7 +60,7 @@ const Profile = () => {
                   {info?.batch ? info.batch : "Add Batch in Edit Profile"}
                 </h1>
               </div>
-              <div className="form-control  grid grid-cols-6 my-2">
+              <div className="form-control  grid sm:grid-cols-6 my-2">
                 <label className="label col-span-1">
                   <span className="label-text text-white">Gender:</span>
                 </label>
@@ -68,7 +68,7 @@ const Profile = () => {
                   {info?.gender ? info.gender : "Add Gender in Edit Profile"}
                 </h1>
               </div>
-              <div className="form-control grid grid-cols-6 my-2">
+              <div className="form-control grid sm:grid-cols-6 my-2">
                 <label className="label col-span-1">
                   <span className="label-text text-white">Address:</span>
                 </label>
@@ -76,7 +76,7 @@ const Profile = () => {
                   {info?.address ? info.address : "Add Address in Edit Profile"}
                 </h1>
               </div>
-              <div className="form-control grid  grid-cols-6 my-2">
+              <div className="form-control grid h-auto sm:grid-cols-6 my-2">
                 <label className="label col-span-1">
                   <span className="label-text text-white">Mobile:</span>
                 </label>

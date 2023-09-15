@@ -20,13 +20,13 @@ const AllExam = () => {
   const [isAdmin, isAdminLoading] = useAdmin();
   const [isInstructor, isInstructorLoading] = useInstructor();
   const { user, loading } = useContext(AuthContext);
-
+  const [type,setType]=useState('mcq')
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const subject = searchParams.get("subject");
   console.log(subject);
 
-  const { type, exams, batch } = useSelector((state) => state.allExam);
+  const { exams, batch } = useSelector((state) => state.allExam);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -42,7 +42,7 @@ const AllExam = () => {
     }
   }, [user?.email, loading]);
   console.log(
-    batch,
+    batch,type,
     "---------------------------------\\\\\\------------------------------------------34"
   );
 
@@ -53,8 +53,7 @@ const AllExam = () => {
       if (isAdmin ? isAdmin : isInstructor ? isInstructor : batch) {
         setDataLoading(true)
         fetch(
-          `https://e-exam-pro-server.vercel.app/questionPaper?type=${type || "mcq"
-          }&subject=${subject}&instructor_email=${user?.email}&batch=${batch}`
+          `https://e-exam-pro-server.vercel.app/questionPaper?type=${type}&subject=${subject}&instructor_email=${user?.email}&batch=${batch}`
         )
           .then((res) => res.json())
           .then((data) => {
@@ -69,7 +68,7 @@ const AllExam = () => {
 
 
 
-  }, [subject, type, loading, batch, isInstructor, isAdmin]);
+  }, [ subject, type, loading, batch, isInstructor, isAdmin]);
 
 
 
@@ -86,16 +85,16 @@ const AllExam = () => {
         <Tabs>
           <div className="text-center">
             <TabList>
-              <Tab onClick={() => dispatch(dispatch(examType("mcq")))}>
+              <Tab onClick={()=>setType("mcq")}>
                 MCQ Exam
               </Tab>
               <Tab
-                onClick={() => dispatch(dispatch(examType("FillInTheBlank")))}
+                onClick={()=>setType("FillInTheBlank")}
               >
                 Fill In The Blank Exam
               </Tab>
               <Tab
-                onClick={() => dispatch(dispatch(examType("multimedia_mcq")))}
+                onClick={()=>setType("multimedia_mcq")}
               >
                 MCQ Based on Content Exam
               </Tab>
@@ -141,23 +140,24 @@ const AllExam = () => {
                               Date: {exam.date}
                             </h2>
                           </div>
-                          {isInstructor ? (
-                            <Link to={`/examResults?id=${exam._id}`}>
-                              <button className="w-1/3 btn ms-auto btn-sm btn-primary">
-                                See Exam Result
-                              </button>
-                            </Link>
+          
+                        {isInstructor ? (
+                           
+                           <Link  className="w-1/3 btn ms-auto btn-sm btn-primary" to={`/examResults?id=${exam._id}`}>   <button>
+                               See Exam Result
+                              </button> </Link>
+                           
                           ) : isAdmin ? (
-                            <Link to={`/examResults?id=${exam._id}`}>
-                              <button className="w-1/3 btn ms-auto btn-sm btn-primary">
-                                See Exam Result
-                              </button>
-                            </Link>
+                            
+                            <Link to={`/examResults?id=${exam._id}`}>    <button  className="w-1/3 btn ms-auto btn-sm btn-primary">
+                           See Exam Result  
+                              </button>   </Link>
+                       
                           ) : exam.isCompleted ? (
                             <button className="w-1/3 btn ms-auto btn-sm btn-warning">
                               Already Given
                             </button>
-                          ) : !batch ? <button className="w-1/3 btn ms-auto btn-sm btn-primary">Exam</button> : (
+                          ) : !batch ? <button className="w-1/3 btn ms-auto btn-sm btn-primary">Please Add your Batch</button> : (
                             <Link
                               to={`/exam/${exam._id}`}
                               className="w-1/3 btn ms-auto btn-sm btn-primary"
@@ -166,8 +166,9 @@ const AllExam = () => {
                             </Link>
                           )}
                         </div>
+                        </div>
                       </div>
-                    </div>
+                
                   ))}
                 </div>
               )}
@@ -352,7 +353,7 @@ const AllExam = () => {
 
             </div> : <div>
 
-              <div className="text-red-400 text-4xl flex justify-center items-center h-[70vh]">
+            <div className="text-red-400 text-4xl flex justify-center items-center h-[70vh]">
                 <h1>
                   <Hourglass
                     visible={true}

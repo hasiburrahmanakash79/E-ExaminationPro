@@ -88,89 +88,97 @@ const UpdateProfile = () => {
 
   return (
     <div className="navigation-bar2 md:mx-20">
-      <h1 className="mx-4 mt-4 text-2xl">Edit Profile:</h1>
-      <div className="mx-auto card">
+      <h1 className="text-2xl mt-4  mx-4">Edit Profile:</h1>
+      <div className="card  mx-auto">
         <div className="card-body">
 
           <form
             onSubmit={onSubmitData}
-            className="grid grid-cols-1 gap-5 md:gap-20 md:grid-cols-2"
+            className="grid md:gap-20 md:grid-cols-2 gap-5 grid-cols-1"
           >
-            <div className="flex flex-col text-center lg:text-left ">
-              <div className="mx-auto w-80">
+            <div className="text-center lg:text-left flex flex-col ">
+              <div className="w-80 mx-auto">
                 <img
                   src={info?.photoURL?info?.photoURL:defaultPic}
                   className=" border-2 border-violet-600 rounded-lg mb-2 p-3 "
                   alt=""
                 />
-                <div className="items-center my-5 border-2 rounded-lg form-control border-violet-600">
+                <div className="form-control rounded-lg border-2 border-violet-600 items-center my-5">
                   <input
                     name="image"
                     type="file"
-                    className="w-full col-span-5 bg-transparent  file-input"
+                    className=" col-span-5 file-input w-full bg-transparent"
                   />
                 </div>
               </div>
             </div>
             <div>
-              <div className="grid grid-cols-6 mt-2 form-control">
-                <label className="col-span-1 label">
-                  <span className="text-white label-text">Name:</span>
+              <div className="form-control  grid grid-cols-6 mt-2">
+                <label className="label col-span-1">
+                  <span className="label-text text-white">Name:</span>
                 </label>
-                <h1 className="col-span-5 shadow-lg  input input-sm text-slate-900 bg-slate-200">
+                <h1 className=" col-span-5 input input-sm text-slate-900 bg-slate-200 shadow-lg">
                   {info?.displayName}
                 </h1>
               </div>
 
-              <div className="grid grid-cols-6 my-2 form-control">
-                <label className="col-span-1 label">
-                  <span className="text-white label-text">Email:</span>
+              <div className="form-control  grid grid-cols-6 my-2">
+                <label className="label col-span-1">
+                  <span className="label-text text-white">Email:</span>
                 </label>
-                <h1 className="col-span-5 shadow-lg  input input-sm text-slate-900 bg-slate-200">
+                <h1 className=" col-span-5 input input-sm text-slate-900 bg-slate-200 shadow-lg">
                   {info?.email}
                 </h1>
               </div>
-              <div className="grid grid-cols-6 my-2 form-control">
-                <label className="col-span-1 label">
-                  <span className="text-white label-text">Batch:</span>
+              <div className="form-control grid grid-cols-6 my-2">
+                <label className="label col-span-1">
+                  <span className="label-text text-white">Batch:</span>
                 </label>
                 <input
                   name="batch"
-                  className="col-span-5 shadow-lg input input-sm text-slate-900 bg-slate-200"
+                  placeholder={info?.batch}
+                  className="col-span-5 input input-sm text-slate-900 bg-slate-200 shadow-lg"
                 />
               </div>
-              <div className="grid grid-cols-6 my-2 form-control">
-                <label className="col-span-1 label">
-                  <span className="text-white label-text">Gender:</span>
+              <div className="form-control grid grid-cols-6 my-2">
+                <label className="label col-span-1">
+                  <span className="label-text text-white">Gender:</span>
                 </label>
-                <input
-                  name="gender"
-                  className="col-span-5 shadow-lg  input input-sm text-slate-900 bg-slate-200"
-                />
+                <div className="col-span-5 flex gap-10 items-center space-x-4">
+                  <label className="radio radio-inline flex gap-2 ">
+                    <input type="radio" name="gender" value="male" className="radio radio-primary" />
+                    <span className="text-white">Male</span>
+                  </label>
+                  <label className="radio radio-inline flex gap-2">
+                    <input type="radio" name="gender" value="female" className="radio radio-primary" />
+                    <span className="text-white">Female</span>
+                  </label>
+                </div>
               </div>
-              <div className="grid grid-cols-6 my-2 form-control">
-                <label className="col-span-1 label">
-                  <span className="text-white label-text">Address:</span>
+              <div className="form-control grid grid-cols-6 my-2">
+                <label className="label col-span-1">
+                  <span className="label-text text-white">Address:</span>
                 </label>
                 <input
                   placeholder={info?.address}
                   name="address"
-                  className="col-span-5 shadow-lg input input-sm text-slate-900 bg-slate-200"
+                  className="col-span-5 input input-sm text-slate-900 bg-slate-200 shadow-lg"
                 />
               </div>
-              <div className="grid grid-cols-6 my-2 form-control">
-                <label className="col-span-1 label">
-                  <span className="text-white label-text">Mobile:</span>
+              <div className="form-control grid  grid-cols-6 my-2">
+                <label className="label col-span-1">
+                  <span className="label-text text-white">Mobile:</span>
                 </label>
                 <input
-                  className="col-span-5 shadow-lg input input-sm text-slate-900 bg-slate-200"
+                  placeholder={info?.mobile}
+                  className="col-span-5 input input-sm text-slate-900 bg-slate-200 shadow-lg"
                   name="mobile"
                 />
               </div>
-              <div className="mt-6 form-control">
+              <div className="form-control mt-6">
                 <input
                   type="submit"
-                  className="w-1/2 mx-auto btn btn-primary"
+                  className="btn w-1/2 mx-auto btn-primary"
                   value="Update Profile"
                 />
               </div>
