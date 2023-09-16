@@ -1,0 +1,16 @@
+@keyframes colorTransition {
+    0% {
+        background-color: #10B981; /* Green */
+    }
+    40% {
+        background-color: #F59E0B; /* Orange */
+    }
+    100% {
+        background-color: #EF4444; /* Red */
+    }
+}
+
+.animate-progress {
+    animation: colorTransition 60s linear; /* Adjust the duration as needed */
+    transition: width 1s linear; 
+}
