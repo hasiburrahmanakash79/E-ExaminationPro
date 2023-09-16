@@ -17,10 +17,10 @@ export const handleSaveEdit = () => {
             return res.json();
         })
         .then((data) => {
-            console.log(data);
+            //console.log(data);
             if (data.modifiedCount) {
                 refetch();
-                console.log(data);
+                //console.log(data);
                 Swal.fire({
                     position: 'top-center',
                     icon: 'success',

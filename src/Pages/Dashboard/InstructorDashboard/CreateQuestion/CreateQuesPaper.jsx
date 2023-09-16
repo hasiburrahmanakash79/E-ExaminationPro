@@ -33,7 +33,7 @@ const CreateQuesPaper = () => {
     })
       .then(res => res.json())
       .then(data => {
-        console.log(data)
+        //console.log(data)
 
         if (data.error == true) {
           logOut()
@@ -46,7 +46,7 @@ const CreateQuesPaper = () => {
   /////redux////
 
   ////////
-  console.log(codeRepeat, '----------------------43')
+  //console.log(codeRepeat, '----------------------43')
   const [iscodeRepeat, setIscodeRepeat] = useState(null)
   useEffect(() => {
     fetch(
@@ -71,7 +71,7 @@ const CreateQuesPaper = () => {
     const selectedSubjectData = allSubject.find(
       subject => subject.subject_name === selectedValue
     )
-    console.log(selectedSubjectData?.subject_code)
+    //console.log(selectedSubjectData?.subject_code)
     const code = selectedSubjectData?.subject_code
     dispatch(setSubjectCode(code))
     dispatch(subjectInfo(event))
@@ -104,7 +104,7 @@ const CreateQuesPaper = () => {
       questions
     }
 
-    console.log('Question Paper Data:', paperData)
+    //console.log('Question Paper Data:', paperData)
 
     if (
       paperData.subjectName == null ||
@@ -133,7 +133,7 @@ const CreateQuesPaper = () => {
     })
       .then(res => res.json())
       .then(data => {
-        console.log(data)
+        //console.log(data)
         if (data.insertedId) {
           showToast('btn', 'Question Created Successfully', { type: 'success' })
         } else {
@@ -142,7 +142,7 @@ const CreateQuesPaper = () => {
       })
   }
 
-  console.log(type)
+  //console.log(type)
   return (
     <div className='mx-2 my-5 md:container md:mx-auto'>
       <Helmet>

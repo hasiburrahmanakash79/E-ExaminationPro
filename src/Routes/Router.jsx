@@ -15,7 +15,7 @@ import Dashboard from '../Layouts/Dashboard'
 import ManageUsers from '../Pages/Dashboard/AdminDashboard/ManageUser/ManageUsers'
 import AdminHome from '../Pages/Dashboard/AdminDashboard/AdminHome/AdminHome'
 import Notice from '../Pages/NoticePage/Notice/Notice'
-import AllExam from '../Pages/FreeCoursePage/ExamPage/AllExam'
+
 import Exam2 from '../Pages/FreeCoursePage/ExamPage/Exam2'
 import FreeCoursePage from '../Pages/FreeCoursePage/FreeCoursePage'
 import CreateQuesPaper from '../Pages/Dashboard/InstructorDashboard/CreateQuestion/CreateQuesPaper'
@@ -26,7 +26,6 @@ import UserHome from '../Pages/Dashboard/UserDashboard/UserHome/UserHome'
 import PaymentHistory from '../Pages/Dashboard/UserDashboard/PaymentHistory/PaymentHistory'
 import WrittenExams from '../Pages/Exams/WrittenExams/WrittenExams'
 import CreateLiveExam from '../Pages/LiveExam/CreateLiveExam/CreateLiveExam'
-// import JoinLiveExam from '../Pages/LiveExam/JoinLiveExam/JoinLiveExam'
 import AppliedLiveExam from '../Pages/Dashboard/UserDashboard/AppliedLiveExam/AppliedLiveExam'
 import StudentAnalytics from '../Pages/Dashboard/UserDashboard/StudentAnalytics/StudentAnalytics'
 import ExamRoom from '../Pages/LiveExam/ExamRoom/ExamRoom'
@@ -41,6 +40,7 @@ import DemoResult from '../components/examComponents/QuestionRelated/DemoQuesRes
 import CreateSubject from '../Pages/Dashboard/AdminDashboard/CreateSubject/CreateSubject'
 import AppliedLiveExamAdmin_Instructor from '../Pages/AppliedLiveExamAdmin_Instructor/AppliedLiveExamAdmin_Instructor'
 import BlogDetails from '../Pages/BlogPage/BlogDetails/BlogDetails'
+import Bot from '../Pages/Home/ChatBot/Bot'
 import JoinLiveExam from '../Pages/LiveExam/JoinLiveExam/JoinLiveExam'
 import AllGivenExam from '../Pages/Dashboard/UserDashboard/AllGivenExam/AllGivenExam'
 import UpdateProfilePicture from '../Pages/Authentication/UpdateProfile/UpdateProfilePicture'
@@ -51,6 +51,7 @@ import SSLCart from '../Pages/Home/Pricing/SSLCart'
 import SSLCommerzSuccess from '../Pages/Dashboard/UserDashboard/Payment/SSLPage/SSLCommerzSuccess/SSLCommerzSuccess'
 import SSLCommerzFail from '../Pages/Dashboard/UserDashboard/Payment/SSLPage/SSLCommerzFail/SSLCommerzFail'
 import PaymentOption from '../Pages/Dashboard/UserDashboard/Payment/PaymentOption'
+import AllExam from '../Pages/FreeCoursePage/ExamPage/allExam'
 const router = createBrowserRouter([
   {
     path: '/',
@@ -97,19 +98,32 @@ const router = createBrowserRouter([
         element: <DemoResult />
       },
       {
+        path: '/bot',
+        element: <Bot />
+      },
+      {
         path: '/contact',
         element: <Contact></Contact>
       },
       {
         path: '/paymentOption/:id',
-        element: <PaymentOption/>
+        element: <PaymentOption />
       },
       {
-        path: '/payment/:id',
+        path: '/stripePayment',
         element: (
           <PrivateRouter>
             <Payment />
             {/* <SSLCart /> */}
+          </PrivateRouter>
+        )
+      },
+      {
+        path: '/sslPayment',
+        element: (
+          <PrivateRouter>
+            {/* <Payment /> */}
+            <SSLCart />
           </PrivateRouter>
         )
       },
@@ -172,7 +186,7 @@ const router = createBrowserRouter([
         element: (
           <PrivateRouter>
             <UpdateProfilePicture></UpdateProfilePicture>
-            </PrivateRouter>
+          </PrivateRouter>
         )
       },
       {
@@ -200,7 +214,6 @@ const router = createBrowserRouter([
         path: '/allAppliedLiveExam',
         element: <AppliedLiveExamAdmin_Instructor />
       }
-      
     ]
   },
 
@@ -265,11 +278,6 @@ const router = createBrowserRouter([
         path: '/dashboard/addBlog',
         element: <AddBlog />
       },
-      // User Dashboard Routes
-      // {
-      //   path: '/dashboard/payment/:id',
-      //   element: <Payment />
-      // },
       {
         path: '/dashboard/userHome',
         element: <UserHome />
@@ -293,8 +301,7 @@ const router = createBrowserRouter([
       {
         path: '/dashboard/studentAnalytics',
         element: <StudentAnalytics />
-      }
-      ,
+      },
       {
         path: '/dashboard/allgivenExam',
         element: <AllGivenExam />

@@ -17,13 +17,9 @@ const Achievement = () => {
       <div className=" mt-6 px-10 py-20 gap-20 md:flex justify-evenly md:mt-10 items-end rounded-xl  primary-bg text-center md:text-left">
         <div className="px-5 md:px-0 full md:w-1/2 ">
           <div>
-            <h2 className="text-xl text-orange-500">Why Ours</h2>
             <h2 className="text-3xl font-bold my-5">Our Best Achivements</h2>
             <p className="md:mb-20 ">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint
-              repellendus aliquid dolorem minima. Quas, aperiam nemo maxime
-              error dolorum perspiciatis exercitationem pariatur, quo optio
-              dolor odit ipsam repellat possimus laborum?
+            E-ExamPro has achieved significant milestones, revolutionizing online education. With a user-friendly platform and innovative features, it's empowered countless learners to excel in their exams and educational pursuits.
             </p>
           </div>
           <div className="md:flex gap-20 md:pb-5">

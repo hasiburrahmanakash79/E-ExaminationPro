@@ -21,7 +21,7 @@ const DemoResult = () => {
   const percentage = (correctAnswers / totalQuestions) * 100
 
   return (
-    <section className='w-11/12 pt-6 mx-auto h-fit'>
+    <section className='container pt-6 mx-auto h-fit'>
       {/* Top of the result page where we can show TOP SCORE, Export the result */}
       <h2 className='mb-4 text-lg font-bold text-center text-orange-400 break-words md:mb-6 md:text-2xl'>
         This is a demo result page. Please explore exam page for comprehensive
@@ -75,7 +75,7 @@ const DemoResult = () => {
             />
           </div>
         </div>
-        <div className='mx-auto mb-6 md:ml-auto md:absolute md:right-0 md:bottom-28'>
+        <div className='mx-auto mb-6 md:ml-auto md:absolute md:right-0 md:bottom-28 lg:bottom-12'>
           {/* Open the modal using ID.showModal() method */}
           <button
             className='btn btn_quiz primary-btn'

@@ -6,7 +6,7 @@ import { toggleCall } from '../../../redux/features/ExamRoomController/ExamRoomC
 const JoinLiveExam = () => {
   const dispatch = useDispatch()
   const { inCall } = useSelector(state => state.examRoomControls)
-  console.log(inCall)
+  //console.log(inCall)
   // const [inCall, setInCall] = useState(false)
   const { register, handleSubmit, reset } = useForm()
 
@@ -17,7 +17,7 @@ const JoinLiveExam = () => {
   const onSubmit = data => {
     // dispatch(toggleCall())
     // setInCall(true)
-    console.log(data)
+    //console.log(data)
   }
   const handleClick = () => {
     dispatch(toggleCall())

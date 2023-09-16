@@ -12,11 +12,11 @@ export default function Notice () {
   const { user, loading } = useContext(AuthContext)
 
   const [isInstructor] = useInstructor()
-  const [isAdmin,isAdminLoading] = useAdmin()
-    console.log(isAdmin)
+  const [isAdmin, isAdminLoading] = useAdmin()
+  //console.log(isAdmin)
 
   const [notices, isNoticeLoading] = useLiveExam()
-  console.log(notices)
+  //console.log(notices)
   return (
     <>
       <Helmet>
@@ -49,7 +49,9 @@ export default function Notice () {
                   </span>
                 </p>
                 <p>
-                  Batch: <span className='text-purple-300 uppercase'>{notice?.batch}
+                  Batch:{' '}
+                  <span className='text-purple-300 uppercase'>
+                    {notice?.batch}
                   </span>
                 </p>
                 <p>
@@ -64,21 +66,29 @@ export default function Notice () {
                   Instructor:
                   <span className='text-purple-300'> {notice?.instructor}</span>
                 </p>
-                { isAdmin ? (
-                  <Link to={`/allAppliedLiveExam?examID=${notice._id}`}><button className='primary-btn btn'>
-                  See Applied Students
-                </button></Link> 
-                ) : isInstructor?    <Link to={`/allAppliedLiveExam?examID=${notice._id}&instructor_email=${user?.email}`}><button className='primary-btn btn'>
-                See Applied Students
-              </button></Link> :  (
-                   <Link
-                   to={`/upcomingLiveExam?examID=${notice._id}&email=${user?.email}`}
-                   className='mt-5'
-                 >
-                   <button className='primary-btn btn'>
-                     Apply For Live class
-                   </button>
-                 </Link>
+                {isAdmin ? (
+                  <Link to={`/allAppliedLiveExam?examID=${notice._id}`}>
+                    <button className='primary-btn btn'>
+                      See Applied Students
+                    </button>
+                  </Link>
+                ) : isInstructor ? (
+                  <Link
+                    to={`/allAppliedLiveExam?examID=${notice._id}&instructor_email=${user?.email}`}
+                  >
+                    <button className='primary-btn btn'>
+                      See Applied Students
+                    </button>
+                  </Link>
+                ) : (
+                  <Link
+                    to={`/upcomingLiveExam?examID=${notice._id}&email=${user?.email}`}
+                    className='mt-5'
+                  >
+                    <button className='primary-btn btn'>
+                      Apply For Live class
+                    </button>
+                  </Link>
                 )}
               </div>
             </div>

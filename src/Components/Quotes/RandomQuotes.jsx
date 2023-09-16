@@ -22,7 +22,7 @@ const RandomQuotes = () => {
 
   //making one as current quote not running map because we are just showing one quote at a time
   const currentQuote = quotes[quoteIndex] || {}
-  console.log(currentQuote)
+  //console.log(currentQuote)
 
   if (loading) {
     return null

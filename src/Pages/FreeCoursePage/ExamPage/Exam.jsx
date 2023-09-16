@@ -12,7 +12,7 @@ const Exam = () => {
   const location = useLocation()
   const searchParams = new URLSearchParams(location.search)
   const examType = searchParams.get('type')
-  console.log(examType)
+  //console.log(examType)
 
   const ques = examType == 'mcq' ? jsQuizz.question : mathQues.questions
 
@@ -40,7 +40,7 @@ const Exam = () => {
       const countdownTimer = setInterval(() => {
         if (countdown > 0) {
           setCountdown(prevCountdown => prevCountdown - 1)
-          console.log(countdown)
+          //console.log(countdown)
         } else {
           clearInterval(countdownTimer)
         }
@@ -124,8 +124,8 @@ const Exam = () => {
     } else {
       setView(true)
       setCurrentQuestion(0)
-      console.log('hit')
-      console.log(result)
+      //console.log('hit')
+      //console.log(result)
       fetch('https://e-exam-pro-server.vercel.app/examdata', {
         method: 'POST',
         headers: {
@@ -142,7 +142,7 @@ const Exam = () => {
     }
     setInputValue('')
   }
-  console.log(inputValue)
+  //console.log(inputValue)
   return (
     <div className='container mx-auto '>
       {countdown > 0 ? (
