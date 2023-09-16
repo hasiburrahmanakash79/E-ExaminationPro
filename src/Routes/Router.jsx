@@ -114,7 +114,6 @@ const router = createBrowserRouter([
         element: (
           <PrivateRouter>
             <Payment />
-            {/* <SSLCart /> */}
           </PrivateRouter>
         )
       },
@@ -122,7 +121,6 @@ const router = createBrowserRouter([
         path: '/sslPayment',
         element: (
           <PrivateRouter>
-            {/* <Payment /> */}
             <SSLCart />
           </PrivateRouter>
         )
