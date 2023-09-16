@@ -96,7 +96,7 @@ const AdminHome = () => {
           <RiQuestionAnswerLine fontSize={28} />
         </div>
       </div>
-      <div className="flex flex-col gap-2 md:flex-row">
+      <div className="grid grid-cols-1 gap-2 lg:grid-cols-2">
         <div className="basis-[70%] my-8 w-full gap-6 shadow-xl rounded-md cursor-pointer border border-violet-900 p-3">
           <div>
             <h2 className="pb-3 text-center">Questions Overview</h2>

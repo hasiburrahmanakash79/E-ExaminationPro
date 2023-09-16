@@ -21,7 +21,7 @@ const Testimonial = () => {
         )
         const data = await response.json()
 
-        console.log(data)
+        // //console.log(data);
         setTestimonials(data)
       } catch (error) {
         console.error('Error fetching data:', error)
@@ -31,17 +31,18 @@ const Testimonial = () => {
     fetchData()
   }, [])
   return (
-    <div className='pb-5 mx-5 md:mt-28 mt-16'>
+    <div className='pb-5 mx-5 mt-16 md:mt-28'>
       <h1
-        data-aos="zoom-in-down"
-        data-aos-duration="800"
-        className='mt-5 text-4xl font-bold text-center text-slate-200'>
+        data-aos='zoom-in-down'
+        data-aos-duration='800'
+        className='mt-5 text-4xl font-bold text-center text-slate-200'
+      >
         What Our Users Say
       </h1>
       <div
-        data-aos="zoom-in"
-        data-aos-easing="ease-out-cubic"
-        data-aos-duration="2000"
+        data-aos='zoom-in'
+        data-aos-easing='ease-out-cubic'
+        data-aos-duration='2000'
         className='bg-gradient-to-tr overflow-hidden from-[#0B0728] to-[#491A66] my-16 mt-6 rounded-lg'
         style={{
           background:
@@ -72,7 +73,7 @@ const Testimonial = () => {
                   alt=''
                   className='absolute w-14 h-14 md:top-6 top-5 md:right-8 right-6 opacity-20 '
                 />
-                <p className='mt-10 text-slate-800'>
+                <p className='mt-10 h-40 text-slate-800'>
                   {testimonial.feedback_message}
                 </p>
                 <div className='flex items-center gap-4 pt-3'>

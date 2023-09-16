@@ -19,7 +19,7 @@ const QuizDemo = () => {
   const reduxSelectedOption =
     userAnswers[currentQuestionIndex]?.selectedOptionId || null
 
-  console.log(reduxSelectedOption)
+  //console.log(reduxSelectedOption)
   const handleSelectOption = selectedOptionId => {
     dispatch(selectOption({ questionId: currentQuestion.id, selectedOptionId }))
   }
@@ -30,7 +30,7 @@ const QuizDemo = () => {
     dispatch(submitTest())
   }
   return (
-    <div className='w-2/4 h-full mx-auto md:pt-12'>
+    <div className='w-3/4 md:w-2/4 h-full mx-auto md:pt-12'>
       <Helmet>
         <title>E-ExamPro | Exams </title>
       </Helmet>
@@ -85,10 +85,8 @@ const QuizDemo = () => {
         </RadioGroup>
         <div className='flex justify-end w-11/12 py-4 mx-auto '>
           {currentQuestionIndex === questions.length - 1 ? (
-            <Link to='/result?result="demoQuiz"'>
-              <button className=' btn_quiz primary-btn' onClick={handleSubmit}>
-                Submit
-              </button>
+            <Link to='/demo-result' className=' btn_quiz primary-btn'>
+              <button onClick={handleSubmit}>Submit</button>
             </Link>
           ) : (
             <button

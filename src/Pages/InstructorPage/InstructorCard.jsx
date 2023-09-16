@@ -7,9 +7,9 @@ const InstructorCard = ({ instructor }) => {
     <div
       data-aos="fade-down"
       data-aos-duration="1200"
-      className="card md:card-side shadow-2xl backdrop-blur-sm bg-transparent p-3 mt-2 border border-blue-600">
+      className="card xl:card-side shadow-2xl backdrop-blur-sm bg-transparent p-3 mt-2 border border-blue-600">
       <div className="avatar">
-        <div className="md:w-52 rounded-lg">
+        <div className="md:max-w-52 rounded-lg">
           <img src={image} />
         </div>
       </div>
@@ -21,7 +21,6 @@ const InstructorCard = ({ instructor }) => {
         <p>Call: {phone_no}</p>
         <p>Experience: {experience}</p>
         <div className="card-actions justify-end">
-          <button className="btn btn-ghost btn-sm">btn</button>
         </div>
       </div>
     </div>

@@ -23,7 +23,7 @@ export default function VideoCall (props) {
     tracks: screenTrack,
     error
   } = useScreenVideoTrack(isScreenSharing, ready)
-  console.log(screenReady, screenTrack, error)
+  //console.log(screenReady, screenTrack, error)
 
   useEffect(() => {
     let init = async name => {

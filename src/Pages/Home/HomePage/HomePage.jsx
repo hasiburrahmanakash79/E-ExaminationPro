@@ -6,12 +6,14 @@ import DemoTestSection from '../DemoTest/DemoTestSection'
 import Faq from '../Faq/Faq'
 import Testimonial from '../Testimonial/Testimonial'
 import TopSubjects from '../TopSubjects/TopSubjects'
-import Pricing from '../Pricing/Pricing'
+// import Pricing from '../Pricing/Pricing'
 import { Helmet } from 'react-helmet-async'
 import MainContact from '../../Contact/MainContact'
+import Pricing from '../Pricing/Pricing'
+import ChatButton from '../ChatBot/ChatButton'
 // import ShortcutKey from "../../../Components/ShortcutKey/ShortcutKey";
 const HomePage = () => {
-  console.log(window.localStorage.getItem('showMainContent'))
+  //console.log(window.localStorage.getItem('showMainContent'))
   const [showMainContent, setShowMainContent] = useState(
     window.localStorage.getItem('showMainContent') === null ? false : true
   )
@@ -36,11 +38,11 @@ const HomePage = () => {
     }
     a()
   }
-  console.log(window.scrollY)
-  console.log(showMainContent)
+  //console.log(window.scrollY)
+  //console.log(showMainContent)
 
   return (
-    <div className=''>
+    <div className='relative'>
       <Helmet>
         <title>E-ExamPro </title>
       </Helmet>
@@ -71,16 +73,17 @@ const HomePage = () => {
         } primary-bg2 `}
       >
         <Banner />
-        <div className='container mx-auto'>
+        <div className='container px-5 mx-auto'>
           <DemoTestSection />
           <TopSubjects />
           <Achievement />
           <MainContact />
-          <Testimonial />
           <Pricing />
+          <Faq />
+          <Testimonial />
         </div>
-        <Faq />
       </div>
+      <ChatButton />
     </div>
   )
 }
