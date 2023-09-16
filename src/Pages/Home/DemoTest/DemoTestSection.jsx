@@ -4,7 +4,7 @@ import video from '../../../../src/assets/demo.mp4'
 const DemoTestSection = () => {
   return (
     <section className='my-10 md:my-24'>
-      <div className='px-10 py-20 rounded-lg primary-bg'>
+      <div className='px-10 py-20 rounded-lg primary-bg text-center md:text-left'>
         <h1
           data-aos="zoom-in-down"
           data-aos-duration="600"

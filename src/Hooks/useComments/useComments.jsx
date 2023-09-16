@@ -1,6 +1,5 @@
-import { useQuery } from '@tanstack/react-query';
-import axios from 'axios';
-
+import { useQuery } from '@tanstack/react-query'
+import axios from 'axios'
 
 const useComments = () => {
   const {
@@ -10,16 +9,13 @@ const useComments = () => {
   } = useQuery({
     queryKey: ['comments'],
     queryFn: async () => {
-      const res = await axios.get(`https://e-exam-pro-server.vercel.app/comments`) // to todo add date subject code etc
+      const res = await axios.get(
+        `https://e-exam-pro-server.vercel.app/comments`
+      ) // to todo add date subject code etc
       return res.data
     }
   })
   return [comments, loading, refetch]
 }
 
-export default useComments;
-
-
-
-
-
+export default useComments

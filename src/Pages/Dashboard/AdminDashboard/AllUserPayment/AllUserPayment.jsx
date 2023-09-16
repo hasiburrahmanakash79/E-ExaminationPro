@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 const AllUserPayment = () => {
   const [paymentInfo, setPaymentInfo] = useState([])
@@ -9,10 +9,10 @@ const AllUserPayment = () => {
         setPaymentInfo(data)
       })
   }, [])
-  console.log(paymentInfo)
+  //console.log(paymentInfo)
   return (
     <div>
-      <h1 className='md:text-4xl text-2xl text-center my-5'>
+      <h1 className='my-5 text-2xl text-center md:text-4xl'>
         All User Payment History
       </h1>
       <div className='overflow-x-auto'>
@@ -38,7 +38,7 @@ const AllUserPayment = () => {
                 <td>{history.transactionId}</td>
                 <td>{history.packageName}</td>
                 <td>{history.date}</td>
-                <td className='bg-red-500 p-2 rounded'>{history.Status}</td>
+                <td className='p-2 bg-red-500 rounded'>{history.Status}</td>
               </tr>
             ))}
           </tbody>

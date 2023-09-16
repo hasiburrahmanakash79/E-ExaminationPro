@@ -19,7 +19,7 @@ const CreateLiveExam = () => {
   const [randomNumbers, setRandomNumbers] = useState([])
   const [numDigits, setNumDigits] = useState(8)
   const [notices, isNoticeLoading] = useLiveExam()
-  console.log(notices, 'line-----------------------------------------------19')
+  //console.log(notices, 'line-----------------------------------------------19')
   const { user } = useContext(AuthContext)
   const dispatch = useDispatch()
   const { type, formData, questions, allSubject, examData, e_id } = useSelector(
@@ -37,7 +37,7 @@ const CreateLiveExam = () => {
     })
       .then(res => res.json())
       .then(data => {
-        console.log(data)
+        //console.log(data)
 
         if (data.error == true) {
           logOut()
@@ -50,7 +50,7 @@ const CreateLiveExam = () => {
   /////redux////
 
   ////////
-  console.log(allSubject)
+  //console.log(allSubject)
   // store basic info
   const handleInputChange = event => {
     event.preventDefault()
@@ -90,7 +90,7 @@ const CreateLiveExam = () => {
       secretCode: randomNumbers
     }
 
-    console.log('Question Paper Data:', paperData)
+    //console.log('Question Paper Data:', paperData)
 
     fetch('https://e-exam-pro-server.vercel.app/liveQuestionPaper', {
       method: 'POST',
@@ -103,7 +103,7 @@ const CreateLiveExam = () => {
       .then(data => console.log(data))
   }
 
-  console.log(type)
+  //console.log(type)
 
   useEffect(() => {
     if (e_id !== null) {
@@ -113,7 +113,7 @@ const CreateLiveExam = () => {
     }
   }, [e_id])
 
-  console.log(data, '----------------------------------------------------yay')
+  //console.log(data, '----------------------------------------------------yay')
 
   // Function to generate random numbers
   const generateRandomNumbers = () => {
@@ -139,7 +139,7 @@ const CreateLiveExam = () => {
         </p>
       </div>
 
-      <div className='grid grid-cols-2'>
+      <div className='grid grid-cols-1 md:grid-cols-2'>
         <div className='mb-5'>
           <label className='label'>
             <span className='label-text'>Exam Type</span>
@@ -150,7 +150,7 @@ const CreateLiveExam = () => {
               dispatch(examType(''))
               dispatch(examType(e.target.value))
             }}
-            className='w-full max-w-xs select select-bordered select-sm'
+            className='w-full select select-bordered select-sm'
           >
             <option disabled selected>
               Choose Type
@@ -161,7 +161,7 @@ const CreateLiveExam = () => {
           </select>
         </div>
 
-        <div className='mb-5 ms-auto'>
+        <div className='mb-5 md:ms-auto'>
           <label className='label'>
             <span className='label-text'>Choose Exam</span>
           </label>
@@ -171,14 +171,14 @@ const CreateLiveExam = () => {
               dispatch(setExamData(null))
               dispatch(setExamData(e.target.value))
             }}
-            className='w-full max-w-xs select select-bordered select-sm'
+            className='w-full select select-bordered select-sm'
           >
             <option disabled selected>
               Choose Type
             </option>
 
             {notices?.map(notice => {
-              console.log(notice)
+              //console.log(notice)
               return (
                 <option
                   className='text-white'
@@ -193,9 +193,9 @@ const CreateLiveExam = () => {
         </div>
       </div>
 
-      <div className='flex justify-center mb-5'>
-        <div className='grid grid-cols-1 gap-x-4 md:grid-cols-3 '>
-          <div className='w-full max-w-xs form-control'>
+      <div className='flex justify-center w-full mb-5'>
+        <div className='grid w-full grid-cols-1 md:w-1/2 gap-x-4 md:grid-cols-3 '>
+          <div className='w-full form-control'>
             <label className='label'>
               <span className='label-text'>Subject Name</span>
             </label>
@@ -203,7 +203,7 @@ const CreateLiveExam = () => {
               {data?.subjectName}
             </h1>
           </div>
-          <div className='w-full max-w-xs form-control'>
+          <div className='w-full form-control'>
             <label className='label'>
               <span className='label-text'>Exam Code</span>
             </label>
@@ -212,7 +212,7 @@ const CreateLiveExam = () => {
               {data?.exam_code}
             </h1>
           </div>
-          <div className='w-full max-w-xs form-control'>
+          <div className='w-full form-control'>
             <label className='label'>
               <span className='label-text'>Subject Code</span>
             </label>
@@ -221,7 +221,7 @@ const CreateLiveExam = () => {
               {data?.subject_code}
             </h1>
           </div>
-          <div className='w-full max-w-xs form-control'>
+          <div className='w-full form-control'>
             <label className='label'>
               <span className='label-text'>Batch</span>
             </label>
@@ -230,7 +230,7 @@ const CreateLiveExam = () => {
               {data?.batch}
             </h1>
           </div>
-          <div className='w-full max-w-xs form-control'>
+          <div className='w-full form-control'>
             <label className='label'>
               <span className='label-text'>Date</span>
             </label>
@@ -239,7 +239,7 @@ const CreateLiveExam = () => {
               {data?.date}
             </h1>
           </div>
-          <div className='w-full max-w-xs form-control'>
+          <div className='w-full form-control'>
             <label className='label'>
               <span className='label-text'>Email:</span>
             </label>
@@ -248,7 +248,7 @@ const CreateLiveExam = () => {
               {data?.email == user?.email && data?.email}
             </h1>
           </div>
-          <div className='w-full max-w-xs form-control'>
+          <div className='w-full form-control'>
             <label className='label'>
               <span className='label-text'>Secrete Key:</span>
             </label>
@@ -267,7 +267,7 @@ const CreateLiveExam = () => {
           </div>
 
           {type == 'multimedia_mcq' && (
-            <div className='w-full max-w-xs form-control'>
+            <div className='w-full form-control'>
               <label className='label'>
                 <span className='label-text'>Video URL:</span>
               </label>
@@ -277,7 +277,7 @@ const CreateLiveExam = () => {
                 onChange={handleInputChange}
                 type='text'
                 placeholder='Type here'
-                className='w-full max-w-xs input input-bordered'
+                className='w-full input input-bordered'
               />
             </div>
           )}

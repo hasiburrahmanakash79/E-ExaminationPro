@@ -3,8 +3,9 @@ import Main from '../Layouts/Main'
 import AboutUs from '../Pages/AboutUs/AboutUs'
 import Login from '../Pages/Authentication/Login/Login'
 import Registration from '../Pages/Authentication/Registration/Registration'
+import Profile from '../Pages/Authentication/UpdateProfile/Profile'
+import UpdateProfile from '../Pages/Authentication/UpdateProfile/UpdateProfile'
 import NewBlog from '../Pages/BlogPage/NewBlog/NewBlog'
-import NewBlogDetails from '../Pages/BlogPage/NewBlog/NewBlogDetails'
 import UnderBlog from '../Pages/BlogPage/NewBlog/UnderBlog'
 import Contact from '../Pages/Contact/Contact'
 import PrivateRouter from './PrivateRouter'
@@ -14,7 +15,7 @@ import Dashboard from '../Layouts/Dashboard'
 import ManageUsers from '../Pages/Dashboard/AdminDashboard/ManageUser/ManageUsers'
 import AdminHome from '../Pages/Dashboard/AdminDashboard/AdminHome/AdminHome'
 import Notice from '../Pages/NoticePage/Notice/Notice'
-import AllExam from '../Pages/FreeCoursePage/ExamPage/allExam'
+
 import Exam2 from '../Pages/FreeCoursePage/ExamPage/Exam2'
 import FreeCoursePage from '../Pages/FreeCoursePage/FreeCoursePage'
 import CreateQuesPaper from '../Pages/Dashboard/InstructorDashboard/CreateQuestion/CreateQuesPaper'
@@ -24,10 +25,7 @@ import QuizDemo from '../Pages/Home/DemoTest/QuizDemo'
 import UserHome from '../Pages/Dashboard/UserDashboard/UserHome/UserHome'
 import PaymentHistory from '../Pages/Dashboard/UserDashboard/PaymentHistory/PaymentHistory'
 import WrittenExams from '../Pages/Exams/WrittenExams/WrittenExams'
-import Profile from '../Pages/Authentication/UpdateProfile/Profile'
-import UpdateProfile from '../Pages/Authentication/UpdateProfile/UpdateProfile'
 import CreateLiveExam from '../Pages/LiveExam/CreateLiveExam/CreateLiveExam'
-import JoinLiveExam from '../Pages/LiveExam/JoinLiveExam/JoinLiveExam'
 import AppliedLiveExam from '../Pages/Dashboard/UserDashboard/AppliedLiveExam/AppliedLiveExam'
 import StudentAnalytics from '../Pages/Dashboard/UserDashboard/StudentAnalytics/StudentAnalytics'
 import ExamRoom from '../Pages/LiveExam/ExamRoom/ExamRoom'
@@ -35,14 +33,25 @@ import AddBlog from '../Pages/Dashboard/InstructorDashboard/AddBlog/AddBlog'
 import UpcomingLiveExam from '../Pages/LiveExam/UpcomingLiveExam/UpcomingLiveExam'
 import InstructorChatRoom from '../Pages/LiveExam/InstructorChatRoom/InstructorChatRoom'
 import CreateNotice from '../Pages/Dashboard/AdminDashboard/CreateNotice/CreateNotice'
-import ResultPage from '../Pages/Home/DemoTest/ResultPage'
-import ExamResult from '../Pages/ExamResult/ExamResult'
 import ResultPageForMcqFib from '../components/examComponents/QuestionRelated/QuestionResults/ResultPageForMcqFib'
 import HomePage from '../Pages/Home/HomePage/HomePage'
 import ForumCommunity from '../Pages/Forum_Community/ForumCommunity'
+import DemoResult from '../components/examComponents/QuestionRelated/DemoQuesResult/DemoResult'
+import CreateSubject from '../Pages/Dashboard/AdminDashboard/CreateSubject/CreateSubject'
+import AppliedLiveExamAdmin_Instructor from '../Pages/AppliedLiveExamAdmin_Instructor/AppliedLiveExamAdmin_Instructor'
+import BlogDetails from '../Pages/BlogPage/BlogDetails/BlogDetails'
+import Bot from '../Pages/Home/ChatBot/Bot'
+import JoinLiveExam from '../Pages/LiveExam/JoinLiveExam/JoinLiveExam'
+import AllGivenExam from '../Pages/Dashboard/UserDashboard/AllGivenExam/AllGivenExam'
+import UpdateProfilePicture from '../Pages/Authentication/UpdateProfile/UpdateProfilePicture'
+import AllUserPayment from '../Pages/Dashboard/AdminDashboard/AllUserPayment/AllUserPayment'
+import NoticeBoard from '../Pages/Dashboard/UserDashboard/NoticeBoard/NoticeBoard'
+
 import SSLCart from '../Pages/Home/Pricing/SSLCart'
 import SSLCommerzSuccess from '../Pages/Dashboard/UserDashboard/Payment/SSLPage/SSLCommerzSuccess/SSLCommerzSuccess'
 import SSLCommerzFail from '../Pages/Dashboard/UserDashboard/Payment/SSLPage/SSLCommerzFail/SSLCommerzFail'
+import PaymentOption from '../Pages/Dashboard/UserDashboard/Payment/PaymentOption'
+import AllExam from '../Pages/FreeCoursePage/ExamPage/allExam'
 const router = createBrowserRouter([
   {
     path: '/',
@@ -64,7 +73,7 @@ const router = createBrowserRouter([
 
       {
         path: '/blogDetails/:id',
-        element: <NewBlogDetails></NewBlogDetails>
+        element: <BlogDetails></BlogDetails>
       },
       {
         path: '/blogUnderDetails/:id',
@@ -85,18 +94,33 @@ const router = createBrowserRouter([
         element: <QuizDemo />
       },
       {
+        path: '/demo-result',
+        element: <DemoResult />
+      },
+      {
+        path: '/bot',
+        element: <Bot />
+      },
+      {
         path: '/contact',
         element: <Contact></Contact>
       },
       {
-        path: '/home-quiz-result',
-        element: <ResultPage />
+        path: '/paymentOption/:id',
+        element: <PaymentOption />
       },
       {
-        path: '/payment/:id',
+        path: '/stripePayment',
         element: (
           <PrivateRouter>
-            {/* <Payment /> */}
+            <Payment />
+          </PrivateRouter>
+        )
+      },
+      {
+        path: '/sslPayment',
+        element: (
+          <PrivateRouter>
             <SSLCart />
           </PrivateRouter>
         )
@@ -126,7 +150,9 @@ const router = createBrowserRouter([
         path: '/exam/:id',
         element: <Exam2 />,
         loader: ({ params }) =>
-          fetch(`https://e-exam-pro-server.vercel.app/questionPaper/${params.id}`)
+          fetch(
+            `https://e-exam-pro-server.vercel.app/questionPaper/${params.id}`
+          )
       },
       {
         path: '/written',
@@ -154,6 +180,14 @@ const router = createBrowserRouter([
         )
       },
       {
+        path: '/updateProfilePicture',
+        element: (
+          <PrivateRouter>
+            <UpdateProfilePicture></UpdateProfilePicture>
+          </PrivateRouter>
+        )
+      },
+      {
         path: '/profile',
         element: (
           <PrivateRouter>
@@ -173,10 +207,10 @@ const router = createBrowserRouter([
         path: '/joinLiveExam',
         element: <JoinLiveExam />
       },
-      ,
+
       {
-        path: '/examResults',
-        element: <ExamResult />
+        path: '/allAppliedLiveExam',
+        element: <AppliedLiveExamAdmin_Instructor />
       }
     ]
   },
@@ -213,8 +247,16 @@ const router = createBrowserRouter([
         element: <ManageUsers />
       },
       {
+        path: '/dashboard/allPayments',
+        element: <AllUserPayment />
+      },
+      {
         path: '/dashboard/createNotice',
         element: <CreateNotice />
+      },
+      {
+        path: '/dashboard/createSubject',
+        element: <CreateSubject />
       },
       // Instructor Dashboard Routes
       {
@@ -229,14 +271,10 @@ const router = createBrowserRouter([
         path: '/dashboard/createLiveExam',
         element: <CreateLiveExam />
       },
+
       {
         path: '/dashboard/addBlog',
         element: <AddBlog />
-      },
-      // User Dashboard Routes
-      {
-        path: '/dashboard/payment/:id',
-        element: <Payment />
       },
       {
         path: '/dashboard/userHome',
@@ -245,6 +283,10 @@ const router = createBrowserRouter([
       {
         path: '/dashboard/paymentHistory',
         element: <PaymentHistory />
+      },
+      {
+        path: '/dashboard/noticeBoard',
+        element: <NoticeBoard />
       },
       {
         path: '/dashboard/appliedLiveExam',
@@ -257,6 +299,10 @@ const router = createBrowserRouter([
       {
         path: '/dashboard/studentAnalytics',
         element: <StudentAnalytics />
+      },
+      {
+        path: '/dashboard/allgivenExam',
+        element: <AllGivenExam />
       }
     ]
   },

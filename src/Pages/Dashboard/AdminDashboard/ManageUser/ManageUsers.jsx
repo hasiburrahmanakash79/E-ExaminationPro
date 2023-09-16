@@ -32,7 +32,7 @@ const ManageUsers = () => {
     })
       .then(res => res.json())
       .then(data => {
-        console.log(data)
+        //console.log(data)
         refetch()
         if (data.modifiedCount) {
           Swal.fire({
@@ -45,40 +45,35 @@ const ManageUsers = () => {
       })
   }
 
-  const handleDeleteUser = (user) =>{
+  const handleDeleteUser = user => {
     Swal.fire({
-      title: "Are you sure?",
+      title: 'Are you sure?',
       text: "You won't be able to remove this user!",
-      icon: "warning",
+      icon: 'warning',
       showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, delete it!",
-    })
-    .then((result) => {
-      if(result.isConfirmed){
-        fetch(`http://localhost:4000/users/${user._id}`, {
-          method: "DELETE",
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then(result => {
+      if (result.isConfirmed) {
+        fetch(`https://e-exam-pro-server.vercel.app/users/${user._id}`, {
+          method: 'DELETE'
         })
-          .then((res) => res.json())
-          .then((data) => {
-            refetch();
+          .then(res => res.json())
+          .then(data => {
+            refetch()
             if (data.deletedCount > 0) {
-              Swal.fire(
-                "Deleted!",
-                "User has been deleted.",
-                "success"
-              );
+              Swal.fire('Deleted!', 'User has been deleted.', 'success')
             }
-          });
+          })
       }
     })
   }
 
   return (
     <div>
-      <h2 className='text-2xl'>Manage Users: {users.length}</h2>
-      <div className='overflow-x-auto'>
+      <h2 className='text-2xl my-3'>Manage Users: {users.length}</h2>
+      <div className='overflow-x-auto p-4'>
         <table className='table'>
           {/* git */}
           <thead>
@@ -127,12 +122,12 @@ const ManageUsers = () => {
                   )}
                 </td>
                 <td>
-                    <button
-                      onClick={() => handleDeleteUser(user)}
-                      className='btn bg-red-600 btn-ghost btn-sm'
-                    >
-                      <FaTrashAlt/>
-                    </button>
+                  <button
+                    onClick={() => handleDeleteUser(user)}
+                    className='btn bg-red-600 btn-ghost btn-sm'
+                  >
+                    <FaTrashAlt />
+                  </button>
                 </td>
               </tr>
             ))}

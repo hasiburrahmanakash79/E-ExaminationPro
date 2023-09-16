@@ -3,7 +3,7 @@ import { allPostComment } from "./useForum"
 
 const [postComments, refetch] = allPostComment();
 export const handleSaveEdit = () => {
-    fetch(`http://localhost:4000/forumPost/${postComments?._id}`, {
+    fetch(`https://e-exam-pro-server.vercel.app/forumPost/${postComments?._id}`, {
         method: 'PATCH',
         headers: {
             'Content-Type': 'application/json',
@@ -17,10 +17,10 @@ export const handleSaveEdit = () => {
             return res.json();
         })
         .then((data) => {
-            console.log(data);
+            //console.log(data);
             if (data.modifiedCount) {
                 refetch();
-                console.log(data);
+                //console.log(data);
                 Swal.fire({
                     position: 'top-center',
                     icon: 'success',

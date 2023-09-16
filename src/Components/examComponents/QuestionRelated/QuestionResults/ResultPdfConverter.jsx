@@ -23,59 +23,34 @@ const styles = StyleSheet.create({
   }
 })
 
-const ResultPdfConverter = ({ questions }) => (
-  // console.log(questions);
-<Document>
-  <Page size='A4' style={styles.page}>
-    {/* <View style={styles.header}>
-        <Text>Total Question: {questions?.length}</Text>
-      </View>
-      <View>
-        <Text>Review Answers:</Text>
-        {questions.map((question, index) => {
-          const userAnswer = userAnswers.find(
-            answer => answer?.questionId === question?.id
-          )
+const ResultPdfConverter = ({ resultInfo }) => (
 
-          return (
-            <View style={styles.questionContainer} key={question?.id}>
-              <Text style={styles.questionText}>
-                {index + 1}. {question?.text}
-              </Text>
-              {userAnswer && (
-                <Text style={styles.answerText}>
-                  You Selected: {userAnswer?.selectedOptionId}
-                </Text>
-              )}
-              <Text style={styles.answerText}>
-                Correct Answer: {question?.correctAnswer}
-              </Text>
-            </View>
-          )
-        })}
-      </View> */}
-    <View>
-      <View style={styles.header}>
-        <Text>Total Question: {questions?.length || 5}</Text>
-      </View>
+  <Document>
+    <Page size='A4' style={styles.page}>
       <View>
-        return(
-        <View style={styles.questionContainer}>
-          <Text style={styles.questionText}>
-            <span className="pl-2">{questions?.question}</span>
-          </Text>
-          <Text style={styles.answerText}>
-            You Selected: {questions?.userAns}
-          </Text>
-          <Text style={styles.answerText}>
-            Correct Answer: {questions?.correctAnswer}
-          </Text>
-          )
+        <View style={styles.header}>
+          <Text>Total Question: {resultInfo?.length || 5}</Text>
         </View>
+        {resultInfo.map((result, index) => (
+          <View key={index}>
+            return(
+            <View style={styles.questionContainer}>
+              <Text style={styles.questionText}>
+                <span className='pl-2'>{result?.question}</span>
+              </Text>
+              <Text style={styles.answerText}>
+                You Selected: {result?.userAns}
+              </Text>
+              <Text style={styles.answerText}>
+                Correct Answer: {result?.correctAnswer}
+              </Text>
+              )
+            </View>
+          </View>
+        ))}
       </View>
-    </View>
-  </Page>
-</Document>
+    </Page>
+  </Document>
 )
 
 export default ResultPdfConverter

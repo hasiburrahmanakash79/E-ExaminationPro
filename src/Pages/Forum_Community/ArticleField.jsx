@@ -18,8 +18,3 @@ const ArticleField = () => {
 };
 
 export default ArticleField;
-
-
-/* 
-
-*/

@@ -6,14 +6,17 @@ import { useContext } from 'react'
 import { AuthContext } from '../../../Provider/AuthProvider'
 import useInstructor from '../../../Hooks/useInstructor/useInstructor'
 import useLiveExam from '../../../Hooks/useLiveExam/useLiveExam'
+import useAdmin from '../../../Hooks/useAdmin/useAdmin'
 
 export default function Notice () {
   const { user, loading } = useContext(AuthContext)
 
   const [isInstructor] = useInstructor()
+  const [isAdmin, isAdminLoading] = useAdmin()
+  //console.log(isAdmin)
 
   const [notices, isNoticeLoading] = useLiveExam()
-  console.log(notices)
+  //console.log(notices)
   return (
     <>
       <Helmet>
@@ -22,7 +25,7 @@ export default function Notice () {
 
       <div className='container p-5 mx-auto mt-5 bg-white/5 rounded-2xl'>
         <h1 className='text-3xl text-center'>Upcoming Exam Schedule</h1>
-        <div className='grid grid-cols-4 gap-5 my-7 '>
+        <div className='grid lg:grid-cols-4 md:grid-cols-3 gap-5 my-7 '>
           {notices?.map(notice => (
             <div
               key={notice._id}
@@ -46,6 +49,12 @@ export default function Notice () {
                   </span>
                 </p>
                 <p>
+                  Batch:{' '}
+                  <span className='text-purple-300 uppercase'>
+                    {notice?.batch}
+                  </span>
+                </p>
+                <p>
                   Group:
                   <span className='text-purple-300'> {notice?.group}</span>
                 </p>
@@ -57,7 +66,21 @@ export default function Notice () {
                   Instructor:
                   <span className='text-purple-300'> {notice?.instructor}</span>
                 </p>
-                {!isInstructor ? (
+                {isAdmin ? (
+                  <Link to={`/allAppliedLiveExam?examID=${notice._id}`}>
+                    <button className='primary-btn btn'>
+                      See Applied Students
+                    </button>
+                  </Link>
+                ) : isInstructor ? (
+                  <Link
+                    to={`/allAppliedLiveExam?examID=${notice._id}&instructor_email=${user?.email}`}
+                  >
+                    <button className='primary-btn btn'>
+                      See Applied Students
+                    </button>
+                  </Link>
+                ) : (
                   <Link
                     to={`/upcomingLiveExam?examID=${notice._id}&email=${user?.email}`}
                     className='mt-5'
@@ -66,10 +89,6 @@ export default function Notice () {
                       Apply For Live class
                     </button>
                   </Link>
-                ) : (
-                  <button className='primary-btn btn'>
-                    See Applied Students
-                  </button>
                 )}
               </div>
             </div>
