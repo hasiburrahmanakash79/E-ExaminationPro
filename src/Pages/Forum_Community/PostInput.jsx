@@ -5,9 +5,9 @@ import axios from "axios";
 import Swal from "sweetalert2";
 
 const PostInput = () => {
-    const { user } = useAuth()
+    const { user } = useAuth();
     const createdAtDate = new Date();
-    const { control, handleSubmit } = useForm({
+    const { control, handleSubmit, reset } = useForm({
         defaultValues: {
             postField: "",
         },
@@ -20,13 +20,15 @@ const PostInput = () => {
             {
                 article,
                 userName: user?.displayName,
+                userEmail: user?.email,
                 userImage: user?.photoURL,
                 timeDate: createdAtDate,
                 replies: [],
+                likeCount: [],
             })
             .then(res => {
-                console.log(res)
                 if (res.data.insertedId) {
+                    reset();
                     Swal.fire({
                         position: 'top-center',
                         icon: 'success',
