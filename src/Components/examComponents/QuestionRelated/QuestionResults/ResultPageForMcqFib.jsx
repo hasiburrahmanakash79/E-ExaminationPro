@@ -4,7 +4,7 @@ import { PDFDownloadLink, PDFViewer } from '@react-pdf/renderer'
 import ResultPdfConverter from './ResultPdfConverter'
 import { useLocation } from 'react-router-dom'
 import useResult from '../../../../Hooks/useResult/useResult'
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import ReviewAnswerAfterResult2 from './ReviewAnswerAfterResult2'
 import FeedBack from './Feedback'
 import { getColor } from '../../../../utils/getColor'
@@ -13,10 +13,17 @@ const ResultPageForMcqFib = () => {
   const location = useLocation()
   const searchParams = new URLSearchParams(location.search)
   const examId = searchParams.get('id')
+ 
   const [result, refetch, loadings] = useResult(examId)
+
+ 
+
   if (loadings) {
     return <p>loadings..</p>
   }
+
+    refetch()
+  
 
   const percentage = (result.mark / result.totalMark) * 100
   return (

@@ -153,20 +153,27 @@ const Exam2 = () => {
               {((examType == 'multimedia_mcq' && start == true) ||
                 examType == 'mcq' ||
                 examType == 'FillInTheBlank') && (
-                <TimeRemain
-                  timerProgress={timerProgress}
-                  setTimerProgress={setTimerProgress}
-                  totalDuration={totalDuration}
-                  timeRemaining={timeRemaining}
-                  setTimeRemaining={setTimeRemaining}
-                  examType={ques.type}
-                  start={start}
-                  handleFinishExam={handleFinishExam}
-                  setTimer={setTimer}
-                  takingTime={takingTime}
-                  setTakingTime={setTakingTime}
-                ></TimeRemain>
-              )}
+                  <div>
+
+                    <div>
+                      <TimeRemain
+                        timerProgress={timerProgress}
+                        setTimerProgress={setTimerProgress}
+                        totalDuration={totalDuration}
+                        timeRemaining={timeRemaining}
+                        setTimeRemaining={setTimeRemaining}
+                        examType={ques.type}
+                        start={start}
+                        handleFinishExam={handleFinishExam}
+                        setTimer={setTimer}
+                        takingTime={takingTime}
+                        setTakingTime={setTakingTime}
+                      ></TimeRemain>
+                    </div>
+
+                  </div>
+
+                )}
               <div className=' min-h-[70vh] flex justify-center md:mt-0 mt-10 md:items-center'>
                 <div className='w-full mx-2 md:mx-20'>
                   <div className='flex justify-center my-10 mb-5'>
@@ -184,21 +191,26 @@ const Exam2 = () => {
                       </>
                     )}
                   </div>
-                  <div className='max-w-[50px]  min-h-[50px] text-white bg-blue-900 rounded-full flex justify-center items-center'>
-                    <div>
-                      <span className='text-3xl font-semibold'>
-                        {currentQuestion + 1}
-                      </span>
-                      {/* show current question number */}
-                      <span className='text-xl font-semibold'>
-                        /{questions.length}
-                      </span>{' '}
-                      {/* show total question in number */}
+                  <div className='grid md:grid-cols-3 grid-cols-1' >
+                    <div className='max-w-[50px]  min-h-[50px] text-white bg-blue-900 rounded-full flex justify-center items-center'>
+                      <div>
+                        <span className='text-3xl font-semibold'>
+                          {currentQuestion + 1}
+                        </span>
+                        {/* show current question number */}
+                        <span className='text-xl font-semibold'>
+                          /{questions.length}
+                        </span>{' '}
+                        {/* show total question in number */}
+                      </div>
                     </div>
+                    <h1 className='text-2xl text-center mt-5'>Your Gems:<span className='text-green-500'> 10</span></h1>
+                    <h1 className='btn btn-primary w-1/3 ms-auto'>Hints</h1>
                   </div>
+             
                   {(examType == 'multimedia_mcq' && start == true) ||
-                  examType == 'mcq' ||
-                  examType == 'FillInTheBlank' ? (
+                    examType == 'mcq' ||
+                    examType == 'FillInTheBlank' ? (
                     <h1 className='text-3xl font-semibold my-7'>
                       {currentQuestion + 1}- {question}
                     </h1>

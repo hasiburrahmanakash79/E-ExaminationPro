@@ -4,7 +4,7 @@ import axios from 'axios'
 import { useContext } from 'react'
 import { AuthContext } from '../../Provider/AuthProvider'
 
-const useResult = examId => {
+const useResult = (examId,email) => {
   // const { user, loading } = useContext(AuthContext)
   //   const [axiosSecure] = useAxiosSecure()
   // const id = '64e8b9586f2385caa12fd4c7'
