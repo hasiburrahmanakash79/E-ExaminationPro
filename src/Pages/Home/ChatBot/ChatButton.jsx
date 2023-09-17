@@ -22,7 +22,7 @@ export default function ChatButton () {
             onClick={openModal}
             className='transition-all hover:scale-110'
           >
-            <img src={chatIcon} className='w-12 hover:scale-110' alt='' />
+            <img src={chatIcon} className='w-20 hover:scale-110' alt='' />
           </button>
         )}
       </div>

@@ -59,11 +59,12 @@ const CreateSubject = () => {
   }
 
   return (
-    <div>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <div className='form-control'>
-          <label className='label'>
-            <span className='font-bold label-text'>Subject Name</span>
+    <div className="p-5">
+      <h1 className="text-3xl text-center my-5">Add Subject</h1>
+      <form onSubmit={handleSubmit(onSubmit)} className="border md:w-1/2 mx-auto md:p-10 p-5 rounded-2xl">
+        <div className="form-control">
+          <label className="label">
+            <span className="font-bold label-text">Subject Name</span>
           </label>
           <input
             {...register('subject', { required: true })}
@@ -126,9 +127,9 @@ const CreateSubject = () => {
           <LocalToastTarget name='btn'>
             <input
               // disabled={!isButtonEnable}
-              className='btn mt-4 btn-primary '
-              type='submit'
-              value={'Add Subject'}
+              className="btn mt-8 btn-warning "
+              type="submit"
+              value={"Add Subject"}
             />
           </LocalToastTarget>
         </div>

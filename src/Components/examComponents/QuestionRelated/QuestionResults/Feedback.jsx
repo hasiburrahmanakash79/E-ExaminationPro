@@ -2,7 +2,7 @@ import axios from 'axios'
 
 const FeedBack = () => {
   const feedBackHandler = e => {
-    preventDefault()
+    e.preventDefault()
     const form = e.target
     const message = form.message.value
     const quality = form.quality.value
