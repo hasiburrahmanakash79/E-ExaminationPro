@@ -24,14 +24,13 @@ const styles = StyleSheet.create({
 })
 
 const ResultPdfConverter = ({ resultInfo }) => (
-
   <Document>
     <Page size='A4' style={styles.page}>
       <View>
         <View style={styles.header}>
           <Text>Total Question: {resultInfo?.length || 5}</Text>
         </View>
-        {resultInfo.map((result, index) => (
+        {resultInfo?.map((result, index) => (
           <View key={index}>
             return(
             <View style={styles.questionContainer}>
