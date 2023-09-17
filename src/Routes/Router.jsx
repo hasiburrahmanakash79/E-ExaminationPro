@@ -52,6 +52,7 @@ import SSLCommerzSuccess from '../Pages/Dashboard/UserDashboard/Payment/SSLPage/
 import SSLCommerzFail from '../Pages/Dashboard/UserDashboard/Payment/SSLPage/SSLCommerzFail/SSLCommerzFail'
 import PaymentOption from '../Pages/Dashboard/UserDashboard/Payment/PaymentOption'
 import AllExam from '../Pages/FreeCoursePage/ExamPage/allExam'
+import ChatBotUI from '../Components/ChatBotUI/ChatBotUI'
 const router = createBrowserRouter([
   {
     path: '/',
@@ -207,10 +208,13 @@ const router = createBrowserRouter([
         path: '/joinLiveExam',
         element: <JoinLiveExam />
       },
-
       {
         path: '/allAppliedLiveExam',
         element: <AppliedLiveExamAdmin_Instructor />
+      },
+      {
+        path: '/booot',
+        element: <ChatBotUI/>
       }
     ]
   },
