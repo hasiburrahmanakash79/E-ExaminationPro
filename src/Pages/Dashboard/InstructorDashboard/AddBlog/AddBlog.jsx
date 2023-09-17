@@ -22,7 +22,7 @@ const AddBlog = () => {
     }
     //console.log(order)
 
-    fetch('https://e-exam-pro-server.vercel.app/blogs', {
+    fetch('http://localhost:4000/blogs', {
       method: 'POST',
       headers: {
         'content-type': 'application/json'

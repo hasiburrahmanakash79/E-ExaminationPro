@@ -52,6 +52,7 @@ import SSLCommerzSuccess from '../Pages/Dashboard/UserDashboard/Payment/SSLPage/
 import SSLCommerzFail from '../Pages/Dashboard/UserDashboard/Payment/SSLPage/SSLCommerzFail/SSLCommerzFail'
 import PaymentOption from '../Pages/Dashboard/UserDashboard/Payment/PaymentOption'
 import AllExam from '../Pages/FreeCoursePage/ExamPage/allExam'
+import ExamResult from '../Pages/ExamResult/ExamResult'
 const router = createBrowserRouter([
   {
     path: '/',
@@ -151,7 +152,7 @@ const router = createBrowserRouter([
         element: <Exam2 />,
         loader: ({ params }) =>
           fetch(
-            `https://e-exam-pro-server.vercel.app/questionPaper/${params.id}`
+            `http://localhost:4000/questionPaper/${params.id}`
           )
       },
       {
@@ -164,8 +165,12 @@ const router = createBrowserRouter([
         element: <CreateQuesPaper />
       },
       {
-        path: '/result',
+        path: '/results',
         element: <ResultPageForMcqFib />
+      },
+      {
+        path: '/examResults',
+        element: <ExamResult />
       },
       {
         path: '/forum',

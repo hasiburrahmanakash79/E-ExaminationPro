@@ -13,9 +13,9 @@ const ResultPageForMcqFib = () => {
   const location = useLocation()
   const searchParams = new URLSearchParams(location.search)
   const examId = searchParams.get('id')
-  const [result, refetch, loading] = useResult(examId)
-  if (loading) {
-    return <p>Loading..</p>
+  const [result, refetch, loadings] = useResult(examId)
+  if (loadings) {
+    return <p>loadings..</p>
   }
 
   const percentage = (result.mark / result.totalMark) * 100
@@ -34,9 +34,9 @@ const ResultPageForMcqFib = () => {
               document={<ResultPdfConverter resultInfo={result?.resultData} />}
               fileName='result.pdf'
             >
-              {({ blob, url, loading, error }) =>
-                loading ? (
-                  'Loading document...'
+              {({ blob, url, loadings, error }) =>
+                loadings ? (
+                  'loadings document...'
                 ) : (
                   <button className='btn primary-btn w-44'>
                     Export Result As PDF

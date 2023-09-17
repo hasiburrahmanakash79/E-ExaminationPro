@@ -40,7 +40,7 @@ const AllGivenExam = () => {
     const email = user?.email
     const data = { student_name, image, feedback_message, rating, email }
 
-    fetch('https://e-exam-pro-server.vercel.app/testimonials', {
+    fetch('http://localhost:4000/testimonials', {
       method: 'POST',
       headers: {
         'content-type': 'application/json'
