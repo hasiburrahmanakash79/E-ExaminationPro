@@ -24,7 +24,6 @@ const AllExam = () => {
   const location = useLocation()
   const searchParams = new URLSearchParams(location.search)
   const subject = searchParams.get('subject')
-  //console.log(subject);
 
   const { exams, batch } = useSelector(state => state.allExam)
   const dispatch = useDispatch()
@@ -36,18 +35,12 @@ const AllExam = () => {
       )
         .then(res => res.json())
         .then(data => {
-          //console.log(data, "----------line 25");
           dispatch(checkBatch(data))
         })
     }
   }, [user?.email, loading])
-  console.log(
-    batch,
-    type,
-    '---------------------------------\\\\\\------------------------------------------34'
-  )
 
-  const [dataloading, setDataLoading] = useState(true)
+  const [dataLoading, setDataLoading] = useState(true)
 
   useEffect(() => {
     if (!loading) {
@@ -58,18 +51,13 @@ const AllExam = () => {
         )
           .then(res => res.json())
           .then(data => {
-            //console.log(data, "----------line 25");
             dispatch(allExam(data))
-
             setDataLoading(false)
           })
       }
     }
   }, [subject, type, loading, batch, isInstructor, isAdmin])
 
-  //console.log(exams);
-  //console.log(type);
-  //console.log(isAdmin);
   return (
     <>
       <div className='min-h-[60vh] container mx-auto'>
@@ -87,7 +75,7 @@ const AllExam = () => {
           </div>
 
           <TabPanel>
-            {!dataloading ? (
+            {!dataLoading ? (
               <div>
                 {exams.length == 0 ? (
                   <div className='text-red-400 text-4xl flex justify-center items-center h-[70vh]'>
@@ -183,7 +171,7 @@ const AllExam = () => {
             )}
           </TabPanel>
           <TabPanel>
-            {!dataloading ? (
+            {!dataLoading ? (
               <div>
                 {exams.length == 0 ? (
                   <div className='text-red-400 text-4xl flex justify-center items-center h-[70vh]'>
@@ -275,7 +263,7 @@ const AllExam = () => {
             )}
           </TabPanel>
           <TabPanel>
-            {!dataloading ? (
+            {!dataLoading ? (
               <div>
                 {exams.length == 0 ? (
                   <div className='text-red-400 text-4xl flex justify-center items-center h-[70vh]'>

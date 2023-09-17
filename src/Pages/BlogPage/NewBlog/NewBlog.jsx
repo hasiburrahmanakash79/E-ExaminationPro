@@ -1,5 +1,8 @@
-import { useEffect, useState } from 'react'
-import SingleBlogCard from '../../BlogPage/NewBlog/SingleBlogCard'
+import { Suspense, lazy, useEffect, useState } from 'react'
+import Loading from '../../../Components/Loading/Loading'
+const SingleBlogCard = lazy(() =>
+  import('../../BlogPage/NewBlog/SingleBlogCard')
+)
 
 const NewBlog = () => {
   const [newBlogs, setNewBlogs] = useState([])
@@ -33,7 +36,9 @@ const NewBlog = () => {
       <div className='py-20'>
         <div className='md:grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 md:gap-5 md:px-12'>
           {currentBlogs.map(newBlog => (
-            <SingleBlogCard key={newBlog._id} newBlog={newBlog} />
+            <Suspense fallback={<Loading />}>
+              <SingleBlogCard key={newBlog._id} newBlog={newBlog} />
+            </Suspense>
           ))}
         </div>
         <div className='flex justify-center mt-4'>

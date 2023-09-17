@@ -1,6 +1,7 @@
-import { useEffect, useState } from 'react'
-import InstructorCard from './InstructorCard'
+import { useEffect, useState, lazy, Suspense } from 'react'
+const InstructorCard = lazy(() => import('./InstructorCard'))
 import { Helmet } from 'react-helmet-async'
+import Loading from '../../Components/Loading/Loading'
 
 const Instructors = () => {
   const [instructors, setInstructors] = useState([])
@@ -25,12 +26,14 @@ const Instructors = () => {
       <h1 className='mb-10 text-4xl font-bold text-center text-white'>
         Our Instructors
       </h1>
-      <div className='py-5 px-6 grid md:grid-cols-2 lg:grid-cols-3 gap-5 '>
+      <div className='grid gap-5 px-6 py-5 md:grid-cols-2 lg:grid-cols-3 '>
         {instructors.slice(0, displayCount).map(instructor => (
-          <InstructorCard
-            key={instructor.id}
-            instructor={instructor}
-          ></InstructorCard>
+          <Suspense fallback={<Loading />}>
+            <InstructorCard
+              key={instructor.id}
+              instructor={instructor}
+            ></InstructorCard>
+          </Suspense>
         ))}
       </div>
       <div className='my-5 text-center animate-pulse hover:animate-none'>
