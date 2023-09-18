@@ -6,6 +6,9 @@ import Loading from '../../../Components/Loading/Loading'
 import Swal from 'sweetalert2'
 import useAuth from '../../../Hooks/useAuth/useAuth'
 import { AuthContext } from '../../../Provider/AuthProvider'
+import { Helmet } from 'react-helmet-async'
+import Lottie from 'lottie-react'
+import regisLottie from "../../../assets/animationFile/educational.json"
 const Registration = () => {
   const [passShow, setPassShow] = useState(false)
   const { signUpUser, updateUserInfo, loading } = useContext(AuthContext)
@@ -32,12 +35,8 @@ const Registration = () => {
     signUpUser(data.email, data.password).then(result => {
       const loggedUser = result.user
       navigate(from, { replace: true })
-      //console.log(loggedUser);
-
       const formData = new FormData()
       formData.append('image', data.image[0])
-      //console.log(formData);
-
       fetch(img_hosting_url, {
         method: 'POST',
         body: formData
@@ -112,10 +111,18 @@ const Registration = () => {
   }
   return (
     <div className='Auth_bg'>
+      <Helmet>
+        <title>Registration | E-ExamPro</title>
+      </Helmet>
       <div className='min-h-screen hero'>
         <div className='items-center justify-between gap-10 px-3 md:flex'>
           <div className='md:w-1/2'>
-            <img src='https://i.ibb.co/jDMz1bj/login-page-banner.png' alt='' />
+            {/* <img src='https://i.ibb.co/jDMz1bj/login-page-banner.png' alt='' /> */}
+            <Lottie
+              animationData={regisLottie}
+              loop={true}
+            // className=" md:w-10/12 mx-auto" 
+            />
           </div>
           <div className='flex-shrink-0 w-full bg-transparent border border-black rounded-lg shadow-xl md:w-1/2 card backdrop-blur-sm'>
             <div className='text-center '>

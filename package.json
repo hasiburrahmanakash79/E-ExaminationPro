@@ -37,6 +37,7 @@
     "framer-motion": "^10.16.4",
     "jsdom": "^22.1.0",
     "localforage": "^1.10.0",
+    "lottie-react": "^2.4.0",
     "lucide-react": "^0.268.0",
     "match-sorter": "^6.3.1",
     "openai": "^4.6.0",

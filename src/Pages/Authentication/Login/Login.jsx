@@ -6,9 +6,10 @@ import SocialLogin from '../../../Hooks/SocialLogin/SocialLogin'
 import { AuthContext } from '../../../Provider/AuthProvider'
 import Swal from 'sweetalert2'
 import Loading from '../../../Components/Loading/Loading'
-
+import { Helmet } from 'react-helmet-async'
+import Lottie from 'lottie-react'
+import educationLottie from "../../../assets/animationFile/educational.json"
 const Login = () => {
-  //code verification
   const [passShow, setPassShow] = useState(false)
   const [randomNumbers, setRandomNumbers] = useState([])
   const [isButtonEnable, setIsButtonEnable] = useState(false)
@@ -27,11 +28,8 @@ const Login = () => {
   }, [])
 
   const handleInputChange = event => {
-    //console.log(event.target.value);
     setIsButtonEnable(event.target.value === randomNumbers.join(''))
   }
-  //verification end
-
   const {
     register,
     handleSubmit,
@@ -46,8 +44,6 @@ const Login = () => {
     logInUser(data.email, data.password)
       .then(result => {
         const loggedUser = result.user
-        //console.log(loggedUser);
-
         navigate(from, { replace: true })
         Swal.fire({
           showConfirmButton: false,
@@ -63,10 +59,16 @@ const Login = () => {
 
   return (
     <div className='Auth_bg'>
+      <Helmet>
+        <title>Login | E-ExamPro</title>
+      </Helmet>
       <div className='min-h-screen hero'>
         <div className='items-center justify-between gap-12 px-3 md:flex'>
           <div className='md:w-1/2'>
-            <img src='https://i.ibb.co/jDMz1bj/login-page-banner.png' alt='' />
+            {/* <img src='https://i.ibb.co/jDMz1bj/login-page-banner.png' alt='' /> */}
+            <Lottie
+              animationData={educationLottie}
+              loop={true} className=" md:w-10/12 mx-auto" />
           </div>
           <div className='flex-shrink-0 w-full bg-transparent border border-black rounded-lg shadow-xl md:w-1/2 card backdrop-blur-sm'>
             <div className='text-center '>
