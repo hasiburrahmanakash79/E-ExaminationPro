@@ -72,6 +72,7 @@ export const examPageSlice = createSlice({
 
             const resultData = state.result
             const results = { ...payload, resultData, mark: data }
+
             fetch('http://localhost:4000/examdata', {
                 method: 'POST',
                 headers: {
