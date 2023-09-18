@@ -19,14 +19,20 @@ const Footer = () => {
           <div className='grid w-1/2 grid-cols-3 gap-8 mx-auto mt-3 md:w-1/3'>
             <div>
               <p className='bg-white w-[35px] h-[35px] flex justify-center items-center text-black hover:bg-[#0E8CF1] hover:text-white transition duration-300 rounded-full'>
-                <FaFacebookF />
+                <Link to="https://www.facebook.com/">
+                  <FaFacebookF />
+                </Link>
               </p>
             </div>
             <p className='bg-white w-[35px] h-[35px] flex justify-center items-center text-black hover:bg-[#0E8CF1] hover:text-white transition duration-300 rounded-full'>
-              <FaTwitter />
+              <Link to="https://www.twitter.com/">
+                <FaTwitter />
+              </Link>
             </p>
             <p className='bg-white w-[35px] h-[35px] flex justify-center items-center text-black hover:bg-[#0E8CF1] hover:text-white transition duration-300 rounded-full'>
-              <FaLinkedinIn />
+              <Link to="https://linkedin.com">
+                <FaLinkedinIn />
+              </Link>
             </p>
           </div>
         </div>
@@ -34,28 +40,49 @@ const Footer = () => {
           <h2 className='w-1/2 mx-auto mt-6 text-xl font-bold border-b-2 rounded-md border-slate-600 md:mt-0'>
             Exam Platform
           </h2>
-          <p className='hover:underline'>MCQ Exam</p>
-          <p className='hover:underline'>Student</p>
-          <p className='hover:underline'>Teachers</p>
+          <p className='hover:underline'>
+            <Link to='/demo-test'>MCQ Exam</Link>
+          </p>
+          <p className='hover:underline'>
+            <Link to="/dashboard/userHome">User</Link>
+          </p>
+          <p className='hover:underline'>
+            <Link to="/instructors">Instructor</Link></p>
         </div>
         <div className='space-y-3 text-center text-white'>
           <h2 className='w-3/5 mx-auto mt-6 text-xl font-bold border-b-2 rounded-md border-slate-600 md:mt-0'>
             Who we service
           </h2>
-          <p className='hover:underline'>Schools</p>
-          <p className='hover:underline'>Higher education</p>
-          <p className='hover:underline'>University</p>
-          <p className='hover:underline'>Companies &Organizations</p>
+          <p className='hover:underline'>
+            <Link to="/allSubjects">Schools</Link>
+          </p>
+          <p className='hover:underline'>
+            <Link to="/allSubjects">Higher education</Link>
+          </p>
+          <p className='hover:underline'>
+            <Link to="/allSubjects">University</Link>
+          </p>
+          <p className='hover:underline'>
+            <Link to="/about">Companies & Organizations</Link>
+          </p>
         </div>
         <div className='space-y-3 text-center text-white'>
           <h2 className='w-1/2 mx-auto mt-6 text-xl font-bold border-b-2 rounded-md border-slate-600 md:mt-0'>
             Resources
           </h2>
 
-          <p className='hover:underline'>Support</p>
-          <p className='hover:underline'>Exams Videos</p>
-          <p className='hover:underline'>Groups Chat</p>
-          <p className='hover:underline'>Technology</p>
+          <p className='hover:underline'>
+            <Link to="/contact">Support</Link>
+          </p>
+          <p className='hover:underline'>
+            <Link to="/joinLiveExam">Live Exams</Link>
+          </p>
+          <p className='hover:underline'>
+            <Link to="/forum">Groups Chat</Link>
+          </p>
+          <p className='hover:underline'>
+            <Link to="">Technology</Link>
+          </p>
         </div>
       </div>
       <p className='py-2 text-center text-slate-500'>
