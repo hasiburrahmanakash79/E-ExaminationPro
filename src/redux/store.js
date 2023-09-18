@@ -14,7 +14,6 @@ import ExamRoomControllerSlice from './features/ExamRoomController/ExamRoomContr
 const store = configureStore({
         reducer: {
                 questionPaper: quesPaperReducer,
-                longQuestions: longQuestionSlice,
                 allExam: allExamReducer,
                 examPage: examPageReducer,
                 demoExam: demoExamSlice,
