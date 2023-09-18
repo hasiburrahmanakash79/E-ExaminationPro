@@ -1,17 +1,16 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, lazy, Suspense } from 'react'
 import examPic from '../../../assets/exam.jpg'
 import Achievement from '../Achievement/Achievement'
 import Banner from '../Banner/Banner'
-import DemoTestSection from '../DemoTest/DemoTestSection'
-import Faq from '../Faq/Faq'
-import Testimonial from '../Testimonial/Testimonial'
-import TopSubjects from '../TopSubjects/TopSubjects'
-// import Pricing from '../Pricing/Pricing'
+const DemoTestSection = lazy(() => import('../DemoTest/DemoTestSection'))
+const Faq = lazy(() => import('../Faq/Faq'))
+const Testimonial = lazy(() => import('../Testimonial/Testimonial'))
+const TopSubjects = lazy(() => import('../TopSubjects/TopSubjects'))
 import { Helmet } from 'react-helmet-async'
-import MainContact from '../../Contact/MainContact'
-import Pricing from '../Pricing/Pricing'
+const MainContact = lazy(() => import('../../Contact/MainContact'))
+const Pricing = lazy(() => import('../Pricing/Pricing'))
 import ChatButton from '../ChatBot/ChatButton'
-// import ShortcutKey from "../../../Components/ShortcutKey/ShortcutKey";
+import Loading from '../../../Components/Loading/Loading'
 const HomePage = () => {
   //console.log(window.localStorage.getItem('showMainContent'))
   const [showMainContent, setShowMainContent] = useState(
@@ -38,9 +37,6 @@ const HomePage = () => {
     }
     a()
   }
-  //console.log(window.scrollY)
-  //console.log(showMainContent)
-
   return (
     <div className='relative'>
       <Helmet>
@@ -58,11 +54,7 @@ const HomePage = () => {
             <h1 className='mb-5 text-6xl font-bold text-white'>
               Welcome to E-ExamPro
             </h1>
-            <p className='mb-5 text-white'>
-              Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
-              excepturi exercitationem quasi. In deleniti eaque aut repudiandae
-              et a id nisi.
-            </p>
+            <p className='mb-5 text-white'></p>
           </div>
         </div>
       </div>
@@ -74,13 +66,27 @@ const HomePage = () => {
       >
         <Banner />
         <div className='container px-5 mx-auto'>
-          <DemoTestSection />
-          <TopSubjects />
-          <Achievement />
-          <MainContact />
-          <Pricing />
-          <Faq />
-          <Testimonial />
+          <Suspense fallback={<Loading />}>
+            <DemoTestSection />
+          </Suspense>
+          <Suspense fallback={<Loading />}>
+            <TopSubjects />
+          </Suspense>
+          <Suspense fallback={<Loading />}>
+            <Achievement />
+          </Suspense>
+          <Suspense fallback={<Loading />}>
+            <MainContact />
+          </Suspense>
+          <Suspense fallback={<Loading />}>
+            <Pricing />
+          </Suspense>
+          <Suspense fallback={<Loading />}>
+            <Faq />
+          </Suspense>
+          <Suspense fallback={<Loading />}>
+            <Testimonial />
+          </Suspense>
         </div>
       </div>
       <ChatButton />

@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import './TextEditor.css'
 
 import { useForm } from 'react-hook-form'
-import { addUserAnswer } from '../../redux/features/shortQuestion/shortQuestionSlice'
+import { addUserAnswer } from '../../redux/features/ShortQuestion/writtenQuestionSlice'
 const TextEditor = ({ question }) => {
   const dispatch = useDispatch()
   const { register, handleSubmit, reset } = useForm()

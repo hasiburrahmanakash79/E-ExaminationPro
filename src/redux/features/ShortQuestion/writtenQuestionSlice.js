@@ -3,8 +3,8 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
     userAnswers: []
 }
-const shortQuestionSlice = createSlice({
-    name: 'shortQuestionSlice',
+const writtenQuestionSlice = createSlice({
+    name: 'writtenQuestionSlice',
     initialState,
     reducers: {
         addUserAnswer: ((state, { payload }) => {
@@ -24,5 +24,5 @@ const shortQuestionSlice = createSlice({
         })
     }
 })
-export const { addUserAnswer } = shortQuestionSlice.actions
-export default shortQuestionSlice.reducer
+export const { addUserAnswer } = writtenQuestionSlice.actions
+export default writtenQuestionSlice.reducer
