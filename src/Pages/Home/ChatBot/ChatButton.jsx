@@ -29,7 +29,7 @@ export default function ChatButton() {
       </div>
 
       <Transition appear show={isOpen} as={Fragment}>
-        <Dialog as="div" className="relative z-10" onClose={closeModal}>
+        <Dialog as="div" className="relative" onClose={closeModal}>
           <Transition.Child
             as={Fragment}
             enter="ease-out duration-300"
@@ -56,7 +56,7 @@ export default function ChatButton() {
                 <Dialog.Panel className="w-full max-w-md overflow-y-auto text-left text-white align-middle transition-all transform shadow-xl rounded-2xl">
                   <Bot />
                 
-                  <div className="absolute top-5 right-2 rounded-full ">
+                  <div className="absolute top-5 right-5 z-50 rounded-full ">
                     <button
                       type="button"
                       className="inline-flex justify-center p-2 text-sm font-medium text-blue-900 bg-blue-100 rounded-full hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"

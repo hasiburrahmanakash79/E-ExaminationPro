@@ -41,15 +41,15 @@ const Bot = () => {
   };
 
   return (
-    <main className="relative max-w-md p-2 overflow-y-auto rounded max-h-96 bg-slate-800 font-inter">
-      <div className="sticky top-0 z-50">
-        <h1 className="text-2xl ">E-Exam Support</h1>
-        <p className="text-xs text-orange-200">
+    <main className="relative max-w-md overflow-y-auto h-[700px] bg-slate-800 font-inter scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-slate-300 scrollbar-w-2 scrollbar-track-transparent">
+      <div className="sticky top-0 z-40 bg-slate-800 p-2">
+        <h1 className="text-2xl ps-2">E-Exam Support</h1>
+        <p className="text-xs text-orange-200 ps-2">
           Ask any exam related question you have
         </p>
         <div className="divider my-1"></div>
       </div>
-      <section className="p-4 mb-12 rounded-lg shadow-2xl drop-shadow-2xl z-0 overflow-hidden">
+      <section className=" mb-12 z-0 overflow-hidden">
         {chats && chats.length
           ? chats.map((chat, index) => (
               <p
@@ -60,7 +60,9 @@ const Bot = () => {
                   chat.role === "user" ? "flex-row-reverse" : ""
                 } bg-darkslategray max-w-70 p-4  rounded-50`}
               >
-                <span className="text-yellow-600">{chat.role.toUpperCase()}</span>
+                <span className="text-yellow-600">
+                  {chat.role.toUpperCase()}
+                </span>
                 <span> : </span>
                 <span>{chat.content}</span>
               </p>
@@ -80,22 +82,24 @@ const Bot = () => {
         </p>
       </div>
 
-      <form
-        onSubmit={(e) => chat(e, message)}
-        className="flex gap-3 "
-      >
-        <textarea
-          type="text"
-          name="message"
-          value={message}
-          placeholder="Share with us your problem"
-          onChange={(e) => setMessage(e.target.value)}
-          className="textarea textarea-xs w-full max-w-xs border-none bg-white/25 focus:outline-none placeholder:text-xs placeholder:text-white text-sm"
-        />
-        <button className=" px-5 rounded bg-white/25">
-          <FaArrowRight />
-        </button>
-      </form>
+      <div className="sticky bottom-0 z-50 bg-slate-800 p-2">
+        <form
+          onSubmit={(e) => chat(e, message)}
+          className="flex  gap-3 "
+        >
+          <textarea
+            type="text"
+            name="message"
+            value={message}
+            placeholder="Share with us your problem"
+            onChange={(e) => setMessage(e.target.value)}
+            className="textarea textarea-xs w-full border-none bg-white/25 focus:outline-none placeholder:text-xs placeholder:text-white text-sm scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-slate-300 scrollbar-w-2 scrollbar-track-transparent"
+          />
+          <button className=" px-5 rounded bg-white/25">
+            <FaArrowRight />
+          </button>
+        </form>
+      </div>
     </main>
   );
 };
