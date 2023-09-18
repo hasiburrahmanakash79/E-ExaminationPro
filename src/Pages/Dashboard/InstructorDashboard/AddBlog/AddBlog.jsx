@@ -1,5 +1,3 @@
-import React from 'react';
-import { Helmet } from 'react-helmet-async';
 import Swal from 'sweetalert2';
 
 const AddBlog = () => {
@@ -54,25 +52,30 @@ const AddBlog = () => {
 
 
     return (
+        // <div>
+        //     <Helmet><title>E-ExamPro | Add Blog </title></Helmet>
+        //     <h2 className='text-2xl'>Add Blog</h2>
+
+        //     <form onSubmit={handleBlogAdding} className='text-center pb-20'>
+        //         <div className='p-5 pb-20-20 grid gap-5 grid-cols-2 '>
+        //             <input type="text"
+        //                 name='image_url' placeholder="Photo URL" className="input input-bordered" />
+        //             <input type="text" name='title' placeholder="Your Title" className="input input-bordered w-full " />
+        //             <input type="date" name='publishing_date' placeholder="Publishing Date" className="input input-bordered w-full " />
+        //             <input type="text" name='instructorName' placeholder="Publisher Name" className="input input-bordered w-full " />
+        //             <textarea className="textarea w-full textarea-bordered" name='content' placeholder="Your content"></textarea>
+        //             {/* <button className='flex justify-self-end text-end btn btn-primary w-1/3 mt-6'>Submit</button> */}
+
+        //         </div>
+        //         <div>
+        //             <input className='btn btn-primary ' type="submit" value="Submit" />
+        //         </div>
+        //     </form>
+        // </div>
+
+
         <div>
-            <Helmet><title>E-ExamPro | Add Blog </title></Helmet>
-            <h2 className='text-2xl'>Add Blog</h2>
 
-            <form onSubmit={handleBlogAdding} className='text-center pb-20'>
-                <div className='p-5 pb-20-20 grid gap-5 grid-cols-2 '>
-                    <input type="text"
-                        name='image_url' placeholder="Photo URL" className="input input-bordered" />
-                    <input type="text" name='title' placeholder="Your Title" className="input input-bordered w-full " />
-                    <input type="date" name='publishing_date' placeholder="Publishing Date" className="input input-bordered w-full " />
-                    <input type="text" name='instructorName' placeholder="Publisher Name" className="input input-bordered w-full " />
-                    <textarea className="textarea w-full textarea-bordered" name='content' placeholder="Your content"></textarea>
-                    {/* <button className='flex justify-self-end text-end btn btn-primary w-1/3 mt-6'>Submit</button> */}
-
-                </div>
-                <div>
-                    <input className='btn btn-primary ' type="submit" value="Submit" />
-                </div>
-            </form>
         </div>
     );
 };
