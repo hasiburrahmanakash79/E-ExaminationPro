@@ -27,7 +27,7 @@ const ResultPageForMcqFib = () => {
   //   enabled:!loading ,
   //   queryFn: async () => {
   //     const res = await axios.get(
-  //       `http://localhost:4000/result?examId=${examId}&email=${user?.email}`
+  //       `https://e-exam-pro-server.vercel.app/result?examId=${examId}&email=${user?.email}`
   //     )
   //     //console.log(res)
   //     return res.data
@@ -40,7 +40,7 @@ const ResultPageForMcqFib = () => {
 //   useEffect(()=>{
 //     setLoading(true)
 // if(!loading){
-//   fetch(`http://localhost:4000/result?examId=${examId}&email=${user?.email}`)
+//   fetch(`https://e-exam-pro-server.vercel.app/result?examId=${examId}&email=${user?.email}`)
 //   .then(res=>res.json())
 //   .then(data=>{
 //     setResult(data)

@@ -10,7 +10,7 @@ const useQuotes = () => {
     queryKey: ['quotes'],
     queryFn: async () => {
       const res = await axios.get(
-        'http://localhost:4000/api/quotes'
+        'https://e-exam-pro-server.vercel.app/api/quotes'
       )
       return res.data
     }

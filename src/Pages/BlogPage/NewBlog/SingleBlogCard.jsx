@@ -42,7 +42,7 @@ const SingleBlogCard = ({ newBlog }) => {
 
   const showComment = id => {
     fetch(
-      `http://localhost:4000/comments?id=${_id}&userEmail=${user?.email}`
+      `https://e-exam-pro-server.vercel.app/comments?id=${_id}&userEmail=${user?.email}`
     )
       .then(res => res.json())
       .then(data => setAllUserComments(data))

@@ -24,7 +24,7 @@ const Comments = ({ postComments, refetch }) => {
   const handleSaveEdit = () => {
     setEditMode(false)
     fetch(
-      `http://localhost:4000/forumPost/${postComments?._id}`,
+      `https://e-exam-pro-server.vercel.app/forumPost/${postComments?._id}`,
       {
         method: 'PATCH',
         headers: {
@@ -93,7 +93,7 @@ const Comments = ({ postComments, refetch }) => {
   const handleDelete = postComments => {
     axios
       .delete(
-        `http://localhost:4000/forumPost/${postComments._id}`
+        `https://e-exam-pro-server.vercel.app/forumPost/${postComments._id}`
       )
       .then(data => {
         //console.log(data);

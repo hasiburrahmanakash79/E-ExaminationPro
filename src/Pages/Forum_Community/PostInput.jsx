@@ -14,9 +14,9 @@ const PostInput = () => {
 
   const onSubmit = data => {
     const article = data.postField
-    // axios.post("http://localhost:4000/forumPost",
+    // axios.post("https://e-exam-pro-server.vercel.app/forumPost",
     axios
-      .post('http://localhost:4000/forumPost', {
+      .post('https://e-exam-pro-server.vercel.app/forumPost', {
         article,
         userName: user?.displayName,
         userImage: user?.photoURL,
@@ -47,7 +47,7 @@ const PostInput = () => {
   // const onSubmit = data => {
   //   const article = data.postField
   //   axios
-  //     .post('http://localhost:4000/forumPost', {
+  //     .post('https://e-exam-pro-server.vercel.app/forumPost', {
   //       article,
   //       userName: user?.displayName,
   //       userImage: user?.photoURL,

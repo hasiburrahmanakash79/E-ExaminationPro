@@ -4,12 +4,12 @@ import Swal from 'sweetalert2'
 
 const ManageUsers = () => {
   const { data: users = [], refetch } = useQuery(['users'], async () => {
-    const res = await fetch('http://localhost:4000/users')
+    const res = await fetch('https://e-exam-pro-server.vercel.app/users')
     return res.json()
   })
 
   const handleMakeAdmin = user => {
-    fetch(`http://localhost:4000/users/admin/${user._id}`, {
+    fetch(`https://e-exam-pro-server.vercel.app/users/admin/${user._id}`, {
       method: 'PATCH'
     })
       .then(res => res.json())
@@ -27,7 +27,7 @@ const ManageUsers = () => {
   }
 
   const handleMakeInstructor = user => {
-    fetch(`http://localhost:4000/users/instructor/${user._id}`, {
+    fetch(`https://e-exam-pro-server.vercel.app/users/instructor/${user._id}`, {
       method: 'PATCH'
     })
       .then(res => res.json())
@@ -56,7 +56,7 @@ const ManageUsers = () => {
       confirmButtonText: 'Yes, delete it!'
     }).then(result => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:4000/users/${user._id}`, {
+        fetch(`https://e-exam-pro-server.vercel.app/users/${user._id}`, {
           method: 'DELETE'
         })
           .then(res => res.json())

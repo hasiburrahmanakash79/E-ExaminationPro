@@ -26,7 +26,7 @@ const CreateQuesPaper = () => {
     codeRepeat: codeRepeat
   } = useSelector(state => state.questionPaper)
   useEffect(() => {
-    fetch('http://localhost:4000/allSubjects', {
+    fetch('https://e-exam-pro-server.vercel.app/allSubjects', {
       headers: {
         authorization: `bearar ${localStorage.getItem('access-token')}`
       }
@@ -50,7 +50,7 @@ const CreateQuesPaper = () => {
   const [iscodeRepeat, setIscodeRepeat] = useState(null)
   useEffect(() => {
     fetch(
-      `http://localhost:4000/questionCode?code=${codeRepeat}`
+      `https://e-exam-pro-server.vercel.app/questionCode?code=${codeRepeat}`
     )
       .then(res => res.json())
       .then(data => setIscodeRepeat(data.result))
@@ -124,7 +124,7 @@ const CreateQuesPaper = () => {
       })
     }
 
-    fetch('http://localhost:4000/questionPaper', {
+    fetch('https://e-exam-pro-server.vercel.app/questionPaper', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
