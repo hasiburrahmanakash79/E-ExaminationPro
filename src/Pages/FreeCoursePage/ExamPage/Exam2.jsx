@@ -78,7 +78,7 @@ const Exam2 = () => {
     setTimeout(() => {
       sendData()
       dispatch(setView(false))
-      navigate(`/result?id=${ques?._id}`)
+      navigate(`/results?id=${ques?._id}`)
     }, 3000)
   }
 

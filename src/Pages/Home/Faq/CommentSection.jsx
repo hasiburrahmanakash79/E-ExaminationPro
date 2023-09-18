@@ -29,7 +29,7 @@ function CommentSection ({ blogId }) {
         }
 
         const response = await fetch(
-          `https://e-exam-pro-server.vercel.app/comments`,
+          `http://localhost:4000/comments`,
           {
             method: 'POST',
             headers: {
@@ -58,7 +58,7 @@ function CommentSection ({ blogId }) {
     const fetchComments = async () => {
       try {
         const response = await fetch(
-          `https://e-exam-pro-server.vercel.app/comments?blogId=${blogId}`
+          `http://localhost:4000/comments?blogId=${blogId}`
         )
 
         if (response.ok) {

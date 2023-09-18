@@ -21,7 +21,7 @@ const SSLCart = () => {
     data.orderId = id
     data.paymentName = Premium
     data.orderDateTime = new Date(dateTime).toLocaleString()
-    fetch("http://localhost:4000/sslPayment", {
+    fetch('http://localhost:4000/sslPayment', {
       method: 'POST',
       headers: { 'content-type': 'application/json' },
       body: JSON.stringify(data)
@@ -34,7 +34,7 @@ const SSLCart = () => {
   }
 
   // useEffect(() => {
-  //     fetch(`https://e-exam-pro-server.vercel.app/payments/${id}`)
+  //     fetch(`http://localhost:4000/payments/${id}`)
   //     .then(res => res.json())
   //     .then(data => //console.log(data))
 

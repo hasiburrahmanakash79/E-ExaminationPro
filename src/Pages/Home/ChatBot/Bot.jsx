@@ -42,12 +42,14 @@ const Bot = () => {
 
   return (
     <main className="relative max-w-md p-2 overflow-y-auto rounded max-h-96 bg-slate-800 font-inter">
-      <h1 className="text-2xl sticky top-0">E-Exam Support</h1>
-      <p className="text-xs text-orange-200">
-        Ask any exam related question you have
-      </p>
-      <div className="divider my-1"></div> 
-      <section className="p-4 mb-12 rounded-lg shadow-2xl drop-shadow-2xl">
+      <div className="sticky top-0 z-50">
+        <h1 className="text-2xl ">E-Exam Support</h1>
+        <p className="text-xs text-orange-200">
+          Ask any exam related question you have
+        </p>
+        <div className="divider my-1"></div>
+      </div>
+      <section className="p-4 mb-12 rounded-lg shadow-2xl drop-shadow-2xl z-0 overflow-hidden">
         {chats && chats.length
           ? chats.map((chat, index) => (
               <p
@@ -58,7 +60,7 @@ const Bot = () => {
                   chat.role === "user" ? "flex-row-reverse" : ""
                 } bg-darkslategray max-w-70 p-4  rounded-50`}
               >
-                <span className="text-blue-700">{chat.role.toUpperCase()}</span>
+                <span className="text-yellow-600">{chat.role.toUpperCase()}</span>
                 <span> : </span>
                 <span>{chat.content}</span>
               </p>
@@ -80,17 +82,19 @@ const Bot = () => {
 
       <form
         onSubmit={(e) => chat(e, message)}
-        className="text-center flex gap-3"
+        className="flex gap-3 "
       >
-        <input
+        <textarea
           type="text"
           name="message"
           value={message}
           placeholder="Share with us your problem"
           onChange={(e) => setMessage(e.target.value)}
-          className="w-full px-3 py-2 text-lg text-white border-none bg-white/25 rounded focus:outline-none placeholder:text-xs placeholder:text-white "
+          className="textarea textarea-xs w-full max-w-xs border-none bg-white/25 focus:outline-none placeholder:text-xs placeholder:text-white text-sm"
         />
-        <button className="p-2 px-5 rounded bg-white/25"><FaArrowRight/></button>
+        <button className=" px-5 rounded bg-white/25">
+          <FaArrowRight />
+        </button>
       </form>
     </main>
   );
