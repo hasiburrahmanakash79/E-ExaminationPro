@@ -10,7 +10,7 @@ const NewBlog = () => {
   const blogsPerPage = 8
 
   useEffect(() => {
-    fetch('https://e-exam-pro-server.vercel.app/blogs')
+    fetch('http://localhost:4000/blogs')
       .then(res => res.json())
       .then(data => setNewBlogs(data))
   }, [])
