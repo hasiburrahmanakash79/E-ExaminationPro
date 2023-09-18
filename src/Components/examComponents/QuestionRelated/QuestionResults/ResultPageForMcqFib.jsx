@@ -4,10 +4,13 @@ import { PDFDownloadLink, PDFViewer } from '@react-pdf/renderer'
 import ResultPdfConverter from './ResultPdfConverter'
 import { useLocation } from 'react-router-dom'
 import useResult from '../../../../Hooks/useResult/useResult'
-import { useContext, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import ReviewAnswerAfterResult2 from './ReviewAnswerAfterResult2'
 import FeedBack from './Feedback'
 import { getColor } from '../../../../utils/getColor'
+import { AuthContext } from '../../../../Provider/AuthProvider'
+import { useQuery } from '@tanstack/react-query'
+import axios from 'axios'
 
 const ResultPageForMcqFib = () => {
   const location = useLocation()
@@ -16,13 +19,43 @@ const ResultPageForMcqFib = () => {
  
   const [result, refetch, loadings] = useResult(examId)
 
+
+  // const { user, loading } = useContext(AuthContext)
+
+  // const {data: result,refetch,isLoading: loadings} = useQuery({
+  //   queryKey: ['result'],
+  //   enabled:!loading ,
+  //   queryFn: async () => {
+  //     const res = await axios.get(
+  //       `http://localhost:4000/result?examId=${examId}&email=${user?.email}`
+  //     )
+  //     //console.log(res)
+  //     return res.data
+  //   }
+  // })
+
+//   const [result,setResult]=useState(null)
+//   const [loadings,setLoading]=useState(true)
+
+//   useEffect(()=>{
+//     setLoading(true)
+// if(!loading){
+//   fetch(`http://localhost:4000/result?examId=${examId}&email=${user?.email}`)
+//   .then(res=>res.json())
+//   .then(data=>{
+//     setResult(data)
+//     setLoading(false)
+//   })
+// }
+//   },[user?.email,loading])
+
  
 
   if (loadings) {
     return <p>loadings..</p>
   }
 
-    refetch()
+refetch()
   
 
   const percentage = (result.mark / result.totalMark) * 100

@@ -24,6 +24,7 @@ import {
 import StartCountdowns from '../../../components/examComponents/startCountdowns'
 import { useContext } from 'react'
 import { AuthContext } from '../../../Provider/AuthProvider'
+import useUser from '../../../Hooks/useUser/useUser'
 
 const Exam2 = () => {
   const [timerProgress, setTimerProgress] = useState(100) //progress bar state
@@ -46,6 +47,9 @@ const Exam2 = () => {
   const [countdown, setCountdown] = useState(3) // 3 sec countdown before start exam
   const [timer, setTimer] = useState(null) // store time interval to clear the time interval.
   const [start, setStart] = useState(false) // it use to store user selected option from mcq
+
+  const [info, refetch, p_loading] = useUser(user?.email)
+
 
   const examInfo = {
     examID: ques._id,
@@ -75,8 +79,9 @@ const Exam2 = () => {
     dispatch(setView(true)) //setView(true)
     dispatch(resetQues()) //setCurrentQuestion(0)
     clearInterval(timer) ///stop timer
+    sendData()
     setTimeout(() => {
-      sendData()
+      
       dispatch(setView(false))
       navigate(`/results?id=${ques?._id}`)
     }, 3000)
@@ -204,7 +209,7 @@ const Exam2 = () => {
                         {/* show total question in number */}
                       </div>
                     </div>
-                    <h1 className='text-2xl text-center mt-5'>Your Gems:<span className='text-green-500'> 10</span></h1>
+                    <h1 className='text-2xl text-center mt-5'>Your Gems:<span className='text-green-500'> {info.gems}</span></h1>
                     <h1 className='btn btn-primary w-1/3 ms-auto'>Hints</h1>
                   </div>
              
