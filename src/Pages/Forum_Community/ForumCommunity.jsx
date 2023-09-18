@@ -1,7 +1,7 @@
+import { Suspense, lazy } from 'react'
 import { Helmet } from 'react-helmet-async'
 const ArticleField = lazy(() => import('./ArticleField'))
 const PostInput = lazy(() => import('./PostInput'))
-import { Suspense, lazy } from 'react'
 import Loading from '../../Components/Loading/Loading'
 
 const ForumCommunity = () => {
