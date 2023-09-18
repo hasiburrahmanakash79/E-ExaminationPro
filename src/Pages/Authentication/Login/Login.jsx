@@ -16,9 +16,9 @@ const Login = () => {
   const { logInUser, loading } = useContext(AuthContext)
 
   const navigate = useNavigate()
-  const location = useLocation()
+  // const location = useLocation()
 
-  const from = location.state?.from?.pathname || '/'
+  // const from = location.state?.from?.pathname || '/'
 
   useEffect(() => {
     const newRandomNumbers = Array.from({ length: 6 }, () =>
@@ -44,7 +44,7 @@ const Login = () => {
     logInUser(data.email, data.password)
       .then(result => {
         const loggedUser = result.user
-        navigate(from, { replace: true })
+        navigate('/welCome')
         Swal.fire({
           showConfirmButton: false,
           timer: 1500,

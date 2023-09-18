@@ -52,6 +52,7 @@ import SSLCommerzSuccess from '../Pages/Dashboard/UserDashboard/Payment/SSLPage/
 import SSLCommerzFail from '../Pages/Dashboard/UserDashboard/Payment/SSLPage/SSLCommerzFail/SSLCommerzFail'
 import PaymentOption from '../Pages/Dashboard/UserDashboard/Payment/PaymentOption'
 import AllExam from '../Pages/FreeCoursePage/ExamPage/allExam'
+import WelCome from '../Pages/WelCome/WelCome'
 const router = createBrowserRouter([
   {
     path: '/',
@@ -222,6 +223,10 @@ const router = createBrowserRouter([
   {
     path: '/signUp',
     element: <Registration />
+  },
+  {
+    path: '/welCome',
+    element: <WelCome />
   },
   {
     path: '/examRoom',
