@@ -15,19 +15,18 @@ const PaymentHistory = () => {
         setPaymentInfo(data)
       })
   }, [])
-  //console.log(paymentInfo);
   return (
     <div>
       <Helmet>
         <title>E-ExamPro | Payment History </title>
       </Helmet>
-      <h1 className='md:text-4xl text-2xl text-center my-5'>
+      <h1 className='my-5 text-2xl text-center md:text-4xl'>
         Your Payment history
       </h1>
 
-      <div className='py-20 flex justify-center items-center gap-5'>
+      <div className='flex items-center justify-center gap-5 py-20'>
         {paymentInfo.map(price => (
-          <div className='md:block w-72 mt-5 pb-3 space-y-4 text-center border rounded-lg shadow-2xl primary-bg border-slate-200 hover:outline-blue-400 hover:outline translate'>
+          <div className='pb-3 mt-5 space-y-4 text-center border rounded-lg shadow-2xl md:block w-72 primary-bg border-slate-200 hover:outline-blue-400 hover:outline translate'>
             <p className='my-2 text-lg font-bold text-yellow-400'>
               {price.packageName}
             </p>

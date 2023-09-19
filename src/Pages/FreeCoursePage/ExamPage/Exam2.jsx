@@ -50,7 +50,6 @@ const Exam2 = () => {
 
   const [info, refetch, p_loading] = useUser(user?.email)
 
-
   const examInfo = {
     examID: ques._id,
     subjectName: ques.subjectName,
@@ -81,7 +80,6 @@ const Exam2 = () => {
     clearInterval(timer) ///stop timer
     sendData()
     setTimeout(() => {
-      
       dispatch(setView(false))
       navigate(`/results?id=${ques?._id}`)
     }, 3000)
@@ -158,27 +156,24 @@ const Exam2 = () => {
               {((examType == 'multimedia_mcq' && start == true) ||
                 examType == 'mcq' ||
                 examType == 'FillInTheBlank') && (
+                <div>
                   <div>
-
-                    <div>
-                      <TimeRemain
-                        timerProgress={timerProgress}
-                        setTimerProgress={setTimerProgress}
-                        totalDuration={totalDuration}
-                        timeRemaining={timeRemaining}
-                        setTimeRemaining={setTimeRemaining}
-                        examType={ques.type}
-                        start={start}
-                        handleFinishExam={handleFinishExam}
-                        setTimer={setTimer}
-                        takingTime={takingTime}
-                        setTakingTime={setTakingTime}
-                      ></TimeRemain>
-                    </div>
-
+                    <TimeRemain
+                      timerProgress={timerProgress}
+                      setTimerProgress={setTimerProgress}
+                      totalDuration={totalDuration}
+                      timeRemaining={timeRemaining}
+                      setTimeRemaining={setTimeRemaining}
+                      examType={ques.type}
+                      start={start}
+                      handleFinishExam={handleFinishExam}
+                      setTimer={setTimer}
+                      takingTime={takingTime}
+                      setTakingTime={setTakingTime}
+                    ></TimeRemain>
                   </div>
-
-                )}
+                </div>
+              )}
               <div className=' min-h-[70vh] flex justify-center md:mt-0 mt-10 md:items-center'>
                 <div className='w-full mx-2 md:mx-20'>
                   <div className='flex justify-center my-10 mb-5'>
@@ -196,7 +191,7 @@ const Exam2 = () => {
                       </>
                     )}
                   </div>
-                  <div className='grid md:grid-cols-3 grid-cols-1' >
+                  <div className='grid grid-cols-1 md:grid-cols-3'>
                     <div className='max-w-[50px]  min-h-[50px] text-white bg-blue-900 rounded-full flex justify-center items-center'>
                       <div>
                         <span className='text-3xl font-semibold'>
@@ -209,13 +204,16 @@ const Exam2 = () => {
                         {/* show total question in number */}
                       </div>
                     </div>
-                    <h1 className='text-2xl text-center mt-5'>Your Gems:<span className='text-green-500'> {info.gems}</span></h1>
-                    <h1 className='btn btn-primary w-1/3 ms-auto'>Hints</h1>
+                    <h1 className='mt-5 text-2xl text-center'>
+                      Your Gems:
+                      <span className='text-green-500'> {info.gems}</span>
+                    </h1>
+                    <h1 className='w-1/3 btn btn-primary ms-auto'>Hints</h1>
                   </div>
-             
+
                   {(examType == 'multimedia_mcq' && start == true) ||
-                    examType == 'mcq' ||
-                    examType == 'FillInTheBlank' ? (
+                  examType == 'mcq' ||
+                  examType == 'FillInTheBlank' ? (
                     <h1 className='text-3xl font-semibold my-7'>
                       {currentQuestion + 1}- {question}
                     </h1>

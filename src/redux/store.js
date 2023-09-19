@@ -3,7 +3,7 @@ import quesPaperReducer from './features/quesPaper/quesPaperSlice'
 import allExamReducer from './features/allExam/allExamSlice'
 import examPageReducer from './features/examPage/examPageSlice'
 import demoExamSlice from "./features/demoExam/demoExamSlice";
-import writtenQuestionSlice from "./features/ShortQuestion/writtenQuestionSlice";
+import writtenQuestionSlice from "./features/WrittenQuestion/writtenQuestionSlice";
 // import ExamRoomControllerReducer from './features/ExamRoomController/ExamRoomControllerSlice';
 import liveExamSlice from "./features/liveExamQuesPaper/liveExamQuesPaper";
 import ExamRoomControllerSlice from './features/ExamRoomController/ExamRoomControllerSlice';

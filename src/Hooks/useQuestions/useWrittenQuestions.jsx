@@ -9,7 +9,7 @@ const useWrittenQuestions = Mathematics => {
     queryKey: ['shortQuestions'],
     queryFn: async () => {
       const res = await axios.get(
-        `http://localhost:4000/shortQ?subject=${Mathematics}`
+        `http://localhost:4000/written-questions?subject=${Mathematics}`
       ) // to todo add date subject code etc
       return res.data
     }

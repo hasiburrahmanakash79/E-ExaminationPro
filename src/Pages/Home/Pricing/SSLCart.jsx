@@ -41,11 +41,11 @@ const SSLCart = () => {
   // }, [id])
 
   return (
-    <div className=' mx-auto mt-10 '>
-      <h1 className=' text-3xl text-center mb-10 mt-5'>SSL Payment Gatway</h1>
+    <div className='mx-auto mt-10 '>
+      <h1 className='mt-5 mb-10 text-3xl text-center '>SSL Payment Gateway</h1>
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className=' space-y-6 md:w-1/2 mx-auto  '
+        className='mx-auto space-y-6  md:w-1/2'
       >
         <div className='flex items-center gap-5'>
           <div className='w-1/2'>
@@ -55,7 +55,7 @@ const SSLCart = () => {
             </label>{' '}
             <br />
             <input
-              className='bg-transparent border-2 focus:outline-none shadow-2xl border-violet-800 p-3 w-full rounded-md'
+              className='w-full p-3 bg-transparent border-2 rounded-md shadow-2xl focus:outline-none border-violet-800'
               defaultValue={user?.displayName}
               required
               {...register('name')}
@@ -64,14 +64,14 @@ const SSLCart = () => {
           <div className='w-1/2'>
             <label
               htmlFor='email'
-              className='text-lg  text-slate-100 tracking-wider '
+              className='text-lg tracking-wider text-slate-100 '
             >
               {' '}
               Email{' '}
             </label>{' '}
             <br />
             <input
-              className='bg-transparent border-2 focus:outline-none shadow-2xl border-violet-800 p-3 w-full rounded-md'
+              className='w-full p-3 bg-transparent border-2 rounded-md shadow-2xl focus:outline-none border-violet-800'
               required
               defaultValue={user?.email}
               {...register('email')}
@@ -87,7 +87,7 @@ const SSLCart = () => {
             <br />
             <input
               type='number'
-              className='bg-transparent border-2 focus:outline-none shadow-2xl border-violet-800 p-3 w-full rounded-md'
+              className='w-full p-3 bg-transparent border-2 rounded-md shadow-2xl focus:outline-none border-violet-800'
               // defaultValue={user?.displayName}
               placeholder='+8801000-000000'
               required
@@ -97,14 +97,14 @@ const SSLCart = () => {
           <div className='w-1/2'>
             <label
               htmlFor='address'
-              className='text-lg  text-slate-100 tracking-wider'
+              className='text-lg tracking-wider text-slate-100'
             >
               {' '}
               Address{' '}
             </label>{' '}
             <br />
             <input
-              className='bg-transparent border-2 focus:outline-none shadow-2xl border-violet-800 p-3 w-full rounded-md'
+              className='w-full p-3 bg-transparent border-2 rounded-md shadow-2xl focus:outline-none border-violet-800'
               defaultValue={user?.address}
               placeholder='Please your address'
               required
@@ -120,7 +120,7 @@ const SSLCart = () => {
             </label>{' '}
             <br />
             <input
-              className='bg-transparent border-2 focus:outline-none shadow-2xl border-violet-800 p-3 w-full rounded-md'
+              className='w-full p-3 bg-transparent border-2 rounded-md shadow-2xl focus:outline-none border-violet-800'
               // defaultValue={user?.displayName}
               placeholder='Post Code'
               required
@@ -130,7 +130,7 @@ const SSLCart = () => {
           <div className='w-1/2'>
             <label
               htmlFor='adders'
-              className='text-lg  text-slate-100 tracking-wider'
+              className='text-lg tracking-wider text-slate-100'
             >
               {' '}
               Currency{' '}
@@ -139,7 +139,7 @@ const SSLCart = () => {
             <select
               {...register('currency')}
               required
-              className='bg-transparent border-2 focus:outline-none shadow-2xl border-violet-800 p-3 w-full rounded-md'
+              className='w-full p-3 bg-transparent border-2 rounded-md shadow-2xl focus:outline-none border-violet-800'
             >
               <option className='text-black' value='USD'>
                 USD
@@ -165,7 +165,7 @@ const SSLCart = () => {
           <input
             type='submit'
             value='Pay Now'
-            className=' duration-300 primary-btn mx-auto w-1/2 text-center rounded-md py-3 cursor-pointer'
+            className='w-1/2 py-3 mx-auto text-center duration-300 rounded-md cursor-pointer  primary-btn'
           />
         </div>
       </form>
