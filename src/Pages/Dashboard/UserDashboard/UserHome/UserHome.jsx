@@ -64,7 +64,7 @@ const UserHome = () => {
 
   return (
     <div className="px-10 py-20">
-      <Helmet><title>E-ExamPro | Dashboard</title></Helmet>
+      <Helmet><title>Dashboard | E-ExamPro </title></Helmet>
       <div className="xl:flex gap-5 mb-5">
         <div className="bg-transparent border border-violet-700 shadow-2xl w-full rounded-md p-5">
           <div className="flex justify-between items-center">

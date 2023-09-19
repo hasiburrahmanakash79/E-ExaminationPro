@@ -1,14 +1,41 @@
 import { useForm } from 'react-hook-form'
-import { useParams } from 'react-router-dom'
+import { useLocation, useParams } from 'react-router-dom'
 import useAuth from '../../../Hooks/useAuth/useAuth'
 import { useEffect, useState } from 'react'
+import usePrice from '../../../Hooks/usePrice/usePrice'
+import useAxiosSecure from '../../../Hooks/useAxiosSecure.jsx/useAxiosSecure'
+import { useQuery } from '@tanstack/react-query'
+import Loading from '../../../Components/Loading/Loading'
 
 const SSLCart = () => {
-  const [infoPayment, setInfoPayment] = useState([])
-  const { id } = useParams()
+  const [pricePackage] = usePrice();
+  // console.log("10 >", pricePackage);
+
+  const location = useLocation()
+  const searchParams = new URLSearchParams(location.search)
+  const id = searchParams.get('Cardid')
+  // console.log("dma d", id);
+
+  const [axiosSecure] = useAxiosSecure()
   const { user } = useAuth()
-  const Premium = 'Premium'
   const dateTime = new Date()
+
+  const { data: priceData, isLoading } = useQuery({
+    queryKey: ['priceData', id],
+    queryFn: async () => {
+      const res = await axiosSecure.get(`/price?id=${id}`)
+      //console.log(res.data);
+      return res.data
+    }
+  })
+
+  const cartPrice = pricePackage.filter(price => price?._id == id);
+  // console.log("serial number 45 >", cartPrice);
+  const totalPrice = priceData?.packageAmount * 92;
+  const price = totalPrice.toFixed(2);
+  const feature = priceData?.features
+  console.log("fkjfv erefg ker", feature);
+  console.log("serial number 67 >>>>", price);
 
   const {
     register,
@@ -17,11 +44,14 @@ const SSLCart = () => {
   } = useForm()
 
   const onSubmit = data => {
-    //console.log(data);
-    data.orderId = id
-    data.paymentName = Premium
-    data.orderDateTime = new Date(dateTime).toLocaleString()
-    fetch('https://e-exam-pro-server.vercel.app/sslPayment', {
+    console.log(" ki re vai koi tui 42>>>>>", data);
+    data.paymentId = priceData?.id,
+      data.packageName = cartPrice[0]?.name,
+      data.price = priceData?.packageAmount,
+      data.features = feature,
+      data.status = "paid",
+      data.date = new Date(dateTime).toLocaleString()
+    fetch('http://localhost:4000/sslPayment', {
       method: 'POST',
       headers: { 'content-type': 'application/json' },
       body: JSON.stringify(data)
@@ -29,16 +59,9 @@ const SSLCart = () => {
       .then(res => res.json())
       .then(data => {
         window.location.replace(data?.url)
-        //console.log(data);
+        console.log(data?.url);
       })
   }
-
-  // useEffect(() => {
-  //     fetch(`https://e-exam-pro-server.vercel.app/payments/${id}`)
-  //     .then(res => res.json())
-  //     .then(data => //console.log(data))
-
-  // }, [id])
 
   return (
     <div className=' mx-auto mt-10 '>
@@ -49,16 +72,15 @@ const SSLCart = () => {
       >
         <div className='flex items-center gap-5'>
           <div className='w-1/2'>
-            <label htmlFor='name' className=''>
-              {' '}
-              Name{' '}
-            </label>{' '}
+            <label htmlFor='userName' className=''>
+              Name
+            </label>
             <br />
             <input
               className='bg-transparent border-2 focus:outline-none shadow-2xl border-violet-800 p-3 w-full rounded-md'
               defaultValue={user?.displayName}
               required
-              {...register('name')}
+              {...register('userName')}
             />
           </div>
           <div className='w-1/2'>
@@ -66,9 +88,8 @@ const SSLCart = () => {
               htmlFor='email'
               className='text-lg  text-slate-100 tracking-wider '
             >
-              {' '}
-              Email{' '}
-            </label>{' '}
+              Email
+            </label>
             <br />
             <input
               className='bg-transparent border-2 focus:outline-none shadow-2xl border-violet-800 p-3 w-full rounded-md'
@@ -81,14 +102,12 @@ const SSLCart = () => {
         <div className='flex items-center gap-5'>
           <div className='w-1/2'>
             <label htmlFor='phone' className=''>
-              {' '}
-              Phone Number{' '}
-            </label>{' '}
+              Phone Number
+            </label>
             <br />
             <input
               type='number'
               className='bg-transparent border-2 focus:outline-none shadow-2xl border-violet-800 p-3 w-full rounded-md'
-              // defaultValue={user?.displayName}
               placeholder='+8801000-000000'
               required
               {...register('phone')}
@@ -99,9 +118,8 @@ const SSLCart = () => {
               htmlFor='address'
               className='text-lg  text-slate-100 tracking-wider'
             >
-              {' '}
-              Address{' '}
-            </label>{' '}
+              Address
+            </label>
             <br />
             <input
               className='bg-transparent border-2 focus:outline-none shadow-2xl border-violet-800 p-3 w-full rounded-md'
@@ -114,17 +132,15 @@ const SSLCart = () => {
         </div>
         <div className='flex items-center gap-5'>
           <div className='w-1/2'>
-            <label htmlFor='postCode' className=''>
-              {' '}
-              Post Code{' '}
-            </label>{' '}
+            <label htmlFor='packagePrice' className=''>
+              Package Price
+            </label>
             <br />
             <input
               className='bg-transparent border-2 focus:outline-none shadow-2xl border-violet-800 p-3 w-full rounded-md'
-              // defaultValue={user?.displayName}
-              placeholder='Post Code'
-              required
-              {...register('postCode')}
+              defaultValue={price}
+              disabled
+              {...register('packagePrice')}
             />
           </div>
           <div className='w-1/2'>
@@ -132,9 +148,8 @@ const SSLCart = () => {
               htmlFor='adders'
               className='text-lg  text-slate-100 tracking-wider'
             >
-              {' '}
-              Currency{' '}
-            </label>{' '}
+              Currency
+            </label>
             <br />
             <select
               {...register('currency')}

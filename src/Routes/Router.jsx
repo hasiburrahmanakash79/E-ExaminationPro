@@ -55,6 +55,7 @@ import ChatBotUI from "../Components/ChatBotUI/ChatBotUI";
 import ExamResult from "../Pages/ExamResult/ExamResult";
 import AdminRoute from "./AdminRoute";
 import InstructorRoute from "./InstructorRoute";
+import WelCome from '../Pages/WelCome/WelCome'
 const router = createBrowserRouter([
   {
     path: "/",
@@ -109,8 +110,10 @@ const router = createBrowserRouter([
         element: <Contact />,
       },
       {
-        path: "/paymentOption/:id",
-        element: <PaymentOption />,
+        path: '/paymentOption/:id',
+        element: <PrivateRouter>
+          <PaymentOption />
+        </PrivateRouter>
       },
       {
         path: "/stripePayment",
@@ -234,8 +237,12 @@ const router = createBrowserRouter([
     element: <Registration />,
   },
   {
-    path: "/examRoom",
-    element: <ExamRoom />,
+    path: '/welCome',
+    element: <WelCome />
+  },
+  {
+    path: '/examRoom',
+    element: <ExamRoom />
   },
 
   ///// DASHBOARD /////

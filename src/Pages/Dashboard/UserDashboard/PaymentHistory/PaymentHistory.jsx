@@ -19,7 +19,7 @@ const PaymentHistory = () => {
   return (
     <div>
       <Helmet>
-        <title>E-ExamPro | Payment History </title>
+        <title>Payment History | E-ExamPro </title>
       </Helmet>
       <h1 className='md:text-4xl text-2xl text-center my-5'>
         Your Payment history

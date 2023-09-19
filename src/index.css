@@ -29,7 +29,14 @@
     border: 1px solid #fff;
 } */
 .primary-nav{
-  background: linear-gradient(45deg,rgb(17, 9, 83), rgb(54, 2, 102), rgb(4, 64, 114), rgb(73, 1, 114));
+  background: linear-gradient(45deg,
+  rgb(142, 9, 168), 
+  rgb(88, 14, 156), 
+  rgb(12, 91, 156), 
+  rgb(100, 1, 156) ,
+  rgb(73, 20, 143) ,
+  rgb(4, 103, 184), 
+  rgb(96, 19, 131));
   background-size: 200% 200%;
   animation: color 22s ease-in-out infinite;
   color: rgba(255, 255, 255, 0.492);

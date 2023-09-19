@@ -59,7 +59,7 @@ const AllGivenExam = () => {
   return (
     <div className='flex flex-col items-center justify-center'>
       <Helmet>
-        <title>E-ExamPro | Apply Live Exam </title>
+        <title>Apply Live Exam | E-ExamPro </title>
       </Helmet>
 
       {/* You can open the modal using document.getElementById('ID').showModal() method */}

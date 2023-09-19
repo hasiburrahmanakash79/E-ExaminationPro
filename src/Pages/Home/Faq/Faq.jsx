@@ -4,8 +4,8 @@ export default function Faq() {
     <div className="md:py-16 py-8 overflow-x-hidden">
       <h1
         data-aos="zoom-in-down"
-        data-aos-duration="500"
-        className="text-4xl text-center">Frequently Ask Question</h1>
+        data-aos-duration="700"
+        className="text-4xl mb-10 text-center">Frequently Ask Question</h1>
       <div className=" md:flex items-center justify-between container mx-auto gap-5  py-10 p-5">
         <div className="w-full">
           <img
