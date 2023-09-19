@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import React, { useContext, useEffect, useState } from "react";
-import { FaRegCommentDots, FaRegHeart, FaShareAltSquare } from "react-icons/fa";
+import { FaRegCommentDots, FaRegHeart, FaRegTrashAlt, FaShareAltSquare } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import {
   EmailIcon,
@@ -19,9 +19,11 @@ import { AuthContext } from "../../../Provider/AuthProvider";
 import { fetch } from "openai/_shims/fetch";
 import Swal from "sweetalert2";
 import useAdmin from "../../../Hooks/useAdmin/useAdmin";
+import useInstructor from "../../../Hooks/useInstructor/useInstructor";
 
 const SingleBlogCard = ({ newBlog, refetch }) => {
-  const [isAdmin] = useAdmin()
+  const [isInstructor] = useInstructor();
+  const [isAdmin] = useAdmin();
   const [isComment, setIsComment] = useState(false);
   const [isBlog, setIsBlog] = useState(true);
   const [allUserComments, setAllUserComments] = useState([]);
@@ -51,30 +53,30 @@ const SingleBlogCard = ({ newBlog, refetch }) => {
       .then((data) => setAllUserComments(data));
   };
 
-  const handleDelete = _id => {
+  const handleDelete = (_id) => {
     Swal.fire({
-      title: 'Are you sure?',
+      title: "Are you sure?",
       text: "You won't be able to remove this user!",
-      icon: 'warning',
+      icon: "warning",
       showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, delete it!'
-    }).then(result => {
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
       if (result.isConfirmed) {
         fetch(`https://e-exam-pro-server.vercel.app/blogs/${_id}`, {
-          method: 'DELETE'
+          method: "DELETE",
         })
-          .then(res => res.json())
-          .then(data => {
-            refetch()
+          .then((res) => res.json())
+          .then((data) => {
+            refetch();
             if (data.deletedCount > 0) {
-              Swal.fire('Deleted!', 'User has been deleted.', 'success')
+              Swal.fire("Deleted!", "User has been deleted.", "success");
             }
-          })
+          });
       }
-    })
-  }
+    });
+  };
 
   //console.log(allUserComments)
 
@@ -213,13 +215,24 @@ const SingleBlogCard = ({ newBlog, refetch }) => {
               </div>
 
               <div className="">
+                
                 <Link
                   to={`/blogDetails/${_id}`}
                   className="mt-10 ml-auto text-end btn btn-outline btn-sm"
                 >
                   Read More
                 </Link>
-                <button onClick={() => handleDelete(_id)}>X</button>
+                {user && (
+                  <>
+                    {isAdmin ? (
+                      <button onClick={() => handleDelete(_id)} className="btn btn-warning btn-outline btn-sm ms-5"><FaRegTrashAlt/></button>
+                    ) : isInstructor ? (
+                      <button onClick={() => handleDelete(_id)} className="btn btn-warning btn-outline btn-sm ms-5"><FaRegTrashAlt/></button>
+                    ) : (
+                      ""
+                    )}
+                  </>
+                )}
               </div>
             </div>
           </div>

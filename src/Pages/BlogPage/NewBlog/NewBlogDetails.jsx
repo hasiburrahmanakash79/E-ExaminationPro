@@ -27,7 +27,7 @@ const NewBlogDetails = () => {
 
   const info = smallCards.find(smallCard => smallCard._id == blogId)
   return (
-    <div className='py-5 md:py-20'>
+    <div className='py-5 md:py-20 container mx-auto'>
       <img className='px-5 mx-auto md:w-1/2' src={info?.image_url} alt='' />
       <div className='px-5 mx-auto mb-20 md:w-1/2'>
         <div className='flex items-center justify-between mt-5 mb-5 md:mb-10'>
