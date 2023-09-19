@@ -44,7 +44,7 @@ const NewBlog = () => {
         <div className='md:grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 md:gap-5 md:px-12'>
           {currentBlogs.map(newBlog => (
             <Suspense fallback={<Loading />}>
-              <SingleBlogCard key={newBlog._id} newBlog={newBlog} />
+              <SingleBlogCard key={newBlog._id} newBlog={newBlog} refetch={refetch} />
             </Suspense>
           ))}
         </div>

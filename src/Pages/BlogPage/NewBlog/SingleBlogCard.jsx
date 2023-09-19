@@ -17,8 +17,11 @@ import {
 import useAxiosSecure from "../../../Hooks/useAxiosSecure.jsx/useAxiosSecure";
 import { AuthContext } from "../../../Provider/AuthProvider";
 import { fetch } from "openai/_shims/fetch";
+import Swal from "sweetalert2";
+import useAdmin from "../../../Hooks/useAdmin/useAdmin";
 
-const SingleBlogCard = ({ newBlog }) => {
+const SingleBlogCard = ({ newBlog, refetch }) => {
+  const [isAdmin] = useAdmin()
   const [isComment, setIsComment] = useState(false);
   const [isBlog, setIsBlog] = useState(true);
   const [allUserComments, setAllUserComments] = useState([]);
@@ -47,6 +50,31 @@ const SingleBlogCard = ({ newBlog }) => {
       .then((res) => res.json())
       .then((data) => setAllUserComments(data));
   };
+
+  const handleDelete = _id => {
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to remove this user!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then(result => {
+      if (result.isConfirmed) {
+        fetch(`https://e-exam-pro-server.vercel.app/blogs/${_id}`, {
+          method: 'DELETE'
+        })
+          .then(res => res.json())
+          .then(data => {
+            refetch()
+            if (data.deletedCount > 0) {
+              Swal.fire('Deleted!', 'User has been deleted.', 'success')
+            }
+          })
+      }
+    })
+  }
 
   //console.log(allUserComments)
 
@@ -191,7 +219,7 @@ const SingleBlogCard = ({ newBlog }) => {
                 >
                   Read More
                 </Link>
-                <button>X</button>
+                <button onClick={() => handleDelete(_id)}>X</button>
               </div>
             </div>
           </div>
