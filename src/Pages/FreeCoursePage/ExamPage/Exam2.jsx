@@ -27,6 +27,7 @@ import { useContext } from 'react'
 import { AuthContext } from '../../../Provider/AuthProvider'
 import useUser from '../../../Hooks/useUser/useUser'
 import { reduceGems } from '../../../redux/features/userGems/userGemsSlice'
+import { Hourglass } from 'react-loader-spinner'
 
 const Exam2 = () => {
 
@@ -164,7 +165,16 @@ const Exam2 = () => {
       ) : (
         <div>
           {view == true ? (
-            <div className='flex justify-center my-5'>
+            <div className='flex h-[70vh] gap-2 justify-center items-center my-5'>
+                   <Hourglass
+                      visible={true}
+                      height='80'
+                      width='80'
+                      ariaLabel='hourglass-loading'
+                      wrapperStyle={{}}
+                      wrapperClass=''
+                      colors={['#7710de', '#d6061b']}
+                    />
               <h1 className='text-xl'>Your Result is now Processing....</h1>
             </div>
           ) : (
@@ -226,7 +236,7 @@ const Exam2 = () => {
                     </div>
                     <div>
                       <h1 className='text-2xl text-center mt-5'>Your Gems:<span className='text-green-500'> {info.gems}</span></h1>
-                      <div>{info?.gems < 1 && <h1 className='bg-red-500 text-white p-1 rounded-lg mt-2 w-1/2 mx-auto|||||||| text-center'>You Do Not Have Enough Gems</h1>}</div>
+                      <div className='flex justify-center'>{info?.gems < 1 && <h1 className='bg-red-500 text-white p-1 rounded-lg mt-2 w-1/2 mx-auto|||||||| text-center'>You Do Not Have Enough Gems</h1>}</div>
                     </div>
                     <div>
 
