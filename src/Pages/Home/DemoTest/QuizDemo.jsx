@@ -19,7 +19,7 @@ const QuizDemo = () => {
   const reduxSelectedOption =
     userAnswers[currentQuestionIndex]?.selectedOptionId || null
 
-  console.log(reduxSelectedOption)
+  //console.log(reduxSelectedOption)
   const handleSelectOption = selectedOptionId => {
     dispatch(selectOption({ questionId: currentQuestion.id, selectedOptionId }))
   }
@@ -86,9 +86,7 @@ const QuizDemo = () => {
         <div className='flex justify-end w-11/12 py-4 mx-auto '>
           {currentQuestionIndex === questions.length - 1 ? (
             <Link to='/demo-result' className=' btn_quiz primary-btn'>
-              <button onClick={handleSubmit}>
-                Submit
-              </button>
+              <button onClick={handleSubmit}>Submit</button>
             </Link>
           ) : (
             <button

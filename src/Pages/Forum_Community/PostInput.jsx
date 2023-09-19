@@ -14,15 +14,17 @@ const PostInput = () => {
 
   const onSubmit = data => {
     const article = data.postField
+    // axios.post("https://e-exam-pro-server.vercel.app/forumPost",
     axios
       .post('https://e-exam-pro-server.vercel.app/forumPost', {
         article,
         userName: user?.displayName,
         userImage: user?.photoURL,
-        timeDate: createdAtDate
+        timeDate: createdAtDate,
+        replies: []
       })
       .then(res => {
-        console.log(res)
+        //console.log(res)
         if (res.data.insertedId) {
           Swal.fire({
             position: 'top-center',
@@ -34,7 +36,7 @@ const PostInput = () => {
         }
       })
       .catch(err => {
-        console.log(err.message)
+        //console.log(err.message);
         Swal.fire({
           icon: 'error',
           title: 'Oops...',
@@ -42,6 +44,36 @@ const PostInput = () => {
         })
       })
   }
+  // const onSubmit = data => {
+  //   const article = data.postField
+  //   axios
+  //     .post('https://e-exam-pro-server.vercel.app/forumPost', {
+  //       article,
+  //       userName: user?.displayName,
+  //       userImage: user?.photoURL,
+  //       timeDate: createdAtDate
+  //     })
+  //     .then(res => {
+  //       //console.log(res)
+  //       if (res.data.insertedId) {
+  //         Swal.fire({
+  //           position: 'top-center',
+  //           icon: 'success',
+  //           title: 'your post uploaded',
+  //           showConfirmButton: false,
+  //           timer: 1200
+  //         })
+  //       }
+  //     })
+  //     .catch(err => {
+  //       //console.log(err.message)
+  //       Swal.fire({
+  //         icon: 'error',
+  //         title: 'Oops...',
+  //         text: `${err?.message}`
+  //       })
+  //     })
+  // }
 
   return (
     <div className=''>
@@ -56,7 +88,7 @@ const PostInput = () => {
             <textarea
               {...field}
               placeholder='Write your comment'
-              className='block w-full h-24 p-3 text-black rounded-md bg-zinc-300 focus:outline-teal-700'
+              className='block w-full h-24 p-3 border shadow-2xl rounded-md bg-white/10 focus:outline-teal-700'
             />
           )}
         />

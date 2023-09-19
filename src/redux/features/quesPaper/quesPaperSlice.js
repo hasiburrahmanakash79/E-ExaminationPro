@@ -14,6 +14,7 @@ export const quesPaperSlice = createSlice({
             date: null,
             email: null,
             videoURL: null,
+            time:null
         },
         questions: [],
         codeRepeat: null,
@@ -26,7 +27,7 @@ export const quesPaperSlice = createSlice({
             state.type = payload
         },
         setSubjectCode: (state, { payload }) => {
-            console.log(payload)
+            //console.log(payload)
             state.formData.subject_code = payload
         }
         ,
@@ -38,16 +39,19 @@ export const quesPaperSlice = createSlice({
         subjectInfo: (state, { payload }) => {
 
             const { name, value } = payload.target
-            console.log(name, value, 'sssssssssssss')
+            //console.log(name, value, 'sssssssssssss')
 
 
             if (name === 'exam_code') {
-                console.log(name, '------------------------------------------44')
+                //console.log(name, '------------------------------------------44')
                 state.codeRepeat = value
 
             }
 
-
+            // let time=null
+            // if(name==='time'){
+            //     time=value*60
+            // }
             state.formData = {
                 ...state.formData
                 , [name]: value
@@ -61,6 +65,7 @@ export const quesPaperSlice = createSlice({
                     question: '',
                     options: ['', '', '', ''],
                     correctAnswer: '',
+                    hints: '',
                 }
                 state.questions = [...state.questions, newQues]
             }

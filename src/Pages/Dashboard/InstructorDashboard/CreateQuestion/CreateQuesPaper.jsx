@@ -33,7 +33,7 @@ const CreateQuesPaper = () => {
     })
       .then(res => res.json())
       .then(data => {
-        console.log(data)
+        //console.log(data)
 
         if (data.error == true) {
           logOut()
@@ -46,7 +46,7 @@ const CreateQuesPaper = () => {
   /////redux////
 
   ////////
-  console.log(codeRepeat, '----------------------43')
+  //console.log(codeRepeat, '----------------------43')
   const [iscodeRepeat, setIscodeRepeat] = useState(null)
   useEffect(() => {
     fetch(
@@ -71,7 +71,7 @@ const CreateQuesPaper = () => {
     const selectedSubjectData = allSubject.find(
       subject => subject.subject_name === selectedValue
     )
-    console.log(selectedSubjectData?.subject_code)
+    //console.log(selectedSubjectData?.subject_code)
     const code = selectedSubjectData?.subject_code
     dispatch(setSubjectCode(code))
     dispatch(subjectInfo(event))
@@ -88,28 +88,28 @@ const CreateQuesPaper = () => {
     dispatch(quesPaper({ index, field, value })) //redux
   }
 
-  const [errorQues, setErrorQues] = useState(false)
-  const [errorOption, setErrorOption] = useState(false)
-  const [errorCorrect, setErrorCorrect] = useState(false)
+  // const [errorQues, setErrorQues] = useState(false)
+  // const [errorOption, setErrorOption] = useState(false)
+  // const [errorCorrect, setErrorCorrect] = useState(false)
 
   //submit
   const handleSubmit = event => {
     event.preventDefault()
-    setErrorQues(false)
-    setErrorOption(false)
-    setErrorCorrect(false)
+    // setErrorQues(false)
+    // setErrorOption(false)
+    // setErrorCorrect(false)
     const paperData = {
       ...formData,
       type,
       questions
     }
 
-    console.log('Question Paper Data:', paperData)
-
+    //console.log('Question Paper Data:', paperData)
+    console.log( paperData.subjectName, paperData.exam_code, paperData.exam_code,paperData.date)
     if (
       paperData.subjectName == null ||
       paperData.exam_code == null ||
-      paperData.batch == null ||
+      paperData.exam_code == null ||
       paperData.date == null ||
       (type == 'multimedia_mcq' && paperData.videoURL == null)
     ) {
@@ -133,7 +133,7 @@ const CreateQuesPaper = () => {
     })
       .then(res => res.json())
       .then(data => {
-        console.log(data)
+        //console.log(data)
         if (data.insertedId) {
           showToast('btn', 'Question Created Successfully', { type: 'success' })
         } else {
@@ -142,7 +142,7 @@ const CreateQuesPaper = () => {
       })
   }
 
-  console.log(type)
+  //console.log(type)
   return (
     <div className='mx-2 my-5 md:container md:mx-auto'>
       <Helmet>
@@ -268,7 +268,20 @@ const CreateQuesPaper = () => {
               className='w-full max-w-xs input input-bordered'
             />
           </div>
-
+          <div className='w-full max-w-xs form-control'>
+            <label className='label'>
+              <span className='label-text'>Total Time</span>
+            </label>
+            <input
+              required
+              name='time'
+              value={formData.time}
+              onChange={handleInputChange}
+              type='number'
+              placeholder='In minutes'
+              className='w-full max-w-xs input input-bordered'
+            />
+          </div>
           {type == 'multimedia_mcq' && (
             <div className='w-full max-w-xs form-control'>
               <label className='label'>
@@ -345,18 +358,47 @@ const CreateQuesPaper = () => {
                     className='w-1/2 mt-2 input input-sm input-bordered'
                     placeholder='Correct Answer'
                   />
+                  <label className='label'>
+                    <span className='text-xl label-text'>Hints:</span>
+                  </label>
+                  <input
+                    type='text'
+                    value={question.hints}
+                    onChange={e =>
+                      handleQuestionChange(index, 'hints', e.target.value)
+                    }
+                    className='w-full mt-2 input input-bordered'
+                    placeholder='Hints'
+                  />
                 </>
               )}
               {type === 'FillInTheBlank' && (
-                <input
-                  type='text'
-                  value={question.correctAnswer}
-                  onChange={e =>
-                    handleQuestionChange(index, 'correctAnswer', e.target.value)
-                  }
-                  className='w-full mt-2 input input-bordered'
-                  placeholder='Correct Answer'
-                />
+                <>
+                  <label className='label'>
+                    <span className='text-xl label-text'>Correct Answer:</span>
+                  </label>
+                  <input
+                    type='text'
+                    value={question.correctAnswer}
+                    onChange={e =>
+                      handleQuestionChange(index, 'correctAnswer', e.target.value)
+                    }
+                    className='w-full mt-2 input input-bordered'
+                    placeholder='Correct Answer'
+                  />
+                  <label className='label'>
+                    <span className='text-xl label-text'>Hints:</span>
+                  </label>
+                  <input
+                    type='text'
+                    value={question.hints}
+                    onChange={e =>
+                      handleQuestionChange(index, 'hints', e.target.value)
+                    }
+                    className='w-full mt-2 input input-bordered'
+                    placeholder='Hints'
+                  />
+                </>
               )}
             </div>
           ))}

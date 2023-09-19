@@ -29,7 +29,7 @@ const initialState = {
             "text": "What is the largest mammal in the world?",
             "choices": [
                 { "id": "elephant", "text": "African Elephant" },
-                { "id": "whale", "text": "Blue Whale" },
+                { "id": "bluewhale", "text": "Blue Whale" },
                 { "id": "giraffe", "text": "Giraffe" },
                 { "id": "lion", "text": "African Lion" }
             ],

@@ -199,8 +199,7 @@ const UserHome = () => {
                   className="modal-box bg-gradient-to-r from-[#3c1053] to-[#ad5389] ..."
                 >
                   <p className="py-4 text-white">
-                    মডিউল রিলিজের ২৪ ঘণ্টার মধ্যে কমপ্লিট করা হলে, তা কাউন্ট করা
-                    হচ্ছে।
+                    
                   </p>
                 </form>
                 <form method="dialog" className="modal-backdrop">
@@ -252,12 +251,8 @@ const UserHome = () => {
               </dialog>
             </div>
           </div>
-          <div className="bg-white/20 flex items-center gap-2 rounded-md p-2 mt-2 text-sm w-2/6 ps-6 mb-10">
-            <FaStopwatch className="text-xl text-white shadow-2xl"></FaStopwatch>
-            <h1 className="text-white">Total: 366 Hours and 16 Minutes.</h1>
-          </div>
-
-          <div>
+          
+          <div className="mt-5">
           <ResponsiveContainer width="100%" height={350}>
             <BarChart
               width={900}

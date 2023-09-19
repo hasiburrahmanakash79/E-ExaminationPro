@@ -22,8 +22,8 @@ export default function Controls (props) {
     setIsScreenSharing
   } = props
   const [trackState, setTrackState] = useState({ video: true, audio: true })
-  console.log(isScreenSharing)
-  console.log(screenTrack)
+  //console.log(isScreenSharing)
+  //console.log(screenTrack)
 
   const mute = async type => {
     if (type === 'audio') {
@@ -44,10 +44,10 @@ export default function Controls (props) {
   //       // Toggle screen sharing by unpublishing or publishing the screenTrack
   //       if (client.isScreenSharing()) {
   //         await client.unpublish([screenTrack])
-  //         console.log('Screen sharing stopped')
+  //         //console.log('Screen sharing stopped')
   //       } else {
   //         await client.publish([screenTrack])
-  //         console.log('Screen sharing started')
+  //         //console.log('Screen sharing started')
   //       }
   //     } catch (error) {
   //       console.error('Error toggling screen sharing:', error)

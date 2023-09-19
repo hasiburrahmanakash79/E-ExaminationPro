@@ -9,7 +9,7 @@ const AllUserPayment = () => {
         setPaymentInfo(data)
       })
   }, [])
-  console.log(paymentInfo)
+  //console.log(paymentInfo)
   return (
     <div>
       <h1 className='my-5 text-2xl text-center md:text-4xl'>

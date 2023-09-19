@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import { Link, Outlet } from "react-router-dom";
+import { useEffect, useState } from 'react'
+import { Link, Outlet } from 'react-router-dom'
 import {
   FaUser,
   FaCalendarAlt,
@@ -8,64 +8,64 @@ import {
   FaCog,
   FaWallet,
   FaComment
-} from "react-icons/fa";
-import { BiBookAdd } from "react-icons/bi";
-import { GiWallet } from "react-icons/gi";
-import { AiFillNotification } from "react-icons/ai";
-import { RiLiveFill } from "react-icons/ri";
-import { FaClipboardQuestion } from "react-icons/fa6";
-import { MdHomeWork } from "react-icons/md";
-import { IconContext } from "react-icons";
-import logo from "../assets/logo.png";
-import arrow from "../assets/control.png";
-import { useContext } from "react";
-import { AuthContext } from "../Provider/AuthProvider";
-import useAdmin from "../Hooks/useAdmin/useAdmin";
-import useInstructor from "../Hooks/useInstructor/useInstructor";
-import Swal from "sweetalert2";
+} from 'react-icons/fa'
+import { BiBookAdd } from 'react-icons/bi'
+import { GiWallet } from 'react-icons/gi'
+import { AiFillNotification } from 'react-icons/ai'
+import { RiLiveFill } from 'react-icons/ri'
+import { FaClipboardQuestion } from 'react-icons/fa6'
+import { MdHomeWork } from 'react-icons/md'
+import { IconContext } from 'react-icons'
+import logo from '../assets/logo.png'
+import arrow from '../assets/control.png'
+import { useContext } from 'react'
+import { AuthContext } from '../Provider/AuthProvider'
+import useAdmin from '../Hooks/useAdmin/useAdmin'
+import useInstructor from '../Hooks/useInstructor/useInstructor'
+import Swal from 'sweetalert2'
 
 const Dashboard = () => {
-  const { user, logOut } = useContext(AuthContext);
-  const [open, setOpen] = useState(true);
+  const { user, logOut } = useContext(AuthContext)
+  const [open, setOpen] = useState(true)
 
-  const [isAdmin, isAdminLoading] = useAdmin();
-  const [isInstructor, isInstructorLoading] = useInstructor();
-  console.log(isAdmin);
+  const [isAdmin, isAdminLoading] = useAdmin()
+  const [isInstructor, isInstructorLoading] = useInstructor()
+  //console.log(isAdmin);
 
   const handleLogout = () => {
     logOut()
       .then(() => {
         Swal.fire({
-          icon: "success",
-          title: "Log Out Successful",
+          icon: 'success',
+          title: 'Log Out Successful',
           showConfirmButton: false,
-          timer: 1500,
-        });
+          timer: 1500
+        })
       })
-      .catch((error) => console.log(error));
-  };
+      .catch(error => console.log(error))
+  }
 
   // Add an useEffect to detect screen width on component mount and resize
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth < 768) {
-        setOpen(false);
+        setOpen(false)
       } else {
-        setOpen(true);
+        setOpen(true)
       }
-    };
+    }
 
     // Initial call
-    handleResize();
+    handleResize()
 
     // Attach event listener for window resize
-    window.addEventListener("resize", handleResize);
+    window.addEventListener('resize', handleResize)
 
     // Cleanup
     return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
+      window.removeEventListener('resize', handleResize)
+    }
+  }, [])
 
   const iconMappings = {
     RoleHome: MdHomeWork,
@@ -80,96 +80,126 @@ const Dashboard = () => {
     Blog: FaComment,
     Notice: AiFillNotification,
     BookAdd: BiBookAdd
-  };
+  }
 
   const Menus = [
     {
-      title: "Admin Home",
-      path: "/dashboard/adminHome",
+      title: 'Admin Home',
+      path: '/dashboard/adminHome',
       icon: iconMappings.RoleHome,
-      role: "admin",
-      gap: true,
+      role: 'admin',
+      gap: true
     },
     {
-      title: "Users",
-      path: "/dashboard/manageUsers",
+      title: 'Users',
+      path: '/dashboard/manageUsers',
       icon: iconMappings.Users,
-      role: "admin",
+      role: 'admin'
     },
     {
-      title: "All Payments",
-      path: "/dashboard/allPayments",
+      title: 'All Payments',
+      path: '/dashboard/allPayments',
       icon: iconMappings.Payment,
-      role: "admin",
+      role: 'admin'
     },
     {
-      title: "Create Notice",
-      path: "/dashboard/createNotice",
+      title: 'Create Notice',
+      path: '/dashboard/createNotice',
       icon: iconMappings.Notice,
-      role: "admin",
+      role: 'admin'
     },
     {
-      title: "Create Subject",
-      path: "/dashboard/createSubject",
+      title: 'Create Subject',
+      path: '/dashboard/createSubject',
       icon: iconMappings.BookAdd,
-      role: "admin",
+      role: 'admin'
     },
     {
-      title: "Instructor Home ",
+      title: 'Instructor Home ',
+      path: '/dashboard/instructorHome',
       icon: iconMappings.RoleHome,
-      role: "instructor",
-      gap: true,
+      role: 'instructor',
+      gap: true
     },
     {
-      title: "Set Question",
-      path: "/dashboard/createQues",
+      title: 'Set Question',
+      path: '/dashboard/createQues',
       icon: iconMappings.Question,
-      role: "instructor",
+      role: 'instructor'
     },
-    { title: "Create Live Exam", path: "/dashboard/createLiveExam", icon: iconMappings.Live, role: "instructor" },
-    { title: "Add Blog", path: "/dashboard/addBlog", icon: iconMappings.Blog, role: "instructor" },
     {
-      title: "User Home",
-      path: "/dashboard/userHome",
+      title: 'Create Live Exam',
+      path: '/dashboard/createLiveExam',
+      icon: iconMappings.Live,
+      role: 'instructor'
+    },
+    {
+      title: 'Add Blog',
+      path: '/dashboard/addBlog',
+      icon: iconMappings.Blog,
+      role: 'instructor'
+    },
+    {
+      title: 'User Home',
+      path: '/dashboard/userHome',
       icon: iconMappings.RoleHome,
-      role: "user",
-      gap: true,
+      role: 'user',
+      gap: true
     },
-    { title: "Payment History", path: "/dashboard/paymentHistory", icon: iconMappings.Payment, role: "user" },
-    { title: "Notice Board", path: "/dashboard/noticeBoard", icon: iconMappings.Notice, role: "user" },
-    { title: "Upcoming Live Exam", path: "/dashboard/upcomingLiveExam", icon: iconMappings.Live, role: "user" },
-    { title: "Applied Live Exam", path: "/dashboard/appliedLiveExam", icon: iconMappings.Live, role: "user" },
-    { title: "Student Analytics", path: "/dashboard/studentAnalytics", icon: iconMappings.Analytics, role: "user" },
+    {
+      title: 'Payment History',
+      path: '/dashboard/paymentHistory',
+      icon: iconMappings.Payment,
+      role: 'user'
+    },
+    {
+      title: 'Notice Board',
+      path: '/dashboard/noticeBoard',
+      icon: iconMappings.Notice,
+      role: 'user'
+    },
+    {
+      title: 'Applied Live Exam',
+      path: '/dashboard/appliedLiveExam',
+      icon: iconMappings.Live,
+      role: 'user'
+    },
+    {
+      title: 'Student Analytics',
+      path: '/dashboard/allgivenExam',
+      icon: iconMappings.Analytics,
+      role: 'user'
+    },
 
     {
-      title: "Home ",
-      path: "/",
+      title: 'Home ',
+      path: '/',
       icon: iconMappings.Home,
-      role: "general",
-      gap: true,
+      role: 'general',
+      gap: true
     }
-  ];
+  ]
 
-  const adminMenus = Menus.filter((menu) => menu.role === "admin");
-  const instructorMenus = Menus.filter((menu) => menu.role === "instructor");
-  const userMenus = Menus.filter((menu) => menu.role === "user");
-  const generalMenus = Menus.filter((menu) => menu.role === "general");
+  const adminMenus = Menus.filter(menu => menu.role === 'admin')
+  const instructorMenus = Menus.filter(menu => menu.role === 'instructor')
+  const userMenus = Menus.filter(menu => menu.role === 'user')
+  const generalMenus = Menus.filter(menu => menu.role === 'general')
 
   return (
-    <div className="flex ">
+    <div className='flex '>
       {/* Dashboard Sidebar content */}
       <div
         className={` ${
-          open ? "w-56 p-4" : "w-14 text-center "
+          open ? 'w-56 p-4' : 'w-14 text-center '
         } bg-white/10 h-screen  fixed left-0 top-0 bottom-0 z-50 pt-8  duration-500 transition-all`}
       >
         <img
           src={arrow}
           className={`absolute cursor-pointer -right-3 top-9 w-7 border-dark-purple
-			 border-2 rounded-full  ${!open && "rotate-180"}`}
+			 border-2 rounded-full  ${!open && 'rotate-180'}`}
           onClick={() => setOpen(!open)}
         />
-        <div className="flex items-center gap-x-4">
+        <div className='flex items-center gap-x-4'>
           <img
             src={logo}
             className={`cursor-pointer w-full md:w-9/12 p-1 duration-500 ${open}`}
@@ -177,7 +207,7 @@ const Dashboard = () => {
         </div>
         <ul
           className={` ${
-            open ? "" : " flex flex-col items-center justify-center"
+            open ? '' : ' flex flex-col items-center justify-center'
           }`}
         >
           {isAdmin
@@ -185,16 +215,16 @@ const Dashboard = () => {
                 <li
                   key={index}
                   className={`flex rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4 ${
-                    Menu.gap ? "mt-9" : "mt-2"
-                  } ${index === 0 && "bg-light-white"}`}
+                    Menu.gap ? 'mt-9' : 'mt-2'
+                  } ${index === 0 && 'bg-light-white'}`}
                 >
-                  <Link to={Menu.path} className="flex items-center gap-x-4">
-                    <IconContext.Provider value={{ className: "react-icon" }}>
+                  <Link to={Menu.path} className='flex items-center gap-x-4'>
+                    <IconContext.Provider value={{ className: 'react-icon' }}>
                       <Menu.icon />
                     </IconContext.Provider>
                     <span
                       className={`${
-                        !open && "hidden"
+                        !open && 'hidden'
                       } origin-left duration-200`}
                     >
                       {Menu.title}
@@ -208,16 +238,16 @@ const Dashboard = () => {
                 <li
                   key={index}
                   className={`flex rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4 ${
-                    Menu.gap ? "mt-9" : "mt-2"
-                  } ${index === 0 && "bg-light-white"}`}
+                    Menu.gap ? 'mt-9' : 'mt-2'
+                  } ${index === 0 && 'bg-light-white'}`}
                 >
-                  <Link to={Menu.path} className="flex items-center gap-x-4">
-                    <IconContext.Provider value={{ className: "react-icon" }}>
+                  <Link to={Menu.path} className='flex items-center gap-x-4'>
+                    <IconContext.Provider value={{ className: 'react-icon' }}>
                       <Menu.icon />
                     </IconContext.Provider>
                     <span
                       className={`${
-                        !open && "hidden"
+                        !open && 'hidden'
                       } origin-left duration-200`}
                     >
                       {Menu.title}
@@ -230,16 +260,16 @@ const Dashboard = () => {
                 <li
                   key={index}
                   className={`flex rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4 ${
-                    Menu.gap ? "mt-9" : "mt-2"
-                  } ${index === 0 && "bg-light-white"}`}
+                    Menu.gap ? 'mt-9' : 'mt-2'
+                  } ${index === 0 && 'bg-light-white'}`}
                 >
-                  <Link to={Menu.path} className="flex items-center gap-x-4">
-                    <IconContext.Provider value={{ className: "react-icon" }}>
+                  <Link to={Menu.path} className='flex items-center gap-x-4'>
+                    <IconContext.Provider value={{ className: 'react-icon' }}>
                       <Menu.icon />
                     </IconContext.Provider>
                     <span
                       className={`${
-                        !open && "hidden"
+                        !open && 'hidden'
                       } origin-left duration-200`}
                     >
                       {Menu.title}
@@ -251,15 +281,15 @@ const Dashboard = () => {
             <li
               key={index}
               className={`flex rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4 ${
-                Menu.gap ? "mt-9" : "mt-2"
-              } ${index === 0 && "bg-light-white"}`}
+                Menu.gap ? 'mt-9' : 'mt-2'
+              } ${index === 0 && 'bg-light-white'}`}
             >
-              <Link to={Menu.path} className="flex items-center gap-x-4">
-                <IconContext.Provider value={{ className: "react-icon" }}>
+              <Link to={Menu.path} className='flex items-center gap-x-4'>
+                <IconContext.Provider value={{ className: 'react-icon' }}>
                   <Menu.icon />
                 </IconContext.Provider>
                 <span
-                  className={`${!open && "hidden"} origin-left duration-200`}
+                  className={`${!open && 'hidden'} origin-left duration-200`}
                 >
                   {Menu.title}
                 </span>
@@ -269,20 +299,20 @@ const Dashboard = () => {
         </ul>
 
         {/* User info */}
-        <div className="absolute flex items-center space-x-4 mt-28 bottom-3">
+        <div className='absolute flex items-center space-x-4 mt-28 bottom-3'>
           <img
             src={user?.photoURL}
-            alt=""
-            className="w-12 h-12 bg-gray-500 rounded-full "
+            alt=''
+            className='w-12 h-12 bg-gray-500 rounded-full '
           />
-          <div className={`${!open && "hidden"} origin-left duration-200`}>
-            <h2 className="text-sm font-semibold">{user?.displayName}</h2>
-            <span className="flex items-center space-x-1">
+          <div className={`${!open && 'hidden'} origin-left duration-200`}>
+            <h2 className='text-sm font-semibold'>{user?.displayName}</h2>
+            <span className='flex items-center space-x-1'>
               <a
                 onClick={handleLogout}
-                rel="noopener noreferrer"
-                href="#"
-                className="text-xs text-gray-600 hover:underline"
+                rel='noopener noreferrer'
+                href='#'
+                className='text-xs text-gray-600 hover:underline'
               >
                 Logout
               </a>
@@ -291,13 +321,21 @@ const Dashboard = () => {
         </div>
       </div>
       {/* Dashboard main content */}
-      <div className={` ${
-          open ?  "pl-60 pr-4": "pl-16 pr-2"
-        }  flex-1  overflow-y-auto  duration-500 transition-all h-[100vh] ${isAdmin?'bg-slate-800':isInstructor?'bg-teal-950':'bg-cyan-950'}`}>
+      <div
+        className={` ${
+          open ? 'pl-60 pr-4' : 'pl-16 pr-2'
+        }  flex-1  overflow-y-auto  duration-500 transition-all h-[100vh] ${
+          isAdmin
+            ? 'bg-slate-800'
+            : isInstructor
+            ? 'bg-teal-950'
+            : 'bg-violet-950'
+        }`}
+      >
         <Outlet></Outlet>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Dashboard;
+export default Dashboard
