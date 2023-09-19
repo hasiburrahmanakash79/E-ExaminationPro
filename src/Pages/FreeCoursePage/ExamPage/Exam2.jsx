@@ -331,3 +331,14 @@ const Exam2 = () => {
 }
 
 export default Exam2
+
+// </button>
+// </div>
+// <div className='flex justify-center'>
+//   {examType == 'multimedia_mcq' && (
+//     <button
+//       className='my-5 btn btn-primary'
+//       onClick={() => setStart(true)}
+//     >
+//       Start
+//     </button>
