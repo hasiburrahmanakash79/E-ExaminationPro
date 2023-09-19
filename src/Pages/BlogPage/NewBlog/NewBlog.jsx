@@ -1,25 +1,32 @@
 import { Suspense, lazy, useEffect, useState } from 'react'
 import Loading from '../../../Components/Loading/Loading'
+import { useQuery } from '@tanstack/react-query'
 const SingleBlogCard = lazy(() =>
   import('../../BlogPage/NewBlog/SingleBlogCard')
 )
 
 const NewBlog = () => {
-  const [newBlogs, setNewBlogs] = useState([])
+
+  const { data: blogs = [], refetch } = useQuery(['blogs'], async () => {
+    const res = await fetch('https://e-exam-pro-server.vercel.app/blogs')
+    return res.json()
+  })
+
+  // const [newBlogs, setNewBlogs] = useState([])
   const [currentPage, setCurrentPage] = useState(1)
   const blogsPerPage = 8
 
-  useEffect(() => {
-    fetch('https://e-exam-pro-server.vercel.app/blogs')
-      .then(res => res.json())
-      .then(data => setNewBlogs(data))
-  }, [])
+  // useEffect(() => {
+  //   fetch('https://e-exam-pro-server.vercel.app/blogs')
+  //     .then(res => res.json())
+  //     .then(data => setNewBlogs(data))
+  // }, [])
 
   const indexOfLastBlog = currentPage * blogsPerPage
   const indexOfFirstBlog = indexOfLastBlog - blogsPerPage
-  const currentBlogs = newBlogs.slice(indexOfFirstBlog, indexOfLastBlog)
+  const currentBlogs = blogs.slice(indexOfFirstBlog, indexOfLastBlog)
 
-  const totalPages = Math.ceil(newBlogs.length / blogsPerPage)
+  const totalPages = Math.ceil(blogs.length / blogsPerPage)
 
   const handlePageChange = pageNumber => {
     setCurrentPage(pageNumber)
