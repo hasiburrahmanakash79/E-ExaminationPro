@@ -200,10 +200,10 @@ const Navbar = () => {
                   >
                     <li className=''>
                       <Link
-                        to='/updateProfile'
+                        to='/leaderboard'
                         className='justify-between w-full'
                       >
-                        {user?.displayName}
+                      Leaderboard
                       </Link>
                     </li>
                     {/* Navigate to different dashboard route based on user role */}

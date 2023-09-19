@@ -53,6 +53,7 @@ import SSLCommerzFail from '../Pages/Dashboard/UserDashboard/Payment/SSLPage/SSL
 import PaymentOption from '../Pages/Dashboard/UserDashboard/Payment/PaymentOption'
 import AllExam from '../Pages/FreeCoursePage/ExamPage/allExam'
 import ExamResult from '../Pages/ExamResult/ExamResult'
+import LeaderboardPage from '../Pages/Dashboard/LeaderboardPage/LeaderboardPage'
 const router = createBrowserRouter([
   {
     path: '/',
@@ -85,7 +86,10 @@ const router = createBrowserRouter([
         path: '/notice',
         element: <Notice />
       },
-
+      {
+        path: '/leaderboard',
+        element: <LeaderboardPage />
+      },
       {
         path: '/about',
         element: <AboutUs></AboutUs>
@@ -134,6 +138,7 @@ const router = createBrowserRouter([
         path: '/paymentOrder/fail/:tranId',
         element: <SSLCommerzFail />
       },
+      
       {
         path: '/allSubjects',
 
