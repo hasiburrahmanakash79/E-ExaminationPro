@@ -33,7 +33,7 @@ export default Likes;
 //     const [liked, setLiked] = useState(false);
 
 //     useEffect(() => {
-//         fetch(`http://localhost:4000/forumPost/${postId}`)
+//         fetch(`https://e-exam-pro-server.vercel.app/forumPost/${postId}`)
 //             .then((response) => response.json())
 //             .then((data) => setLikeCount(data.likeCount))
 //             .catch((error) => console.error('Error fetching like count:', error));
@@ -43,7 +43,7 @@ export default Likes;
 //     const handleLikeClick = () => {
 //         const action = liked ? 'unlike' : 'like';
 
-//         fetch(`http://localhost:4000/forumPost/${postId}/${action}`, {
+//         fetch(`https://e-exam-pro-server.vercel.app/forumPost/${postId}/${action}`, {
 //             method: 'POST',
 //             headers: {
 //                 'Content-Type': 'application/json',
