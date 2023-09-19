@@ -32,12 +32,7 @@ const Testimonial = () => {
   }, []);
   return (
     <div className="py-16 md:mt-24">
-      <div
-        data-aos="zoom-in"
-        data-aos-easing="ease-out-cubic"
-        data-aos-duration="2000"
-        className="primary-bg rounded-xl"
-      >
+      <div className="primary-bg rounded-xl">
         <h1 className="py-8 md:text-4xl text-2xl font-bold text-center ">
           What Our Users Say
         </h1>
@@ -58,7 +53,9 @@ const Testimonial = () => {
           className="mySwiper"
         >
           {testimonials.map((testimonial) => (
-            <SwiperSlide key={testimonial._id}>
+            <SwiperSlide
+              key={testimonial._id}
+            >
               <div className="relative w-full md:px-8 md:pb-12 md:pt-8 pb-5 ">
                 <img
                   src={quote}

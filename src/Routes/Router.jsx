@@ -56,6 +56,8 @@ import ExamResult from "../Pages/ExamResult/ExamResult";
 import AdminRoute from "./AdminRoute";
 import InstructorRoute from "./InstructorRoute";
 import WelCome from '../Pages/WelCome/WelCome'
+import LeaderboardPage from '../Pages/Dashboard/LeaderboardPage/LeaderboardPage'
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -88,7 +90,10 @@ const router = createBrowserRouter([
         path: "/notice",
         element: <Notice />,
       },
-
+      {
+        path: '/leaderboard',
+        element: <LeaderboardPage />
+      },
       {
         path: "/about",
         element: <AboutUs />,
@@ -139,6 +144,7 @@ const router = createBrowserRouter([
         path: "/paymentOrder/fail/:tranId",
         element: <SSLCommerzFail />,
       },
+      
       {
         path: "/allSubjects",
 

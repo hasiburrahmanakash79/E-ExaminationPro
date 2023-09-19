@@ -45,7 +45,7 @@ const Exam2 = () => {
   ////console.log(ques)
   const questions = ques?.questions
   const examType = ques?.type
-
+  console.log(user)
   const time=ques?.time*60
 
   const [timerProgress, setTimerProgress] = useState(100) //progress bar state
@@ -69,6 +69,7 @@ const Exam2 = () => {
     batch: ques.batch,
     ins_email: ques.email,
     stu_email: user?.email,
+    stu_image: user?.photoURL,
     stu_name: user?.displayName,
     date: ques.date,
     exam_code: ques.exam_code,
@@ -331,3 +332,4 @@ const Exam2 = () => {
 }
 
 export default Exam2
+

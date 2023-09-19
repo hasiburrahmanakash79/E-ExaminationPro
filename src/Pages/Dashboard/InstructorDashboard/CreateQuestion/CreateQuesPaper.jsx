@@ -15,6 +15,8 @@ import { Helmet } from 'react-helmet-async'
 import { LocalToastTarget, useLocalToast } from 'react-local-toast'
 
 const CreateQuesPaper = () => {
+
+
   const { showToast, removeToast } = useLocalToast()
   const { user } = useContext(AuthContext)
   const dispatch = useDispatch()
@@ -241,6 +243,7 @@ const CreateQuesPaper = () => {
               className='w-full max-w-xs input input-bordered'
             />
           </div>
+
           <div className='w-full max-w-xs form-control'>
             <label className='label'>
               <span className='label-text'>Date</span>
@@ -255,6 +258,22 @@ const CreateQuesPaper = () => {
               className='w-full max-w-xs input input-bordered'
             />
           </div>
+
+          <div className='w-full max-w-xs form-control'>
+            <label className='label'>
+              <span className='label-text'>Exam Time</span>
+            </label>
+            <input
+              required
+              name='examTime'
+              value={formData.examTime}
+              onChange={handleInputChange}
+              type='time'
+              placeholder='Type here'
+              className='w-full max-w-xs input input-bordered'
+            />
+          </div>
+
           <div className='w-full max-w-xs form-control'>
             <label className='label'>
               <span className='label-text'>Email:</span>
@@ -306,7 +325,7 @@ const CreateQuesPaper = () => {
           {questions?.map((question, index) => (
             <div key={index} className='mb-3'>
               <label className='label'>
-                <span className='text-xl label-text'>Question {index + 1}</span>
+                <span className='text-xl label-text text-green-500'>Question <span className='text-yellow-500'>{index + 1}</span></span>
               </label>
               <input
                 type='text'
@@ -367,7 +386,7 @@ const CreateQuesPaper = () => {
                     onChange={e =>
                       handleQuestionChange(index, 'hints', e.target.value)
                     }
-                    className='w-full mt-2 input input-bordered'
+                    className='w-1/2 mt-2 input input-sm input-bordered'
                     placeholder='Hints'
                   />
                 </>
@@ -395,7 +414,7 @@ const CreateQuesPaper = () => {
                     onChange={e =>
                       handleQuestionChange(index, 'hints', e.target.value)
                     }
-                    className='w-full mt-2 input input-bordered'
+                    className='w-1/2 mt-2 input input-sm input-bordered'
                     placeholder='Hints'
                   />
                 </>
