@@ -4,8 +4,7 @@ import useWrittenQuestions from '../../../Hooks/useQuestions/useWrittenQuestions
 import DisclosureForWrittenExams from '../../../components/examComponents/QuesAccordion/DisclosureForWrittenExams'
 import Loading from '../../../Components/Loading/Loading'
 const WrittenExams = () => {
-  const [writtenQuestions, loading, refetch] =
-    useWrittenQuestions('Mathematics')
+  const [writtenQuestions, loading] = useWrittenQuestions('Mathematics')
 
   if (loading) {
     return <Loading />

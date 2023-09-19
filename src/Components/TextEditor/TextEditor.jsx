@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import './TextEditor.css'
 import { useForm } from 'react-hook-form'
@@ -7,7 +7,6 @@ import {
   nextWrittenQuestion
 } from '../../redux/features/WrittenQuestion/writtenQuestionSlice'
 import useAuth from '../../Hooks/useAuth/useAuth'
-import useUser from '../../Hooks/useUser/useUser'
 import axios from 'axios'
 const TextEditor = ({ questions }) => {
   // user info and post related
@@ -90,7 +89,6 @@ const TextEditor = ({ questions }) => {
           ) : (
             <button
               type='submit'
-              // onClick={handleNextQuestion}
               className='px-6 py-2 text-white rounded-md primary-btn'
             >
               Next
