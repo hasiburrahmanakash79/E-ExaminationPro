@@ -15,50 +15,7 @@ import {
 } from "recharts";
 import Piechart from "./Piechart";
 
-const data = [
-  {
-    name: "Week 1",
-    MCQ: 400,
-    "Short-Q": 240,
-    "Long-Q": 240,
-  },
-  {
-    name: "Week 2",
-    "Short-Q": 300,
-    MCQ: 139,
-    "Long-Q": 221,
-  },
-  {
-    name: "Week 3",
-    "Short-Q": 200,
-    MCQ: 480,
-    "Long-Q": 229,
-  },
-  {
-    name: "Week 4",
-    "Short-Q": 278,
-    MCQ: 390,
-    "Long-Q": 200,
-  },
-  {
-    name: "Week 5",
-    "Short-Q": 189,
-    MCQ: 480,
-    "Long-Q": 218,
-  },
-  {
-    name: "Week 6",
-    "Short-Q": 239,
-    MCQ: 380,
-    "Long-Q": 250,
-  },
-  {
-    name: "Week 7",
-    "Short-Q": 349,
-    MCQ: 430,
-    "Long-Q": 210,
-  },
-];
+
 
 const AdminHome = () => {
   const [instructors, setInstructors] = useState([]);
@@ -87,6 +44,21 @@ const AdminHome = () => {
   }, [])
   const students = users.filter(student => student.role === "user");
   const instructorsD = users.filter(instructor => instructor.role === "instructor");
+  const MCQs = questions.filter(mcq => mcq.type === "mcq");
+  // TO-DO make question quantity dynamic
+  const ShortQ = questions.filter(short => short.type === "mcq");
+  const LongQ = questions.filter(long => long.type === "mcq");
+
+
+  const data = [
+    {
+      name: "Type of Questions",
+      MCQ: MCQs.length,
+      "Short-Q": 1,
+      "Long-Q": 2,
+    },
+    
+  ];
 
   return (
     <div className="px-4 pt-4">
