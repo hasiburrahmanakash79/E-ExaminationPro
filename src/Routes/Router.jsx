@@ -108,7 +108,9 @@ const router = createBrowserRouter([
       },
       {
         path: '/paymentOption/:id',
-        element: <PaymentOption />
+        element: <PrivateRouter>
+          <PaymentOption />
+        </PrivateRouter>
       },
       {
         path: '/stripePayment',

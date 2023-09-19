@@ -14,8 +14,9 @@ const Registration = () => {
   const { signUpUser, updateUserInfo, loading } = useContext(AuthContext)
 
   const navigate = useNavigate()
-  const location = useLocation()
-  const from = location.state?.from?.pathname || '/'
+  // const location = useLocation()
+  // const from = location.state?.from?.pathname || '/'
+
 
   const img_token = import.meta.env.VITE_Image_Key
   const img_hosting_url = `https://api.imgbb.com/1/upload?key=${img_token}`
@@ -34,7 +35,8 @@ const Registration = () => {
   const onSubmit = data => {
     signUpUser(data.email, data.password).then(result => {
       const loggedUser = result.user
-      navigate(from, { replace: true })
+      // navigate(from, { replace: true })
+      navigate("/welcome")
       const formData = new FormData()
       formData.append('image', data.image[0])
       fetch(img_hosting_url, {
@@ -64,13 +66,14 @@ const Registration = () => {
                 .then(res => res.json())
                 .then(data => {
                   if (data.insertedId) {
-                    navigate(from, { replace: true })
-                    Swal.fire({
-                      showConfirmButton: false,
-                      timer: 1500,
-                      title: 'Registration Successful',
-                      icon: 'success'
-                    })
+                    // navigate(from, { replace: true })
+                    navigate("/welcome")
+                    // Swal.fire({
+                    //   showConfirmButton: false,
+                    //   timer: 1500,
+                    //   title: 'Registration Successful',
+                    //   icon: 'success'
+                    // })
                   }
                 })
             })

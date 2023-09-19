@@ -1,9 +1,17 @@
 import { useParams } from 'react-router-dom'
 import Lottie from "lottie-react";
 import successLottie from "../../../../../../assets/animationFile/success.json"
+import { useSSLCommerz } from '../../../../../../Hooks/useSSLCommerz/useSSLCommerz';
+import useAuth from '../../../../../../Hooks/useAuth/useAuth';
 const SSLCommerzSuccess = () => {
   const { tranId } = useParams()
-  //console.log(tranId);
+  const { user } = useAuth();
+  // console.log("user id > ", user);
+  const [isSuccess, refetch] = useSSLCommerz();
+  console.log("serial number 11 >>>", isSuccess);
+  // const paymentData = isSuccess.filter(success => success?.transitionId == tranId)
+  // console.log(paymentData);
+
   return (
     <div className="md:w-1/2 mx-auto text-center py-12">
       <h2 className='md:text-base md:block hidden'>

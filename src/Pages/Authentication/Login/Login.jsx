@@ -45,12 +45,12 @@ const Login = () => {
       .then(result => {
         const loggedUser = result.user
         navigate('/welCome')
-        Swal.fire({
-          showConfirmButton: false,
-          timer: 1500,
-          title: 'Login Successful',
-          icon: 'success'
-        })
+        // Swal.fire({
+        //   showConfirmButton: false,
+        //   timer: 1500,
+        //   title: 'Login Successful',
+        //   icon: 'success'
+        // })
       })
       .catch(error => {
         console.log(error)
