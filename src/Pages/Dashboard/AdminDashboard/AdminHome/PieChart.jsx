@@ -21,13 +21,13 @@ const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, per
   );
 };
 
-const Piechart = () => {
+const Piechart = ({students , instructorsD}) => {
     return (
         <div>
           <ResponsiveContainer width="100%" height={350}>
             <PieChart width={400} height={400}>
           <Pie
-            data={data}
+            data={students.length}
             cx="50%"
             cy="50%"
             labelLine={false}

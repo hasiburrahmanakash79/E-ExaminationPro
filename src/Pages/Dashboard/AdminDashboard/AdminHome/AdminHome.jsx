@@ -1,7 +1,7 @@
 import { PiStudentBold } from "react-icons/pi";
 import { FaChalkboardTeacher, FaQuestion } from "react-icons/fa";
 import { RiQuestionAnswerLine } from "react-icons/ri";
-import React, { PureComponent } from "react";
+import React, { PureComponent, useEffect, useState } from "react";
 import {
   BarChart,
   Bar,
@@ -61,6 +61,33 @@ const data = [
 ];
 
 const AdminHome = () => {
+  const [instructors, setInstructors] = useState([]);
+  const [users, setUsers] = useState([]);
+  const [questions, setQuestions] = useState([]);
+  const [answers, setAnswers] = useState([]);
+  useEffect(() => {
+    fetch('https://e-exam-pro-server.vercel.app/instructors')
+      .then(res => res.json())
+      .then(data => setInstructors(data))
+  }, [])
+  useEffect(() => {
+    fetch('https://e-exam-pro-server.vercel.app/users')
+      .then(res => res.json())
+      .then(data => setUsers(data))
+  }, [])
+  useEffect(() => {
+    fetch('http://localhost:5000/allQuestions')
+      .then(res => res.json())
+      .then(data => setQuestions(data))
+  }, [])
+  useEffect(() => {
+    fetch('http://localhost:5000/allResults')
+      .then(res => res.json())
+      .then(data => setAnswers(data))
+  }, [])
+  const students = users.filter(student => student.role === "user");
+  const instructorsD = users.filter(instructor => instructor.role === "instructor");
+
   return (
     <div className="px-4 pt-4">
       <div className="flex items-center justify-between">
@@ -70,28 +97,29 @@ const AdminHome = () => {
         <div className="flex items-center justify-between h-20 px-4 mx-3 transition duration-300 ease-out transform border-l-4 border-green-300 rounded-lg cursor-pointer hover:shadow-lg hover:scale-105">
           <div>
             <h2>Students</h2>
-            <h1>200</h1>
+            <h1>{students.length}</h1>
           </div>
           <PiStudentBold fontSize={28} />
         </div>
         <div className="flex items-center justify-between h-20 px-4 mx-3 transition duration-300 ease-out transform border-l-4 rounded-lg cursor-pointer border-violet-300 hover:shadow-lg hover:scale-105">
           <div>
             <h2>Instructors</h2>
-            <h1>30</h1>
+            <h1>{instructors.length}</h1>
+            <h1>{instructorsD.length}</h1>
           </div>
           <FaChalkboardTeacher fontSize={28} />
         </div>
         <div className="flex items-center justify-between h-20 px-4 mx-3 transition duration-300 ease-out transform border-l-4 rounded-lg cursor-pointer border-cyan-300 hover:shadow-lg hover:scale-105">
           <div>
             <h2>Questions</h2>
-            <h1>700</h1>
+            <h1>{questions.length}</h1>
           </div>
           <FaQuestion fontSize={28} />
         </div>
         <div className="flex items-center justify-between h-20 px-4 mx-3 transition duration-300 ease-out transform border-l-4 rounded-lg cursor-pointer border-x-zinc-400 hover:shadow-lg hover:scale-105">
           <div>
             <h2>Answers</h2>
-            <h1>900</h1>
+            <h1>{answers.length}</h1>
           </div>
           <RiQuestionAnswerLine fontSize={28} />
         </div>
@@ -131,7 +159,7 @@ const AdminHome = () => {
             <h2 className="text-center">Users Overview</h2>
           </div>
           <div>
-            <Piechart></Piechart>
+            <Piechart students={students} instructorsD={instructorsD}></Piechart>
           </div>
         </div>
       </div>
