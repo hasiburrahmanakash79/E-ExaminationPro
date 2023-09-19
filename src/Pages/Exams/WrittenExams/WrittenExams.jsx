@@ -11,11 +11,13 @@ const WrittenExams = () => {
     return null
   }
   return (
-    <section className='container py-20 mx-auto '>
-      <h2 className='mb-5 text-5xl text-center '>Short Questions</h2>
+    <section className='container w-[calc(100%-8px)] mx-auto'>
+      <h2 className='mb-2 text-2xl text-center text-orange-600 '>
+        Written Exam
+      </h2>
 
-      <div className='grid-cols-5 gap-10 md:grid '>
-        <div className='col-span-3'>
+      <div className='grid-cols-5 gap-10 md:grid text-center md:text-left'>
+        <div className='col-span-3 gap:2'>
           {writtenQuestions?.map((sq, index) => (
             <div key={index}>
               {sq.questions.map(question => (

@@ -14,6 +14,9 @@ const Registration = () => {
   const location = useLocation()
   const from = location.state?.from?.pathname || '/'
 
+  const img_token = import.meta.env.VITE_Image_Key
+  const img_hosting_url = `https://api.imgbb.com/1/upload?key=${img_token}`
+
   const {
     register,
     handleSubmit,
@@ -29,37 +32,82 @@ const Registration = () => {
     signUpUser(data.email, data.password).then(result => {
       const loggedUser = result.user
       navigate(from, { replace: true })
-      console.log(loggedUser)
+      //console.log(loggedUser);
 
-      updateUserInfo(data.name, data.photo)
-        .then(() => {
-          const userInfo = {
-            displayName: data.name,
-            email: data.email,
-            photoURL: data.photo,
-            role: 'user'
-          }
-          fetch('http://localhost:5000/users', {
-            method: 'POST',
-            headers: {
-              'content-type': 'application/json'
-            },
-            body: JSON.stringify(userInfo)
-          })
-            .then(res => res.json())
-            .then(data => {
-              if (data.insertedId) {
-                navigate(from, { replace: true })
-                Swal.fire({
-                  showConfirmButton: false,
-                  timer: 1500,
-                  title: 'Registration Successful',
-                  icon: 'success'
-                })
+      const formData = new FormData()
+      formData.append('image', data.image[0])
+      //console.log(formData);
+
+      fetch(img_hosting_url, {
+        method: 'POST',
+        body: formData
+      })
+        .then(res => res.json())
+        .then(imgResponse => {
+          const imgURL = imgResponse.data.display_url
+
+          updateUserInfo(data.name, data.photo)
+            .then(() => {
+              const userInfo = {
+                displayName: data.name,
+                email: data.email,
+                // photoURL: data.photo,
+                photoURL: imgURL,
+                role: 'user'
               }
+              fetch('https://e-exam-pro-server.vercel.app/users', {
+                method: 'POST',
+                headers: {
+                  'content-type': 'application/json'
+                },
+                body: JSON.stringify(userInfo)
+              })
+                .then(res => res.json())
+                .then(data => {
+                  if (data.insertedId) {
+                    navigate(from, { replace: true })
+                    Swal.fire({
+                      showConfirmButton: false,
+                      timer: 1500,
+                      title: 'Registration Successful',
+                      icon: 'success'
+                    })
+                  }
+                })
             })
+            .catch(error => console.log(error.message))
         })
-        .catch(error => console.log(error.message))
+
+      // updateUserInfo(data.name, data.photo)
+      //   .then(() => {
+      //     const userInfo = {
+      //       displayName: data.name,
+      //       email: data.email,
+      //       photoURL: data.photo,
+      //       photoURL: imgURL,
+      //       role: 'user'
+      //     }
+      //     fetch('https://e-exam-pro-server.vercel.app/users', {
+      //       method: 'POST',
+      //       headers: {
+      //         'content-type': 'application/json'
+      //       },
+      //       body: JSON.stringify(userInfo)
+      //     })
+      //       .then(res => res.json())
+      //       .then(data => {
+      //         if (data.insertedId) {
+      //           navigate(from, { replace: true })
+      //           Swal.fire({
+      //             showConfirmButton: false,
+      //             timer: 1500,
+      //             title: 'Registration Successful',
+      //             icon: 'success'
+      //           })
+      //         }
+      //       })
+      //   })
+      //   .catch(error => //console.log(error.message))
     })
   }
   return (
@@ -162,7 +210,7 @@ const Registration = () => {
                     />
                     {errors.number && <span>This field is required</span>}
                   </div>
-                  <div className='form-control'>
+                  {/* <div className='form-control'>
                     <label className='label'>
                       <span className='label-text'>Photo URL</span>
                     </label>
@@ -172,6 +220,24 @@ const Registration = () => {
                       placeholder='Photo URL'
                       className='bg-transparent input input-bordered'
                     />
+                  </div> */}
+                  <div className='form-control'>
+                    <label className='label'>
+                      <span className='label-text'>Image</span>
+                    </label>
+                    <div className='items-center border-2 rounded-lg form-control border-violet-600 '>
+                      <input
+                        {...register('image', { required: true })}
+                        name='image'
+                        type='file'
+                        className='w-full col-span-5 bg-transparent  file-input'
+                      />
+                    </div>
+                    {errors.image && (
+                      <span className='mt-1 text-red-500'>
+                        Image field is required
+                      </span>
+                    )}
                   </div>
                 </div>
                 <div className='form-control'>

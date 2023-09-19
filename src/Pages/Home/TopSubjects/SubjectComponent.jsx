@@ -1,12 +1,13 @@
-import { Link } from "react-router-dom"
+import { Link } from 'react-router-dom'
 
 const SubjectComponent = ({ subject }) => {
-  console.log(subject?.subject)
+  //console.log(subject?.subject)
   return (
     <div
-      data-aos="zoom-in-up"
-      data-aos-duration="1200"
-      className='relative items-center justify-center overflow-hidden transition-shadow cursor-pointer group hover:shadow-xl hover:shadow-black/30 rounded-xl'>
+      data-aos='zoom-in-up'
+      data-aos-duration='1200'
+      className='relative items-center justify-center overflow-hidden transition-shadow cursor-pointer group hover:shadow-xl hover:shadow-black/30 rounded-xl'
+    >
       <div className=''>
         <img
           className='object-cover w-full h-full transition-transform duration-500 group-hover:rotate-3 group-hover:scale-125'
@@ -22,8 +23,8 @@ const SubjectComponent = ({ subject }) => {
         <p className='mb-3 italic text-white transition-opacity duration-300 opacity-0 group-hover:opacity-100'>
           Lorem ipsum dolor sit.
         </p>
-        <div className='flex gap-5 mt-5 text-xl primary-btn p-2 rounded-md md:mt-10'>
-          <Link to='/'>
+        <div className='flex gap-5 mt-5 text-xl rounded-md md:mt-10'>
+          <Link to='/allSubjects' className='primary-btn btn '>
             <button>View</button>
           </Link>
         </div>

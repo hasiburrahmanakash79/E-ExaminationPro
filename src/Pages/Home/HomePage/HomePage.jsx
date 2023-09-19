@@ -1,17 +1,18 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, lazy, Suspense } from 'react'
 import examPic from '../../../assets/exam.jpg'
 import Achievement from '../Achievement/Achievement'
 import Banner from '../Banner/Banner'
-import DemoTestSection from '../DemoTest/DemoTestSection'
-import Faq from '../Faq/Faq'
-import Pricing from '../Pricing/Pricing'
-import Testimonial from '../Testimonial/Testimonial'
-import TopSubjects from '../TopSubjects/TopSubjects'
-// import Pricing from '../Pricing/Pricing'
+const DemoTestSection = lazy(() => import('../DemoTest/DemoTestSection'))
+const Faq = lazy(() => import('../Faq/Faq'))
+const Testimonial = lazy(() => import('../Testimonial/Testimonial'))
+const TopSubjects = lazy(() => import('../TopSubjects/TopSubjects'))
 import { Helmet } from 'react-helmet-async'
-// import ShortcutKey from "../../../Components/ShortcutKey/ShortcutKey";
+const MainContact = lazy(() => import('../../Contact/MainContact'))
+const Pricing = lazy(() => import('../Pricing/Pricing'))
+import ChatButton from '../ChatBot/ChatButton'
+import Loading from '../../../Components/Loading/Loading'
 const HomePage = () => {
-  console.log(window.localStorage.getItem('showMainContent'))
+  //console.log(window.localStorage.getItem('showMainContent'))
   const [showMainContent, setShowMainContent] = useState(
     window.localStorage.getItem('showMainContent') === null ? false : true
   )
@@ -36,15 +37,15 @@ const HomePage = () => {
     }
     a()
   }
-  console.log(window.scrollY)
-  console.log(showMainContent)
-
   return (
-    <div className=''>
-      <Helmet><title>E-ExamPro </title></Helmet>
+    <div className='relative'>
+      <Helmet>
+        <title>E-ExamPro </title>
+      </Helmet>
       <div
-        className={`hero min-h-[100vh]  transition-all duration-700 ${showMainContent ? '  opacity-0 hidden' : 'opacity-100 '
-          }`}
+        className={`hero min-h-[100vh]  transition-all duration-700 ${
+          showMainContent ? '  opacity-0 hidden' : 'opacity-100 '
+        }`}
         style={{ backgroundImage: `url(${examPic})` }}
       >
         <div className='hero-overlay bg-opacity-60'></div>
@@ -53,30 +54,42 @@ const HomePage = () => {
             <h1 className='mb-5 text-6xl font-bold text-white'>
               Welcome to E-ExamPro
             </h1>
-            <p className='mb-5 text-white'>
-              Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
-              excepturi exercitationem quasi. In deleniti eaque aut repudiandae
-              et a id nisi.
-            </p>
+            <p className='mb-5 text-white'></p>
           </div>
         </div>
       </div>
 
       <div
-        className={`transition-opacity duration-700 ${showMainContent ? '  opacity-100' : 'opacity-0'
-          } primary-bg2 `}
+        className={`transition-opacity duration-700 ${
+          showMainContent ? '  opacity-100' : 'opacity-0'
+        } primary-bg2 `}
       >
         <Banner />
-        <div className='container mx-auto'>
-          <DemoTestSection />
-          <TopSubjects />
-          <Achievement />
-          <Testimonial />
-          <Pricing />
+        <div className='container px-5 mx-auto'>
+          <Suspense fallback={<Loading />}>
+            <DemoTestSection />
+          </Suspense>
+          <Suspense fallback={<Loading />}>
+            <TopSubjects />
+          </Suspense>
+          <Suspense fallback={<Loading />}>
+            <Achievement />
+          </Suspense>
+          <Suspense fallback={<Loading />}>
+            <MainContact />
+          </Suspense>
+          <Suspense fallback={<Loading />}>
+            <Pricing />
+          </Suspense>
+          <Suspense fallback={<Loading />}>
+            <Faq />
+          </Suspense>
+          <Suspense fallback={<Loading />}>
+            <Testimonial />
+          </Suspense>
         </div>
-        <Faq />
-
       </div>
+      <ChatButton />
     </div>
   )
 }

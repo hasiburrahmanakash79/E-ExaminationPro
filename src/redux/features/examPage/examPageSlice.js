@@ -32,16 +32,16 @@ export const examPageSlice = createSlice({
         setResult: (state, { payload }) => {
             ////////////////
 
-        
-            const result1 = state.result.find(obj => obj.question === state.question) // check if the answer allready stored or not
+
+            const result1 = state.result.find(obj => obj.question === state.question) // check if the answer already stored or not
             if (result1) {
                 if ((state.examType == 'mcq') || (state.examType == 'multimedia_mcq')) {
                     result1.userAns = state.optionMcq == null ? 'Skipped' : state.optionMcq
-                    state.optionMcq=null
+                    state.optionMcq = null
                 }
                 else {
                     result1.userAns = state.inputValue == null ? 'Skipped' : state.inputValue
-                    state.inputValue=null
+                    state.inputValue = null
                 }
             }
             else {
@@ -52,7 +52,7 @@ export const examPageSlice = createSlice({
                         userAns: state.optionMcq == null ? 'Skipped' : state.optionMcq
                     }
                     state.result.push(newObject)
-                    state.optionMcq=null
+                    state.optionMcq = null
                 }
                 else {
                     const newObject = {
@@ -61,26 +61,25 @@ export const examPageSlice = createSlice({
                         userAns: state.inputValue == null ? 'Skipped' : state.inputValue
                     }
                     state.result.push(newObject)
-                    state.inputValue=null
+                    state.inputValue = null
                 }
             }
-           // state.optionMcq = null
-           // state.inputValue=null
-           
-        }, 
+
+        },
         sendResult: (state, { payload }) => {
 
             const data = state.result.filter(ques => ques.userAns?.toLowerCase() == ques.correctAnswer.toLowerCase()).length * 5
 
-            const resutData=state.result
-           const results =  {...payload, resutData,mark:data}
-           fetch('http://localhost:5000/examdata', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(results)
-          })
+            const resultData = state.result
+            const results = { ...payload, resultData, mark: data }
+
+            fetch('https://e-exam-pro-server.vercel.app/examdata', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(results)
+            })
         },
         setView: (state, { payload }) => {
             state.view = payload
@@ -105,6 +104,6 @@ export const examPageSlice = createSlice({
 })
 
 // Action creators are generated for each case reducer function
-export const { nextQues, prevQues, resetQues, setAnswerIndex, setResult, setView, setInputValue, setMcq, resetResult, setQuestion, setCorrectAns, setExamType,sendResult } = examPageSlice.actions
+export const { nextQues, prevQues, resetQues, setAnswerIndex, setResult, setView, setInputValue, setMcq, resetResult, setQuestion, setCorrectAns, setExamType, sendResult } = examPageSlice.actions
 
 export default examPageSlice.reducer

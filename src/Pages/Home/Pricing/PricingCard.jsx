@@ -1,11 +1,21 @@
+import { useContext } from 'react'
 import { FaCircleCheck } from 'react-icons/fa6'
 import { MdCancel } from 'react-icons/md'
 import { Link } from 'react-router-dom'
+import { AuthContext } from '../../../Provider/AuthProvider'
 const PricingCard = ({ price }) => {
-  console.log(price)
+  const { user } = useContext(AuthContext)
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth' // This smoothens the scroll animation
+    })
+  }
+  // //console.log(price)
   return (
     <div
-      className={`hidden md:block px-4 w-72  pb-3 mx-auto space-y-4 text-center transition-all border rounded-lg shadow-2xl primary-bg border-slate-200 ${
+      className={`hidden md:block w-72  pb-3 mx-auto space-y-4 text-center transition-all border rounded-lg shadow-2xl primary-bg border-slate-200 ${
         price.name === 'Premium'
           ? 'scale-110 hover:scale-110 '
           : 'hover:scale-105'
@@ -33,16 +43,25 @@ const PricingCard = ({ price }) => {
       </div>
       {/* </ul> */}
       <div className='pt-4 '>
-        <Link
-          to={`/payment/${price?.id}`}
-          className={` btn ${
-            price.name === 'Premium' ? 'btn-info' : 'btn-primary'
-          }
+        {price.name === 'Free' ? (
+          <Link
+            onClick={user?.email && scrollToTop}
+            to={!user?.email && '/login'}
+            className='btn-primary btn hover:outline-blue-400 hover:outline translate'
+          >
+            {' '}
+            Start by Signing Up!
+          </Link>
+        ) : (
+          <Link
+            to={`/paymentOption/${price?._id}`}
+            className={` btn ${price.name === 'Premium' ? 'btn-info' : ''}
        hover:outline-blue-400 hover:outline translate `}
-        >
-          {' '}
-          Start by Signing Up!
-        </Link>
+          >
+            {' '}
+            Start by Signing Up!
+          </Link>
+        )}
       </div>
     </div>
   )

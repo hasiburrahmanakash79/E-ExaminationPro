@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react';
-import Hotkeys from 'react-hot-keys';
-import { AiOutlineLeft, AiOutlineRight } from 'react-icons/ai';
+import { useState, useEffect } from 'react'
+import Hotkeys from 'react-hot-keys'
+import { AiOutlineLeft, AiOutlineRight } from 'react-icons/ai'
 
 const ShortcutKey = () => {
   const [questions, setQuestions] = useState([
@@ -10,49 +10,51 @@ const ShortcutKey = () => {
     'What is your name?',
     'Where are you from?',
     'What is your favorite color?',
-    'What is your favorite hobby?',
-  ]);
-  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+    'What is your favorite hobby?'
+  ])
+  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0)
 
   const handleInputChange = (index, value) => {
-    const updatedQuestions = [...questions];
-    updatedQuestions[index] = value;
-    setQuestions(updatedQuestions);
-  };
+    const updatedQuestions = [...questions]
+    updatedQuestions[index] = value
+    setQuestions(updatedQuestions)
+  }
 
-  const handleArrowClick = (direction) => {
+  const handleArrowClick = direction => {
     if (direction === 'next') {
-      setCurrentQuestionIndex((prevIndex) => Math.min(prevIndex + 1, questions.length - 1));
-      console.log("You wen ahead with the question ");
+      setCurrentQuestionIndex(prevIndex =>
+        Math.min(prevIndex + 1, questions.length - 1)
+      )
+      //console.log("You wen ahead with the question ");
     } else if (direction === 'prev') {
-      setCurrentQuestionIndex((prevIndex) => Math.max(prevIndex - 1, 0));
-      console.log("You wen to the back question ");
+      setCurrentQuestionIndex(prevIndex => Math.max(prevIndex - 1, 0))
+      //console.log("You wen to the back question ");
     }
-  };
+  }
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log('Submit button clicked');
-  };
+  const handleSubmit = e => {
+    e.preventDefault()
+    //console.log('Submit button clicked');
+  }
 
   useEffect(() => {
-    const handleKeyDown = (e) => {
+    const handleKeyDown = e => {
       if (e.key === 'Enter') {
-        e.preventDefault();
-        handleSubmit(e);
+        e.preventDefault()
+        handleSubmit(e)
       } else if (e.key === 'ArrowLeft') {
-        handleArrowClick('prev');
+        handleArrowClick('prev')
       } else if (e.key === 'ArrowRight') {
-        handleArrowClick('next');
+        handleArrowClick('next')
       }
-    };
+    }
 
-    window.addEventListener('keydown', handleKeyDown);
+    window.addEventListener('keydown', handleKeyDown)
 
     return () => {
-      window.removeEventListener('keydown', handleKeyDown);
-    };
-  }, []);
+      window.removeEventListener('keydown', handleKeyDown)
+    }
+  }, [])
 
   return (
     <div className='w-1/2 mx-auto my-28 text-center'>
@@ -94,7 +96,7 @@ const ShortcutKey = () => {
         </form>
       </Hotkeys>
     </div>
-  );
-};
+  )
+}
 
-export default ShortcutKey;
+export default ShortcutKey

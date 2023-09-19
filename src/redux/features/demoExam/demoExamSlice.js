@@ -3,48 +3,59 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
     questions: [
         {
-            id: 1,
-            text: 'What is the capital of France?',
-            choices: [
-                { id: 'paris', text: 'Paris' },
-                { id: 'london', text: 'London' },
-                { id: 'berlin', text: 'Berlin' },
-                { id: 'madrid', text: 'Madrid' }
+            "id": 1,
+            "text": "What is the capital of France?",
+            "choices": [
+                { "id": "paris", "text": "Paris" },
+                { "id": "london", "text": "London" },
+                { "id": "berlin", "text": "Berlin" },
+                { "id": "madrid", "text": "Madrid" }
             ],
-            correctAnswer: 'paris'
+            "correctAnswer": "paris"
         },
         {
-            id: 2,
-            text: "Which planet is known as the 'Red Planet'?",
-            choices: [
-                { id: 'venus', text: 'Venus' },
-                { id: 'mars', text: 'Mars' },
-                { id: 'jupiter', text: 'Jupiter' },
-                { id: 'saturn', text: 'Saturn' }
+            "id": 2,
+            "text": "Which planet is known as the 'Red Planet'?",
+            "choices": [
+                { "id": "venus", "text": "Venus" },
+                { "id": "mars", "text": "Mars" },
+                { "id": "jupiter", "text": "Jupiter" },
+                { "id": "saturn", "text": "Saturn" }
             ],
-            correctAnswer: 'mars'
+            "correctAnswer": "mars"
         },
         {
-            id: 3,
-            text: "Which planet is known as the Dwarf Planet?",
-            choices: [
-                { id: 'venus', text: 'Venus' },
-                { id: 'mars', text: 'Mars' },
-                { id: 'jupiter', text: 'Jupiter' },
-                { id: 'pluto', text: 'pluto' }
+            "id": 3,
+            "text": "What is the largest mammal in the world?",
+            "choices": [
+                { "id": "elephant", "text": "African Elephant" },
+                { "id": "bluewhale", "text": "Blue Whale" },
+                { "id": "giraffe", "text": "Giraffe" },
+                { "id": "lion", "text": "African Lion" }
             ],
-            correctAnswer: 'pluto'
+            "correctAnswer": "bluewhale"
         },
         {
-            id: 4,
-            text: "Which planet is known as the hottest planet?",
-            choices: [
-                { id: 'venus', text: 'Venus' },
-                { id: 'mars', text: 'Mars' },
-                { id: 'jupiter', text: 'Jupiter' },
-                { id: 'saturn', text: 'Saturn' }
+            "id": 4,
+            "text": "Who wrote the play 'Romeo and Juliet'?",
+            "choices": [
+                { "id": "shakespeare", "text": "William Shakespeare" },
+                { "id": "dickens", "text": "Charles Dickens" },
+                { "id": "austen", "text": "Jane Austen" },
+                { "id": "tolstoy", "text": "Leo Tolstoy" }
             ],
-            correctAnswer: 'venus'
+            "correctAnswer": "shakespeare"
+        },
+        {
+            "id": 5,
+            "text": "What is the chemical symbol for gold?",
+            "choices": [
+                { "id": "go", "text": "Go" },
+                { "id": "gd", "text": "Gd" },
+                { "id": "au", "text": "Au" },
+                { "id": "ag", "text": "Ag" }
+            ],
+            "correctAnswer": "au"
         }
     ],
     userAnswers: [],

@@ -14,6 +14,7 @@ import {
   Legend,
   Pie,
   PieChart,
+  ResponsiveContainer,
   Tooltip,
   XAxis,
   YAxis,
@@ -64,7 +65,7 @@ const UserHome = () => {
   return (
     <div className="px-10 py-20">
       <Helmet><title>E-ExamPro | Dashboard</title></Helmet>
-      <div className="md:flex gap-5 mb-5">
+      <div className="xl:flex gap-5 mb-5">
         <div className="bg-transparent border border-violet-700 shadow-2xl w-full rounded-md p-5">
           <div className="flex justify-between items-center">
             <h2 className="text-2xl">Progress Overview</h2>
@@ -95,7 +96,7 @@ const UserHome = () => {
             </div>
           </div>
           <div className="">
-            <div className="md:flex justify-between items-center">
+            <div className="xl:flex justify-between items-center">
               <PieChart width={300} height={300}>
                 <Pie
                   dataKey="value"
@@ -140,7 +141,7 @@ const UserHome = () => {
         </div>
         <div className="bg-transparent border border-violet-700 shadow-2xl w-full rounded-md p-5">
           <h2 className="text-2xl">Quiz Participation</h2>
-          <div className="md:flex items-center gap-10">
+          <div className="xl:flex items-center gap-10">
             <div>
               <PieChart width={300} height={300}>
                 <Pie
@@ -178,7 +179,7 @@ const UserHome = () => {
           <div></div>
         </div>
       </div>
-      <div className="md:flex gap-5 rounded-md">
+      <div className="xl:flex gap-5 rounded-md">
         <div className="bg-transparent border border-violet-700 shadow-2xl w-full rounded-md p-5">
           <div className="flex items-center justify-between ">
             <div>
@@ -198,8 +199,7 @@ const UserHome = () => {
                   className="modal-box bg-gradient-to-r from-[#3c1053] to-[#ad5389] ..."
                 >
                   <p className="py-4 text-white">
-                    মডিউল রিলিজের ২৪ ঘণ্টার মধ্যে কমপ্লিট করা হলে, তা কাউন্ট করা
-                    হচ্ছে।
+                    
                   </p>
                 </form>
                 <form method="dialog" className="modal-backdrop">
@@ -217,7 +217,7 @@ const UserHome = () => {
           </div>
         </div>
 
-        <div className="md:w-2/3 p-5 bg-transparent border border-violet-700 shadow-2xl w-full rounded-md ">
+        <div className=" p-5 bg-transparent border border-violet-700 shadow-2xl w-full rounded-md ">
           <div className="flex items-center justify-between ">
             <div>
               <h1 className="text-2xl font-extrabold text-white">
@@ -251,12 +251,9 @@ const UserHome = () => {
               </dialog>
             </div>
           </div>
-          <div className="bg-white/20 flex items-center gap-2 rounded-md p-2 mt-2 text-sm w-2/6 ps-6 mb-10">
-            <FaStopwatch className="text-xl text-white shadow-2xl"></FaStopwatch>
-            <h1 className="text-white">Total: 366 Hours and 16 Minutes.</h1>
-          </div>
-
-          <div>
+          
+          <div className="mt-5">
+          <ResponsiveContainer width="100%" height={350}>
             <BarChart
               width={900}
               height={300}
@@ -280,6 +277,7 @@ const UserHome = () => {
               <CartesianGrid strokeDasharray="3 3" />
               <Bar dataKey="Duration" fill="#8884d8" />
             </BarChart>
+            </ResponsiveContainer>
           </div>
         </div>
       </div>

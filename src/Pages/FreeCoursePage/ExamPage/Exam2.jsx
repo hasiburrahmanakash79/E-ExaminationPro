@@ -24,6 +24,7 @@ import {
 import StartCountdowns from '../../../components/examComponents/startCountdowns'
 import { useContext } from 'react'
 import { AuthContext } from '../../../Provider/AuthProvider'
+import useUser from '../../../Hooks/useUser/useUser'
 
 const Exam2 = () => {
   const [timerProgress, setTimerProgress] = useState(100) //progress bar state
@@ -38,7 +39,7 @@ const Exam2 = () => {
   const { user } = useContext(AuthContext)
   const navigate = useNavigate()
 
-  //console.log(ques)
+  ////console.log(ques)
   const questions = ques?.questions
   const examType = ques.type
   dispatch(setExamType(ques.type))
@@ -47,10 +48,13 @@ const Exam2 = () => {
   const [timer, setTimer] = useState(null) // store time interval to clear the time interval.
   const [start, setStart] = useState(false) // it use to store user selected option from mcq
 
+  const [info, refetch, p_loading] = useUser(user?.email)
+
+
   const examInfo = {
     examID: ques._id,
     subjectName: ques.subjectName,
-    semester: ques.semester,
+    batch: ques.batch,
     ins_email: ques.email,
     stu_email: user?.email,
     stu_name: user?.displayName,
@@ -64,7 +68,7 @@ const Exam2 = () => {
     totalMark: questions.length * 5
   }
 
-  console.log(result, 'send data2')
+  //console.log(result, 'send data2')
 
   const sendData = () => {
     dispatch(sendResult(examInfo))
@@ -75,21 +79,22 @@ const Exam2 = () => {
     dispatch(setView(true)) //setView(true)
     dispatch(resetQues()) //setCurrentQuestion(0)
     clearInterval(timer) ///stop timer
+    sendData()
     setTimeout(() => {
-      sendData()
+      
       dispatch(setView(false))
-      navigate(`/result?id=${ques?._id}`)
+      navigate(`/results?id=${ques?._id}`)
     }, 3000)
   }
 
   const handleInputChange = event => {
-    dispatch(setInputValue(event.target.value)) // setInputValue(event.target.value) //store neumeric type value from input field
+    dispatch(setInputValue(event.target.value)) // setInputValue(event.target.value) //store numeric type value from input field
   }
 
   ///////////// when user select option in mcq ////////////////
   const onSelectOption = (index, option, question, correctAnswer) => {
     dispatch(setAnswerIndex(index))
-    //console.log(question, option, correctAnswer)
+    ////console.log(question, option, correctAnswer)
     dispatch(setMcq(option)) // setMcq(option) // store user selected option
     //setResult(prevArray => [...prevArray, newObject])
   }
@@ -107,14 +112,14 @@ const Exam2 = () => {
     dispatch(setAnswerIndex(null))
 
     if (currentQuestion !== questions.length - 1) {
-      // console.log(currentQuestion, questions)
+      // //console.log(currentQuestion, questions)
       dispatch(nextQues())
     } else {
       dispatch(setView(true)) //setView(true)
       dispatch(resetQues())
       //sendData(resultData)
-      // console.log('hit')
-      // console.log(result, 'ghghgjgjh')
+      // //console.log('hit')
+      // //console.log(result, 'ghghgjgjh')
       clearInterval(timer)
       handleFinishExam()
     }
@@ -153,20 +158,27 @@ const Exam2 = () => {
               {((examType == 'multimedia_mcq' && start == true) ||
                 examType == 'mcq' ||
                 examType == 'FillInTheBlank') && (
-                <TimeRemain
-                  timerProgress={timerProgress}
-                  setTimerProgress={setTimerProgress}
-                  totalDuration={totalDuration}
-                  timeRemaining={timeRemaining}
-                  setTimeRemaining={setTimeRemaining}
-                  examType={ques.type}
-                  start={start}
-                  handleFinishExam={handleFinishExam}
-                  setTimer={setTimer}
-                  takingTime={takingTime}
-                  setTakingTime={setTakingTime}
-                ></TimeRemain>
-              )}
+                  <div>
+
+                    <div>
+                      <TimeRemain
+                        timerProgress={timerProgress}
+                        setTimerProgress={setTimerProgress}
+                        totalDuration={totalDuration}
+                        timeRemaining={timeRemaining}
+                        setTimeRemaining={setTimeRemaining}
+                        examType={ques.type}
+                        start={start}
+                        handleFinishExam={handleFinishExam}
+                        setTimer={setTimer}
+                        takingTime={takingTime}
+                        setTakingTime={setTakingTime}
+                      ></TimeRemain>
+                    </div>
+
+                  </div>
+
+                )}
               <div className=' min-h-[70vh] flex justify-center md:mt-0 mt-10 md:items-center'>
                 <div className='w-full mx-2 md:mx-20'>
                   <div className='flex justify-center my-10 mb-5'>
@@ -184,21 +196,26 @@ const Exam2 = () => {
                       </>
                     )}
                   </div>
-                  <div className='max-w-[50px]  min-h-[50px] text-white bg-blue-900 rounded-full flex justify-center items-center'>
-                    <div>
-                      <span className='text-3xl font-semibold'>
-                        {currentQuestion + 1}
-                      </span>
-                      {/* show current question number */}
-                      <span className='text-xl font-semibold'>
-                        /{questions.length}
-                      </span>{' '}
-                      {/* show total question in number */}
+                  <div className='grid md:grid-cols-3 grid-cols-1' >
+                    <div className='max-w-[50px]  min-h-[50px] text-white bg-blue-900 rounded-full flex justify-center items-center'>
+                      <div>
+                        <span className='text-3xl font-semibold'>
+                          {currentQuestion + 1}
+                        </span>
+                        {/* show current question number */}
+                        <span className='text-xl font-semibold'>
+                          /{questions.length}
+                        </span>{' '}
+                        {/* show total question in number */}
+                      </div>
                     </div>
+                    <h1 className='text-2xl text-center mt-5'>Your Gems:<span className='text-green-500'> {info.gems}</span></h1>
+                    <h1 className='btn btn-primary w-1/3 ms-auto'>Hints</h1>
                   </div>
+             
                   {(examType == 'multimedia_mcq' && start == true) ||
-                  examType == 'mcq' ||
-                  examType == 'FillInTheBlank' ? (
+                    examType == 'mcq' ||
+                    examType == 'FillInTheBlank' ? (
                     <h1 className='text-3xl font-semibold my-7'>
                       {currentQuestion + 1}- {question}
                     </h1>

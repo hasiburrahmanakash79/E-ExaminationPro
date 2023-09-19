@@ -1,11 +1,21 @@
-const ReviewAnswerAfterResult2 = ({ questions, index, userAnswers }) => {
-  // console.log(questions);
+const ReviewAnswerAfterResult2 = ({ singleQ }) => {
   return (
     <>
-      <div className="py-2">
-        <p><span className="text-xl font-semibold">{index + 1}.</span> <span className="text-lg font-semibold text-slate-100">{questions?.question}</span></p>
-        <p className="text-sm">User Answer : {questions?.userAns}</p>
-        <p className="text-sm">Correct Answer : <span className=" text-green-600 text-base"> {questions?.correctAnswer}</span></p>
+      <div className='p-2 my-2 space-y-3 transition-all border-2 rounded shadow-xl hover:border-slate-200 border-slate-500'>
+        <p className='text-lg font-semibold text-slate-100'>
+          {singleQ?.question}
+        </p>
+        {/* TODO: making a indicator to show it's the right answer for which user clicks on the right answer */}
+        <p className='text-sm'>
+          User Answer :<span className='font-semibold'>{singleQ?.userAns}</span>
+        </p>
+        <p className='text-sm'>
+          Correct Answer :{' '}
+          <span className='text-base font-semibold text-green-600 '>
+            {' '}
+            {singleQ?.correctAnswer}
+          </span>
+        </p>
       </div>
       {/* {questions?.map((question, index) => {
         const userAnswer = userAnswers.find(
@@ -29,7 +39,6 @@ const ReviewAnswerAfterResult2 = ({ questions, index, userAnswers }) => {
           </div>
         )
       })} */}
-
       {/* {shortQuestions && (
         <div>
           {shortQuestions.map(sq => (
@@ -65,4 +74,4 @@ const ReviewAnswerAfterResult2 = ({ questions, index, userAnswers }) => {
   )
 }
 
-export default ReviewAnswerAfterResult2;
+export default ReviewAnswerAfterResult2
