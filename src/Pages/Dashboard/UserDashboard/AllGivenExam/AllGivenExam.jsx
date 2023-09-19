@@ -122,20 +122,20 @@ const AllGivenExam = () => {
             <div className='card-body   grid grid-cols-2'>
               <div className='grid gap-3'>
                 <h2 className='text-green-500 card-title'>
-                  Subject: {exam.subject}
+                  Subject: <span className='text-yellow-500' >{exam.subject}</span >
                 </h2>
-                <p>ExamCode: {exam?.exam_code}</p>
-                <p>Subject Code: {exam?.sub_code}</p>
-                <p>Instructor: {exam?.ins_email}</p>
+                <p><span className='text-green-500'>ExamCode:</span> <span>{exam?.exam_code}</span></p>
+                <p> <span  className='text-green-500'>Subject Code:</span> {exam?.sub_code}</p>
+                <p><span className='text-green-500'>Instructor:</span> {exam?.ins_email}</p>
               </div>
 
               <div className='text-right grid gap-3'>
                 <p className='text-green-500'>
-                  Time You Take: {exam?.timeConsume / 60}min
+                  Time You Take: <span className='text-yellow-500'>{(exam?.timeConsume / 60).toFixed(2)} min</span>
                 </p>
-                <p className='text-green-500'>Total Mark: {exam?.totalMark}</p>
-                <p className='text-green-500'>Mark: {exam?.mark}</p>
-                <p>Date: {exam?.date}</p>
+                <p className='text-green-500'>Total Mark: <span className='text-yellow-500'> {exam?.totalMark}</span></p>
+                <p className='text-green-500'>Mark: <span className='text-yellow-500'>{exam?.mark}</span></p>
+                <p><span className='text-green-500'>Date:</span> {exam?.date}</p>
               </div>
             </div>
           </div>

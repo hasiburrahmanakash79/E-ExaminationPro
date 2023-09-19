@@ -14,6 +14,7 @@ export const quesPaperSlice = createSlice({
             date: null,
             email: null,
             videoURL: null,
+            time:null
         },
         questions: [],
         codeRepeat: null,
@@ -47,7 +48,10 @@ export const quesPaperSlice = createSlice({
 
             }
 
-
+            // let time=null
+            // if(name==='time'){
+            //     time=value*60
+            // }
             state.formData = {
                 ...state.formData
                 , [name]: value
@@ -61,6 +65,7 @@ export const quesPaperSlice = createSlice({
                     question: '',
                     options: ['', '', '', ''],
                     correctAnswer: '',
+                    hints: '',
                 }
                 state.questions = [...state.questions, newQues]
             }

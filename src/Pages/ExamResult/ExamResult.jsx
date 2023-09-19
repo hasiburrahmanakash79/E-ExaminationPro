@@ -1,30 +1,40 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useLoaderData, useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import { useState } from "react";
 import Typewriter from "react-ts-typewriter";
 import { Hourglass } from "react-loader-spinner";
+import { AuthContext } from "../../Provider/AuthProvider";
+import useAxiosSecure from "../../Hooks/useAxiosSecure.jsx/useAxiosSecure";
+import { useQuery } from "@tanstack/react-query";
+import { data } from "autoprefixer";
 
 const ExamResult = () => {
-  const [loading, setLoading] = useState(true);
-  const [results, setResults] = useState([]);
+
+
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
-  const id = searchParams.get("id");
-  console.log(id);
+  const eid = searchParams.get("eid");
+  console.log(eid);
 
-  useEffect(() => {
-    fetch(`https://e-exam-pro-server.vercel.app/result?examId=${id}`)
-      .then((res) => res.json())
-      .then((data) => {
-        setResults(data);
-        setLoading(false);
-      });
-  }, []);
 
+  const { user, loading } = useContext(AuthContext)
+  const [axiosSecure] = useAxiosSecure()
+  const { data:results, isLoading } = useQuery({
+    queryKey: ['resultData', user?.email],
+    enabled: !loading,
+    queryFn: async () => {
+      const res = await axiosSecure.get(`/allresultBySubject?examsID=${eid}`)
+      //console.log(res.data);
+      return res.data
+    }
+  })
+  console.log(results)
   return (
+
+
     <>
-      {loading ? (
+      { isLoading ? (
         <div className="text-red-400 text-4xl flex justify-center items-center h-[70vh]">
           <h1>
             <Hourglass
@@ -40,7 +50,7 @@ const ExamResult = () => {
         </div>
       ) : (
         <div>
-          {results.length == 0 ? (
+          {results?.length == 0 ? (
             <div className="text-red-400 text-4xl flex justify-center items-center h-[70vh]">
               <h1>
                 <Typewriter
@@ -69,7 +79,7 @@ const ExamResult = () => {
                       <h1 className="text-xl font-bold">
                         Email: {result.stu_email}
                       </h1>
-                      <h3>Semester: 8th</h3>
+                      <h3>{result.batch}</h3>
                     </div>
 
                     <div>

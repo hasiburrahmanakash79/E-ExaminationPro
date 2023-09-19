@@ -5,7 +5,7 @@ import {} from 'react-icons/fa'
 import { useSelector } from 'react-redux'
 
 const DisclosureForWrittenExams = ({ writtenQuestions }) => {
-  const { userAnswers } = useSelector(state => state.shortQuestions)
+  const { userAnswers } = useSelector(state => state.writtenQuestions)
   return (
     <div className='container sticky top-0 text-2xl text-white body md:mx-auto'>
       <div className='w-full px-4 pt-1'>

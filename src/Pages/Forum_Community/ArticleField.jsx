@@ -1,38 +1,23 @@
-// import CommentField from "./CommentField";
-
+import { Suspense, lazy } from 'react'
 import { allPostComment } from '../../Hooks/useForum/useForum'
-import Comments from './Comments'
-import ShowComment from './ShowComment'
+const Comments = lazy(() => import('./Comments'))
+import Loading from '../../Components/Loading/Loading'
 
 const ArticleField = () => {
   const [allCommentPosts, refetch] = allPostComment()
-  //console.log(allCommentPosts);
   return (
     <div>
-      {/* <div className="mt-8 border rounded-md shadow-md p-5 mb-6"> */}
       {allCommentPosts?.map(postComments => (
-        <Comments
-          key={postComments?._id}
-          refetch={refetch}
-          postComments={postComments}
-        />
+        <Suspense fallback={<Loading />}>
+          <Comments
+            key={postComments?._id}
+            refetch={refetch}
+            postComments={postComments}
+          />
+        </Suspense>
       ))}
-      {/* </div> */}
-      {/* <div>
-                {
-                    allCommentPosts?.map(postComments => <ShowComment
-                        key={postComments?._id}
-                        refetch={refetch}
-                        postComments={postComments}
-                    />)
-                }
-            </div> */}
     </div>
   )
 }
 
 export default ArticleField
-
-/* 
-
-*/

@@ -7,7 +7,7 @@ const ReviewAnswerAfterResult2 = ({ singleQ }) => {
         </p>
         {/* TODO: making a indicator to show it's the right answer for which user clicks on the right answer */}
         <p className='text-sm'>
-          User Answer :<span className='font-semibold'>{singleQ?.userAns}</span>
+          User Answer :<span className={singleQ?.correctAnswer==singleQ?.userAns?'font-semibold text-green-500':'font-semibold text-red-500'}  > {singleQ?.userAns}</span>
         </p>
         <p className='text-sm'>
           Correct Answer :{' '}
