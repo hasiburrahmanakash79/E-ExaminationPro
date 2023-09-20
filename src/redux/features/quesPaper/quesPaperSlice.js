@@ -14,7 +14,8 @@ export const quesPaperSlice = createSlice({
             date: null,
             email: null,
             videoURL: null,
-            time:null
+            time:null,
+            examTime:null
         },
         questions: [],
         codeRepeat: null,
