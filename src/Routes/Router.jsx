@@ -151,9 +151,7 @@ const router = createBrowserRouter([
         path: '/exam/:id',
         element: <Exam2 />,
         loader: ({ params }) =>
-          fetch(
-            `http://localhost:4000/questionPaper/${params.id}`
-          )
+          fetch(`http://localhost:4000/questionPaper/${params.id}`)
       },
       {
         path: '/written',
@@ -307,6 +305,10 @@ const router = createBrowserRouter([
       },
       {
         path: '/dashboard/allgivenExam',
+        element: <AllGivenExam />
+      },
+      {
+        path: '/dashboard/written-review',
         element: <AllGivenExam />
       }
     ]

@@ -10,7 +10,6 @@ import {
   FaComment
 } from 'react-icons/fa'
 import { BiBookAdd } from 'react-icons/bi'
-import { GiWallet } from 'react-icons/gi'
 import { AiFillNotification } from 'react-icons/ai'
 import { RiLiveFill } from 'react-icons/ri'
 import { FaClipboardQuestion } from 'react-icons/fa6'
@@ -136,6 +135,12 @@ const Dashboard = () => {
     {
       title: 'Add Blog',
       path: '/dashboard/addBlog',
+      icon: iconMappings.Blog,
+      role: 'instructor'
+    },
+    {
+      title: 'Written Answers Review',
+      path: '/dashboard/written-review',
       icon: iconMappings.Blog,
       role: 'instructor'
     },
