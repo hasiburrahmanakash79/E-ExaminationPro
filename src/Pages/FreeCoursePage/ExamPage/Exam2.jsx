@@ -8,6 +8,7 @@ import TimeRemain from '../../../components/examComponents/TimeRemain'
 import { useDispatch, useSelector } from 'react-redux'
 import React from 'react'
 import {
+  setShowHints,
   nextQues,
   prevQues,
   resetQues,
@@ -25,15 +26,15 @@ import StartCountdowns from '../../../components/examComponents/startCountdowns'
 import { useContext } from 'react'
 import { AuthContext } from '../../../Provider/AuthProvider'
 import useUser from '../../../Hooks/useUser/useUser'
+import { reduceGems } from '../../../redux/features/userGems/userGemsSlice'
+import { Hourglass } from 'react-loader-spinner'
 
 const Exam2 = () => {
-  const [timerProgress, setTimerProgress] = useState(100) //progress bar state
-  const totalDuration = 30 //define total duration
-  const [timeRemaining, setTimeRemaining] = useState(30) // time remain state
   const [takingTime, setTakingTime] = useState(0)
 
-  const { currentQuestion, answerIndx, result, inputValue, optionMcq, view } =
+  const { currentQuestion, answerIndx, inputValue, view, showHints } =
     useSelector(state => state.examPage)
+  const { remainGems } = useSelector(state => state.userGems)
   const dispatch = useDispatch()
   const ques = useLoaderData()
   const { user } = useContext(AuthContext)
@@ -41,9 +42,16 @@ const Exam2 = () => {
 
   ////console.log(ques)
   const questions = ques?.questions
-  const examType = ques.type
+  const examType = ques?.type
+  console.log(user)
+  const time = ques?.time * 60
+
+  const [timerProgress, setTimerProgress] = useState(100) //progress bar state
+  const totalDuration = time //define total duration
+  const [timeRemaining, setTimeRemaining] = useState(time) // time remain state
+
   dispatch(setExamType(ques.type))
-  const { question, options, correctAnswer } = questions[currentQuestion] //destructure array of objects
+  const { question, options, correctAnswer, hints } = questions[currentQuestion] //destructure array of objects
   const [countdown, setCountdown] = useState(3) // 3 sec countdown before start exam
   const [timer, setTimer] = useState(null) // store time interval to clear the time interval.
   const [start, setStart] = useState(false) // it use to store user selected option from mcq
@@ -56,6 +64,7 @@ const Exam2 = () => {
     batch: ques.batch,
     ins_email: ques.email,
     stu_email: user?.email,
+    stu_image: user?.photoURL,
     stu_name: user?.displayName,
     date: ques.date,
     exam_code: ques.exam_code,
@@ -104,6 +113,7 @@ const Exam2 = () => {
 
   ///////////// next button action ///////////////////
   const onClickNext = () => {
+    dispatch(setShowHints(false))
     dispatch(setQuestion(question))
     dispatch(setCorrectAns(correctAnswer))
     dispatch(setResult())
@@ -125,6 +135,7 @@ const Exam2 = () => {
 
   ///// previous button action
   const onClickPrevious = () => {
+    dispatch(setShowHints(false))
     dispatch(setAnswerIndex(null)) //redux
     //setAnswerIndx(null)
     if (currentQuestion !== 0) {
@@ -133,7 +144,9 @@ const Exam2 = () => {
     }
     dispatch(setInputValue(null)) // setInputValue('')
   }
+  refetch()
 
+  console.log(info?.gems)
   return (
     <>
       {/* show 3sec countdown before start exam */}
@@ -147,7 +160,16 @@ const Exam2 = () => {
       ) : (
         <div>
           {view == true ? (
-            <div className='flex justify-center my-5'>
+            <div className='flex h-[70vh] gap-2 justify-center items-center my-5'>
+              <Hourglass
+                visible={true}
+                height='80'
+                width='80'
+                ariaLabel='hourglass-loading'
+                wrapperStyle={{}}
+                wrapperClass=''
+                colors={['#7710de', '#d6061b']}
+              />
               <h1 className='text-xl'>Your Result is now Processing....</h1>
             </div>
           ) : (
@@ -204,11 +226,41 @@ const Exam2 = () => {
                         {/* show total question in number */}
                       </div>
                     </div>
-                    <h1 className='mt-5 text-2xl text-center'>
-                      Your Gems:
-                      <span className='text-green-500'> {info.gems}</span>
-                    </h1>
-                    <h1 className='w-1/3 btn btn-primary ms-auto'>Hints</h1>
+                    <div>
+                      <h1 className='mt-5 text-2xl text-center'>
+                        Your Gems:
+                        <span className='text-green-500'> {info.gems}</span>
+                      </h1>
+                      <div className='flex justify-center'>
+                        {info?.gems < 1 && (
+                          <h1 className='bg-red-500 text-white p-1 rounded-lg mt-2 w-1/2 mx-auto|||||||| text-center'>
+                            You Do Not Have Enough Gems
+                          </h1>
+                        )}
+                      </div>
+                    </div>
+                    <div>
+                      <div
+                        className={
+                          showHints === true
+                            ? 'tooltip tooltip-open tooltip-success'
+                            : ''
+                        }
+                        data-tip={hints}
+                      >
+                        <button
+                          disabled={showHints === true || info?.gems < 1}
+                          onClick={() => {
+                            dispatch(reduceGems(user?.email))
+                            dispatch(setShowHints(true))
+                            refetch()
+                          }}
+                          className='btn btn-sm btn-warning'
+                        >
+                          Hints
+                        </button>
+                      </div>
+                    </div>
                   </div>
 
                   {(examType == 'multimedia_mcq' && start == true) ||

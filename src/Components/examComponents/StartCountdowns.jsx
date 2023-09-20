@@ -1,6 +1,9 @@
 import React from 'react'
 import {
   resetResult,
+  setAnswerIndex,
+  setMcq,
+  setShowHints,
   setView
 } from '../../redux/features/examPage/examPageSlice'
 import { useDispatch } from 'react-redux'
@@ -12,9 +15,11 @@ const StartCountdowns = ({ countdown, setCountdown }) => {
     const countdownTimer = setInterval(() => {
       if (countdown > 0) {
         setCountdown(prevCountdown => prevCountdown - 1) /// function for 3 sec countdown before start exam
-
+        dispatch(setShowHints(false))
         dispatch(setView(false))
         dispatch(resetResult())
+        dispatch(setMcq(null))
+        dispatch( setAnswerIndex(null))
       } else {
         clearInterval(countdownTimer)
       }

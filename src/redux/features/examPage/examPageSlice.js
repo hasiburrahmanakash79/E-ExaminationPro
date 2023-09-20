@@ -12,8 +12,13 @@ export const examPageSlice = createSlice({
         optionMcq: null,
         question: null,
         correctAnswer: null,
+        showHints:false,
     },
     reducers: {
+        setShowHints:(state,{payload})=>{
+
+            state.showHints=payload;
+        },
         setExamType: (state, { payload }) => {
             state.examType = payload
         },
@@ -104,6 +109,6 @@ export const examPageSlice = createSlice({
 })
 
 // Action creators are generated for each case reducer function
-export const { nextQues, prevQues, resetQues, setAnswerIndex, setResult, setView, setInputValue, setMcq, resetResult, setQuestion, setCorrectAns, setExamType, sendResult } = examPageSlice.actions
+export const {  setShowHints,nextQues, prevQues, resetQues, setAnswerIndex, setResult, setView, setInputValue, setMcq, resetResult, setQuestion, setCorrectAns, setExamType, sendResult } = examPageSlice.actions
 
 export default examPageSlice.reducer

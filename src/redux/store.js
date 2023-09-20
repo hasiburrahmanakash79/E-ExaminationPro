@@ -7,6 +7,10 @@ import writtenQuestionSlice from "./features/WrittenQuestion/writtenQuestionSlic
 // import ExamRoomControllerReducer from './features/ExamRoomController/ExamRoomControllerSlice';
 import liveExamSlice from "./features/liveExamQuesPaper/liveExamQuesPaper";
 import ExamRoomControllerSlice from './features/ExamRoomController/ExamRoomControllerSlice';
+import userGemsSlice from './features/userGems/userGemsSlice';
+
+
+
 
 
 
@@ -19,8 +23,8 @@ const store = configureStore({
                 demoExam: demoExamSlice,
                 writtenQuestions: writtenQuestionSlice,
                 examRoomControls: ExamRoomControllerSlice,
-                liveExam: liveExamSlice
-
+                liveExam: liveExamSlice,
+                userGems:userGemsSlice
         },
 })
 
