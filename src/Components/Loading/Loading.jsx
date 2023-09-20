@@ -7,7 +7,7 @@ const Loading = () => {
                 <ThreeCircles
                     height="100"
                     width="100"
-                    color="#4fa94d"
+                    color="#4e43f4"
                     wrapperStyle={{}}
                     wrapperClass=""
                     visible={true}

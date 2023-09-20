@@ -19,7 +19,6 @@ const QuizDemo = () => {
   const reduxSelectedOption =
     userAnswers[currentQuestionIndex]?.selectedOptionId || null
 
-  //console.log(reduxSelectedOption)
   const handleSelectOption = selectedOptionId => {
     dispatch(selectOption({ questionId: currentQuestion.id, selectedOptionId }))
   }
@@ -30,7 +29,7 @@ const QuizDemo = () => {
     dispatch(submitTest())
   }
   return (
-    <div className='w-3/4 md:w-2/4 h-full mx-auto md:pt-12'>
+    <div className='w-3/4 h-full mx-auto md:w-2/4 md:pt-12'>
       <Helmet>
         <title>E-ExamPro | Exams </title>
       </Helmet>
