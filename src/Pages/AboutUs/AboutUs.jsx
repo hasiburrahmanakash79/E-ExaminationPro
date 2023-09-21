@@ -120,14 +120,14 @@ const AboutUs = () => {
           <p
             data-aos='fade-down'
             data-aos-duration='700'
-            className='p-2 text-lg text-white font-medium text-center uppercase tracki'
+            className='p-2 text-lg text-white font-medium text-center uppercase tracking'
           >
             Development team
           </p>
           <h1
             data-aos="fade-down"
             data-aos-duration="1500"
-            className="text-4xl font-bold leadi text-center sm:text-5xl">The Talented People Behind the Scenes</h1>
+            className="text-4xl font-bold leading text-center sm:text-5xl">The Talented People Behind the Scenes</h1>
           <div className="flex flex-row flex-wrap-reverse justify-center mt-20">
 
             <div
@@ -135,7 +135,7 @@ const AboutUs = () => {
               className="flex flex-col justify-center w-full px-8 mx-6 my-12 text-center rounded-md md:w-96 lg:w-80 xl:w-64 bg-white/20 hover:bg-white/30 shadow-2xl dark:text-white">
 
 
-              <div className="avatar">
+              <div className=" avatar -mt-10">
                 <div className="w-24 rounded-full mx-auto  " >
                   <img src="https://i.ibb.co/HzhTQqS/Abir.jpg" />
                 </div>
@@ -143,7 +143,7 @@ const AboutUs = () => {
 
 
               <div className="flex-1 my-4">
-                <p className="text-xl font-semibold leadi">Tazwarul Islam</p>
+                <p className="text-xl  leading">Tazwarul Islam</p>
                 <p className='text-slate-400'>Jr. Front-End Developer</p>
               </div>
 
@@ -163,16 +163,16 @@ const AboutUs = () => {
             <div
               // data-aos="fade-right"
               className="flex flex-col justify-center w-full px-8 mx-6 my-12 text-center rounded-md md:w-96 lg:w-80 xl:w-64 bg-white/20 hover:bg-white/30 shadow-2xl dark:text-white">
-              {/* <div className='avatar'>
+              {/* <div className=' avatar -mt-10'>
                 <img alt="" className="rounded-full  w-16     " src="https://i.ibb.co/HzhTQqS/Abir.jpg" />
               </div> */}
-              <div className="avatar">
+              <div className=" avatar -mt-10">
                 <div className="w-24 rounded-full mx-auto  " >
                   <img src="https://i.ibb.co/19jFGZY/saiful-img1.png" />
                 </div>
               </div>
               <div className="flex-1 my-4">
-                <p className="text-xl font-semibold leadi">Saiful Arafat</p>
+                <p className="text-xl  leading">Saiful Arafat</p>
                 <p className='text-slate-400'>Jr. Front-End Developer</p>
               </div>
 
@@ -192,16 +192,16 @@ const AboutUs = () => {
             <div
               // data-aos="fade-right"
               className="flex flex-col justify-center w-full px-8 mx-6 my-12 text-center rounded-md md:w-96 lg:w-80 xl:w-64 bg-white/20 hover:bg-white/30 shadow-2xl dark:text-white">
-              {/* <div className='avatar'>
+              {/* <div className=' avatar -mt-10'>
                 <img alt="" className="rounded-full  w-16     " src="https://i.ibb.co/HzhTQqS/Abir.jpg" />
               </div> */}
-              <div className="avatar">
+              <div className=" avatar -mt-10">
                 <div className="w-24 rounded-full mx-auto  " >
                   <img src="https://i.ibb.co/zSjMhX5/IMG-20230717-WA0000.jpg" />
                 </div>
               </div>
               <div className="flex-1 my-4">
-                <p className="text-xl font-semibold leadi">Al Mamud Bijoy</p>
+                <p className="text-xl  leading">Al Mamud Bijoy</p>
                 <p className='text-slate-400'>Jr. Front-End Developer</p>
               </div>
 
@@ -221,16 +221,16 @@ const AboutUs = () => {
             <div
               // data-aos="fade-right"
               className="flex flex-col justify-center w-full px-8 mx-6 my-12 text-center rounded-md md:w-96 lg:w-80 xl:w-64 bg-white/20 hover:bg-white/30 shadow-2xl dark:text-white">
-              {/* <div className='avatar'>
+              {/* <div className=' avatar -mt-10'>
                 <img alt="" className="rounded-full  w-16     " src="https://i.ibb.co/HzhTQqS/Abir.jpg" />
               </div> */}
-              <div className="avatar">
+              <div className=" avatar -mt-10">
                 <div className="w-24 rounded-full mx-auto  " >
                   <img src="https://i.ibb.co/s9zYLf1/38085386-10213204290847361-3197807351797121024-n.jpg" />
                 </div>
               </div>
               <div className="flex-1 my-4">
-                <p className="text-xl font-semibold leadi">Naser Mahmud</p>
+                <p className="text-xl  leading">Naser Mahmud</p>
                 <p className='text-slate-400'>Jr. Front-End Developer</p>
               </div>
 
@@ -250,16 +250,16 @@ const AboutUs = () => {
             <div
               // data-aos="fade-right"
               className="flex flex-col justify-center w-full px-8 mx-6 my-12 text-center rounded-md md:w-96 lg:w-80 xl:w-64 bg-white/20 hover:bg-white/30 shadow-2xl dark:text-white">
-              {/* <div className='avatar'>
+              {/* <div className=' avatar -mt-10'>
                 <img alt="" className="rounded-full  w-16     " src="https://i.ibb.co/HzhTQqS/Abir.jpg" />
               </div> */}
-              <div className="avatar">
+              <div className=" avatar -mt-10">
                 <div className="w-24 rounded-full mx-auto  " >
                   <img src="https://i.ibb.co/7ymgLNR/akash.jpg" />
                 </div>
               </div>
               <div className="flex-1 my-4">
-                <p className="text-xl font-semibold leadi">Hasibur Rahman</p>
+                <p className="text-xl  ">Hasibur Rahman</p>
                 <p className='text-slate-400'>Jr. Front-End Developer</p>
               </div>
 
@@ -280,16 +280,16 @@ const AboutUs = () => {
             <div
               // data-aos="fade-right"
               className="flex flex-col justify-center w-full px-8 mx-6 my-12 text-center rounded-md md:w-96 lg:w-80 xl:w-64 bg-white/20 hover:bg-white/30 shadow-2xl dark:text-white">
-              {/* <div className='avatar'>
+              {/* <div className=' avatar -mt-10'>
                 <img alt="" className="rounded-full  w-16     " src="https://i.ibb.co/HzhTQqS/Abir.jpg" />
               </div> */}
-              <div className="avatar">
+              <div className=" avatar -mt-10">
                 <div className="w-24 rounded-full mx-auto  " >
                   <img src="https://i.ibb.co/2620B9f/Group-1.jpg" />
                 </div>
               </div>
               <div className="flex-1 my-4">
-                <p className="text-xl font-semibold leadi">Habibur Nabi</p>
+                <p className="text-xl  leading">Habibur Nabi</p>
                 <p className='text-slate-400'>Jr. Front-End Developer</p>
               </div>
 
