@@ -30,13 +30,11 @@ import { reduceGems } from '../../../redux/features/userGems/userGemsSlice'
 import { Hourglass } from 'react-loader-spinner'
 
 const Exam2 = () => {
-
   const [takingTime, setTakingTime] = useState(0)
 
   const { currentQuestion, answerIndx, inputValue, view, showHints } =
     useSelector(state => state.examPage)
-  const { remainGems } =
-    useSelector(state => state.userGems)
+  const { remainGems } = useSelector(state => state.userGems)
   const dispatch = useDispatch()
   const ques = useLoaderData()
   const { user } = useContext(AuthContext)
@@ -45,14 +43,12 @@ const Exam2 = () => {
   ////console.log(ques)
   const questions = ques?.questions
   const examType = ques?.type
-
-  const time=ques?.time*60
+  console.log(user)
+  const time = ques?.time * 60
 
   const [timerProgress, setTimerProgress] = useState(100) //progress bar state
   const totalDuration = time //define total duration
   const [timeRemaining, setTimeRemaining] = useState(time) // time remain state
-
-
 
   dispatch(setExamType(ques.type))
   const { question, options, correctAnswer, hints } = questions[currentQuestion] //destructure array of objects
@@ -62,13 +58,13 @@ const Exam2 = () => {
 
   const [info, refetch, p_loading] = useUser(user?.email)
 
-
   const examInfo = {
     examID: ques._id,
     subjectName: ques.subjectName,
     batch: ques.batch,
     ins_email: ques.email,
     stu_email: user?.email,
+    stu_image: user?.photoURL,
     stu_name: user?.displayName,
     date: ques.date,
     exam_code: ques.exam_code,
@@ -93,7 +89,6 @@ const Exam2 = () => {
     clearInterval(timer) ///stop timer
     sendData()
     setTimeout(() => {
-
       dispatch(setView(false))
       navigate(`/results?id=${ques?._id}`)
     }, 3000)
@@ -166,15 +161,15 @@ const Exam2 = () => {
         <div>
           {view == true ? (
             <div className='flex h-[70vh] gap-2 justify-center items-center my-5'>
-                   <Hourglass
-                      visible={true}
-                      height='80'
-                      width='80'
-                      ariaLabel='hourglass-loading'
-                      wrapperStyle={{}}
-                      wrapperClass=''
-                      colors={['#7710de', '#d6061b']}
-                    />
+              <Hourglass
+                visible={true}
+                height='80'
+                width='80'
+                ariaLabel='hourglass-loading'
+                wrapperStyle={{}}
+                wrapperClass=''
+                colors={['#7710de', '#d6061b']}
+              />
               <h1 className='text-xl'>Your Result is now Processing....</h1>
             </div>
           ) : (
@@ -183,27 +178,24 @@ const Exam2 = () => {
               {((examType == 'multimedia_mcq' && start == true) ||
                 examType == 'mcq' ||
                 examType == 'FillInTheBlank') && (
+                <div>
                   <div>
-
-                    <div>
-                      <TimeRemain
-                        timerProgress={timerProgress}
-                        setTimerProgress={setTimerProgress}
-                        totalDuration={totalDuration}
-                        timeRemaining={timeRemaining}
-                        setTimeRemaining={setTimeRemaining}
-                        examType={ques.type}
-                        start={start}
-                        handleFinishExam={handleFinishExam}
-                        setTimer={setTimer}
-                        takingTime={takingTime}
-                        setTakingTime={setTakingTime}
-                      ></TimeRemain>
-                    </div>
-
+                    <TimeRemain
+                      timerProgress={timerProgress}
+                      setTimerProgress={setTimerProgress}
+                      totalDuration={totalDuration}
+                      timeRemaining={timeRemaining}
+                      setTimeRemaining={setTimeRemaining}
+                      examType={ques.type}
+                      start={start}
+                      handleFinishExam={handleFinishExam}
+                      setTimer={setTimer}
+                      takingTime={takingTime}
+                      setTakingTime={setTakingTime}
+                    ></TimeRemain>
                   </div>
-
-                )}
+                </div>
+              )}
               <div className=' min-h-[70vh] flex justify-center md:mt-0 mt-10 md:items-center'>
                 <div className='w-full mx-2 md:mx-20'>
                   <div className='flex justify-center my-10 mb-5'>
@@ -221,7 +213,7 @@ const Exam2 = () => {
                       </>
                     )}
                   </div>
-                  <div className='grid md:grid-cols-3 grid-cols-1' >
+                  <div className='grid grid-cols-1 md:grid-cols-3'>
                     <div className='max-w-[50px]  min-h-[50px] text-white bg-blue-900 rounded-full flex justify-center items-center'>
                       <div>
                         <span className='text-3xl font-semibold'>
@@ -235,26 +227,45 @@ const Exam2 = () => {
                       </div>
                     </div>
                     <div>
-                      <h1 className='text-2xl text-center mt-5'>Your Gems:<span className='text-green-500'> {info.gems}</span></h1>
-                      <div className='flex justify-center'>{info?.gems < 1 && <h1 className='bg-red-500 text-white p-1 rounded-lg mt-2 w-1/2 mx-auto|||||||| text-center'>You Do Not Have Enough Gems</h1>}</div>
+                      <h1 className='mt-5 text-2xl text-center'>
+                        Your Gems:
+                        <span className='text-green-500'> {info.gems}</span>
+                      </h1>
+                      <div className='flex justify-center'>
+                        {info?.gems < 1 && (
+                          <h1 className='bg-red-500 text-white p-1 rounded-lg mt-2 w-1/2 mx-auto|||||||| text-center'>
+                            You Do Not Have Enough Gems
+                          </h1>
+                        )}
+                      </div>
                     </div>
                     <div>
-
-
-                      <div className={showHints === true ? 'tooltip tooltip-open tooltip-success' : ''} data-tip={hints}>
-                        <button disabled={(showHints === true) || (info?.gems < 1)} onClick={() => {
-                          dispatch(reduceGems(user?.email))
-                          dispatch(setShowHints(true))
-                          refetch()
-                        }} className="btn btn-sm btn-warning">Hints</button>
+                      <div
+                        className={
+                          showHints === true
+                            ? 'tooltip tooltip-open tooltip-success'
+                            : ''
+                        }
+                        data-tip={hints}
+                      >
+                        <button
+                          disabled={showHints === true || info?.gems < 1}
+                          onClick={() => {
+                            dispatch(reduceGems(user?.email))
+                            dispatch(setShowHints(true))
+                            refetch()
+                          }}
+                          className='btn btn-sm btn-warning'
+                        >
+                          Hints
+                        </button>
                       </div>
-
                     </div>
                   </div>
 
                   {(examType == 'multimedia_mcq' && start == true) ||
-                    examType == 'mcq' ||
-                    examType == 'FillInTheBlank' ? (
+                  examType == 'mcq' ||
+                  examType == 'FillInTheBlank' ? (
                     <h1 className='text-3xl font-semibold my-7'>
                       {currentQuestion + 1}- {question}
                     </h1>

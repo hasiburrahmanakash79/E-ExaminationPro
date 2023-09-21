@@ -1,176 +1,177 @@
-import { useForm } from 'react-hook-form'
-import { useParams } from 'react-router-dom'
-import useAuth from '../../../Hooks/useAuth/useAuth'
-import { useEffect, useState } from 'react'
+import { useForm } from "react-hook-form";
+import { useLocation, useParams } from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
+import usePrice from "../../../Hooks/usePrice/usePrice";
+import useAxiosSecure from "../../../Hooks/useAxiosSecure.jsx/useAxiosSecure";
+import { useQuery } from "@tanstack/react-query";
+import Loading from "../../../Components/Loading/Loading";
+import { AuthContext } from "../../../Provider/AuthProvider";
 
 const SSLCart = () => {
-  const [infoPayment, setInfoPayment] = useState([])
-  const { id } = useParams()
-  const { user } = useAuth()
-  const Premium = 'Premium'
-  const dateTime = new Date()
+  const [pricePackage] = usePrice();
+  // console.log("10 >", pricePackage);
+
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
+  const id = searchParams.get("Cardid");
+  // console.log("dma d", id);
+
+  const [axiosSecure] = useAxiosSecure();
+  const { user, loading } = useContext(AuthContext);
+  const dateTime = new Date();
+
+  const { data: priceData, isLoading } = useQuery({
+    queryKey: ["priceData", id],
+    queryFn: async () => {
+      const res = await axiosSecure.get(`/price?id=${id}`);
+      //console.log(res.data);
+      return res.data;
+    },
+  });
+
+  const cartPrice = pricePackage.filter((price) => price?._id == id);
+  // console.log("serial number 45 >", cartPrice);
+  const totalPrice = parseFloat(priceData?.packageAmount) * 92;
+  const price = totalPrice;
+  const feature = priceData?.features;
+  console.log("fkjfv erefg ker", feature);
+  console.log("serial number 67 >>>>", price);
 
   const {
     register,
     handleSubmit,
-    formState: { errors }
-  } = useForm()
+    formState: { errors },
+  } = useForm();
 
-  const onSubmit = data => {
-    //console.log(data);
-    data.orderId = id
-    data.paymentName = Premium
-    data.orderDateTime = new Date(dateTime).toLocaleString()
-    fetch('https://e-exam-pro-server.vercel.app/sslPayment', {
-      method: 'POST',
-      headers: { 'content-type': 'application/json' },
-      body: JSON.stringify(data)
+  const onSubmit = (data) => {
+    console.log("payment data>>>", data);
+    (data.paymentId = priceData?.id),
+      (data.packageName = cartPrice[0]?.name),
+      (data.price = priceData?.packageAmount),
+      (data.features = feature),
+      (data.status = "paid"),
+      (data.date = new Date(dateTime).toLocaleString());
+    fetch("https://e-exam-pro-server.vercel.app/sslPayment", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify(data),
     })
-      .then(res => res.json())
-      .then(data => {
-        window.location.replace(data?.url)
-        //console.log(data);
-      })
-  }
-
-  // useEffect(() => {
-  //     fetch(`https://e-exam-pro-server.vercel.app/payments/${id}`)
-  //     .then(res => res.json())
-  //     .then(data => //console.log(data))
-
-  // }, [id])
+      .then((res) => res.json())
+      .then((data) => {
+        window.location.replace(data?.url);
+        console.log(data?.url);
+      });
+  };
 
   return (
-    <div className=' mx-auto mt-10 '>
-      <h1 className=' text-3xl text-center mb-10 mt-5'>SSL Payment Gatway</h1>
+    <div className="mx-auto mt-10 ">
+      <h1 className="mt-5 mb-10 text-3xl text-center ">SSL Payment Gateway</h1>
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className=' space-y-6 md:w-1/2 mx-auto  '
+        className="mx-auto space-y-6  md:w-1/2"
       >
-        <div className='flex items-center gap-5'>
-          <div className='w-1/2'>
-            <label htmlFor='name' className=''>
-              {' '}
-              Name{' '}
-            </label>{' '}
+        <div className="flex items-center gap-5">
+          <div className="w-1/2">
+            <label htmlFor="userName" className="">
+              Name
+            </label>
             <br />
             <input
-              className='bg-transparent border-2 focus:outline-none shadow-2xl border-violet-800 p-3 w-full rounded-md'
+              className="w-full p-3 bg-transparent border-2 rounded-md shadow-2xl focus:outline-none border-violet-800"
               defaultValue={user?.displayName}
               required
-              {...register('name')}
+              {...register("userName")}
             />
           </div>
-          <div className='w-1/2'>
+          <div className="w-1/2">
             <label
-              htmlFor='email'
-              className='text-lg  text-slate-100 tracking-wider '
+              htmlFor="email"
+              className="text-lg tracking-wider text-slate-100 "
             >
-              {' '}
-              Email{' '}
-            </label>{' '}
+              Email
+            </label>
             <br />
             <input
-              className='bg-transparent border-2 focus:outline-none shadow-2xl border-violet-800 p-3 w-full rounded-md'
+              className="w-full p-3 bg-transparent border-2 rounded-md shadow-2xl focus:outline-none border-violet-800"
               required
               defaultValue={user?.email}
-              {...register('email')}
+              {...register("email")}
             />
           </div>
         </div>
-        <div className='flex items-center gap-5'>
-          <div className='w-1/2'>
-            <label htmlFor='phone' className=''>
-              {' '}
-              Phone Number{' '}
-            </label>{' '}
+        <div className="flex items-center gap-5">
+          <div className="w-1/2">
+            <label htmlFor="phone" className="">
+              Phone Number
+            </label>
             <br />
             <input
-              type='number'
-              className='bg-transparent border-2 focus:outline-none shadow-2xl border-violet-800 p-3 w-full rounded-md'
-              // defaultValue={user?.displayName}
-              placeholder='+8801000-000000'
+              type="number"
+              className="bg-transparent border-2 focus:outline-none shadow-2xl border-violet-800 p-3 w-full rounded-md"
+              placeholder="+8801000-000000"
               required
-              {...register('phone')}
+              {...register("phone")}
             />
           </div>
-          <div className='w-1/2'>
+          <div className="w-1/2">
             <label
-              htmlFor='address'
-              className='text-lg  text-slate-100 tracking-wider'
+              htmlFor="address"
+              className="text-lg tracking-wider text-slate-100"
             >
-              {' '}
-              Address{' '}
-            </label>{' '}
+              Address
+            </label>
             <br />
             <input
-              className='bg-transparent border-2 focus:outline-none shadow-2xl border-violet-800 p-3 w-full rounded-md'
+              className="w-full p-3 bg-transparent border-2 rounded-md shadow-2xl focus:outline-none border-violet-800"
               defaultValue={user?.address}
-              placeholder='Please your address'
+              placeholder="Please your address"
               required
-              {...register('address')}
+              {...register("address")}
             />
           </div>
         </div>
-        <div className='flex items-center gap-5'>
-          <div className='w-1/2'>
-            <label htmlFor='postCode' className=''>
-              {' '}
-              Post Code{' '}
-            </label>{' '}
-            <br />
-            <input
-              className='bg-transparent border-2 focus:outline-none shadow-2xl border-violet-800 p-3 w-full rounded-md'
-              // defaultValue={user?.displayName}
-              placeholder='Post Code'
-              required
-              {...register('postCode')}
-            />
-          </div>
-          <div className='w-1/2'>
+        <div className="w-full">
             <label
-              htmlFor='adders'
-              className='text-lg  text-slate-100 tracking-wider'
+              htmlFor="adders"
+              className="text-lg tracking-wider text-slate-100"
             >
-              {' '}
-              Currency{' '}
-            </label>{' '}
+              Currency
+            </label>
             <br />
             <select
-              {...register('currency')}
+              {...register("currency")}
               required
-              className='bg-transparent border-2 focus:outline-none shadow-2xl border-violet-800 p-3 w-full rounded-md'
+              className="w-full p-3 bg-transparent border-2 rounded-md shadow-2xl focus:outline-none border-violet-800"
             >
-              <option className='text-black' value='USD'>
+              <option className="text-black" value="USD">
                 USD
               </option>
-              <option className='text-black' value='BDT'>
+              <option className="text-black" value="BDT">
                 BDT
               </option>
-              <option className='text-black' value='EUR'>
+              <option className="text-black" value="EUR">
                 EUR
               </option>
-              <option className='text-black' value='IND'>
+              <option className="text-black" value="IND">
                 IND
               </option>
-              <option className='text-black' value='PAK'>
+              <option className="text-black" value="PAK">
                 PAK
               </option>
             </select>
-          </div>
         </div>
         {errors.exampleRequired && <span>This field is required</span>}
 
-        <div className='flex justify-center '>
+        <div className="flex justify-center ">
           <input
-            type='submit'
-            value='Pay Now'
-            className=' duration-300 primary-btn mx-auto w-1/2 text-center rounded-md py-3 cursor-pointer'
+            type="submit"
+            value="Pay Now"
+            className="w-1/2 py-3 mx-auto text-center duration-300 rounded-md cursor-pointer  primary-btn"
           />
         </div>
       </form>
     </div>
-  )
-}
+  );
+};
 
-export default SSLCart
+export default SSLCart;

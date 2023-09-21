@@ -24,7 +24,7 @@ const DemoTestSection = () => {
               controls
               muted
               autoPlay
-              className='w-11/12 border border-purple-500 rounded-lg h-3/4'
+              className='w-full border border-purple-500 rounded-lg h-3/4'
             >
               <source src={''} type='video/mp4' />
             </video>

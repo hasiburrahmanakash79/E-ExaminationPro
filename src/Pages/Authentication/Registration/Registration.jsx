@@ -6,13 +6,17 @@ import Loading from '../../../Components/Loading/Loading'
 import Swal from 'sweetalert2'
 import useAuth from '../../../Hooks/useAuth/useAuth'
 import { AuthContext } from '../../../Provider/AuthProvider'
+import { Helmet } from 'react-helmet-async'
+import Lottie from 'lottie-react'
+import regisLottie from "../../../assets/animationFile/educational.json"
 const Registration = () => {
   const [passShow, setPassShow] = useState(false)
   const { signUpUser, updateUserInfo, loading } = useContext(AuthContext)
 
   const navigate = useNavigate()
-  const location = useLocation()
-  const from = location.state?.from?.pathname || '/'
+  // const location = useLocation()
+  // const from = location.state?.from?.pathname || '/'
+
 
   const img_token = import.meta.env.VITE_Image_Key
   const img_hosting_url = `https://api.imgbb.com/1/upload?key=${img_token}`
@@ -31,13 +35,10 @@ const Registration = () => {
   const onSubmit = data => {
     signUpUser(data.email, data.password).then(result => {
       const loggedUser = result.user
-      navigate(from, { replace: true })
-      //console.log(loggedUser);
-
+      // navigate(from, { replace: true })
+      navigate("/welcome")
       const formData = new FormData()
       formData.append('image', data.image[0])
-      //console.log(formData);
-
       fetch(img_hosting_url, {
         method: 'POST',
         body: formData
@@ -65,57 +66,28 @@ const Registration = () => {
                 .then(res => res.json())
                 .then(data => {
                   if (data.insertedId) {
-                    navigate(from, { replace: true })
-                    Swal.fire({
-                      showConfirmButton: false,
-                      timer: 1500,
-                      title: 'Registration Successful',
-                      icon: 'success'
-                    })
+                    navigate("/welcome")
                   }
                 })
             })
             .catch(error => console.log(error.message))
         })
-
-      // updateUserInfo(data.name, data.photo)
-      //   .then(() => {
-      //     const userInfo = {
-      //       displayName: data.name,
-      //       email: data.email,
-      //       photoURL: data.photo,
-      //       photoURL: imgURL,
-      //       role: 'user'
-      //     }
-      //     fetch('https://e-exam-pro-server.vercel.app/users', {
-      //       method: 'POST',
-      //       headers: {
-      //         'content-type': 'application/json'
-      //       },
-      //       body: JSON.stringify(userInfo)
-      //     })
-      //       .then(res => res.json())
-      //       .then(data => {
-      //         if (data.insertedId) {
-      //           navigate(from, { replace: true })
-      //           Swal.fire({
-      //             showConfirmButton: false,
-      //             timer: 1500,
-      //             title: 'Registration Successful',
-      //             icon: 'success'
-      //           })
-      //         }
-      //       })
-      //   })
-      //   .catch(error => //console.log(error.message))
     })
   }
   return (
     <div className='Auth_bg'>
-      <div className='min-h-screen hero'>
+      <Helmet>
+        <title>Registration | E-ExamPro</title>
+      </Helmet>
+      <div className='min-h-screen hero container mx-auto'>
         <div className='items-center justify-between gap-10 px-3 md:flex'>
           <div className='md:w-1/2'>
-            <img src='https://i.ibb.co/jDMz1bj/login-page-banner.png' alt='' />
+            {/* <img src='https://i.ibb.co/jDMz1bj/login-page-banner.png' alt='' /> */}
+            <Lottie
+              animationData={regisLottie}
+              loop={true}
+            // className=" md:w-10/12 mx-auto" 
+            />
           </div>
           <div className='flex-shrink-0 w-full bg-transparent border border-black rounded-lg shadow-xl md:w-1/2 card backdrop-blur-sm'>
             <div className='text-center '>

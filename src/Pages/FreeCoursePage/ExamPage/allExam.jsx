@@ -58,6 +58,51 @@ const AllExam = () => {
     }
   }, [subject, type, loading, batch, isInstructor, isAdmin])
 
+  //console.log(exams);
+  //console.log(type);
+  //console.log(isAdmin);
+  const [currentTime, setCurrentTime] = useState(new Date())
+  useEffect(() => {
+    // Update the current time every second (1000 milliseconds)
+    const intervalId = setInterval(() => {
+      setCurrentTime(new Date());
+    }, 1000);
+
+    // Clear the interval when the component unmounts
+    return () => clearInterval(intervalId);
+  }, [])
+
+  const convertTo12HourFormat = (time24) => {
+    if (time24) {
+      const [hours, minutes] = time24.split(':');
+      const parsedHours = parseInt(hours, 10);
+
+      let period = 'AM';
+      let adjustedHours = parsedHours;
+
+      if (parsedHours >= 12) {
+        period = 'PM';
+        adjustedHours = parsedHours === 12 ? 12 : parsedHours - 12;
+      }
+
+      return `${adjustedHours}:${minutes} ${period}`;
+    }
+  }
+
+  const isExamInFuture = (date, time) => {
+    // Parse exam date and time
+    const examDateTime = new Date(`${date}T${time}`);
+
+    // Get current date and time
+    const currentDateTime = new Date();
+
+    // Compare exam date and time with the current date and time
+
+    console.log(examDateTime,'gg',currentDateTime)
+    return examDateTime > currentDateTime;
+  }
+
+  console.log(isExamInFuture())
   return (
     <>
       <div className='min-h-[60vh] container mx-auto'>
@@ -103,12 +148,15 @@ const AllExam = () => {
                             <h2>Exam Code: {exam.exam_code}</h2>
                             <h2>Subject Code: {exam.subject_code}</h2>
                             <h3>Batch:{exam.batch}</h3>
+                            <h1 className='font-bold text-md'>
+                              Type: {exam.type}
+                            </h1>
                           </div>
                           <div className='grid grid-cols-1'>
                             <div className='flex flex-row-reverse gap-7'>
-                              <h1 className='font-bold text-md'>
-                                Type: {exam.type}
-                              </h1>
+                              <h2 className='font-bold text-md'>
+                                Exam Time: {convertTo12HourFormat(exam.examTime)}
+                              </h2>
                               <h2 className='font-bold text-md'>
                                 Date: {exam.date}
                               </h2>
@@ -137,14 +185,35 @@ const AllExam = () => {
                               <button className='w-1/3 btn ms-auto btn-sm btn-primary'>
                                 Please Add your Batch
                               </button>
-                            ) : (
-                              <Link
-                                to={`/exam/${exam._id}`}
-                                className='w-1/3 btn ms-auto btn-sm btn-primary'
-                              >
-                                <button>Exam</button>
-                              </Link>
-                            )}
+                            ) :
+                              isExamInFuture(exam.date, exam.examTime) ?(
+
+                                  
+                                   ((new Date(`${exam.date}T${exam.examTime}`) - currentTime)/60000)<4? 
+                                    (
+                                      <Link
+                                        to={`/exam/${exam._id}`}
+                                        className='w-1/3 btn ms-auto btn-sm btn-primary'
+                                      >
+                                        <button>Exam <span className='text-red-500'>Start</span><span className='text-red-500'> {((new Date(`${exam.date}T${exam.examTime}`)-currentTime)/60000).toFixed(2) } Min</span></button>
+                                      </Link>
+                                    ):
+                                  ( <h1  className='w-1/3 p-2 btn ms-auto btn-sm btn-primary'> Start Soon <span className='text-red-500'> {((new Date(`${exam.date}T${exam.examTime}`)-currentTime)/60000).toFixed(2) } Min</span> </h1>)
+                                  
+
+
+                                // <Link
+                                //   to={`/exam/${exam._id}`}
+                                //   className='w-1/3 btn ms-auto btn-sm btn-primary'
+                                // >
+                                //   <button>Exam</button>
+                                // </Link>
+                              ) : 
+                              (
+                                <button className='w-1/3 btn ms-auto btn-sm btn-warning'>
+                                  Time Passed
+                                </button>) 
+                              }
                           </div>
                         </div>
                       </div>
@@ -199,12 +268,15 @@ const AllExam = () => {
                             <h2>Exam Code: {exam.exam_code}</h2>
                             <h2>Subject Code: {exam.subject_code}</h2>
                             <h3>Batch:{exam.batch}</h3>
+                            <h1 className='font-bold text-md'>
+                              Type: {exam.type}
+                            </h1>
                           </div>
                           <div className='grid grid-cols-1'>
                             <div className='flex flex-row-reverse gap-7'>
-                              <h1 className='font-bold text-md'>
-                                Type: {exam.type}
-                              </h1>
+                              <h2 className='font-bold text-md'>
+                                Exam Time: {convertTo12HourFormat(exam.examTime)}
+                              </h2>
                               <h2 className='font-bold text-md'>
                                 Date: {exam.date}
                               </h2>
@@ -229,14 +301,18 @@ const AllExam = () => {
                               <button className='w-1/3 btn ms-auto btn-sm btn-primary'>
                                 Exam
                               </button>
-                            ) : (
+                            ) :
+                            new Date(`${exam.date}T${exam.examTime}`) - new Date()<15 ? 
+                            (
                               <Link
                                 to={`/exam/${exam._id}`}
                                 className='w-1/3 btn ms-auto btn-sm btn-primary'
                               >
                                 <button>Exam</button>
                               </Link>
-                            )}
+                            ):
+                            <button>Exam Will Start Soon</button>
+                           }
                           </div>
                         </div>
                       </div>
@@ -291,12 +367,15 @@ const AllExam = () => {
                             <h2>Exam Code: {exam.exam_code}</h2>
                             <h2>Subject Code: {exam.subject_code}</h2>
                             <h3>Batch:{exam.batch}</h3>
+                            <h1 className='font-bold text-md'>
+                              Type: {exam.type}
+                            </h1>
                           </div>
                           <div className='grid grid-cols-1'>
                             <div className='flex flex-row-reverse gap-7'>
-                              <h1 className='font-bold text-md'>
-                                Type: {exam.type}
-                              </h1>
+                              <h2 className='font-bold text-md'>
+                                Exam Time: {convertTo12HourFormat(exam.examTime)}
+                              </h2>
                               <h2 className='font-bold text-md'>
                                 Date: {exam.date}
                               </h2>

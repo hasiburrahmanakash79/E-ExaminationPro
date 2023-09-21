@@ -1,12 +1,19 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-    userAnswers: []
+    userAnswers: [],
+    currentQuestionIndex: 0
 }
 const writtenQuestionSlice = createSlice({
     name: 'writtenQuestionSlice',
     initialState,
     reducers: {
+        nextWrittenQuestion: (state) => {
+            state.currentQuestionIndex += 1
+
+
+
+        },
         addUserAnswer: ((state, { payload }) => {
             /* well this is an interesting problem i had to figure out like when i was dispatching the data it weren't updating in the selector function. then i googled like if there any way of refetch type functionality in redux toolkit, then i realized that i was implementing wrong. 
 
@@ -22,7 +29,8 @@ const writtenQuestionSlice = createSlice({
                 state.userAnswers.push(payload)
             }
         })
+
     }
 })
-export const { addUserAnswer } = writtenQuestionSlice.actions
+export const { addUserAnswer, nextWrittenQuestion } = writtenQuestionSlice.actions
 export default writtenQuestionSlice.reducer

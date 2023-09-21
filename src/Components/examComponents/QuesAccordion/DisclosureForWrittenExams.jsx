@@ -7,9 +7,9 @@ import { useSelector } from 'react-redux'
 const DisclosureForWrittenExams = ({ writtenQuestions }) => {
   const { userAnswers } = useSelector(state => state.writtenQuestions)
   return (
-    <div className='container sticky top-0 text-2xl text-white body md:mx-auto'>
+    <div className='container sticky top-0 py-2 text-2xl text-white rounded-lg shadow-2xl drop-shadow-2xl md:mx-auto'>
       <div className='w-full px-4 pt-1'>
-        <div className='w-full max-w-md p-2 mx-auto primary-bg rounded-2xl'>
+        <div className='w-full max-w-md p-2 mx-auto rounded-2xl'>
           {writtenQuestions?.map((sq, index) => (
             <div className='space-y-4' key={index}>
               {sq.questions.map(question => {

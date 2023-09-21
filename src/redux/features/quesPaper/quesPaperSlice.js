@@ -14,7 +14,8 @@ export const quesPaperSlice = createSlice({
             date: null,
             email: null,
             videoURL: null,
-            time:null
+            time:null,
+            examTime:null
         },
         questions: [],
         codeRepeat: null,
@@ -45,7 +46,6 @@ export const quesPaperSlice = createSlice({
             if (name === 'exam_code') {
                 //console.log(name, '------------------------------------------44')
                 state.codeRepeat = value
-
             }
 
             // let time=null

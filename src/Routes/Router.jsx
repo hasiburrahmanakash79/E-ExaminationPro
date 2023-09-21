@@ -55,6 +55,9 @@ import ChatBotUI from "../Components/ChatBotUI/ChatBotUI";
 import ExamResult from "../Pages/ExamResult/ExamResult";
 import AdminRoute from "./AdminRoute";
 import InstructorRoute from "./InstructorRoute";
+import WelCome from '../Pages/WelCome/WelCome'
+import LeaderboardPage from '../Pages/Dashboard/LeaderboardPage/LeaderboardPage'
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -87,7 +90,10 @@ const router = createBrowserRouter([
         path: "/notice",
         element: <Notice />,
       },
-
+      {
+        path: '/leaderboard',
+        element: <LeaderboardPage />
+      },
       {
         path: "/about",
         element: <AboutUs />,
@@ -109,8 +115,10 @@ const router = createBrowserRouter([
         element: <Contact />,
       },
       {
-        path: "/paymentOption/:id",
-        element: <PaymentOption />,
+        path: '/paymentOption/:id',
+        element: <PrivateRouter>
+          <PaymentOption />
+        </PrivateRouter>
       },
       {
         path: "/stripePayment",
@@ -136,6 +144,7 @@ const router = createBrowserRouter([
         path: "/paymentOrder/fail/:tranId",
         element: <SSLCommerzFail />,
       },
+      
       {
         path: "/allSubjects",
 
@@ -153,9 +162,7 @@ const router = createBrowserRouter([
         path: "/exam/:id",
         element: <Exam2 />,
         loader: ({ params }) =>
-          fetch(
-            `https://e-exam-pro-server.vercel.app/questionPaper/${params.id}`
-          ),
+          fetch(`https://e-exam-pro-server.vercel.app/questionPaper/${params.id}`)
       },
       {
         path: "/written",
@@ -234,8 +241,12 @@ const router = createBrowserRouter([
     element: <Registration />,
   },
   {
-    path: "/examRoom",
-    element: <ExamRoom />,
+    path: '/welCome',
+    element: <WelCome />
+  },
+  {
+    path: '/examRoom',
+    element: <ExamRoom />
   },
 
   ///// DASHBOARD /////

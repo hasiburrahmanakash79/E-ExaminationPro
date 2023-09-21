@@ -55,7 +55,7 @@ const PricingCard = ({ price }) => {
         ) : (
           <Link
             to={`/paymentOption/${price?._id}`}
-            className={` btn ${price.name === 'Premium' ? 'btn-info' : ''}
+            className={` btn ${price.name === 'Premium' ? 'btn-info' : 'btn-accent'}
        hover:outline-blue-400 hover:outline translate `}
           >
             {' '}
