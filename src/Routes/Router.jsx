@@ -23,7 +23,6 @@ import Exam2 from '../Pages/FreeCoursePage/ExamPage/Exam2'
 import FreeCoursePage from '../Pages/FreeCoursePage/FreeCoursePage'
 import CreateQuesPaper from '../Pages/Dashboard/InstructorDashboard/CreateQuestion/CreateQuesPaper'
 import InstructorHome from '../Pages/Dashboard/InstructorDashboard/InstructorHome/InstructorHome'
-import Payment from '../Pages/Dashboard/UserDashboard/Payment/Payment'
 import QuizDemo from '../Pages/Home/DemoTest/QuizDemo'
 import UserHome from '../Pages/Dashboard/UserDashboard/UserHome/UserHome'
 import PaymentHistory from '../Pages/Dashboard/UserDashboard/PaymentHistory/PaymentHistory'
@@ -59,6 +58,9 @@ import AdminRoute from './AdminRoute'
 import InstructorRoute from './InstructorRoute'
 import WelCome from '../Pages/WelCome/WelCome'
 import LeaderboardPage from '../Pages/Dashboard/LeaderboardPage/LeaderboardPage'
+import Loading from '../Components/Loading/Loading'
+import WrittenAnswersReview from '../Pages/Dashboard/InstructorDashboard/WrittenAnswersReview/WrittenAnswersReview'
+import SingleUserAnswers from '../Pages/Dashboard/InstructorDashboard/WrittenAnswersReview/SingleUserAnswers'
 const router = createBrowserRouter([
   {
     path: '/',
@@ -364,10 +366,6 @@ const router = createBrowserRouter([
       {
         path: '/dashboard/allgivenExam',
         element: <AllGivenExam />
-      },
-      {
-        path: '/dashboard/studentAnalytics',
-        element: <StudentAnalytics />
       },
       {
         path: '/dashboard/allgivenExam',
