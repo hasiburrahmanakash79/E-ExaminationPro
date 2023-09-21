@@ -18,15 +18,10 @@ import Piechart from "./Piechart";
 
 
 const AdminHome = () => {
-  const [instructors, setInstructors] = useState([]);
   const [users, setUsers] = useState([]);
   const [questions, setQuestions] = useState([]);
   const [answers, setAnswers] = useState([]);
-  useEffect(() => {
-    fetch('https://e-exam-pro-server.vercel.app/instructors')
-      .then(res => res.json())
-      .then(data => setInstructors(data))
-  }, [])
+  
   useEffect(() => {
     fetch('https://e-exam-pro-server.vercel.app/users')
       .then(res => res.json())
@@ -76,7 +71,6 @@ const AdminHome = () => {
         <div className="flex items-center justify-between h-20 px-4 mx-3 transition duration-300 ease-out transform border-l-4 rounded-lg cursor-pointer border-violet-300 hover:shadow-lg hover:scale-105">
           <div>
             <h2>Instructors</h2>
-            <h1>{instructors.length}</h1>
             <h1>{instructorsD.length}</h1>
           </div>
           <FaChalkboardTeacher fontSize={28} />

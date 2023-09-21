@@ -2,11 +2,8 @@ import { useParams } from 'react-router-dom'
 import Lottie from "lottie-react";
 import successLottie from "../../../../../../assets/animationFile/success.json"
 import { useSSLCommerz } from '../../../../../../Hooks/useSSLCommerz/useSSLCommerz';
-import useAuth from '../../../../../../Hooks/useAuth/useAuth';
 const SSLCommerzSuccess = () => {
   const { tranId } = useParams()
-  const { user } = useAuth();
-  // console.log("user id > ", user);
   const [isSuccess, refetch] = useSSLCommerz();
   console.log("serial number 11 >>>", isSuccess);
   // const paymentData = isSuccess.filter(success => success?.transitionId == tranId)
