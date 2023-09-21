@@ -46,7 +46,6 @@ export const quesPaperSlice = createSlice({
             if (name === 'exam_code') {
                 //console.log(name, '------------------------------------------44')
                 state.codeRepeat = value
-
             }
 
             // let time=null
