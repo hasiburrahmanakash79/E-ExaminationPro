@@ -34,8 +34,8 @@ const SSLCart = () => {
   const totalPrice = parseFloat(priceData?.packageAmount) * 92;
   const price = totalPrice;
   const feature = priceData?.features;
-  console.log("fkjfv erefg ker", feature);
-  console.log("serial number 67 >>>>", price);
+  // console.log("fkjfv erefg ker", feature);
+  // console.log("serial number 67 >>>>", price);
 
   const {
     register,
