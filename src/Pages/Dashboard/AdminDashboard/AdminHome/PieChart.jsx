@@ -1,10 +1,7 @@
 import React, { PureComponent } from 'react';
 import { PieChart, Pie, Sector, Cell, ResponsiveContainer } from 'recharts';
 
-const data = [
-  { name: 'Student', value: 400 },
-  { name: 'Instructor', value: 300 },
-];
+
 
 const COLORS = ['#00C49F',  '#970fd1'];
 
@@ -21,7 +18,12 @@ const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, per
   );
 };
 
-const Piechart = () => {
+const Piechart = ({students , instructorsD}) => {
+  console.log("USERR ROLE ", students, instructorsD);
+  const data = [
+    { name: 'Student', value: students?.length },
+    { name: 'Instructor', value: instructorsD?.length },
+  ];
     return (
         <div>
           <ResponsiveContainer width="100%" height={350}>

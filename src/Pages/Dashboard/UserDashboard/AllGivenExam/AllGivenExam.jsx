@@ -40,7 +40,7 @@ const AllGivenExam = () => {
     const email = user?.email
     const data = { student_name, image, feedback_message, rating, email }
 
-    fetch('http://localhost:4000/testimonials', {
+    fetch('https://e-exam-pro-server.vercel.app/testimonials', {
       method: 'POST',
       headers: {
         'content-type': 'application/json'
@@ -59,7 +59,7 @@ const AllGivenExam = () => {
   return (
     <div className='flex flex-col items-center justify-center'>
       <Helmet>
-        <title>E-ExamPro | Apply Live Exam </title>
+        <title>Apply Live Exam | E-ExamPro </title>
       </Helmet>
 
       {/* You can open the modal using document.getElementById('ID').showModal() method */}

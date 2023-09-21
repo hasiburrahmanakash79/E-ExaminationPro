@@ -1,4 +1,7 @@
 import { Suspense, lazy } from 'react'
+const Payment = lazy(() =>
+  import('../Pages/Dashboard/UserDashboard/Payment/Payment')
+)
 import { createBrowserRouter } from 'react-router-dom'
 import Main from '../Layouts/Main'
 import AboutUs from '../Pages/AboutUs/AboutUs'
@@ -16,21 +19,17 @@ import Dashboard from '../Layouts/Dashboard'
 import ManageUsers from '../Pages/Dashboard/AdminDashboard/ManageUser/ManageUsers'
 import AdminHome from '../Pages/Dashboard/AdminDashboard/AdminHome/AdminHome'
 import Notice from '../Pages/NoticePage/Notice/Notice'
-
 import Exam2 from '../Pages/FreeCoursePage/ExamPage/Exam2'
 import FreeCoursePage from '../Pages/FreeCoursePage/FreeCoursePage'
 import CreateQuesPaper from '../Pages/Dashboard/InstructorDashboard/CreateQuestion/CreateQuesPaper'
 import InstructorHome from '../Pages/Dashboard/InstructorDashboard/InstructorHome/InstructorHome'
-const Payment = lazy(() =>
-  import('../Pages/Dashboard/UserDashboard/Payment/Payment')
-)
+import Payment from '../Pages/Dashboard/UserDashboard/Payment/Payment'
 import QuizDemo from '../Pages/Home/DemoTest/QuizDemo'
 import UserHome from '../Pages/Dashboard/UserDashboard/UserHome/UserHome'
 import PaymentHistory from '../Pages/Dashboard/UserDashboard/PaymentHistory/PaymentHistory'
 import WrittenExams from '../Pages/Exams/WrittenExams/WrittenExams'
 import CreateLiveExam from '../Pages/LiveExam/CreateLiveExam/CreateLiveExam'
 import AppliedLiveExam from '../Pages/Dashboard/UserDashboard/AppliedLiveExam/AppliedLiveExam'
-import StudentAnalytics from '../Pages/Dashboard/UserDashboard/StudentAnalytics/StudentAnalytics'
 import ExamRoom from '../Pages/LiveExam/ExamRoom/ExamRoom'
 import AddBlog from '../Pages/Dashboard/InstructorDashboard/AddBlog/AddBlog'
 import UpcomingLiveExam from '../Pages/LiveExam/UpcomingLiveExam/UpcomingLiveExam'
@@ -49,17 +48,17 @@ import AllGivenExam from '../Pages/Dashboard/UserDashboard/AllGivenExam/AllGiven
 import UpdateProfilePicture from '../Pages/Authentication/UpdateProfile/UpdateProfilePicture'
 import AllUserPayment from '../Pages/Dashboard/AdminDashboard/AllUserPayment/AllUserPayment'
 import NoticeBoard from '../Pages/Dashboard/UserDashboard/NoticeBoard/NoticeBoard'
-
 import SSLCart from '../Pages/Home/Pricing/SSLCart'
 import SSLCommerzSuccess from '../Pages/Dashboard/UserDashboard/Payment/SSLPage/SSLCommerzSuccess/SSLCommerzSuccess'
 import SSLCommerzFail from '../Pages/Dashboard/UserDashboard/Payment/SSLPage/SSLCommerzFail/SSLCommerzFail'
 import PaymentOption from '../Pages/Dashboard/UserDashboard/Payment/PaymentOption'
 import AllExam from '../Pages/FreeCoursePage/ExamPage/allExam'
+import ChatBotUI from '../Components/ChatBotUI/ChatBotUI'
 import ExamResult from '../Pages/ExamResult/ExamResult'
+import AdminRoute from './AdminRoute'
+import InstructorRoute from './InstructorRoute'
+import WelCome from '../Pages/WelCome/WelCome'
 import LeaderboardPage from '../Pages/Dashboard/LeaderboardPage/LeaderboardPage'
-import WrittenAnswersReview from '../Pages/Dashboard/InstructorDashboard/WrittenAnswersReview/WrittenAnswersReview'
-import SingleUserAnswers from '../Pages/Dashboard/InstructorDashboard/WrittenAnswersReview/SingleUserAnswers'
-import Loading from '../Components/Loading/Loading'
 const router = createBrowserRouter([
   {
     path: '/',
@@ -76,16 +75,16 @@ const router = createBrowserRouter([
       },
       {
         path: '/blog',
-        element: <NewBlog></NewBlog>
+        element: <NewBlog />
       },
 
       {
         path: '/blogDetails/:id',
-        element: <BlogDetails></BlogDetails>
+        element: <BlogDetails />
       },
       {
         path: '/blogUnderDetails/:id',
-        element: <UnderBlog></UnderBlog>
+        element: <UnderBlog />
       },
 
       {
@@ -98,7 +97,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/about',
-        element: <AboutUs></AboutUs>
+        element: <AboutUs />
       },
       {
         path: '/demo-test',
@@ -114,11 +113,15 @@ const router = createBrowserRouter([
       },
       {
         path: '/contact',
-        element: <Contact></Contact>
+        element: <Contact />
       },
       {
         path: '/paymentOption/:id',
-        element: <PaymentOption />
+        element: (
+          <PrivateRouter>
+            <PaymentOption />
+          </PrivateRouter>
+        )
       },
       {
         path: '/stripePayment',
@@ -164,7 +167,9 @@ const router = createBrowserRouter([
         path: '/exam/:id',
         element: <Exam2 />,
         loader: ({ params }) =>
-          fetch(`http://localhost:4000/questionPaper/${params.id}`)
+          fetch(
+            `https://e-exam-pro-server.vercel.app/questionPaper/${params.id}`
+          )
       },
       {
         path: '/written',
@@ -191,7 +196,7 @@ const router = createBrowserRouter([
         path: '/updateProfile',
         element: (
           <PrivateRouter>
-            <UpdateProfile></UpdateProfile>
+            <UpdateProfile />
           </PrivateRouter>
         )
       },
@@ -199,7 +204,7 @@ const router = createBrowserRouter([
         path: '/updateProfilePicture',
         element: (
           <PrivateRouter>
-            <UpdateProfilePicture></UpdateProfilePicture>
+            <UpdateProfilePicture />
           </PrivateRouter>
         )
       },
@@ -223,10 +228,13 @@ const router = createBrowserRouter([
         path: '/joinLiveExam',
         element: <JoinLiveExam />
       },
-
       {
         path: '/allAppliedLiveExam',
         element: <AppliedLiveExamAdmin_Instructor />
+      },
+      {
+        path: '/booot',
+        element: <ChatBotUI />
       }
     ]
   },
@@ -238,6 +246,10 @@ const router = createBrowserRouter([
   {
     path: '/signUp',
     element: <Registration />
+  },
+  {
+    path: '/welCome',
+    element: <WelCome />
   },
   {
     path: '/examRoom',
@@ -256,42 +268,79 @@ const router = createBrowserRouter([
       // Admin Dashboard Routes
       {
         path: '/dashboard/adminHome',
-        element: <AdminHome />
+        element: (
+          <AdminRoute>
+            <AdminHome />
+          </AdminRoute>
+        )
       },
       {
         path: '/dashboard/manageUsers',
-        element: <ManageUsers />
+        element: (
+          <AdminRoute>
+            <ManageUsers />
+          </AdminRoute>
+        )
       },
       {
         path: '/dashboard/allPayments',
-        element: <AllUserPayment />
+        element: (
+          <AdminRoute>
+            <AllUserPayment />
+          </AdminRoute>
+        )
       },
       {
         path: '/dashboard/createNotice',
-        element: <CreateNotice />
+        element: (
+          <AdminRoute>
+            <CreateNotice />
+          </AdminRoute>
+        )
       },
       {
         path: '/dashboard/createSubject',
-        element: <CreateSubject />
+        element: (
+          <AdminRoute>
+            <CreateSubject />
+          </AdminRoute>
+        )
       },
       // Instructor Dashboard Routes
       {
         path: '/dashboard/instructorHome',
-        element: <InstructorHome />
+        element: (
+          <InstructorRoute>
+            <InstructorHome />
+          </InstructorRoute>
+        )
       },
       {
         path: '/dashboard/createQues',
-        element: <CreateQuesPaper />
+        element: (
+          <InstructorRoute>
+            <CreateQuesPaper />
+          </InstructorRoute>
+        )
       },
       {
         path: '/dashboard/createLiveExam',
-        element: <CreateLiveExam />
+        element: (
+          <InstructorRoute>
+            <CreateLiveExam />
+          </InstructorRoute>
+        )
       },
-
       {
         path: '/dashboard/addBlog',
-        element: <AddBlog />
+        element: (
+          <InstructorRoute>
+            <AddBlog />
+          </InstructorRoute>
+        )
       },
+
+      //User Dashboard
       {
         path: '/dashboard/userHome',
         element: <UserHome />
@@ -311,6 +360,10 @@ const router = createBrowserRouter([
       {
         path: '/dashboard/upcomingLiveExam',
         element: <UpcomingLiveExam />
+      },
+      {
+        path: '/dashboard/allgivenExam',
+        element: <AllGivenExam />
       },
       {
         path: '/dashboard/studentAnalytics',

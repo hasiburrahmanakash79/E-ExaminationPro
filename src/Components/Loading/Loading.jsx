@@ -7,7 +7,7 @@ const Loading = () => {
         <ThreeCircles
           height='100'
           width='100'
-          color='#4fa94d'
+          color='#4e43f4'
           wrapperStyle={{}}
           wrapperClass=''
           visible={true}
@@ -16,7 +16,7 @@ const Loading = () => {
           innerCircleColor=''
           middleCircleColor=''
         />
-        {/* <h2 className="text-sm text-center">Circle Loading</h2> */}
+        <h2 className='text-sm text-center'>E-Exam Pro.... </h2>
       </div>
     </div>
   )

@@ -19,7 +19,7 @@ const Payment = () => {
   const location = useLocation()
   const searchParams = new URLSearchParams(location.search)
   const id = searchParams.get('Cardid')
-  //console.log(id, '-----------------------------------------------21');
+  // console.log(id, '-----------------------------------------------21');
 
   const [axiosSecure] = useAxiosSecure()
 

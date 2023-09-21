@@ -28,7 +28,7 @@ const CreateQuesPaper = () => {
     codeRepeat: codeRepeat
   } = useSelector(state => state.questionPaper)
   useEffect(() => {
-    fetch('http://localhost:4000/allSubjects', {
+    fetch('https://e-exam-pro-server.vercel.app/allSubjects', {
       headers: {
         authorization: `bearar ${localStorage.getItem('access-token')}`
       }
@@ -48,19 +48,34 @@ const CreateQuesPaper = () => {
   /////redux////
 
   ////////
-  //console.log(codeRepeat, '----------------------43')
+
   const [iscodeRepeat, setIscodeRepeat] = useState(null)
   useEffect(() => {
     fetch(
-      `http://localhost:4000/questionCode?code=${codeRepeat}`
+      `https://e-exam-pro-server.vercel.app/questionCode?code=${codeRepeat}`
     )
       .then(res => res.json())
       .then(data => setIscodeRepeat(data.result))
   }, [codeRepeat])
-  console.log(
-    iscodeRepeat,
-    '------------------------------------------------------------52'
-  )
+
+  console.log(iscodeRepeat,'------------------------------------------------------------52')
+
+  const [isDateTimeRepeat, setIsDateTimeRepeat] = useState(null)
+  useEffect(() => {
+if( formData.date && formData.examTime && formData?.batch) {
+    fetch(
+      `http://localhost:4000/questionDate&Time?date=${formData.date}&examTime=${formData.examTime}&batch=${formData?.batch}`
+    )
+      .then(res => res.json())
+      .then(data => setIsDateTimeRepeat(data.result))
+}
+else{
+  setIsDateTimeRepeat(null)
+}
+  }, [formData?.date,formData?.examTime,formData?.batch])
+
+  console.log(isDateTimeRepeat,'date time')
+
   // store basic info
   const handleInputChange = event => {
     event.preventDefault()
@@ -126,7 +141,7 @@ const CreateQuesPaper = () => {
       })
     }
 
-    fetch('http://localhost:4000/questionPaper', {
+    fetch('https://e-exam-pro-server.vercel.app/questionPaper', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -257,6 +272,7 @@ const CreateQuesPaper = () => {
               placeholder='Type here'
               className='w-full max-w-xs input input-bordered'
             />
+            {isDateTimeRepeat==true && <p className='mt-2 text-red-500'>Time Already Set For Batch {formData?.batch} On This Date </p> }
           </div>
 
           <div className='w-full max-w-xs form-control'>
@@ -272,6 +288,7 @@ const CreateQuesPaper = () => {
               placeholder='Type here'
               className='w-full max-w-xs input input-bordered'
             />
+              {isDateTimeRepeat==true && <p className='mt-2 text-red-500'>Time Already Set For Batch {formData?.batch} On This Date </p> }
           </div>
 
           <div className='w-full max-w-xs form-control'>

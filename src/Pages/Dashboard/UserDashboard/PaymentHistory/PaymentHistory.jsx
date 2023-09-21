@@ -9,7 +9,7 @@ const PaymentHistory = () => {
   const { user } = useContext(AuthContext)
 
   useEffect(() => {
-    fetch(`http://localhost:4000/history/${user?.email}`)
+    fetch(`https://e-exam-pro-server.vercel.app/history/${user?.email}`)
       .then(res => res.json())
       .then(data => {
         setPaymentInfo(data)
@@ -18,7 +18,7 @@ const PaymentHistory = () => {
   return (
     <div>
       <Helmet>
-        <title>E-ExamPro | Payment History </title>
+        <title>Payment History | E-ExamPro </title>
       </Helmet>
       <h1 className='my-5 text-2xl text-center md:text-4xl'>
         Your Payment history

@@ -164,12 +164,6 @@ const Dashboard = () => {
       role: 'user'
     },
     {
-      title: 'Upcoming Live Exam',
-      path: '/dashboard/upcomingLiveExam',
-      icon: iconMappings.Live,
-      role: 'user'
-    },
-    {
       title: 'Applied Live Exam',
       path: '/dashboard/appliedLiveExam',
       icon: iconMappings.Live,
@@ -177,12 +171,6 @@ const Dashboard = () => {
     },
     {
       title: 'Student Analytics',
-      path: '/dashboard/studentAnalytics',
-      icon: iconMappings.Analytics,
-      role: 'user'
-    },
-    {
-      title: 'Given All Exam',
       path: '/dashboard/allgivenExam',
       icon: iconMappings.Analytics,
       role: 'user'

@@ -1,16 +1,14 @@
-
 export default function Faq() {
   return (
-    <div className="md:py-16 py-8 overflow-x-hidden">
-      <h1
-        data-aos="zoom-in-down"
-        data-aos-duration="500"
-        className="text-4xl text-center">Frequently Ask Question</h1>
+    <div
+      data-aos="zoom-in"
+      data-aos-duration="1000"
+      className="md:py-16 py-8 overflow-hidden"
+    >
+      <h1 className="text-4xl mb-10 text-center">Frequently Ask Question</h1>
       <div className=" md:flex items-center justify-between container mx-auto gap-5  py-10 p-5">
         <div className="w-full">
           <img
-            data-aos="fade-up-right"
-            data-aos-duration="800"
             className="w-1/2 mx-auto"
             src="https://cdn-icons-png.flaticon.com/512/4403/4403555.png"
             alt=""
@@ -18,10 +16,7 @@ export default function Faq() {
         </div>
 
         <div className="dark:bg-none text-white w-full space-y-4 ">
-          <div
-            data-aos="fade-up-left"
-            data-aos-duration="600"
-            className="border border-violet-600 px-5 shadow-2xl rounded-md">
+          <div className="border border-violet-600 px-5 shadow-2xl rounded-md">
             <details>
               <summary className="py-2 outline-none cursor-pointer text-xl ">
                 What is E-examPro?
@@ -40,10 +35,7 @@ export default function Faq() {
             </details>
           </div>
 
-          <div
-            data-aos="fade-up-left"
-            data-aos-duration="1000"
-            className="border border-violet-600 px-5 shadow-2xl rounded-md">
+          <div className="border border-violet-600 px-5 shadow-2xl rounded-md">
             <details>
               <summary
                 className="py-2 outline-none cursor-pointer 
@@ -62,10 +54,7 @@ export default function Faq() {
             </details>
           </div>
 
-          <div
-            data-aos="fade-up-left"
-            data-aos-duration="1400"
-            className="border border-violet-600 px-5 shadow-2xl rounded-md">
+          <div className="border border-violet-600 px-5 shadow-2xl rounded-md">
             <details>
               <summary
                 className="py-2 outline-none cursor-pointer 
@@ -84,10 +73,7 @@ export default function Faq() {
             </details>
           </div>
 
-          <div
-            data-aos="fade-up-left"
-            data-aos-duration="1800"
-            className="border border-violet-600 px-5 shadow-2xl rounded-md">
+          <div className="border border-violet-600 px-5 shadow-2xl rounded-md">
             <details>
               <summary
                 className="py-2 outline-none cursor-pointer 
@@ -105,10 +91,7 @@ export default function Faq() {
               </div>
             </details>
           </div>
-          <div
-            data-aos="fade-up-left"
-            data-aos-duration="2300"
-            className="border border-violet-600 px-5 shadow-2xl rounded-md">
+          <div className="border border-violet-600 px-5 shadow-2xl rounded-md">
             <details>
               <summary
                 className="py-2 outline-none cursor-pointer 
@@ -126,10 +109,7 @@ export default function Faq() {
               </div>
             </details>
           </div>
-          <div
-            data-aos="fade-up-left"
-            data-aos-duration="2700"
-            className="border border-violet-600 px-5 shadow-2xl rounded-md">
+          <div className="border border-violet-600 px-5 shadow-2xl rounded-md">
             <details>
               <summary
                 className="py-2 outline-none cursor-pointer 
