@@ -64,7 +64,7 @@ const CreateQuesPaper = () => {
   useEffect(() => {
 if( formData.date && formData.examTime && formData?.batch) {
     fetch(
-      `http://localhost:4000/questionDate&Time?date=${formData.date}&examTime=${formData.examTime}&batch=${formData?.batch}`
+      `https://e-exam-pro-server.vercel.app/questionDate&Time?date=${formData.date}&examTime=${formData.examTime}&batch=${formData?.batch}`
     )
       .then(res => res.json())
       .then(data => setIsDateTimeRepeat(data.result))

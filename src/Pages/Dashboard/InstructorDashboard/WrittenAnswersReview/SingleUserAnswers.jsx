@@ -48,7 +48,7 @@ const SingleUserAnswers = () => {
       feedback: data.feedback
     }
     try {
-      await axios.post('http://localhost:4000/examdata', userResult)
+      await axios.post('https://e-exam-pro-server.vercel.app/examdata', userResult)
       Swal.fire({
         showConfirmButton: false,
         timer: 1500,
