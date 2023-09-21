@@ -36,21 +36,12 @@ const Login = () => {
     formState: { errors }
   } = useForm()
 
-  // if (loading) {
-  //   return <Loading />
-  // }
 
   const onSubmit = data => {
     logInUser(data.email, data.password)
       .then(result => {
         const loggedUser = result.user
         navigate('/welCome')
-        // Swal.fire({
-        //   showConfirmButton: false,
-        //   timer: 1500,
-        //   title: 'Login Successful',
-        //   icon: 'success'
-        // })
       })
       .catch(error => {
         console.log(error)
@@ -117,26 +108,12 @@ const Login = () => {
                 </div>
                 <div className='form-control '>
                   <input
-                    // disabled={!isButtonEnable}
                     className='btn btn-primary '
                     type='submit'
                     value={'Login'}
                   />
                 </div>
               </form>
-              {/* <div className="grid grid-cols-1 gap-4 mt-3 md:grid-cols-2">
-                <p className="w-1/3 px-2 py-1 mx-auto text-center text-white bg-green-500 rounded-lg md:w-full">
-                  {" "}
-                  {randomNumbers.join(" ")}
-                </p> */}
-              {/* varification input field */}
-              {/* <input
-                  onChange={handleInputChange}
-                  type="text"
-                  placeholder="Type Number"
-                  className="input input-sm w-[117px] md:w-full mx-auto input-bordered bg-transparent"
-                />
-              </div> */}
               <div className='text-center mb-7'>
                 <div className='divider divide-red-50'></div>
                 <p className='font-semibold'>Or Sign In with</p>

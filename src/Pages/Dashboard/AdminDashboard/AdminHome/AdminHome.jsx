@@ -14,6 +14,7 @@ import {
   ResponsiveContainer,
 } from "recharts";
 import Piechart from "./Piechart";
+import { Helmet } from "react-helmet-async";
 
 const data = [
   {
@@ -63,6 +64,7 @@ const data = [
 const AdminHome = () => {
   return (
     <div className="px-4 pt-4">
+      <Helmet><title>Dashboard | E-ExamPro</title></Helmet>
       <div className="flex items-center justify-between">
         <h1 className="text-2xl">Admin home</h1>
       </div>

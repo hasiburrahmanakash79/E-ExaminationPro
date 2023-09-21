@@ -29,9 +29,6 @@ const Registration = () => {
   } = useForm()
   const password = watch('password')
 
-  // if (loading) {
-  //   return <Loading />;
-  // }
   const onSubmit = data => {
     signUpUser(data.email, data.password).then(result => {
       const loggedUser = result.user
@@ -52,7 +49,6 @@ const Registration = () => {
               const userInfo = {
                 displayName: data.name,
                 email: data.email,
-                // photoURL: data.photo,
                 photoURL: imgURL,
                 role: 'user'
               }
@@ -68,48 +64,11 @@ const Registration = () => {
                   if (data.insertedId) {
                     // navigate(from, { replace: true })
                     navigate("/welcome")
-                    // Swal.fire({
-                    //   showConfirmButton: false,
-                    //   timer: 1500,
-                    //   title: 'Registration Successful',
-                    //   icon: 'success'
-                    // })
                   }
                 })
             })
             .catch(error => console.log(error.message))
         })
-
-      // updateUserInfo(data.name, data.photo)
-      //   .then(() => {
-      //     const userInfo = {
-      //       displayName: data.name,
-      //       email: data.email,
-      //       photoURL: data.photo,
-      //       photoURL: imgURL,
-      //       role: 'user'
-      //     }
-      //     fetch('https://e-exam-pro-server.vercel.app/users', {
-      //       method: 'POST',
-      //       headers: {
-      //         'content-type': 'application/json'
-      //       },
-      //       body: JSON.stringify(userInfo)
-      //     })
-      //       .then(res => res.json())
-      //       .then(data => {
-      //         if (data.insertedId) {
-      //           navigate(from, { replace: true })
-      //           Swal.fire({
-      //             showConfirmButton: false,
-      //             timer: 1500,
-      //             title: 'Registration Successful',
-      //             icon: 'success'
-      //           })
-      //         }
-      //       })
-      //   })
-      //   .catch(error => //console.log(error.message))
     })
   }
   return (
@@ -220,17 +179,6 @@ const Registration = () => {
                     />
                     {errors.number && <span>This field is required</span>}
                   </div>
-                  {/* <div className='form-control'>
-                    <label className='label'>
-                      <span className='label-text'>Photo URL</span>
-                    </label>
-                    <input
-                      {...register('photo', { required: true })}
-                      type='text'
-                      placeholder='Photo URL'
-                      className='bg-transparent input input-bordered'
-                    />
-                  </div> */}
                   <div className='form-control'>
                     <label className='label'>
                       <span className='label-text'>Image</span>

@@ -1,6 +1,4 @@
 import ContentLoader from "react-content-loader";
-import { Link } from "react-router-dom";
-
 const LoadingAdmin = () => {
     return (
         <div className='bg-gradient-to-tr from-[#0B0728] to-[#491A66] '>
@@ -31,8 +29,6 @@ const LoadingAdmin = () => {
                     <rect x="100" y="510" rx="3" ry="3" width="130" height="16" />
                     <rect x="100" y="530" rx="3" ry="3" width="105" height="10" />
                 </ContentLoader>
-
-                <Link to="/lflgkfpdo" className="py-2 mb-3 ml-24 text-black bg-orange-500 px-7 rounded-2xl">Error</Link>
         </div>
     );
 };
