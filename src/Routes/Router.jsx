@@ -1,3 +1,4 @@
+import { Suspense, lazy } from 'react'
 import { createBrowserRouter } from 'react-router-dom'
 import Main from '../Layouts/Main'
 import AboutUs from '../Pages/AboutUs/AboutUs'
@@ -20,7 +21,9 @@ import Exam2 from '../Pages/FreeCoursePage/ExamPage/Exam2'
 import FreeCoursePage from '../Pages/FreeCoursePage/FreeCoursePage'
 import CreateQuesPaper from '../Pages/Dashboard/InstructorDashboard/CreateQuestion/CreateQuesPaper'
 import InstructorHome from '../Pages/Dashboard/InstructorDashboard/InstructorHome/InstructorHome'
-import Payment from '../Pages/Dashboard/UserDashboard/Payment/Payment'
+const Payment = lazy(() =>
+  import('../Pages/Dashboard/UserDashboard/Payment/Payment')
+)
 import QuizDemo from '../Pages/Home/DemoTest/QuizDemo'
 import UserHome from '../Pages/Dashboard/UserDashboard/UserHome/UserHome'
 import PaymentHistory from '../Pages/Dashboard/UserDashboard/PaymentHistory/PaymentHistory'
@@ -56,6 +59,7 @@ import ExamResult from '../Pages/ExamResult/ExamResult'
 import LeaderboardPage from '../Pages/Dashboard/LeaderboardPage/LeaderboardPage'
 import WrittenAnswersReview from '../Pages/Dashboard/InstructorDashboard/WrittenAnswersReview/WrittenAnswersReview'
 import SingleUserAnswers from '../Pages/Dashboard/InstructorDashboard/WrittenAnswersReview/SingleUserAnswers'
+import Loading from '../Components/Loading/Loading'
 const router = createBrowserRouter([
   {
     path: '/',
@@ -120,7 +124,9 @@ const router = createBrowserRouter([
         path: '/stripePayment',
         element: (
           <PrivateRouter>
-            <Payment />
+            <Suspense fallback={<Loading />}>
+              <Payment />
+            </Suspense>
           </PrivateRouter>
         )
       },
