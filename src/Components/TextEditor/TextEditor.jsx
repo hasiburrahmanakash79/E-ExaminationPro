@@ -31,16 +31,23 @@ const TextEditor = ({ questions }) => {
     subject_code
   } = questions[0]
   const onSubmit = data => {
+    console.log(data)
     dispatch(
-      addUserAnswer({ questionId: currentQuestion?.id, answer: data?.answer })
+      addUserAnswer({
+        questionId: currentQuestion?.id,
+        question: currentQuestion?.question,
+        ins_answer: currentQuestion?.answer,
+        stu_answer: data?.answer
+      })
     )
-    reset()
-    if (!isLastQuestion) {
-      dispatch(nextWrittenQuestion())
-    } else {
+    if (currentQuestionIndex === question.length - 1) {
       allUserAnswers()
+    } else {
+      reset()
+      dispatch(nextWrittenQuestion())
     }
   }
+  console.log(userAnswers)
   const allUserAnswers = async () => {
     const userWrittenAnswers = {
       examID: _id,
@@ -53,11 +60,14 @@ const TextEditor = ({ questions }) => {
       exam_code: exam_id,
       sub_code: subject_code,
       examType: type,
-      question,
       userAnswers
     }
     try {
-      axios.post('http://localhost:4000/written-answers', userWrittenAnswers)
+      console.log(userWrittenAnswers)
+      await axios.post(
+        'http://localhost:4000/written-answers',
+        userWrittenAnswers
+      )
     } catch (error) {
       console.error(error)
     }

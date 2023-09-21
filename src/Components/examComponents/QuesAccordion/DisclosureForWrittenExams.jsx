@@ -30,10 +30,9 @@ const DisclosureForWrittenExams = ({ writtenQuestions }) => {
                           />
                         </Disclosure.Button>
                         <Disclosure.Panel className='px-4 pt-4 pb-2 text-sm text-gray-500 border rounded-lg bg-slate-50'>
-                          {answer?.answer ? (
+                          {answer?.stu_answer ? (
                             <p className='break-words h-fit'>
-                              {' '}
-                              {answer?.answer}
+                              {answer?.stu_answer}
                             </p>
                           ) : (
                             <p className='text-red-700'>

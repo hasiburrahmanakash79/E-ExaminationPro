@@ -54,6 +54,8 @@ import PaymentOption from '../Pages/Dashboard/UserDashboard/Payment/PaymentOptio
 import AllExam from '../Pages/FreeCoursePage/ExamPage/allExam'
 import ExamResult from '../Pages/ExamResult/ExamResult'
 import LeaderboardPage from '../Pages/Dashboard/LeaderboardPage/LeaderboardPage'
+import WrittenAnswersReview from '../Pages/Dashboard/InstructorDashboard/WrittenAnswersReview/WrittenAnswersReview'
+import SingleUserAnswers from '../Pages/Dashboard/InstructorDashboard/WrittenAnswersReview/SingleUserAnswers'
 const router = createBrowserRouter([
   {
     path: '/',
@@ -138,7 +140,7 @@ const router = createBrowserRouter([
         path: '/paymentOrder/fail/:tranId',
         element: <SSLCommerzFail />
       },
-      
+
       {
         path: '/allSubjects',
 
@@ -314,7 +316,11 @@ const router = createBrowserRouter([
       },
       {
         path: '/dashboard/written-review',
-        element: <AllGivenExam />
+        element: <WrittenAnswersReview />
+      },
+      {
+        path: '/dashboard/singleUserAnswer/:id',
+        element: <SingleUserAnswers></SingleUserAnswers>
       }
     ]
   },
