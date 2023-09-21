@@ -29,9 +29,6 @@ const Registration = () => {
   } = useForm()
   const password = watch('password')
 
-  // if (loading) {
-  //   return <Loading />;
-  // }
   const onSubmit = data => {
     signUpUser(data.email, data.password).then(result => {
       const loggedUser = result.user
@@ -52,7 +49,6 @@ const Registration = () => {
               const userInfo = {
                 displayName: data.name,
                 email: data.email,
-                // photoURL: data.photo,
                 photoURL: imgURL,
                 role: 'user'
               }
@@ -182,17 +178,6 @@ const Registration = () => {
                     />
                     {errors.number && <span>This field is required</span>}
                   </div>
-                  {/* <div className='form-control'>
-                    <label className='label'>
-                      <span className='label-text'>Photo URL</span>
-                    </label>
-                    <input
-                      {...register('photo', { required: true })}
-                      type='text'
-                      placeholder='Photo URL'
-                      className='bg-transparent input input-bordered'
-                    />
-                  </div> */}
                   <div className='form-control'>
                     <label className='label'>
                       <span className='label-text'>Image</span>
