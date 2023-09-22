@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-// import video from '../../../../src/assets/demo.mp4'
+import video from '../../../../src/assets/demo.mp4'
 
 const DemoTestSection = () => {
   return (
@@ -26,7 +26,7 @@ const DemoTestSection = () => {
               autoPlay
               className='w-full border border-purple-500 rounded-lg h-3/4'
             >
-              <source src={''} type='video/mp4' />
+              <source src={video} type='video/mp4' />
             </video>
           </div>
           <div className='space-y-2 md:p-4 md:space-y-6'>

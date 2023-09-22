@@ -24,6 +24,7 @@ const AllExam = () => {
   const location = useLocation()
   const searchParams = new URLSearchParams(location.search)
   const subject = searchParams.get('subject')
+  //console.log(subject);
 
   const { exams, batch } = useSelector(state => state.allExam)
   const dispatch = useDispatch()
@@ -31,34 +32,42 @@ const AllExam = () => {
   useEffect(() => {
     if (!loading) {
       fetch(
-        `https://e-exam-pro-server.vercel.app/userBatch?email=${user?.email}`
+        `http://localhost:4000/userBatch?email=${user?.email}`
       )
         .then(res => res.json())
         .then(data => {
+          //console.log(data, "----------line 25");
           dispatch(checkBatch(data))
         })
     }
   }, [user?.email, loading])
+  console.log(
+    batch,
+    type,
+    '---------------------------------\\\\\\------------------------------------------34'
+  )
 
-  const [dataLoading, setDataLoading] = useState(true)
+  const [dataloading, setDataLoading] = useState(true)
 
   useEffect(() => {
     if (!loading) {
       if (isAdmin ? isAdmin : isInstructor ? isInstructor : batch) {
         setDataLoading(true)
         fetch(
-          `https://e-exam-pro-server.vercel.app/questionPaper?type=${type}&subject=${subject}&instructor_email=${user?.email}&batch=${batch}`
+          `http://localhost:4000/questionPaper?type=${type}&subject=${subject}&instructor_email=${user?.email}&batch=${batch}`
         )
           .then(res => res.json())
           .then(data => {
+            //console.log(data, "----------line 25");
             dispatch(allExam(data))
+
             setDataLoading(false)
           })
       }
     }
   }, [subject, type, loading, batch, isInstructor, isAdmin])
 
-  //console.log(exams);
+  console.log(exams);
   //console.log(type);
   //console.log(isAdmin);
   const [currentTime, setCurrentTime] = useState(new Date())
@@ -91,6 +100,7 @@ const AllExam = () => {
 
   const isExamInFuture = (date, time) => {
     // Parse exam date and time
+    console.log(date,time)
     const examDateTime = new Date(`${date}T${time}`);
 
     // Get current date and time
@@ -98,7 +108,7 @@ const AllExam = () => {
 
     // Compare exam date and time with the current date and time
 
-    console.log(examDateTime,'gg',currentDateTime)
+    console.log(examDateTime, 'gg', currentDateTime)
     return examDateTime > currentDateTime;
   }
 
@@ -120,7 +130,7 @@ const AllExam = () => {
           </div>
 
           <TabPanel>
-            {!dataLoading ? (
+            {!dataloading ? (
               <div>
                 {exams.length == 0 ? (
                   <div className='text-red-400 text-4xl flex justify-center items-center h-[70vh]'>
@@ -186,20 +196,22 @@ const AllExam = () => {
                                 Please Add your Batch
                               </button>
                             ) :
-                              isExamInFuture(exam.date, exam.examTime) ?(
+                              isExamInFuture(exam.date, exam.examTime) ? (
 
-                                  
-                                   ((new Date(`${exam.date}T${exam.examTime}`) - currentTime)/60000)>4 ? 
-                                    (
-                                      <Link
-                                        to={`/exam/${exam._id}`}
-                                        className='w-1/3 btn ms-auto btn-sm btn-primary'
-                                      >
-                                        <button>Exam <span className='text-red-500'>Start</span><span className='text-red-500'> {((new Date(`${exam.date}T${exam.examTime}`)-currentTime)/60000).toFixed(2) } Min</span></button>
-                                      </Link>
-                                    ):
-                                  ( <h1  className='w-1/3 p-2 btn ms-auto btn-sm btn-primary'> Start Soon <span className='text-red-500'> {((new Date(`${exam.date}T${exam.examTime}`)-currentTime)/60000).toFixed(2) } Min</span> </h1>)
-                                  
+
+                                ((new Date(`${exam.date}T${exam.examTime}`) - currentTime) / 60000) < 4 ?
+                                  (
+                                    <Link
+                                      to={`/exam/${exam._id}`}
+                                      className='w-1/3 btn ms-auto btn-sm btn-primary'
+                                    >
+                                      <button>Exam <span className='text-red-500'>Start</span><span className='text-red-500'> {((new Date(`${exam.date}T${exam.examTime}`) - currentTime) / 60000).toFixed(2)} Min</span></button>
+                                    </Link>
+                                  ) :
+                                  (((new Date(`${exam.date}T${exam.examTime}`) - currentTime) / 60000) < 40) && (((new Date(`${exam.date}T${exam.examTime}`) - currentTime) / 60000) > 4) ?
+                                    (<h1 className='w-1/3 p-2 btn ms-auto btn-sm btn-primary'> Start Soon <span className='text-red-500'> {((new Date(`${exam.date}T${exam.examTime}`) - currentTime) / 60000).toFixed(2)} Min</span> </h1>) :
+                                    (<h1 className='w-1/3 p-2 btn ms-auto btn-sm btn-primary'> Prepeare Yourself </h1>)
+
 
 
                                 // <Link
@@ -208,12 +220,12 @@ const AllExam = () => {
                                 // >
                                 //   <button>Exam</button>
                                 // </Link>
-                              ) : 
-                              (
-                                <button className='w-1/3 btn ms-auto btn-sm btn-warning'>
-                                  Time Passed
-                                </button>) 
-                              }
+                              ) :
+                                (
+                                  <button className='w-1/3 btn ms-auto btn-sm btn-warning'>
+                                    Time Passed
+                                  </button>)
+                            }
                           </div>
                         </div>
                       </div>
@@ -240,7 +252,7 @@ const AllExam = () => {
             )}
           </TabPanel>
           <TabPanel>
-          {!dataLoading ? (
+            {!dataloading ? (
               <div>
                 {exams.length == 0 ? (
                   <div className='text-red-400 text-4xl flex justify-center items-center h-[70vh]'>
@@ -306,20 +318,22 @@ const AllExam = () => {
                                 Please Add your Batch
                               </button>
                             ) :
-                              isExamInFuture(exam.date, exam.examTime) ?(
+                              isExamInFuture(exam.date, exam.examTime) ? (
 
-                                  
-                                   ((new Date(`${exam.date}T${exam.examTime}`) - currentTime)/60000)<4? 
-                                    (
-                                      <Link
-                                        to={`/exam/${exam._id}`}
-                                        className='w-1/3 btn ms-auto btn-sm btn-primary'
-                                      >
-                                        <button>Exam <span className='text-red-500'>Start</span><span className='text-red-500'> {((new Date(`${exam.date}T${exam.examTime}`)-currentTime)/60000).toFixed(2) } Min</span></button>
-                                      </Link>
-                                    ):
-                                  ( <h1  className='w-1/3 p-2 btn ms-auto btn-sm btn-primary'> Start Soon <span className='text-red-500'> {((new Date(`${exam.date}T${exam.examTime}`)-currentTime)/60000).toFixed(2) } Min</span> </h1>)
-                                  
+
+                                ((new Date(`${exam.date}T${exam.examTime}`) - currentTime) / 60000) < 4 ?
+                                  (
+                                    <Link
+                                      to={`/exam/${exam._id}`}
+                                      className='w-1/3 btn ms-auto btn-sm btn-primary'
+                                    >
+                                      <button>Exam <span className='text-red-500'>Start</span><span className='text-red-500'> {((new Date(`${exam.date}T${exam.examTime}`) - currentTime) / 60000).toFixed(2)} Min</span></button>
+                                    </Link>
+                                  ) :
+                                  (((new Date(`${exam.date}T${exam.examTime}`) - currentTime) / 60000) < 60) && (((new Date(`${exam.date}T${exam.examTime}`) - currentTime) / 60000) > 4) ?
+                                    (<h1 className='w-1/3 p-2 btn ms-auto btn-sm btn-primary'> Start Soon <span className='text-red-500'> {((new Date(`${exam.date}T${exam.examTime}`) - currentTime) / 60000).toFixed(2)} Min</span> </h1>) :
+                                    (<h1 className='w-1/3 p-2 btn ms-auto btn-sm btn-primary'> Prepeare Yourself </h1>)
+
 
 
                                 // <Link
@@ -328,12 +342,12 @@ const AllExam = () => {
                                 // >
                                 //   <button>Exam</button>
                                 // </Link>
-                              ) : 
-                              (
-                                <button className='w-1/3 btn ms-auto btn-sm btn-warning'>
-                                  Time Passed
-                                </button>) 
-                              }
+                              ) :
+                                (
+                                  <button className='w-1/3 btn ms-auto btn-sm btn-warning'>
+                                    Time Passed
+                                  </button>)
+                            }
                           </div>
                         </div>
                       </div>
@@ -360,7 +374,7 @@ const AllExam = () => {
             )}
           </TabPanel>
           <TabPanel>
-          {!dataLoading ? (
+            {!dataloading ? (
               <div>
                 {exams.length == 0 ? (
                   <div className='text-red-400 text-4xl flex justify-center items-center h-[70vh]'>
@@ -426,20 +440,22 @@ const AllExam = () => {
                                 Please Add your Batch
                               </button>
                             ) :
-                              isExamInFuture(exam.date, exam.examTime) ?(
+                              isExamInFuture(exam.date, exam.examTime) ? (
 
-                                  
-                                   ((new Date(`${exam.date}T${exam.examTime}`) - currentTime)/60000)<4? 
-                                    (
-                                      <Link
-                                        to={`/exam/${exam._id}`}
-                                        className='w-1/3 btn ms-auto btn-sm btn-primary'
-                                      >
-                                        <button>Exam <span className='text-red-500'>Start</span><span className='text-red-500'> {((new Date(`${exam.date}T${exam.examTime}`)-currentTime)/60000).toFixed(2) } Min</span></button>
-                                      </Link>
-                                    ):
-                                  ( <h1  className='w-1/3 p-2 btn ms-auto btn-sm btn-primary'> Start Soon <span className='text-red-500'> {((new Date(`${exam.date}T${exam.examTime}`)-currentTime)/60000).toFixed(2) } Min</span> </h1>)
-                                  
+
+                                ((new Date(`${exam.date}T${exam.examTime}`) - currentTime) / 60000) < 4 ?
+                                  (
+                                    <Link
+                                      to={`/exam/${exam._id}`}
+                                      className='w-1/3 btn ms-auto btn-sm btn-primary'
+                                    >
+                                      <button>Exam <span className='text-red-500'>Start</span><span className='text-red-500'> {((new Date(`${exam.date}T${exam.examTime}`) - currentTime) / 60000).toFixed(2)} Min</span></button>
+                                    </Link>
+                                  ) :
+                                  (((new Date(`${exam.date}T${exam.examTime}`) - currentTime) / 60000) < 40) && (((new Date(`${exam.date}T${exam.examTime}`) - currentTime) / 60000) > 4) ?
+                                    (<h1 className='w-1/3 p-2 btn ms-auto btn-sm btn-primary'> Start Soon <span className='text-red-500'> {((new Date(`${exam.date}T${exam.examTime}`) - currentTime) / 60000).toFixed(2)} Min</span> </h1>) :
+                                    (<h1 className='w-1/3 p-2 btn ms-auto btn-sm btn-primary'> Prepeare Yourself </h1>)
+
 
 
                                 // <Link
@@ -448,12 +464,12 @@ const AllExam = () => {
                                 // >
                                 //   <button>Exam</button>
                                 // </Link>
-                              ) : 
-                              (
-                                <button className='w-1/3 btn ms-auto btn-sm btn-warning'>
-                                  Time Passed
-                                </button>) 
-                              }
+                              ) :
+                                (
+                                  <button className='w-1/3 btn ms-auto btn-sm btn-warning'>
+                                    Time Passed
+                                  </button>)
+                            }
                           </div>
                         </div>
                       </div>
