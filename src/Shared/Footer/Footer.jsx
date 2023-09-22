@@ -5,8 +5,8 @@ import { Link } from "react-router-dom";
 const Footer = () => {
   return (
     <div className="relative primary-bg pt-11">
-      <div className="grid grid-cols-1 gap-10 px-8 pb-4 space-y-6 border-b-2 border-b-purple-800 md:grid-cols-4 sm:grid-cols-2 border-slate-800">
-        <div className="text-white ">
+      <div className="grid grid-cols-1 gap-10 px-8 pb-4 space-y-6 border-b-2 md:grid-cols-4 sm:grid-cols-2">
+        <div className="">
           <Link to="/" className="w-1/3">
             <img src={logo} alt="" className="" />
           </Link>
@@ -47,8 +47,8 @@ const Footer = () => {
             </a>
           </div>
         </div>
-        <div className="space-y-3 text-center text-white">
-          <h2 className="w-1/2 mx-auto mt-6 text-xl font-bold border-b-2 rounded-md border-slate-600 md:mt-0">
+        <div className="space-y-3 text-center  ">
+          <h2 className="w-1/2 mx-auto mt-6 text-xl font-bold border-b-2 rounded-md   md:mt-0">
             Exam Platform
           </h2>
           <p className="hover:underline">MCQ Exam</p>
@@ -56,8 +56,8 @@ const Footer = () => {
           <p className="hover:underline">Student</p>
           <p className="hover:underline">Instructor</p>
         </div>
-        <div className="space-y-3 text-center text-white">
-          <h2 className="w-3/5 mx-auto mt-6 text-xl font-bold border-b-2 rounded-md border-slate-600 md:mt-0">
+        <div className="space-y-3 text-center  ">
+          <h2 className="w-3/5 mx-auto mt-6 text-xl font-bold border-b-2 rounded-md   md:mt-0">
             Who we service
           </h2>
           <p className="hover:underline">Schools</p>
@@ -65,8 +65,8 @@ const Footer = () => {
           <p className="hover:underline">University</p>
           <p className="hover:underline">Companies &Organizations</p>
         </div>
-        <div className="space-y-3 text-center text-white">
-          <h2 className="w-1/2 mx-auto mt-6 text-xl font-bold border-b-2 rounded-md border-slate-600 md:mt-0">
+        <div className="space-y-3 text-center  ">
+          <h2 className="w-1/2 mx-auto mt-6 text-xl font-bold border-b-2 rounded-md   md:mt-0">
             Our Payment Partner
           </h2>
           <img src="https://i.ibb.co/yBFjz1r/SSLCommerz-Pay-With-logo-All-Size-01-2048x314-1.pnghttps://i.ibb.co/rtzYdSy/payment2.png" alt="" />
@@ -74,7 +74,7 @@ const Footer = () => {
           <img src="https://i.ibb.co/rtzYdSy/payment2.png" alt="" /> */}
         </div>
       </div>
-      <p className="py-2 text-center text-slate-500">
+      <p className="py-2 text-center  ">
         ©2023 The Web Titans. All rights reserved.
       </p>
     </div>

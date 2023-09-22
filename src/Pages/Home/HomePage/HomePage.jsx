@@ -48,13 +48,13 @@ const HomePage = () => {
         }`}
         style={{ backgroundImage: `url(${examPic})` }}
       >
-        <div className='hero-overlay bg-opacity-60'></div>
-        <div className='text-center hero-content text-neutral-content'>
+        <div className='hero-overlay  ag-opacity-60'></div>
+        <div className='text-center hero-content '>
           <div className=''>
-            <h1 className='mb-5 text-6xl font-bold text-white'>
+            <h1 className='mb-5 text-6xl font-bold'>
               Welcome to E-ExamPro
             </h1>
-            <p className='mb-5 text-white'></p>
+            <p className='mb-5 '></p>
           </div>
         </div>
       </div>

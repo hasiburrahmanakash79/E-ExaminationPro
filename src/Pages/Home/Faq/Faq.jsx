@@ -15,14 +15,14 @@ export default function Faq() {
           />
         </div>
 
-        <div className="dark:bg-none text-white w-full space-y-4 ">
-          <div className="border border-violet-600 px-5 shadow-2xl rounded-md">
+        <div className="dark: ag-none w-full space-y-4 ">
+          <div className="border   px-5 shadow-md rounded-md">
             <details>
               <summary className="py-2 outline-none cursor-pointer text-xl ">
                 What is E-examPro?
               </summary>
               <div className="px-4 pb-4">
-                <p className="text-[#c0c0c0]">
+                <p className=" ">
                   <span className="font-semibold ">E-examPro</span> is the
                   cutting-edge online platform designed to revolutionize the way
                   students take exams. With a commitment to excellence and
@@ -35,7 +35,7 @@ export default function Faq() {
             </details>
           </div>
 
-          <div className="border border-violet-600 px-5 shadow-2xl rounded-md">
+          <div className="border   px-5 shadow-md rounded-md">
             <details>
               <summary
                 className="py-2 outline-none cursor-pointer 
@@ -44,7 +44,7 @@ export default function Faq() {
                 Why Students choosing E-examPro platform?
               </summary>
               <div className="px-4 pb-4">
-                <p className="text-[#c0c0c0]">
+                <p className=" ">
                   E-examPro adapts to your learning level. The platforms
                   intelligent algorithms present questions that match your
                   competency, giving you a fair and accurate assessment that
@@ -54,7 +54,7 @@ export default function Faq() {
             </details>
           </div>
 
-          <div className="border border-violet-600 px-5 shadow-2xl rounded-md">
+          <div className="border   px-5 shadow-md rounded-md">
             <details>
               <summary
                 className="py-2 outline-none cursor-pointer 
@@ -63,7 +63,7 @@ export default function Faq() {
                 Is E-examPro easy for cheating?
               </summary>
               <div className="px-4 pb-4">
-                <p className="text-[#c0c0c0]">
+                <p className=" ">
                   The platform is equipped with anti-cheating measures, such as
                   webcam monitoring and browser lockdown, ensuring that each
                   students performance is genuine and reflective of their own
@@ -73,7 +73,7 @@ export default function Faq() {
             </details>
           </div>
 
-          <div className="border border-violet-600 px-5 shadow-2xl rounded-md">
+          <div className="border   px-5 shadow-md rounded-md">
             <details>
               <summary
                 className="py-2 outline-none cursor-pointer 
@@ -82,7 +82,7 @@ export default function Faq() {
                 How to participate in E-examPro platform?
               </summary>
               <div className="px-4 pb-4">
-                <p className="text-[#c0c0c0]">
+                <p className=" ">
                   New users can quickly register for the platform by using their
                   Google accounts. This simplifies the registration process,
                   reducing friction and encouraging more students to participate
@@ -91,7 +91,7 @@ export default function Faq() {
               </div>
             </details>
           </div>
-          <div className="border border-violet-600 px-5 shadow-2xl rounded-md">
+          <div className="border   px-5 shadow-md rounded-md">
             <details>
               <summary
                 className="py-2 outline-none cursor-pointer 
@@ -100,7 +100,7 @@ export default function Faq() {
                 How to participate in E-examPro platform?
               </summary>
               <div className="px-4 pb-4">
-                <p className="text-[#c0c0c0]">
+                <p className=" ">
                   New users can quickly register for the platform by using their
                   Google accounts. This simplifies the registration process,
                   reducing friction and encouraging more students to participate
@@ -109,7 +109,7 @@ export default function Faq() {
               </div>
             </details>
           </div>
-          <div className="border border-violet-600 px-5 shadow-2xl rounded-md">
+          <div className="border   px-5 shadow-md rounded-md">
             <details>
               <summary
                 className="py-2 outline-none cursor-pointer 
@@ -118,7 +118,7 @@ export default function Faq() {
                 How to participate in E-examPro platform?
               </summary>
               <div className="px-4 pb-4">
-                <p className="text-[#c0c0c0]">
+                <p className=" ">
                   New users can quickly register for the platform by using their
                   Google accounts. This simplifies the registration process,
                   reducing friction and encouraging more students to participate

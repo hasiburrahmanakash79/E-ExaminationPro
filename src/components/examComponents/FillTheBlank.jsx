@@ -6,7 +6,7 @@ const FillTheBlank = ({ inputValue, handleInputChange}) => {
     return (
         <div>
 
-            <input className='input w-full bg-slate-600 text-white' type="text" placeholder='Answer' value={inputValue!==null?inputValue:''} onChange={handleInputChange} />
+            <input className='input w-full  ag-slate-600 ' type="text" placeholder='Answer' value={inputValue!==null?inputValue:''} onChange={handleInputChange} />
 
         </div>
     );

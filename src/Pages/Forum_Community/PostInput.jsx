@@ -64,11 +64,11 @@ const PostInput = () => {
                             {...field}
                             placeholder="Write your comment"
                             required
-                            className="h-24 w-full p-3 bg-zinc-300 focus:outline-teal-700 text-black rounded-md block"
+                            className="h-24 w-full p-3  ag-zinc-300 focus:outline-teal-700   rounded-md block"
                         />
                     )}
                 />
-                <button type="submit" className="bg-blue-500 px-4 py-2 mt-2 mb-4 text-white text-sm font-semibold tracking-wide rounded-md uppercase">
+                <button type="submit" className=" ag-blue-500 px-4 py-2 mt-2 mb-4  text-sm font-semibold tracking-wide rounded-md uppercase">
                     Post
                 </button>
             </form>

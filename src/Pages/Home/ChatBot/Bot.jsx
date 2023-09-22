@@ -41,10 +41,10 @@ const Bot = () => {
   }
 
   return (
-    <main className='relative max-w-md overflow-y-auto h-[700px] bg-slate-800 font-inter scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-slate-300 scrollbar-w-2 scrollbar-track-transparent'>
-      <div className='sticky top-0 z-40 p-2 bg-slate-800'>
+    <main className='relative max-w-md overflow-y-auto h-[700px]  ag-slate-800 font-inter scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-slate-300 scrollbar-w-2 scrollbar-track-transparent'>
+      <div className='sticky top-0 z-40 p-2  ag-slate-800'>
         <h1 className='text-2xl ps-2'>E-Exam Support</h1>
-        <p className='text-xs text-orange-200 ps-2'>
+        <p className='text-xs  ps-2'>
           Ask any exam related question you have
         </p>
         <div className='my-1 divider'></div>
@@ -58,9 +58,9 @@ const Bot = () => {
                   chat.role === 'user' ? 'text-right ml-30 ' : ''
                 } ${
                   chat.role === 'user' ? 'flex-row-reverse' : ''
-                } bg-darkslategray max-w-70 p-4  rounded-50`}
+                }  ag-darkslategray max-w-70 p-4  rounded-50`}
               >
-                <span className='text-yellow-600'>
+                <span className='aext-yellow-600'>
                   {chat.role.toUpperCase()}
                 </span>
                 <span> : </span>
@@ -82,7 +82,7 @@ const Bot = () => {
         </p>
       </div>
 
-      <div className='fixed bottom-0 z-50 w-full p-2 bg-slate-800'>
+      <div className='fixed bottom-0 z-50 w-full p-2  ag-slate-800'>
         <form onSubmit={e => chat(e, message)} className='flex gap-3 '>
           <textarea
             type='text'
@@ -90,9 +90,9 @@ const Bot = () => {
             value={message}
             placeholder='Share with us your problem'
             onChange={e => setMessage(e.target.value)}
-            className='w-full text-sm border-none textarea textarea-xs bg-white/25 focus:outline-none placeholder:text-xs placeholder:text-white scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-slate-300 scrollbar-w-2 scrollbar-track-transparent'
+            className='w-full text-sm border-none textarea textarea-xs  ag-white/25 focus:outline-none placeholder:text-xs placeholder:  scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-slate-300 scrollbar-w-2 scrollbar-track-transparent'
           />
-          <button className='px-5 rounded bg-white/25'>
+          <button className='px-5 rounded  ag-white/25'>
             <FaArrowRight />
           </button>
         </form>

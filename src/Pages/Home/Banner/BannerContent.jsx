@@ -6,14 +6,14 @@ const BannerContent = () => {
       <h4
         data-aos="fade-left"
         data-aos-duration="1900"
-        className="mb-2 md:mb-6 text-lg md:text-3xl text-white text-center"
+        className="mb-2 md:mb-6 text-lg md:text-3xl text-center"
       >
         Welcome to
       </h4>
       <h1
         data-aos="fade-right"
         data-aos-duration="2500"
-        className="md:mb-7 font-semibold text-white text-2xl  md:text-7xl"
+        className="md:mb-7 font-semibold  text-2xl  md:text-7xl"
       >
         E-ExamPro
       </h1>

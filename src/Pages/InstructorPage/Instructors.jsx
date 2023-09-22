@@ -23,7 +23,7 @@ const Instructors = () => {
       <Helmet>
         <title>E-ExamPro | Instructor</title>
       </Helmet>
-      <h1 className="mb-10 text-4xl font-bold text-center text-white">
+      <h1 className="mb-10 text-4xl font-bold text-center ">
         Our Instructors
       </h1>
       <div className="grid gap-5 px-6 py-5 md:grid-cols-2 lg:grid-cols-3 ">

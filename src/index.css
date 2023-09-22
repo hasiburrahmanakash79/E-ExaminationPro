@@ -8,40 +8,13 @@
 @tailwind components;
 @tailwind utilities;
 
-.primary-btn {
-  background: linear-gradient(
-    -45deg,
-    rgb(42, 207, 212),
-    rgb(151, 54, 241),
-    rgb(29, 143, 236),
-    rgb(74, 19, 82)
-  );
-  background-size: 200% 200%;
-  text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3);
-  box-shadow: 5px 5px 5px rgba(20, 0, 0, 0.3);
-  animation: color 22s ease-in-out infinite;
-  /* color: white; */
-  @apply hover:scale-105 text-slate-300 hover:text-slate-50
-}
+
 
 /* 
 *{
     border: 1px solid #fff;
 } */
-.primary-nav{
-  background: linear-gradient(45deg,
-  rgb(142, 9, 168), 
-  rgb(88, 14, 156), 
-  rgb(12, 91, 156), 
-  rgb(100, 1, 156) ,
-  rgb(73, 20, 143) ,
-  rgb(4, 103, 184), 
-  rgb(96, 19, 131));
-  background-size: 200% 200%;
-  animation: color 22s ease-in-out infinite;
-  color: rgba(255, 255, 255, 0.492);
-  opacity: .9;
-}
+
 
 @media only screen and (max-width: 1040px) and (min-width: 320px) {
   body {

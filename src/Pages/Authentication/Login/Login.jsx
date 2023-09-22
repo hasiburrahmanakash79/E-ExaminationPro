@@ -61,9 +61,9 @@ const Login = () => {
               animationData={educationLottie}
               loop={true} className=" md:w-10/12 mx-auto" />
           </div>
-          <div className='flex-shrink-0 w-full bg-transparent border border-black rounded-lg shadow-xl md:w-1/2 card backdrop-blur-sm'>
+          <div className='flex-shrink-0 w-full  ag-transparent border   rounded-lg shadow-xl md:w-1/2 card backdrop-blur-sm'>
             <div className='text-center '>
-              <h1 className='my-5 text-4xl font-bold text-white'>Login</h1>
+              <h1 className='my-5 text-4xl font-bold '>Login</h1>
             </div>
             <div className='card-body'>
               <form onSubmit={handleSubmit(onSubmit)}>
@@ -75,10 +75,10 @@ const Login = () => {
                     {...register('email', { required: true })}
                     type='email'
                     placeholder='email'
-                    className='bg-transparent input input-bordered'
+                    className=' ag-transparent input input-bordered'
                   />
                   {errors.email && (
-                    <span className='mt-1 text-red-500'>
+                    <span className='mt-1 aext-red-500'>
                       Email field is required
                     </span>
                   )}
@@ -91,7 +91,7 @@ const Login = () => {
                     {...register('password', { required: true })}
                     type={passShow ? 'text' : 'password'}
                     placeholder='enter your password'
-                    className='bg-transparent input input-bordered'
+                    className=' ag-transparent input input-bordered'
                   />
                   <div className='flex justify-between mb-5 '>
                     <a onClick={() => setPassShow(!passShow)}>

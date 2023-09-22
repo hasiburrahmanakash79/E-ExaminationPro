@@ -1,7 +1,7 @@
 import ContentLoader from "react-content-loader";
 const LoadingAdmin = () => {
     return (
-        <div className='bg-gradient-to-tr from-[#0B0728] to-[#491A66] '>
+        <div className=''>
                 <ContentLoader
                     height={640}
                     width={1260}

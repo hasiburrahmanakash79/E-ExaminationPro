@@ -27,10 +27,10 @@ const GetReplyField = ({
                             </div>
                         </div>
                         <div className="pl-2">
-                            <p className="leading-none text-slate-300 md:text-lg text-base font-medium">
+                            <p className="leading-none   md:text-lg text-base font-medium">
                                 {reply?.author?.userName}
                             </p>
-                            <div className="md:hidden block text-xs text-slate-400">
+                            <div className="md:hidden block text-xs  ">
                                 <TimeAgo datetime={new Date(reply?.author?.timeDate).toLocaleString()}
                                     locale='GMT+6' />
                             </div>
@@ -95,7 +95,7 @@ const GetReplyField = ({
                             />
 
                             <button className="text-sm">
-                                <span className="text-xs text-slate-300"></span> share
+                                <span className="text-xs  "></span> share
                             </button>
                         </>
                 }

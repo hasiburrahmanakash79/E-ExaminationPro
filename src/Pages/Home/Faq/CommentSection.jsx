@@ -83,14 +83,14 @@ function CommentSection ({ blogId }) {
     <div>
       <div className='mx-auto text-start'>
         <input
-          className='w-full max-w-xs bg-transparent border-white input'
+          className='w-full max-w-xs  ag-transparent border input'
           type='text'
           placeholder='Enter your comment'
           value={comment}
           onChange={handleCommentChange}
         />
         <button
-          className='bg-transparent border-none btn primary-bg ms-2'
+          className=' ag-transparent border-none btn primary-bg ms-2'
           onClick={handleCommentSubmit}
         >
           Comment

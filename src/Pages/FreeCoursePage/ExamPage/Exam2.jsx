@@ -168,7 +168,7 @@ const Exam2 = () => {
                 ariaLabel='hourglass-loading'
                 wrapperStyle={{}}
                 wrapperClass=''
-                colors={['#7710de', '#d6061b']}
+                colors={['#ffffff', '#000000']}
               />
               <h1 className='text-xl'>Your Result is now Processing....</h1>
             </div>
@@ -214,7 +214,7 @@ const Exam2 = () => {
                     )}
                   </div>
                   <div className='grid grid-cols-1 md:grid-cols-3'>
-                    <div className='max-w-[50px]  min-h-[50px] text-white bg-blue-900 rounded-full flex justify-center items-center'>
+                    <div className='max-w-[50px]  min-h-[50px]   ag-blue-900 rounded-full flex justify-center items-center'>
                       <div>
                         <span className='text-3xl font-semibold'>
                           {currentQuestion + 1}
@@ -233,7 +233,7 @@ const Exam2 = () => {
                       </h1>
                       <div className='flex justify-center'>
                         {info?.gems < 1 && (
-                          <h1 className='bg-red-500 text-white p-1 rounded-lg mt-2 w-1/2 mx-auto|||||||| text-center'>
+                          <h1 className=' ag-red-500  p-1 rounded-lg mt-2 w-1/2 mx-auto|||||||| text-center'>
                             You Do Not Have Enough Gems
                           </h1>
                         )}
@@ -304,7 +304,7 @@ const Exam2 = () => {
                           (examType == 'multimedia_mcq' && start == false)
                         }
                         onClick={onClickPrevious}
-                        className='text-white btn navigation-bar hover:bg-blue-900 '
+                        className='  btn navigation-bar hover: ag-blue-900 '
                       >
                         Previous
                       </button>
@@ -313,7 +313,7 @@ const Exam2 = () => {
                           examType == 'multimedia_mcq' && start == false
                         }
                         onClick={onClickNext}
-                        className='text-white btn navigation-bar '
+                        className='  btn navigation-bar '
                       >
                         {currentQuestion == questions.length - 1
                           ? 'Finish'

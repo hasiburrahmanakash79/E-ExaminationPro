@@ -8,7 +8,7 @@ const DemoTestSection = () => {
         <h1
           data-aos='zoom-in-down'
           data-aos-duration='600'
-          className='mb-10 text-4xl font-bold text-center text-white'
+          className='mb-10 text-4xl font-bold text-center'
         >
           Demo Exam
         </h1>
@@ -24,7 +24,7 @@ const DemoTestSection = () => {
               controls
               muted
               autoPlay
-              className='w-full border border-purple-500 rounded-lg h-3/4'
+              className='w-full border   rounded-lg h-3/4'
             >
               <source src={video} type='video/mp4' />
             </video>
@@ -48,7 +48,7 @@ const DemoTestSection = () => {
               data-aos='fade-down'
               data-aos-duration='900'
               to='/demo-test'
-              className='btn primary-btn animate-pulse hover:animate-none'
+              className='btn primary-btn'
             >
               Explore How We Take Exams
             </Link>

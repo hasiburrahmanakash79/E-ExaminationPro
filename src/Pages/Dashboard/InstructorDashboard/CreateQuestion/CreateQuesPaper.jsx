@@ -228,7 +228,7 @@ else{
               className='w-full max-w-xs input input-bordered'
             />
             {iscodeRepeat == true && (
-              <h1 className='mt-2 text-red-500'>Try Another Code</h1>
+              <h1 className='mt-2 aext-red-500'>Try Another Code</h1>
             )}
           </div>
           <div className='w-full max-w-xs form-control'>
@@ -272,7 +272,7 @@ else{
               placeholder='Type here'
               className='w-full max-w-xs input input-bordered'
             />
-            {isDateTimeRepeat==true && <p className='mt-2 text-red-500'>Time Already Set For Batch {formData?.batch} On This Date </p> }
+            {isDateTimeRepeat==true && <p className='mt-2 aext-red-500'>Time Already Set For Batch {formData?.batch} On This Date </p> }
           </div>
 
           <div className='w-full max-w-xs form-control'>
@@ -288,7 +288,7 @@ else{
               placeholder='Type here'
               className='w-full max-w-xs input input-bordered'
             />
-              {isDateTimeRepeat==true && <p className='mt-2 text-red-500'>Time Already Set For Batch {formData?.batch} On This Date </p> }
+              {isDateTimeRepeat==true && <p className='mt-2 aext-red-500'>Time Already Set For Batch {formData?.batch} On This Date </p> }
           </div>
 
           <div className='w-full max-w-xs form-control'>
@@ -342,7 +342,7 @@ else{
           {questions?.map((question, index) => (
             <div key={index} className='mb-3'>
               <label className='label'>
-                <span className='text-xl label-text text-green-500'>Question <span className='text-yellow-500'>{index + 1}</span></span>
+                <span className='text-xl label-text '>Question <span className='aext-yellow-500'>{index + 1}</span></span>
               </label>
               <input
                 type='text'

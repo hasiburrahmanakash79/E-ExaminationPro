@@ -85,14 +85,14 @@ const Registration = () => {
             // className=" md:w-10/12 mx-auto" 
             />
           </div>
-          <div className='flex-shrink-0 w-full bg-transparent border border-black rounded-lg shadow-xl md:w-1/2 card backdrop-blur-sm'>
+          <div className='flex-shrink-0 w-full  ag-transparent border   rounded-lg shadow-xl md:w-1/2 card backdrop-blur-sm'>
             <div className='text-center '>
-              <h1 className='my-5 text-4xl font-bold text-white'>
+              <h1 className='my-5 text-4xl font-bold '>
                 Registration
               </h1>
             </div>
-            <div className='text-white card-body'>
-              <form onSubmit={handleSubmit(onSubmit)} className='!text-white'>
+            <div className='  card-body'>
+              <form onSubmit={handleSubmit(onSubmit)} className='! '>
                 <div className='grid-cols-2 gap-3 md:grid'>
                   <div className='form-control'>
                     <label className='label'>
@@ -102,7 +102,7 @@ const Registration = () => {
                       {...register('name', { required: true })}
                       type='text'
                       placeholder='Enter your name'
-                      className='bg-transparent input input-bordered'
+                      className=' ag-transparent input input-bordered'
                     />
                     {errors.name && <span>This field is required</span>}
                   </div>
@@ -114,7 +114,7 @@ const Registration = () => {
                       {...register('email', { required: true })}
                       type='email'
                       placeholder='Enter your email'
-                      className='bg-transparent input input-bordered'
+                      className=' ag-transparent input input-bordered'
                     />
                     {errors.email && <span>This field is required</span>}
                   </div>
@@ -132,10 +132,10 @@ const Registration = () => {
                       })}
                       type={passShow ? 'text' : 'password'}
                       placeholder='Enter your password'
-                      className='bg-transparent input input-bordered'
+                      className=' ag-transparent input input-bordered'
                     />
                     <label className='label'>
-                      <a className='label-text-alt link link-hover'>
+                      <a className='label-aext-alt link link-hover'>
                         <p onClick={() => setPassShow(!passShow)}>
                           <small>
                             {passShow ? (
@@ -162,7 +162,7 @@ const Registration = () => {
                       })}
                       type={passShow ? 'text' : 'password'}
                       placeholder='Confirm password'
-                      className='bg-transparent input input-bordered'
+                      className=' ag-transparent input input-bordered'
                     />
                     {errors.confirm && <span>{errors.confirm.message}</span>}
                   </div>
@@ -174,7 +174,7 @@ const Registration = () => {
                       {...register('number', { required: true })}
                       type='number'
                       placeholder='+880'
-                      className='bg-transparent input input-bordered'
+                      className=' ag-transparent input input-bordered'
                     />
                     {errors.number && <span>This field is required</span>}
                   </div>
@@ -182,16 +182,16 @@ const Registration = () => {
                     <label className='label'>
                       <span className='label-text'>Image</span>
                     </label>
-                    <div className='items-center border-2 rounded-lg form-control border-violet-600 '>
+                    <div className='items-center border-2 rounded-lg form-control   '>
                       <input
                         {...register('image', { required: true })}
                         name='image'
                         type='file'
-                        className='w-full col-span-5 bg-transparent  file-input'
+                        className='w-full col-span-5  ag-transparent  file-input'
                       />
                     </div>
                     {errors.image && (
-                      <span className='mt-1 text-red-500'>
+                      <span className='mt-1 aext-red-500'>
                         Image field is required
                       </span>
                     )}
@@ -205,7 +205,7 @@ const Registration = () => {
                     {...register('address', { required: true })}
                     type='text'
                     placeholder='Enter your Address'
-                    className='bg-transparent input input-bordered'
+                    className=' ag-transparent input input-bordered'
                   />
                 </div>
                 <div className='mt-5 form-control'>

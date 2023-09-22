@@ -2,7 +2,7 @@ import ContentLoader from 'react-content-loader'
 
 const LoadingHome = () => {
     return (
-        <div className='bg-gradient-to-tr from-[#0B0728] file:to-[#491A66] '>
+        <div className=' ag-gradient-to-tr from-[#0B0728] file:to-[#491A66] '>
                 <ContentLoader
                     viewBox="0 0 450 425"
                     backgroundColor="#e2e1ff"

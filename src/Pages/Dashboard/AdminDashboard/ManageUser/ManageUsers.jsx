@@ -103,7 +103,7 @@ const ManageUsers = () => {
                   ) : (
                     <button
                       onClick={() => handleMakeInstructor(user)}
-                      className='bg-purple-700 btn btn-ghost btn-sm'
+                      className=' ag-purple-700 btn btn-ghost btn-sm'
                     >
                       Instructor
                     </button>
@@ -115,7 +115,7 @@ const ManageUsers = () => {
                   ) : (
                     <button
                       onClick={() => handleMakeAdmin(user)}
-                      className='bg-purple-700 btn btn-ghost btn-sm'
+                      className=' ag-purple-700 btn btn-ghost btn-sm'
                     >
                       Admin
                     </button>
@@ -124,7 +124,7 @@ const ManageUsers = () => {
                 <td>
                   <button
                     onClick={() => handleDeleteUser(user)}
-                    className='btn bg-red-600 btn-ghost btn-sm'
+                    className='btn  ag-red-600 btn-ghost btn-sm'
                   >
                     <FaTrashAlt />
                   </button>

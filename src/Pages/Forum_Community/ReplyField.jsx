@@ -64,7 +64,7 @@ const ReplyField = ({ postId, refetch, setCommentPostText, comment, setReplyHide
                             value={text}
                             onChange={(e) => setText(e.target.value)}
                             required
-                            className="md:block hidden focus:outline-none text-sm text-white rounded-md p-2"
+                            className="md:block hidden focus:outline-none text-sm  rounded-md p-2"
                         ></textarea>
                         <textarea
                             id="text"
@@ -74,7 +74,7 @@ const ReplyField = ({ postId, refetch, setCommentPostText, comment, setReplyHide
                             value={text}
                             onChange={(e) => setText(e.target.value)}
                             required
-                            className="block md:hidden focus:outline-none text-sm text-white rounded-md p-2"
+                            className="block md:hidden focus:outline-none text-sm  rounded-md p-2"
                         ></textarea>
                     </div>
                     <div className="flex items-center gap-5">

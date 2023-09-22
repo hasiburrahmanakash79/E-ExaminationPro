@@ -55,7 +55,7 @@ const Pricing = () => {
       <h5
         data-aos="zoom-in-down"
         data-aos-duration="500"
-        className='my-4 text-xl text-orange-400'>Exam Facility Packages</h5>
+        className='my-4 text-xl'>Exam Facility Packages</h5>
       <h1
         data-aos="zoom-in-down"
         data-aos-duration="800"
