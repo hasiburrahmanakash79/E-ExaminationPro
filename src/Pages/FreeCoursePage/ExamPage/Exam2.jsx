@@ -46,7 +46,7 @@ const Exam2 = () => {
   const questions = ques?.questions
   const examType = ques?.type
   console.log(user)
-  const time=ques?.time*60
+  const time=parseInt(ques?.time)*60
 
   const [timerProgress, setTimerProgress] = useState(100) //progress bar state
   const totalDuration = time //define total duration
