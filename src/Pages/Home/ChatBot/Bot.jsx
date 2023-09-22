@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { FaArrowRight } from 'react-icons/fa'
 
 const Bot = () => {
   const [message, setMessage] = useState('')
@@ -40,14 +41,15 @@ const Bot = () => {
   }
 
   return (
-    <main className='relative max-w-md p-4 overflow-y-auto border rounded rounded-l-lg max-h-96 primary-bg font-inter'>
-      <h1 className='text-3xl leading-1.1 text-center sticky top-0'>
-        E-Exam Support
-      </h1>
-      <p className='my-4 text-center text-orange-200'>
-        Ask any exam related question you have
-      </p>
-      <section className='p-4 mb-12 rounded-lg shadow-2xl drop-shadow-2xl'>
+    <main className='relative max-w-md overflow-y-auto h-[700px] bg-slate-800 font-inter scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-slate-300 scrollbar-w-2 scrollbar-track-transparent'>
+      <div className='sticky top-0 z-40 p-2 bg-slate-800'>
+        <h1 className='text-2xl ps-2'>E-Exam Support</h1>
+        <p className='text-xs text-orange-200 ps-2'>
+          Ask any exam related question you have
+        </p>
+        <div className='my-1 divider'></div>
+      </div>
+      <section className='z-0 mb-12 overflow-hidden '>
         {chats && chats.length
           ? chats.map((chat, index) => (
               <p
@@ -58,7 +60,9 @@ const Bot = () => {
                   chat.role === 'user' ? 'flex-row-reverse' : ''
                 } bg-darkslategray max-w-70 p-4  rounded-50`}
               >
-                <span className='text-blue-700'>{chat.role.toUpperCase()}</span>
+                <span className='text-yellow-600'>
+                  {chat.role.toUpperCase()}
+                </span>
                 <span> : </span>
                 <span>{chat.content}</span>
               </p>
@@ -78,19 +82,21 @@ const Bot = () => {
         </p>
       </div>
 
-      <form
-        onSubmit={e => chat(e, message)}
-        className='w-2/3 pb-2 ml-auto text-center'
-      >
-        <input
-          type='text'
-          name='message'
-          value={message}
-          placeholder='Share with us your problem'
-          onChange={e => setMessage(e.target.value)}
-          className='w-full h-12 p-2 text-lg text-black border-none shadow-2xl bg-slate-200 rounded-xl focus:outline-none placeholder:italic placeholder:text-zinc-600'
-        />
-      </form>
+      <div className='fixed bottom-0 z-50 w-full p-2 bg-slate-800'>
+        <form onSubmit={e => chat(e, message)} className='flex gap-3 '>
+          <textarea
+            type='text'
+            name='message'
+            value={message}
+            placeholder='Share with us your problem'
+            onChange={e => setMessage(e.target.value)}
+            className='w-full text-sm border-none textarea textarea-xs bg-white/25 focus:outline-none placeholder:text-xs placeholder:text-white scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-slate-300 scrollbar-w-2 scrollbar-track-transparent'
+          />
+          <button className='px-5 rounded bg-white/25'>
+            <FaArrowRight />
+          </button>
+        </form>
+      </div>
     </main>
   )
 }

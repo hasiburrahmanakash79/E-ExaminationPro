@@ -5,11 +5,11 @@ import {} from 'react-icons/fa'
 import { useSelector } from 'react-redux'
 
 const DisclosureForWrittenExams = ({ writtenQuestions }) => {
-  const { userAnswers } = useSelector(state => state.shortQuestions)
+  const { userAnswers } = useSelector(state => state.writtenQuestions)
   return (
-    <div className='container sticky top-0 text-2xl text-white body md:mx-auto'>
+    <div className='container sticky top-0 py-2 text-2xl text-white rounded-lg shadow-2xl drop-shadow-2xl md:mx-auto'>
       <div className='w-full px-4 pt-1'>
-        <div className='w-full max-w-md p-2 mx-auto primary-bg rounded-2xl'>
+        <div className='w-full max-w-md p-2 mx-auto rounded-2xl'>
           {writtenQuestions?.map((sq, index) => (
             <div className='space-y-4' key={index}>
               {sq.questions.map(question => {
@@ -30,10 +30,9 @@ const DisclosureForWrittenExams = ({ writtenQuestions }) => {
                           />
                         </Disclosure.Button>
                         <Disclosure.Panel className='px-4 pt-4 pb-2 text-sm text-gray-500 border rounded-lg bg-slate-50'>
-                          {answer?.answer ? (
+                          {answer?.stu_answer ? (
                             <p className='break-words h-fit'>
-                              {' '}
-                              {answer?.answer}
+                              {answer?.stu_answer}
                             </p>
                           ) : (
                             <p className='text-red-700'>

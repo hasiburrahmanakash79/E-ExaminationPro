@@ -7,7 +7,7 @@ import { RiQuestionAnswerLine } from 'react-icons/ri';
 const InstructorHome = () => {
     return (
         <div className='p-5'>
-            <Helmet><title>E-ExamPro | Dashboard</title></Helmet>
+            <Helmet><title>Dashboard | E-ExamPro</title></Helmet>
             <h1 className='text-3xl text-center my-10'>Instructor home</h1>
 
             <div className="grid grid-cols-1 gap-3 pb-6 mt-4 md:grid-cols-4">

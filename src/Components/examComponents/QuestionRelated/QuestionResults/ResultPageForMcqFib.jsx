@@ -4,19 +4,60 @@ import { PDFDownloadLink, PDFViewer } from '@react-pdf/renderer'
 import ResultPdfConverter from './ResultPdfConverter'
 import { useLocation } from 'react-router-dom'
 import useResult from '../../../../Hooks/useResult/useResult'
-import { useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import ReviewAnswerAfterResult2 from './ReviewAnswerAfterResult2'
 import FeedBack from './Feedback'
 import { getColor } from '../../../../utils/getColor'
+import { AuthContext } from '../../../../Provider/AuthProvider'
+import { useQuery } from '@tanstack/react-query'
+import axios from 'axios'
 
 const ResultPageForMcqFib = () => {
   const location = useLocation()
   const searchParams = new URLSearchParams(location.search)
   const examId = searchParams.get('id')
-  const [result, refetch, loading] = useResult(examId)
-  if (loading) {
-    return <p>Loading..</p>
+ 
+  const [result, refetch, loadings] = useResult(examId)
+
+
+  // const { user, loading } = useContext(AuthContext)
+
+  // const {data: result,refetch,isLoading: loadings} = useQuery({
+  //   queryKey: ['result'],
+  //   enabled:!loading ,
+  //   queryFn: async () => {
+  //     const res = await axios.get(
+  //       `https://e-exam-pro-server.vercel.app/result?examId=${examId}&email=${user?.email}`
+  //     )
+  //     //console.log(res)
+  //     return res.data
+  //   }
+  // })
+
+//   const [result,setResult]=useState(null)
+//   const [loadings,setLoading]=useState(true)
+
+//   useEffect(()=>{
+//     setLoading(true)
+// if(!loading){
+//   fetch(`https://e-exam-pro-server.vercel.app/result?examId=${examId}&email=${user?.email}`)
+//   .then(res=>res.json())
+//   .then(data=>{
+//     setResult(data)
+//     setLoading(false)
+//   })
+// }
+//   },[user?.email,loading])
+
+ 
+
+  if (loadings) {
+    return <p>loadings..</p>
   }
+  console.log(result)
+
+refetch()
+  
 
   const percentage = (result.mark / result.totalMark) * 100
   return (
@@ -34,9 +75,9 @@ const ResultPageForMcqFib = () => {
               document={<ResultPdfConverter resultInfo={result?.resultData} />}
               fileName='result.pdf'
             >
-              {({ blob, url, loading, error }) =>
-                loading ? (
-                  'Loading document...'
+              {({ blob, url, loadings, error }) =>
+                loadings ? (
+                  'loadings document...'
                 ) : (
                   <button className='btn primary-btn w-44'>
                     Export Result As PDF
@@ -76,18 +117,18 @@ const ResultPageForMcqFib = () => {
             >
               Give FeedBack
             </button>
-            <dialog id="my_modal_2" className=" modal">
+            <dialog id='my_modal_2' className=' modal'>
               <form
-                method="dialog"
-                className="relative max-w-5xl p-0 border w-fit h-fit modal-box primary-bg"
+                method='dialog'
+                className='relative max-w-5xl p-0 border w-fit h-fit modal-box primary-bg'
               >
-                <small className="absolute top-0 right-0 p-1 text-xs">
+                <small className='absolute top-0 right-0 p-1 text-xs'>
                   Press ESC key or click outside to close
                 </small>
 
                 <FeedBack />
               </form>
-              <form method="dialog" className="modal-backdrop">
+              <form method='dialog' className='modal-backdrop'>
                 <button>close</button>
               </form>
             </dialog>

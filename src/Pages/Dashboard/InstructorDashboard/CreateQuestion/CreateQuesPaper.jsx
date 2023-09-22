@@ -15,6 +15,8 @@ import { Helmet } from 'react-helmet-async'
 import { LocalToastTarget, useLocalToast } from 'react-local-toast'
 
 const CreateQuesPaper = () => {
+
+
   const { showToast, removeToast } = useLocalToast()
   const { user } = useContext(AuthContext)
   const dispatch = useDispatch()
@@ -46,7 +48,7 @@ const CreateQuesPaper = () => {
   /////redux////
 
   ////////
-  //console.log(codeRepeat, '----------------------43')
+
   const [iscodeRepeat, setIscodeRepeat] = useState(null)
   useEffect(() => {
     fetch(
@@ -55,10 +57,25 @@ const CreateQuesPaper = () => {
       .then(res => res.json())
       .then(data => setIscodeRepeat(data.result))
   }, [codeRepeat])
-  console.log(
-    iscodeRepeat,
-    '------------------------------------------------------------52'
-  )
+
+  console.log(iscodeRepeat,'------------------------------------------------------------52')
+
+  const [isDateTimeRepeat, setIsDateTimeRepeat] = useState(null)
+  useEffect(() => {
+if( formData.date && formData.examTime && formData?.batch) {
+    fetch(
+      `https://e-exam-pro-server.vercel.app/questionDate&Time?date=${formData.date}&examTime=${formData.examTime}&batch=${formData?.batch}`
+    )
+      .then(res => res.json())
+      .then(data => setIsDateTimeRepeat(data.result))
+}
+else{
+  setIsDateTimeRepeat(null)
+}
+  }, [formData?.date,formData?.examTime,formData?.batch])
+
+  console.log(isDateTimeRepeat,'date time')
+
   // store basic info
   const handleInputChange = event => {
     event.preventDefault()
@@ -88,16 +105,16 @@ const CreateQuesPaper = () => {
     dispatch(quesPaper({ index, field, value })) //redux
   }
 
-  const [errorQues, setErrorQues] = useState(false)
-  const [errorOption, setErrorOption] = useState(false)
-  const [errorCorrect, setErrorCorrect] = useState(false)
+  // const [errorQues, setErrorQues] = useState(false)
+  // const [errorOption, setErrorOption] = useState(false)
+  // const [errorCorrect, setErrorCorrect] = useState(false)
 
   //submit
   const handleSubmit = event => {
     event.preventDefault()
-    setErrorQues(false)
-    setErrorOption(false)
-    setErrorCorrect(false)
+    // setErrorQues(false)
+    // setErrorOption(false)
+    // setErrorCorrect(false)
     const paperData = {
       ...formData,
       type,
@@ -105,11 +122,11 @@ const CreateQuesPaper = () => {
     }
 
     //console.log('Question Paper Data:', paperData)
-
+    console.log( paperData.subjectName, paperData.exam_code, paperData.exam_code,paperData.date)
     if (
       paperData.subjectName == null ||
       paperData.exam_code == null ||
-      paperData.batch == null ||
+      paperData.exam_code == null ||
       paperData.date == null ||
       (type == 'multimedia_mcq' && paperData.videoURL == null)
     ) {
@@ -241,6 +258,7 @@ const CreateQuesPaper = () => {
               className='w-full max-w-xs input input-bordered'
             />
           </div>
+
           <div className='w-full max-w-xs form-control'>
             <label className='label'>
               <span className='label-text'>Date</span>
@@ -254,7 +272,25 @@ const CreateQuesPaper = () => {
               placeholder='Type here'
               className='w-full max-w-xs input input-bordered'
             />
+            {isDateTimeRepeat==true && <p className='mt-2 text-red-500'>Time Already Set For Batch {formData?.batch} On This Date </p> }
           </div>
+
+          <div className='w-full max-w-xs form-control'>
+            <label className='label'>
+              <span className='label-text'>Exam Time</span>
+            </label>
+            <input
+              required
+              name='examTime'
+              value={formData.examTime}
+              onChange={handleInputChange}
+              type='time'
+              placeholder='Type here'
+              className='w-full max-w-xs input input-bordered'
+            />
+              {isDateTimeRepeat==true && <p className='mt-2 text-red-500'>Time Already Set For Batch {formData?.batch} On This Date </p> }
+          </div>
+
           <div className='w-full max-w-xs form-control'>
             <label className='label'>
               <span className='label-text'>Email:</span>
@@ -268,7 +304,20 @@ const CreateQuesPaper = () => {
               className='w-full max-w-xs input input-bordered'
             />
           </div>
-
+          <div className='w-full max-w-xs form-control'>
+            <label className='label'>
+              <span className='label-text'>Total Time</span>
+            </label>
+            <input
+              required
+              name='time'
+              value={formData.time}
+              onChange={handleInputChange}
+              type='number'
+              placeholder='In minutes'
+              className='w-full max-w-xs input input-bordered'
+            />
+          </div>
           {type == 'multimedia_mcq' && (
             <div className='w-full max-w-xs form-control'>
               <label className='label'>
@@ -293,7 +342,7 @@ const CreateQuesPaper = () => {
           {questions?.map((question, index) => (
             <div key={index} className='mb-3'>
               <label className='label'>
-                <span className='text-xl label-text'>Question {index + 1}</span>
+                <span className='text-xl label-text text-green-500'>Question <span className='text-yellow-500'>{index + 1}</span></span>
               </label>
               <input
                 type='text'
@@ -345,18 +394,47 @@ const CreateQuesPaper = () => {
                     className='w-1/2 mt-2 input input-sm input-bordered'
                     placeholder='Correct Answer'
                   />
+                  <label className='label'>
+                    <span className='text-xl label-text'>Hints:</span>
+                  </label>
+                  <input
+                    type='text'
+                    value={question.hints}
+                    onChange={e =>
+                      handleQuestionChange(index, 'hints', e.target.value)
+                    }
+                    className='w-1/2 mt-2 input input-sm input-bordered'
+                    placeholder='Hints'
+                  />
                 </>
               )}
               {type === 'FillInTheBlank' && (
-                <input
-                  type='text'
-                  value={question.correctAnswer}
-                  onChange={e =>
-                    handleQuestionChange(index, 'correctAnswer', e.target.value)
-                  }
-                  className='w-full mt-2 input input-bordered'
-                  placeholder='Correct Answer'
-                />
+                <>
+                  <label className='label'>
+                    <span className='text-xl label-text'>Correct Answer:</span>
+                  </label>
+                  <input
+                    type='text'
+                    value={question.correctAnswer}
+                    onChange={e =>
+                      handleQuestionChange(index, 'correctAnswer', e.target.value)
+                    }
+                    className='w-full mt-2 input input-bordered'
+                    placeholder='Correct Answer'
+                  />
+                  <label className='label'>
+                    <span className='text-xl label-text'>Hints:</span>
+                  </label>
+                  <input
+                    type='text'
+                    value={question.hints}
+                    onChange={e =>
+                      handleQuestionChange(index, 'hints', e.target.value)
+                    }
+                    className='w-1/2 mt-2 input input-sm input-bordered'
+                    placeholder='Hints'
+                  />
+                </>
               )}
             </div>
           ))}

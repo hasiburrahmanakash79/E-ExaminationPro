@@ -10,7 +10,6 @@ import {
   FaComment
 } from 'react-icons/fa'
 import { BiBookAdd } from 'react-icons/bi'
-import { GiWallet } from 'react-icons/gi'
 import { AiFillNotification } from 'react-icons/ai'
 import { RiLiveFill } from 'react-icons/ri'
 import { FaClipboardQuestion } from 'react-icons/fa6'
@@ -140,6 +139,12 @@ const Dashboard = () => {
       role: 'instructor'
     },
     {
+      title: 'Written Answers Review',
+      path: '/dashboard/written-review',
+      icon: iconMappings.Blog,
+      role: 'instructor'
+    },
+    {
       title: 'User Home',
       path: '/dashboard/userHome',
       icon: iconMappings.RoleHome,
@@ -159,12 +164,6 @@ const Dashboard = () => {
       role: 'user'
     },
     {
-      title: 'Upcoming Live Exam',
-      path: '/dashboard/upcomingLiveExam',
-      icon: iconMappings.Live,
-      role: 'user'
-    },
-    {
       title: 'Applied Live Exam',
       path: '/dashboard/appliedLiveExam',
       icon: iconMappings.Live,
@@ -172,12 +171,6 @@ const Dashboard = () => {
     },
     {
       title: 'Student Analytics',
-      path: '/dashboard/studentAnalytics',
-      icon: iconMappings.Analytics,
-      role: 'user'
-    },
-    {
-      title: 'Given All Exam',
       path: '/dashboard/allgivenExam',
       icon: iconMappings.Analytics,
       role: 'user'

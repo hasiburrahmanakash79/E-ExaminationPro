@@ -1,286 +1,320 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
+import { FaEnvelope, FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
 import { Link } from 'react-router-dom';
 
 const AboutUs = () => {
   return (
-    <div className='container mx-auto px-6'>
-      <Helmet><title>E-ExamPro | About Us</title></Helmet>
-      <div className='md:flex justify-between items-center md:gap-20 py-20 text-center md:text-left'>
-        <div className='md:w-1/2 overflow-x-hidden'>
+    <div className='container px-6 mx-auto'>
+      <Helmet>
+        <title>E-ExamPro | About Us</title>
+      </Helmet>
+      <div className='items-center justify-between py-20 text-center md:flex md:gap-20 md:text-left'>
+        <div className='overflow-x-hidden md:w-1/2'>
           <h2
-            data-aos="zoom-in"
-            data-aos-duration="1000"
-            className='text-sm pb-3'>About E-ExamPro</h2>
-          {/* <h2 className='md:text-7xl font-bold tracking-wide  '><span >Reach your peak. </span><br />
-            <span className='leading-4' >  We'll help you get there.</span>
-          </h2> */}
-
+            data-aos='zoom-in'
+            data-aos-duration='1000'
+            className='pb-3 text-sm'
+          >
+            About E-ExamPro
+          </h2>
           <div
-            data-aos="fade-right"
-            // data-aos="fade-left"
-            data-aos-easing="ease-in-sine"
-            className='pb-5'>
-            <h2 className='text-4xl xl:text-7xl font-bold tracking-wide pb-3' >Reach your peak.</h2>
-            <h2 className='text-4xl xl:text-7xl font-bold tracking-wide'>We'll help you get there.</h2>
+            data-aos='fade-right'
+            data-aos-easing='ease-in-sine'
+            className='pb-5'
+          >
+            <h2 className='pb-3 text-4xl font-bold tracking-wide xl:text-7xl'>
+              Reach your peak.
+            </h2>
+            <h2 className='text-4xl font-bold tracking-wide xl:text-7xl'>
+              We'll help you get there.
+            </h2>
           </div>
 
           <p
-            data-aos="fade-right"
-            data-aos-easing="ease-in-sine"
-            className='text-lg pb-5 text-gray-300'>We recognize the importance of seamless and efficient examination processes, and that's why we have created a cutting-edge solution that allows students to take their exams from the comfort of their own space. Our platform is built on a foundation of innovation and user-centric design, ensuring a user-friendly experience.</p>
+            data-aos='fade-right'
+            data-aos-easing='ease-in-sine'
+            className='pb-5 text-lg text-gray-300'
+          >
+            We recognize the importance of seamless and efficient examination
+            processes, and that's why we have created a cutting-edge solution
+            that allows students to take their exams from the comfort of their
+            own space. Our platform is built on a foundation of innovation and
+            user-centric design, ensuring a user-friendly experience.
+          </p>
           <Link
-            data-aos="fade-down"
-            data-aos-duration="1000"
-            to="/contact" className="btn primary-btn border-none text-white shadow-md">Contact Us</Link>
+            data-aos='fade-down'
+            data-aos-duration='1000'
+            to='/contact'
+            className='text-white border-none shadow-md btn primary-btn'
+          >
+            Contact Us
+          </Link>
         </div>
 
         <div
-          // data-aos="fade-right"
-          data-aos="fade-left"
-          data-aos-easing="ease-in-sine"
-          className='md:w-1/2'>
-          <img className='w-2/3 mx-auto mt-10' src="https://i.ibb.co/sPdHD97/45397-removebg.png" alt="" />
+          data-aos='fade-left'
+          data-aos-easing='ease-in-sine'
+          className='md:w-1/2'
+        >
+          <img
+            className='w-2/3 mx-auto mt-10'
+            src='https://i.ibb.co/sPdHD97/45397-removebg.png'
+            alt=''
+          />
         </div>
       </div>
 
       <div
-        data-aos="fade-up"
-        data-aos-duration="1500"
-        className='container md:mt-10 md:mb-10 '>
-        <p className='w-full md:w-1/2 text-center mx-auto '>Our commitment extends beyond convenience. We strive to create an inclusive platform that accommodates various subjects, disciplines, and formats, providing an expansive repository of resources for comprehensive preparation. We take pride in supporting the educational ecosystem by partnering with schools, colleges, universities, and educators to facilitate a new era of examination that aligns with the digital age.</p>
+        data-aos='fade-up'
+        data-aos-duration='1500'
+        className='container md:mt-10 md:mb-10 '
+      >
+        <p className='w-full mx-auto text-center md:w-1/2 '>
+          Our commitment extends beyond convenience. We strive to create an
+          inclusive platform that accommodates various subjects, disciplines,
+          and formats, providing an expansive repository of resources for
+          comprehensive preparation. We take pride in supporting the educational
+          ecosystem by partnering with schools, colleges, universities, and
+          educators to facilitate a new era of examination that aligns with the
+          digital age.
+        </p>
       </div>
 
-      <div className='md:flex justify-center items-center gap-20 mt-20'>
+      <div className='items-center justify-center gap-20 mt-20 md:flex'>
         <div
-          data-aos="fade-left"
-          data-aos-easing="ease-in-sine"
-          className='w-1/2 mb-10 mx-auto '>
-          <img className='md:w-2/4 md:mt-20 md:mx-auto' src="https://i.ibb.co/bPGHBsD/tswv-dzjb-230710.png" alt="" />
+          data-aos='fade-left'
+          data-aos-easing='ease-in-sine'
+          className='w-1/2 mx-auto mb-10 '
+        >
+          <img
+            className='md:w-2/4 md:mt-20 md:mx-auto'
+            src='https://i.ibb.co/bPGHBsD/tswv-dzjb-230710.png'
+            alt=''
+          />
         </div>
 
         <div
-          data-aos="fade-right"
-          data-aos-easing="ease-in-sine"
-          className='md:w-1/2 md:mt-10 px-5  text-center md:text-left'>
-          <h1 className='w-full text-3xl xl:text-5xl font-bold ' >E-ExamPro plays a huge role <br /> by  providing unique, <br />authentic peer advice in <br /> study field.</h1>
-          <p className='mt-5 text-gray-400 m'>Our commitment extends beyond convenience. We strive to create an inclusive platform that accommodates various subjects, disciplines, and formats, providing an expansive repository of resources for comprehensive preparation. We take pride in supporting the educational ecosystem by partnering with schools, colleges, universities, and educators to facilitate a new era of examination that aligns with the digital age.</p>
+          data-aos='fade-right'
+          data-aos-easing='ease-in-sine'
+          className='px-5 text-center md:w-1/2 md:mt-10 md:text-left'
+        >
+          <h1 className='w-full text-3xl font-bold xl:text-5xl '>
+            E-ExamPro plays a huge role <br /> by providing unique, <br />
+            authentic peer advice in <br /> study field.
+          </h1>
+          <p className='mt-5 text-gray-400 m'>
+            Our commitment extends beyond convenience. We strive to create an
+            inclusive platform that accommodates various subjects, disciplines,
+            and formats, providing an expansive repository of resources for
+            comprehensive preparation. We take pride in supporting the
+            educational ecosystem by partnering with schools, colleges,
+            universities, and educators to facilitate a new era of examination
+            that aligns with the digital age.
+          </p>
         </div>
       </div>
 
-      <div className="py-6 md:mt-20  dark:text-gray-100">
-        <div className="container flex flex-col items-center justify-center p-4 mx-auto sm:p-10">
+      <div className='py-6 md:mt-20 dark:text-gray-100'>
+        <div className='container flex flex-col items-center justify-center p-4 mx-auto sm:p-10'>
           <p
-            data-aos="fade-down"
-            data-aos-duration="700"
-            className="p-2 text-sm font-medium tracki text-center uppercase">Development team</p>
+            data-aos='fade-down'
+            data-aos-duration='700'
+            className='p-2 text-lg text-white font-medium text-center uppercase tracking'
+          >
+            Development team
+          </p>
           <h1
             data-aos="fade-down"
             data-aos-duration="1500"
-            className=" font-bold leadi text-center text-3xl xl:text-5xl">The talented people behind the scenes</h1>
+            className="text-4xl font-bold leading text-center sm:text-5xl">The Talented People Behind the Scenes</h1>
           <div className="flex flex-row flex-wrap-reverse justify-center mt-20">
+
             <div
-              data-aos="fade-right"
+              // data-aos="fade-right"
               className="flex flex-col justify-center w-full px-8 mx-6 my-12 text-center rounded-md md:w-96 lg:w-80 xl:w-64 bg-white/20 hover:bg-white/30 shadow-2xl dark:text-white">
-              <img alt="" className="border-4 border-pink-500 self-center flex-shrink-0 w-24 h-24 -mt-12 bg-center bg-cover rounded-full dark:bg-gray-500" src="https://source.unsplash.com/100x100/?portrait?0" />
+
+
+              <div className=" avatar -mt-10">
+                <div className="w-24 rounded-full mx-auto  " >
+                  <img src="https://i.ibb.co/HzhTQqS/Abir.jpg" />
+                </div>
+              </div>
+
+
               <div className="flex-1 my-4">
-                <p className="text-xl font-semibold leadi">Leroy Jenkins</p>
-                <p>Visual Designer</p>
+                <p className="text-xl  leading">Tazwarul Islam</p>
+                <p className='text-slate-400'>Jr. Front-End Developer</p>
               </div>
-              <div className="flex items-center justify-center p-3 space-x-3 border-t-2">
-                <a rel="noopener noreferrer" href="#" title="Email" className="dark:text-gray-900 hover:dark:text-violet-400">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5">
-                    <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path>
-                    <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path>
-                  </svg>
+
+              <div className='flex mx-auto gap-5 text-xl pb-3'>
+                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=md.tazwarul.islam.07@gmail.com" target="_blank">
+                  <FaEnvelope />
                 </a>
-                <a rel="noopener noreferrer" href="#" title="Twitter" className="dark:text-gray-900 hover:dark:text-violet-400">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" fill="currentColor" className="w-5 h-5">
-                    <path d="M 50.0625 10.4375 C 48.214844 11.257813 46.234375 11.808594 44.152344 12.058594 C 46.277344 10.785156 47.910156 8.769531 48.675781 6.371094 C 46.691406 7.546875 44.484375 8.402344 42.144531 8.863281 C 40.269531 6.863281 37.597656 5.617188 34.640625 5.617188 C 28.960938 5.617188 24.355469 10.21875 24.355469 15.898438 C 24.355469 16.703125 24.449219 17.488281 24.625 18.242188 C 16.078125 17.8125 8.503906 13.71875 3.429688 7.496094 C 2.542969 9.019531 2.039063 10.785156 2.039063 12.667969 C 2.039063 16.234375 3.851563 19.382813 6.613281 21.230469 C 4.925781 21.175781 3.339844 20.710938 1.953125 19.941406 C 1.953125 19.984375 1.953125 20.027344 1.953125 20.070313 C 1.953125 25.054688 5.5 29.207031 10.199219 30.15625 C 9.339844 30.390625 8.429688 30.515625 7.492188 30.515625 C 6.828125 30.515625 6.183594 30.453125 5.554688 30.328125 C 6.867188 34.410156 10.664063 37.390625 15.160156 37.472656 C 11.644531 40.230469 7.210938 41.871094 2.390625 41.871094 C 1.558594 41.871094 0.742188 41.824219 -0.0585938 41.726563 C 4.488281 44.648438 9.894531 46.347656 15.703125 46.347656 C 34.617188 46.347656 44.960938 30.679688 44.960938 17.09375 C 44.960938 16.648438 44.949219 16.199219 44.933594 15.761719 C 46.941406 14.3125 48.683594 12.5 50.0625 10.4375 Z"></path>
-                  </svg>
-                </a>
-                <a rel="noopener noreferrer" href="#" title="LinkedIn" className="dark:text-gray-900 hover:dark:text-violet-400">
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 32 32" className="w-5 h-5">
-                    <path d="M8.268 28h-5.805v-18.694h5.805zM5.362 6.756c-1.856 0-3.362-1.538-3.362-3.394s1.505-3.362 3.362-3.362 3.362 1.505 3.362 3.362c0 1.856-1.506 3.394-3.362 3.394zM29.994 28h-5.792v-9.1c0-2.169-0.044-4.95-3.018-4.95-3.018 0-3.481 2.356-3.481 4.794v9.256h-5.799v-18.694h5.567v2.55h0.081c0.775-1.469 2.668-3.019 5.492-3.019 5.875 0 6.955 3.869 6.955 8.894v10.269z"></path>
-                  </svg>
-                </a>
-                <a rel="noopener noreferrer" href="#" title="GitHub" className="dark:text-gray-900 hover:dark:text-violet-400">
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 32 32" className="w-5 h-5">
-                    <path d="M16 0.396c-8.839 0-16 7.167-16 16 0 7.073 4.584 13.068 10.937 15.183 0.803 0.151 1.093-0.344 1.093-0.772 0-0.38-0.009-1.385-0.015-2.719-4.453 0.964-5.391-2.151-5.391-2.151-0.729-1.844-1.781-2.339-1.781-2.339-1.448-0.989 0.115-0.968 0.115-0.968 1.604 0.109 2.448 1.645 2.448 1.645 1.427 2.448 3.744 1.74 4.661 1.328 0.14-1.031 0.557-1.74 1.011-2.135-3.552-0.401-7.287-1.776-7.287-7.907 0-1.751 0.62-3.177 1.645-4.297-0.177-0.401-0.719-2.031 0.141-4.235 0 0 1.339-0.427 4.4 1.641 1.281-0.355 2.641-0.532 4-0.541 1.36 0.009 2.719 0.187 4 0.541 3.043-2.068 4.381-1.641 4.381-1.641 0.859 2.204 0.317 3.833 0.161 4.235 1.015 1.12 1.635 2.547 1.635 4.297 0 6.145-3.74 7.5-7.296 7.891 0.556 0.479 1.077 1.464 1.077 2.959 0 2.14-0.020 3.864-0.020 4.385 0 0.416 0.28 0.916 1.104 0.755 6.4-2.093 10.979-8.093 10.979-15.156 0-8.833-7.161-16-16-16z"></path>
-                  </svg>
-                </a>
+                <a href="https://www.linkedin.com/in/md-tazwarul-islam-abir-5762b7214/" target='_blank'><FaLinkedin /></a>
+
+                <a href="https://twitter.com/md_tazwarul" target='_blank'><FaTwitter /></a>
+
+                <a href="https://github.com/Abir-7" target='_blank'><FaGithub /></a>
               </div>
+
             </div>
+
             <div
-              data-aos="fade-up"
-              data-aos-duration="900"
-              className="flex flex-col justify-center w-full px-8 mx-6 my-12 text-center rounded-md md:w-96 lg:w-80 xl:w-64 dark:bg-gray-100 dark:text-gray-800">
-              <img alt="" className="self-center border-4  flex-shrink-0 w-24 h-24 -mt-12 bg-center bg-cover rounded-full dark:bg-gray-500" src="https://source.unsplash.com/100x100/?portrait?1" />
+              // data-aos="fade-right"
+              className="flex flex-col justify-center w-full px-8 mx-6 my-12 text-center rounded-md md:w-96 lg:w-80 xl:w-64 bg-white/20 hover:bg-white/30 shadow-2xl dark:text-white">
+              {/* <div className=' avatar -mt-10'>
+                <img alt="" className="rounded-full  w-16     " src="https://i.ibb.co/HzhTQqS/Abir.jpg" />
+              </div> */}
+              <div className=" avatar -mt-10">
+                <div className="w-24 rounded-full mx-auto  " >
+                  <img src="https://i.ibb.co/19jFGZY/saiful-img1.png" />
+                </div>
+              </div>
               <div className="flex-1 my-4">
-                <p className="text-xl font-semibold leadi">Leroy Jenkins</p>
-                <p>Visual Designer</p>
+                <p className="text-xl  leading">Saiful Arafat</p>
+                <p className='text-slate-400'>Jr. Front-End Developer</p>
               </div>
-              <div className="flex items-center justify-center p-3 space-x-3 border-t-2">
-                <a rel="noopener noreferrer" href="#" title="Email" className="dark:text-gray-900 hover:dark:text-violet-400">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5">
-                    <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path>
-                    <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path>
-                  </svg>
+
+              <div className='flex mx-auto gap-5 text-xl pb-3'>
+                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=saifularafat.info@gmail.com" target="_blank">
+                  <FaEnvelope />
                 </a>
-                <a rel="noopener noreferrer" href="#" title="Twitter" className="dark:text-gray-900 hover:dark:text-violet-400">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" fill="currentColor" className="w-5 h-5">
-                    <path d="M 50.0625 10.4375 C 48.214844 11.257813 46.234375 11.808594 44.152344 12.058594 C 46.277344 10.785156 47.910156 8.769531 48.675781 6.371094 C 46.691406 7.546875 44.484375 8.402344 42.144531 8.863281 C 40.269531 6.863281 37.597656 5.617188 34.640625 5.617188 C 28.960938 5.617188 24.355469 10.21875 24.355469 15.898438 C 24.355469 16.703125 24.449219 17.488281 24.625 18.242188 C 16.078125 17.8125 8.503906 13.71875 3.429688 7.496094 C 2.542969 9.019531 2.039063 10.785156 2.039063 12.667969 C 2.039063 16.234375 3.851563 19.382813 6.613281 21.230469 C 4.925781 21.175781 3.339844 20.710938 1.953125 19.941406 C 1.953125 19.984375 1.953125 20.027344 1.953125 20.070313 C 1.953125 25.054688 5.5 29.207031 10.199219 30.15625 C 9.339844 30.390625 8.429688 30.515625 7.492188 30.515625 C 6.828125 30.515625 6.183594 30.453125 5.554688 30.328125 C 6.867188 34.410156 10.664063 37.390625 15.160156 37.472656 C 11.644531 40.230469 7.210938 41.871094 2.390625 41.871094 C 1.558594 41.871094 0.742188 41.824219 -0.0585938 41.726563 C 4.488281 44.648438 9.894531 46.347656 15.703125 46.347656 C 34.617188 46.347656 44.960938 30.679688 44.960938 17.09375 C 44.960938 16.648438 44.949219 16.199219 44.933594 15.761719 C 46.941406 14.3125 48.683594 12.5 50.0625 10.4375 Z"></path>
-                  </svg>
-                </a>
-                <a rel="noopener noreferrer" href="#" title="LinkedIn" className="dark:text-gray-900 hover:dark:text-violet-400">
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 32 32" className="w-5 h-5">
-                    <path d="M8.268 28h-5.805v-18.694h5.805zM5.362 6.756c-1.856 0-3.362-1.538-3.362-3.394s1.505-3.362 3.362-3.362 3.362 1.505 3.362 3.362c0 1.856-1.506 3.394-3.362 3.394zM29.994 28h-5.792v-9.1c0-2.169-0.044-4.95-3.018-4.95-3.018 0-3.481 2.356-3.481 4.794v9.256h-5.799v-18.694h5.567v2.55h0.081c0.775-1.469 2.668-3.019 5.492-3.019 5.875 0 6.955 3.869 6.955 8.894v10.269z"></path>
-                  </svg>
-                </a>
-                <a rel="noopener noreferrer" href="#" title="GitHub" className="dark:text-gray-900 hover:dark:text-violet-400">
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 32 32" className="w-5 h-5">
-                    <path d="M16 0.396c-8.839 0-16 7.167-16 16 0 7.073 4.584 13.068 10.937 15.183 0.803 0.151 1.093-0.344 1.093-0.772 0-0.38-0.009-1.385-0.015-2.719-4.453 0.964-5.391-2.151-5.391-2.151-0.729-1.844-1.781-2.339-1.781-2.339-1.448-0.989 0.115-0.968 0.115-0.968 1.604 0.109 2.448 1.645 2.448 1.645 1.427 2.448 3.744 1.74 4.661 1.328 0.14-1.031 0.557-1.74 1.011-2.135-3.552-0.401-7.287-1.776-7.287-7.907 0-1.751 0.62-3.177 1.645-4.297-0.177-0.401-0.719-2.031 0.141-4.235 0 0 1.339-0.427 4.4 1.641 1.281-0.355 2.641-0.532 4-0.541 1.36 0.009 2.719 0.187 4 0.541 3.043-2.068 4.381-1.641 4.381-1.641 0.859 2.204 0.317 3.833 0.161 4.235 1.015 1.12 1.635 2.547 1.635 4.297 0 6.145-3.74 7.5-7.296 7.891 0.556 0.479 1.077 1.464 1.077 2.959 0 2.14-0.020 3.864-0.020 4.385 0 0.416 0.28 0.916 1.104 0.755 6.4-2.093 10.979-8.093 10.979-15.156 0-8.833-7.161-16-16-16z"></path>
-                  </svg>
-                </a>
+                <a href="https://www.linkedin.com/in/saiful-islam-60158b257/" target='_blank'><FaLinkedin /></a>
+
+                <a href="https://twitter.com/saifularafat69" target='_blank'><FaTwitter /></a>
+
+                <a href="https://github.com/saifularafat" target='_blank'><FaGithub /></a>
               </div>
+
             </div>
+
             <div
-              data-aos="fade-left"
-              data-aos-duration="900"
-              className="flex flex-col justify-center w-full px-8 mx-6 my-12 text-center rounded-md md:w-96 lg:w-80 xl:w-64 dark:bg-gray-100 dark:text-gray-800">
-              <img alt="" className="self-center flex-shrink-0 w-24 h-24 -mt-12 bg-center bg-cover rounded-full dark:bg-gray-500" src="https://source.unsplash.com/100x100/?portrait?2" />
+              // data-aos="fade-right"
+              className="flex flex-col justify-center w-full px-8 mx-6 my-12 text-center rounded-md md:w-96 lg:w-80 xl:w-64 bg-white/20 hover:bg-white/30 shadow-2xl dark:text-white">
+              {/* <div className=' avatar -mt-10'>
+                <img alt="" className="rounded-full  w-16     " src="https://i.ibb.co/HzhTQqS/Abir.jpg" />
+              </div> */}
+              <div className=" avatar -mt-10">
+                <div className="w-24 rounded-full mx-auto  " >
+                  <img src="https://i.ibb.co/zSjMhX5/IMG-20230717-WA0000.jpg" />
+                </div>
+              </div>
               <div className="flex-1 my-4">
-                <p className="text-xl font-semibold leadi">Leroy Jenkins</p>
-                <p>Visual Designer</p>
+                <p className="text-xl  leading">Al Mamud Bijoy</p>
+                <p className='text-slate-400'>Jr. Front-End Developer</p>
               </div>
-              <div className="flex items-center justify-center p-3 space-x-3 border-t-2">
-                <a rel="noopener noreferrer" href="#" title="Email" className="dark:text-gray-900 hover:dark:text-violet-400">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5">
-                    <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path>
-                    <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path>
-                  </svg>
+
+              <div className='flex mx-auto gap-5 text-xl pb-3'>
+                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=bijoymamud.09@gmail.com" target="_blank">
+                  <FaEnvelope />
                 </a>
-                <a rel="noopener noreferrer" href="#" title="Twitter" className="dark:text-gray-900 hover:dark:text-violet-400">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" fill="currentColor" className="w-5 h-5">
-                    <path d="M 50.0625 10.4375 C 48.214844 11.257813 46.234375 11.808594 44.152344 12.058594 C 46.277344 10.785156 47.910156 8.769531 48.675781 6.371094 C 46.691406 7.546875 44.484375 8.402344 42.144531 8.863281 C 40.269531 6.863281 37.597656 5.617188 34.640625 5.617188 C 28.960938 5.617188 24.355469 10.21875 24.355469 15.898438 C 24.355469 16.703125 24.449219 17.488281 24.625 18.242188 C 16.078125 17.8125 8.503906 13.71875 3.429688 7.496094 C 2.542969 9.019531 2.039063 10.785156 2.039063 12.667969 C 2.039063 16.234375 3.851563 19.382813 6.613281 21.230469 C 4.925781 21.175781 3.339844 20.710938 1.953125 19.941406 C 1.953125 19.984375 1.953125 20.027344 1.953125 20.070313 C 1.953125 25.054688 5.5 29.207031 10.199219 30.15625 C 9.339844 30.390625 8.429688 30.515625 7.492188 30.515625 C 6.828125 30.515625 6.183594 30.453125 5.554688 30.328125 C 6.867188 34.410156 10.664063 37.390625 15.160156 37.472656 C 11.644531 40.230469 7.210938 41.871094 2.390625 41.871094 C 1.558594 41.871094 0.742188 41.824219 -0.0585938 41.726563 C 4.488281 44.648438 9.894531 46.347656 15.703125 46.347656 C 34.617188 46.347656 44.960938 30.679688 44.960938 17.09375 C 44.960938 16.648438 44.949219 16.199219 44.933594 15.761719 C 46.941406 14.3125 48.683594 12.5 50.0625 10.4375 Z"></path>
-                  </svg>
-                </a>
-                <a rel="noopener noreferrer" href="#" title="LinkedIn" className="dark:text-gray-900 hover:dark:text-violet-400">
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 32 32" className="w-5 h-5">
-                    <path d="M8.268 28h-5.805v-18.694h5.805zM5.362 6.756c-1.856 0-3.362-1.538-3.362-3.394s1.505-3.362 3.362-3.362 3.362 1.505 3.362 3.362c0 1.856-1.506 3.394-3.362 3.394zM29.994 28h-5.792v-9.1c0-2.169-0.044-4.95-3.018-4.95-3.018 0-3.481 2.356-3.481 4.794v9.256h-5.799v-18.694h5.567v2.55h0.081c0.775-1.469 2.668-3.019 5.492-3.019 5.875 0 6.955 3.869 6.955 8.894v10.269z"></path>
-                  </svg>
-                </a>
-                <a rel="noopener noreferrer" href="#" title="GitHub" className="dark:text-gray-900 hover:dark:text-violet-400">
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 32 32" className="w-5 h-5">
-                    <path d="M16 0.396c-8.839 0-16 7.167-16 16 0 7.073 4.584 13.068 10.937 15.183 0.803 0.151 1.093-0.344 1.093-0.772 0-0.38-0.009-1.385-0.015-2.719-4.453 0.964-5.391-2.151-5.391-2.151-0.729-1.844-1.781-2.339-1.781-2.339-1.448-0.989 0.115-0.968 0.115-0.968 1.604 0.109 2.448 1.645 2.448 1.645 1.427 2.448 3.744 1.74 4.661 1.328 0.14-1.031 0.557-1.74 1.011-2.135-3.552-0.401-7.287-1.776-7.287-7.907 0-1.751 0.62-3.177 1.645-4.297-0.177-0.401-0.719-2.031 0.141-4.235 0 0 1.339-0.427 4.4 1.641 1.281-0.355 2.641-0.532 4-0.541 1.36 0.009 2.719 0.187 4 0.541 3.043-2.068 4.381-1.641 4.381-1.641 0.859 2.204 0.317 3.833 0.161 4.235 1.015 1.12 1.635 2.547 1.635 4.297 0 6.145-3.74 7.5-7.296 7.891 0.556 0.479 1.077 1.464 1.077 2.959 0 2.14-0.020 3.864-0.020 4.385 0 0.416 0.28 0.916 1.104 0.755 6.4-2.093 10.979-8.093 10.979-15.156 0-8.833-7.161-16-16-16z"></path>
-                  </svg>
-                </a>
+                <a href="https://www.linkedin.com/in/almamudbijoy09/" target='_blank'><FaLinkedin /></a>
+
+                <a href="https://twitter.com/BijoyMamud09" target='_blank'><FaTwitter /></a>
+
+                <a href="https://github.com/bijoymamud" target='_blank'><FaGithub /></a>
               </div>
+
             </div>
+
             <div
-              data-aos="fade-left"
-              data-aos-duration="900"
-              className="flex flex-col justify-center w-full px-8 mx-6 my-12 text-center rounded-md md:w-96 lg:w-80 xl:w-64 dark:bg-gray-100 dark:text-gray-800">
-              <img alt="" className="self-center flex-shrink-0 w-24 h-24 -mt-12 bg-center bg-cover rounded-full dark:bg-gray-500" src="https://source.unsplash.com/100x100/?portrait?3" />
+              // data-aos="fade-right"
+              className="flex flex-col justify-center w-full px-8 mx-6 my-12 text-center rounded-md md:w-96 lg:w-80 xl:w-64 bg-white/20 hover:bg-white/30 shadow-2xl dark:text-white">
+              {/* <div className=' avatar -mt-10'>
+                <img alt="" className="rounded-full  w-16     " src="https://i.ibb.co/HzhTQqS/Abir.jpg" />
+              </div> */}
+              <div className=" avatar -mt-10">
+                <div className="w-24 rounded-full mx-auto  " >
+                  <img src="https://i.ibb.co/s9zYLf1/38085386-10213204290847361-3197807351797121024-n.jpg" />
+                </div>
+              </div>
               <div className="flex-1 my-4">
-                <p className="text-xl font-semibold leadi">Leroy Jenkins</p>
-                <p>Visual Designer</p>
+                <p className="text-xl  leading">Naser Mahmud</p>
+                <p className='text-slate-400'>Jr. Front-End Developer</p>
               </div>
-              <div className="flex items-center justify-center p-3 space-x-3 border-t-2">
-                <a rel="noopener noreferrer" href="#" title="Email" className="dark:text-gray-900 hover:dark:text-violet-400">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5">
-                    <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path>
-                    <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path>
-                  </svg>
+
+              <div className='flex mx-auto gap-5 text-xl pb-3'>
+                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=mahmudbappy01@gmail.com" target="_blank">
+                  <FaEnvelope />
                 </a>
-                <a rel="noopener noreferrer" href="#" title="Twitter" className="dark:text-gray-900 hover:dark:text-violet-400">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" fill="currentColor" className="w-5 h-5">
-                    <path d="M 50.0625 10.4375 C 48.214844 11.257813 46.234375 11.808594 44.152344 12.058594 C 46.277344 10.785156 47.910156 8.769531 48.675781 6.371094 C 46.691406 7.546875 44.484375 8.402344 42.144531 8.863281 C 40.269531 6.863281 37.597656 5.617188 34.640625 5.617188 C 28.960938 5.617188 24.355469 10.21875 24.355469 15.898438 C 24.355469 16.703125 24.449219 17.488281 24.625 18.242188 C 16.078125 17.8125 8.503906 13.71875 3.429688 7.496094 C 2.542969 9.019531 2.039063 10.785156 2.039063 12.667969 C 2.039063 16.234375 3.851563 19.382813 6.613281 21.230469 C 4.925781 21.175781 3.339844 20.710938 1.953125 19.941406 C 1.953125 19.984375 1.953125 20.027344 1.953125 20.070313 C 1.953125 25.054688 5.5 29.207031 10.199219 30.15625 C 9.339844 30.390625 8.429688 30.515625 7.492188 30.515625 C 6.828125 30.515625 6.183594 30.453125 5.554688 30.328125 C 6.867188 34.410156 10.664063 37.390625 15.160156 37.472656 C 11.644531 40.230469 7.210938 41.871094 2.390625 41.871094 C 1.558594 41.871094 0.742188 41.824219 -0.0585938 41.726563 C 4.488281 44.648438 9.894531 46.347656 15.703125 46.347656 C 34.617188 46.347656 44.960938 30.679688 44.960938 17.09375 C 44.960938 16.648438 44.949219 16.199219 44.933594 15.761719 C 46.941406 14.3125 48.683594 12.5 50.0625 10.4375 Z"></path>
-                  </svg>
-                </a>
-                <a rel="noopener noreferrer" href="#" title="LinkedIn" className="dark:text-gray-900 hover:dark:text-violet-400">
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 32 32" className="w-5 h-5">
-                    <path d="M8.268 28h-5.805v-18.694h5.805zM5.362 6.756c-1.856 0-3.362-1.538-3.362-3.394s1.505-3.362 3.362-3.362 3.362 1.505 3.362 3.362c0 1.856-1.506 3.394-3.362 3.394zM29.994 28h-5.792v-9.1c0-2.169-0.044-4.95-3.018-4.95-3.018 0-3.481 2.356-3.481 4.794v9.256h-5.799v-18.694h5.567v2.55h0.081c0.775-1.469 2.668-3.019 5.492-3.019 5.875 0 6.955 3.869 6.955 8.894v10.269z"></path>
-                  </svg>
-                </a>
-                <a rel="noopener noreferrer" href="#" title="GitHub" className="dark:text-gray-900 hover:dark:text-violet-400">
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 32 32" className="w-5 h-5">
-                    <path d="M16 0.396c-8.839 0-16 7.167-16 16 0 7.073 4.584 13.068 10.937 15.183 0.803 0.151 1.093-0.344 1.093-0.772 0-0.38-0.009-1.385-0.015-2.719-4.453 0.964-5.391-2.151-5.391-2.151-0.729-1.844-1.781-2.339-1.781-2.339-1.448-0.989 0.115-0.968 0.115-0.968 1.604 0.109 2.448 1.645 2.448 1.645 1.427 2.448 3.744 1.74 4.661 1.328 0.14-1.031 0.557-1.74 1.011-2.135-3.552-0.401-7.287-1.776-7.287-7.907 0-1.751 0.62-3.177 1.645-4.297-0.177-0.401-0.719-2.031 0.141-4.235 0 0 1.339-0.427 4.4 1.641 1.281-0.355 2.641-0.532 4-0.541 1.36 0.009 2.719 0.187 4 0.541 3.043-2.068 4.381-1.641 4.381-1.641 0.859 2.204 0.317 3.833 0.161 4.235 1.015 1.12 1.635 2.547 1.635 4.297 0 6.145-3.74 7.5-7.296 7.891 0.556 0.479 1.077 1.464 1.077 2.959 0 2.14-0.020 3.864-0.020 4.385 0 0.416 0.28 0.916 1.104 0.755 6.4-2.093 10.979-8.093 10.979-15.156 0-8.833-7.161-16-16-16z"></path>
-                  </svg>
-                </a>
+                <a href="https://www.linkedin.com/in/naser-mahmud-6a2323280/" target='_blank'><FaLinkedin /></a>
+
+                <a href="https://twitter.com/NaserMahmud01" target='_blank'><FaTwitter /></a>
+
+                <a href="https://github.com/NaserUddinMahmud" target='_blank'><FaGithub /></a>
               </div>
+
             </div>
+
             <div
-              data-aos="fade-down"
-              data-aos-duration="900"
-              className="flex flex-col justify-center w-full px-8 mx-6 my-12 text-center rounded-md md:w-96 lg:w-80 xl:w-64 dark:bg-gray-100 dark:text-gray-800">
-              <img alt="" className="self-center flex-shrink-0 w-24 h-24 -mt-12 bg-center bg-cover rounded-full dark:bg-gray-500" src="https://source.unsplash.com/100x100/?portrait?4" />
+              // data-aos="fade-right"
+              className="flex flex-col justify-center w-full px-8 mx-6 my-12 text-center rounded-md md:w-96 lg:w-80 xl:w-64 bg-white/20 hover:bg-white/30 shadow-2xl dark:text-white">
+              {/* <div className=' avatar -mt-10'>
+                <img alt="" className="rounded-full  w-16     " src="https://i.ibb.co/HzhTQqS/Abir.jpg" />
+              </div> */}
+              <div className=" avatar -mt-10">
+                <div className="w-24 rounded-full mx-auto  " >
+                  <img src="https://i.ibb.co/7ymgLNR/akash.jpg" />
+                </div>
+              </div>
               <div className="flex-1 my-4">
-                <p className="text-xl font-semibold leadi">Leroy Jenkins</p>
-                <p>Visual Designer</p>
+                <p className="text-xl  ">Hasibur Rahman</p>
+                <p className='text-slate-400'>Jr. Front-End Developer</p>
               </div>
-              <div className="flex items-center justify-center p-3 space-x-3 border-t-2">
-                <a rel="noopener noreferrer" href="#" title="Email" className="dark:text-gray-900 hover:dark:text-violet-400">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5">
-                    <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path>
-                    <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path>
-                  </svg>
+
+              <div className='flex mx-auto gap-5 text-xl pb-3'>
+
+                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=hasiburrahmanakash79@gmail.com" target="_blank">
+                  <FaEnvelope />
                 </a>
-                <a rel="noopener noreferrer" href="#" title="Twitter" className="dark:text-gray-900 hover:dark:text-violet-400">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" fill="currentColor" className="w-5 h-5">
-                    <path d="M 50.0625 10.4375 C 48.214844 11.257813 46.234375 11.808594 44.152344 12.058594 C 46.277344 10.785156 47.910156 8.769531 48.675781 6.371094 C 46.691406 7.546875 44.484375 8.402344 42.144531 8.863281 C 40.269531 6.863281 37.597656 5.617188 34.640625 5.617188 C 28.960938 5.617188 24.355469 10.21875 24.355469 15.898438 C 24.355469 16.703125 24.449219 17.488281 24.625 18.242188 C 16.078125 17.8125 8.503906 13.71875 3.429688 7.496094 C 2.542969 9.019531 2.039063 10.785156 2.039063 12.667969 C 2.039063 16.234375 3.851563 19.382813 6.613281 21.230469 C 4.925781 21.175781 3.339844 20.710938 1.953125 19.941406 C 1.953125 19.984375 1.953125 20.027344 1.953125 20.070313 C 1.953125 25.054688 5.5 29.207031 10.199219 30.15625 C 9.339844 30.390625 8.429688 30.515625 7.492188 30.515625 C 6.828125 30.515625 6.183594 30.453125 5.554688 30.328125 C 6.867188 34.410156 10.664063 37.390625 15.160156 37.472656 C 11.644531 40.230469 7.210938 41.871094 2.390625 41.871094 C 1.558594 41.871094 0.742188 41.824219 -0.0585938 41.726563 C 4.488281 44.648438 9.894531 46.347656 15.703125 46.347656 C 34.617188 46.347656 44.960938 30.679688 44.960938 17.09375 C 44.960938 16.648438 44.949219 16.199219 44.933594 15.761719 C 46.941406 14.3125 48.683594 12.5 50.0625 10.4375 Z"></path>
-                  </svg>
-                </a>
-                <a rel="noopener noreferrer" href="#" title="LinkedIn" className="dark:text-gray-900 hover:dark:text-violet-400">
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 32 32" className="w-5 h-5">
-                    <path d="M8.268 28h-5.805v-18.694h5.805zM5.362 6.756c-1.856 0-3.362-1.538-3.362-3.394s1.505-3.362 3.362-3.362 3.362 1.505 3.362 3.362c0 1.856-1.506 3.394-3.362 3.394zM29.994 28h-5.792v-9.1c0-2.169-0.044-4.95-3.018-4.95-3.018 0-3.481 2.356-3.481 4.794v9.256h-5.799v-18.694h5.567v2.55h0.081c0.775-1.469 2.668-3.019 5.492-3.019 5.875 0 6.955 3.869 6.955 8.894v10.269z"></path>
-                  </svg>
-                </a>
-                <a rel="noopener noreferrer" href="#" title="GitHub" className="dark:text-gray-900 hover:dark:text-violet-400">
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 32 32" className="w-5 h-5">
-                    <path d="M16 0.396c-8.839 0-16 7.167-16 16 0 7.073 4.584 13.068 10.937 15.183 0.803 0.151 1.093-0.344 1.093-0.772 0-0.38-0.009-1.385-0.015-2.719-4.453 0.964-5.391-2.151-5.391-2.151-0.729-1.844-1.781-2.339-1.781-2.339-1.448-0.989 0.115-0.968 0.115-0.968 1.604 0.109 2.448 1.645 2.448 1.645 1.427 2.448 3.744 1.74 4.661 1.328 0.14-1.031 0.557-1.74 1.011-2.135-3.552-0.401-7.287-1.776-7.287-7.907 0-1.751 0.62-3.177 1.645-4.297-0.177-0.401-0.719-2.031 0.141-4.235 0 0 1.339-0.427 4.4 1.641 1.281-0.355 2.641-0.532 4-0.541 1.36 0.009 2.719 0.187 4 0.541 3.043-2.068 4.381-1.641 4.381-1.641 0.859 2.204 0.317 3.833 0.161 4.235 1.015 1.12 1.635 2.547 1.635 4.297 0 6.145-3.74 7.5-7.296 7.891 0.556 0.479 1.077 1.464 1.077 2.959 0 2.14-0.020 3.864-0.020 4.385 0 0.416 0.28 0.916 1.104 0.755 6.4-2.093 10.979-8.093 10.979-15.156 0-8.833-7.161-16-16-16z"></path>
-                  </svg>
-                </a>
+                <a href="https://www.linkedin.com/in/hasiburrahmanakash79/" target='_blank'><FaLinkedin /></a>
+
+                <a href="https://twitter.com/HasiburRakash79" target="_blank"><FaTwitter /></a>
+
+                <a href="https://github.com/hasiburrahmanakash79" target="_blank"><FaGithub /></a>
               </div>
+
             </div>
+
             <div
-              data-aos="fade-right"
-              data-aos-duration="900"
-              className="flex flex-col justify-center w-full px-8 mx-6 my-12 text-center rounded-md md:w-96 lg:w-80 xl:w-64 dark:bg-gray-100 dark:text-gray-800">
-              <img alt="" className="self-center flex-shrink-0 w-24 h-24 -mt-12 bg-center bg-cover rounded-full dark:bg-gray-500" src="https://source.unsplash.com/100x100/?portrait?5" />
+              // data-aos="fade-right"
+              className="flex flex-col justify-center w-full px-8 mx-6 my-12 text-center rounded-md md:w-96 lg:w-80 xl:w-64 bg-white/20 hover:bg-white/30 shadow-2xl dark:text-white">
+              {/* <div className=' avatar -mt-10'>
+                <img alt="" className="rounded-full  w-16     " src="https://i.ibb.co/HzhTQqS/Abir.jpg" />
+              </div> */}
+              <div className=" avatar -mt-10">
+                <div className="w-24 rounded-full mx-auto  " >
+                  <img src="https://i.ibb.co/2620B9f/Group-1.jpg" />
+                </div>
+              </div>
               <div className="flex-1 my-4">
-                <p className="text-xl font-semibold leadi">Leroy Jenkins</p>
-                <p>Visual Designer</p>
+                <p className="text-xl  leading">Habibur Nabi</p>
+                <p className='text-slate-400'>Jr. Front-End Developer</p>
               </div>
-              <div className="flex items-center justify-center p-3 space-x-3 border-t-2">
-                <a rel="noopener noreferrer" href="#" title="Email" className="dark:text-gray-900 hover:dark:text-violet-400">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5">
-                    <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path>
-                    <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path>
-                  </svg>
+
+              <div className='flex mx-auto gap-5 text-xl pb-3'>
+
+                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=habiburnabiarafat@gmail.com" target="_blank">
+                  <FaEnvelope />
                 </a>
-                <a rel="noopener noreferrer" href="#" title="Twitter" className="dark:text-gray-900 hover:dark:text-violet-400">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" fill="currentColor" className="w-5 h-5">
-                    <path d="M 50.0625 10.4375 C 48.214844 11.257813 46.234375 11.808594 44.152344 12.058594 C 46.277344 10.785156 47.910156 8.769531 48.675781 6.371094 C 46.691406 7.546875 44.484375 8.402344 42.144531 8.863281 C 40.269531 6.863281 37.597656 5.617188 34.640625 5.617188 C 28.960938 5.617188 24.355469 10.21875 24.355469 15.898438 C 24.355469 16.703125 24.449219 17.488281 24.625 18.242188 C 16.078125 17.8125 8.503906 13.71875 3.429688 7.496094 C 2.542969 9.019531 2.039063 10.785156 2.039063 12.667969 C 2.039063 16.234375 3.851563 19.382813 6.613281 21.230469 C 4.925781 21.175781 3.339844 20.710938 1.953125 19.941406 C 1.953125 19.984375 1.953125 20.027344 1.953125 20.070313 C 1.953125 25.054688 5.5 29.207031 10.199219 30.15625 C 9.339844 30.390625 8.429688 30.515625 7.492188 30.515625 C 6.828125 30.515625 6.183594 30.453125 5.554688 30.328125 C 6.867188 34.410156 10.664063 37.390625 15.160156 37.472656 C 11.644531 40.230469 7.210938 41.871094 2.390625 41.871094 C 1.558594 41.871094 0.742188 41.824219 -0.0585938 41.726563 C 4.488281 44.648438 9.894531 46.347656 15.703125 46.347656 C 34.617188 46.347656 44.960938 30.679688 44.960938 17.09375 C 44.960938 16.648438 44.949219 16.199219 44.933594 15.761719 C 46.941406 14.3125 48.683594 12.5 50.0625 10.4375 Z"></path>
-                  </svg>
-                </a>
-                <a rel="noopener noreferrer" href="#" title="LinkedIn" className="dark:text-gray-900 hover:dark:text-violet-400">
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 32 32" className="w-5 h-5">
-                    <path d="M8.268 28h-5.805v-18.694h5.805zM5.362 6.756c-1.856 0-3.362-1.538-3.362-3.394s1.505-3.362 3.362-3.362 3.362 1.505 3.362 3.362c0 1.856-1.506 3.394-3.362 3.394zM29.994 28h-5.792v-9.1c0-2.169-0.044-4.95-3.018-4.95-3.018 0-3.481 2.356-3.481 4.794v9.256h-5.799v-18.694h5.567v2.55h0.081c0.775-1.469 2.668-3.019 5.492-3.019 5.875 0 6.955 3.869 6.955 8.894v10.269z"></path>
-                  </svg>
-                </a>
-                <a rel="noopener noreferrer" href="#" title="GitHub" className="dark:text-gray-900 hover:dark:text-violet-400">
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 32 32" className="w-5 h-5">
-                    <path d="M16 0.396c-8.839 0-16 7.167-16 16 0 7.073 4.584 13.068 10.937 15.183 0.803 0.151 1.093-0.344 1.093-0.772 0-0.38-0.009-1.385-0.015-2.719-4.453 0.964-5.391-2.151-5.391-2.151-0.729-1.844-1.781-2.339-1.781-2.339-1.448-0.989 0.115-0.968 0.115-0.968 1.604 0.109 2.448 1.645 2.448 1.645 1.427 2.448 3.744 1.74 4.661 1.328 0.14-1.031 0.557-1.74 1.011-2.135-3.552-0.401-7.287-1.776-7.287-7.907 0-1.751 0.62-3.177 1.645-4.297-0.177-0.401-0.719-2.031 0.141-4.235 0 0 1.339-0.427 4.4 1.641 1.281-0.355 2.641-0.532 4-0.541 1.36 0.009 2.719 0.187 4 0.541 3.043-2.068 4.381-1.641 4.381-1.641 0.859 2.204 0.317 3.833 0.161 4.235 1.015 1.12 1.635 2.547 1.635 4.297 0 6.145-3.74 7.5-7.296 7.891 0.556 0.479 1.077 1.464 1.077 2.959 0 2.14-0.020 3.864-0.020 4.385 0 0.416 0.28 0.916 1.104 0.755 6.4-2.093 10.979-8.093 10.979-15.156 0-8.833-7.161-16-16-16z"></path>
-                  </svg>
-                </a>
+                <a href="https://www.linkedin.com/in/habib-n19" target='_blank'><FaLinkedin /></a>
+
+                <a href="https://twitter.com/habib_N19" target="_blank"><FaTwitter /></a>
+
+                <a href="https://github.com/habib-N19" target="_blank"><FaGithub /></a>
               </div>
+
             </div>
+
+
+
+
           </div>
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
 export default AboutUs;

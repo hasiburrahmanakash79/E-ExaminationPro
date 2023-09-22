@@ -11,35 +11,46 @@ const PaymentOption = () => {
 
   // Event handler to update the selected radio option
   const handleOptionChange = event => {
+    // console.log(event.target.value)
     setSelectedOption(event.target.value)
   }
 
   return (
     <>
-      <h1 className='text-center text-3xl mt-6 '>Choose Your Payment Option</h1>
+      <h1 className='mt-6 text-3xl text-center '>Choose Your Payment Option</h1>
       <div className='flex flex-col items-center'>
-        <div className='grid grid-cols-2  md:w-[400px] rounded-lg mt-4 bg-orange-500 p-10'>
+        <label
+          className={`cursor-pointer grid grid-cols-2  md:w-[400px] rounded-lg border border-purple-200 mt-4  p-10
+          ${selectedOption === 'sslPayment' ? 'bg-blue-500' : ''}
+          `}
+        >
           <h1>SSL Payment System</h1>
           <input
             type='radio'
             name='radio-2'
-            className='radio radio-primary  ms-auto'
+            className='radio radio-accent ms-auto'
             value='sslPayment'
             checked={selectedOption === 'sslPayment'}
             onChange={handleOptionChange}
           />
-        </div>
-        <div className='grid grid-cols-2  bg-green-500 md:w-[400px] p-10 rounded-lg  mt-4 mb-10'>
-          <h1>Strip Payment System</h1>
+        </label>
+        <label
+          className={`cursor-pointer grid grid-cols-2 border
+           md:w-[400px] p-10 rounded-lg  mt-4 mb-10
+           ${selectedOption === 'stripePayment' ? 'bg-blue-500' : ''}
+           
+           `}
+        >
+          <h1>Stripe Payment System</h1>
           <input
             type='radio'
             name='radio-2'
-            className='radio radio-primary ms-auto'
+            className='radio radio-accent ms-auto'
             value='stripePayment'
             checked={selectedOption === 'stripePayment'}
             onChange={handleOptionChange}
           />
-        </div>
+        </label>
         {/* <p>Selected Option: {selectedOption}</p> */}
 
         <Link to={`/${selectedOption}?Cardid=${id}`}>

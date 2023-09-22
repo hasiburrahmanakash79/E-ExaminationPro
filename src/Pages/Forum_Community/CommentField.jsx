@@ -2,7 +2,7 @@ import { Accordion, AccordionDetails, AccordionSummary, Typography } from "@mui/
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 const CommentField = ({ label, type }) => {
-
+    /* What's up bro tumake amer Lagtace nah okay! */
     return (
         <div className="">
             <div className="mb-4">

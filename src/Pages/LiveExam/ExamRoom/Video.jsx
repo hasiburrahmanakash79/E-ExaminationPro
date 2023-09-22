@@ -2,7 +2,7 @@
 
 import { AgoraVideoPlayer } from 'agora-rtc-react'
 
-export default function Video (props) {
+const Video = props => {
   const { users, tracks, screenTrack } = props
 
   return (
@@ -46,3 +46,4 @@ export default function Video (props) {
     </div>
   )
 }
+export default Video
