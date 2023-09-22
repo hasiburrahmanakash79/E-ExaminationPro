@@ -75,7 +75,7 @@ const Contact = () => {
                   name='name'
                   type='text'
                   placeholder='Name'
-                  className=' ag-transparent border-2  border input'
+                  className=' ag-transparent border input'
                 />
               </div>
               <div className='form-control'>
@@ -89,7 +89,7 @@ const Contact = () => {
                   name='email'
                   type='email'
                   placeholder='Email'
-                  className=' ag-transparent border-2  border input'
+                  className=' ag-transparent border  input'
                 />
               </div>
               <div className='form-control'>
@@ -101,7 +101,7 @@ const Contact = () => {
                 <textarea
                   required
                   name='message'
-                  className=' ag-transparent border-2  border textarea'
+                  className=' ag-transparent border textarea'
                   placeholder='Message'
                 ></textarea>
               </div>
