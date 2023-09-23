@@ -1,5 +1,11 @@
 import { HiRocketLaunch } from "react-icons/hi2";
-import { FaLinkedin, FaFacebookSquare, FaGithubSquare } from "react-icons/fa";
+import {
+  FaLinkedin,
+  FaFacebookSquare,
+  FaGithubSquare,
+  FaMapMarkerAlt,
+  FaPhoneAlt,
+} from "react-icons/fa";
 import emailjs from "@emailjs/browser";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -46,19 +52,12 @@ const Contact = () => {
   };
 
   return (
-    <div className="min-h-[50vh] py-12 container mx-auto">
+    <div className="min-h-[50vh] py-12 container mx-auto p-5">
       <Helmet>
         <title>Contact Us | E-ExamPro</title>
       </Helmet>
       <SectionTitle title={"Contact"}></SectionTitle>
-      <div className="grid grid-cols-2 items-center pt-3">
-        <div>
-          <div>
-            <h1 className="border-l-8 border-teal-600 text-3xl font-semibold ps-10">
-              Contact Our <br /> Instructors
-            </h1>
-          </div>
-        </div>
+      <div className="md:grid grid-cols-2 gap-10 items-center pt-3 space-y-5">
         <div className="w-full md:gap-10">
           <form
             data-aos="fade-down"
@@ -109,9 +108,46 @@ const Contact = () => {
                 </button>
                 <p className="z-20 mt-3 ">{msg}</p>
               </div>
-            <ToastContainer></ToastContainer>
+              <ToastContainer></ToastContainer>
             </div>
           </form>
+        </div>
+        <div className="md:w-3/4">
+          <div className="mb-10">
+            <h1 className="border-l-8 border-teal-600 text-3xl font-semibold ps-5 mb-3">
+              Contact Our <br /> Instructors
+            </h1>
+            <p>
+              If you have any specific questions or need to reach out for
+              support, you can try sending an email.
+            </p>
+          </div>
+          <div className="space-y-5">
+            <div className="flex items-center gap-4">
+              <FaMapMarkerAlt className="text-3xl" />
+              <p>
+                Dhanmondi-32, Dhaka <br /> Bangladesh
+              </p>
+            </div>
+            <div className="flex items-center gap-4">
+              <FaPhoneAlt className="text-3xl" />
+              <p>
+                +880 1234567890 <br /> +8802364786732
+              </p>
+            </div>
+            <div className="flex items-center gap-4">
+              <FaMapMarkerAlt className="text-3xl" />
+              <p>
+                Dhanmondi-32, Dhaka <br /> Bangladesh
+              </p>
+            </div>
+            <div className="flex items-center gap-4">
+              <FaMapMarkerAlt className="text-3xl" />
+              <p>
+                Dhanmondi-32, Dhaka <br /> Bangladesh
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
