@@ -35,7 +35,7 @@ const Testimonial = () => {
     //   <h1
     //     data-aos='zoom-in-down'
     //     data-aos-duration='800'
-    //     className='mt-5 text-4xl font-bold text-center  '
+    //     className='mt-5 text-4xl font-bold text-center '
     //   >
     //     What Our Users Say
     //   </h1>
@@ -73,7 +73,7 @@ const Testimonial = () => {
     //               alt=''
     //               className='absolute w-14 h-14 md:top-6 top-5 md:right-8 right-6 opacity-20 '
     //             />
-    //             <p className='mt-10 h-40  '>
+    //             <p className='h-40 mt-10 '>
     //               {testimonial.feedback_message}
     //             </p>
     //             <div className='flex items-center gap-4 pt-3'>
@@ -83,7 +83,7 @@ const Testimonial = () => {
     //                 </div>
     //               </div>
     //               <div className='pt-2 pl-1'>
-    //                 <h2 className='text-xl font-medium leading-5  aext-slate-900'>
+    //                 <h2 className='text-xl font-medium leading-5 aext-slate-900'>
     //                   {testimonial.student_name} <br />{' '}
     //                 </h2>
     //                 <div className='pt-2 rating'>
@@ -134,14 +134,14 @@ const Testimonial = () => {
         {
           testimonials?.map((testimonial, index) => <SwiperSlide key={index}>
 
-            <div className="card w-96 h-80  shadow-xl mb-7">
+            <div className="shadow-xl card w-96 h-80 mb-7">
               <figure className="pt-5 pb-2">
               <img className='mx-auto' style={{ height: '100px', width: '100px', objectFit: 'cover', borderRadius: '50%' }} src={testimonial.image} />
               </figure>
-              <div className=" items-center text-center px-10">
+              <div className="items-center px-10 text-center ">
             
 
-                <p className='text-xl mb-2'> {testimonial.student_name}</p>
+                <p className='mb-2 text-xl'> {testimonial.student_name}</p>
                 <p className='text-sm'> {testimonial.feedback_message}</p>
                 <div className="flex justify-center mb-5">
                   <Rating

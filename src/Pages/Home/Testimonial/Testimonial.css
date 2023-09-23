@@ -42,18 +42,19 @@
 #app {
   height: 100%;
 }
-html,
+/* html,
 body {
   position: relative;
   height: 100%;
-}
+} */
 
-body {
+/* body {
+  background: #eee;
   font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
   font-size: 14px;
   margin: 0;
   padding: 0;
-}
+} */
 
 .swiper {
   width: 100%;
@@ -67,9 +68,6 @@ body {
 .swiper-slide {
   text-align: center;
   font-size: 18px;
-
-
-  /* Center slide text vertically */
   display: flex;
   justify-content: center;
   align-items: center;

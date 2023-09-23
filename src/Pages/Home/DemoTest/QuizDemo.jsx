@@ -39,7 +39,7 @@ const QuizDemo = () => {
         </h2>
         <p className='text-xl font-semibold'>{currentQuestion.text}</p>
         <RadioGroup value={reduxSelectedOption} onChange={handleSelectOption}>
-          <RadioGroup.Label className='text-sm  '>
+          <RadioGroup.Label className='text-sm text-accent '>
             Select an option:
           </RadioGroup.Label>
           <div className='mt-2'>
@@ -47,31 +47,23 @@ const QuizDemo = () => {
               <RadioGroup.Option key={choice.id} value={choice.id}>
                 {({ active, checked }) => (
                   <div
-                    className={` ag-transparent ${
-                      active
-                        ? 'ring-2 ring-sky-400 ring-opacity-60 ring-offset-2 ring-offset-sky-300'
-                        : 'my-4'
-                    } ${
-                      checked
-                        ? ' ag-sky-700  ag-opacity-75 outline-none  border'
-                        : 'aext-red-100'
-                    } relative outline  outline-purple-600  flex cursor-pointer rounded-lg px-5 py-4 shadow-md focus:outline`}
+                    className={`my-4 py-4 border ${active ? '' : ''} ${
+                      checked ? 'bg-secondary outline-none border' : ''
+                    } relative  flex cursor-pointer rounded-lg px-5 shadow-md`}
                   >
                     <div className='flex items-center justify-between w-full'>
                       <div className='flex items-center'>
                         <div className='text-sm'>
                           <RadioGroup.Label
                             as='p'
-                            className={`font-medium ${
-                              checked ? ' ' : ' '
-                            }`}
+                            className={`font-medium ${checked ? ' ' : ' '}`}
                           >
                             {choice.text}
                           </RadioGroup.Label>
                         </div>
                       </div>
                       {checked && (
-                        <div className='  shrink-0'>
+                        <div className=' shrink-0'>
                           <CheckIcon className='w-6 h-6' />
                         </div>
                       )}
@@ -84,7 +76,7 @@ const QuizDemo = () => {
         </RadioGroup>
         <div className='flex justify-end w-11/12 py-4 mx-auto '>
           {currentQuestionIndex === questions.length - 1 ? (
-            <Link to='/demo-result' className=' btn_quiz primary-btn'>
+            <Link to='/demo-result' className='btn btn-primary'>
               <button onClick={handleSubmit}>Submit</button>
             </Link>
           ) : (
@@ -93,7 +85,12 @@ const QuizDemo = () => {
                 reduxSelectedOption === null ||
                 reduxSelectedOption === undefined
               }
-              className='primary-btn btn_quiz'
+              className={`btn border outline  btn-primary ${
+                reduxSelectedOption === null ||
+                reduxSelectedOption === undefined
+                  ? ''
+                  : ''
+              }`}
               onClick={handleNextQuestion}
             >
               Next
