@@ -27,17 +27,17 @@ const PricingTab = () => {
   return (
     <div className=" min-w-[85vw] md:hidden">
       <Tab.Group defaultIndex={defaultTab}>
-        <Tab.List className="flex p-1 space-x-1 min-w-9/12 max-w-96 rounded-xl bg-blue-900/20">
+        <Tab.List className="flex p-1 space-x-1 min-w-9/12 max-w-96 rounded-xl">
           {pricePackage.map((price) => (
             <Tab
               key={price.id}
               className={({ selected }) =>
                 classNames(
-                  "w-full rounded-lg py-2.5 text-sm font-medium leading-5 text-blue-700",
-                  "ring-white ring-opacity-60 ring-offset-2 ring-offset-blue-400 focus:outline-none focus:ring-2",
+                  "w-full rounded-lg py-2.5 text-sm font-medium leading-5 ",
+                  "focus:outline-none border focus:ring-2",
                   selected
-                    ? "bg-white shadow"
-                    : "text-blue-100 hover:bg-white/[0.12] hover:text-white"
+                    ? "shadow-md border-2"
+                    : " "
                 )
               }
               onClick={() => setSelectedTab(price.id)}
@@ -51,29 +51,29 @@ const PricingTab = () => {
             <Tab.Panel
               key={price.id}
               className={classNames(
-                "rounded-xl bg-white p-3",
-                "ring-white ring-opacity-60 ring-offset-2 ring-offset-blue-400 focus:outline-none focus:ring-2"
+                "rounded-xl  p-3",
+                "border rounded focus:outline-none focus:ring-2"
               )}
             >
               <div className="flex flex-col px-4 divide-y divide-blue-400 h-fit">
                 <div>
-                  <p className="my-2 text-xl font-bold text-yellow-400 ">
+                  <p className="my-2 text-xl font-bold ">
                     {price.name} Package
                   </p>
-                  <h3 className="py-4 text-xl text-accent">
+                  <h3 className="py-4 text-xl aext-accent">
                     ${price.packageAmount}
                   </h3>
                 </div>
                 {price.features.map((feature, index) => (
                   <p
                     key={index}
-                    className="inline-flex items-center justify-center py-4 text-black uppercase text-start"
+                    className="inline-flex items-center justify-center py-4 uppercase text-start"
                   >
                     {feature.name}
                     {feature.available ? (
-                      <FaCircleCheck className="ml-2 text-center text-accent" />
+                      <FaCircleCheck className="ml-2 text-center aext-accent" />
                     ) : (
-                      <MdCancel className="ml-2 text-lg text-center text-red-500" />
+                      <MdCancel className="ml-2 text-lg text-center aext-red-500" />
                     )}
                   </p>
                 ))}
@@ -92,7 +92,7 @@ const PricingTab = () => {
                   <Link
                     to={`/paymentOption/${price?._id}`}
                     className={` btn ${
-                      price.name === "Premium" ? "btn-info" : ""
+                      price.name === "Premium" ? "btn-info" : "btn-info"
                     } hover:outline-blue-400 hover:outline translate `}
                   >
                     {" "}

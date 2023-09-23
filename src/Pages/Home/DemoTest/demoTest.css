@@ -28,7 +28,7 @@
             background-position: 0 50%;
         }
     }
-
+/*  */
 .btn_quiz{
-    @apply md:mb-4 md:py-2 md:px-4 text-white  md:ml-4 p-1 m-1  btn md:bottom-1
-} */
+    @apply md:mb-4 md:py-2 md:px-4   md:ml-4 p-1 m-1  btn md:bottom-1
+}

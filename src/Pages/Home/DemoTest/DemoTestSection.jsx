@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-// import video from '../../../../src/assets/demo.mp4'
+import video from '../../../../src/assets/demo.mp4'
 
 const DemoTestSection = () => {
   return (
@@ -8,7 +8,7 @@ const DemoTestSection = () => {
         <h1
           data-aos='zoom-in-down'
           data-aos-duration='600'
-          className='mb-10 text-4xl font-bold text-center text-white'
+          className='mb-10 text-4xl font-bold text-center '
         >
           Demo Exam
         </h1>
@@ -24,9 +24,9 @@ const DemoTestSection = () => {
               controls
               muted
               autoPlay
-              className='w-full border border-purple-500 rounded-lg h-3/4'
+              className='w-full border rounded-lg h-3/4'
             >
-              <source src={''} type='video/mp4' />
+              <source src={video} type='video/mp4' />
             </video>
           </div>
           <div className='space-y-2 md:p-4 md:space-y-6'>
@@ -44,12 +44,7 @@ const DemoTestSection = () => {
               options for your convenience. Practice and build your confidence
               in a real exam environment.
             </p>
-            <Link
-              data-aos='fade-down'
-              data-aos-duration='900'
-              to='/demo-test'
-              className='btn primary-btn animate-pulse hover:animate-none'
-            >
+            <Link to='/demo-test' className='btn btn-primary'>
               Explore How We Take Exams
             </Link>
           </div>

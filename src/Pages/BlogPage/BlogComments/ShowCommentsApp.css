@@ -14,9 +14,7 @@
   border-radius: 5px;
 }
 
-/* .commentContainer:hover {
-  background-color: #d3d3d3bf;
-} */
+
 
 .inputContainer {
   display: flex;
@@ -29,16 +27,16 @@
 }
 
 .inputContainer__input {
-  color: rgb(46, 46, 46);
+  /* color: rgb(46, 46, 46); */
   margin: 6px 0 0px 0;
   padding: 5px;
   display: flex;
-  border: 1px solid lightgray;
+  border: 1px;
   align-items: center;
   justify-content: space-between;
   cursor: pointer;
   border-radius: 5px;
-  background-color: #e7e7e7;
+  /* background-color: #e7e7e7; */
 }
 
 .first_input {
@@ -54,14 +52,14 @@
   padding: 5px;
   border-radius: 5px;
   /* color: rgb(68, 66, 66); */
-  color: gainsboro;
+  /* color: gainsboro; */
   font-weight: 600;
   cursor: pointer;
 }
 
 .comment {
-  color: #ffffff;
-  background-color: #569dff;
+  /* color: #ffffff; */
+  /* background-color: #569dff; */
   padding: 9px;
   letter-spacing: 0.8px;
 }

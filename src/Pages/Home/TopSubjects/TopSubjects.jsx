@@ -25,7 +25,7 @@ const TopSubjects = () => {
       <h1
         data-aos='zoom-in-down'
         data-aos-duration='600'
-        className='pt-10 pb-10 text-4xl font-bold text-center text-slate-200 md:pt-0'
+        className='pt-10 pb-10 text-4xl font-bold text-center md:pt-0'
       >
         Our Top subjects
       </h1>

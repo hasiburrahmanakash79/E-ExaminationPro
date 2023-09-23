@@ -181,7 +181,7 @@ const CreateLiveExam = () => {
               //console.log(notice)
               return (
                 <option
-                  className='text-white'
+                  className=' '
                   key={notice._id}
                   value={notice._id}
                 >

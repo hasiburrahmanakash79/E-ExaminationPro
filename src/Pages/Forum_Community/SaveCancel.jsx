@@ -11,13 +11,13 @@ const SaveCancel = ({ commentText, setCommentText, setEditMode, handleSaveEdit }
             <div className=" flex items-center gap-4">
                 <button
                     onClick={handleSaveEdit}
-                    className="mt-2 bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-full"
+                    className="mt-2  ag-blue-500 hover: ag-blue-600  py-2 px-4 rounded-full"
                 >
                     Save
                 </button>
                 <button
                     onClick={() => setEditMode(false)}
-                    className="mt-2 bg-red-400 text-white py-2 px-4 rounded-full"
+                    className="mt-2  ag-red-400  py-2 px-4 rounded-full"
                 >
                     Cancel
                 </button>

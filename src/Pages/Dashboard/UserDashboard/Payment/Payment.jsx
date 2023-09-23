@@ -41,7 +41,7 @@ const Payment = () => {
       {priceData ? (
         <div className='p-5 mt-5'>
           {/* <Helmet><title>E-ExamPro | Payment </title></Helmet> */}
-          <div className='flex flex-col p-12 mx-auto text-white shadow-2xl  bg-white/5 lg:w-5/12 md:w-8/12 lg:mt-32 lg:mb-16 rounded-3xl'>
+          <div className='flex flex-col p-12 mx-auto  shadow-md    lg:w-5/12 md:w-8/12 lg:mt-32 lg:mb-16 rounded-3xl'>
             <div className='hidden mx-auto lg:-mt-32 md:-mt-16 md:block'>
               <PaymentCard />
             </div>

@@ -41,11 +41,11 @@ const FreeCoursePage = () => {
         {data?.map((subject, index) => (
           <div
             key={index}
-            className='card  bg-base-100 h-[280px] shadow-xl image-full'
+            className='card   ag-base-100 h-[280px] shadow-xl image-full'
           >
             <div className='img '></div>
             <div className='h1'>
-              <h1 className='text-5xl text-white'>{subject.subject_name}</h1>
+              <h1 className='text-5xl '>{subject.subject_name}</h1>
             </div>
             <figure>
               <img

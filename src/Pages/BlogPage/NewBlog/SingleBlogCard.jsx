@@ -86,20 +86,20 @@ const SingleBlogCard = ({ newBlog, refetch }) => {
         <div
           rel="noopener noreferrer"
           href="#"
-          className="max-w-sm mx-auto group hover:no-underline focus:no-underline dark:bg-gray-900"
+          className="max-w-sm mx-auto group hover:no-underline focus:no-underline dark: ag-gray-900"
         >
           <div>
             <div className={isBlog ? "" : "hidden"}>
               <img
                 role="presentation"
-                className="object-cover w-full rounded-b h-60 dark:bg-gray-500 "
+                className="object-cover w-full rounded-b h-60 dark: ag-gray-500 "
                 src={image_url}
               />
               <div className="p-6 space-y-2">
                 <h3 className="text-2xl font-semibold group-hover:underline group-focus:underline">
                   {title}
                 </h3>
-                <span className="text-xs dark:text-gray-400">
+                <span className="text-xs dark: ">
                   {publishing_date}
                 </span>
                 <p>
@@ -113,16 +113,16 @@ const SingleBlogCard = ({ newBlog, refetch }) => {
                 isComment ? "px-5  h-[520px] pt-5  overflow-y-auto " : "hidden"
               }
             >
-              <h1 className="text-center text-red-500">All Comments</h1>
+              <h1 className="text-center aext-red-500">All Comments</h1>
               {allUserComments?.allUserComments?.map((comment, index) => (
                 <div key={index} className="p-2 m-2 shadow-md">
                   <h1>
-                    <span className="text-yellow-400">User:</span>
+                    <span className="aext-yellow-400">User:</span>
                     {}
                     <span className="text-green-400"> {comment.name}</span>
                   </h1>
                   <p>
-                    <span className="text-yellow-400">Comment:</span>{" "}
+                    <span className="aext-yellow-400">Comment:</span>{" "}
                     {comment.comment}
                   </p>
                 </div>
@@ -140,7 +140,7 @@ const SingleBlogCard = ({ newBlog, refetch }) => {
                   className="text-2xl"
                 ></FaRegCommentDots>
                 <FaRegHeart
-                  className={`text-2xl ${isLiked ? "text-red-500" : ""}`}
+                  className={`text-2xl ${isLiked ? "aext-red-500" : ""}`}
                   onClick={toggleLike}
                 ></FaRegHeart>
 
@@ -152,7 +152,7 @@ const SingleBlogCard = ({ newBlog, refetch }) => {
                 <dialog id={`my_modals_${_id}`} className="modal">
                   <form
                     method="dialog"
-                    className="modal-box bg-gradient-to-r from-[#A8EB12]  to-[#042B66] ..."
+                    className="modal-box"
                   >
                     <div className="text-center ">
                       <EmailShareButton

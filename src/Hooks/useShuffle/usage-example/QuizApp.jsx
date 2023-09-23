@@ -103,7 +103,7 @@ const QuizApp = () => {
         </ul>
         {/* Showing hint start */}
         {hintStates[currentQuestionIndex] && (
-          <p className="mx-5 text-red-500">{currentQuestion.hint}</p>
+          <p className="mx-5 aext-red-500">{currentQuestion.hint}</p>
         )}
         {/* Showing hint ends */}
 

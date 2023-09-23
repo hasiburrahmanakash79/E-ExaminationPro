@@ -31,7 +31,7 @@ const StudentAnalytics = () => {
               <td className="text-center">
                 <Link
                   to="/result"
-                  className="hover:text-accent"
+                  className="hover:aext-accent"
                 >
                   <button>
                     <FaArrowCircleRight size={30} />
@@ -45,7 +45,7 @@ const StudentAnalytics = () => {
               <td className="text-center">
                 <Link
                   to="/result"
-                  className="hover:text-accent"
+                  className="hover:aext-accent"
                 >
                   <button>
                     <FaArrowCircleRight size={30} />
@@ -59,7 +59,7 @@ const StudentAnalytics = () => {
               <td className="text-center">
                 <Link
                   to="/result"
-                  className="hover:text-accent"
+                  className="hover:aext-accent"
                 >
                   <button>
                     <FaArrowCircleRight size={30} />

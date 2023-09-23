@@ -20,6 +20,7 @@ const Comments = ({ postComments, refetch }) => {
 
     useEffect(() => {
         setCommentText(postComments?.article);
+        refetch()
     }, [postComments]);
 
     const handleSaveEdit = () => {
@@ -41,13 +42,12 @@ const Comments = ({ postComments, refetch }) => {
                 console.log(data);
                 if (data.modifiedCount) {
                     refetch();
-                    console.log(data);
                     Swal.fire({
                         position: 'top-center',
                         icon: 'success',
                         title: 'Your comment has been edited',
                         showConfirmButton: false,
-                        timer: 1500,
+                        timer: 1200,
                     });
                 } else {
                     Swal.fire({
@@ -83,7 +83,7 @@ const Comments = ({ postComments, refetch }) => {
                 icon: 'info',
                 title: 'This is a public comment',
                 showConfirmButton: false,
-                timer: 1500,
+                timer: 1000,
             });
         }
         setShowContextMenu(false);
@@ -158,7 +158,7 @@ const Comments = ({ postComments, refetch }) => {
                                     />
 
                                     <button className="text-sm">
-                                        <span className="text-xs text-slate-300"></span> share
+                                        <span className="text-xs  "></span> share
                                     </button>
                                 </>
                         }

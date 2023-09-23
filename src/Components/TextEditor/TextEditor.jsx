@@ -75,30 +75,30 @@ const TextEditor = ({ questions }) => {
     <div>
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className='drop-shadow-lg primary-bg p-3  md:px-7 shadow-xl mx-auto my-6 min-h-[40vh]  rounded-md'
+        className='drop-shadow-md primary-bg p-3  md:px-7 shadow-xl mx-auto my-6 min-h-[40vh]  rounded-md'
       >
-        <p className='text-xl text-center md:mb-2 text-slate-100 '>
+        <p className='text-xl text-center md:mb-2   '>
           Question {currentQuestion?.id} - {currentQuestion?.question}
         </p>
 
         <textarea
           {...register('answer')}
           id='answer'
-          className='w-full min-h-[25vh] outline-none text-slate-100 p-3 bg-transparent border drop-shadow-lg shadow-lg rounded-lg'
+          className='w-full min-h-[25vh] outline-none   p-3  ag-transparent border drop-shadow-md shadow-md rounded-lg'
         />
 
         <div className='mt-2'>
           {isLastQuestion ? (
             <button
               type='submit'
-              className='px-6 py-2 text-white rounded-md primary-btn'
+              className='px-6 py-2  rounded-md primary-btn'
             >
               Submit
             </button>
           ) : (
             <button
               type='submit'
-              className='px-6 py-2 text-white rounded-md primary-btn'
+              className='px-6 py-2  rounded-md primary-btn'
             >
               Next
             </button>

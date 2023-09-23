@@ -16,7 +16,7 @@ const Likes = () => {
 
     return (
         <div className="text-sm">
-            <span className="pr-1 font-extrabold text-base text-slate-300"> {likeCount}</span>
+            <span className="pr-1 font-extrabold text-base  "> {likeCount}</span>
             <button onClick={handleLikeClick} className="text-xs">
                 {liked ? 'Unlike' : 'Like'}
             </button>
@@ -60,7 +60,7 @@ export default Likes;
 
 //     return (
 //         <div className="text-sm">
-//             <span className="pr-1 font-extrabold text-base text-slate-300">{postId?.likeCount?.length}</span>
+//             <span className="pr-1 font-extrabold text-base  ">{postId?.likeCount?.length}</span>
 //             <button onClick={handleLikeClick} className="text-xs">
 //                 {liked ? 'Unlike' : 'Like'}
 //             </button>

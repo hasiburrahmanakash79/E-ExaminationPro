@@ -9,13 +9,32 @@ import useInstructor from '../../Hooks/useInstructor/useInstructor'
 import { AuthContext } from '../../Provider/AuthProvider'
 import Headroom from 'react-headroom'
 import useUser from '../../Hooks/useUser/useUser'
+import { FaMoon, FaSun } from 'react-icons/fa'
 
 const Navbar = () => {
+  const dark = localStorage.getItem('darkMode')
+
+  const [isDarkMode, setIsDarkMode] = useState(dark ? true : false)
+
   const [isOpen, setIsOpen] = useState(false)
   const { user, logOut } = useContext(AuthContext)
   const [isAdmin] = useAdmin()
   const [isInstructor] = useInstructor()
   const [info] = useUser()
+
+  const toggleDarkMode = () => {
+    if (isDarkMode) {
+      document.documentElement.removeAttribute('data-theme')
+      document.documentElement.setAttribute('data-theme', 'customLightTheme')
+      localStorage.removeItem('customDarkTheme')
+    } else {
+      document.documentElement.removeAttribute('data-theme')
+      document.documentElement.setAttribute('data-theme', 'customDarkTheme')
+      localStorage.setItem('customDarkTheme', 'enabled')
+    }
+    setIsDarkMode(!isDarkMode)
+  }
+
   const handleLogout = () => {
     logOut()
       .then(() => {
@@ -53,13 +72,13 @@ const Navbar = () => {
     >
       <button className=''>Exam</button>
       {isOpen && (
-        <div className='absolute z-50 text-white rounded-lg top-full primary-bg'>
+        <div className='absolute z-50 rounded-lg top-full primary-bg'>
           <div className='p-5 space-y-3'>
-            <button className='px-2 py-1 rounded hover:bg-purple-100/10'>
+            <button className='px-2 py-1 rounded hover: ag-purple-100/10'>
               <Link to='/allSubjects'>All Subject</Link>
             </button>
 
-            <button className='px-2 py-1 rounded hover:bg-purple-100/10'>
+            <button className='px-2 py-1 rounded hover: ag-purple-100/10'>
               <Link to='/written'>Written Exam</Link>
             </button>
           </div>
@@ -113,8 +132,8 @@ const Navbar = () => {
         transition: 'all .5s ease-in-out'
       }}
     >
-      <nav className='z-50 backdrop-blur primary-nav'>
-        <div className='navbar z-[40]  container mx-auto  sticky top-0   text-white'>
+      <nav className='z-50 backdrop-blur'>
+        <div className='navbar z-[40]  container mx-auto  sticky top-0'>
           <div className='navbar-start'>
             <div className='dropdown'>
               <label tabIndex={0} className='btn btn-ghost lg:hidden'>
@@ -135,7 +154,7 @@ const Navbar = () => {
               </label>
               <ul
                 tabIndex={0}
-                className='z-50 p-2 mt-3 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52 primary-bg'
+                className='z-50 p-2 mt-3 shadow menu menu-sm dropdown-content ag-base-100 rounded-box w-52 primary-bg'
               >
                 {/* navbarFirst */}
                 {navbarLink_First}
@@ -196,14 +215,14 @@ const Navbar = () => {
                 <div className=''>
                   <ul
                     tabIndex={0}
-                    className='p-2 mt-3 text-white shadow-lg primary-bg backdrop-blur-xl menu menu-compact dropdown-content rounded-box w-52'
+                    className='p-2 mt-3 shadow-md primary-bg backdrop-blur-xl menu menu-compact dropdown-content rounded-box w-52'
                   >
                     <li className=''>
                       <Link
                         to='/leaderboard'
                         className='justify-between w-full'
                       >
-                      Leaderboard
+                        Leaderboard
                       </Link>
                     </li>
                     {/* Navigate to different dashboard route based on user role */}
@@ -232,14 +251,19 @@ const Navbar = () => {
             ) : (
               <Link
                 to='/login'
-                className='text-white border-none shadow-md btn primary-bg'
+                className='border-none shadow-md btn primary-bg'
               >
                 Login
               </Link>
             )}
+            <div>
+              <button onClick={toggleDarkMode} className='mx-3 text-lg'>
+                {isDarkMode ? <FaSun className=''></FaSun> : <FaMoon></FaMoon>}
+              </button>
+            </div>
           </div>
         </div>
-        <div>
+        {/* <div>
           <dialog
             id='my_modal_3'
             className='modal modal-top max-w-[400px] mx-auto mt-[68px] '
@@ -253,7 +277,7 @@ const Navbar = () => {
                 name='search'
                 type='text'
                 placeholder='Type here'
-                className='z-10 w-full max-w-xs bg-transparent input top-20 input-bordered'
+                className='z-10 w-full max-w-xs ag-transparent input top-20 input-bordered'
               />
               <button onClick={searchData} className='absolute p-4 right-14'>
                 <svg
@@ -273,7 +297,7 @@ const Navbar = () => {
               </button>
             </form>
           </dialog>
-        </div>
+        </div> */}
       </nav>
     </Headroom>
   )

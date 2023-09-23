@@ -30,11 +30,11 @@ const SSLCart = () => {
   })
   const cartPrice = pricePackage.filter(price => price?._id == id)
   // console.log("serial number 45 >", cartPrice);
-  const totalPrice = parseFloat(priceData?.packageAmount) * 92
-  const price = totalPrice
-  const feature = priceData?.features
-  console.log('fkjfv erefg ker', feature)
-  console.log('serial number 67 >>>>', price)
+  const totalPrice = parseFloat(priceData?.packageAmount) * 92;
+  const price = totalPrice;
+  const feature = priceData?.features;
+  // console.log("fkjfv erefg ker", feature);
+  // console.log("serial number 67 >>>>", price);
 
   const {
     register,
@@ -76,7 +76,7 @@ const SSLCart = () => {
             </label>
             <br />
             <input
-              className='w-full p-3 bg-transparent border-2 rounded-md shadow-2xl focus:outline-none border-violet-800'
+              className="w-full p-3 border-2 rounded-md shadow-md ag-transparent focus:outline-none "
               defaultValue={user?.displayName}
               required
               {...register('userName')}
@@ -84,14 +84,14 @@ const SSLCart = () => {
           </div>
           <div className='w-1/2'>
             <label
-              htmlFor='email'
-              className='text-lg tracking-wider text-slate-100 '
+              htmlFor="email"
+              className="text-lg tracking-wider "
             >
               Email
             </label>
             <br />
             <input
-              className='w-full p-3 bg-transparent border-2 rounded-md shadow-2xl focus:outline-none border-violet-800'
+              className="w-full p-3 border-2 rounded-md shadow-md ag-transparent focus:outline-none "
               required
               defaultValue={user?.email}
               {...register('email')}
@@ -105,23 +105,23 @@ const SSLCart = () => {
             </label>
             <br />
             <input
-              type='number'
-              className='w-full p-3 bg-transparent border-2 rounded-md shadow-2xl focus:outline-none border-violet-800'
-              placeholder='+8801000-000000'
+              type="number"
+              className="w-full p-3 border-2 rounded-md shadow-md ag-transparent focus:outline-none"
+              placeholder="+8801000-000000"
               required
               {...register('phone')}
             />
           </div>
           <div className='w-1/2'>
             <label
-              htmlFor='address'
-              className='text-lg tracking-wider text-slate-100'
+              htmlFor="address"
+              className="text-lg tracking-wider "
             >
               Address
             </label>
             <br />
             <input
-              className='w-full p-3 bg-transparent border-2 rounded-md shadow-2xl focus:outline-none border-violet-800'
+              className="w-full p-3 border-2 rounded-md shadow-md ag-transparent focus:outline-none "
               defaultValue={user?.address}
               placeholder='Please your address'
               required
@@ -129,35 +129,35 @@ const SSLCart = () => {
             />
           </div>
         </div>
-        <div className='w-full'>
-          <label
-            htmlFor='adders'
-            className='text-lg tracking-wider text-slate-100'
-          >
-            Currency
-          </label>
-          <br />
-          <select
-            {...register('currency')}
-            required
-            className='w-full p-3 bg-transparent border-2 rounded-md shadow-2xl focus:outline-none border-violet-800'
-          >
-            <option className='text-black' value='USD'>
-              USD
-            </option>
-            <option className='text-black' value='BDT'>
-              BDT
-            </option>
-            <option className='text-black' value='EUR'>
-              EUR
-            </option>
-            <option className='text-black' value='IND'>
-              IND
-            </option>
-            <option className='text-black' value='PAK'>
-              PAK
-            </option>
-          </select>
+        <div className="w-full">
+            <label
+              htmlFor="adders"
+              className="text-lg tracking-wider "
+            >
+              Currency
+            </label>
+            <br />
+            <select
+              {...register("currency")}
+              required
+              className="w-full p-3 border-2 rounded-md shadow-md ag-transparent focus:outline-none "
+            >
+              <option className="" value="USD">
+                USD
+              </option>
+              <option className="" value="BDT">
+                BDT
+              </option>
+              <option className="" value="EUR">
+                EUR
+              </option>
+              <option className="" value="IND">
+                IND
+              </option>
+              <option className="" value="PAK">
+                PAK
+              </option>
+            </select>
         </div>
         {errors.exampleRequired && <span>This field is required</span>}
 
