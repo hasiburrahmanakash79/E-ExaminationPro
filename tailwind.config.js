@@ -9,7 +9,7 @@ export default {
   },
   plugins: [require("daisyui"), require('tailwind-scrollbar')],
   daisyui: {
-    themes: ["dark"],
+    themes: ["light", "dark", "cupcake"],
   },
 }
 

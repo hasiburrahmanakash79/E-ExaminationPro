@@ -27,12 +27,9 @@ const Instructors = () => {
         Our Instructors
       </h1>
       <div className='grid gap-5 px-6 py-5 md:grid-cols-2 lg:grid-cols-3 '>
-        {instructors.slice(0, displayCount).map(instructor => (
-          <Suspense fallback={<Loading />}>
-            <InstructorCard
-              key={instructor.id}
-              instructor={instructor}
-            ></InstructorCard>
+        {instructors.slice(0, displayCount).map((instructor, index) => (
+          <Suspense key={index} fallback={<Loading />}>
+            <InstructorCard instructor={instructor}></InstructorCard>
           </Suspense>
         ))}
       </div>

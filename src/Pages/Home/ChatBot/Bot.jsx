@@ -19,7 +19,7 @@ const Bot = () => {
 
     setMessage('')
 
-    fetch('https://chatbot-xi-mocha.vercel.app/', {
+    fetch('http://localhost:8000/chat', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -41,7 +41,7 @@ const Bot = () => {
   }
 
   return (
-    <main className='relative max-w-md overflow-y-auto h-[700px] bg-slate-800 font-inter scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-slate-300 scrollbar-w-2 scrollbar-track-transparent'>
+    <main className='z-500 relative max-w-md overflow-y-auto h-[400px] bg-slate-800 font-inter scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-slate-300 scrollbar-w-2 scrollbar-track-transparent'>
       <div className='sticky top-0 z-40 p-2 bg-slate-800'>
         <h1 className='text-2xl ps-2'>E-Exam Support</h1>
         <p className='text-xs text-orange-200 ps-2'>
