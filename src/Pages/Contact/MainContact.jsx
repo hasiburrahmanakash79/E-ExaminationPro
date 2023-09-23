@@ -9,8 +9,8 @@ const MainContact = () => {
   }
 
   return (
-    <div className=" ag-[url('https://i.ibb.co/yfmKFZg/premium-photo-1679923913597-2848bb0acf0a.jpg')]  ag-fixed  ag-cover my-10">
-      <div className='px-10 py-20   ag-black  ag-opacity-70 md:px-28'>
+    <div className=" bg-[url('https://i.ibb.co/yfmKFZg/premium-photo-1679923913597-2848bb0acf0a.jpg')]  ag-fixed  ag-cover my-10">
+      <div className='px-10 py-20   bg-black  bg-opacity-70 md:px-28'>
         <div className='items-center grid-cols-2 gap-10 md:grid'>
           <div className=''>
             <img
