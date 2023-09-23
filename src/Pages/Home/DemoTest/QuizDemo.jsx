@@ -19,7 +19,6 @@ const QuizDemo = () => {
   const reduxSelectedOption =
     userAnswers[currentQuestionIndex]?.selectedOptionId || null
 
-  //console.log(reduxSelectedOption)
   const handleSelectOption = selectedOptionId => {
     dispatch(selectOption({ questionId: currentQuestion.id, selectedOptionId }))
   }
@@ -30,17 +29,17 @@ const QuizDemo = () => {
     dispatch(submitTest())
   }
   return (
-    <div className='w-3/4 md:w-2/4 h-full mx-auto md:pt-12'>
+    <div className='w-3/4 h-full mx-auto md:w-2/4 md:pt-12'>
       <Helmet>
         <title>E-ExamPro | Exams </title>
       </Helmet>
       <div className='space-y-2'>
-        <h2 className='text-lg font-semibold text-orange-400'>
+        <h2 className='text-lg font-semibold '>
           Question {currentQuestionIndex + 1} :
         </h2>
         <p className='text-xl font-semibold'>{currentQuestion.text}</p>
         <RadioGroup value={reduxSelectedOption} onChange={handleSelectOption}>
-          <RadioGroup.Label className='text-sm text-slate-200'>
+          <RadioGroup.Label className='text-sm  '>
             Select an option:
           </RadioGroup.Label>
           <div className='mt-2'>
@@ -48,14 +47,14 @@ const QuizDemo = () => {
               <RadioGroup.Option key={choice.id} value={choice.id}>
                 {({ active, checked }) => (
                   <div
-                    className={`bg-transparent ${
+                    className={` ag-transparent ${
                       active
                         ? 'ring-2 ring-sky-400 ring-opacity-60 ring-offset-2 ring-offset-sky-300'
                         : 'my-4'
                     } ${
                       checked
-                        ? 'bg-sky-700 bg-opacity-75 outline-none bg-white/20'
-                        : 'text-red-100'
+                        ? ' ag-sky-700  ag-opacity-75 outline-none  border'
+                        : 'aext-red-100'
                     } relative outline  outline-purple-600  flex cursor-pointer rounded-lg px-5 py-4 shadow-md focus:outline`}
                   >
                     <div className='flex items-center justify-between w-full'>
@@ -64,7 +63,7 @@ const QuizDemo = () => {
                           <RadioGroup.Label
                             as='p'
                             className={`font-medium ${
-                              checked ? 'text-white' : 'text-slate-400'
+                              checked ? ' ' : ' '
                             }`}
                           >
                             {choice.text}
@@ -72,7 +71,7 @@ const QuizDemo = () => {
                         </div>
                       </div>
                       {checked && (
-                        <div className='text-white shrink-0'>
+                        <div className='  shrink-0'>
                           <CheckIcon className='w-6 h-6' />
                         </div>
                       )}

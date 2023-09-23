@@ -6,7 +6,7 @@ import { Helmet } from "react-helmet-async";
 const StudentAnalytics = () => {
   return (
     <>
-    <Helmet><title>E-ExamPro | Analytics </title></Helmet>
+    <Helmet><title>Analytics | E-ExamPro </title></Helmet>
       <div>
 
         <h2 className="text-2xl">Student Analytics</h2>
@@ -31,7 +31,7 @@ const StudentAnalytics = () => {
               <td className="text-center">
                 <Link
                   to="/result"
-                  className="hover:text-accent"
+                  className="hover:aext-accent"
                 >
                   <button>
                     <FaArrowCircleRight size={30} />
@@ -45,7 +45,7 @@ const StudentAnalytics = () => {
               <td className="text-center">
                 <Link
                   to="/result"
-                  className="hover:text-accent"
+                  className="hover:aext-accent"
                 >
                   <button>
                     <FaArrowCircleRight size={30} />
@@ -59,7 +59,7 @@ const StudentAnalytics = () => {
               <td className="text-center">
                 <Link
                   to="/result"
-                  className="hover:text-accent"
+                  className="hover:aext-accent"
                 >
                   <button>
                     <FaArrowCircleRight size={30} />

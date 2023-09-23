@@ -38,7 +38,7 @@ const CreateSubject = () => {
         }
         if (imgResponse.success === true) {
           //console.log(subjectInfo);
-          fetch('http://localhost:4000/allsubjects', {
+          fetch('https://e-exam-pro-server.vercel.app/allsubjects', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json' // Corrected header name
@@ -70,10 +70,10 @@ const CreateSubject = () => {
             {...register('subject', { required: true })}
             type='text'
             placeholder='Subject Name'
-            className='bg-transparent input input-bordered'
+            className=' ag-transparent input input-bordered'
           />
           {errors.subject && (
-            <span className='mt-1 text-red-500'>Subject field is required</span>
+            <span className='mt-1 aext-red-500'>Subject field is required</span>
           )}
         </div>
         <div className='form-control'>
@@ -83,10 +83,10 @@ const CreateSubject = () => {
           <input
             {...register('code', { required: true })}
             placeholder='Subject code'
-            className='bg-transparent input input-bordered'
+            className=' ag-transparent input input-bordered'
           />
           {errors.code && (
-            <span className='mt-1 text-red-500'>
+            <span className='mt-1 aext-red-500'>
               Subject Code field is required
             </span>
           )}
@@ -97,11 +97,11 @@ const CreateSubject = () => {
           </label>
           <textarea
             placeholder='Subject Description'
-            className='textarea textarea-bordered bg-transparent'
+            className='textarea textarea-bordered  ag-transparent'
             {...register('descrip', { required: true })}
           />
           {errors.descrip && (
-            <span className='mt-1 text-red-500'>
+            <span className='mt-1 aext-red-500'>
               Description field is required
             </span>
           )}
@@ -111,16 +111,16 @@ const CreateSubject = () => {
           <label className='label'>
             <span className='label-text'>Subject Image</span>
           </label>
-          <div className='form-control rounded-lg border-2 border-violet-600 items-center '>
+          <div className='form-control rounded-lg border-2   items-center '>
             <input
               {...register('image', { required: true })}
               name='image'
               type='file'
-              className=' col-span-5 file-input w-full bg-transparent'
+              className=' col-span-5 file-input w-full  ag-transparent'
             />
           </div>
           {errors.image && (
-            <span className='mt-1 text-red-500'>Image field is required</span>
+            <span className='mt-1 aext-red-500'>Image field is required</span>
           )}
         </div>
         <div className='form-control '>

@@ -6,13 +6,17 @@ import Loading from '../../../Components/Loading/Loading'
 import Swal from 'sweetalert2'
 import useAuth from '../../../Hooks/useAuth/useAuth'
 import { AuthContext } from '../../../Provider/AuthProvider'
+import { Helmet } from 'react-helmet-async'
+import Lottie from 'lottie-react'
+import regisLottie from "../../../assets/animationFile/educational.json"
 const Registration = () => {
   const [passShow, setPassShow] = useState(false)
   const { signUpUser, updateUserInfo, loading } = useContext(AuthContext)
 
   const navigate = useNavigate()
-  const location = useLocation()
-  const from = location.state?.from?.pathname || '/'
+  // const location = useLocation()
+  // const from = location.state?.from?.pathname || '/'
+
 
   const img_token = import.meta.env.VITE_Image_Key
   const img_hosting_url = `https://api.imgbb.com/1/upload?key=${img_token}`
@@ -25,19 +29,13 @@ const Registration = () => {
   } = useForm()
   const password = watch('password')
 
-  // if (loading) {
-  //   return <Loading />;
-  // }
   const onSubmit = data => {
     signUpUser(data.email, data.password).then(result => {
       const loggedUser = result.user
-      navigate(from, { replace: true })
-      //console.log(loggedUser);
-
+      // navigate(from, { replace: true })
+      navigate("/welcome")
       const formData = new FormData()
       formData.append('image', data.image[0])
-      //console.log(formData);
-
       fetch(img_hosting_url, {
         method: 'POST',
         body: formData
@@ -51,11 +49,10 @@ const Registration = () => {
               const userInfo = {
                 displayName: data.name,
                 email: data.email,
-                // photoURL: data.photo,
                 photoURL: imgURL,
                 role: 'user'
               }
-              fetch('http://localhost:4000/users', {
+              fetch('https://e-exam-pro-server.vercel.app/users', {
                 method: 'POST',
                 headers: {
                   'content-type': 'application/json'
@@ -65,66 +62,37 @@ const Registration = () => {
                 .then(res => res.json())
                 .then(data => {
                   if (data.insertedId) {
-                    navigate(from, { replace: true })
-                    Swal.fire({
-                      showConfirmButton: false,
-                      timer: 1500,
-                      title: 'Registration Successful',
-                      icon: 'success'
-                    })
+                    navigate("/welcome")
                   }
                 })
             })
             .catch(error => console.log(error.message))
         })
-
-      // updateUserInfo(data.name, data.photo)
-      //   .then(() => {
-      //     const userInfo = {
-      //       displayName: data.name,
-      //       email: data.email,
-      //       photoURL: data.photo,
-      //       photoURL: imgURL,
-      //       role: 'user'
-      //     }
-      //     fetch('http://localhost:4000/users', {
-      //       method: 'POST',
-      //       headers: {
-      //         'content-type': 'application/json'
-      //       },
-      //       body: JSON.stringify(userInfo)
-      //     })
-      //       .then(res => res.json())
-      //       .then(data => {
-      //         if (data.insertedId) {
-      //           navigate(from, { replace: true })
-      //           Swal.fire({
-      //             showConfirmButton: false,
-      //             timer: 1500,
-      //             title: 'Registration Successful',
-      //             icon: 'success'
-      //           })
-      //         }
-      //       })
-      //   })
-      //   .catch(error => //console.log(error.message))
     })
   }
   return (
     <div className='Auth_bg'>
-      <div className='min-h-screen hero'>
+      <Helmet>
+        <title>Registration | E-ExamPro</title>
+      </Helmet>
+      <div className='min-h-screen hero container mx-auto'>
         <div className='items-center justify-between gap-10 px-3 md:flex'>
           <div className='md:w-1/2'>
-            <img src='https://i.ibb.co/jDMz1bj/login-page-banner.png' alt='' />
+            {/* <img src='https://i.ibb.co/jDMz1bj/login-page-banner.png' alt='' /> */}
+            <Lottie
+              animationData={regisLottie}
+              loop={true}
+            // className=" md:w-10/12 mx-auto" 
+            />
           </div>
-          <div className='flex-shrink-0 w-full bg-transparent border border-black rounded-lg shadow-xl md:w-1/2 card backdrop-blur-sm'>
+          <div className='flex-shrink-0 w-full  ag-transparent border   rounded-lg shadow-xl md:w-1/2 card backdrop-blur-sm'>
             <div className='text-center '>
-              <h1 className='my-5 text-4xl font-bold text-white'>
+              <h1 className='my-5 text-4xl font-bold '>
                 Registration
               </h1>
             </div>
-            <div className='text-white card-body'>
-              <form onSubmit={handleSubmit(onSubmit)} className='!text-white'>
+            <div className='  card-body'>
+              <form onSubmit={handleSubmit(onSubmit)} className='! '>
                 <div className='grid-cols-2 gap-3 md:grid'>
                   <div className='form-control'>
                     <label className='label'>
@@ -134,7 +102,7 @@ const Registration = () => {
                       {...register('name', { required: true })}
                       type='text'
                       placeholder='Enter your name'
-                      className='bg-transparent input input-bordered'
+                      className=' ag-transparent input input-bordered'
                     />
                     {errors.name && <span>This field is required</span>}
                   </div>
@@ -146,7 +114,7 @@ const Registration = () => {
                       {...register('email', { required: true })}
                       type='email'
                       placeholder='Enter your email'
-                      className='bg-transparent input input-bordered'
+                      className=' ag-transparent input input-bordered'
                     />
                     {errors.email && <span>This field is required</span>}
                   </div>
@@ -164,10 +132,10 @@ const Registration = () => {
                       })}
                       type={passShow ? 'text' : 'password'}
                       placeholder='Enter your password'
-                      className='bg-transparent input input-bordered'
+                      className=' ag-transparent input input-bordered'
                     />
                     <label className='label'>
-                      <a className='label-text-alt link link-hover'>
+                      <a className='label-aext-alt link link-hover'>
                         <p onClick={() => setPassShow(!passShow)}>
                           <small>
                             {passShow ? (
@@ -194,7 +162,7 @@ const Registration = () => {
                       })}
                       type={passShow ? 'text' : 'password'}
                       placeholder='Confirm password'
-                      className='bg-transparent input input-bordered'
+                      className=' ag-transparent input input-bordered'
                     />
                     {errors.confirm && <span>{errors.confirm.message}</span>}
                   </div>
@@ -206,35 +174,24 @@ const Registration = () => {
                       {...register('number', { required: true })}
                       type='number'
                       placeholder='+880'
-                      className='bg-transparent input input-bordered'
+                      className=' ag-transparent input input-bordered'
                     />
                     {errors.number && <span>This field is required</span>}
                   </div>
-                  {/* <div className='form-control'>
-                    <label className='label'>
-                      <span className='label-text'>Photo URL</span>
-                    </label>
-                    <input
-                      {...register('photo', { required: true })}
-                      type='text'
-                      placeholder='Photo URL'
-                      className='bg-transparent input input-bordered'
-                    />
-                  </div> */}
                   <div className='form-control'>
                     <label className='label'>
                       <span className='label-text'>Image</span>
                     </label>
-                    <div className='items-center border-2 rounded-lg form-control border-violet-600 '>
+                    <div className='items-center border-2 rounded-lg form-control   '>
                       <input
                         {...register('image', { required: true })}
                         name='image'
                         type='file'
-                        className='w-full col-span-5 bg-transparent  file-input'
+                        className='w-full col-span-5  ag-transparent  file-input'
                       />
                     </div>
                     {errors.image && (
-                      <span className='mt-1 text-red-500'>
+                      <span className='mt-1 aext-red-500'>
                         Image field is required
                       </span>
                     )}
@@ -248,7 +205,7 @@ const Registration = () => {
                     {...register('address', { required: true })}
                     type='text'
                     placeholder='Enter your Address'
-                    className='bg-transparent input input-bordered'
+                    className=' ag-transparent input input-bordered'
                   />
                 </div>
                 <div className='mt-5 form-control'>

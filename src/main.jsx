@@ -12,7 +12,7 @@ import { HelmetProvider } from "react-helmet-async";
 
 const queryClient = new QueryClient();
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <div className="primary-bg">
+  <div>
     <React.StrictMode>
       <LocalToastProvider>
         <HelmetProvider>

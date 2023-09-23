@@ -4,12 +4,12 @@ import Swal from 'sweetalert2'
 
 const ManageUsers = () => {
   const { data: users = [], refetch } = useQuery(['users'], async () => {
-    const res = await fetch('http://localhost:4000/users')
+    const res = await fetch('https://e-exam-pro-server.vercel.app/users')
     return res.json()
   })
 
   const handleMakeAdmin = user => {
-    fetch(`http://localhost:4000/users/admin/${user._id}`, {
+    fetch(`https://e-exam-pro-server.vercel.app/users/admin/${user._id}`, {
       method: 'PATCH'
     })
       .then(res => res.json())
@@ -27,7 +27,7 @@ const ManageUsers = () => {
   }
 
   const handleMakeInstructor = user => {
-    fetch(`http://localhost:4000/users/instructor/${user._id}`, {
+    fetch(`https://e-exam-pro-server.vercel.app/users/instructor/${user._id}`, {
       method: 'PATCH'
     })
       .then(res => res.json())
@@ -56,7 +56,7 @@ const ManageUsers = () => {
       confirmButtonText: 'Yes, delete it!'
     }).then(result => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:4000/users/${user._id}`, {
+        fetch(`https://e-exam-pro-server.vercel.app/users/${user._id}`, {
           method: 'DELETE'
         })
           .then(res => res.json())
@@ -103,7 +103,7 @@ const ManageUsers = () => {
                   ) : (
                     <button
                       onClick={() => handleMakeInstructor(user)}
-                      className='bg-purple-700 btn btn-ghost btn-sm'
+                      className=' ag-purple-700 btn btn-ghost btn-sm'
                     >
                       Instructor
                     </button>
@@ -115,7 +115,7 @@ const ManageUsers = () => {
                   ) : (
                     <button
                       onClick={() => handleMakeAdmin(user)}
-                      className='bg-purple-700 btn btn-ghost btn-sm'
+                      className=' ag-purple-700 btn btn-ghost btn-sm'
                     >
                       Admin
                     </button>
@@ -124,7 +124,7 @@ const ManageUsers = () => {
                 <td>
                   <button
                     onClick={() => handleDeleteUser(user)}
-                    className='btn bg-red-600 btn-ghost btn-sm'
+                    className='btn  ag-red-600 btn-ghost btn-sm'
                   >
                     <FaTrashAlt />
                   </button>

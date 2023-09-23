@@ -6,10 +6,10 @@ const useWrittenQuestions = Mathematics => {
     isLoading: loading,
     refetch
   } = useQuery({
-    queryKey: ['shortQuestions'],
+    queryKey: ['writtenQuestions'],
     queryFn: async () => {
       const res = await axios.get(
-        `http://localhost:4000/shortQ?subject=${Mathematics}`
+        `https://e-exam-pro-server.vercel.app/written-questions?subject=${Mathematics}`
       ) // to todo add date subject code etc
       return res.data
     }

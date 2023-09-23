@@ -94,7 +94,7 @@ export default function VideoCall (props) {
   }, [channelName, client, ready, tracks, isScreenSharing, screenTrack])
 
   return (
-    <div className='flex flex-col md:max-w-[90vw] h-[85vh] mx-auto p-4 border border-purple-700 rounded-lg min-h-24'>
+    <div className='flex flex-col md:max-w-[90vw] h-[85vh] mx-auto p-4 border   rounded-lg min-h-24'>
       <div className='flex-1  min-h-[200px]'>
         {start && tracks && (
           <Video tracks={tracks} screenTrack={screenTrack} users={users} />

@@ -9,26 +9,25 @@ const PaymentHistory = () => {
   const { user } = useContext(AuthContext)
 
   useEffect(() => {
-    fetch(`http://localhost:4000/history/${user?.email}`)
+    fetch(`https://e-exam-pro-server.vercel.app/history/${user?.email}`)
       .then(res => res.json())
       .then(data => {
         setPaymentInfo(data)
       })
   }, [])
-  //console.log(paymentInfo);
   return (
     <div>
       <Helmet>
-        <title>E-ExamPro | Payment History </title>
+        <title>Payment History | E-ExamPro </title>
       </Helmet>
-      <h1 className='md:text-4xl text-2xl text-center my-5'>
+      <h1 className='my-5 text-2xl text-center md:text-4xl'>
         Your Payment history
       </h1>
 
-      <div className='py-20 flex justify-center items-center gap-5'>
+      <div className='flex items-center justify-center gap-5 py-20'>
         {paymentInfo.map(price => (
-          <div className='md:block w-72 mt-5 pb-3 space-y-4 text-center border rounded-lg shadow-2xl primary-bg border-slate-200 hover:outline-blue-400 hover:outline translate'>
-            <p className='my-2 text-lg font-bold text-yellow-400'>
+          <div className='pb-3 mt-5 space-y-4 text-center border rounded-lg shadow-md md:block w-72 primary-bg   hover:outline-blue-400 hover:outline translate'>
+            <p className='my-2 text-lg font-bold aext-yellow-400'>
               {price.packageName}
             </p>
             <h3 className='text-xl'>${price.price}</h3>
@@ -42,9 +41,9 @@ const PaymentHistory = () => {
                 >
                   {feature.name}
                   {feature.available ? (
-                    <FaCircleCheck className='ml-2 text-center text-slate-50' />
+                    <FaCircleCheck className='ml-2 text-center  aext-slate-50' />
                   ) : (
-                    <MdCancel className='ml-2 text-lg text-center text-red-500' />
+                    <MdCancel className='ml-2 text-lg text-center aext-red-500' />
                   )}
                 </p>
               ))}

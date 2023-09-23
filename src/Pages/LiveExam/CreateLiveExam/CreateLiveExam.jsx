@@ -30,7 +30,7 @@ const CreateLiveExam = () => {
     '-----------------------------------------------line 26'
   )
   useEffect(() => {
-    fetch('http://localhost:4000/allSubjects', {
+    fetch('https://e-exam-pro-server.vercel.app/allSubjects', {
       headers: {
         authorization: `bearar ${localStorage.getItem('access-token')}`
       }
@@ -92,7 +92,7 @@ const CreateLiveExam = () => {
 
     //console.log('Question Paper Data:', paperData)
 
-    fetch('http://localhost:4000/liveQuestionPaper', {
+    fetch('https://e-exam-pro-server.vercel.app/liveQuestionPaper', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -107,7 +107,7 @@ const CreateLiveExam = () => {
 
   useEffect(() => {
     if (e_id !== null) {
-      fetch(`http://localhost:4000/notice?selectedID=${e_id}`)
+      fetch(`https://e-exam-pro-server.vercel.app/notice?selectedID=${e_id}`)
         .then(res => res.json())
         .then(data => setData(data))
     }
@@ -181,7 +181,7 @@ const CreateLiveExam = () => {
               //console.log(notice)
               return (
                 <option
-                  className='text-white'
+                  className=' '
                   key={notice._id}
                   value={notice._id}
                 >

@@ -82,7 +82,7 @@ const UpcomingLiveExam = () => {
       showToast('btn', 'Batch Not Match', { type: 'error' })
     } else {
       fetch(
-        `http://localhost:4000/appliedLiveExam?examId=${e_ID}&studentEmail=${user?.email}`,
+        `https://e-exam-pro-server.vercel.app/appliedLiveExam?examId=${e_ID}&studentEmail=${user?.email}`,
         {
           method: 'POST',
           headers: {
@@ -116,7 +116,7 @@ const UpcomingLiveExam = () => {
           ariaLabel='hourglass-loading'
           wrapperStyle={{}}
           wrapperClass=''
-          colors={['#7710de', '#d6061b']}
+          colors={['#ffffff', '#000000']}
         />
       ) : (
         <div>
@@ -125,7 +125,7 @@ const UpcomingLiveExam = () => {
           </div>
           <form
             onSubmit={handleSubmit(onSubmit)}
-            className='mx-auto max-w-[600px] border-4 border-purple-900 rounded-xl p-4 my-4'
+            className='mx-auto max-w-[600px] border-4   rounded-xl p-4 my-4'
           >
             <div className='w-full mb-4 form-control'>
               <label className='label'>
@@ -168,7 +168,7 @@ const UpcomingLiveExam = () => {
               </label>
               <h1 className='flex items-center w-full input input-bordered '>
                 {!stuBatch ? (
-                  <span className='text-red-500'>
+                  <span className='aext-red-500'>
                     Add Batch In Update Profile
                   </span>
                 ) : (
@@ -193,9 +193,9 @@ const UpcomingLiveExam = () => {
                 <button className='primary-btn btn'>Apply for Exam </button>
               </LocalToastTarget>
             </div>
-            <p className='text-center text-green-600'>{msg}</p>
+            <p className='text-center '>{msg}</p>
             {/* {
-          data?.msg && <h1 className="mt-2 text-xl text-center text-red-600">You Have Already Applied</h1>
+          data?.msg && <h1 className="mt-2 text-xl text-center aext-red-600">You Have Already Applied</h1>
         } */}
           </form>
         </div>

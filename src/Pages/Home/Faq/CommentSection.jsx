@@ -29,7 +29,7 @@ function CommentSection ({ blogId }) {
         }
 
         const response = await fetch(
-          `http://localhost:4000/comments`,
+          `https://e-exam-pro-server.vercel.app/comments`,
           {
             method: 'POST',
             headers: {
@@ -58,7 +58,7 @@ function CommentSection ({ blogId }) {
     const fetchComments = async () => {
       try {
         const response = await fetch(
-          `http://localhost:4000/comments?blogId=${blogId}`
+          `https://e-exam-pro-server.vercel.app/comments?blogId=${blogId}`
         )
 
         if (response.ok) {
@@ -83,14 +83,14 @@ function CommentSection ({ blogId }) {
     <div>
       <div className='mx-auto text-start'>
         <input
-          className='w-full max-w-xs bg-transparent border-white input'
+          className='w-full max-w-xs  ag-transparent border input'
           type='text'
           placeholder='Enter your comment'
           value={comment}
           onChange={handleCommentChange}
         />
         <button
-          className='bg-transparent border-none btn primary-bg ms-2'
+          className=' ag-transparent border-none btn primary-bg ms-2'
           onClick={handleCommentSubmit}
         >
           Comment

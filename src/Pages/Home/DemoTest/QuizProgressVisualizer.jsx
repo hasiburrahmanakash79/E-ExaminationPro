@@ -18,11 +18,11 @@ const QuizProgressVisualizer = ({
             key={question.id}
             className={`border hover:scale-105 h-10 text-center pt-1 hover:outline ${
               isSelected
-                ? 'text-xl hover:bg-slate-300 hover:text-blue-900 hover:font-bold hover:delay-75'
-                : 'text-lg bg-transparent'
+                ? 'text-xl hover: ag-slate-300 hover:text-blue-900 hover:font-bold hover:delay-75'
+                : 'text-lg  ag-transparent'
             }
-            ${selectedAnswer ? 'bg-green-500' : ''} ${
-              isSelected ? 'bg-slate-400 text-white' : ''
+            ${selectedAnswer ? ' ag-green-500' : ''} ${
+              isSelected ? ' ag-slate-400 ' : ''
             }`}
             onClick={() => onQuestionIndexClick(index)}
           >

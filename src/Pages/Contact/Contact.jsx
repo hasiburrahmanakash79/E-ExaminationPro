@@ -1,5 +1,4 @@
 import { HiRocketLaunch } from 'react-icons/hi2'
-import { Link } from 'react-router-dom'
 import { FaLinkedin, FaFacebookSquare, FaGithubSquare } from 'react-icons/fa'
 import emailjs from '@emailjs/browser'
 import { ToastContainer, toast } from 'react-toastify'
@@ -7,6 +6,8 @@ import 'react-toastify/dist/ReactToastify.css'
 import { useRef, useState } from 'react'
 import contact from '../../assets/contact.png'
 import { Helmet } from 'react-helmet-async'
+import Lottie from "lottie-react";
+import successLottie from "../../assets/animationFile/contact1.json"
 
 const Contact = () => {
   const form = useRef()
@@ -44,26 +45,28 @@ const Contact = () => {
   }
 
   return (
-    <div className='navigation-bar2 min-h-[50vh] py-16'>
+    <div className='navigation-bar2 min-h-[50vh] py-12'>
       <Helmet>
-        <title>E-ExamPro | Contact Us</title>
+        <title>Contact Us | E-ExamPro</title>
       </Helmet>
       <div className='flex justify-center pt-3 mx-2'>
         <div className='grid items-center grid-cols-1 gap-5 md:grid-cols-2 md:gap-10'>
           <div data-aos='fade-up' data-aos-duration='1400'>
-            <img src={contact} alt='' />
+            <Lottie
+              animationData={successLottie}
+              loop={true} className="" />
           </div>
           <form
             data-aos='fade-down'
             data-aos-duration='1000'
             ref={form}
             onSubmit={sendEmail}
-            className='pb-5 border border-blue-500 rounded-lg md:pt-20 card-body'
+            className='pb-5 border   rounded-lg md:pt-20 card-body'
           >
             <div className=''>
               <div className='form-control'>
                 <label className='label'>
-                  <span className='text-lg font-semibold text-white label-text'>
+                  <span className='text-lg font-semibold  label-text'>
                     Name
                   </span>
                 </label>
@@ -72,12 +75,12 @@ const Contact = () => {
                   name='name'
                   type='text'
                   placeholder='Name'
-                  className='bg-transparent border-2 border-gray-200 input'
+                  className=' ag-transparent border input'
                 />
               </div>
               <div className='form-control'>
                 <label className='label'>
-                  <span className='text-lg font-semibold text-white label-text'>
+                  <span className='text-lg font-semibold  label-text'>
                     Email
                   </span>
                 </label>
@@ -86,19 +89,19 @@ const Contact = () => {
                   name='email'
                   type='email'
                   placeholder='Email'
-                  className='bg-transparent border-2 border-gray-200 input'
+                  className=' ag-transparent border  input'
                 />
               </div>
               <div className='form-control'>
                 <label className='label'>
-                  <span className='text-lg font-semibold text-white label-text'>
+                  <span className='text-lg font-semibold  label-text'>
                     Message
                   </span>
                 </label>
                 <textarea
                   required
                   name='message'
-                  className='bg-transparent border-2 border-gray-200 textarea'
+                  className=' ag-transparent border textarea'
                   placeholder='Message'
                 ></textarea>
               </div>
@@ -106,7 +109,7 @@ const Contact = () => {
                 <button className=' btn hover:-translate-y-1 primary-btn'>
                   <span>Send Message</span> <HiRocketLaunch></HiRocketLaunch>
                 </button>
-                <p className='z-20 mt-3 text-green-600'>{msg}</p>
+                <p className='z-20 mt-3 '>{msg}</p>
               </div>
             </div>
             <ToastContainer></ToastContainer>

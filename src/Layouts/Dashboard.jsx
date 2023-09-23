@@ -10,7 +10,6 @@ import {
   FaComment
 } from 'react-icons/fa'
 import { BiBookAdd } from 'react-icons/bi'
-import { GiWallet } from 'react-icons/gi'
 import { AiFillNotification } from 'react-icons/ai'
 import { RiLiveFill } from 'react-icons/ri'
 import { FaClipboardQuestion } from 'react-icons/fa6'
@@ -140,6 +139,12 @@ const Dashboard = () => {
       role: 'instructor'
     },
     {
+      title: 'Written Answers Review',
+      path: '/dashboard/written-review',
+      icon: iconMappings.Blog,
+      role: 'instructor'
+    },
+    {
       title: 'User Home',
       path: '/dashboard/userHome',
       icon: iconMappings.RoleHome,
@@ -159,12 +164,6 @@ const Dashboard = () => {
       role: 'user'
     },
     {
-      title: 'Upcoming Live Exam',
-      path: '/dashboard/upcomingLiveExam',
-      icon: iconMappings.Live,
-      role: 'user'
-    },
-    {
       title: 'Applied Live Exam',
       path: '/dashboard/appliedLiveExam',
       icon: iconMappings.Live,
@@ -172,12 +171,6 @@ const Dashboard = () => {
     },
     {
       title: 'Student Analytics',
-      path: '/dashboard/studentAnalytics',
-      icon: iconMappings.Analytics,
-      role: 'user'
-    },
-    {
-      title: 'Given All Exam',
       path: '/dashboard/allgivenExam',
       icon: iconMappings.Analytics,
       role: 'user'
@@ -203,11 +196,11 @@ const Dashboard = () => {
       <div
         className={` ${
           open ? 'w-56 p-4' : 'w-14 text-center '
-        } bg-white/10 h-screen  fixed left-0 top-0 bottom-0 z-50 pt-8  duration-500 transition-all`}
+        }   h-screen  fixed left-0 top-0 bottom-0 z-50 pt-8  duration-500 transition-all`}
       >
         <img
           src={arrow}
-          className={`absolute cursor-pointer -right-3 top-9 w-7 border-dark-purple
+          className={`absolute cursor-pointer -right-3 top-9 w-7  
 			 border-2 rounded-full  ${!open && 'rotate-180'}`}
           onClick={() => setOpen(!open)}
         />
@@ -226,9 +219,9 @@ const Dashboard = () => {
             ? adminMenus.map((Menu, index) => (
                 <li
                   key={index}
-                  className={`flex rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4 ${
+                  className={`flex rounded-md p-2 cursor-pointer hover: ag-light-white  text-sm items-center gap-x-4 ${
                     Menu.gap ? 'mt-9' : 'mt-2'
-                  } ${index === 0 && 'bg-light-white'}`}
+                  } ${index === 0 && ' ag-light-white'}`}
                 >
                   <Link to={Menu.path} className='flex items-center gap-x-4'>
                     <IconContext.Provider value={{ className: 'react-icon' }}>
@@ -249,9 +242,9 @@ const Dashboard = () => {
             ? instructorMenus.map((Menu, index) => (
                 <li
                   key={index}
-                  className={`flex rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4 ${
+                  className={`flex rounded-md p-2 cursor-pointer hover: ag-light-white text-sm items-center gap-x-4 ${
                     Menu.gap ? 'mt-9' : 'mt-2'
-                  } ${index === 0 && 'bg-light-white'}`}
+                  } ${index === 0 && ' ag-light-white'}`}
                 >
                   <Link to={Menu.path} className='flex items-center gap-x-4'>
                     <IconContext.Provider value={{ className: 'react-icon' }}>
@@ -271,9 +264,9 @@ const Dashboard = () => {
               userMenus.map((Menu, index) => (
                 <li
                   key={index}
-                  className={`flex rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4 ${
+                  className={`flex rounded-md p-2 cursor-pointer hover: ag-light-white text-sm items-center gap-x-4 ${
                     Menu.gap ? 'mt-9' : 'mt-2'
-                  } ${index === 0 && 'bg-light-white'}`}
+                  } ${index === 0 && ' ag-light-white'}`}
                 >
                   <Link to={Menu.path} className='flex items-center gap-x-4'>
                     <IconContext.Provider value={{ className: 'react-icon' }}>
@@ -292,9 +285,9 @@ const Dashboard = () => {
           {generalMenus.map((Menu, index) => (
             <li
               key={index}
-              className={`flex rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4 ${
+              className={`flex rounded-md p-2 cursor-pointer hover: ag-light-white text-sm items-center gap-x-4 ${
                 Menu.gap ? 'mt-9' : 'mt-2'
-              } ${index === 0 && 'bg-light-white'}`}
+              } ${index === 0 && ' ag-light-white'}`}
             >
               <Link to={Menu.path} className='flex items-center gap-x-4'>
                 <IconContext.Provider value={{ className: 'react-icon' }}>
@@ -315,7 +308,7 @@ const Dashboard = () => {
           <img
             src={user?.photoURL}
             alt=''
-            className='w-12 h-12 bg-gray-500 rounded-full '
+            className='w-12 h-12  ag-gray-500 rounded-full '
           />
           <div className={`${!open && 'hidden'} origin-left duration-200`}>
             <h2 className='text-sm font-semibold'>{user?.displayName}</h2>
@@ -324,7 +317,7 @@ const Dashboard = () => {
                 onClick={handleLogout}
                 rel='noopener noreferrer'
                 href='#'
-                className='text-xs text-gray-600 hover:underline'
+                className='text-xs hover:underline'
               >
                 Logout
               </a>
@@ -338,10 +331,10 @@ const Dashboard = () => {
           open ? 'pl-60 pr-4' : 'pl-16 pr-2'
         }  flex-1  overflow-y-auto  duration-500 transition-all h-[100vh] ${
           isAdmin
-            ? 'bg-slate-800'
+            ? ''
             : isInstructor
-            ? 'bg-teal-950'
-            : 'bg-violet-950'
+            ? ''
+            : ''
         }`}
       >
         <Outlet></Outlet>

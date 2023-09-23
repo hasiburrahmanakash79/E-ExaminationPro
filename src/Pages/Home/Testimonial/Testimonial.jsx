@@ -35,7 +35,7 @@ const Testimonial = () => {
     //   <h1
     //     data-aos='zoom-in-down'
     //     data-aos-duration='800'
-    //     className='mt-5 text-4xl font-bold text-center text-slate-200'
+    //     className='mt-5 text-4xl font-bold text-center  '
     //   >
     //     What Our Users Say
     //   </h1>
@@ -73,7 +73,7 @@ const Testimonial = () => {
     //               alt=''
     //               className='absolute w-14 h-14 md:top-6 top-5 md:right-8 right-6 opacity-20 '
     //             />
-    //             <p className='mt-10 h-40 text-slate-800'>
+    //             <p className='mt-10 h-40  '>
     //               {testimonial.feedback_message}
     //             </p>
     //             <div className='flex items-center gap-4 pt-3'>
@@ -83,7 +83,7 @@ const Testimonial = () => {
     //                 </div>
     //               </div>
     //               <div className='pt-2 pl-1'>
-    //                 <h2 className='text-xl font-medium leading-5 text-slate-900'>
+    //                 <h2 className='text-xl font-medium leading-5  aext-slate-900'>
     //                   {testimonial.student_name} <br />{' '}
     //                 </h2>
     //                 <div className='pt-2 rating'>
@@ -103,8 +103,9 @@ const Testimonial = () => {
     // </div>
 
 
-    <div className='pb-5'>
+    <div className='pb-5 mb-5'>
       <Swiper
+       freeMode={true}
         slidesPerView={1}
         spaceBetween={10}
         pagination={{
@@ -128,7 +129,7 @@ const Testimonial = () => {
             spaceBetween: 50,
           },
         }}
-        modules={[Pagination]}
+        modules={[FreeMode,Pagination]}
         className="mySwiper"
       >
         {

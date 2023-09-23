@@ -23,7 +23,7 @@ const DemoResult = () => {
   return (
     <section className='container pt-6 mx-auto h-fit'>
       {/* Top of the result page where we can show TOP SCORE, Export the result */}
-      <h2 className='mb-4 text-lg font-bold text-center text-orange-400 break-words md:mb-6 md:text-2xl'>
+      <h2 className='mb-4 text-lg font-bold text-center  break-words md:mb-6 md:text-2xl'>
         This is a demo result page. Please explore exam page for comprehensive
         result experience
       </h2>
@@ -59,8 +59,8 @@ const DemoResult = () => {
               questions={questions}
             />
           </div>
-          <div className='mb-6 order-1 md:order-2 md:col-span-2 h-fit mx-auto text-center mt-0 md:mb-6 bg-gradient-to-r from-[#052b83] to-[#25176A] hover:bg-gradient-to-r hover:from-[#18125d] hover:to-[#05418f] p-3 md:p-6 rounded-lg shadow-2xl transition duration-300'>
-            <h3 className='pb-4 text-xl font-semibold tracking-wider text-white md:text-lg'>
+          <div className='mb-6 order-1 md:order-2 md:col-span-2 h-fit mx-auto text-center mt-0 md:mb-6 p-3 md:p-6 rounded-lg shadow-md transition duration-300'>
+            <h3 className='pb-4 text-xl font-semibold tracking-wider  md:text-lg'>
               Score
             </h3>
             <CircularProgressbar

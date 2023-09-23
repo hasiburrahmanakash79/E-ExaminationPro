@@ -7,7 +7,7 @@ const ReviewAnswerAfterResult = ({ questions, userAnswers }) => {
         )
         return (
           <div
-            className='p-2 my-2 space-y-3 transition-all border-2 rounded shadow-xl hover:border-slate-200 border-slate-500'
+            className='p-2 my-2 space-y-3 transition-all border-2 rounded shadow-xl hover:   '
             key={question.id}
           >
             <h1 className='text-xl font-bold'>

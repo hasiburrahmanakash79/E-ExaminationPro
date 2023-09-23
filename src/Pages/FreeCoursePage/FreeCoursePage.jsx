@@ -14,7 +14,7 @@ const FreeCoursePage = () => {
   const [data, setData] = useState([])
   const navigate = useNavigate()
   useEffect(() => {
-    fetch('http://localhost:4000/allSubjects', {
+    fetch('https://e-exam-pro-server.vercel.app/allSubjects', {
       headers: {
         authorization: `bearar ${localStorage.getItem('access-token')}`
       }
@@ -41,11 +41,11 @@ const FreeCoursePage = () => {
         {data?.map((subject, index) => (
           <div
             key={index}
-            className='card  bg-base-100 h-[280px] shadow-xl image-full'
+            className='card  h-[280px] shadow-xl image-full'
           >
             <div className='img '></div>
             <div className='h1'>
-              <h1 className='text-5xl text-white'>{subject.subject_name}</h1>
+              <h1 className='text-5xl text-white '>{subject.subject_name}</h1>
             </div>
             <figure>
               <img
@@ -60,7 +60,7 @@ const FreeCoursePage = () => {
 
               <Link
                 to={`/allexam?subject=${subject.subject_name}`}
-                className='btn btn-sm btn-primary'
+                className='btn btn-outline btn-warning'
               >
                 View All Exam
               </Link>
