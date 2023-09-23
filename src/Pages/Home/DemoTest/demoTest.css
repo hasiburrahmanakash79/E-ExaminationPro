@@ -1,4 +1,4 @@
-.question_card{
+/* .question_card{
 
         background: linear-gradient(45deg,rgb(17, 9, 83), rgb(54, 2, 102), rgb(4, 64, 114), rgb(73, 1, 114),rgb(17, 9, 83), rgb(54, 2, 102));
         background-size: 1000% 1000%;
@@ -28,7 +28,7 @@
             background-position: 0 50%;
         }
     }
-/* quiz buttons styles */
+/*  */
 .btn_quiz{
     @apply md:mb-4 md:py-2 md:px-4   md:ml-4 p-1 m-1  btn md:bottom-1
 }
