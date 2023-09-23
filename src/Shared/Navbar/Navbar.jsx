@@ -10,11 +10,30 @@ import { AuthContext } from '../../Provider/AuthProvider'
 import Headroom from 'react-headroom'
 import useUser from '../../Hooks/useUser/useUser'
 import { FaMoon, FaSun } from 'react-icons/fa'
+import { useEffect } from 'react'
 
 const Navbar = () => {
-  const dark = localStorage.getItem('darkMode')
+  const dark = localStorage.getItem('customDarkTheme')
+  console.log(dark)
+  const [isDarkMode, setIsDarkMode] = useState(dark=='true' ? true : false)
 
-  const [isDarkMode, setIsDarkMode] = useState(dark ? true : false)
+useEffect(()=>{
+  if(isDarkMode==true){
+    localStorage.removeItem('customDarkTheme')
+    localStorage.setItem('customDarkTheme', 'true')
+
+    document.documentElement.removeAttribute('data-theme')
+    document.documentElement.setAttribute('data-theme', 'customDarkTheme')
+  }
+  else{
+
+    localStorage.removeItem('customDarkTheme')
+    localStorage.setItem('customDarkTheme', 'false')
+
+    document.documentElement.removeAttribute('data-theme')
+    document.documentElement.setAttribute('data-theme', 'customLightTheme')
+  }
+},[isDarkMode,dark])
 
   const [isOpen, setIsOpen] = useState(false)
   const { user, logOut } = useContext(AuthContext)
@@ -23,16 +42,20 @@ const Navbar = () => {
   const [info] = useUser()
 
   const toggleDarkMode = () => {
-    if (isDarkMode) {
-      document.documentElement.removeAttribute('data-theme')
-      document.documentElement.setAttribute('data-theme', 'customLightTheme')
-      localStorage.removeItem('customDarkTheme')
-    } else {
-      document.documentElement.removeAttribute('data-theme')
-      document.documentElement.setAttribute('data-theme', 'customDarkTheme')
-      localStorage.setItem('customDarkTheme', 'enabled')
-    }
     setIsDarkMode(!isDarkMode)
+    // if (isDarkMode) {
+    //   localStorage.removeItem('customDarkTheme')
+    //   localStorage.setItem('customDarkTheme', true)
+    //   // document.documentElement.removeAttribute('data-theme')
+    //   // document.documentElement.setAttribute('data-theme', 'customLightTheme')
+
+    // } else {
+    //   // document.documentElement.removeAttribute('data-theme')
+    //   // document.documentElement.setAttribute('data-theme', 'customDarkTheme')
+    //   localStorage.removeItem('customDarkTheme')
+    //   localStorage.setItem('customDarkTheme', false)
+    // }
+
   }
 
   const handleLogout = () => {
@@ -258,7 +281,7 @@ const Navbar = () => {
             )}
             <div>
               <button onClick={toggleDarkMode} className='mx-3 text-lg'>
-                {isDarkMode ? <FaSun className=''></FaSun> : <FaMoon></FaMoon>}
+                {isDarkMode==true ? <FaSun className=''></FaSun> : <FaMoon></FaMoon>}
               </button>
             </div>
           </div>

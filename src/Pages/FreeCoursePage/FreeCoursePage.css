@@ -44,10 +44,11 @@
     top: 0;
     right: 0;
     backdrop-filter: blur(1px);
-    background: rgba(0, 0, 0, 0.123);
-    opacity: 0;
+    background: rgba(0, 0, 0, 0.514);
+    opacity: 100%;
     transition: 0.5s;
   }
+
   .h1{
     position: absolute;
     top: 50%;
@@ -59,10 +60,19 @@
 
   .card:hover .img {
     opacity: 100%;
+    backdrop-filter: blur(4px);
   }
   .card:hover .h1 {
 
     transform: translate(-50%, 500%);
   }
+
+
+
+
+
+
+
+
 
 
