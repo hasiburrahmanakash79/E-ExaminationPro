@@ -204,7 +204,7 @@ const Dashboard = () => {
 			 border-2 rounded-full  ${!open && 'rotate-180'}`}
           onClick={() => setOpen(!open)}
         />
-        <div className='flex items-center gap-x-4'>
+        <div className='flex items-center gap-x-4 p-2'>
           <img
             src={logo}
             className={`cursor-pointer w-full md:w-9/12 p-1 duration-500 ${open}`}
@@ -304,12 +304,14 @@ const Dashboard = () => {
         </ul>
 
         {/* User info */}
-        <div className='absolute flex items-center space-x-4 mt-28 bottom-3'>
+        <div className='absolute flex items-center space-x-4 mt-28 bottom-5 p-2'>
+          <div className='avatar w-10 h-10'>
           <img
             src={user?.photoURL}
             alt=''
-            className='w-12 h-12  ag-gray-500 rounded-full '
+            className='rounded-full '
           />
+          </div>
           <div className={`${!open && 'hidden'} origin-left duration-200`}>
             <h2 className='text-sm font-semibold'>{user?.displayName}</h2>
             <span className='flex items-center space-x-1'>

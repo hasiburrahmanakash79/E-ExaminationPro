@@ -10,7 +10,7 @@ const MainContact = () => {
 
   return (
     <div className=" bg-[url('https://i.ibb.co/yfmKFZg/premium-photo-1679923913597-2848bb0acf0a.jpg')]  ag-fixed  ag-cover my-10">
-      <div className='px-10 py-20   bg-black  bg-opacity-70 md:px-28'>
+      <div className='px-10 py-20 bg-black text-white bg-opacity-70 md:px-28'>
         <div className='items-center grid-cols-2 gap-10 md:grid'>
           <div className=''>
             <img
@@ -31,7 +31,7 @@ const MainContact = () => {
               We value your input and are here to help you excel in your exams.
               Reach out to our dedicated support team today!
             </p>
-            <Link to='/contact' className='btn primary-btn mt-7'>
+            <Link to='/contact' className='btn btn-primary mt-7'>
               Contact Us
             </Link>
           </div>
