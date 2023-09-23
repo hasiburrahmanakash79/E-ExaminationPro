@@ -20,13 +20,14 @@ const writtenQuestionSlice = createSlice({
             // Solved: I just updated the answered array in the reducer. :)
             
             */
-            const { questionId, answer } = payload
-            const indexToUpdate = state.userAnswers.findIndex(item => item.questionId === questionId)
-            if (indexToUpdate !== -1) {
-                state.userAnswers[indexToUpdate].answer = answer
-            } else {
-
+            const { questionId, question, ins_answer, stu_answer } = payload
+            let indexToUpdate = -1;
+            indexToUpdate = state.userAnswers.findIndex(item => item.questionId === questionId)
+            if (indexToUpdate === -1) {
                 state.userAnswers.push(payload)
+            } else {
+                state.userAnswers[indexToUpdate].stu_answer = stu_answer
+
             }
         })
 

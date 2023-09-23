@@ -36,7 +36,7 @@ const NewBlog = () => {
     <div>
       <div className='pt-14'>
         <h2 className='text-xl text-center '>Blogs for You</h2>
-        <h2 className='text-3xl text-center text-orange-500'>
+        <h2 className='text-3xl text-center '>
           Publish your Passions, Your Way
         </h2>
       </div>
@@ -55,8 +55,8 @@ const NewBlog = () => {
               onClick={() => handlePageChange(index + 1)}
               className={`mx-2 py-2 px-4 rounded ${
                 currentPage === index + 1
-                  ? 'bg-blue-500 text-white'
-                  : 'bg-gray-300'
+                  ? ' ag-blue-500 '
+                  : ' ag-gray-300'
               }`}
             >
               {index + 1}

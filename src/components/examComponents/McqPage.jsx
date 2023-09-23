@@ -20,8 +20,8 @@ const McqPage = ({
               }
               className={
                 index === answerIndx
-                  ? 'md:ms-10 text-white  px-5 py-2 border-2 border-slate-100 bg-violet-900  rounded-3xl '
-                  : 'box-border md:ms-10 px-5 py-2 border-2 font-semibold border-blue-800 rounded-3xl'
+                  ? 'md:ms-10   px-5 py-2 border-2    ag-violet-900  rounded-3xl '
+                  : 'box-border md:ms-10 px-5 py-2 border-2 font-semibold   rounded-3xl'
               }
               key={option}
             >

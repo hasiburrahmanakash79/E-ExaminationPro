@@ -14,31 +14,27 @@ import {
   ResponsiveContainer,
 } from "recharts";
 import Piechart from "./Piechart";
+import { Helmet } from "react-helmet-async";
 
 
 
 const AdminHome = () => {
-  const [instructors, setInstructors] = useState([]);
   const [users, setUsers] = useState([]);
   const [questions, setQuestions] = useState([]);
   const [answers, setAnswers] = useState([]);
-  useEffect(() => {
-    fetch('https://e-exam-pro-server.vercel.app/instructors')
-      .then(res => res.json())
-      .then(data => setInstructors(data))
-  }, [])
+  
   useEffect(() => {
     fetch('https://e-exam-pro-server.vercel.app/users')
       .then(res => res.json())
       .then(data => setUsers(data))
   }, [])
   useEffect(() => {
-    fetch('http://localhost:5000/allQuestions')
+    fetch('https://e-exam-pro-server.vercel.app/allQuestions')
       .then(res => res.json())
       .then(data => setQuestions(data))
   }, [])
   useEffect(() => {
-    fetch('http://localhost:5000/allResults')
+    fetch('https://e-exam-pro-server.vercel.app/allResults')
       .then(res => res.json())
       .then(data => setAnswers(data))
   }, [])
@@ -62,33 +58,33 @@ const AdminHome = () => {
 
   return (
     <div className="px-4 pt-4">
+      <Helmet><title>Dashboard | E-ExamPro</title></Helmet>
       <div className="flex items-center justify-between">
         <h1 className="text-2xl">Admin home</h1>
       </div>
       <div className="grid grid-cols-1 gap-3 pb-6 mt-4 md:grid-cols-4">
-        <div className="flex items-center justify-between h-20 px-4 mx-3 transition duration-300 ease-out transform border-l-4 border-green-300 rounded-lg cursor-pointer hover:shadow-lg hover:scale-105">
+        <div className="flex items-center justify-between h-20 px-4 mx-3 transition duration-300 ease-out transform border-l-4   rounded-lg cursor-pointer hover:shadow-md hover:scale-105">
           <div>
             <h2>Students</h2>
             <h1>{students.length}</h1>
           </div>
           <PiStudentBold fontSize={28} />
         </div>
-        <div className="flex items-center justify-between h-20 px-4 mx-3 transition duration-300 ease-out transform border-l-4 rounded-lg cursor-pointer border-violet-300 hover:shadow-lg hover:scale-105">
+        <div className="flex items-center justify-between h-20 px-4 mx-3 transition duration-300 ease-out transform border-l-4 rounded-lg cursor-pointer  border hover:shadow-md hover:scale-105">
           <div>
             <h2>Instructors</h2>
-            <h1>{instructors.length}</h1>
             <h1>{instructorsD.length}</h1>
           </div>
           <FaChalkboardTeacher fontSize={28} />
         </div>
-        <div className="flex items-center justify-between h-20 px-4 mx-3 transition duration-300 ease-out transform border-l-4 rounded-lg cursor-pointer border-cyan-300 hover:shadow-lg hover:scale-105">
+        <div className="flex items-center justify-between h-20 px-4 mx-3 transition duration-300 ease-out transform border-l-4 rounded-lg cursor-pointer   hover:shadow-md hover:scale-105">
           <div>
             <h2>Questions</h2>
             <h1>{questions.length}</h1>
           </div>
           <FaQuestion fontSize={28} />
         </div>
-        <div className="flex items-center justify-between h-20 px-4 mx-3 transition duration-300 ease-out transform border-l-4 rounded-lg cursor-pointer border-x-zinc-400 hover:shadow-lg hover:scale-105">
+        <div className="flex items-center justify-between h-20 px-4 mx-3 transition duration-300 ease-out transform border-l-4 rounded-lg cursor-pointer border-x hover:shadow-md hover:scale-105">
           <div>
             <h2>Answers</h2>
             <h1>{answers.length}</h1>
@@ -97,7 +93,7 @@ const AdminHome = () => {
         </div>
       </div>
       <div className="grid grid-cols-1 gap-2 lg:grid-cols-2">
-        <div className="basis-[70%] my-8 w-full gap-6 shadow-xl rounded-md cursor-pointer border border-violet-900 p-3">
+        <div className="basis-[70%] my-8 w-full gap-6 shadow-xl rounded-md cursor-pointer border   p-3">
           <div>
             <h2 className="pb-3 text-center">Questions Overview</h2>
           </div>
@@ -126,7 +122,7 @@ const AdminHome = () => {
             </ResponsiveContainer>
           </div>
         </div>
-        <div className="basis-[30%] my-8 w-full gap-6 shadow-xl rounded-md cursor-pointer border border-violet-900 p-3">
+        <div className="basis-[30%] my-8 w-full gap-6 shadow-xl rounded-md cursor-pointer border   p-3">
           <div>
             <h2 className="text-center">Users Overview</h2>
           </div>

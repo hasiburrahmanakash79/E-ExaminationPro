@@ -3,8 +3,11 @@ import { Controller, useForm } from "react-hook-form";
 import useAuth from "../../Hooks/useAuth/useAuth";
 import axios from "axios";
 import Swal from "sweetalert2";
+import { allPostComment } from "../../Hooks/useForum/useForum";
+import { toast } from "react-toastify";
 
 const PostInput = () => {
+    const [ , refetch] = allPostComment();
     const { user } = useAuth();
     const createdAtDate = new Date();
     const { control, handleSubmit, reset } = useForm({
@@ -28,14 +31,16 @@ const PostInput = () => {
             })
             .then(res => {
                 if (res.data.insertedId) {
+                    refetch();
                     reset();
-                    Swal.fire({
-                        position: 'top-center',
-                        icon: 'success',
-                        title: 'your post uploaded',
-                        showConfirmButton: false,
-                        timer: 1200
-                    })
+                    // Swal.fire({
+                    //     position: 'top-center',
+                    //     icon: 'success',
+                    //     title: 'Your post uploaded',
+                    //     showConfirmButton: false,
+                    //     timer: 1200
+                    // })
+                    toast.success('Your post uploaded!');
                 }
             })
             .catch(err => {
@@ -58,11 +63,12 @@ const PostInput = () => {
                         <textarea
                             {...field}
                             placeholder="Write your comment"
-                            className="h-24 w-full p-3 bg-zinc-300 focus:outline-teal-700 text-black rounded-md block"
+                            required
+                            className="h-24 w-full p-3  ag-zinc-300 focus:outline-teal-700   rounded-md block"
                         />
                     )}
                 />
-                <button type="submit" className="bg-blue-500 px-4 py-2 mt-2 mb-4 text-white text-sm font-semibold tracking-wide rounded-md uppercase">
+                <button type="submit" className=" ag-blue-500 px-4 py-2 mt-2 mb-4  text-sm font-semibold tracking-wide rounded-md uppercase">
                     Post
                 </button>
             </form>

@@ -11,7 +11,7 @@ const UnderBlog = () => {
     <div className='px-5 py-5 mx-auto md:w-1/2 md:py-20'>
       <img
         role='presentation'
-        className='object-cover w-full rounded-b dark:bg-gray-500 '
+        className='object-cover w-full rounded-b dark: ag-gray-500 '
         src={info.image_url}
       />
       <div className='flex items-center justify-between mt-5 mb-5 md:mb-10'>

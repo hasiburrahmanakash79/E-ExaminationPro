@@ -1,8 +1,7 @@
-import React, { useContext, useEffect } from 'react'
+import React from 'react'
 import { loadStripe } from '@stripe/stripe-js'
 import { Elements } from '@stripe/react-stripe-js'
-import useSubject from '../../../../Hooks/useSubject/useSubject'
-import { useLocation, useParams } from 'react-router-dom'
+import { useLocation } from 'react-router-dom'
 import CheckOutForm from './CheckOutForm'
 import PaymentCard from './PaymentCard'
 import usePrice from '../../../../Hooks/usePrice/usePrice'
@@ -42,11 +41,11 @@ const Payment = () => {
       {priceData ? (
         <div className='p-5 mt-5'>
           {/* <Helmet><title>E-ExamPro | Payment </title></Helmet> */}
-          <div className=' bg-white/5 flex flex-col lg:w-5/12 md:w-8/12 lg:mt-32 lg:mb-16  mx-auto p-12 text-white rounded-3xl shadow-2xl'>
-            <div className='lg:-mt-32 md:-mt-16 mx-auto md:block hidden'>
+          <div className='flex flex-col p-12 mx-auto  shadow-md    lg:w-5/12 md:w-8/12 lg:mt-32 lg:mb-16 rounded-3xl'>
+            <div className='hidden mx-auto lg:-mt-32 md:-mt-16 md:block'>
               <PaymentCard />
             </div>
-            <h1 className='text-3xl text-center m-10'>Payment</h1>
+            <h1 className='m-10 text-3xl text-center'>Payment</h1>
 
             <Elements stripe={stripePromise}>
               <CheckOutForm price={price} packages={packages}></CheckOutForm>

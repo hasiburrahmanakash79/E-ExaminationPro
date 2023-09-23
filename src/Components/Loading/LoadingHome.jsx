@@ -2,7 +2,7 @@ import ContentLoader from 'react-content-loader'
 
 const LoadingHome = () => {
     return (
-        <div className='bg-gradient-to-tr from-[#0B0728] file:to-[#491A66] '>
+        <div className=' ag-gradient-to-tr from-[#0B0728] file:to-[#491A66] '>
                 <ContentLoader
                     viewBox="0 0 450 425"
                     backgroundColor="#e2e1ff"
@@ -36,7 +36,6 @@ const LoadingHome = () => {
                     <rect x="106" y="310" rx="3" ry="3" width="248" height="50" />
                     <rect x="0" y="364" rx="3" ry="3" width="448" height="60" />
                 </ContentLoader>
-                {/* <Link to="/loadingDash" className="py-2 mb-3 text-black bg-orange-500 px-7 rounded-2xl">Loading Tow</Link> */}
         </div>
     );
 };

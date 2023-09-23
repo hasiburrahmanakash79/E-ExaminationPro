@@ -27,7 +27,7 @@ const NoticeBoard = () => {
               <td className="text-center">
                 <Link
                   to="/dashboard/upcomingLiveExam"
-                  className="hover:text-accent"
+                  className="hover:aext-accent"
                 >
                   <button>
                     <FaArrowCircleRight size={30} />
@@ -41,7 +41,7 @@ const NoticeBoard = () => {
               <td className="text-center">
                 <Link
                   to="/dashboard/upcomingLiveExam"
-                  className="hover:text-accent"
+                  className="hover:aext-accent"
                 >
                   <button>
                     <FaArrowCircleRight size={30} />
@@ -55,7 +55,7 @@ const NoticeBoard = () => {
               <td className="text-center">
                 <Link
                   to="/dashboard/upcomingLiveExam"
-                  className="hover:text-accent"
+                  className="hover:aext-accent"
                 >
                   <button>
                     <FaArrowCircleRight size={30} />

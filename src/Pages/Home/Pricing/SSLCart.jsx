@@ -34,8 +34,8 @@ const SSLCart = () => {
   const totalPrice = parseFloat(priceData?.packageAmount) * 92;
   const price = totalPrice;
   const feature = priceData?.features;
-  console.log("fkjfv erefg ker", feature);
-  console.log("serial number 67 >>>>", price);
+  // console.log("fkjfv erefg ker", feature);
+  // console.log("serial number 67 >>>>", price);
 
   const {
     register,
@@ -77,7 +77,7 @@ const SSLCart = () => {
             </label>
             <br />
             <input
-              className="w-full p-3 bg-transparent border-2 rounded-md shadow-2xl focus:outline-none border-violet-800"
+              className="w-full p-3  ag-transparent border-2 rounded-md shadow-md focus:outline-none  "
               defaultValue={user?.displayName}
               required
               {...register("userName")}
@@ -86,13 +86,13 @@ const SSLCart = () => {
           <div className="w-1/2">
             <label
               htmlFor="email"
-              className="text-lg tracking-wider text-slate-100 "
+              className="text-lg tracking-wider   "
             >
               Email
             </label>
             <br />
             <input
-              className="w-full p-3 bg-transparent border-2 rounded-md shadow-2xl focus:outline-none border-violet-800"
+              className="w-full p-3  ag-transparent border-2 rounded-md shadow-md focus:outline-none  "
               required
               defaultValue={user?.email}
               {...register("email")}
@@ -107,7 +107,7 @@ const SSLCart = () => {
             <br />
             <input
               type="number"
-              className="bg-transparent border-2 focus:outline-none shadow-2xl border-violet-800 p-3 w-full rounded-md"
+              className=" ag-transparent border-2 focus:outline-none shadow-md   p-3 w-full rounded-md"
               placeholder="+8801000-000000"
               required
               {...register("phone")}
@@ -116,13 +116,13 @@ const SSLCart = () => {
           <div className="w-1/2">
             <label
               htmlFor="address"
-              className="text-lg tracking-wider text-slate-100"
+              className="text-lg tracking-wider  "
             >
               Address
             </label>
             <br />
             <input
-              className="w-full p-3 bg-transparent border-2 rounded-md shadow-2xl focus:outline-none border-violet-800"
+              className="w-full p-3  ag-transparent border-2 rounded-md shadow-md focus:outline-none  "
               defaultValue={user?.address}
               placeholder="Please your address"
               required
@@ -133,7 +133,7 @@ const SSLCart = () => {
         <div className="w-full">
             <label
               htmlFor="adders"
-              className="text-lg tracking-wider text-slate-100"
+              className="text-lg tracking-wider  "
             >
               Currency
             </label>
@@ -141,21 +141,21 @@ const SSLCart = () => {
             <select
               {...register("currency")}
               required
-              className="w-full p-3 bg-transparent border-2 rounded-md shadow-2xl focus:outline-none border-violet-800"
+              className="w-full p-3  ag-transparent border-2 rounded-md shadow-md focus:outline-none  "
             >
-              <option className="text-black" value="USD">
+              <option className=" " value="USD">
                 USD
               </option>
-              <option className="text-black" value="BDT">
+              <option className=" " value="BDT">
                 BDT
               </option>
-              <option className="text-black" value="EUR">
+              <option className=" " value="EUR">
                 EUR
               </option>
-              <option className="text-black" value="IND">
+              <option className=" " value="IND">
                 IND
               </option>
-              <option className="text-black" value="PAK">
+              <option className=" " value="PAK">
                 PAK
               </option>
             </select>

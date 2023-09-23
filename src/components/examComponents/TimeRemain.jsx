@@ -28,7 +28,7 @@ const TimeRemain = ({  handleFinishExam,setTimer,examType,start,timerProgress,se
     }, [timeRemaining,totalDuration])
 
     return (
-        <div className=" my-10 h-4 w-full bg-gray-200 rounded">
+        <div className=" my-10 h-4 w-full  ag-gray-200 rounded">
             <div
                 className=" h-full mt-2 animate-progress rounded "
                 style={{

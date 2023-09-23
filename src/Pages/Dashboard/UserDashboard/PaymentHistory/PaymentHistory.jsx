@@ -26,8 +26,8 @@ const PaymentHistory = () => {
 
       <div className='flex items-center justify-center gap-5 py-20'>
         {paymentInfo.map(price => (
-          <div className='pb-3 mt-5 space-y-4 text-center border rounded-lg shadow-2xl md:block w-72 primary-bg border-slate-200 hover:outline-blue-400 hover:outline translate'>
-            <p className='my-2 text-lg font-bold text-yellow-400'>
+          <div className='pb-3 mt-5 space-y-4 text-center border rounded-lg shadow-md md:block w-72 primary-bg   hover:outline-blue-400 hover:outline translate'>
+            <p className='my-2 text-lg font-bold aext-yellow-400'>
               {price.packageName}
             </p>
             <h3 className='text-xl'>${price.price}</h3>
@@ -41,9 +41,9 @@ const PaymentHistory = () => {
                 >
                   {feature.name}
                   {feature.available ? (
-                    <FaCircleCheck className='ml-2 text-center text-slate-50' />
+                    <FaCircleCheck className='ml-2 text-center  aext-slate-50' />
                   ) : (
-                    <MdCancel className='ml-2 text-lg text-center text-red-500' />
+                    <MdCancel className='ml-2 text-lg text-center aext-red-500' />
                   )}
                 </p>
               ))}

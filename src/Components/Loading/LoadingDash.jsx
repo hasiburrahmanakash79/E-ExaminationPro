@@ -2,7 +2,7 @@ import ContentLoader from "react-content-loader";
 
 const LoadingDash = () => {
     return (
-        <div className='bg-gradient-to-tr from-[#0B0728] to-[#491A66] '>
+        <div className=' ag-gradient-to-tr from-[#0B0728] to-[#491A66] '>
             <ContentLoader
                 height={640}
                 width={1260}

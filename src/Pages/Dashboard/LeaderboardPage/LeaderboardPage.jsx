@@ -19,7 +19,7 @@ const LeaderboardPage = () => {
 
     useEffect(() => {
         // Fetch data and set allBatch and allSubject state
-        fetch('https://e-exam-pro-server.vercel.app/getBatch_Subject')
+        fetch('http://localhost:4000/getBatch_Subject')
             .then((res) => res.json())
             .then((data) => {
                 setAllBatch(data?.batch);
@@ -30,7 +30,7 @@ const LeaderboardPage = () => {
 
     useEffect(() => {
         // Fetch data and set allBatch and allSubject state
-        fetch(`https://e-exam-pro-server.vercel.app/leaderboardResult?inputSearch=${searchInput}&batch=${selectedBatch}&subject=${selectedSubject}&sort=${selectedSort}&type=${selectedType}`)
+        fetch(`http://localhost:4000/leaderboardResult?inputSearch=${searchInput}&batch=${selectedBatch}&subject=${selectedSubject}&sort=${selectedSort}&type=${selectedType}`)
             .then((res) => res.json())
             .then((data) => {
                 console.log(data)
@@ -168,7 +168,7 @@ const LeaderboardPage = () => {
        ariaLabel='hourglass-loading'
        wrapperStyle={{}}
        wrapperClass=''
-       colors={['#7710de', '#d6061b']}
+       colors={['#ffffff', '#000000']}
      />
 <h1 className='text-xl'>No Data Found..</h1>
 </div>:
@@ -176,20 +176,25 @@ const LeaderboardPage = () => {
 {
         examData?.map((data,index)=><div
         key={index}
-        className={selectedSort? 'grid items-center grid-cols-2 md:grid-cols-7 gap-4 p-5 primary-bg my-3 shadow-lg rounded-xl':'grid items-center grid-cols-2 md:grid-cols-9 gap-4 p-5 primary-bg my-3 shadow-lg rounded-xl'}
+        className={selectedSort? 'grid items-center grid-cols-2 md:grid-cols-6 gap-4 p-5 primary-bg my-3 shadow-md rounded-xl':'grid items-center grid-cols-2 md:grid-cols-7 gap-4 p-5 primary-bg my-3 shadow-md rounded-xl'}
         >
-        <h1><span  className='text-green-500'>Email:</span> <span className='text-yellow-500'>{data.stu_email}</span></h1>
+      
         <img className='w-1/2 object-cover rounded-full' src={data?.stu_image?data?.stu_image:defaultPic} alt="" />
-        <h1><span  className='text-green-500'>Name:</span> <span className='text-yellow-500'>{data.stu_name}</span></h1>
-        <h1><span  className='text-green-500'>Subject:</span> <span className='text-yellow-500'>{data.subject}</span></h1>
-        {!selectedSort &&  <h1  className='text-green-500'><span>Code:</span> <span className='text-yellow-500'>{data.exam_code}</span></h1>}
+ <div>       <h1 color=''><span  className='text-green-500'>Email:</span> <span className='aext-yellow-500'>{data.stu_email}</span></h1>
+        <h1><span  className='text-green-500'>Name:</span> <span className='aext-yellow-500'>{data.stu_name}</span></h1></div>
+<div>
+<h1><span  className='text-green-500'>Subject:</span> <span className='aext-yellow-500'>{data.subject}</span></h1>
+        {!selectedSort &&  <h1  className='text-green-500'><span>Code:</span> <span className='aext-yellow-500'>{data.exam_code}</span></h1>}
+</div>
        
-        <h1><span  className='text-green-500'>Batch:</span> <span className='text-yellow-500'>{data.batch}</span></h1>
-        <h1><span  className='text-green-500'>Type:</span> <span className='text-yellow-500'>{data.examType}</span></h1>
-        <h1><span  className='text-green-500'>Total Mark:</span> <span className='text-yellow-500'>{data.totalMark}</span></h1>
-        {!selectedSort &&  <h1><span  className='text-green-500'>Mark:</span> <span className='text-yellow-500'>{data.mark}</span></h1>}
+        <h1><span  className='text-green-500'>Batch:</span> <span className='aext-yellow-500'>{data.batch}</span></h1>
+        <h1><span  className='text-green-500'>Type:</span> <span className='aext-yellow-500'>{data.examType}</span></h1>
+<div>
+<h1><span  className='text-green-500'>Total Mark:</span> <span className='aext-yellow-500'>{data.totalMark}</span></h1>
+        {!selectedSort &&  <h1><span  className='text-green-500'>Mark:</span> <span className='aext-yellow-500'>{data.mark}</span></h1>}
+</div>
         
-       {!selectedSort &&  <h1><span className='text-green-500'>Date: </span> <span className='text-yellow-500'>{data.date}</span></h1>}
+       {!selectedSort &&  <h1><span className='text-green-500'>Date: </span> <span className='aext-yellow-500'>{data.date}</span></h1>}
         
         </div>)
     }

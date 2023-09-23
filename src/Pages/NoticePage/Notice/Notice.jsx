@@ -23,13 +23,13 @@ export default function Notice () {
         <title>E-ExamPro | Notice</title>
       </Helmet>
 
-      <div className='container p-5 mx-auto mt-5 bg-white/5 rounded-2xl'>
+      <div className='container p-5 mx-auto mt-5   rounded-2xl'>
         <h1 className='text-3xl text-center'>Upcoming Exam Schedule</h1>
         <div className='grid lg:grid-cols-4 md:grid-cols-3 gap-5 my-7 '>
           {notices?.map(notice => (
             <div
               key={notice._id}
-              className='w-full border-2 shadow-xl card bg-white/10'
+              className='w-full border-2 shadow-xl card '
             >
               <div className='card-body'>
                 <p>
