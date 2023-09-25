@@ -8,9 +8,11 @@ import useAuth from '../../../Hooks/useAuth/useAuth'
 import { AuthContext } from '../../../Provider/AuthProvider'
 import { Helmet } from 'react-helmet-async'
 import Lottie from 'lottie-react'
-import registerLottie from "../../../assets/animationFile/login.json"
+import regisLottie from "../../../assets/animationFile/educational.json"
+import { sendEmailVerification } from 'firebase/auth'
 const Registration = () => {
   const [passShow, setPassShow] = useState(false)
+  const [msg,setMsg]=useState('')
   const { signUpUser, updateUserInfo, loading } = useContext(AuthContext)
 
   const navigate = useNavigate()
@@ -27,9 +29,13 @@ const Registration = () => {
   const password = watch('password')
 
   const onSubmit = data => {
+    setMsg('')
     signUpUser(data.email, data.password).then(result => {
       const loggedUser = result.user
-      navigate("/welcome")
+      // navigate(from, { replace: true })
+      //navigate("/welcome")
+
+
       const formData = new FormData()
       formData.append('image', data.image[0])
       fetch(img_hosting_url, {
@@ -58,7 +64,16 @@ const Registration = () => {
                 .then(res => res.json())
                 .then(data => {
                   if (data.insertedId) {
-                    navigate("/welcome")
+                    //navigate("/welcome")
+
+                    sendEmailVerification(loggedUser)
+                      .then(() => {
+                        // Email verification sent!
+                        // ...
+                        setMsg('Verify Your Email')
+                      })
+
+
                   }
                 })
             })
@@ -71,21 +86,21 @@ const Registration = () => {
       <Helmet>
         <title>Registration | E-ExamPro</title>
       </Helmet>
-      <div className='min-h-screen hero container mx-auto'>
+      <div className='container min-h-screen mx-auto hero'>
         <div className='items-center justify-between gap-10 px-3 md:flex'>
-          <div className='md:w-1/2 md:mb-0 mb-10'>
+          <div className='mb-10 md:w-1/2 md:mb-0'>
             <Lottie
               animationData={registerLottie}
               loop={true}
             />
           </div>
-          <div className='flex-shrink-0 w-full  ag-transparent border   rounded-lg shadow-xl md:w-1/2 card backdrop-blur-sm'>
+          <div className='flex-shrink-0 w-full border rounded-lg shadow-xl ag-transparent md:w-1/2 card backdrop-blur-sm'>
             <div className='text-center '>
               <h1 className='my-5 text-4xl font-bold '>
                 Registration
               </h1>
             </div>
-            <div className='  card-body'>
+            <div className=' card-body'>
               <form onSubmit={handleSubmit(onSubmit)} className='! '>
                 <div className='grid-cols-2 gap-3 md:grid'>
                   <div className='form-control'>
@@ -176,12 +191,12 @@ const Registration = () => {
                     <label className='label'>
                       <span className='label-text'>Image</span>
                     </label>
-                    <div className='items-center border-2 rounded-lg form-control   '>
+                    <div className='items-center border-2 rounded-lg form-control '>
                       <input
                         {...register('image', { required: true })}
                         name='image'
                         type='file'
-                        className='w-full col-span-5  ag-transparent  file-input'
+                        className='w-full col-span-5 ag-transparent file-input'
                       />
                     </div>
                     {errors.image && (
@@ -218,7 +233,9 @@ const Registration = () => {
                     Click Here
                   </Link>
                 </p>
+<p className='text-center text-red-500'> {msg}</p>
               </div>
+              
             </div>
           </div>
         </div>

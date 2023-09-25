@@ -95,7 +95,9 @@ const router = createBrowserRouter([
       },
       {
         path: '/leaderboard',
-        element: <LeaderboardPage />
+        element: <LeaderboardPage />,
+
+    
       },
       {
         path: '/about',

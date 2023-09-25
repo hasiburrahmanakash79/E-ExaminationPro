@@ -4,7 +4,6 @@ import { useContext, useEffect, useState } from 'react'
 import usePrice from '../../../Hooks/usePrice/usePrice'
 import useAxiosSecure from '../../../Hooks/useAxiosSecure.jsx/useAxiosSecure'
 import { useQuery } from '@tanstack/react-query'
-import Loading from '../../../Components/Loading/Loading'
 import { AuthContext } from '../../../Provider/AuthProvider'
 
 const SSLCart = () => {

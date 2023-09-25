@@ -9,7 +9,7 @@ const WelCome = () => {
   useEffect(() => {
     const timeoutId = setTimeout(() => {
       navigate(from, { replace: true })
-    }, 4000)
+    }, 1000)
 
     return () => clearTimeout(timeoutId)
   }, [navigate])
