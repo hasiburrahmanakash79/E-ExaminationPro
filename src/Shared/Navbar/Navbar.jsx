@@ -198,7 +198,7 @@ useEffect(()=>{
           </div>
           <div className='navbar-end '>
             <div className='indicator me-6'>
-              <span className='indicator-item badge badge-secondary'>1+</span>
+              <span className='indicator-item badge badge-warning'>1+</span>
               <button>
                 <Link to='notice' className='text-2xl'>
                   {' '}
