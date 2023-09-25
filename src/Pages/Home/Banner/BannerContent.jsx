@@ -24,7 +24,7 @@ const BannerContent = () => {
 
       <Link
         to="/allSubjects"
-        className="mt-4 md:mt-6 text-lg primary-btn btn rounded-full py-2 border-none px-8"
+        className="mt-4 md:mt-6 text-lg btn-primary btn rounded-full py-2 border-none px-8"
       >
         Explore Exams
       </Link>
