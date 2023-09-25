@@ -72,11 +72,13 @@ const ManageUsers = () => {
 
   return (
     <div>
-      <h2 className='text-2xl my-3'>Manage Users: {users.length}</h2>
+      <h2 className='text-2xl text-center my-6'>Manage Users: {users.length}</h2>
+      <hr />
+      
       <div className='overflow-x-auto p-4'>
         <table className='table'>
           {/* git */}
-          <thead>
+          <thead className='text-accent text-sm'>
             <tr>
               <th>Serial</th>
               <th>Name</th>
@@ -90,7 +92,7 @@ const ManageUsers = () => {
           <tbody>
             {/* row  */}
             {users.map((user, index) => (
-              <tr key={user._id} className='hover'>
+              <tr key={user._id} >
                 <td>{index + 1}</td>
                 <td>{user.displayName}</td>
                 <td>{user.email}</td>
@@ -103,7 +105,7 @@ const ManageUsers = () => {
                   ) : (
                     <button
                       onClick={() => handleMakeInstructor(user)}
-                      className=' ag-purple-700 btn btn-ghost btn-sm'
+                      className=' bg-secondary btn btn-ghost btn-sm'
                     >
                       Instructor
                     </button>
@@ -115,7 +117,7 @@ const ManageUsers = () => {
                   ) : (
                     <button
                       onClick={() => handleMakeAdmin(user)}
-                      className=' ag-purple-700 btn btn-ghost btn-sm'
+                      className=' bg-warning btn btn-ghost btn-sm'
                     >
                       Admin
                     </button>
@@ -124,7 +126,7 @@ const ManageUsers = () => {
                 <td>
                   <button
                     onClick={() => handleDeleteUser(user)}
-                    className='btn  ag-red-600 btn-ghost btn-sm'
+                    className='rounded-md  bg-red-700 text-white btn-sm'
                   >
                     <FaTrashAlt />
                   </button>

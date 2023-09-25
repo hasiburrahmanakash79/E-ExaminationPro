@@ -17,7 +17,7 @@ const AllUserPayment = () => {
       </h1>
       <div className='overflow-x-auto'>
         <table className='table'>
-          <thead>
+          <thead className='text-base text-primary'>
             <tr>
               <th>Serial</th>
               <th>Name</th>
@@ -31,7 +31,7 @@ const AllUserPayment = () => {
           <tbody>
             {/* row  */}
             {paymentInfo.map((history, index) => (
-              <tr key={history._id} className='hover'>
+              <tr key={history._id}>
                 <td>{index + 1}</td>
                 <td>{history.displayName}</td>
                 <td>{history.email}</td>

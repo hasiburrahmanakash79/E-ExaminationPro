@@ -1,36 +1,33 @@
-import { Link } from 'react-router-dom'
+import { Link } from "react-router-dom";
 
 const SubjectComponent = ({ subject }) => {
   //console.log(subject?.subject)
   return (
-    <div
-      data-aos='zoom-in-up'
-      data-aos-duration='1200'
-      className='relative items-center justify-center overflow-hidden transition-shadow cursor-pointer group hover:shadow-xl hover:shadow-black/30 rounded-xl'
-    >
-      <div className=''>
-        <img
-          className='object-cover w-full h-full transition-transform duration-500 group-hover:rotate-3 group-hover:scale-125'
-          src={subject?.image}
-          alt=''
-        />
+    <div className="card  h-[280px] shadow-xl image-full">
+      <div className="img "></div>
+      <div className="h1">
+        <h1 className="text-4xl text-white ">{subject.subject_name}</h1>
       </div>
-      <div className='absolute inset-0  ag-gradient-to-b from-transparent via-transparent to-black group-hover:from-black/70 group-hover:via-black/60 group-hover:to-black/70'></div>
-      <div className='absolute inset-0 flex translate-y-[50%] md:translate-y-[60%] flex-col items-center justify-center px-10 mb-3 text-center transition-all duration-500 group-hover:translate-y-0'>
-        <h1 className='text-2xl font-semibold  group-hover:italic'>
-          {subject?.subject}
-        </h1>
-        <p className='mb-3 italic  transition-opacity duration-300 opacity-0 group-hover:opacity-100'>
-          Lorem ipsum dolor sit.
-        </p>
-        <div className='flex gap-5 mt-5 text-xl rounded-md md:mt-10'>
-          <Link to='/allSubjects' className='primary-btn btn '>
-            <button>View</button>
-          </Link>
-        </div>
+      <figure>
+        <img
+          className="object-fill w-full"
+          src={subject.img_link}
+          alt="Shoes"
+        />
+      </figure>
+      <div className="items-center w-full text-center card-body1">
+        <h1 className="text-4xl font-bold">{subject.subject_code}</h1>
+        <p className="mx-3 my-3 text-md ">{subject.description}</p>
+
+        <Link
+          to={`/allexam?subject=${subject.subject_name}`}
+          className="btn btn-outline btn-warning"
+        >
+          View All Exam
+        </Link>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default SubjectComponent
+export default SubjectComponent;

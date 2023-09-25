@@ -57,34 +57,34 @@ const AdminHome = () => {
   ];
 
   return (
-    <div className="px-4 pt-4">
+    <div className="px-4">
       <Helmet><title>Dashboard | E-ExamPro</title></Helmet>
-      <div className="flex items-center justify-between">
-        <h1 className="text-2xl">Admin home</h1>
+      <div className="my-6">
+        <h1 className="text-2xl text-center">Admin home</h1>
       </div>
       <div className="grid grid-cols-1 gap-3 pb-6 mt-4 md:grid-cols-4">
-        <div className="flex items-center justify-between h-20 px-4 mx-3 transition duration-300 ease-out transform border-l-4   rounded-lg cursor-pointer hover:shadow-md hover:scale-105">
+        <div className="flex items-center justify-between h-20 px-4 mx-3 transition duration-300 ease-out transform border-l-4 border-r-2  rounded-lg cursor-pointer hover:shadow-md hover:scale-105">
           <div>
             <h2>Students</h2>
             <h1>{students.length}</h1>
           </div>
           <PiStudentBold fontSize={28} />
         </div>
-        <div className="flex items-center justify-between h-20 px-4 mx-3 transition duration-300 ease-out transform border-l-4 rounded-lg cursor-pointer  border hover:shadow-md hover:scale-105">
+        <div className="flex items-center justify-between h-20 px-4 mx-3 transition duration-300 ease-out transform border-l-4 border-r-2 rounded-lg cursor-pointer hover:shadow-md hover:scale-105">
           <div>
             <h2>Instructors</h2>
             <h1>{instructorsD.length}</h1>
           </div>
           <FaChalkboardTeacher fontSize={28} />
         </div>
-        <div className="flex items-center justify-between h-20 px-4 mx-3 transition duration-300 ease-out transform border-l-4 rounded-lg cursor-pointer   hover:shadow-md hover:scale-105">
+        <div className="flex items-center justify-between h-20 px-4 mx-3 transition duration-300 ease-out transform border-l-4 border-r-2 rounded-lg cursor-pointer   hover:shadow-md hover:scale-105">
           <div>
             <h2>Questions</h2>
             <h1>{questions.length}</h1>
           </div>
           <FaQuestion fontSize={28} />
         </div>
-        <div className="flex items-center justify-between h-20 px-4 mx-3 transition duration-300 ease-out transform border-l-4 rounded-lg cursor-pointer border-x hover:shadow-md hover:scale-105">
+        <div className="flex items-center justify-between h-20 px-4 mx-3 transition duration-300 ease-out transform border-l-4 border-r-2  rounded-lg cursor-pointer border-x hover:shadow-md hover:scale-105">
           <div>
             <h2>Answers</h2>
             <h1>{answers.length}</h1>

@@ -63,8 +63,11 @@ const UserHome = () => {
   ];
 
   return (
-    <div className="px-10 py-20">
+    <div className="px-10 ">
       <Helmet><title>Dashboard | E-ExamPro </title></Helmet>
+      <div>
+        <h1 className="text-2xl text-center my-6">User Home</h1>
+      </div>
       <div className="xl:flex gap-5 mb-5">
         <div className=" ag-transparent border   shadow-md w-full rounded-md p-5">
           <div className="flex justify-between items-center">

@@ -3,7 +3,7 @@ import { PieChart, Pie, Sector, Cell, ResponsiveContainer } from 'recharts';
 
 
 
-const COLORS = ['#00C49F',  '#970fd1'];
+const COLORS = ['#4098A0',  '#FBC104'];
 
 const RADIAN = Math.PI / 180;
 const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent, index }) => {
