@@ -20,10 +20,10 @@ const SubjectComponent = ({ subject }) => {
         <p className="mx-3 my-3 text-md ">{subject.description}</p>
 
         <Link
-          to={`/allexam?subject=${subject.subject_name}`}
-          className="btn btn-outline btn-warning"
+          to='/allSubjects'
+          className="btn btn-outline btn-primary"
         >
-          View All Exam
+          View All Subjects
         </Link>
       </div>
     </div>
