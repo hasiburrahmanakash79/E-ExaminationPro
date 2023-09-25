@@ -2,6 +2,7 @@ import { useForm } from 'react-hook-form'
 import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { toggleCall } from '../../../redux/features/ExamRoomController/ExamRoomControllerSlice'
+import { Helmet } from 'react-helmet-async'
 
 const JoinLiveExam = () => {
   const dispatch = useDispatch()
@@ -22,7 +23,10 @@ const JoinLiveExam = () => {
   }
   return (
     <div className='p-5'>
-      <div className='mx-auto mt-10 border-2 shadow-md md:w-2/4 xl:w-1/4 p-7 rounded-2xl'>
+      <Helmet>
+        <title> Live Exam | E-ExamPro</title>
+      </Helmet>
+      <div className='mx-auto mt-10 border-4 shadow-md md:w-2/4 xl:w-1/4 p-7 rounded-2xl'>
         <form onSubmit={handleSubmit(onSubmit)} className=''>
           <div className='flex flex-col '>
             <h2 className='my-3 text-2xl text-center'>Live Exam Join Code</h2>

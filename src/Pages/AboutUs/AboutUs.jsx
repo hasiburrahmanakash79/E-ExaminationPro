@@ -7,10 +7,10 @@ const AboutUs = () => {
   return (
     <div className='container px-6 mx-auto'>
       <Helmet>
-        <title>E-ExamPro | About Us</title>
+        <title>About Us | E-ExamPro</title>
       </Helmet>
-      <div className='items-center justify-between py-20 text-center md:flex md:gap-20 md:text-left'>
-        <div className='overflow-x-hidden md:w-1/2'>
+      <div className='overflow-x-hidden items-center justify-between py-20 text-center md:flex md:gap-20 md:text-left'>
+        <div className=' md:w-1/2'>
           <h2
             data-aos='zoom-in'
             data-aos-duration='1000'

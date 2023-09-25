@@ -1,6 +1,7 @@
 import { Suspense, lazy, useEffect, useState } from 'react'
 import Loading from '../../../Components/Loading/Loading'
 import { useQuery } from '@tanstack/react-query'
+import { Helmet } from 'react-helmet-async'
 const SingleBlogCard = lazy(() =>
   import('../../BlogPage/NewBlog/SingleBlogCard')
 )
@@ -34,6 +35,9 @@ const NewBlog = () => {
 
   return (
     <div>
+       <Helmet>
+        <title>Blog | E-ExamPro</title>
+      </Helmet>
       <div className='pt-14'>
         <h2 className='text-xl text-center '>Blogs for You</h2>
         <h2 className='text-3xl text-center '>

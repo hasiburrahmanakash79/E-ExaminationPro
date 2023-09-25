@@ -8,15 +8,12 @@ import useAuth from '../../../Hooks/useAuth/useAuth'
 import { AuthContext } from '../../../Provider/AuthProvider'
 import { Helmet } from 'react-helmet-async'
 import Lottie from 'lottie-react'
-import regisLottie from "../../../assets/animationFile/educational.json"
+import registerLottie from "../../../assets/animationFile/login.json"
 const Registration = () => {
   const [passShow, setPassShow] = useState(false)
   const { signUpUser, updateUserInfo, loading } = useContext(AuthContext)
 
   const navigate = useNavigate()
-  // const location = useLocation()
-  // const from = location.state?.from?.pathname || '/'
-
 
   const img_token = import.meta.env.VITE_Image_Key
   const img_hosting_url = `https://api.imgbb.com/1/upload?key=${img_token}`
@@ -32,7 +29,6 @@ const Registration = () => {
   const onSubmit = data => {
     signUpUser(data.email, data.password).then(result => {
       const loggedUser = result.user
-      // navigate(from, { replace: true })
       navigate("/welcome")
       const formData = new FormData()
       formData.append('image', data.image[0])
@@ -77,12 +73,10 @@ const Registration = () => {
       </Helmet>
       <div className='min-h-screen hero container mx-auto'>
         <div className='items-center justify-between gap-10 px-3 md:flex'>
-          <div className='md:w-1/2'>
-            {/* <img src='https://i.ibb.co/jDMz1bj/login-page-banner.png' alt='' /> */}
+          <div className='md:w-1/2 md:mb-0 mb-10'>
             <Lottie
-              animationData={regisLottie}
+              animationData={registerLottie}
               loop={true}
-            // className=" md:w-10/12 mx-auto" 
             />
           </div>
           <div className='flex-shrink-0 w-full  ag-transparent border   rounded-lg shadow-xl md:w-1/2 card backdrop-blur-sm'>
@@ -174,7 +168,7 @@ const Registration = () => {
                       {...register('number', { required: true })}
                       type='number'
                       placeholder='+880'
-                      className=' ag-transparent input input-bordered'
+                      className='ag-transparent input input-bordered'
                     />
                     {errors.number && <span>This field is required</span>}
                   </div>
