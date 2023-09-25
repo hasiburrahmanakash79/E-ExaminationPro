@@ -9,8 +9,10 @@ import { AuthContext } from '../../../Provider/AuthProvider'
 import { Helmet } from 'react-helmet-async'
 import Lottie from 'lottie-react'
 import regisLottie from "../../../assets/animationFile/educational.json"
+import { sendEmailVerification } from 'firebase/auth'
 const Registration = () => {
   const [passShow, setPassShow] = useState(false)
+  const [msg,setMsg]=useState('')
   const { signUpUser, updateUserInfo, loading } = useContext(AuthContext)
 
   const navigate = useNavigate()
@@ -30,10 +32,13 @@ const Registration = () => {
   const password = watch('password')
 
   const onSubmit = data => {
+    setMsg('')
     signUpUser(data.email, data.password).then(result => {
       const loggedUser = result.user
       // navigate(from, { replace: true })
-      navigate("/welcome")
+      //navigate("/welcome")
+
+
       const formData = new FormData()
       formData.append('image', data.image[0])
       fetch(img_hosting_url, {
@@ -62,7 +67,16 @@ const Registration = () => {
                 .then(res => res.json())
                 .then(data => {
                   if (data.insertedId) {
-                    navigate("/welcome")
+                    //navigate("/welcome")
+
+                    sendEmailVerification(loggedUser)
+                      .then(() => {
+                        // Email verification sent!
+                        // ...
+                        setMsg('Verify Your Email')
+                      })
+
+
                   }
                 })
             })
@@ -224,7 +238,9 @@ const Registration = () => {
                     Click Here
                   </Link>
                 </p>
+<p className='text-center text-red-500'> {msg}</p>
               </div>
+              
             </div>
           </div>
         </div>
