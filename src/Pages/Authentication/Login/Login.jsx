@@ -13,8 +13,8 @@ const Login = () => {
   const [passShow, setPassShow] = useState(false)
   const [randomNumbers, setRandomNumbers] = useState([])
   const [isButtonEnable, setIsButtonEnable] = useState(false)
-  const { logInUser, loading } = useContext(AuthContext)
-
+  const { logInUser, loading, logOut } = useContext(AuthContext)
+  const [msg,setMsg]=useState('')
   const navigate = useNavigate()
   // const location = useLocation()
 
@@ -38,10 +38,22 @@ const Login = () => {
 
 
   const onSubmit = data => {
+    setMsg('')
     logInUser(data.email, data.password)
       .then(result => {
         const loggedUser = result.user
-        navigate('/welCome')
+        console.log(loggedUser)
+
+        if(loggedUser?.emailVerified==false){
+          setMsg('Verify your Email')
+          logOut()
+        }
+        else{
+          navigate('/welCome')
+        }
+       
+        
+      
       })
       .catch(error => {
         console.log(error)
@@ -126,6 +138,7 @@ const Login = () => {
                     Click Here
                   </Link>
                 </p>
+                <p className='text-center text-red-400 mt-1'>{msg}</p>
               </div>
             </div>
           </div>

@@ -38,6 +38,13 @@ const Registration = () => {
       // navigate(from, { replace: true })
       //navigate("/welcome")
 
+      sendEmailVerification(loggedUser)
+      .then(() => {
+        // Email verification sent!
+        // ...
+        setMsg('Verify Your Email')
+      })
+
 
       const formData = new FormData()
       formData.append('image', data.image[0])
@@ -68,13 +75,6 @@ const Registration = () => {
                 .then(data => {
                   if (data.insertedId) {
                     //navigate("/welcome")
-
-                    sendEmailVerification(loggedUser)
-                      .then(() => {
-                        // Email verification sent!
-                        // ...
-                        setMsg('Verify Your Email')
-                      })
 
 
                   }
