@@ -168,7 +168,7 @@ const UpcomingLiveExam = () => {
               </label>
               <h1 className='flex items-center w-full input input-bordered '>
                 {!stuBatch ? (
-                  <span className='aext-red-500'>
+                  <span className='text-red-500'>
                     Add Batch In Update Profile
                   </span>
                 ) : (
@@ -195,7 +195,7 @@ const UpcomingLiveExam = () => {
             </div>
             <p className='text-center '>{msg}</p>
             {/* {
-          data?.msg && <h1 className="mt-2 text-xl text-center aext-red-600">You Have Already Applied</h1>
+          data?.msg && <h1 className="mt-2 text-xl text-center text-red-600">You Have Already Applied</h1>
         } */}
           </form>
         </div>

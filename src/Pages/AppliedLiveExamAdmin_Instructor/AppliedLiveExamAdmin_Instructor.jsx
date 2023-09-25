@@ -34,7 +34,7 @@ const AppliedLiveExamAdmin_Instructor = () => {
   return (
     <>
       {appliedExam?.length == 0 ? (
-        <div className='aext-red-400 text-4xl flex justify-center items-center h-[70vh]'>
+        <div className='text-red-400 text-4xl flex justify-center items-center h-[70vh]'>
           <p className='mx-2'>
             <FaFaceFrown></FaFaceFrown>{' '}
           </p>

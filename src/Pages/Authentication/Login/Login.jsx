@@ -1,20 +1,18 @@
 import './Authentication.css'
 import React, { useEffect, useState, useContext } from 'react'
-import { Link, json, useLocation, useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import SocialLogin from '../../../Hooks/SocialLogin/SocialLogin'
 import { AuthContext } from '../../../Provider/AuthProvider'
-import Swal from 'sweetalert2'
-import Loading from '../../../Components/Loading/Loading'
 import { Helmet } from 'react-helmet-async'
 import Lottie from 'lottie-react'
-import loginLottie from "../../../assets/animationFile/login.json"
+import loginLottie from '../../../assets/animationFile/login.json'
 const Login = () => {
   const [passShow, setPassShow] = useState(false)
   const [randomNumbers, setRandomNumbers] = useState([])
   const [isButtonEnable, setIsButtonEnable] = useState(false)
-  const { logInUser, loading } = useContext(AuthContext)
-
+  const { logInUser, loading, logOut } = useContext(AuthContext)
+  const [msg, setMsg] = useState('')
   const navigate = useNavigate()
   useEffect(() => {
     const newRandomNumbers = Array.from({ length: 6 }, () =>
@@ -32,12 +30,19 @@ const Login = () => {
     formState: { errors }
   } = useForm()
 
-
   const onSubmit = data => {
+    setMsg('')
     logInUser(data.email, data.password)
       .then(result => {
         const loggedUser = result.user
-        navigate('/welCome')
+        console.log(loggedUser)
+
+        if (loggedUser?.emailVerified == false) {
+          setMsg('Verify your Email')
+          logOut()
+        } else {
+          navigate('/welCome')
+        }
       })
       .catch(error => {
         console.log(error)
@@ -51,12 +56,14 @@ const Login = () => {
       </Helmet>
       <div className='min-h-screen hero'>
         <div className='items-center justify-between gap-12 px-3 md:flex'>
-        <div className='md:w-1/2 md:mb-0 mb-8'>
+          <div className='mb-8 md:w-1/2 md:mb-0'>
             <Lottie
               animationData={loginLottie}
-              loop={true} className="w-full md:h-[500px]" />
+              loop={true}
+              className='w-full md:h-[500px]'
+            />
           </div>
-          <div className='flex-shrink-0 w-full  ag-transparent border   rounded-lg shadow-xl md:w-1/2 card backdrop-blur-sm'>
+          <div className='flex-shrink-0 w-full border rounded-lg shadow-xl ag-transparent md:w-1/2 card backdrop-blur-sm'>
             <div className='text-center '>
               <h1 className='my-5 text-4xl font-bold '>Login</h1>
             </div>
@@ -73,7 +80,7 @@ const Login = () => {
                     className=' ag-transparent input input-bordered'
                   />
                   {errors.email && (
-                    <span className='mt-1 aext-red-500'>
+                    <span className='mt-1 text-red-500'>
                       Email field is required
                     </span>
                   )}
@@ -121,6 +128,7 @@ const Login = () => {
                     Click Here
                   </Link>
                 </p>
+                <p className='mt-1 text-center text-red-400'>{msg}</p>
               </div>
             </div>
           </div>

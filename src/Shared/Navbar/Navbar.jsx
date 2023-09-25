@@ -81,7 +81,7 @@ const Navbar = () => {
     >
       <button>Exam</button>
       {isOpen && (
-        <div className='absolute top-0 z-50 text-white rounded-lg left-32 backdrop-opacity-95 bg-black/40 md:top-full'>
+        <div className='absolute top-0 z-50 text-white rounded-lg left-32 md:left-0 backdrop-blur-3xl bg-black/40 md:top-full'>
           <div className='px-2 py-2 space-y-3 '>
             <button className='px-4 py-1 rounded hover:bg-white/10'>
               <Link to='/allSubjects'>All Subject</Link>
@@ -198,7 +198,11 @@ const Navbar = () => {
           </div>
           <div className='navbar-end '>
             <div className='indicator me-6'>
-              <span className='indicator-item badge badge-warning'>
+              <span
+                className={`${
+                  notices?.length > 0 && 'indicator-item badge badge-warning'
+                } `}
+              >
                 {notices ? notices?.length : ''}
               </span>
               <button>
@@ -263,7 +267,7 @@ const Navbar = () => {
             ) : (
               <Link
                 to='/login'
-                className='border-none shadow-md btn btn-sm btn-warning'
+                className='border-none shadow-md btn btn-sm btn-primary'
               >
                 Login
               </Link>

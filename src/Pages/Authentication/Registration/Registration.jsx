@@ -32,6 +32,12 @@ const Registration = () => {
       // navigate(from, { replace: true })
       //navigate("/welcome")
 
+      sendEmailVerification(loggedUser).then(() => {
+        // Email verification sent!
+        // ...
+        setMsg('Verify Your Email')
+      })
+
       const formData = new FormData()
       formData.append('image', data.image[0])
       fetch(img_hosting_url, {
@@ -60,7 +66,7 @@ const Registration = () => {
                 .then(res => res.json())
                 .then(data => {
                   if (data.insertedId) {
-                    navigate('/welcome')
+                    //navigate("/welcome")
 
                     sendEmailVerification(loggedUser).then(() => {
                       // Email verification sent!
@@ -82,7 +88,7 @@ const Registration = () => {
       <div className='container min-h-screen mx-auto hero'>
         <div className='items-center justify-between gap-10 px-3 md:flex'>
           <div className='mb-10 md:w-1/2 md:mb-0'>
-            <Lottie animationData={registerLottie} loop={true} />
+            <Lottie animationData={regisLottie} loop={true} />
           </div>
           <div className='flex-shrink-0 w-full border rounded-lg shadow-xl ag-transparent md:w-1/2 card backdrop-blur-sm'>
             <div className='text-center '>
@@ -132,7 +138,7 @@ const Registration = () => {
                       className=' ag-transparent input input-bordered'
                     />
                     <label className='label'>
-                      <a className='label-aext-alt link link-hover'>
+                      <a className='label-text-alt link link-hover'>
                         <p onClick={() => setPassShow(!passShow)}>
                           <small>
                             {passShow ? (
@@ -188,7 +194,7 @@ const Registration = () => {
                       />
                     </div>
                     {errors.image && (
-                      <span className='mt-1 aext-red-500'>
+                      <span className='mt-1 text-red-500'>
                         Image field is required
                       </span>
                     )}

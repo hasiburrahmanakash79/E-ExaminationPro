@@ -86,7 +86,7 @@ const SingleBlogCard = ({ newBlog, refetch }) => {
   //console.log(allUserComments)
 
   return (
-    <div className='border'>
+    <div className='border rounded-lg shadow shadow-primary border-primary'>
       <div className='mb-5 '>
         <div
           rel='noopener noreferrer'
@@ -97,7 +97,7 @@ const SingleBlogCard = ({ newBlog, refetch }) => {
             <div className={isBlog ? '' : 'hidden'}>
               <img
                 role='presentation'
-                className='object-cover w-full rounded-b h-60 dark: ag-gray-500 '
+                className='object-cover w-full rounded-t-lg h-60 dark: ag-gray-500 '
                 src={image_url}
               />
               <div className='p-6 space-y-2'>
@@ -116,7 +116,7 @@ const SingleBlogCard = ({ newBlog, refetch }) => {
                 isComment ? 'px-5  h-[520px] pt-5  overflow-y-auto ' : 'hidden'
               }
             >
-              <h1 className='text-center aext-red-500'>All Comments</h1>
+              <h1 className='text-center text-red-500'>All Comments</h1>
               {allUserComments?.allUserComments?.map((comment, index) => (
                 <div key={index} className='p-2 m-2 shadow-md'>
                   <h1>
@@ -143,7 +143,7 @@ const SingleBlogCard = ({ newBlog, refetch }) => {
                   className='text-2xl'
                 ></FaRegCommentDots>
                 <FaRegHeart
-                  className={`text-2xl ${isLiked ? 'aext-red-500' : ''}`}
+                  className={`text-2xl ${isLiked ? 'text-red-500' : ''}`}
                   onClick={toggleLike}
                 ></FaRegHeart>
 
