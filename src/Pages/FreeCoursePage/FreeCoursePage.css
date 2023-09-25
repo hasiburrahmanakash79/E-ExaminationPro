@@ -1,21 +1,3 @@
-/* .card-body{
-    opacity: 0;
-    transition: opacity 0.4s ease-in-out;
-}
-.card:hover .card-body {
-    opacity: 1;
-  }
-
-
-  .card-title{
-    opacity: 1;
-    transition: opacity 0.3s ease-in-out;
-  }
-
-  .card:hover .card-title{
-    opacity: 0;
- 
-  } */
   .card{
     position: relative;
     overflow: hidden;

@@ -43,19 +43,6 @@ useEffect(()=>{
 
   const toggleDarkMode = () => {
     setIsDarkMode(!isDarkMode)
-    // if (isDarkMode) {
-    //   localStorage.removeItem('customDarkTheme')
-    //   localStorage.setItem('customDarkTheme', true)
-    //   // document.documentElement.removeAttribute('data-theme')
-    //   // document.documentElement.setAttribute('data-theme', 'customLightTheme')
-
-    // } else {
-    //   // document.documentElement.removeAttribute('data-theme')
-    //   // document.documentElement.setAttribute('data-theme', 'customDarkTheme')
-    //   localStorage.removeItem('customDarkTheme')
-    //   localStorage.setItem('customDarkTheme', false)
-    // }
-
   }
 
   const handleLogout = () => {
@@ -73,7 +60,7 @@ useEffect(()=>{
 
   const navbarLink_First = (
     <>
-      <li>
+      <li >
         <Link>Home</Link>
       </li>
     </>
@@ -93,15 +80,15 @@ useEffect(()=>{
       onMouseLeave={() => toggleDropdown(false)}
       className='relative'
     >
-      <button className=''>Exam</button>
+      <button>Exam</button>
       {isOpen && (
-        <div className='absolute z-50 rounded-lg top-full primary-bg'>
+        <div className='absolute z-50 rounded-lg top-full  bg-black/40 text-white'>
           <div className='p-5 space-y-3'>
-            <button className='px-2 py-1 rounded hover: ag-purple-100/10'>
+            <button className='px-2 py-1 rounded hover:bg-white/10'>
               <Link to='/allSubjects'>All Subject</Link>
             </button>
 
-            <button className='px-2 py-1 rounded hover: ag-purple-100/10'>
+            <button className='px-2 py-1 rounded hover:bg-white/10'>
               <Link to='/written'>Written Exam</Link>
             </button>
           </div>
@@ -112,20 +99,20 @@ useEffect(()=>{
 
   const navbarLink_Last = (
     <>
-      <li>
+      <li >
         <Link to='/instructors'>Instructors</Link>
       </li>
-      <li>
+      <li >
         <Link to='/blog'>Blog</Link>
       </li>
-      <li>
+      <li >
         <Link to='/about'>About us</Link>
       </li>
-      <li>
+      <li >
         <Link to='/forum'>Forum</Link>
       </li>
       {user && (
-        <li>
+        <li >
           {isAdmin ? (
             ''
           ) : isInstructor ? (
@@ -155,7 +142,7 @@ useEffect(()=>{
         transition: 'all .5s ease-in-out'
       }}
     >
-      <nav className='z-50 backdrop-blur'>
+      <nav className='z-50  bg-black/40 text-white'>
         <div className='navbar z-[40]  container mx-auto  sticky top-0'>
           <div className='navbar-start'>
             <div className='dropdown'>
@@ -181,7 +168,7 @@ useEffect(()=>{
               >
                 {/* navbarFirst */}
                 {navbarLink_First}
-                <li>
+                <li >
                   {/* navbar_middle */}
                   {navbarLink_Middle}
                 </li>
@@ -201,7 +188,7 @@ useEffect(()=>{
             <ul className='px-1 menu menu-horizontal'>
               {/* navbarFirst */}
               {navbarLink_First}
-              <li tabIndex={0}>
+              <li  tabIndex={0}>
                 {/* navbar_middle */}
                 {navbarLink_Middle}
               </li>
@@ -222,7 +209,7 @@ useEffect(()=>{
             {user ? (
               <div className='ml-5 dropdown dropdown-end'>
                 <div
-                  className='tooltip tooltip-left'
+                  className='tooltip tooltip-bottom list-none'
                   data-tip={info?.displayName}
                 >
                   <label
@@ -238,9 +225,9 @@ useEffect(()=>{
                 <div className=''>
                   <ul
                     tabIndex={0}
-                    className='p-2 mt-3 shadow-md primary-bg backdrop-blur-xl menu menu-compact dropdown-content rounded-box w-52'
+                    className='p-2 mt-3 shadow-md  bg-black/40 text-white menu menu-compact dropdown-content rounded-box w-52'
                   >
-                    <li className=''>
+                    <li >
                       <Link
                         to='/leaderboard'
                         className='justify-between w-full'
@@ -250,7 +237,7 @@ useEffect(()=>{
                     </li>
                     {/* Navigate to different dashboard route based on user role */}
                     {user && (
-                      <li>
+                      <li >
                         {isAdmin ? (
                           <Link to='/dashboard/adminHome'>Dashboard</Link>
                         ) : isInstructor ? (
@@ -260,10 +247,10 @@ useEffect(()=>{
                         )}
                       </li>
                     )}
-                    <li>
+                    <li >
                       <Link to='/profile'>Profile</Link>
                     </li>
-                    <li>
+                    <li >
                       <Link className='w-full' onClick={handleLogout}>
                         Log Out
                       </Link>
