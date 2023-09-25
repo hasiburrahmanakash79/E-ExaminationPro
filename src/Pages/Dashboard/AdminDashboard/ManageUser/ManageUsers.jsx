@@ -1,6 +1,8 @@
 import { useQuery } from '@tanstack/react-query'
 import { FaTrashAlt } from 'react-icons/fa'
 import Swal from 'sweetalert2'
+import Pagination from '../../../../Components/Pagination/Pagination'
+import { useState } from 'react'
 
 const ManageUsers = () => {
   const { data: users = [], refetch } = useQuery(['users'], async () => {
@@ -70,10 +72,22 @@ const ManageUsers = () => {
     })
   }
 
+  ////////---------------------------------Pagination
+  const [currentPage, setCurrentPage] = useState(0)
+  const [itemsPerPage, setItemPerPage] = useState(12); // Number of items to display per page
+  const totalItems = users?.length;
+  const totalPages = Math.ceil(totalItems / itemsPerPage)
+
+  const startIndex = currentPage * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const displayedData = users.slice(startIndex, endIndex)
+
+
+
   return (
     <div>
       <h2 className='text-2xl my-3'>Manage Users: {users.length}</h2>
-      <div className='overflow-x-auto p-4'>
+      <div className='overflow-x-auto p-4 min-h-[80vh]'>
         <table className='table'>
           {/* git */}
           <thead>
@@ -89,7 +103,7 @@ const ManageUsers = () => {
           </thead>
           <tbody>
             {/* row  */}
-            {users.map((user, index) => (
+            {displayedData?.map((user, index) => (
               <tr key={user._id} className='hover'>
                 <td>{index + 1}</td>
                 <td>{user.displayName}</td>
@@ -134,6 +148,15 @@ const ManageUsers = () => {
           </tbody>
         </table>
       </div>
+
+      <div className='flex my-6 justify-center'>
+        <Pagination
+          totalPages={totalPages}
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
+        ></Pagination>
+      </div>
+
     </div>
   )
 }
