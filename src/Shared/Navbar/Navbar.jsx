@@ -11,6 +11,8 @@ import Headroom from 'react-headroom'
 import useUser from '../../Hooks/useUser/useUser'
 import { FaMoon, FaSun } from 'react-icons/fa'
 import { useEffect } from 'react'
+import useLiveExam from '../../Hooks/useLiveExam/useLiveExam'
+import Loading from '../../components/Loading/Loading'
 
 const Navbar = () => {
   const dark = localStorage.getItem('customDarkTheme')
@@ -32,7 +34,6 @@ const Navbar = () => {
       document.documentElement.setAttribute('data-theme', 'customLightTheme')
     }
   }, [isDarkMode, dark])
-
   const [isOpen, setIsOpen] = useState(false)
   const { user, logOut } = useContext(AuthContext)
   const [isAdmin] = useAdmin()
@@ -80,9 +81,9 @@ const Navbar = () => {
     >
       <button>Exam</button>
       {isOpen && (
-        <div className='absolute z-50 text-white rounded-lg top-full bg-black/40'>
-          <div className='p-5 space-y-3'>
-            <button className='px-2 py-1 rounded hover:bg-white/10'>
+        <div className='absolute top-0 z-50 text-white rounded-lg left-32 backdrop-opacity-95 bg-black/40 md:top-full'>
+          <div className='px-2 py-2 space-y-3 '>
+            <button className='px-4 py-1 rounded hover:bg-white/10'>
               <Link to='/allSubjects'>All Subject</Link>
             </button>
 
@@ -129,6 +130,7 @@ const Navbar = () => {
 
     //console.log(data);
   }
+  const [notices] = useLiveExam()
 
   return (
     <Headroom
@@ -140,7 +142,7 @@ const Navbar = () => {
         transition: 'all .5s ease-in-out'
       }}
     >
-      <nav className='z-50 text-white bg-black/40'>
+      <nav className='z-50 text-white backdrop-blur-lg bg-black/40'>
         <div className='navbar z-[40]  container mx-auto  sticky top-0'>
           <div className='navbar-start'>
             <div className='dropdown'>
@@ -162,7 +164,7 @@ const Navbar = () => {
               </label>
               <ul
                 tabIndex={0}
-                className='z-50 p-2 mt-3 shadow menu menu-sm dropdown-content ag-base-100 rounded-box w-52 primary-bg'
+                className='z-50 p-2 mt-3 shadow w-36 menu menu-sm dropdown-content rounded-box bg-black/40 backdrop-blur'
               >
                 {/* navbarFirst */}
                 {navbarLink_First}
@@ -196,7 +198,9 @@ const Navbar = () => {
           </div>
           <div className='navbar-end '>
             <div className='indicator me-6'>
-              <span className='indicator-item badge badge-warning'>1+</span>
+              <span className='indicator-item badge badge-warning'>
+                {notices ? notices?.length : ''}
+              </span>
               <button>
                 <Link to='notice' className='text-2xl'>
                   {' '}
@@ -223,7 +227,7 @@ const Navbar = () => {
                 <div className=''>
                   <ul
                     tabIndex={0}
-                    className='p-2 mt-3 text-white shadow-md bg-black/40 menu menu-compact dropdown-content rounded-box w-52'
+                    className='p-2 mt-3 text-white shadow-md bg-black/40 menu menu-compact backdrop-blur-lg dropdown-content rounded-box w-52'
                   >
                     <li>
                       <Link

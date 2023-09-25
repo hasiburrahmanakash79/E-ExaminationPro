@@ -16,59 +16,55 @@ export default function Notice () {
   //console.log(isAdmin)
 
   const [notices, isNoticeLoading] = useLiveExam()
-  //console.log(notices)
+  // console.log(notices?.length)
   return (
     <>
       <Helmet>
         <title>E-ExamPro | Notice</title>
       </Helmet>
 
-      <div className='container p-5 mx-auto mt-5   rounded-2xl'>
+      <div className='container p-5 mx-auto mt-5 rounded-2xl'>
         <h1 className='text-3xl text-center'>Upcoming Exam Schedule</h1>
-        <div className='grid lg:grid-cols-4 md:grid-cols-3 gap-5 my-7 '>
+        <div className='grid gap-5 lg:grid-cols-4 md:grid-cols-3 my-7 '>
           {notices?.map(notice => (
-            <div
-              key={notice._id}
-              className='w-full border-2 shadow-xl card '
-            >
+            <div key={notice._id} className='w-full border-2 shadow-xl card '>
               <div className='card-body'>
                 <p>
-                  Subject Name:
-                  <span className='text-purple-300'>{notice?.subjectName}</span>
+                  Subject Name :{' '}
+                  <span className='text-primary'>{notice?.subjectName}</span>
                 </p>
                 <p>
-                  Exam Code:
-                  <span className='text-purple-300 uppercase'>
+                  Exam Code :{' '}
+                  <span className='uppercase text-primary'>
                     {notice?.exam_code}
                   </span>
                 </p>
                 <p>
-                  Subject Code:
-                  <span className='text-purple-300 uppercase'>
+                  Subject Code :{' '}
+                  <span className='uppercase text-primary'>
                     {notice?.subject_code}
                   </span>
                 </p>
                 <p>
-                  Batch:{' '}
-                  <span className='text-purple-300 uppercase'>
+                  Batch :{' '}
+                  <span className='uppercase text-primary'>
                     {notice?.batch}
                   </span>
                 </p>
                 <p>
-                  Group:
-                  <span className='text-purple-300'> {notice?.group}</span>
+                  Group : <span className='text-primary'> {notice?.group}</span>
                 </p>
                 <p>
-                  Exam Date :
-                  <span className='text-purple-300'>{notice?.date}</span>
+                  Exam Date :{' '}
+                  <span className='text-primary'>{notice?.date}</span>
                 </p>
                 <p>
-                  Instructor:
-                  <span className='text-purple-300'> {notice?.instructor}</span>
+                  Instructor :{' '}
+                  <span className='text-primary'> {notice?.instructor}</span>
                 </p>
                 {isAdmin ? (
                   <Link to={`/allAppliedLiveExam?examID=${notice._id}`}>
-                    <button className='primary-btn btn'>
+                    <button className='btn-primary btn'>
                       See Applied Students
                     </button>
                   </Link>
@@ -85,7 +81,7 @@ export default function Notice () {
                     to={`/upcomingLiveExam?examID=${notice._id}&email=${user?.email}`}
                     className='mt-5'
                   >
-                    <button className='primary-btn btn'>
+                    <button className='btn-primary btn'>
                       Apply For Live class
                     </button>
                   </Link>
