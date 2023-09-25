@@ -210,7 +210,7 @@ useEffect(()=>{
             </ul>
           </div>
           <div className='navbar-end '>
-            <div className='indicator me-4'>
+            <div className='indicator me-6'>
               <span className='indicator-item badge badge-secondary'>1+</span>
               <button>
                 <Link to='notice' className='text-2xl'>
@@ -274,7 +274,7 @@ useEffect(()=>{
             ) : (
               <Link
                 to='/login'
-                className='border-none shadow-md btn primary-bg'
+                className='border-none shadow-md btn btn-sm btn-warning'
               >
                 Login
               </Link>
@@ -286,41 +286,6 @@ useEffect(()=>{
             </div>
           </div>
         </div>
-        {/* <div>
-          <dialog
-            id='my_modal_3'
-            className='modal modal-top max-w-[400px] mx-auto mt-[68px] '
-          >
-            <form method='dialog' className='modal-box primary-bg '>
-              <button className='absolute z-20 btn btn-sm btn-circle btn-ghost right-2 top-2'>
-                ✕
-              </button>
-              <input
-                id='search'
-                name='search'
-                type='text'
-                placeholder='Type here'
-                className='z-10 w-full max-w-xs ag-transparent input top-20 input-bordered'
-              />
-              <button onClick={searchData} className='absolute p-4 right-14'>
-                <svg
-                  xmlns='http://www.w3.org/2000/svg'
-                  className='w-5 h-5'
-                  fill='none'
-                  viewBox='0 0 24 24'
-                  stroke='currentColor'
-                >
-                  <path
-                    strokeLinecap='round'
-                    strokeLinejoin='round'
-                    strokeWidth='2'
-                    d='M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z'
-                  />
-                </svg>
-              </button>
-            </form>
-          </dialog>
-        </div> */}
       </nav>
     </Headroom>
   )

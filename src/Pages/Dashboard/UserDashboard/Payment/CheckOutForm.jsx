@@ -121,8 +121,8 @@ const CheckOutForm = ({ price, packages }) => {
           // className=" ag-gray-400 w-full p-2 mt-7 rounded"
           className={
             processing
-              ? 'processing primary-btn w-full p-2 mt-7 rounded'
-              : 'primary-btn w-full p-2 mt-7 rounded'
+              ? 'processing btn-primary w-full p-2 mt-7 rounded'
+              : 'btn-primary w-full p-2 mt-7 rounded'
           }
           type='submit'
           disabled={!stripe || processing}
@@ -132,7 +132,7 @@ const CheckOutForm = ({ price, packages }) => {
       </form>
       <div className=' mt-5'>
         {error && (
-          <p className='aext-red-600 mt-5 text-center'>Failed: {error}</p>
+          <p className='text-red-600 mt-5 text-center'>Failed: {error}</p>
         )}
         {success && (
           <p className='text-green-700 text-center'>
