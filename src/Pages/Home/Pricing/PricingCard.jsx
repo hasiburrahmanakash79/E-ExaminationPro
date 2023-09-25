@@ -9,34 +9,32 @@ const PricingCard = ({ price }) => {
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
-      behavior: 'smooth' // This smoothens the scroll animation
+      behavior: 'smooth'
     })
   }
-  // //console.log(price)
+
   return (
     <div
-      className={`hidden md:block w-72  pb-3 mx-auto space-y-4 text-center transition-all border rounded-lg shadow-md primary-bg   ${
+      className={`hidden md:block w-72  p-3 mx-auto space-y-4 text-center hover:transition-all border rounded-lg shadow-md bg-secondary ${
         price.name === 'Premium'
-          ? 'scale-110 hover:scale-110 '
+          ? 'scale-110 hover:scale-105  '
           : 'hover:scale-105'
       }
        hover:outline-blue-400 hover:outline translate hover:z-10 `}
     >
       <p className='my-2 text-lg font-bold'>{price.name}</p>
       <h3 className='text-xl'>${price.packageAmount}</h3>
-
-      {/* <ul className='flex flex-col divide-y divide-base-200 divider'> */}
       <div className='flex flex-col divider divide-purple-950 h-fit'>
         {price.features?.map((feature, index) => (
           <p
             key={index}
-            className='inline-flex items-center justify-center uppercase text-start'
+            className='inline-flex items-center justify-center ml-2 uppercase text-start'
           >
             {feature.name}
             {feature.available ? (
-              <FaCircleCheck className='ml-2 text-center  aext-slate-50' />
+              <FaCircleCheck className='ml-2 text-center text-primary' />
             ) : (
-              <MdCancel className='ml-2 text-lg text-center aext-red-500' />
+              <MdCancel className='ml-2 text-lg text-center text-red-500' />
             )}
           </p>
         ))}
@@ -47,7 +45,7 @@ const PricingCard = ({ price }) => {
           <Link
             onClick={user?.email && scrollToTop}
             to={!user?.email && '/login'}
-            className='btn-primary btn hover:outline-blue-400 hover:outline translate'
+            className='btn-primary btn hover:outline'
           >
             {' '}
             Start by Signing Up!
@@ -55,7 +53,9 @@ const PricingCard = ({ price }) => {
         ) : (
           <Link
             to={`/paymentOption/${price?._id}`}
-            className={` btn ${price.name === 'Premium' ? 'btn-info' : 'btn-accent'}
+            className={` btn ${
+              price.name === 'Premium' ? 'btn-info' : 'btn-primary'
+            }
        hover:outline-blue-400 hover:outline translate `}
           >
             {' '}

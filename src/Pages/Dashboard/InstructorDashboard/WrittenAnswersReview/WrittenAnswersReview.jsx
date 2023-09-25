@@ -1,13 +1,12 @@
 import React from 'react'
 import useWrittenReviews from '../../../../Hooks/useWrittenReviews/useWrittenReviews'
 import { Link } from 'react-router-dom'
-
+import Loading from '../../../../components/Loading/Loading'
 const WrittenAnswersReview = () => {
   const [writtenAnswers, loading, refetch] = useWrittenReviews()
   if (loading) {
-    return null
+    return <Loading />
   }
-  console.log(writtenAnswers)
   return (
     <div>
       <h1 className='text-lg text-center md:text-4xl md:my-6'>
@@ -18,7 +17,7 @@ const WrittenAnswersReview = () => {
         <div className='overflow-x-auto'>
           <table className='table table-xs table-pin-rows '>
             {/* head */}
-            <thead>
+            <thead className='text-primary'>
               <tr>
                 <th>
                   <label>#</label>

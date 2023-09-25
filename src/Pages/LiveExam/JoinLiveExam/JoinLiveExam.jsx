@@ -22,7 +22,7 @@ const JoinLiveExam = () => {
   }
   return (
     <div className='p-5'>
-      <div className='mx-auto mt-10 border-4 md:w-2/4 xl:w-1/4 p-7 rounded-2xl   shadow-md'>
+      <div className='mx-auto mt-10 border-2 shadow-md md:w-2/4 xl:w-1/4 p-7 rounded-2xl'>
         <form onSubmit={handleSubmit(onSubmit)} className=''>
           <div className='flex flex-col '>
             <h2 className='my-3 text-2xl text-center'>Live Exam Join Code</h2>
@@ -33,12 +33,11 @@ const JoinLiveExam = () => {
               className='rounded-md input input-bordered'
             />
           </div>
-
           <div className='flex justify-center gap-5 mt-5 md:justify-end'>
             <div className='mt-5 '>
               <button
                 onClick={() => cancelSubmit()}
-                className='btn primary-bg'
+                className='btn btn-secondary'
                 type='submit'
               >
                 Cancel
@@ -48,7 +47,7 @@ const JoinLiveExam = () => {
               <Link to='/examRoom'>
                 <button
                   onClick={() => handleClick()}
-                  className='btn primary-btn'
+                  className='btn btn-primary'
                   type='submit'
                 >
                   Submit
