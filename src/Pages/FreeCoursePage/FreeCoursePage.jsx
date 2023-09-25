@@ -89,6 +89,11 @@ const FreeCoursePage = () => {
           setCurrentPage={setCurrentPage}
         ></Pagination>
       </div>
+      {/* <Pagination
+          totalPages={totalPages}
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
+        ></Pagination> */}
     </div>
   )
 }
