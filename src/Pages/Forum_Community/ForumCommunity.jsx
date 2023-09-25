@@ -1,8 +1,6 @@
-import { Suspense, lazy } from 'react'
 import { Helmet } from 'react-helmet-async'
-const ArticleField = lazy(() => import('./ArticleField'))
-const PostInput = lazy(() => import('./PostInput'))
-import Loading from '../../Components/Loading/Loading'
+import ArticleField from './ArticleField'
+import PostInput from './PostInput'
 
 const ForumCommunity = () => {
   return (
@@ -12,9 +10,7 @@ const ForumCommunity = () => {
       </Helmet>
       <div className='pt-8 pb-16'>
         <PostInput />
-        <Suspense fallback={<Loading />}>
-          <ArticleField />
-        </Suspense>
+        <ArticleField />
       </div>
     </div>
   )

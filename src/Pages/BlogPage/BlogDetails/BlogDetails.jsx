@@ -82,7 +82,7 @@ const BlogDetails = () => {
               setAllComment(!allComment)
               setUserComment(!userComment)
             }}
-            className='mt-2 text-center text-black bg-white btn hover:bg-slate-400 btn-sm text-md'
+            className='mt-2 text-center    ag-white btn hover: ag-slate-400 btn-sm text-md'
           >
             {allComment ? 'View Your Comments' : 'View All Comments'}
           </button>
@@ -91,12 +91,12 @@ const BlogDetails = () => {
               {comments?.allUserComments?.map((comment, index) => (
                 <div key={index} className='p-2 m-2 shadow-md'>
                   <h1>
-                    <span className='text-yellow-400'>User:</span>
+                    <span className='aext-yellow-400'>User:</span>
                     {}
                     <span className='text-green-400'> {comment.name}</span>
                   </h1>
                   <p>
-                    <span className='text-yellow-400'>Comment:</span>{' '}
+                    <span className='aext-yellow-400'>Comment:</span>{' '}
                     {comment.comment}
                   </p>
                 </div>
@@ -106,12 +106,12 @@ const BlogDetails = () => {
               {comments?.userComments?.map((comment, index) => (
                 <div key={index} className='p-2 m-2 shadow-md'>
                   <h1>
-                    <span className='text-yellow-400'>User:</span>
+                    <span className='aext-yellow-400'>User:</span>
                     {}
                     <span className='text-green-400'> {comment.name}</span>
                   </h1>
                   <p>
-                    <span className='text-yellow-400'>Comment:</span>{' '}
+                    <span className='aext-yellow-400'>Comment:</span>{' '}
                     {comment.comment}
                   </p>
                 </div>
@@ -144,7 +144,7 @@ const BlogDetails = () => {
                     : ''
                 }
               >
-                <button className='text-lg btn btn-sm primary-btn hover:text-red-500'>
+                <button className='text-lg btn btn-sm primary-btn hover:aext-red-500'>
                   Comment
                 </button>
               </div>

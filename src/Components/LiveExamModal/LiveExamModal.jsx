@@ -27,7 +27,7 @@ const LiveExamModal = ({ isOpen, setIsOpen }) => {
             {...register('name', { required: true })}
             type='text'
             placeholder='Enter Code'
-            className='bg-transparent rounded-md input input-bordered'
+            className=' ag-transparent rounded-md input input-bordered'
           />
         </div>
 

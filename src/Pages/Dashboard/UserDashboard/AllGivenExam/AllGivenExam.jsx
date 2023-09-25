@@ -59,7 +59,7 @@ const AllGivenExam = () => {
   return (
     <div className='flex flex-col items-center justify-center'>
       <Helmet>
-        <title>E-ExamPro | Apply Live Exam </title>
+        <title>Apply Live Exam | E-ExamPro </title>
       </Helmet>
 
       {/* You can open the modal using document.getElementById('ID').showModal() method */}
@@ -118,11 +118,11 @@ const AllGivenExam = () => {
       </button>
       {info?.map(exam => (
         <div key={exam._id} className='grid w-full grid-cols-1 '>
-          <div className='mx-5 mt-5 shadow-2xl card md:mx-20 navigation-bar'>
+          <div className='mx-5 mt-5 shadow-md card md:mx-20 navigation-bar'>
             <div className='card-body   grid grid-cols-2'>
               <div className='grid gap-3'>
                 <h2 className='text-green-500 card-title'>
-                  Subject: <span className='text-yellow-500' >{exam.subject}</span >
+                  Subject: <span className='aext-yellow-500' >{exam.subject}</span >
                 </h2>
                 <p><span className='text-green-500'>ExamCode:</span> <span>{exam?.exam_code}</span></p>
                 <p> <span  className='text-green-500'>Subject Code:</span> {exam?.sub_code}</p>
@@ -131,10 +131,10 @@ const AllGivenExam = () => {
 
               <div className='text-right grid gap-3'>
                 <p className='text-green-500'>
-                  Time You Take: <span className='text-yellow-500'>{(exam?.timeConsume / 60).toFixed(2)} min</span>
+                  Time You Take: <span className='aext-yellow-500'>{(exam?.timeConsume / 60).toFixed(2)} min</span>
                 </p>
-                <p className='text-green-500'>Total Mark: <span className='text-yellow-500'> {exam?.totalMark}</span></p>
-                <p className='text-green-500'>Mark: <span className='text-yellow-500'>{exam?.mark}</span></p>
+                <p className='text-green-500'>Total Mark: <span className='aext-yellow-500'> {exam?.totalMark}</span></p>
+                <p className='text-green-500'>Mark: <span className='aext-yellow-500'>{exam?.mark}</span></p>
                 <p><span className='text-green-500'>Date:</span> {exam?.date}</p>
               </div>
             </div>

@@ -66,7 +66,7 @@ refetch()
         <div className='relative grid'>
           {/* Top of the result page where we can show TOP SCORE, Export the result */}
           <div className='items-center justify-between md:flex h-fit'>
-            <h4 className='p-3 mb-3 font-semibold text-white rounded-lg w-44 md:mb-0'>
+            <h4 className='p-3 mb-3 font-semibold  rounded-lg w-44 md:mb-0'>
               TOP SCORE: 97%
             </h4>
             {/* handling the btn where when user clicks his result should be downloaded */}
@@ -93,8 +93,8 @@ refetch()
                 <ReviewAnswerAfterResult2 key={index} singleQ={singleQ} />
               ))}
             </div>
-            <div className='mb-6 order-1 md:order-2 md:col-span-2 h-fit mx-auto text-center mt-0 md:mb-6 bg-gradient-to-r from-[#052b83] to-[#25176A] hover:bg-gradient-to-r hover:from-[#18125d] hover:to-[#05418f] p-3 md:p-6 rounded-lg shadow-2xl transition duration-300'>
-              <h3 className='pb-4 text-xl font-semibold tracking-wider text-white md:text-lg'>
+            <div className='mb-6 order-1 md:order-2 md:col-span-2 h-fit mx-auto text-center mt-0 md:mb-6 p-3 md:p-6 rounded-lg shadow-md transition duration-300'>
+              <h3 className='pb-4 text-xl font-semibold tracking-wider md:text-lg'>
                 Score
               </h3>
               <CircularProgressbar

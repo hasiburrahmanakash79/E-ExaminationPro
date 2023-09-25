@@ -148,7 +148,7 @@ const Exam = () => {
       {countdown > 0 ? (
         <div className=' h-[80vh] flex flex-col justify-center items-center '>
           <div className='text-center '>
-            <h1 className='my-1 font-bold text-red-600 text-9xl'>
+            <h1 className='my-1 font-bold aext-red-600 text-9xl'>
               {' '}
               {countdown}
             </h1>
@@ -191,7 +191,7 @@ const Exam = () => {
                           </button>
                         ) : (
                           <button
-                            className='text-white border-none shadow-lg btn primary-bg'
+                            className='  border-none shadow-md btn primary-bg'
                             onClick={toggleHint}
                           >
                             Show Hint
@@ -254,7 +254,7 @@ const Exam = () => {
                           </button>
                         ) : (
                           <button
-                            className='text-white border-none shadow-lg btn primary-bg'
+                            className='  border-none shadow-md btn primary-bg'
                             onClick={toggleHint}
                           >
                             Show Hint

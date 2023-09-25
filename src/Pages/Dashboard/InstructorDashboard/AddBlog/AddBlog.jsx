@@ -51,7 +51,7 @@ const AddBlog = () => {
         <title>E-ExamPro | Add Blog </title>
       </Helmet>
 
-      <div className="md:w-2/3 mx-auto p-5 rounded-xl bg-white/5 shadow-2xl mt-14">
+      <div className="md:w-2/3 mx-auto p-5 rounded-xl   shadow-md mt-14">
         <h2 className="my-10 text-3xl">Add Blog</h2>
         <form onSubmit={handleBlogAdding} className="text-center">
           <div className="grid gap-5 p-5 md:grid-cols-2 ">
@@ -63,7 +63,7 @@ const AddBlog = () => {
                 type="text"
                 name="image_url"
                 placeholder="Photo URL"
-                className="w-full input input-bordered bg-transparent"
+                className="w-full input input-bordered  ag-transparent"
                 required
               />
             </div>
@@ -75,7 +75,7 @@ const AddBlog = () => {
                 type="text"
                 name="title"
                 placeholder="Blog Title"
-                className="w-full input input-bordered bg-transparent"
+                className="w-full input input-bordered  ag-transparent"
                 required
               />
             </div>
@@ -87,7 +87,7 @@ const AddBlog = () => {
                 type="date"
                 name="publishing_date"
                 placeholder="Publishing Date"
-                className="w-full input input-bordered bg-transparent"
+                className="w-full input input-bordered  ag-transparent"
                 required
               />
             </div>
@@ -99,7 +99,7 @@ const AddBlog = () => {
                 type="text"
                 name="instructorName"
                 placeholder="Publisher Name"
-                className="w-full input input-bordered bg-transparent"
+                className="w-full input input-bordered  ag-transparent"
                 required
               />
             </div>
@@ -108,7 +108,7 @@ const AddBlog = () => {
                 <span className="label-text">Blog Description</span>
               </label>
               <textarea
-                className="w-full textarea textarea-bordered bg-transparent"
+                className="w-full textarea textarea-bordered  ag-transparent"
                 name="content"
                 placeholder="Blog Description"
                 required

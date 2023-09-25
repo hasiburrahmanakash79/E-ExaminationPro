@@ -45,12 +45,12 @@ const AppliedLiveExam = () => {
   return (
     <div className='flex flex-col items-center justify-center'>
       <Helmet>
-        <title>E-ExamPro | Apply Live Exam </title>
+        <title>Apply Live Exam | E-ExamPro </title>
       </Helmet>
       <h2 className='text-2xl'>AppliedLiveExam</h2>
       {appliedExam?.map(exam => (
         <div key={exam._id} className='grid w-full grid-cols-1 '>
-          <div className='mx-5 mt-5 shadow-2xl card md:mx-20 navigation-bar'>
+          <div className='mx-5 mt-5 shadow-md card md:mx-20 navigation-bar'>
             <div className='card-body'>
               <h2 className='card-title'>Subject: {exam.subjectName}</h2>
               <p>ExamCode: {exam?.examCode}</p>
@@ -61,7 +61,7 @@ const AppliedLiveExam = () => {
                   <p className='mb-2'>Date: {exam?.date}</p>
 
                   <div className='grid grid-cols-2 '>
-                    <h1 className='text-red-500 '>Code: </h1>
+                    <h1 className='aext-red-500 '>Code: </h1>
                     {code == null ? (
                       <LocalToastTarget name='btn'>
                         <button
@@ -72,7 +72,7 @@ const AppliedLiveExam = () => {
                         </button>
                       </LocalToastTarget>
                     ) : (
-                      <button className='text-black bg-white btn btn-sm hover:bg-white'>
+                      <button className='   ag-white btn btn-sm hover: ag-white'>
                         {code}
                       </button>
                     )}

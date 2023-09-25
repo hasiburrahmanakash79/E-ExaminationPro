@@ -10,7 +10,7 @@ const Achievement = () => {
       <h1
         data-aos="zoom-in-down"
         data-aos-duration="800"
-        className="text-center text-4xl font-bold pt-10"
+        className="text-center text-4xl font-bold py-10"
       >
         Our Achievement
       </h1>

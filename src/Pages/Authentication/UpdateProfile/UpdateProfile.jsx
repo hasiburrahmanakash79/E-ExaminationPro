@@ -102,14 +102,14 @@ const UpdateProfile = () => {
               <div className='w-80 mx-auto'>
                 <img
                   src={info?.photoURL ? info?.photoURL : defaultPic}
-                  className=' border-2 border-violet-600 rounded-lg mb-2 p-3 '
+                  className=' border-2   rounded-lg mb-2 p-3 '
                   alt=''
                 />
-                <div className='form-control rounded-lg border-2 border-violet-600 items-center my-5'>
+                <div className='form-control rounded-lg border-2   items-center my-5'>
                   <input
                     name='image'
                     type='file'
-                    className=' col-span-5 file-input w-full bg-transparent'
+                    className=' col-span-5 file-input w-full  ag-transparent'
                   />
                 </div>
               </div>
@@ -117,34 +117,34 @@ const UpdateProfile = () => {
             <div>
               <div className='form-control  grid grid-cols-6 mt-2'>
                 <label className='label col-span-1'>
-                  <span className='label-text text-white'>Name:</span>
+                  <span className='label-text '>Name:</span>
                 </label>
-                <h1 className=' col-span-5 input input-sm text-slate-900 bg-slate-200 shadow-lg'>
+                <h1 className=' col-span-5 input input-sm  aext-slate-900  ag-slate-200 shadow-md'>
                   {info?.displayName}
                 </h1>
               </div>
 
               <div className='form-control  grid grid-cols-6 my-2'>
                 <label className='label col-span-1'>
-                  <span className='label-text text-white'>Email:</span>
+                  <span className='label-text '>Email:</span>
                 </label>
-                <h1 className=' col-span-5 input input-sm text-slate-900 bg-slate-200 shadow-lg'>
+                <h1 className=' col-span-5 input input-sm  aext-slate-900  ag-slate-200 shadow-md'>
                   {info?.email}
                 </h1>
               </div>
               <div className='form-control grid grid-cols-6 my-2'>
                 <label className='label col-span-1'>
-                  <span className='label-text text-white'>Batch:</span>
+                  <span className='label-text '>Batch:</span>
                 </label>
                 <input
                   name='batch'
                   placeholder={info?.batch}
-                  className='col-span-5 input input-sm text-slate-900 bg-slate-200 shadow-lg'
+                  className='col-span-5 input input-sm  aext-slate-900  ag-slate-200 shadow-md'
                 />
               </div>
               <div className='form-control grid grid-cols-6 my-2'>
                 <label className='label col-span-1'>
-                  <span className='label-text text-white'>Gender:</span>
+                  <span className='label-text '>Gender:</span>
                 </label>
                 <div className='col-span-5 flex gap-10 items-center space-x-4'>
                   <label className='radio radio-inline flex gap-2 '>
@@ -154,7 +154,7 @@ const UpdateProfile = () => {
                       value='male'
                       className='radio radio-primary'
                     />
-                    <span className='text-white'>Male</span>
+                    <span className=' '>Male</span>
                   </label>
                   <label className='radio radio-inline flex gap-2'>
                     <input
@@ -163,27 +163,27 @@ const UpdateProfile = () => {
                       value='female'
                       className='radio radio-primary'
                     />
-                    <span className='text-white'>Female</span>
+                    <span className=' '>Female</span>
                   </label>
                 </div>
               </div>
               <div className='form-control grid grid-cols-6 my-2'>
                 <label className='label col-span-1'>
-                  <span className='label-text text-white'>Address:</span>
+                  <span className='label-text '>Address:</span>
                 </label>
                 <input
                   placeholder={info?.address}
                   name='address'
-                  className='col-span-5 input input-sm text-slate-900 bg-slate-200 shadow-lg'
+                  className='col-span-5 input input-sm  aext-slate-900  ag-slate-200 shadow-md'
                 />
               </div>
               <div className='form-control grid  grid-cols-6 my-2'>
                 <label className='label col-span-1'>
-                  <span className='label-text text-white'>Mobile:</span>
+                  <span className='label-text '>Mobile:</span>
                 </label>
                 <input
                   placeholder={info?.mobile}
-                  className='col-span-5 input input-sm text-slate-900 bg-slate-200 shadow-lg'
+                  className='col-span-5 input input-sm  aext-slate-900  ag-slate-200 shadow-md'
                   name='mobile'
                 />
               </div>

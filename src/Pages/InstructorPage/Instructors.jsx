@@ -23,14 +23,12 @@ const Instructors = () => {
       <Helmet>
         <title>E-ExamPro | Instructor</title>
       </Helmet>
-      <h1 className='mb-10 text-4xl font-bold text-center text-white'>
-        Our Instructors
-      </h1>
+      <h1 className='mb-10 text-4xl font-bold text-center '>Our Instructors</h1>
       <div className='grid gap-5 px-6 py-5 md:grid-cols-2 lg:grid-cols-3 '>
         {instructors.slice(0, displayCount).map(instructor => (
           <Suspense fallback={<Loading />}>
             <InstructorCard
-              key={instructor.id}
+              key={instructor._id}
               instructor={instructor}
             ></InstructorCard>
           </Suspense>

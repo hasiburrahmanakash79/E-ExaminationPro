@@ -38,7 +38,7 @@ const AllUserPayment = () => {
                 <td>{history.transactionId}</td>
                 <td>{history.packageName}</td>
                 <td>{history.date}</td>
-                <td className='p-2 bg-red-500 rounded'>{history.Status}</td>
+                <td className='p-2  ag-red-500 rounded'>{history.Status}</td>
               </tr>
             ))}
           </tbody>

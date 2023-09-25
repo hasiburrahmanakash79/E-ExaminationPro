@@ -15,14 +15,14 @@ const PricingCard = ({ price }) => {
   // //console.log(price)
   return (
     <div
-      className={`hidden md:block w-72  pb-3 mx-auto space-y-4 text-center transition-all border rounded-lg shadow-2xl primary-bg border-slate-200 ${
+      className={`hidden md:block w-72  pb-3 mx-auto space-y-4 text-center transition-all border rounded-lg shadow-md primary-bg   ${
         price.name === 'Premium'
           ? 'scale-110 hover:scale-110 '
           : 'hover:scale-105'
       }
        hover:outline-blue-400 hover:outline translate hover:z-10 `}
     >
-      <p className='my-2 text-lg font-bold text-yellow-400'>{price.name}</p>
+      <p className='my-2 text-lg font-bold'>{price.name}</p>
       <h3 className='text-xl'>${price.packageAmount}</h3>
 
       {/* <ul className='flex flex-col divide-y divide-base-200 divider'> */}
@@ -34,9 +34,9 @@ const PricingCard = ({ price }) => {
           >
             {feature.name}
             {feature.available ? (
-              <FaCircleCheck className='ml-2 text-center text-slate-50' />
+              <FaCircleCheck className='ml-2 text-center  aext-slate-50' />
             ) : (
-              <MdCancel className='ml-2 text-lg text-center text-red-500' />
+              <MdCancel className='ml-2 text-lg text-center aext-red-500' />
             )}
           </p>
         ))}
@@ -55,7 +55,7 @@ const PricingCard = ({ price }) => {
         ) : (
           <Link
             to={`/paymentOption/${price?._id}`}
-            className={` btn ${price.name === 'Premium' ? 'btn-info' : ''}
+            className={` btn ${price.name === 'Premium' ? 'btn-info' : 'btn-accent'}
        hover:outline-blue-400 hover:outline translate `}
           >
             {' '}

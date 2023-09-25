@@ -35,7 +35,7 @@ const ExamResult = () => {
 
     <>
       { isLoading ? (
-        <div className="text-red-400 text-4xl flex justify-center items-center h-[70vh]">
+        <div className="aext-red-400 text-4xl flex justify-center items-center h-[70vh]">
           <h1>
             <Hourglass
               visible={true}
@@ -44,14 +44,14 @@ const ExamResult = () => {
               ariaLabel="hourglass-loading"
               wrapperStyle={{}}
               wrapperClass=""
-              colors={["#7710de", "#d6061b"]}
+              colors={["#ffffff", "#000000"]}
             />
           </h1>
         </div>
       ) : (
         <div>
           {results?.length == 0 ? (
-            <div className="text-red-400 text-4xl flex justify-center items-center h-[70vh]">
+            <div className="aext-red-400 text-4xl flex justify-center items-center h-[70vh]">
               <h1>
                 <Typewriter
                   speed={200}

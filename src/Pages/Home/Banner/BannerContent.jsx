@@ -6,25 +6,21 @@ const BannerContent = () => {
       <h4
         data-aos="fade-left"
         data-aos-duration="1900"
-        className="mb-2 md:mb-6 text-lg md:text-3xl text-white text-center"
+        className="mb-2 md:mb-6 text-lg md:text-3xl text-center"
       >
-        Get Ready For The Battle Of Examination
+        Welcome to
       </h4>
-      <h4
-        data-aos="fade-up"
-        data-aos-duration="2200"
-        className="md:mb-6 text-sm md:text-xl text-white"
-      >
-        with
-      </h4>
-
       <h1
         data-aos="fade-right"
         data-aos-duration="2500"
-        className="md:mb-10 font-semibold text-white text-2xl  md:text-7xl"
+        className="md:mb-7 font-semibold  text-2xl  md:text-7xl"
       >
         E-ExamPro
       </h1>
+      <p>
+        Exercise your brain with these interesting quizzes and puzzles; <br />{" "}
+        win points, badges, prizes and impress your friends & colleagues!
+      </p>
 
       <Link
         to="/allSubjects"

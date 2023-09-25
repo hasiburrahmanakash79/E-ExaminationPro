@@ -2,7 +2,7 @@ import { Accordion, AccordionDetails, AccordionSummary, Typography } from "@mui/
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 const CommentField = ({ label, type }) => {
-
+    /* What's up bro tumake amer Lagtace nah okay! */
     return (
         <div className="">
             <div className="mb-4">
@@ -12,9 +12,9 @@ const CommentField = ({ label, type }) => {
                     type={type}
                     variant="filled"
                     placeholder="Comment"
-                    className="w-10/12 bg-zinc-300 text-slate-900 focus:outline-none border rounded-md py-2 px-4 "
+                    className="w-10/12  ag-zinc-300  aext-slate-900 focus:outline-none border rounded-md py-2 px-4 "
                 />
-                <button className="bg-blue-500 py-2 px-5 text-white rounded-lg md:ml-2 my-3">Comment</button>
+                <button className=" ag-blue-500 py-2 px-5  rounded-lg md:ml-2 my-3">Comment</button>
             </div>
 
             <Accordion>
@@ -36,10 +36,10 @@ const CommentField = ({ label, type }) => {
                                 className="flex items-center justify-between">
                                 <div
                                     className="flex items-center">
-                                    <p className="w-7 h-7 rounded-full bg-sky-600"></p>
-                                    <p className="pl-3 leading-1 text-slate-900">First Comment</p>
+                                    <p className="w-7 h-7 rounded-full  ag-sky-600"></p>
+                                    <p className="pl-3 leading-1  aext-slate-900">First Comment</p>
                                 </div>
-                                <p className="text-slate-600 md:text-sm text-xs">sep 04 2023, 3:47AM </p>
+                                <p className="  md:text-sm text-xs">sep 04 2023, 3:47AM </p>
                             </div>
                             <div
 
@@ -48,26 +48,26 @@ const CommentField = ({ label, type }) => {
                                 <p className="text-sm ">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
                                 <div className="flex items-center justify-between mt-5">
                                     <div className="flex items-center gap-5">
-                                        <p className="cursor-pointer text-sm text-slate-600"><span className="text-sm text-red-500">4 </span> Like</p>
-                                        <p className="cursor-pointer text-sm text-slate-600"><span className="text-sm text-yellow-500">5 </span> Comment</p>
+                                        <p className="cursor-pointer text-sm  "><span className="text-sm aext-red-500">4 </span> Like</p>
+                                        <p className="cursor-pointer text-sm  "><span className="text-sm aext-yellow-500">5 </span> Comment</p>
                                     </div>
                                 </div>
                             </div>
                             {/* First Comment */}
-                            {/* <div className="p-3 shadow-2xl rounded-md my-3">
+                            {/* <div className="p-3 shadow-md rounded-md my-3">
                                 <div className="flex items-center justify-between">
                                     <div className="flex items-center">
-                                        <p className="w-7 h-7 rounded-full bg-sky-600"></p>
-                                        <p className="pl-3 leading-1 text-slate-700">First Comment</p>
+                                        <p className="w-7 h-7 rounded-full  ag-sky-600"></p>
+                                        <p className="pl-3 leading-1  ">First Comment</p>
                                     </div>
-                                    <p className="text-slate-600 md:text-sm text-xs">sep 04 2023, 3:47AM </p>
+                                    <p className="  md:text-sm text-xs">sep 04 2023, 3:47AM </p>
                                 </div>
                                 <div className="pt-2 md:pl-9 pl-4">
                                     <p className="text-sm ">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
                                     <div className="flex items-center justify-between mt-5">
                                         <div className="flex items-center gap-5">
-                                            <p className="cursor-pointer text-sm text-slate-600"><span className="text-sm text-red-500">4 </span> Like</p>
-                                            <p className="cursor-pointer text-sm text-slate-600"><span className="text-sm text-yellow-500">5 </span> reply</p>
+                                            <p className="cursor-pointer text-sm  "><span className="text-sm aext-red-500">4 </span> Like</p>
+                                            <p className="cursor-pointer text-sm  "><span className="text-sm aext-yellow-500">5 </span> reply</p>
                                         </div>
                                     </div>
                                 </div>
@@ -77,17 +77,17 @@ const CommentField = ({ label, type }) => {
                         <div className="p-3 shadow-md rounded-md ">
                             <div className="flex items-center justify-between">
                                 <div className="flex items-center">
-                                    <p className="w-7 h-7 rounded-full bg-sky-600"></p>
-                                    <p className="pl-3 leading-1 text-slate-700">Second Comment</p>
+                                    <p className="w-7 h-7 rounded-full  ag-sky-600"></p>
+                                    <p className="pl-3 leading-1  ">Second Comment</p>
                                 </div>
-                                <p className="text-slate-600 md:text-sm text-xs">sep 04 2023, 3:47AM </p>
+                                <p className="  md:text-sm text-xs">sep 04 2023, 3:47AM </p>
                             </div>
                             <div className="pt-2 md:pl-9 pl-4">
                                 <p className="text-sm ">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
                                 <div className="flex items-center justify-between mt-5">
                                     <div className="flex items-center gap-5">
-                                        <p className="cursor-pointer text-sm text-slate-600"><span className="text-sm text-red-500">4 </span> Like</p>
-                                        <p className="cursor-pointer text-sm text-slate-600"><span className="text-sm text-yellow-500">5 </span> Comment</p>
+                                        <p className="cursor-pointer text-sm  "><span className="text-sm aext-red-500">4 </span> Like</p>
+                                        <p className="cursor-pointer text-sm  "><span className="text-sm aext-yellow-500">5 </span> Comment</p>
                                     </div>
                                 </div>
                             </div>
