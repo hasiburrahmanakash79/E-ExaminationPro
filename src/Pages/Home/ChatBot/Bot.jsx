@@ -60,7 +60,7 @@ const Bot = () => {
                   chat.role === 'user' ? 'flex-row-reverse' : ''
                 }  ag-darkslategray max-w-70 p-4  rounded-50`}
               >
-                <span className='aext-yellow-600'>
+                <span className='text-yellow-600'>
                   {chat.role.toUpperCase()}
                 </span>
                 <span> : </span>

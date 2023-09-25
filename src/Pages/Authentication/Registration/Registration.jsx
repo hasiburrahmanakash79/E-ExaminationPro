@@ -135,7 +135,7 @@ const Registration = () => {
                       className=' ag-transparent input input-bordered'
                     />
                     <label className='label'>
-                      <a className='label-aext-alt link link-hover'>
+                      <a className='label-text-alt link link-hover'>
                         <p onClick={() => setPassShow(!passShow)}>
                           <small>
                             {passShow ? (
@@ -191,7 +191,7 @@ const Registration = () => {
                       />
                     </div>
                     {errors.image && (
-                      <span className='mt-1 aext-red-500'>
+                      <span className='mt-1 text-red-500'>
                         Image field is required
                       </span>
                     )}

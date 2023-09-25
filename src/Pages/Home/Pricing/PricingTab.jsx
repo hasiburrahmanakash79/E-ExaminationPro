@@ -60,7 +60,7 @@ const PricingTab = () => {
                   <p className="my-2 text-xl font-bold ">
                     {price.name} Package
                   </p>
-                  <h3 className="py-4 text-xl aext-accent">
+                  <h3 className="py-4 text-xl ">
                     ${price.packageAmount}
                   </h3>
                 </div>
@@ -71,9 +71,9 @@ const PricingTab = () => {
                   >
                     {feature.name}
                     {feature.available ? (
-                      <FaCircleCheck className="ml-2 text-center aext-accent" />
+                      <FaCircleCheck className="ml-2 text-center " />
                     ) : (
-                      <MdCancel className="ml-2 text-lg text-center aext-red-500" />
+                      <MdCancel className="ml-2 text-lg text-center text-red-500" />
                     )}
                   </p>
                 ))}

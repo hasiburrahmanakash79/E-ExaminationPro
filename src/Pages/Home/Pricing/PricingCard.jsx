@@ -15,10 +15,10 @@ const PricingCard = ({ price }) => {
   // //console.log(price)
   return (
     <div
-      className={`hidden md:block w-72  pb-3 mx-auto space-y-4 text-center transition-all border rounded-lg shadow-md primary-bg   ${
+      className={`hidden md:block w-72  pb-3 mx-auto space-y-4 text-center transition-all border rounded-lg shadow-md bg-secondary ${
         price.name === 'Premium'
           ? 'scale-110 hover:scale-110 '
-          : 'hover:scale-105'
+          : 'hover:scale-105' 
       }
        hover:outline-blue-400 hover:outline translate hover:z-10 `}
     >
@@ -34,9 +34,9 @@ const PricingCard = ({ price }) => {
           >
             {feature.name}
             {feature.available ? (
-              <FaCircleCheck className='ml-2 text-center  aext-slate-50' />
+              <FaCircleCheck className='ml-2 text-center ' />
             ) : (
-              <MdCancel className='ml-2 text-lg text-center aext-red-500' />
+              <MdCancel className='ml-2 text-lg text-center text-red-500' />
             )}
           </p>
         ))}

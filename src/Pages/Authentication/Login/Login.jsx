@@ -78,7 +78,7 @@ const Login = () => {
                     className=' ag-transparent input input-bordered'
                   />
                   {errors.email && (
-                    <span className='mt-1 aext-red-500'>
+                    <span className='mt-1 text-red-500'>
                       Email field is required
                     </span>
                   )}
