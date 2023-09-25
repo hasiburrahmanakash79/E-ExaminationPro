@@ -3,7 +3,7 @@ const EditDeleteShow = ({ showContextMenu, handleContextMenuClick, handleDelete,
     return (
         <div>
             {showContextMenu && (
-                <div className="absolute top-6 right-10 p-3 w-28 rounded-md shadow-md">
+                <div className="absolute top-6 right-10 p-3 w-28 bg-success rounded-md shadow-md">
                     <ul>
                         <li onClick={() => handleContextMenuClick("Edit")} className="cursor-pointer">
                             Edit

@@ -166,7 +166,7 @@ const SSLCart = () => {
           <input
             type="submit"
             value="Pay Now"
-            className="w-1/2 py-3 mx-auto text-center duration-300 rounded-md cursor-pointer  primary-btn"
+            className="w-1/2 py-3 mx-auto text-center duration-300 rounded-md cursor-pointer btn btn-success text-white tracking-wider"
           />
         </div>
       </form>

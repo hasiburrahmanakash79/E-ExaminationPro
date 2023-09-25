@@ -3,8 +3,8 @@ import video from '../../../../src/assets/demo.mp4'
 
 const DemoTestSection = () => {
   return (
-    <section className='my-10 md:my-24'>
-      <div className='px-10 py-20 text-center rounded-lg primary-bg md:text-left'>
+    <section className=''>
+      <div className='px-10 md:pb-20 text-center rounded-lg primary-bg md:text-left'>
         <h1
           data-aos='zoom-in-down'
           data-aos-duration='600'

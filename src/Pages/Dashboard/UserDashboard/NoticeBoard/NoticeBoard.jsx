@@ -1,9 +1,13 @@
 import { Link } from "react-router-dom";
 import { FaArrowCircleRight } from "react-icons/fa";
+import { Helmet } from "react-helmet-async";
 
 const NoticeBoard = () => {
   return (
     <>
+    <Helmet>
+        <title> Notice Board | E-ExamPro</title>
+      </Helmet>
       <div>
         <h2 className="text-2xl">Notice Board</h2>
       </div>

@@ -63,6 +63,7 @@ const ReplyField = ({ postId, refetch, setCommentPostText, comment, setReplyHide
                             cols="40"
                             value={text}
                             onChange={(e) => setText(e.target.value)}
+                            placeholder="Write your comment"
                             required
                             className="md:block hidden focus:outline-none text-sm  rounded-md p-2"
                         ></textarea>

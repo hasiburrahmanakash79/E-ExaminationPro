@@ -8,7 +8,7 @@ import Swal from 'sweetalert2'
 import Loading from '../../../Components/Loading/Loading'
 import { Helmet } from 'react-helmet-async'
 import Lottie from 'lottie-react'
-import educationLottie from "../../../assets/animationFile/educational.json"
+import loginLottie from "../../../assets/animationFile/login.json"
 const Login = () => {
   const [passShow, setPassShow] = useState(false)
   const [randomNumbers, setRandomNumbers] = useState([])
@@ -16,10 +16,6 @@ const Login = () => {
   const { logInUser, loading } = useContext(AuthContext)
 
   const navigate = useNavigate()
-  // const location = useLocation()
-
-  // const from = location.state?.from?.pathname || '/'
-
   useEffect(() => {
     const newRandomNumbers = Array.from({ length: 6 }, () =>
       Math.floor(Math.random() * 10)
@@ -55,11 +51,10 @@ const Login = () => {
       </Helmet>
       <div className='min-h-screen hero'>
         <div className='items-center justify-between gap-12 px-3 md:flex'>
-          <div className='md:w-1/2'>
-            {/* <img src='https://i.ibb.co/jDMz1bj/login-page-banner.png' alt='' /> */}
+        <div className='md:w-1/2 md:mb-0 mb-8'>
             <Lottie
-              animationData={educationLottie}
-              loop={true} className=" md:w-10/12 mx-auto" />
+              animationData={loginLottie}
+              loop={true} className="w-full md:h-[500px]" />
           </div>
           <div className='flex-shrink-0 w-full  ag-transparent border   rounded-lg shadow-xl md:w-1/2 card backdrop-blur-sm'>
             <div className='text-center '>
