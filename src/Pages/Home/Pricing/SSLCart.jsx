@@ -76,7 +76,7 @@ const SSLCart = () => {
             </label>
             <br />
             <input
-              className='w-full p-3 border-2 rounded-md shadow-md ag-transparent focus:outline-none '
+              className='w-full p-3 bg-transparent border-2 rounded-md shadow-md focus:outline-none '
               defaultValue={user?.displayName}
               required
               {...register('userName')}
@@ -88,7 +88,7 @@ const SSLCart = () => {
             </label>
             <br />
             <input
-              className='w-full p-3 border-2 rounded-md shadow-md ag-transparent focus:outline-none '
+              className='w-full p-3 bg-transparent border-2 rounded-md shadow-md focus:outline-none '
               required
               defaultValue={user?.email}
               {...register('email')}
@@ -103,7 +103,7 @@ const SSLCart = () => {
             <br />
             <input
               type='number'
-              className='w-full p-3 text-black border-2 rounded-md shadow-md focus:outline-none'
+              className='w-full p-3 bg-transparent border-2 rounded-md shadow-md focus:outline-none'
               placeholder='+8801000-000000'
               required
               {...register('phone')}
@@ -115,7 +115,7 @@ const SSLCart = () => {
             </label>
             <br />
             <input
-              className='w-full p-3 border-2 rounded-md shadow-md ag-transparent focus:outline-none '
+              className='w-full p-3 bg-transparent border-2 rounded-md shadow-md focus:outline-none '
               defaultValue={user?.address}
               placeholder='Please your address'
               required
@@ -131,22 +131,19 @@ const SSLCart = () => {
           <select
             {...register('currency')}
             required
-            className='w-full p-3 text-black border-2 rounded-md shadow-md focus:outline-none '
+            className='w-full p-3 bg-transparent border-2 rounded-md shadow-md focus:outline-none '
           >
-            <option className='' value='USD'>
+            <option className='text-black' value='USD'>
               USD
             </option>
-            <option className='' value='BDT'>
+            <option className='text-black' value='BDT'>
               BDT
             </option>
-            <option className='' value='EUR'>
+            <option className='text-black' value='EUR'>
               EUR
             </option>
-            <option className='' value='IND'>
-              IND
-            </option>
-            <option className='' value='PAK'>
-              PAK
+            <option className='text-black' value='IND'>
+              RUP
             </option>
           </select>
         </div>

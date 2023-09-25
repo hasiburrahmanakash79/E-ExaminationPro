@@ -47,8 +47,7 @@ const PricingCard = ({ price }) => {
             to={!user?.email && '/login'}
             className='btn-primary btn hover:outline'
           >
-            {' '}
-            Start by Signing Up!
+            {user ? 'Enjoy your free package' : 'Start by signing up'}
           </Link>
         ) : (
           <Link
@@ -58,8 +57,8 @@ const PricingCard = ({ price }) => {
             }
        hover:outline-blue-400 hover:outline translate `}
           >
-            {' '}
-            Start by Signing Up!
+            {price.name === 'Premium' && 'Buy Premium Package'}{' '}
+            {price.name === 'Ultimate' && 'Buy Ultimate Package'}
           </Link>
         )}
       </div>

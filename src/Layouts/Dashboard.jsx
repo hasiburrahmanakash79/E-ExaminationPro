@@ -7,7 +7,9 @@ import {
   FaHome,
   FaCog,
   FaWallet,
-  FaComment
+  FaComment,
+  FaMoon, 
+  FaSun
 } from 'react-icons/fa'
 import { BiBookAdd } from 'react-icons/bi'
 import { AiFillNotification } from 'react-icons/ai'
@@ -29,7 +31,34 @@ const Dashboard = () => {
 
   const [isAdmin, isAdminLoading] = useAdmin()
   const [isInstructor, isInstructorLoading] = useInstructor()
-  //console.log(isAdmin);
+  
+// Dark mode implementation
+  const dark = localStorage.getItem('customDarkTheme')
+  console.log(dark)
+  const [isDarkMode, setIsDarkMode] = useState(dark=='true' ? true : false)
+
+useEffect(()=>{
+  if(isDarkMode==true){
+    localStorage.removeItem('customDarkTheme')
+    localStorage.setItem('customDarkTheme', 'true')
+
+    document.documentElement.removeAttribute('data-theme')
+    document.documentElement.setAttribute('data-theme', 'customDarkTheme')
+  }
+  else{
+
+    localStorage.removeItem('customDarkTheme')
+    localStorage.setItem('customDarkTheme', 'false')
+
+    document.documentElement.removeAttribute('data-theme')
+    document.documentElement.setAttribute('data-theme', 'customLightTheme')
+  }
+},[isDarkMode,dark])
+
+const toggleDarkMode = () => {
+  setIsDarkMode(!isDarkMode)
+ }
+// Dark mode end
 
   const handleLogout = () => {
     logOut()
@@ -196,7 +225,7 @@ const Dashboard = () => {
       <div
         className={` ${
           open ? 'w-56 p-4' : 'w-14 text-center '
-        }   h-screen  fixed left-0 top-0 bottom-0 z-50 pt-8  duration-500 transition-all`}
+        }  ${isDarkMode? 'bg-slate-800' : 'bg-secondary'} h-screen  fixed left-0 top-0 bottom-0 z-50 pt-8  duration-500 transition-all`}
       >
         <img
           src={arrow}
@@ -204,7 +233,7 @@ const Dashboard = () => {
 			 border-2 rounded-full  ${!open && 'rotate-180'}`}
           onClick={() => setOpen(!open)}
         />
-        <div className='flex items-center gap-x-4'>
+        <div className='flex items-center gap-x-4 p-2'>
           <img
             src={logo}
             className={`cursor-pointer w-full md:w-9/12 p-1 duration-500 ${open}`}
@@ -217,13 +246,14 @@ const Dashboard = () => {
         >
           {isAdmin
             ? adminMenus.map((Menu, index) => (
+              <Link to={Menu.path}   key={index} className={`flex rounded-md p-2 cursor-pointer hover: hover:bg-primary text-sm items-center gap-x-4 ${
+                Menu.gap ? 'mt-9' : 'mt-2'
+              } ${index === 0 && ' hover:bg-primary'}`}>
                 <li
-                  key={index}
-                  className={`flex rounded-md p-2 cursor-pointer hover: ag-light-white  text-sm items-center gap-x-4 ${
-                    Menu.gap ? 'mt-9' : 'mt-2'
-                  } ${index === 0 && ' ag-light-white'}`}
+             
+             className='flex items-center gap-x-4'
                 >
-                  <Link to={Menu.path} className='flex items-center gap-x-4'>
+                  
                     <IconContext.Provider value={{ className: 'react-icon' }}>
                       <Menu.icon />
                     </IconContext.Provider>
@@ -234,19 +264,21 @@ const Dashboard = () => {
                     >
                       {Menu.title}
                     </span>
-                  </Link>
+                  
                 </li>
+                </Link>
               ))
             : //  Instructor menus
             isInstructor
             ? instructorMenus.map((Menu, index) => (
+              <Link to={Menu.path}  key={index} className={`flex rounded-md p-2 cursor-pointer hover: hover:bg-primary text-sm items-center gap-x-4 ${
+                Menu.gap ? 'mt-9' : 'mt-2'
+              } ${index === 0 && ' hover:bg-primary'}`}>
                 <li
-                  key={index}
-                  className={`flex rounded-md p-2 cursor-pointer hover: ag-light-white text-sm items-center gap-x-4 ${
-                    Menu.gap ? 'mt-9' : 'mt-2'
-                  } ${index === 0 && ' ag-light-white'}`}
+                 
+                  className='flex items-center gap-x-4'
                 >
-                  <Link to={Menu.path} className='flex items-center gap-x-4'>
+                  
                     <IconContext.Provider value={{ className: 'react-icon' }}>
                       <Menu.icon />
                     </IconContext.Provider>
@@ -257,18 +289,20 @@ const Dashboard = () => {
                     >
                       {Menu.title}
                     </span>
-                  </Link>
+                  
                 </li>
+                </Link>
               ))
             : // User menus
               userMenus.map((Menu, index) => (
+                <Link to={Menu.path} key={index} className={`flex rounded-md p-2 cursor-pointer hover: hover:bg-primary text-sm items-center gap-x-4 ${
+                  Menu.gap ? 'mt-9' : 'mt-2'
+                } ${index === 0 && ' hover:bg-primary'}`}>
                 <li
-                  key={index}
-                  className={`flex rounded-md p-2 cursor-pointer hover: ag-light-white text-sm items-center gap-x-4 ${
-                    Menu.gap ? 'mt-9' : 'mt-2'
-                  } ${index === 0 && ' ag-light-white'}`}
+                  
+                  className='flex items-center gap-x-4'
                 >
-                  <Link to={Menu.path} className='flex items-center gap-x-4'>
+                  
                     <IconContext.Provider value={{ className: 'react-icon' }}>
                       <Menu.icon />
                     </IconContext.Provider>
@@ -279,17 +313,19 @@ const Dashboard = () => {
                     >
                       {Menu.title}
                     </span>
-                  </Link>
+                  
                 </li>
+                </Link>
               ))}
           {generalMenus.map((Menu, index) => (
+            <Link  to={Menu.path}  key={index} className={`flex rounded-md p-2 cursor-pointer hover: hover:bg-primary text-sm items-center gap-x-4 ${
+              Menu.gap ? 'mt-9' : 'mt-2'
+            } ${index === 0 && ' hover:bg-primary'}`}>
             <li
-              key={index}
-              className={`flex rounded-md p-2 cursor-pointer hover: ag-light-white text-sm items-center gap-x-4 ${
-                Menu.gap ? 'mt-9' : 'mt-2'
-              } ${index === 0 && ' ag-light-white'}`}
+             
+              className='flex items-center gap-x-4'
             >
-              <Link to={Menu.path} className='flex items-center gap-x-4'>
+              
                 <IconContext.Provider value={{ className: 'react-icon' }}>
                   <Menu.icon />
                 </IconContext.Provider>
@@ -298,20 +334,24 @@ const Dashboard = () => {
                 >
                   {Menu.title}
                 </span>
-              </Link>
             </li>
+              </Link>
           ))}
         </ul>
 
         {/* User info */}
-        <div className='absolute flex items-center space-x-4 mt-28 bottom-3'>
+        <div className='absolute flex items-center space-x-4 mt-28 bottom-5 p-2'>
+          <div className='avatar w-10 h-10'>
           <img
             src={user?.photoURL}
             alt=''
-            className='w-12 h-12  ag-gray-500 rounded-full '
+            className='rounded-full '
           />
-          <div className={`${!open && 'hidden'} origin-left duration-200`}>
+          </div>
+          <div className={`${!open && 'hidden'} flex items-center origin-left duration-200`}>
+            <div>
             <h2 className='text-sm font-semibold'>{user?.displayName}</h2>
+            
             <span className='flex items-center space-x-1'>
               <a
                 onClick={handleLogout}
@@ -322,6 +362,12 @@ const Dashboard = () => {
                 Logout
               </a>
             </span>
+            </div>
+            <div>
+              <button onClick={toggleDarkMode} className='mx-3 text-lg'>
+                {isDarkMode==true ? <FaSun className=''></FaSun> : <FaMoon></FaMoon>}
+              </button>
+            </div>
           </div>
         </div>
       </div>

@@ -103,8 +103,9 @@ const Testimonial = () => {
     // </div>
 
 
-    <div className='pb-5'>
+    <div className='pb-5 mb-5'>
       <Swiper
+       freeMode={true}
         slidesPerView={1}
         spaceBetween={10}
         pagination={{
@@ -128,7 +129,7 @@ const Testimonial = () => {
             spaceBetween: 50,
           },
         }}
-        modules={[Pagination]}
+        modules={[FreeMode,Pagination]}
         className="mySwiper"
       >
         {

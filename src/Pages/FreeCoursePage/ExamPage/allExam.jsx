@@ -133,7 +133,7 @@ const AllExam = () => {
             {!dataloading ? (
               <div>
                 {exams.length == 0 ? (
-                  <div className='aext-red-400 text-4xl flex justify-center items-center h-[70vh]'>
+                  <div className=' text-red-600 text-4xl flex justify-center items-center h-[70vh]'>
                     <h1>
                       <Typewriter
                         speed={200}
@@ -148,7 +148,7 @@ const AllExam = () => {
                     {exams?.map((exam, index) => (
                       <div
                         key={index}
-                        className='flex justify-center p-5 my-2 card'
+                        className='flex border shadow-md justify-center p-5 my-2 card'
                       >
                         <div className='grid grid-cols-2'>
                           <div className=''>
@@ -205,11 +205,11 @@ const AllExam = () => {
                                       to={`/exam/${exam._id}`}
                                       className='w-1/3 btn ms-auto btn-sm btn-primary'
                                     >
-                                      <button>Exam <span className='aext-red-500'>Start</span><span className='aext-red-500'> {((new Date(`${exam.date}T${exam.examTime}`) - currentTime) / 60000).toFixed(2)} Min</span></button>
+                                      <button>Exam <span className='text-red-500'>Start</span><span className='text-red-500'> {((new Date(`${exam.date}T${exam.examTime}`) - currentTime) / 60000).toFixed(2)} Min</span></button>
                                     </Link>
                                   ) :
                                   (((new Date(`${exam.date}T${exam.examTime}`) - currentTime) / 60000) < 40) && (((new Date(`${exam.date}T${exam.examTime}`) - currentTime) / 60000) > 4) ?
-                                    (<h1 className='w-1/3 p-2 btn ms-auto btn-sm btn-primary'> Start Soon <span className='aext-red-500'> {((new Date(`${exam.date}T${exam.examTime}`) - currentTime) / 60000).toFixed(2)} Min</span> </h1>) :
+                                    (<h1 className='w-1/3 p-2 btn ms-auto btn-sm btn-primary'> Start Soon <span className='text-red-500'> {((new Date(`${exam.date}T${exam.examTime}`) - currentTime) / 60000).toFixed(2)} Min</span> </h1>) :
                                     (<h1 className='w-1/3 p-2 btn ms-auto btn-sm btn-primary'> Prepeare Yourself </h1>)
 
 
@@ -255,7 +255,7 @@ const AllExam = () => {
             {!dataloading ? (
               <div>
                 {exams.length == 0 ? (
-                  <div className='aext-red-400 text-4xl flex justify-center items-center h-[70vh]'>
+                  <div className='text-red-500 text-4xl flex justify-center items-center h-[70vh]'>
                     <h1>
                       <Typewriter
                         speed={200}
@@ -266,11 +266,11 @@ const AllExam = () => {
                     </h1>
                   </div>
                 ) : (
-                  <div>
+                  <div >
                     {exams?.map((exam, index) => (
                       <div
                         key={index}
-                        className='flex justify-center p-5 my-2 card'
+                        className='flex  justify-center p-5 my-2 card'
                       >
                         <div className='grid grid-cols-2'>
                           <div className=''>
@@ -327,11 +327,11 @@ const AllExam = () => {
                                       to={`/exam/${exam._id}`}
                                       className='w-1/3 btn ms-auto btn-sm btn-primary'
                                     >
-                                      <button>Exam <span className='aext-red-500'>Start</span><span className='aext-red-500'> {((new Date(`${exam.date}T${exam.examTime}`) - currentTime) / 60000).toFixed(2)} Min</span></button>
+                                      <button>Exam <span className='text-red-500'>Start</span><span className='text-red-500'> {((new Date(`${exam.date}T${exam.examTime}`) - currentTime) / 60000).toFixed(2)} Min</span></button>
                                     </Link>
                                   ) :
                                   (((new Date(`${exam.date}T${exam.examTime}`) - currentTime) / 60000) < 60) && (((new Date(`${exam.date}T${exam.examTime}`) - currentTime) / 60000) > 4) ?
-                                    (<h1 className='w-1/3 p-2 btn ms-auto btn-sm btn-primary'> Start Soon <span className='aext-red-500'> {((new Date(`${exam.date}T${exam.examTime}`) - currentTime) / 60000).toFixed(2)} Min</span> </h1>) :
+                                    (<h1 className='w-1/3 p-2 btn ms-auto btn-sm btn-primary'> Start Soon <span className='text-red-500'> {((new Date(`${exam.date}T${exam.examTime}`) - currentTime) / 60000).toFixed(2)} Min</span> </h1>) :
                                     (<h1 className='w-1/3 p-2 btn ms-auto btn-sm btn-primary'> Prepeare Yourself </h1>)
 
 
@@ -357,7 +357,7 @@ const AllExam = () => {
               </div>
             ) : (
               <div>
-                <div className='aext-red-400 text-4xl flex justify-center items-center h-[70vh]'>
+                <div className='text-red-500 text-4xl flex justify-center items-center h-[70vh]'>
                   <h1>
                     <Hourglass
                       visible={true}
@@ -377,7 +377,7 @@ const AllExam = () => {
             {!dataloading ? (
               <div>
                 {exams.length == 0 ? (
-                  <div className='aext-red-400 text-4xl flex justify-center items-center h-[70vh]'>
+                  <div className='text-red-500 text-4xl flex justify-center items-center h-[70vh]'>
                     <h1>
                       <Typewriter
                         speed={200}
@@ -449,11 +449,11 @@ const AllExam = () => {
                                       to={`/exam/${exam._id}`}
                                       className='w-1/3 btn ms-auto btn-sm btn-primary'
                                     >
-                                      <button>Exam <span className='aext-red-500'>Start</span><span className='aext-red-500'> {((new Date(`${exam.date}T${exam.examTime}`) - currentTime) / 60000).toFixed(2)} Min</span></button>
+                                      <button>Exam <span className='text-red-500'>Start</span><span className='text-red-500'> {((new Date(`${exam.date}T${exam.examTime}`) - currentTime) / 60000).toFixed(2)} Min</span></button>
                                     </Link>
                                   ) :
                                   (((new Date(`${exam.date}T${exam.examTime}`) - currentTime) / 60000) < 40) && (((new Date(`${exam.date}T${exam.examTime}`) - currentTime) / 60000) > 4) ?
-                                    (<h1 className='w-1/3 p-2 btn ms-auto btn-sm btn-primary'> Start Soon <span className='aext-red-500'> {((new Date(`${exam.date}T${exam.examTime}`) - currentTime) / 60000).toFixed(2)} Min</span> </h1>) :
+                                    (<h1 className='w-1/3 p-2 btn ms-auto btn-sm btn-primary'> Start Soon <span className='text-red-500'> {((new Date(`${exam.date}T${exam.examTime}`) - currentTime) / 60000).toFixed(2)} Min</span> </h1>) :
                                     (<h1 className='w-1/3 p-2 btn ms-auto btn-sm btn-primary'> Prepeare Yourself </h1>)
 
 
@@ -479,7 +479,7 @@ const AllExam = () => {
               </div>
             ) : (
               <div>
-                <div className='aext-red-400 text-4xl flex justify-center items-center h-[70vh]'>
+                <div className='text-red-500 text-4xl flex justify-center items-center h-[70vh]'>
                   <h1>
                     <Hourglass
                       visible={true}

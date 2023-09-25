@@ -10,11 +10,28 @@ import { AuthContext } from '../../Provider/AuthProvider'
 import Headroom from 'react-headroom'
 import useUser from '../../Hooks/useUser/useUser'
 import { FaMoon, FaSun } from 'react-icons/fa'
+import { useEffect } from 'react'
 
 const Navbar = () => {
-  const dark = localStorage.getItem('darkMode')
+  const dark = localStorage.getItem('customDarkTheme')
+  console.log(dark)
+  const [isDarkMode, setIsDarkMode] = useState(dark == 'true' ? true : false)
 
-  const [isDarkMode, setIsDarkMode] = useState(dark ? true : false)
+  useEffect(() => {
+    if (isDarkMode == true) {
+      localStorage.removeItem('customDarkTheme')
+      localStorage.setItem('customDarkTheme', 'true')
+
+      document.documentElement.removeAttribute('data-theme')
+      document.documentElement.setAttribute('data-theme', 'customDarkTheme')
+    } else {
+      localStorage.removeItem('customDarkTheme')
+      localStorage.setItem('customDarkTheme', 'false')
+
+      document.documentElement.removeAttribute('data-theme')
+      document.documentElement.setAttribute('data-theme', 'customLightTheme')
+    }
+  }, [isDarkMode, dark])
 
   const [isOpen, setIsOpen] = useState(false)
   const { user, logOut } = useContext(AuthContext)
@@ -23,15 +40,6 @@ const Navbar = () => {
   const [info] = useUser()
 
   const toggleDarkMode = () => {
-    if (isDarkMode) {
-      document.documentElement.removeAttribute('data-theme')
-      document.documentElement.setAttribute('data-theme', 'customLightTheme')
-      localStorage.removeItem('customDarkTheme')
-    } else {
-      document.documentElement.removeAttribute('data-theme')
-      document.documentElement.setAttribute('data-theme', 'customDarkTheme')
-      localStorage.setItem('customDarkTheme', 'enabled')
-    }
     setIsDarkMode(!isDarkMode)
   }
 
@@ -70,15 +78,15 @@ const Navbar = () => {
       onMouseLeave={() => toggleDropdown(false)}
       className='relative'
     >
-      <button className=''>Exam</button>
+      <button>Exam</button>
       {isOpen && (
-        <div className='absolute z-50 rounded-lg top-full primary-bg'>
+        <div className='absolute z-50 text-white rounded-lg top-full bg-black/40'>
           <div className='p-5 space-y-3'>
-            <button className='px-2 py-1 rounded hover: ag-purple-100/10'>
+            <button className='px-2 py-1 rounded hover:bg-white/10'>
               <Link to='/allSubjects'>All Subject</Link>
             </button>
 
-            <button className='px-2 py-1 rounded hover: ag-purple-100/10'>
+            <button className='px-2 py-1 rounded hover:bg-white/10'>
               <Link to='/written'>Written Exam</Link>
             </button>
           </div>
@@ -132,7 +140,7 @@ const Navbar = () => {
         transition: 'all .5s ease-in-out'
       }}
     >
-      <nav className='z-50 backdrop-blur'>
+      <nav className='z-50 text-white bg-black/40'>
         <div className='navbar z-[40]  container mx-auto  sticky top-0'>
           <div className='navbar-start'>
             <div className='dropdown'>
@@ -187,8 +195,8 @@ const Navbar = () => {
             </ul>
           </div>
           <div className='navbar-end '>
-            <div className='indicator me-4'>
-              <span className='indicator-item badge badge-secondary'>1+</span>
+            <div className='indicator me-6'>
+              <span className='indicator-item badge badge-warning'>1+</span>
               <button>
                 <Link to='notice' className='text-2xl'>
                   {' '}
@@ -199,7 +207,7 @@ const Navbar = () => {
             {user ? (
               <div className='ml-5 dropdown dropdown-end'>
                 <div
-                  className='tooltip tooltip-left'
+                  className='list-none tooltip tooltip-bottom'
                   data-tip={info?.displayName}
                 >
                   <label
@@ -215,9 +223,9 @@ const Navbar = () => {
                 <div className=''>
                   <ul
                     tabIndex={0}
-                    className='p-2 mt-3 shadow-md bg-primary backdrop-blur-xl menu menu-compact dropdown-content rounded-box w-52'
+                    className='p-2 mt-3 text-white shadow-md bg-black/40 menu menu-compact dropdown-content rounded-box w-52'
                   >
-                    <li className=''>
+                    <li>
                       <Link
                         to='/leaderboard'
                         className='justify-between w-full'
@@ -251,14 +259,18 @@ const Navbar = () => {
             ) : (
               <Link
                 to='/login'
-                className='border-none shadow-md btn primary-bg'
+                className='border-none shadow-md btn btn-sm btn-warning'
               >
                 Login
               </Link>
             )}
             <div>
               <button onClick={toggleDarkMode} className='mx-3 text-lg'>
-                {isDarkMode ? <FaSun className=''></FaSun> : <FaMoon></FaMoon>}
+                {isDarkMode == true ? (
+                  <FaSun className=''></FaSun>
+                ) : (
+                  <FaMoon></FaMoon>
+                )}
               </button>
             </div>
           </div>

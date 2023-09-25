@@ -99,7 +99,7 @@ const CreateNotice = () => {
         </div>
         <div className='flex justify-end w-full mt-7'>
           <input
-            className='primary-btn btn'
+            className='btn btn-warning'
             type='submit'
             value='Create Notice'
           />

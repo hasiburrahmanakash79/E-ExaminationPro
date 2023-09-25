@@ -17,7 +17,7 @@ const PaymentOption = () => {
 
   return (
     <>
-      <h1 className='mt-6 text-3xl text-center '>Choose Your Payment Option</h1>
+      <h1 className='my-6 text-3xl text-center '>Choose Your Payment Option</h1>
       <div className='flex flex-col items-center'>
         <label
           className={`cursor-pointer grid grid-cols-2  md:w-[400px] rounded-lg border   mt-4  p-10
@@ -28,14 +28,14 @@ const PaymentOption = () => {
           <input
             type='radio'
             name='radio-2'
-            className='radio radio-accent ms-auto'
+            className='radio radio-warning ms-auto'
             value='sslPayment'
             checked={selectedOption === 'sslPayment'}
             onChange={handleOptionChange}
           />
         </label>
         <label
-          className={`cursor-pointer grid grid-cols-2 border
+          className={`cursor-pointer grid grid-cols-2 border-2 shadow-lg
            md:w-[400px] p-10 rounded-lg  mt-4 mb-10
            ${
              selectedOption === 'stripePayment' ? ' bg-primary' : 'bg-secondary'
@@ -47,7 +47,7 @@ const PaymentOption = () => {
           <input
             type='radio'
             name='radio-2'
-            className='radio radio-accent ms-auto'
+            className='radio radio-warning ms-auto'
             value='stripePayment'
             checked={selectedOption === 'stripePayment'}
             onChange={handleOptionChange}
