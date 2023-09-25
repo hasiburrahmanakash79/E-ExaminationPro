@@ -1,3 +1,5 @@
+import Lottie from "lottie-react";
+import FAQLottie from "../../../assets/animationFile/faq.json"
 export default function Faq() {
   return (
     <div
@@ -8,13 +10,10 @@ export default function Faq() {
       <h1 className="text-4xl mb-10 text-center">Frequently Ask Question</h1>
       <div className=" md:flex items-center justify-between container mx-auto gap-5  py-10 p-5">
         <div className="w-full">
-          <img
-            className="w-1/2 mx-auto"
-            src="https://cdn-icons-png.flaticon.com/512/4403/4403555.png"
-            alt=""
-          />
+        <Lottie
+              animationData={FAQLottie}
+              loop={true} className="md:h-[440px] mb-8" />
         </div>
-
         <div className="dark: ag-none w-full space-y-4 ">
           <div className="border   px-5 shadow-md rounded-md">
             <details>

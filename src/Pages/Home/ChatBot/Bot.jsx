@@ -41,12 +41,10 @@ const Bot = () => {
   }
 
   return (
-    <main className='relative max-w-md overflow-y-auto h-[700px]  ag-slate-800 font-inter scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-slate-300 scrollbar-w-2 scrollbar-track-transparent'>
+    <main className='relative max-w-md overflow-y-auto h-[700px]   font-inter scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-slate-300 scrollbar-w-2 scrollbar-track-transparent'>
       <div className='sticky top-0 z-40 p-2 ag-slate-800'>
         <h1 className='text-2xl ps-2'>E-Exam Support</h1>
-        <p className='text-xs ps-2'>
-          Ask any exam related question you have
-        </p>
+        <p className='text-xs ps-2'>Ask any exam related question you have</p>
         <div className='my-1 divider'></div>
       </div>
       <section className='z-0 mb-12 overflow-hidden '>
@@ -60,9 +58,7 @@ const Bot = () => {
                   chat.role === 'user' ? 'flex-row-reverse' : ''
                 }  ag-darkslategray max-w-70 p-4  rounded-50`}
               >
-                <span className='text-yellow-600'>
-                  {chat.role.toUpperCase()}
-                </span>
+                <span className='text-primary'>{chat.role.toUpperCase()}</span>
                 <span> : </span>
                 <span>{chat.content}</span>
               </p>

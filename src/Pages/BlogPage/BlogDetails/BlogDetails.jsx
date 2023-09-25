@@ -37,6 +37,7 @@ const BlogDetails = () => {
       comment: comment,
       BlogId: id,
       userEmail: user?.email,
+      userImage: user?.photoURL,
       name: user?.displayName
     }
     fetch('https://e-exam-pro-server.vercel.app/comments', {
@@ -58,6 +59,7 @@ const BlogDetails = () => {
   }
   return (
     <div
+      className='p-3'
       onClick={() => {
         setTooltip_success(false)
         showTooltip_error(false)
@@ -65,7 +67,11 @@ const BlogDetails = () => {
     >
       <div className='flex flex-col items-center justify-center mx-2 mt-5 md:mx-10'>
         <figure className='rounded-lg '>
-          <img className='rounded-lg ' src={blog?.image_url} alt='Album' />
+          <img
+            className='w-full max-w-3xl rounded-lg '
+            src={blog?.image_url}
+            alt='Album'
+          />
         </figure>
         <div className='mt-3 md:w-1/2'>
           <h2 className='text-3xl'>{blog?.title}</h2>
@@ -74,7 +80,7 @@ const BlogDetails = () => {
         </div>
       </div>
       <div className='flex justify-center'>
-        <div className='grid grid-cols-1 p-5 rounded-lg md:w-1/2'>
+        <div className='grid w-full grid-cols-1 pt-5 rounded-lg md:w-1/2'>
           <hr />
           <h1 className='mt-5 text-3xl text-center'>Comment Section</h1>
           <button
@@ -82,22 +88,34 @@ const BlogDetails = () => {
               setAllComment(!allComment)
               setUserComment(!userComment)
             }}
-            className='mt-2 text-center    ag-white btn hover: ag-slate-400 btn-sm text-md'
+            className='mt-2 text-center btn-primary btn btn-sm text-md'
           >
             {allComment ? 'View Your Comments' : 'View All Comments'}
           </button>
-          <div className='h-[200px] overflow-y-auto'>
+          <div className='h-[200px] scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-slate-300 scrollbar-w-2 scrollbar-track-transparent overflow-y-auto'>
             <div className={allComment ? '' : 'hidden'}>
               {comments?.allUserComments?.map((comment, index) => (
-                <div key={index} className='p-2 m-2 shadow-md'>
-                  <h1>
-                    <span className='aext-yellow-400'>User:</span>
-                    {}
-                    <span className='text-green-400'> {comment.name}</span>
+                <div
+                  key={index}
+                  className='p-2 m-2 overflow-y-auto shadow shadow-primary'
+                >
+                  <h1 className='flex items-center gap-3 mb-2'>
+                    <div className='avatar'>
+                      <div className='w-6'>
+                        {comment.userImage ? (
+                          <img src={comment?.userImage} />
+                        ) : (
+                          <img
+                            className='rounded-full'
+                            src='https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_640.png'
+                          />
+                        )}
+                      </div>
+                    </div>
+                    <span className='font-bold'> {comment.name}</span>
                   </h1>
                   <p>
-                    <span className='aext-yellow-400'>Comment:</span>{' '}
-                    {comment.comment}
+                    <span className=''>Comment:</span> {comment.comment}
                   </p>
                 </div>
               ))}
@@ -144,7 +162,7 @@ const BlogDetails = () => {
                     : ''
                 }
               >
-                <button className='text-lg btn btn-sm primary-btn hover:aext-red-500'>
+                <button className='text-lg btn btn-sm btn-primary'>
                   Comment
                 </button>
               </div>

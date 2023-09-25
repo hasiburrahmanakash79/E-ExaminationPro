@@ -20,8 +20,8 @@ const PaymentOption = () => {
       <h1 className='my-6 text-3xl text-center '>Choose Your Payment Option</h1>
       <div className='flex flex-col items-center'>
         <label
-          className={`cursor-pointer grid grid-cols-2  md:w-[400px] rounded-lg border-2 shadow-lg mt-4  p-10
-          ${selectedOption === 'sslPayment' ? ' bg-blue-500' : ''}
+          className={`cursor-pointer grid grid-cols-2  md:w-[400px] rounded-lg border   mt-4  p-10
+          ${selectedOption === 'sslPayment' ? ' bg-primary' : 'bg-secondary'}
           `}
         >
           <h1>SSL Payment System</h1>
@@ -37,7 +37,9 @@ const PaymentOption = () => {
         <label
           className={`cursor-pointer grid grid-cols-2 border-2 shadow-lg
            md:w-[400px] p-10 rounded-lg  mt-4 mb-10
-           ${selectedOption === 'stripePayment' ? ' bg-blue-500' : ''}
+           ${
+             selectedOption === 'stripePayment' ? ' bg-primary' : 'bg-secondary'
+           }
            
            `}
         >

@@ -19,12 +19,6 @@ const NewBlogDetails = () => {
       .then(data => setSmallCard(data))
   }, [])
 
-  const { id, image_url, publishing_date, content } = useParams()
-  //console.log(id)
-
-  // const { _id, image_url, publishing_date, content } = useParams();
-  // //console.log(_id);
-
   const info = smallCards.find(smallCard => smallCard._id == blogId)
   return (
     <div className='py-5 md:py-20 container mx-auto'>

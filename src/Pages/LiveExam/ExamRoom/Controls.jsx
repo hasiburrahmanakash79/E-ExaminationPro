@@ -22,9 +22,6 @@ export default function Controls (props) {
     setIsScreenSharing
   } = props
   const [trackState, setTrackState] = useState({ video: true, audio: true })
-  //console.log(isScreenSharing)
-  //console.log(screenTrack)
-
   const mute = async type => {
     if (type === 'audio') {
       await tracks[0].setEnabled(!trackState.audio)
@@ -38,23 +35,6 @@ export default function Controls (props) {
       })
     }
   }
-  // const toggleScreenSharing = async () => {
-  //   if (screenTrack) {
-  //     try {
-  //       // Toggle screen sharing by unpublishing or publishing the screenTrack
-  //       if (client.isScreenSharing()) {
-  //         await client.unpublish([screenTrack])
-  //         //console.log('Screen sharing stopped')
-  //       } else {
-  //         await client.publish([screenTrack])
-  //         //console.log('Screen sharing started')
-  //       }
-  //     } catch (error) {
-  //       console.error('Error toggling screen sharing:', error)
-  //     }
-  //   }
-  // }
-
   const leaveChannel = async () => {
     await client.leave()
     client.removeAllListeners()
@@ -77,27 +57,6 @@ export default function Controls (props) {
           {trackState.audio ? <Mic /> : <MicOff />}
         </button>
       </div>
-
-      {/* Conditionally render the screen sharing button */}
-      {/* {
-          <button
-            className={`btn btn-primary`}
-            onClick={() => startScreenSharing()}
-          >
-            Start Screen Share
-            <MonitorIcon />
-          </button>
-        }
-        {
-          <button
-            className={`btn btn-secondary`}
-            onClick={() => stopScreenSharing()}
-          >
-            Stop Screen Share
-            <MonitorOff />
-          </button>
-        } */}
-
       <div>
         <button
           className={`btn tooltip tooltip-secondary tooltip-bottom  ${

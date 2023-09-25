@@ -1,24 +1,27 @@
 import CountUp from "react-countup";
 import { useInView } from "react-intersection-observer";
-import SectionTitle from "../../../Components/SectionTitle/SectionTitle";
+import Lottie from "lottie-react";
+import achievementLottie from "../../../assets/animationFile/achievement.json"
 const Achievement = () => {
   const [ref, inView] = useInView({
     threshold: 0.1,
   });
 
   return (
-    <section ref={ref} className="my-16">
-      <SectionTitle title={"Our Achievement"}></SectionTitle>
-
-      <div className=" mt-6 px-10 py-20 gap-20 md:flex justify-evenly md:mt-16 items-end rounded-xl  primary-bg text-center md:text-left">
-        <div className="px-5 md:px-0 full md:w-1/2 ">
+    <section ref={ref} className="md:my-16 my-10">
+      <h1
+        data-aos="zoom-in-down"
+        data-aos-duration="800"
+        className="text-center text-4xl font-bold py-10"
+      >
+        Our Achievement
+      </h1>
+      <div className=" mt-6 px-10 gap-10 grid md:grid-cols-5 items-end rounded-xl  primary-bg text-center md:text-left">
+        <div className="px-5 md:px-0 col-span-2 ">
           <div>
             <h2 className="text-3xl font-bold my-5">Our Best Achievement</h2>
             <p className="md:mb-20 ">
-              E-ExamPro has achieved significant milestones, revolutionizing
-              online education. With a user-friendly platform and innovative
-              features, it's empowered countless learners to excel in their
-              exams and educational pursuits.
+              E-ExamPro has achieved significant milestones, revolutionizing online education. With a user-friendly platform and innovative features, it's empowered countless learners to excel in their exams and educational pursuits.
             </p>
           </div>
           <div className="md:flex gap-20 md:pb-5">
@@ -74,12 +77,10 @@ const Achievement = () => {
           </div>
         </div>
 
-        <div>
-          <img
-            className=" mt-5 md:mb-5 rounded-lg md:mt-[-450px] w-[600px]"
-            src="https://images.unsplash.com/photo-1590649942161-2e7eb2032934?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
-            alt=""
-          />
+        <div className="col-span-3">
+          <Lottie
+            animationData={achievementLottie}
+            loop={true} className="" />
         </div>
       </div>
     </section>

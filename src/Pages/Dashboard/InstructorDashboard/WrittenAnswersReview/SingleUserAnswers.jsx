@@ -1,11 +1,11 @@
 import React from 'react'
 import { useParams } from 'react-router-dom'
 import useWrittenReviews from '../../../../Hooks/useWrittenReviews/useWrittenReviews'
-import Loading from '../../../../Components/Loading/Loading'
 import { useForm } from 'react-hook-form'
 import useAuth from '../../../../Hooks/useAuth/useAuth'
 import axios from 'axios'
 import Swal from 'sweetalert2'
+import Loading from '../../../../components/Loading/Loading'
 
 const SingleUserAnswers = () => {
   const { id } = useParams()
@@ -48,7 +48,10 @@ const SingleUserAnswers = () => {
       feedback: data.feedback
     }
     try {
-      await axios.post('https://e-exam-pro-server.vercel.app/examdata', userResult)
+      await axios.post(
+        'https://e-exam-pro-server.vercel.app/examdata',
+        userResult
+      )
       Swal.fire({
         showConfirmButton: false,
         timer: 1500,
@@ -62,9 +65,9 @@ const SingleUserAnswers = () => {
   return (
     <div className='my-6 space-y-4'>
       <header className='justify-between w-9/12 mx-auto md:flex '>
-        <h2 className='text-2xl aext-yellow-500'>{stu_name}</h2>
-        <h2 className='text-2xl aext-yellow-500'>{examType}</h2>
-        <h2 className='text-2xl aext-yellow-500'>{date}</h2>
+        <h2 className='text-2xl text-primary'>{stu_name}</h2>
+        <h2 className='text-2xl text-primary'>{examType}</h2>
+        <h2 className='text-2xl text-primary'>{date}</h2>
       </header>
       <div className='grid grid-cols-1 gap-6 md:grid-cols-2'>
         {userWrittenAnswers.map(ans => (
@@ -96,7 +99,7 @@ const SingleUserAnswers = () => {
               type='text'
               placeholder='enter mark'
               required
-              className='p-3  ag-transparent border rounded-lg h-14'
+              className='p-3 border rounded-lg ag-transparent h-14'
             />
           </div>
           <div className='w-9/12 col-span-3 form-control'>
@@ -109,7 +112,7 @@ const SingleUserAnswers = () => {
               {...register('answer')}
               id='answer'
               placeholder='feedback'
-              className='w-full p-2  ag-transparent border rounded-lg shadow-md outline-none h-14   drop-shadow-md'
+              className='w-full p-2 border rounded-lg shadow-md outline-none ag-transparent h-14 drop-shadow-md'
             />
           </div>
 
