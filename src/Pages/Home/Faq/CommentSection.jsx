@@ -8,15 +8,11 @@ function CommentSection ({ blogId }) {
   const [message, setMessage] = useState('')
 
   const { user } = useAuth()
-  //console.log(user)
-  // const [comments, setComments] = useState([]);
   const [comments, loading, refetch] = useComments()
 
   const handleCommentChange = e => {
     setComment(e.target.value)
   }
-  //console.log(comments)
-
   const handleCommentSubmit = async () => {
     if (comment.trim() !== '') {
       try {
@@ -97,14 +93,6 @@ function CommentSection ({ blogId }) {
         </button>
       </div>
       <div>{message}</div>
-      <div>
-        <ul className='mt-2 ms-10'>
-          {/* {comments?.map((c) => (
-            <li key={c._id}
-            >{c.comment}</li>
-          ))} */}
-        </ul>
-      </div>
     </div>
   )
 }

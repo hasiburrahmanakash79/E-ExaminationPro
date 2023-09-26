@@ -19,7 +19,7 @@ const StartCountdowns = ({ countdown, setCountdown }) => {
         dispatch(setView(false))
         dispatch(resetResult())
         dispatch(setMcq(null))
-        dispatch( setAnswerIndex(null))
+        dispatch(setAnswerIndex(null))
       } else {
         clearInterval(countdownTimer)
       }
@@ -29,7 +29,7 @@ const StartCountdowns = ({ countdown, setCountdown }) => {
   return (
     <div className=' h-[80vh] flex flex-col justify-center items-center '>
       <div className='text-center '>
-        <h1 className='my-1 font-bold aext-red-600 text-9xl'>{countdown}</h1>
+        <h1 className='my-1 font-bold text-red-600 text-9xl'>{countdown}</h1>
         <h1 className='text-7xl'>Get Ready</h1>
       </div>
     </div>

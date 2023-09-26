@@ -119,7 +119,7 @@ const UpdateProfile = () => {
                 <label className='label col-span-1'>
                   <span className='label-text '>Name:</span>
                 </label>
-                <h1 className=' col-span-5 input input-sm  aext-slate-900  ag-slate-200 shadow-md'>
+                <h1 className=' col-span-5 input input-sm border shadow-md'>
                   {info?.displayName}
                 </h1>
               </div>
@@ -128,7 +128,7 @@ const UpdateProfile = () => {
                 <label className='label col-span-1'>
                   <span className='label-text '>Email:</span>
                 </label>
-                <h1 className=' col-span-5 input input-sm  aext-slate-900  ag-slate-200 shadow-md'>
+                <h1 className=' col-span-5 input input-sm border shadow-md'>
                   {info?.email}
                 </h1>
               </div>
@@ -139,7 +139,7 @@ const UpdateProfile = () => {
                 <input
                   name='batch'
                   placeholder={info?.batch}
-                  className='col-span-5 input input-sm  aext-slate-900  ag-slate-200 shadow-md'
+                  className='col-span-5 input input-sm border shadow-md'
                 />
               </div>
               <div className='form-control grid grid-cols-6 my-2'>
@@ -174,7 +174,7 @@ const UpdateProfile = () => {
                 <input
                   placeholder={info?.address}
                   name='address'
-                  className='col-span-5 input input-sm  aext-slate-900  ag-slate-200 shadow-md'
+                  className='col-span-5 input input-sm  border shadow-md'
                 />
               </div>
               <div className='form-control grid  grid-cols-6 my-2'>
@@ -183,7 +183,7 @@ const UpdateProfile = () => {
                 </label>
                 <input
                   placeholder={info?.mobile}
-                  className='col-span-5 input input-sm  aext-slate-900  ag-slate-200 shadow-md'
+                  className='col-span-5 input input-sm  border shadow-md'
                   name='mobile'
                 />
               </div>

@@ -47,8 +47,10 @@ const QuizDemo = () => {
               <RadioGroup.Option key={choice.id} value={choice.id}>
                 {({ active, checked }) => (
                   <div
-                    className={`my-4 py-4 border ${active ? '' : ''} ${
-                      checked ? 'bg-secondary outline-none border' : ''
+                    className={`my-4 py-4 border-primary border ${
+                      active ? '' : ''
+                    } ${
+                      checked ? 'bg-secondary outline-none ' : ''
                     } relative  flex cursor-pointer rounded-lg px-5 shadow-md`}
                   >
                     <div className='flex items-center justify-between w-full'>
@@ -77,7 +79,9 @@ const QuizDemo = () => {
         <div className='flex justify-end w-11/12 py-4 mx-auto '>
           {currentQuestionIndex === questions.length - 1 ? (
             <Link to='/demo-result' className='btn btn-primary'>
-              <button onClick={handleSubmit}>Submit</button>
+              <button disabled={isSubmitted} onClick={handleSubmit}>
+                Submit
+              </button>
             </Link>
           ) : (
             <button
@@ -85,10 +89,10 @@ const QuizDemo = () => {
                 reduxSelectedOption === null ||
                 reduxSelectedOption === undefined
               }
-              className={`btn border outline  btn-primary ${
+              className={`btn border outline text-black btn-primary ${
                 reduxSelectedOption === null ||
                 reduxSelectedOption === undefined
-                  ? ''
+                  ? 'text-black'
                   : ''
               }`}
               onClick={handleNextQuestion}

@@ -21,7 +21,7 @@ const Instructors = () => {
   return (
     <div className='container py-8 mx-auto'>
       <Helmet>
-        <title>E-ExamPro | Instructor</title>
+        <title>Instructor | E-ExamPro</title>
       </Helmet>
       <h1 className='mb-10 text-4xl font-bold text-center '>Our Instructors</h1>
       <div className='grid gap-5 px-6 py-5 md:grid-cols-2 lg:grid-cols-3 '>

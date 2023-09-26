@@ -1,37 +1,15 @@
-import axios from 'axios'
-
 const FeedBack = () => {
   const feedBackHandler = e => {
     e.preventDefault()
     const form = e.target
-    const message = form.message.value
-    const quality = form.quality.value
-    const time = form.timeManage.value
-
-
-    // axios.post("", {
-    //     message: message,
-    //     question: quality,
-    //     time: time,
-    // })
-    //     .then(res => {
-    //         if (res.data.insertedId) {
-    //             /*hot toast && sweet alert */
-    //         }
-    //     })
-    //     .catch(err => {
-    //
-    //     })
   }
 
   return (
-    // <div className='py-12 md:w-[560px] mx-auto md:p-8 p-1 rounded-lg my-6 shadow-md'>
     <form
-      action=''
       onSubmit={feedBackHandler}
-      className='w-full p-4 mx-auto space-y-1 border md:space-y-2'
+      className='w-full p-8 mx-auto space-y-1 border md:space-y-2'
     >
-      <h2 className='py-2 text-xl font-semibold  md:text-2xl md:py-3'>
+      <h2 className='py-2 text-xl font-semibold md:text-2xl md:py-3'>
         Send us Your Exam Feedback
       </h2>
       {/* Question Quality */}
@@ -111,7 +89,7 @@ const FeedBack = () => {
                 name='timeManage'
                 value='Default Time'
                 required
-                className='radio radio-success'
+                className='radio radio-accent'
                 defaultChecked
               />
               <p className='pl-1'>Default Time</p>
@@ -128,18 +106,13 @@ const FeedBack = () => {
           name='message'
           id=''
           placeholder='Please your feedback'
-          className='w-full max-w-md mt-1   ag-transparent focus:outline-white placeholder-slate-200 textarea textarea-bordered textarea-md '
+          className='w-full max-w-md mt-1 border outline outline-primary focus:outline-accent textarea textarea-bordered textarea-md '
         ></textarea>
       </div>
       <div className='flex justify-end'>
-        <input
-          type='submit'
-          value='Submit'
-          className='px-6 py-2 text-sm font-medium  rounded-lg cursor-pointer hover:delay-75 hover:transition-all hover:outline-slate-100 hover:outline primary-bg'
-        />
+        <input type='submit' value='Submit' className=' btn btn-primary' />
       </div>
     </form>
-    // </div>
   )
 }
 

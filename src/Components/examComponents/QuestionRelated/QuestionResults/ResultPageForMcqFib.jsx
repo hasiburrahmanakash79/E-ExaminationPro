@@ -18,39 +18,6 @@ const ResultPageForMcqFib = () => {
   const examId = searchParams.get('id')
  
   const [result, refetch, loadings] = useResult(examId)
-
-
-  // const { user, loading } = useContext(AuthContext)
-
-  // const {data: result,refetch,isLoading: loadings} = useQuery({
-  //   queryKey: ['result'],
-  //   enabled:!loading ,
-  //   queryFn: async () => {
-  //     const res = await axios.get(
-  //       `https://e-exam-pro-server.vercel.app/result?examId=${examId}&email=${user?.email}`
-  //     )
-  //     //console.log(res)
-  //     return res.data
-  //   }
-  // })
-
-//   const [result,setResult]=useState(null)
-//   const [loadings,setLoading]=useState(true)
-
-//   useEffect(()=>{
-//     setLoading(true)
-// if(!loading){
-//   fetch(`https://e-exam-pro-server.vercel.app/result?examId=${examId}&email=${user?.email}`)
-//   .then(res=>res.json())
-//   .then(data=>{
-//     setResult(data)
-//     setLoading(false)
-//   })
-// }
-//   },[user?.email,loading])
-
- 
-
   if (loadings) {
     return <p>loadings..</p>
   }
@@ -66,7 +33,7 @@ refetch()
         <div className='relative grid'>
           {/* Top of the result page where we can show TOP SCORE, Export the result */}
           <div className='items-center justify-between md:flex h-fit'>
-            <h4 className='p-3 mb-3 font-semibold  rounded-lg w-44 md:mb-0'>
+            <h4 className='p-3 mb-3 font-semibold rounded-lg w-44 md:mb-0'>
               TOP SCORE: 97%
             </h4>
             {/* handling the btn where when user clicks his result should be downloaded */}
@@ -93,7 +60,7 @@ refetch()
                 <ReviewAnswerAfterResult2 key={index} singleQ={singleQ} />
               ))}
             </div>
-            <div className='mb-6 order-1 md:order-2 md:col-span-2 h-fit mx-auto text-center mt-0 md:mb-6 p-3 md:p-6 rounded-lg shadow-md transition duration-300'>
+            <div className='order-1 p-3 mx-auto mt-0 mb-6 text-center transition duration-300 rounded-lg shadow-md md:order-2 md:col-span-2 h-fit md:mb-6 md:p-6'>
               <h3 className='pb-4 text-xl font-semibold tracking-wider md:text-lg'>
                 Score
               </h3>
@@ -120,7 +87,7 @@ refetch()
             <dialog id='my_modal_2' className=' modal'>
               <form
                 method='dialog'
-                className='relative max-w-5xl p-0 border w-fit h-fit modal-box primary-bg'
+                className='relative max-w-5xl p-0 border w-fit h-fit modal-box'
               >
                 <small className='absolute top-0 right-0 p-1 text-xs'>
                   Press ESC key or click outside to close

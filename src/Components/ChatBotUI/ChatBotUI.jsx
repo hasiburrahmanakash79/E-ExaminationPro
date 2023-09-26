@@ -10,7 +10,7 @@ const ChatBotUI = () => {
             <p className="text-xs">Ask any exam related question you have</p>
           </div>
           <div>
-            <button className="p-2 rounded-full  ag-slate-600">X</button>
+            <button className="p-2 rounded-full bg-red-500">X</button>
           </div>
         </div>
         <div>

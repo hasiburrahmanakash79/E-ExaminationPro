@@ -132,7 +132,7 @@ const CheckOutForm = ({ price, packages }) => {
       </form>
       <div className=' mt-5'>
         {error && (
-          <p className='aext-red-600 mt-5 text-center'>Failed: {error}</p>
+          <p className='text-red-600 mt-5 text-center'>Failed: {error}</p>
         )}
         {success && (
           <p className='text-green-700 text-center'>

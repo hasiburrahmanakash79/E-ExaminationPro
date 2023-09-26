@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import defaultPic from '../../../assets/userPro.png'
 import { Hourglass } from 'react-loader-spinner';
+import Pagination from '../../../Components/Pagination/Pagination';
 
 const LeaderboardPage = () => {
     const [allBatch, setAllBatch] = useState([]);
@@ -11,15 +12,15 @@ const LeaderboardPage = () => {
     const [selectedSubject, setSelectedSubject] = useState('');
     const [selectedBatch, setSelectedBatch] = useState('');
     const [selectedSort, setSelectedSort] = useState('');
-    const [selectedType,  setSelectedType] = useState('');
+    const [selectedType, setSelectedType] = useState('');
     console.log(selectedType)
-    const [examData,setExamData]=useState([])
+    const [examData, setExamData] = useState([])
 
-    console.log(allType ,examData)
+    console.log(allType, examData)
 
     useEffect(() => {
         // Fetch data and set allBatch and allSubject state
-        fetch('http://localhost:4000/getBatch_Subject')
+        fetch('https://e-exam-pro-server.vercel.app/getBatch_Subject')
             .then((res) => res.json())
             .then((data) => {
                 setAllBatch(data?.batch);
@@ -30,13 +31,13 @@ const LeaderboardPage = () => {
 
     useEffect(() => {
         // Fetch data and set allBatch and allSubject state
-        fetch(`http://localhost:4000/leaderboardResult?inputSearch=${searchInput}&batch=${selectedBatch}&subject=${selectedSubject}&sort=${selectedSort}&type=${selectedType}`)
+        fetch(`https://e-exam-pro-server.vercel.app/leaderboardResult?inputSearch=${searchInput}&batch=${selectedBatch}&subject=${selectedSubject}&sort=${selectedSort}&type=${selectedType}`)
             .then((res) => res.json())
             .then((data) => {
                 console.log(data)
                 setExamData(data)
             });
-    }, [searchInput, selectedBatch, selectedSort, selectedSubject,selectedType]);
+    }, [searchInput, selectedBatch, selectedSort, selectedSubject, selectedType]);
 
     // Function to handle search input change
     const handleSearchInputChange = (e) => {
@@ -61,6 +62,20 @@ const LeaderboardPage = () => {
         setSelectedSort(e.target.value);
     };
 
+
+    ////////////////////////---------------------Pagination
+
+    const [currentPage, setCurrentPage] = useState(0)
+    const [itemsPerPage,setItemPerPage] = useState(5); // Number of items to display per page
+    const totalItems = examData?.length;
+    const totalPages = Math.ceil(totalItems / itemsPerPage)
+
+
+
+    const startIndex = currentPage * itemsPerPage;
+    const endIndex = startIndex + itemsPerPage;
+    const displayedData = examData.slice(startIndex, endIndex)
+    console.log(displayedData,)
     return (
         <div className='container mx-auto'>
             <h1 className='text-3xl text-center my-5'>Welcome To Student Leaderboard</h1>
@@ -86,8 +101,8 @@ const LeaderboardPage = () => {
                         <option disabled value=''>
                             Sort by Subject
                         </option>
-                        <option  value=''>
-                           default
+                        <option value=''>
+                            default
                         </option>
                         {allSubject?.map((subject, index) => {
                             return (
@@ -98,7 +113,7 @@ const LeaderboardPage = () => {
                         })}
                     </select>
                 </div>
-                
+
                 <div>
                     <select
                         className='select select-sm select-primary w-full max-w-xs'
@@ -108,8 +123,8 @@ const LeaderboardPage = () => {
                         <option disabled value=''>
                             Sort by Type
                         </option>
-                        <option  value=''>
-                           default
+                        <option value=''>
+                            default
                         </option>
                         {allType?.map((type, index) => {
                             return (
@@ -130,8 +145,8 @@ const LeaderboardPage = () => {
                         <option disabled value=''>
                             Sort by Batch
                         </option>
-                        <option  value=''>
-                           default
+                        <option value=''>
+                            default
                         </option>
 
                         {allBatch?.map((batch, index) => {
@@ -159,48 +174,55 @@ const LeaderboardPage = () => {
                 </div>
             </div>
 
-{
-    examData.length==0?  <div className='flex h-[70vh] gap-2 justify-center items-center my-5'>
-    <Hourglass
-       visible={true}
-       height='80'
-       width='80'
-       ariaLabel='hourglass-loading'
-       wrapperStyle={{}}
-       wrapperClass=''
-       colors={['#ffffff', '#000000']}
-     />
-<h1 className='text-xl'>No Data Found..</h1>
-</div>:
-    <div className='mx-2'>
-{
-        examData?.map((data,index)=><div
-        key={index}
-        className={selectedSort? 'grid items-center grid-cols-2 md:grid-cols-6 gap-4 p-5 primary-bg my-3 shadow-md rounded-xl':'grid items-center grid-cols-2 md:grid-cols-7 gap-4 p-5 primary-bg my-3 shadow-md rounded-xl'}
-        >
-      
-        <img className='w-1/2 object-cover rounded-full' src={data?.stu_image?data?.stu_image:defaultPic} alt="" />
- <div>       <h1 color=''><span  className='text-green-500'>Email:</span> <span className='aext-yellow-500'>{data.stu_email}</span></h1>
-        <h1><span  className='text-green-500'>Name:</span> <span className='aext-yellow-500'>{data.stu_name}</span></h1></div>
-<div>
-<h1><span  className='text-green-500'>Subject:</span> <span className='aext-yellow-500'>{data.subject}</span></h1>
-        {!selectedSort &&  <h1  className='text-green-500'><span>Code:</span> <span className='aext-yellow-500'>{data.exam_code}</span></h1>}
-</div>
-       
-        <h1><span  className='text-green-500'>Batch:</span> <span className='aext-yellow-500'>{data.batch}</span></h1>
-        <h1><span  className='text-green-500'>Type:</span> <span className='aext-yellow-500'>{data.examType}</span></h1>
-<div>
-<h1><span  className='text-green-500'>Total Mark:</span> <span className='aext-yellow-500'>{data.totalMark}</span></h1>
-        {!selectedSort &&  <h1><span  className='text-green-500'>Mark:</span> <span className='aext-yellow-500'>{data.mark}</span></h1>}
-</div>
-        
-       {!selectedSort &&  <h1><span className='text-green-500'>Date: </span> <span className='aext-yellow-500'>{data.date}</span></h1>}
-        
-        </div>)
-    }
-</div>
-}
+            {
+                examData?.length == 0 ? <div className='flex h-[70vh] gap-2 justify-center items-center my-5'>
+                    <Hourglass
+                        visible={true}
+                        height='80'
+                        width='80'
+                        ariaLabel='hourglass-loading'
+                        wrapperStyle={{}}
+                        wrapperClass=''
+                        colors={['#4098A0', '#fcba03']}
+                    />
+                    <h1 className='text-xl'>No Data Found..</h1>
+                </div> :
+                    <div className='mx-2'>
+                        {
+                            displayedData?.map((data, index) => <div
+                                key={index}
+                                className={selectedSort ? 'grid items-center grid-cols-2 md:grid-cols-6 gap-4 p-5 primary-bg my-3 shadow-md rounded-xl' : 'grid items-center grid-cols-2 md:grid-cols-7 gap-4 p-5 primary-bg my-3 shadow-md rounded-xl'}
+                            >
 
+                                <img className='w-1/2 object-cover rounded-full' src={data?.stu_image ? data?.stu_image : defaultPic} alt="" />
+                                <div>       <h1 color=''><span className='text-primary'>Email:</span> <span className='aext-yellow-500'>{data.stu_email}</span></h1>
+                                    <h1><span className='text-primary'>Name:</span> <span className='aext-yellow-500'>{data.stu_name}</span></h1></div>
+                                <div>
+                                    <h1><span className='text-primary'>Subject:</span> <span className='aext-yellow-500'>{data.subject}</span></h1>
+                                    {!selectedSort && <h1 className='text-primary'><span>Code:</span> <span className='aext-yellow-500'>{data.exam_code}</span></h1>}
+                                </div>
+
+                                <h1><span className='text-primary'>Batch:</span> <span className='aext-yellow-500'>{data.batch}</span></h1>
+                                <h1><span className='text-primary'>Type:</span> <span className='aext-yellow-500'>{data.examType}</span></h1>
+                                <div>
+                                    <h1><span className='text-primary'>Total Mark:</span> <span className='text-orange-400'>{data.totalMark}</span></h1>
+                                    {!selectedSort && <h1><span className='text-primary'>Mark:</span> <span className='aext-yellow-500'>{data.mark}</span></h1>}
+                                </div>
+
+                                {!selectedSort && <h1><span className='text-primary'>Date: </span> <span className='aext-yellow-500'>{data.date}</span></h1>}
+
+                            </div>)
+                        }
+                    </div>
+            }
+
+<div className='flex my-6 justify-center'>
+    <Pagination
+   totalPages={totalPages}
+   currentPage={currentPage}
+    setCurrentPage={setCurrentPage}
+    ></Pagination>
+</div>
 
         </div>
     );

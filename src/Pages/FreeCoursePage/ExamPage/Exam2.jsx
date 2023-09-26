@@ -168,7 +168,7 @@ const Exam2 = () => {
                 ariaLabel='hourglass-loading'
                 wrapperStyle={{}}
                 wrapperClass=''
-                colors={['#ffffff', '#000000']}
+                colors={['#4098A0', '#fcba03']}
               />
               <h1 className='text-xl'>Your Result is now Processing....</h1>
             </div>

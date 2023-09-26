@@ -1,6 +1,5 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import './TextEditor.css'
 import { useForm } from 'react-hook-form'
 import {
   addUserAnswer,
@@ -75,30 +74,30 @@ const TextEditor = ({ questions }) => {
     <div>
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className='drop-shadow-md primary-bg p-3  md:px-7 shadow-xl mx-auto my-6 min-h-[40vh]  rounded-md'
+        className='drop-shadow-md primary-bg p-3  md:px-7  mx-auto my-6 min-h-[40vh] rounded-md'
       >
-        <p className='text-xl text-center md:mb-2   '>
+        <p className='text-2xl text-center md:mb-4 '>
           Question {currentQuestion?.id} - {currentQuestion?.question}
         </p>
 
         <textarea
           {...register('answer')}
           id='answer'
-          className='w-full min-h-[25vh] outline-none   p-3  ag-transparent border drop-shadow-md shadow-md rounded-lg'
+          className='w-full min-h-[25vh] text-slate-700 shadow-md shadow-primary outline-none p-3 border rounded-lg'
         />
 
         <div className='mt-2'>
           {isLastQuestion ? (
             <button
               type='submit'
-              className='px-6 py-2  rounded-md btn-primary'
+              className='px-6 py-2 rounded-md btn btn-primary'
             >
               Submit
             </button>
           ) : (
             <button
               type='submit'
-              className='px-6 py-2  rounded-md btn-primary'
+              className='px-6 py-2 rounded-md btn btn-primary'
             >
               Next
             </button>

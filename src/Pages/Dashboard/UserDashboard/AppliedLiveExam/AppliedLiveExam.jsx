@@ -61,7 +61,7 @@ const AppliedLiveExam = () => {
                   <p className='mb-2'>Date: {exam?.date}</p>
 
                   <div className='grid grid-cols-2 '>
-                    <h1 className='aext-red-500 '>Code: </h1>
+                    <h1 className='text-red-500 '>Code: </h1>
                     {code == null ? (
                       <LocalToastTarget name='btn'>
                         <button

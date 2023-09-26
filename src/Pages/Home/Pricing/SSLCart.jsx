@@ -4,7 +4,6 @@ import { useContext, useEffect, useState } from 'react'
 import usePrice from '../../../Hooks/usePrice/usePrice'
 import useAxiosSecure from '../../../Hooks/useAxiosSecure.jsx/useAxiosSecure'
 import { useQuery } from '@tanstack/react-query'
-import Loading from '../../../Components/Loading/Loading'
 import { AuthContext } from '../../../Provider/AuthProvider'
 
 const SSLCart = () => {
@@ -30,9 +29,9 @@ const SSLCart = () => {
   })
   const cartPrice = pricePackage.filter(price => price?._id == id)
   // console.log("serial number 45 >", cartPrice);
-  const totalPrice = parseFloat(priceData?.packageAmount) * 92;
-  const price = totalPrice;
-  const feature = priceData?.features;
+  const totalPrice = parseFloat(priceData?.packageAmount) * 92
+  const price = totalPrice
+  const feature = priceData?.features
   // console.log("fkjfv erefg ker", feature);
   // console.log("serial number 67 >>>>", price);
 
@@ -63,7 +62,7 @@ const SSLCart = () => {
   }
 
   return (
-    <div className='mx-auto mt-10 '>
+    <div className='w-full px-2 mx-auto mt-10 '>
       <h1 className='mt-5 mb-10 text-3xl text-center '>SSL Payment Gateway</h1>
       <form
         onSubmit={handleSubmit(onSubmit)}
@@ -76,22 +75,19 @@ const SSLCart = () => {
             </label>
             <br />
             <input
-              className="w-full p-3 border-2 rounded-md shadow-md ag-transparent focus:outline-none "
+              className='w-full p-3 bg-transparent border-2 rounded-md shadow-md focus:outline-none '
               defaultValue={user?.displayName}
               required
               {...register('userName')}
             />
           </div>
           <div className='w-1/2'>
-            <label
-              htmlFor="email"
-              className="text-lg tracking-wider "
-            >
+            <label htmlFor='email' className='text-lg tracking-wider '>
               Email
             </label>
             <br />
             <input
-              className="w-full p-3 border-2 rounded-md shadow-md ag-transparent focus:outline-none "
+              className='w-full p-3 bg-transparent border-2 rounded-md shadow-md focus:outline-none '
               required
               defaultValue={user?.email}
               {...register('email')}
@@ -105,23 +101,20 @@ const SSLCart = () => {
             </label>
             <br />
             <input
-              type="number"
-              className="w-full p-3 border-2 rounded-md shadow-md ag-transparent focus:outline-none"
-              placeholder="+8801000-000000"
+              type='number'
+              className='w-full p-3 bg-transparent border-2 rounded-md shadow-md focus:outline-none'
+              placeholder='+8801000-000000'
               required
               {...register('phone')}
             />
           </div>
           <div className='w-1/2'>
-            <label
-              htmlFor="address"
-              className="text-lg tracking-wider "
-            >
+            <label htmlFor='address' className='text-lg tracking-wider '>
               Address
             </label>
             <br />
             <input
-              className="w-full p-3 border-2 rounded-md shadow-md ag-transparent focus:outline-none "
+              className='w-full p-3 bg-transparent border-2 rounded-md shadow-md focus:outline-none '
               defaultValue={user?.address}
               placeholder='Please your address'
               required
@@ -129,35 +122,29 @@ const SSLCart = () => {
             />
           </div>
         </div>
-        <div className="w-full">
-            <label
-              htmlFor="adders"
-              className="text-lg tracking-wider "
-            >
-              Currency
-            </label>
-            <br />
-            <select
-              {...register("currency")}
-              required
-              className="w-full p-3 border-2 rounded-md shadow-md ag-transparent focus:outline-none "
-            >
-              <option className="" value="USD">
-                USD
-              </option>
-              <option className="" value="BDT">
-                BDT
-              </option>
-              <option className="" value="EUR">
-                EUR
-              </option>
-              <option className="" value="IND">
-                IND
-              </option>
-              <option className="" value="PAK">
-                PAK
-              </option>
-            </select>
+        <div className='w-full'>
+          <label htmlFor='adders' className='text-lg tracking-wider '>
+            Currency
+          </label>
+          <br />
+          <select
+            {...register('currency')}
+            required
+            className='w-full p-3 bg-transparent border-2 rounded-md shadow-md focus:outline-none '
+          >
+            <option className='text-black' value='USD'>
+              USD
+            </option>
+            <option className='text-black' value='BDT'>
+              BDT
+            </option>
+            <option className='text-black' value='EUR'>
+              EUR
+            </option>
+            <option className='text-black' value='IND'>
+              RUP
+            </option>
+          </select>
         </div>
         {errors.exampleRequired && <span>This field is required</span>}
 
@@ -165,7 +152,7 @@ const SSLCart = () => {
           <input
             type='submit'
             value='Pay Now'
-            className='w-1/2 py-3 mx-auto text-center duration-300 rounded-md cursor-pointer btn-primary'
+            className='w-1/2 py-3 mx-auto text-center duration-300 rounded-md cursor-pointer btn-primary btn'
           />
         </div>
       </form>

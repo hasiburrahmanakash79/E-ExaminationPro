@@ -11,19 +11,15 @@ const TopSubjects = () => {
   const navigate = useNavigate()
 
   useEffect(() => {
-    fetch('https://e-exam-pro-server.vercel.app/allSubjects', {
-      headers: {
-        authorization: `bearar ${localStorage.getItem('access-token')}`
-      }
-    })
+    fetch('https://e-exam-pro-server.vercel.app/topSubjects')
       .then(res => res.json())
       .then(data => {
         //console.log(data);
 
-        if (data.error == true) {
-          logOut()
-          navigate('/login')
-        }
+        // if (data.error == true) {
+        //   logOut()
+        //   navigate('/login')
+        // }
         setSubjects(data)
        
       })

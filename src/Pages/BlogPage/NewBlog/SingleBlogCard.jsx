@@ -1,6 +1,10 @@
-import { useQuery } from "@tanstack/react-query";
-import React, { useContext, useEffect, useState } from "react";
-import { FaRegCommentDots, FaRegHeart, FaRegTrashAlt, FaShareAltSquare } from "react-icons/fa";
+import React, { useContext, useState } from "react";
+import {
+  FaRegCommentDots,
+  FaRegHeart,
+  FaRegTrashAlt,
+  FaShareAltSquare,
+} from "react-icons/fa";
 import { Link } from "react-router-dom";
 import {
   EmailIcon,
@@ -8,13 +12,10 @@ import {
   FacebookIcon,
   FacebookShareButton,
   LineShareButton,
-  LinkedinIcon,
-  PinterestIcon,
-  PinterestShareButton,
+  LineIcon,
   TwitterIcon,
   TwitterShareButton,
 } from "react-share";
-import useAxiosSecure from "../../../Hooks/useAxiosSecure.jsx/useAxiosSecure";
 import { AuthContext } from "../../../Provider/AuthProvider";
 import { fetch } from "openai/_shims/fetch";
 import Swal from "sweetalert2";
@@ -81,29 +82,29 @@ const SingleBlogCard = ({ newBlog, refetch }) => {
   //console.log(allUserComments)
 
   return (
-    <div>
+    <div className="border rounded-lg shadow shadow-primary border-primary">
       <div className="mb-5 ">
         <div
           rel="noopener noreferrer"
           href="#"
-          className="max-w-sm mx-auto group hover:no-underline focus:no-underline dark: ag-gray-900"
+          className="mx-auto group hover:no-underline focus:no-underline"
         >
           <div>
             <div className={isBlog ? "" : "hidden"}>
-              <img
-                role="presentation"
-                className="object-cover w-full rounded-b h-60 dark: ag-gray-500 "
-                src={image_url}
-              />
+              <div>
+                <img
+                  role="presentation"
+                  className="w-full rounded-t-lg h-60"
+                  src={image_url}
+                />
+              </div>
               <div className="p-6 space-y-2">
                 <h3 className="text-2xl font-semibold group-hover:underline group-focus:underline">
                   {title}
                 </h3>
-                <span className="text-xs dark: ">
-                  {publishing_date}
-                </span>
+                <span className="text-xs dark: ">{publishing_date}</span>
                 <p>
-                  {content.slice(0, 250)}...... <br />
+                  {content.slice(0, 230)}...... <br />
                 </p>
               </div>
             </div>
@@ -113,7 +114,7 @@ const SingleBlogCard = ({ newBlog, refetch }) => {
                 isComment ? "px-5  h-[520px] pt-5  overflow-y-auto " : "hidden"
               }
             >
-              <h1 className="text-center aext-red-500">All Comments</h1>
+              <h1 className="text-center text-red-500">All Comments</h1>
               {allUserComments?.allUserComments?.map((comment, index) => (
                 <div key={index} className="p-2 m-2 shadow-md">
                   <h1>
@@ -140,23 +141,20 @@ const SingleBlogCard = ({ newBlog, refetch }) => {
                   className="text-2xl"
                 ></FaRegCommentDots>
                 <FaRegHeart
-                  className={`text-2xl ${isLiked ? "aext-red-500" : ""}`}
+                  className={`text-2xl ${isLiked ? "text-red-500" : ""}`}
                   onClick={toggleLike}
                 ></FaRegHeart>
 
                 <FaShareAltSquare
                   className="text-2xl"
-                  onClick={() => openModal(id)}
+                  onClick={() => openModal(_id)}
                 ></FaShareAltSquare>
 
                 <dialog id={`my_modals_${_id}`} className="modal">
-                  <form
-                    method="dialog"
-                    className="modal-box"
-                  >
+                  <form method="dialog" className="modal-box backdrop-blur-md bg-black/40">
                     <div className="text-center ">
                       <EmailShareButton
-                        url="https://e-exampro.web.app/blog"
+                        url={`https://e-exampro.web.app/blog/${_id}`}
                         quote={"Blog by E-examPro"}
                         hastag={"blog"}
                       >
@@ -193,19 +191,12 @@ const SingleBlogCard = ({ newBlog, refetch }) => {
                         quote={"Blog by E-examPro"}
                         hastag={"blog"}
                       >
-                        <LinkedinIcon
+                        <LineIcon
                           className="me-10"
                           size={50}
                           round={true}
-                        ></LinkedinIcon>
+                        ></LineIcon>
                       </LineShareButton>
-                      <PinterestShareButton
-                        url="https://e-exampro.web.app/blog"
-                        quote={"Blog by E-examPro"}
-                        hastag={"blog"}
-                      >
-                        <PinterestIcon size={50} round={true}></PinterestIcon>
-                      </PinterestShareButton>
                     </div>
                   </form>
                   <form method="dialog" className="modal-backdrop">
@@ -215,19 +206,28 @@ const SingleBlogCard = ({ newBlog, refetch }) => {
               </div>
 
               <div className="">
-                
                 <Link
                   to={`/blogDetails/${_id}`}
-                  className="mt-10 ml-auto text-end btn btn-outline btn-sm"
+                  className="mt-10 ml-auto text-end btn btn-primary btn-sm"
                 >
                   Read More
                 </Link>
                 {user && (
                   <>
                     {isAdmin ? (
-                      <button onClick={() => handleDelete(_id)} className="btn btn-warning btn-outline btn-sm ms-5"><FaRegTrashAlt/></button>
+                      <button
+                        onClick={() => handleDelete(_id)}
+                        className="btn btn-secondary btn-sm ms-5"
+                      >
+                        <FaRegTrashAlt />
+                      </button>
                     ) : isInstructor ? (
-                      <button onClick={() => handleDelete(_id)} className="btn btn-warning btn-outline btn-sm ms-5"><FaRegTrashAlt/></button>
+                      <button
+                        onClick={() => handleDelete(_id)}
+                        className="btn btn-secondary btn-sm ms-5"
+                      >
+                        <FaRegTrashAlt />
+                      </button>
                     ) : (
                       ""
                     )}
