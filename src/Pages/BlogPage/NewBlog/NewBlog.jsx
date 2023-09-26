@@ -8,7 +8,7 @@ const SingleBlogCard = lazy(() =>
 const NewBlog = () => {
 
   const { data: blogs = [], refetch } = useQuery(['blogs'], async () => {
-    const res = await fetch('https://e-exam-pro-server.vercel.app/blogs')
+    const res = await fetch('http://localhost:4000/blogs')
     return res.json()
   })
 
@@ -17,7 +17,7 @@ const NewBlog = () => {
   const blogsPerPage = 8
 
   // useEffect(() => {
-  //   fetch('https://e-exam-pro-server.vercel.app/blogs')
+  //   fetch('http://localhost:4000/blogs')
   //     .then(res => res.json())
   //     .then(data => setNewBlogs(data))
   // }, [])

@@ -28,7 +28,7 @@ const CreateQuesPaper = () => {
     codeRepeat: codeRepeat
   } = useSelector(state => state.questionPaper)
   useEffect(() => {
-    fetch('https://e-exam-pro-server.vercel.app/allSubjects', {
+    fetch('http://localhost:4000/allSubjects', {
       headers: {
         authorization: `bearar ${localStorage.getItem('access-token')}`
       }
@@ -52,7 +52,7 @@ const CreateQuesPaper = () => {
   const [iscodeRepeat, setIscodeRepeat] = useState(null)
   useEffect(() => {
     fetch(
-      `https://e-exam-pro-server.vercel.app/questionCode?code=${codeRepeat}`
+      `http://localhost:4000/questionCode?code=${codeRepeat}`
     )
       .then(res => res.json())
       .then(data => setIscodeRepeat(data.result))
@@ -64,7 +64,7 @@ const CreateQuesPaper = () => {
   useEffect(() => {
 if( formData.date && formData.examTime && formData?.batch) {
     fetch(
-      `https://e-exam-pro-server.vercel.app/questionDate&Time?date=${formData.date}&examTime=${formData.examTime}&batch=${formData?.batch}`
+      `http://localhost:4000/questionDate&Time?date=${formData.date}&examTime=${formData.examTime}&batch=${formData?.batch}`
     )
       .then(res => res.json())
       .then(data => setIsDateTimeRepeat(data.result))
@@ -141,7 +141,7 @@ else{
       })
     }
 
-    fetch('https://e-exam-pro-server.vercel.app/questionPaper', {
+    fetch('http://localhost:4000/questionPaper', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

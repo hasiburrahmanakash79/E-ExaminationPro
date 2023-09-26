@@ -7,7 +7,7 @@ const userGemsSlice = createSlice({
   },
   reducers: {
     reduceGems: (state, { payload }) => {
-      fetch(`https://e-exam-pro-server.vercel.app/reduceGems?email=${payload}`, {
+      fetch(`http://localhost:4000/reduceGems?email=${payload}`, {
         method: 'PATCH',
       })
         .then(res => res.json())

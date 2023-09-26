@@ -64,7 +64,7 @@ const TextEditor = ({ questions }) => {
     }
     try {
       axios.post(
-        'https://e-exam-pro-server.vercel.app/written-answers',
+        'http://localhost:4000/written-answers',
         userWrittenAnswers
       )
     } catch (error) {
