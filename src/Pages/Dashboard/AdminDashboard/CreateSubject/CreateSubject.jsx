@@ -38,7 +38,7 @@ const CreateSubject = () => {
         }
         if (imgResponse.success === true) {
           //console.log(subjectInfo);
-          fetch('http://localhost:4000/allsubjects', {
+          fetch('https://e-exam-pro-server.vercel.app/allsubjects', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json' // Corrected header name

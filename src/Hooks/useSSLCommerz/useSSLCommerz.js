@@ -12,7 +12,7 @@ export const useSSLCommerz = () => {
         queryKey: ["isSuccess", user?.email],
         enabled: !loading,
         queryFn: async () => {
-            const res = await axios.get(`http://localhost:4000/sslPayment/${user?.email}`)
+            const res = await axios.get(`https://e-exam-pro-server.vercel.app/sslPayment/${user?.email}`)
             return res?.data
         }
     })

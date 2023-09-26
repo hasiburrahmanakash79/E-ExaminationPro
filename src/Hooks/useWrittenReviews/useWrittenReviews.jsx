@@ -12,7 +12,7 @@ const useWrittenReviews = () => {
     enabled: !authLoading,
     queryFn: async () => {
       const res = await axios.get(
-        `http://localhost:4000/written-answers?email=${user?.email}`
+        `https://e-exam-pro-server.vercel.app/written-answers?email=${user?.email}`
       )
       return res.data
     }

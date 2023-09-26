@@ -49,7 +49,7 @@ const SSLCart = () => {
       (data.features = feature),
       (data.status = 'paid'),
       (data.date = new Date(dateTime).toLocaleString())
-    fetch('http://localhost:4000/sslPayment', {
+    fetch('https://e-exam-pro-server.vercel.app/sslPayment', {
       method: 'POST',
       headers: { 'content-type': 'application/json' },
       body: JSON.stringify(data)

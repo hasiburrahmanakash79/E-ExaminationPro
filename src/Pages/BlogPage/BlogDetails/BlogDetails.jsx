@@ -40,7 +40,7 @@ const BlogDetails = () => {
       userImage: user?.photoURL,
       name: user?.displayName
     }
-    fetch('http://localhost:4000/comments', {
+    fetch('https://e-exam-pro-server.vercel.app/comments', {
       method: 'POST',
       headers: {
         'content-type': 'application/json'
