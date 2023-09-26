@@ -36,7 +36,7 @@ const Instructors = () => {
       </div>
       <div className='my-5 text-center animate-pulse hover:animate-none'>
         {!seeMore && (
-          <button onClick={handleSeeMore} className='btn primary-btn'>
+          <button onClick={handleSeeMore} className='btn btn-primary'>
             See More Instructors
           </button>
         )}

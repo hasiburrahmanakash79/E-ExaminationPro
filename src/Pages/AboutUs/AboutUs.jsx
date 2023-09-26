@@ -46,7 +46,7 @@ const AboutUs = () => {
             data-aos='fade-down'
             data-aos-duration='1000'
             to='/contact'
-            className='  border-none shadow-md btn primary-btn'
+            className='  border-none shadow-md btn btn-primary'
           >
             Contact Us
           </Link>

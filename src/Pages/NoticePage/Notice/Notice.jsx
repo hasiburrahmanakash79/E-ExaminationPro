@@ -72,7 +72,7 @@ export default function Notice () {
                   <Link
                     to={`/allAppliedLiveExam?examID=${notice._id}&instructor_email=${user?.email}`}
                   >
-                    <button className='primary-btn btn'>
+                    <button className='btn-primary btn'>
                       See Applied Students
                     </button>
                   </Link>

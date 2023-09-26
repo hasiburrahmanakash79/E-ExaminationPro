@@ -85,7 +85,7 @@ const Profile = () => {
                 </h1>
               </div>
               <Link to='/updateProfile'>
-                <button className='btn primary-btn mt-5'>Edit Profile</button>
+                <button className='btn btn-primary mt-5'>Edit Profile</button>
               </Link>
             </div>
           </div>

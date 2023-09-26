@@ -104,7 +104,7 @@ const ManageUsers = () => {
           <tbody>
             {/* row  */}
             {displayedData?.map((user, index) => (
-              <tr key={user._id} className='hover'>
+              <tr key={user._id}>
                 <td>{index + 1}</td>
                 <td>{user.displayName}</td>
                 <td>{user.email}</td>

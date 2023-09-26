@@ -63,11 +63,8 @@ const UserHome = () => {
   ];
 
   return (
-    <div className="px-10 ">
+    <div className="md:px-10 py-20">
       <Helmet><title>Dashboard | E-ExamPro </title></Helmet>
-      <div>
-        <h1 className="text-2xl text-center my-6">User Home</h1>
-      </div>
       <div className="xl:flex gap-5 mb-5">
         <div className=" ag-transparent border   shadow-md w-full rounded-md p-5">
           <div className="flex justify-between items-center">
@@ -100,6 +97,7 @@ const UserHome = () => {
           </div>
           <div className="">
             <div className="xl:flex justify-between items-center">
+            <ResponsiveContainer width="100%" height={350}>
               <PieChart width={300} height={300}>
                 <Pie
                   dataKey="value"
@@ -111,17 +109,10 @@ const UserHome = () => {
                   fill="#8884d8"
                   label
                 />
-                <Pie
-                  dataKey="value"
-                  data={PieDataInfo}
-                  cx={500}
-                  cy={200}
-                  innerRadius={40}
-                  outerRadius={80}
-                  fill="#82ca9d"
-                />
+                
                 <Tooltip />
               </PieChart>
+              </ResponsiveContainer>
               <div className="md:w-1/2 w-full mx-auto">
                 <h2 className="flex items-center gap-3 ">
                   <FaFileSignature className="text-xl  "></FaFileSignature>
@@ -146,6 +137,7 @@ const UserHome = () => {
           <h2 className="text-2xl">Quiz Participation</h2>
           <div className="xl:flex items-center gap-10">
             <div>
+            <ResponsiveContainer width="100%" height={350}>
               <PieChart width={300} height={300}>
                 <Pie
                   data={PieDataInfo}
@@ -165,6 +157,7 @@ const UserHome = () => {
                   label
                 />
               </PieChart>
+              </ResponsiveContainer>
             </div>
             <div className=" ">
               <h2 className="flex items-center gap-3 mb-2">
@@ -179,11 +172,12 @@ const UserHome = () => {
               </h2>
             </div>
           </div>
-          <div></div>
+          
         </div>
       </div>
-      <div className="xl:flex gap-5 rounded-md">
-        <div className=" ag-transparent border   shadow-md w-full rounded-md p-5">
+      {/* todo  */}
+      {/* <div className="xl:flex gap-5 rounded-md"> */}
+        {/* <div className=" ag-transparent border   shadow-md w-full rounded-md p-5">
           <div className="flex items-center justify-between ">
             <div>
               <h1 className="text-2xl">
@@ -218,9 +212,9 @@ const UserHome = () => {
               onSelect={setSelected}
             />
           </div>
-        </div>
+        </div> */}
 
-        <div className=" p-5  ag-transparent border   shadow-md w-full rounded-md ">
+        {/* <div className=" p-5  ag-transparent border   shadow-md w-full rounded-md ">
           <div className="flex items-center justify-between ">
             <div>
               <h1 className="text-2xl font-extrabold  ">
@@ -282,8 +276,8 @@ const UserHome = () => {
             </BarChart>
             </ResponsiveContainer>
           </div>
-        </div>
-      </div>
+        </div> */}
+      {/* </div> */}
     </div>
   );
 };

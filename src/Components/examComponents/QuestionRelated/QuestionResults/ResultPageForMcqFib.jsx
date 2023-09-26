@@ -45,7 +45,7 @@ const ResultPageForMcqFib = () => {
                 loadings ? (
                   'loadings document...'
                 ) : (
-                  <button className='btn primary-btn w-44'>
+                  <button className='btn btn-primary w-44'>
                     Export Result As PDF
                   </button>
                 )

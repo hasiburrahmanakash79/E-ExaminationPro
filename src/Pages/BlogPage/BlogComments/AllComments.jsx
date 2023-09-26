@@ -66,7 +66,7 @@ const Comment = ({
               />
 
               <Action
-                className="reply comment btn primary-btn"
+                className="reply comment btn btn-primary"
                 type="COMMENT"
                 handleClick={onAddComment}
               />
