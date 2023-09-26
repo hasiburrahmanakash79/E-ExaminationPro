@@ -20,7 +20,7 @@ const LeaderboardPage = () => {
 
     useEffect(() => {
         // Fetch data and set allBatch and allSubject state
-        fetch('https://e-exam-pro-server.vercel.app/getBatch_Subject')
+        fetch('http://localhost:4000/getBatch_Subject')
             .then((res) => res.json())
             .then((data) => {
                 setAllBatch(data?.batch);
@@ -31,7 +31,7 @@ const LeaderboardPage = () => {
 
     useEffect(() => {
         // Fetch data and set allBatch and allSubject state
-        fetch(`https://e-exam-pro-server.vercel.app/leaderboardResult?inputSearch=${searchInput}&batch=${selectedBatch}&subject=${selectedSubject}&sort=${selectedSort}&type=${selectedType}`)
+        fetch(`http://localhost:4000/leaderboardResult?inputSearch=${searchInput}&batch=${selectedBatch}&subject=${selectedSubject}&sort=${selectedSort}&type=${selectedType}`)
             .then((res) => res.json())
             .then((data) => {
                 console.log(data)
@@ -66,7 +66,7 @@ const LeaderboardPage = () => {
     ////////////////////////---------------------Pagination
 
     const [currentPage, setCurrentPage] = useState(0)
-    const [itemsPerPage,setItemPerPage] = useState(5); // Number of items to display per page
+    const [itemsPerPage, setItemPerPage] = useState(5); // Number of items to display per page
     const totalItems = examData?.length;
     const totalPages = Math.ceil(totalItems / itemsPerPage)
 
@@ -85,11 +85,11 @@ const LeaderboardPage = () => {
                     <input
                         type='text'
                         placeholder='use email only'
-                        className='input col-span-3 input-sm input-bordered w-full max-w-xs'
+                        className='input border-primary col-span-3 input-sm input-bordered w-full max-w-xs'
                         value={searchInput}
                         onChange={handleSearchInputChange}
                     />
-                    <button className='btn btn-sm primary-btn'>Search</button>
+                    <button className='btn btn-sm btn-primary text-white'>Search</button>
                 </div>
 
                 <div>
@@ -191,7 +191,7 @@ const LeaderboardPage = () => {
                         {
                             displayedData?.map((data, index) => <div
                                 key={index}
-                                className={selectedSort ? 'grid items-center grid-cols-2 md:grid-cols-6 gap-4 p-5 primary-bg my-3 shadow-md rounded-xl' : 'grid items-center grid-cols-2 md:grid-cols-7 gap-4 p-5 primary-bg my-3 shadow-md rounded-xl'}
+                                className={selectedSort ? 'grid items-center grid-cols-2 md:grid-cols-6 gap-4 p-5 primary-bg my-3 shadow-md rounded-xl' : 'grid items-center grid-cols-2 md:grid-cols-7 gap-4 p-5 primary-bg my-3 shadow-md rounded-xl border-primary border-2'}
                             >
 
                                 <img className='w-1/2 object-cover rounded-full' src={data?.stu_image ? data?.stu_image : defaultPic} alt="" />
@@ -205,7 +205,7 @@ const LeaderboardPage = () => {
                                 <h1><span className='text-primary'>Batch:</span> <span className='aext-yellow-500'>{data.batch}</span></h1>
                                 <h1><span className='text-primary'>Type:</span> <span className='aext-yellow-500'>{data.examType}</span></h1>
                                 <div>
-                                    <h1><span className='text-primary'>Total Mark:</span> <span className='text-orange-400'>{data.totalMark}</span></h1>
+                                    <h1><span className='text-primary'>Total Mark:</span> <span className='aext-orange-400'>{data.totalMark}</span></h1>
                                     {!selectedSort && <h1><span className='text-primary'>Mark:</span> <span className='aext-yellow-500'>{data.mark}</span></h1>}
                                 </div>
 
@@ -216,13 +216,13 @@ const LeaderboardPage = () => {
                     </div>
             }
 
-<div className='flex my-6 justify-center'>
-    <Pagination
-   totalPages={totalPages}
-   currentPage={currentPage}
-    setCurrentPage={setCurrentPage}
-    ></Pagination>
-</div>
+            <div className='flex my-6 justify-center'>
+                <Pagination
+                    totalPages={totalPages}
+                    currentPage={currentPage}
+                    setCurrentPage={setCurrentPage}
+                ></Pagination>
+            </div>
 
         </div>
     );

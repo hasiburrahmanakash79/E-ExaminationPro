@@ -60,13 +60,15 @@ const Contact = () => {
       <SectionTitle title={'Contact'}></SectionTitle>
       <div className='items-center grid-cols-2 gap-10 pt-3 space-y-5 md:grid'>
         <div className='w-full md:gap-10'>
+  
           <form
             data-aos='fade-down'
             data-aos-duration='1000'
             ref={form}
             onSubmit={sendEmail}
-            className='pb-5 border-2 rounded-lg shadow-md md:pt-20 card-body'
+            className='pb-5 border-2 rounded-lg shadow-md card-body'
           >
+            <h1 className='pb-2 text-primary text-3xl md:text-4xl text-center'>Any Time</h1>
             <div className=''>
               <div className='form-control'>
                 <label className='label'>

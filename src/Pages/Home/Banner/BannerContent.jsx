@@ -17,14 +17,14 @@ const BannerContent = () => {
       >
         E-ExamPro
       </h1>
-      <p>
-        Exercise your brain with these interesting quizzes and puzzles; <br />{" "}
+      <p className=" text-md mx-5 ">
+        Exercise your brain with these interesting quizzes and puzzles &
         win points, badges, prizes and impress your friends & colleagues!
       </p>
 
       <Link
         to="/allSubjects"
-        className="mt-4 md:mt-6 text-lg btn-primary btn rounded-full py-2 border-none px-8"
+        className="mt-4 btn-sm md:btn-md md:mt-6 md:text-lg btn-primary btn rounded-full text-md  border-none px-8"
       >
         Explore Exams
       </Link>

@@ -31,7 +31,7 @@ const AllExam = () => {
 
   useEffect(() => {
     if (!loading) {
-      fetch(`https://e-exam-pro-server.vercel.app/userBatch?email=${user?.email}`)
+      fetch(`http://localhost:4000/userBatch?email=${user?.email}`)
         .then(res => res.json())
         .then(data => {
           //console.log(data, "----------line 25");
@@ -54,7 +54,7 @@ const AllExam = () => {
       if (isAdmin ? isAdmin : isInstructor ? isInstructor : batch) {
         setDataLoading(true)
 
-        fetch(`https://e-exam-pro-server.vercel.app/questionPaper?type=${type}&subject=${subject}&instructor_email=${user?.email}&batch=${batch}`)
+        fetch(`http://localhost:4000/questionPaper?type=${type}&subject=${subject}&instructor_email=${user?.email}&batch=${batch}`)
           .then(res => res.json())
           .then(data => {
             console.log()

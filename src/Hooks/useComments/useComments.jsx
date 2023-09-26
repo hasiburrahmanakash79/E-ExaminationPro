@@ -10,7 +10,7 @@ const useComments = () => {
     queryKey: ['comments'],
     queryFn: async () => {
       const res = await axios.get(
-        `https://e-exam-pro-server.vercel.app/comments`
+        `http://localhost:4000/comments`
       ) // to todo add date subject code etc
       return res.data
     }

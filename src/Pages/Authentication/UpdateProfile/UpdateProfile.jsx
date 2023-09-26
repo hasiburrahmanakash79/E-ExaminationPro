@@ -3,9 +3,10 @@ import { useContext } from 'react'
 import useAxiosSecure from '../../../Hooks/useAxiosSecure.jsx/useAxiosSecure'
 import { AuthContext } from '../../../Provider/AuthProvider'
 import { useQuery } from '@tanstack/react-query'
-import Loading from '../../../Components/Loading/Loading'
+
 import Swal from 'sweetalert2'
 import defaultPic from '../../../assets/userPro.png'
+import Loading from '../../../components/Loading/Loading'
 const UpdateProfile = () => {
   const img_token = import.meta.env.VITE_Image_Key
   const img_hosting_url = `https://api.imgbb.com/1/upload?key=${img_token}`
@@ -102,14 +103,14 @@ const UpdateProfile = () => {
               <div className='w-80 mx-auto'>
                 <img
                   src={info?.photoURL ? info?.photoURL : defaultPic}
-                  className=' border-2   rounded-lg mb-2 p-3 '
+                  className=' border-2 border-primary   rounded-lg mb-2 p-3 '
                   alt=''
                 />
-                <div className='form-control rounded-lg border-2   items-center my-5'>
+                <div className='form-control rounded-lg border-primary  items-center my-5'>
                   <input
                     name='image'
                     type='file'
-                    className=' col-span-5 file-input w-full  ag-transparent'
+                    className='border-primary file-input-primary  col-span-5 file-input w-full   '
                   />
                 </div>
               </div>
@@ -119,7 +120,7 @@ const UpdateProfile = () => {
                 <label className='label col-span-1'>
                   <span className='label-text '>Name:</span>
                 </label>
-                <h1 className=' col-span-5 input input-sm border shadow-md'>
+                <h1 className=' col-span-5 input input-sm border-primary shadow-md  '>
                   {info?.displayName}
                 </h1>
               </div>
@@ -128,7 +129,7 @@ const UpdateProfile = () => {
                 <label className='label col-span-1'>
                   <span className='label-text '>Email:</span>
                 </label>
-                <h1 className=' col-span-5 input input-sm border shadow-md'>
+                <h1 className=' col-span-5 input input-sm border-primary  shadow-md'>
                   {info?.email}
                 </h1>
               </div>
@@ -139,7 +140,7 @@ const UpdateProfile = () => {
                 <input
                   name='batch'
                   placeholder={info?.batch}
-                  className='col-span-5 input input-sm border shadow-md'
+                  className='col-span-5 input input-sm border-primary  shadow-md'
                 />
               </div>
               <div className='form-control grid grid-cols-6 my-2'>
@@ -174,7 +175,7 @@ const UpdateProfile = () => {
                 <input
                   placeholder={info?.address}
                   name='address'
-                  className='col-span-5 input input-sm  border shadow-md'
+                  className='col-span-5 input input-sm  border-primary  shadow-md'
                 />
               </div>
               <div className='form-control grid  grid-cols-6 my-2'>
@@ -183,7 +184,7 @@ const UpdateProfile = () => {
                 </label>
                 <input
                   placeholder={info?.mobile}
-                  className='col-span-5 input input-sm  border shadow-md'
+                  className='col-span-5 input input-sm  border-primary  shadow-md'
                   name='mobile'
                 />
               </div>

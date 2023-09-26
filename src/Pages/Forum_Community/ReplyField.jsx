@@ -24,7 +24,7 @@ const ReplyField = ({ postId, refetch, setCommentPostText, comment, setReplyHide
         };
         try {
             const response = await fetch(
-                `https://e-exam-pro-server.vercel.app/forumPost/${postId}/replies`,
+                `http://localhost:4000/forumPost/${postId}/replies`,
                 {
                     method: "POST",
                     headers: {

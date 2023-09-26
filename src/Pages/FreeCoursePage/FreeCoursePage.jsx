@@ -15,7 +15,7 @@ const FreeCoursePage = () => {
   const [data, setData] = useState([])
   const navigate = useNavigate()
   useEffect(() => {
-    fetch('https://e-exam-pro-server.vercel.app/allSubjects', {
+    fetch('http://localhost:4000/allSubjects', {
       headers: {
         authorization: `bearar ${localStorage.getItem('access-token')}`
       }
@@ -69,9 +69,9 @@ const FreeCoursePage = () => {
 
               <Link
                 to={`/allexam?subject=${subject.subject_name}`}
-                className='btn btn-outline btn-warning'
+                className='btn btn-outline  btn-primary'
               >
-                View All Exam
+                <span className='text-white'>View All Exam</span>
               </Link>
             </div>
           </div>
