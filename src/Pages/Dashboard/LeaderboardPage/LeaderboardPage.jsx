@@ -20,7 +20,7 @@ const LeaderboardPage = () => {
 
     useEffect(() => {
         // Fetch data and set allBatch and allSubject state
-        fetch('http://localhost:4000/getBatch_Subject')
+        fetch('https://e-exam-pro-server.vercel.app/getBatch_Subject')
             .then((res) => res.json())
             .then((data) => {
                 setAllBatch(data?.batch);
@@ -31,7 +31,7 @@ const LeaderboardPage = () => {
 
     useEffect(() => {
         // Fetch data and set allBatch and allSubject state
-        fetch(`http://localhost:4000/leaderboardResult?inputSearch=${searchInput}&batch=${selectedBatch}&subject=${selectedSubject}&sort=${selectedSort}&type=${selectedType}`)
+        fetch(`https://e-exam-pro-server.vercel.app/leaderboardResult?inputSearch=${searchInput}&batch=${selectedBatch}&subject=${selectedSubject}&sort=${selectedSort}&type=${selectedType}`)
             .then((res) => res.json())
             .then((data) => {
                 console.log(data)

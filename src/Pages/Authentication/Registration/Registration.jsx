@@ -85,7 +85,7 @@ const Registration = () => {
       <Helmet>
         <title>Registration | E-ExamPro</title>
       </Helmet>
-      <div className='container min-h-screen mx-auto hero'>
+      <div className='container min-h-screen mx-auto hero text-primary'>
         <div className='items-center justify-between gap-10 px-3 md:flex'>
         <div className='md:w-1/2 md:mb-0 mb-10'>
             <Lottie
@@ -108,7 +108,7 @@ const Registration = () => {
                       {...register('name', { required: true })}
                       type='text'
                       placeholder='Enter your name'
-                      className=' ag-transparent input input-bordered'
+                      className=' bg-transparent input border border-secondary'
                     />
                     {errors.name && <span>This field is required</span>}
                   </div>
@@ -120,7 +120,7 @@ const Registration = () => {
                       {...register('email', { required: true })}
                       type='email'
                       placeholder='Enter your email'
-                      className=' ag-transparent input input-bordered'
+                      className=' bg-transparent input border border-secondary'
                     />
                     {errors.email && <span>This field is required</span>}
                   </div>
@@ -138,7 +138,7 @@ const Registration = () => {
                       })}
                       type={passShow ? 'text' : 'password'}
                       placeholder='Enter your password'
-                      className=' ag-transparent input input-bordered'
+                      className=' bg-transparent input border border-secondary'
                     />
                     <label className='label'>
                       <a className='label-text-alt link link-hover'>
@@ -168,7 +168,7 @@ const Registration = () => {
                       })}
                       type={passShow ? 'text' : 'password'}
                       placeholder='Confirm password'
-                      className=' ag-transparent input input-bordered'
+                      className=' bg-transparent input border border-secondary'
                     />
                     {errors.confirm && <span>{errors.confirm.message}</span>}
                   </div>
@@ -180,7 +180,7 @@ const Registration = () => {
                       {...register('number', { required: true })}
                       type='number'
                       placeholder='+880'
-                      className='ag-transparent input input-bordered'
+                      className=' bg-transparent input border border-secondary'
                     />
                     {errors.number && <span>This field is required</span>}
                   </div>
@@ -188,7 +188,7 @@ const Registration = () => {
                     <label className='label'>
                       <span className='label-text'>Image</span>
                     </label>
-                    <div className='items-center border-2 rounded-lg form-control '>
+                    <div className=' bg-transparent rounded-md border border-secondary form-control '>
                       <input
                         {...register('image', { required: true })}
                         name='image'
@@ -211,7 +211,7 @@ const Registration = () => {
                     {...register('address', { required: true })}
                     type='text'
                     placeholder='Enter your Address'
-                    className=' ag-transparent input input-bordered'
+                    className=' bg-transparent input border border-secondary'
                   />
                 </div>
                 <div className='mt-5 form-control'>

@@ -31,7 +31,7 @@ const AllExam = () => {
 
   useEffect(() => {
     if (!loading) {
-      fetch(`http://localhost:4000/userBatch?email=${user?.email}`)
+      fetch(`https://e-exam-pro-server.vercel.app/userBatch?email=${user?.email}`)
         .then(res => res.json())
         .then(data => {
           //console.log(data, "----------line 25");
@@ -39,6 +39,7 @@ const AllExam = () => {
         })
     }
   }, [user?.email, loading])
+
   console.log(
     batch,
     type,
@@ -48,24 +49,27 @@ const AllExam = () => {
   const [dataloading, setDataLoading] = useState(true)
 
   useEffect(() => {
-    if (!loading) {
+    if (loading == false) {
+      console.log(loading, '--------------load')
       if (isAdmin ? isAdmin : isInstructor ? isInstructor : batch) {
         setDataLoading(true)
-        fetch(
-          `http://localhost:4000/questionPaper?type=${type}&subject=${subject}&instructor_email=${user?.email}&batch=${batch}`
-        )
+
+        fetch(`https://e-exam-pro-server.vercel.app/questionPaper?type=${type}&subject=${subject}&instructor_email=${user?.email}&batch=${batch}`)
           .then(res => res.json())
           .then(data => {
+            console.log()
             //console.log(data, "----------line 25");
             dispatch(allExam(data))
-
             setDataLoading(false)
           })
+      }
+      else {
+        setDataLoading(false)
       }
     }
   }, [subject, type, loading, batch, isInstructor, isAdmin])
 
-  console.log(exams)
+  console.log(exams, '---------------------------exam', type, subject, user?.email, batch, loading);
   //console.log(type);
   //console.log(isAdmin);
   const [currentTime, setCurrentTime] = useState(new Date())
@@ -99,21 +103,23 @@ const AllExam = () => {
   const isExamInFuture = (date, time) => {
     // Parse exam date and time
     console.log(date, time)
-    const examDateTime = new Date(`${date}T${time}`)
+    const examDateTime = new Date(`${date}T${time}`);
 
     // Get current date and time
     const currentDateTime = new Date()
 
     // Compare exam date and time with the current date and time
 
-    console.log(examDateTime, 'gg', currentDateTime)
-    return examDateTime > currentDateTime
+    console.log(examDateTime, 'gg', currentDateTime, dataloading)
+    return examDateTime > currentDateTime;
   }
 
   console.log(isExamInFuture())
   return (
     <>
-      <div className='min-h-[60vh] container mx-auto'>
+     {
+      batch ?<>
+       <div className='min-h-[60vh] container mx-auto'>
         <Tabs>
           <div className='text-center'>
             <TabList>
@@ -128,7 +134,7 @@ const AllExam = () => {
           </div>
 
           <TabPanel>
-            {!dataloading ? (
+            {dataloading == false ? (
               <div>
                 {exams.length == 0 ? (
                   <div className=' text-red-600 text-4xl flex justify-center items-center h-[70vh]'>
@@ -600,6 +606,20 @@ const AllExam = () => {
           </TabPanel>
         </Tabs>
       </div>
+      </>
+      :<>
+       <div className='text-red-500 text-4xl flex justify-center items-center h-[70vh]'>
+                    <h1>
+                      <Typewriter
+                        speed={200}
+                        delay={900}
+                        loop={true}
+                        text='Please Add Your Batch'
+                      />
+                    </h1>
+                  </div>
+      </>
+     }
     </>
   )
 }

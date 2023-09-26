@@ -63,16 +63,17 @@ const CreateQuesPaper = () => {
 
   const [isDateTimeRepeat, setIsDateTimeRepeat] = useState(null)
   useEffect(() => {
-    if (formData.date && formData.examTime && formData?.batch) {
-      fetch(
-        `https://e-exam-pro-server.vercel.app/questionDate&Time?date=${formData.date}&examTime=${formData.examTime}&batch=${formData?.batch}`
-      )
-        .then(res => res.json())
-        .then(data => setIsDateTimeRepeat(data.result))
-    } else {
-      setIsDateTimeRepeat(null)
-    }
-  }, [formData?.date, formData?.examTime, formData?.batch])
+if( formData.date && formData.examTime && formData?.batch) {
+    fetch(
+      `https://e-exam-pro-server.vercel.app/questionDate&Time?date=${formData.date}&examTime=${formData.examTime}&batch=${formData?.batch}`
+    )
+      .then(res => res.json())
+      .then(data => setIsDateTimeRepeat(data.result))
+}
+else{
+  setIsDateTimeRepeat(null)
+}
+  }, [formData?.date,formData?.examTime,formData?.batch])
 
   console.log(isDateTimeRepeat, 'date time')
 

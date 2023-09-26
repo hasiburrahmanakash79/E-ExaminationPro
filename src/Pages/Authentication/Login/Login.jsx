@@ -57,7 +57,7 @@ const Login = () => {
       <Helmet>
         <title>Login | E-ExamPro</title>
       </Helmet>
-      <div className="min-h-screen hero">
+      <div className="container min-h-screen mx-auto hero text-primary">
         <div className="items-center justify-between gap-12 px-3 md:flex">
           <div className="mb-8 md:w-1/2 md:mb-0">
             <Lottie
@@ -96,7 +96,7 @@ const Login = () => {
                     {...register("password", { required: true })}
                     type={passShow ? "text" : "password"}
                     placeholder="enter your password"
-                    className=" bg-transparent input input-bordered"
+                    className="bg-transparent input border border-secondary"
                   />
                   <div className="flex justify-between mb-5 ">
                     <a onClick={() => setPassShow(!passShow)}>

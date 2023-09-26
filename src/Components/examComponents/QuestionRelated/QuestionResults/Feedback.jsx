@@ -2,23 +2,6 @@ const FeedBack = () => {
   const feedBackHandler = e => {
     e.preventDefault()
     const form = e.target
-    // const message = form.message.value
-    // const quality = form.quality.value
-    // const time = form.timeManage.value
-
-    // axios.post("", {
-    //     message: message,
-    //     question: quality,
-    //     time: time,
-    // })
-    //     .then(res => {
-    //         if (res.data.insertedId) {
-    //             /*hot toast && sweet alert */
-    //         }
-    //     })
-    //     .catch(err => {
-    //
-    //     })
   }
 
   return (

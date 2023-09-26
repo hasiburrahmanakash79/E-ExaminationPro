@@ -79,7 +79,7 @@ refetch()
           {/* Feedback */}
           <div className='mx-auto mb-6 md:ml-auto md:absolute md:right-0 md:bottom-28'>
             <button
-              className='btn btn_quiz primary-btn'
+              className='btn btn_quiz btn-primary'
               onClick={() => window.my_modal_2.showModal()}
             >
               Give FeedBack
@@ -87,7 +87,7 @@ refetch()
             <dialog id='my_modal_2' className=' modal'>
               <form
                 method='dialog'
-                className='relative max-w-5xl p-0 border w-fit h-fit modal-box primary-bg'
+                className='relative max-w-5xl p-0 border w-fit h-fit modal-box'
               >
                 <small className='absolute top-0 right-0 p-1 text-xs'>
                   Press ESC key or click outside to close

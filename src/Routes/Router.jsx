@@ -194,9 +194,7 @@ const router = createBrowserRouter([
         path: "/exam/:id",
         element: <Exam2 />,
         loader: ({ params }) =>
-          fetch(
-            `https://e-exam-pro-server.vercel.app/questionPaper/${params.id}`
-          ),
+          fetch(`https://e-exam-pro-server.vercel.app/questionPaper/${params.id}`),
       },
       {
         path: "/written",
@@ -414,11 +412,19 @@ const router = createBrowserRouter([
       //User Dashboard
       {
         path: "/dashboard/userHome",
-        element: <UserHome />,
+        element: (
+          <PrivateRouter>
+            <UserHome />
+          </PrivateRouter>
+        ),
       },
       {
         path: "/dashboard/paymentHistory",
-        element: <PaymentHistory />,
+        element: (
+          <PrivateRouter>
+            <PaymentHistory />
+          </PrivateRouter>
+        ),
       },
       {
         path: "/dashboard/noticeBoard",
@@ -446,7 +452,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/dashboard/singleUserAnswer/:id",
-        element: <SingleUserAnswers/>,
+        element: <SingleUserAnswers />,
       },
     ],
   },
