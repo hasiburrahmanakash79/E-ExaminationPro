@@ -4,10 +4,7 @@ import { Outlet } from 'react-router-dom'
 
 const Main = () => {
   return (
-    <div
-      className={`
-    `}
-    >
+    <div className=''>
       <Navbar />
       <div className='min-h-[calc(100vh-390px)]'>
         <Outlet />

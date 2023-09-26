@@ -16,14 +16,18 @@ export default function ChatButton () {
 
   return (
     <div className='z-50'>
-      <div className='fixed z-40 bottom-4 right-4'>
+      <div className='fixed z-40 -right-2 bottom-1 md:bottom-4 md:right-4'>
         {!isOpen && (
           <button
             type='button'
             onClick={openModal}
             className='transition-all hover:scale-110'
           >
-            <img src={chatIcon} className='w-20 hover:scale-110' alt='' />
+            <img
+              src={chatIcon}
+              className='w-14 md:w-20 hover:scale-110'
+              alt=''
+            />
           </button>
         )}
       </div>

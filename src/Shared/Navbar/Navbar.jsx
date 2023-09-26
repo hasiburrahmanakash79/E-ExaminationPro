@@ -142,7 +142,7 @@ const Navbar = () => {
         transition: 'all .5s ease-in-out'
       }}
     >
-      <nav className='z-50 text-white backdrop-blur-lg bg-black/80'>
+      <nav className='z-50 text-white backdrop-blur-lg bg-black/40'>
         <div className='navbar z-[40]  container mx-auto  sticky top-0'>
           <div className='navbar-start'>
             <div className='dropdown'>
@@ -164,7 +164,7 @@ const Navbar = () => {
               </label>
               <ul
                 tabIndex={0}
-                className='z-50 p-2 mt-3 shadow w-36 menu menu-sm dropdown-content rounded-box bg-black/80 backdrop-blur'
+                className='z-50 p-2 mt-3 shadow w-36 menu menu-sm dropdown-content rounded-box bg-black/80 md:bg-black/40 backdrop-blur'
               >
                 {/* navbarFirst */}
                 {navbarLink_First}

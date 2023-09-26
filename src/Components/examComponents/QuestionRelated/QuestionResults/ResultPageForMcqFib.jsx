@@ -78,17 +78,17 @@ const ResultPageForMcqFib = () => {
           {/* Feedback */}
           <div className='mx-auto mb-6 md:ml-auto md:absolute md:right-0 md:bottom-28'>
             <button
-              className='btn btn_quiz btn-primary'
+              className='btn btn-primary'
               onClick={() => window.my_modal_2.showModal()}
             >
               Give FeedBack
             </button>
-            <dialog id='my_modal_2' className=' modal'>
+            <dialog id='my_modal_2' className='backdrop-blur modal'>
               <form
                 method='dialog'
                 className='relative max-w-5xl p-0 border w-fit h-fit modal-box'
               >
-                <small className='absolute top-0 right-0 p-1 text-xs text-primary'>
+                <small className='absolute top-0 right-0 p-1 text-xs text-white'>
                   Press ESC key or click outside to close
                 </small>
 

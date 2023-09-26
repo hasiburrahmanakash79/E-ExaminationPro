@@ -8,7 +8,11 @@
 @tailwind components;
 @tailwind utilities;
 
-
+/* .my_scrollbar{
+  @layer utilities{ 
+    @apply overflow-y-auto scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-slate-300 scrollbar-w-2 scrollbar-track-transparent
+  }
+} */
 
 /* *{
     border: 1px solid black;

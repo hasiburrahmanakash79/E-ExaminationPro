@@ -10,7 +10,7 @@ import { Helmet } from 'react-helmet-async'
 const MainContact = lazy(() => import('../../Contact/MainContact'))
 const Pricing = lazy(() => import('../Pricing/Pricing'))
 import ChatButton from '../ChatBot/ChatButton'
-import Loading from '../../../Components/Loading/Loading'
+import Loading from '../../../components/Loading/Loading'
 const HomePage = () => {
   //console.log(window.localStorage.getItem('showMainContent'))
   const [showMainContent, setShowMainContent] = useState(
@@ -38,7 +38,7 @@ const HomePage = () => {
     a()
   }
   return (
-    <div className='relative'>
+    <div className='relative my_scroll'>
       <Helmet>
         <title>E-ExamPro </title>
       </Helmet>
