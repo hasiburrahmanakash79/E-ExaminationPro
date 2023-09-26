@@ -79,7 +79,7 @@ refetch()
                 loadings ? (
                   'loadings document...'
                 ) : (
-                  <button className='btn primary-btn w-44'>
+                  <button className='btn btn-primary w-44'>
                     Export Result As PDF
                   </button>
                 )
@@ -112,7 +112,7 @@ refetch()
           {/* Feedback */}
           <div className='mx-auto mb-6 md:ml-auto md:absolute md:right-0 md:bottom-28'>
             <button
-              className='btn btn_quiz primary-btn'
+              className='btn btn_quiz btn-primary'
               onClick={() => window.my_modal_2.showModal()}
             >
               Give FeedBack

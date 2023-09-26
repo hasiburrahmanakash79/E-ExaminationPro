@@ -189,8 +189,8 @@ const UpcomingLiveExam = () => {
               {' '}
               {/* Add 'mt-4' for top margin */}
               <LocalToastTarget name='btn'>
-                {/* <input  disabled={!studentData?.batch } className="primary-btn btn" type="submit" value="Apply for Exam" /> */}
-                <button className='primary-btn btn'>Apply for Exam </button>
+                {/* <input  disabled={!studentData?.batch } className="btn-primary btn" type="submit" value="Apply for Exam" /> */}
+                <button className='btn-primary btn'>Apply for Exam </button>
               </LocalToastTarget>
             </div>
             <p className='text-center '>{msg}</p>

@@ -68,7 +68,7 @@ export default function Notice () {
                 </p>
                 {isAdmin ? (
                   <Link to={`/allAppliedLiveExam?examID=${notice._id}`}>
-                    <button className='primary-btn btn'>
+                    <button className='btn-primary btn'>
                       See Applied Students
                     </button>
                   </Link>
@@ -76,7 +76,7 @@ export default function Notice () {
                   <Link
                     to={`/allAppliedLiveExam?examID=${notice._id}&instructor_email=${user?.email}`}
                   >
-                    <button className='primary-btn btn'>
+                    <button className='btn-primary btn'>
                       See Applied Students
                     </button>
                   </Link>
@@ -85,7 +85,7 @@ export default function Notice () {
                     to={`/upcomingLiveExam?examID=${notice._id}&email=${user?.email}`}
                     className='mt-5'
                   >
-                    <button className='primary-btn btn'>
+                    <button className='btn-primary btn'>
                       Apply For Live class
                     </button>
                   </Link>

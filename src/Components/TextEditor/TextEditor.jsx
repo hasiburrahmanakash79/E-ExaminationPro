@@ -91,14 +91,14 @@ const TextEditor = ({ questions }) => {
           {isLastQuestion ? (
             <button
               type='submit'
-              className='px-6 py-2  rounded-md primary-btn'
+              className='px-6 py-2  rounded-md btn-primary'
             >
               Submit
             </button>
           ) : (
             <button
               type='submit'
-              className='px-6 py-2  rounded-md primary-btn'
+              className='px-6 py-2  rounded-md btn-primary'
             >
               Next
             </button>

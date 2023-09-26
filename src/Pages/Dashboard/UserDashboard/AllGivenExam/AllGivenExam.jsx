@@ -64,12 +64,12 @@ const AllGivenExam = () => {
 
       {/* You can open the modal using document.getElementById('ID').showModal() method */}
 
-      <dialog id='review' className='modal'>
+      <dialog id='review' className='modal bg-black/40 backdrop-blur-md'>
         <ToastContainer />
         <div className='modal-box'>
           <form method='dialog'>
             {/* if there is a button in form, it will close the modal */}
-            <button className='btn btn-sm btn-circle btn-ghost absolute right-2 top-2'>
+            <button className='btn  btn-sm btn-circle btn-ghost absolute right-2 top-2'>
               ✕
             </button>
           </form>
@@ -99,7 +99,7 @@ const AllGivenExam = () => {
               </div>
               <div className='flex justify-end'>
                 <input
-                  className='btn  btn-sm primary-bg '
+                  className='btn  btn-sm btn-primary '
                   type='submit'
                   value={'Send'}
                 />
@@ -112,7 +112,7 @@ const AllGivenExam = () => {
       <h2 className='text-2xl mt-5'>Given Exam List</h2>
       <button
         onClick={() => document.getElementById('review').showModal()}
-        className='btn btn-sm primary-bg ms-auto md:me-20'
+        className='btn btn-sm btn-primary ms-auto md:me-20'
       >
         Give Review
       </button>

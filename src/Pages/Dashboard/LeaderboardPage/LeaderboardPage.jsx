@@ -74,7 +74,7 @@ const LeaderboardPage = () => {
                         value={searchInput}
                         onChange={handleSearchInputChange}
                     />
-                    <button className='btn btn-sm primary-btn'>Search</button>
+                    <button className='btn btn-sm btn-primary'>Search</button>
                 </div>
 
                 <div>

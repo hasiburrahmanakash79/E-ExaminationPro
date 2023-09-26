@@ -44,7 +44,7 @@ const DemoResult = () => {
               loading ? (
                 'Loading document...'
               ) : (
-                <button className='btn primary-btn'>
+                <button className='btn btn-primary'>
                   Export Result As PDF
                 </button>
               )
@@ -78,7 +78,7 @@ const DemoResult = () => {
         <div className='mx-auto mb-6 md:ml-auto md:absolute md:right-0 md:bottom-28 lg:bottom-12'>
           {/* Open the modal using ID.showModal() method */}
           <button
-            className='btn btn_quiz primary-btn'
+            className='btn btn_quiz btn-primary'
             onClick={() => window.my_modal_2.showModal()}
           >
             Give FeedBack

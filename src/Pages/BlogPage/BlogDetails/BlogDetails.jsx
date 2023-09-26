@@ -144,7 +144,7 @@ const BlogDetails = () => {
                     : ''
                 }
               >
-                <button className='text-lg btn btn-sm primary-btn hover:aext-red-500'>
+                <button className='text-lg btn btn-sm btn-primary hover:aext-red-500'>
                   Comment
                 </button>
               </div>

@@ -115,7 +115,7 @@ const SingleUserAnswers = () => {
 
           <div>
             <button
-              className='h-12 col-span-1 btn primary-btn animate-pulse hover:animate-none'
+              className='h-12 col-span-1 btn btn-primary animate-pulse hover:animate-none'
               type='submit'
             >
               Add Mark

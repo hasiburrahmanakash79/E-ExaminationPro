@@ -54,7 +54,7 @@ const PaymentOption = () => {
         {/* <p>Selected Option: {selectedOption}</p> */}
 
         <Link to={`/${selectedOption}?Cardid=${id}`}>
-          <button className='btn primary-btn'>Go to Payment Process</button>
+          <button className='btn btn-primary'>Go to Payment Process</button>
         </Link>
       </div>
     </>

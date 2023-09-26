@@ -48,7 +48,7 @@ const JoinLiveExam = () => {
               <Link to='/examRoom'>
                 <button
                   onClick={() => handleClick()}
-                  className='btn primary-btn'
+                  className='btn btn-primary'
                   type='submit'
                 >
                   Submit
