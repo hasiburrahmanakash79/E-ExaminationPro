@@ -277,7 +277,7 @@ const AllExam = () => {
                       ariaLabel='hourglass-loading'
                       wrapperStyle={{}}
                       wrapperClass=''
-                      colors={['#ffffff', '#000000']}
+                      colors={['#4098A0', '#fcba03']}
                     />
                   </h1>
                 </div>
@@ -434,7 +434,7 @@ const AllExam = () => {
                       ariaLabel='hourglass-loading'
                       wrapperStyle={{}}
                       wrapperClass=''
-                      colors={['#ffffff', '#000000']}
+                      colors={['#4098A0', '#fcba03']}
                     />
                   </h1>
                 </div>
@@ -591,7 +591,7 @@ const AllExam = () => {
                       ariaLabel='hourglass-loading'
                       wrapperStyle={{}}
                       wrapperClass=''
-                      colors={['#ffffff', '#000000']}
+                      colors={['#4098A0', '#fcba03']}
                     />
                   </h1>
                 </div>

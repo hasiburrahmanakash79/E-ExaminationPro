@@ -11,7 +11,7 @@ const NewBlog = () => {
     return res.json()
   })
   const [currentPage, setCurrentPage] = useState(1)
-  const blogsPerPage = 8
+  const blogsPerPage = 6
   const indexOfLastBlog = currentPage * blogsPerPage
   const indexOfFirstBlog = indexOfLastBlog - blogsPerPage
   const currentBlogs = blogs.slice(indexOfFirstBlog, indexOfLastBlog)
@@ -21,7 +21,7 @@ const NewBlog = () => {
   }
 
   return (
-    <div>
+    <div className='container mx-auto'>
       <Helmet>
         <title>Blog | E-ExamPro</title>
       </Helmet>

@@ -183,7 +183,7 @@ const LeaderboardPage = () => {
                         ariaLabel='hourglass-loading'
                         wrapperStyle={{}}
                         wrapperClass=''
-                        colors={['#ffffff', '#000000']}
+                        colors={['#4098A0', '#fcba03']}
                     />
                     <h1 className='text-xl'>No Data Found..</h1>
                 </div> :
