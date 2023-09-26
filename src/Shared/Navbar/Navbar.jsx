@@ -81,7 +81,7 @@ const Navbar = () => {
     >
       <button>Exam</button>
       {isOpen && (
-        <div className='absolute top-0 z-50 text-white rounded-lg left-32 md:left-0 backdrop-blur-2xl bg-black/40 md:top-full'>
+        <div className='absolute top-0 z-50 text-white rounded-lg left-32 md:left-0 backdrop-blur-2xl bg-black/80 md:top-full'>
           <div className='px-2 py-2 space-y-3 '>
             <button className='px-4 py-1 rounded hover:bg-white/10'>
               <Link to='/allSubjects'>All Subject</Link>
@@ -142,7 +142,7 @@ const Navbar = () => {
         transition: 'all .5s ease-in-out'
       }}
     >
-      <nav className='z-50 text-white backdrop-blur-lg bg-black/40'>
+      <nav className='z-50 text-white backdrop-blur-lg bg-black/80'>
         <div className='navbar z-[40]  container mx-auto  sticky top-0'>
           <div className='navbar-start'>
             <div className='dropdown'>
@@ -164,7 +164,7 @@ const Navbar = () => {
               </label>
               <ul
                 tabIndex={0}
-                className='z-50 p-2 mt-3 shadow w-36 menu menu-sm dropdown-content rounded-box bg-black/40 backdrop-blur'
+                className='z-50 p-2 mt-3 shadow w-36 menu menu-sm dropdown-content rounded-box bg-black/80 backdrop-blur'
               >
                 {/* navbarFirst */}
                 {navbarLink_First}
@@ -231,7 +231,7 @@ const Navbar = () => {
                 <div className=''>
                   <ul
                     tabIndex={0}
-                    className='p-2 mt-3 text-white shadow-md bg-black/40 menu menu-compact backdrop-blur-lg dropdown-content rounded-box w-52'
+                    className='p-2 mt-3 text-white shadow-md bg-black/80 menu menu-compact backdrop-blur-lg dropdown-content rounded-box w-52'
                   >
                     <li>
                       <Link

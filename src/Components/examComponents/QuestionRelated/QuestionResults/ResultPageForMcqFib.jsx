@@ -16,15 +16,14 @@ const ResultPageForMcqFib = () => {
   const location = useLocation()
   const searchParams = new URLSearchParams(location.search)
   const examId = searchParams.get('id')
- 
+
   const [result, refetch, loadings] = useResult(examId)
   if (loadings) {
     return <p>loadings..</p>
   }
   console.log(result)
 
-refetch()
-  
+  refetch()
 
   const percentage = (result.mark / result.totalMark) * 100
   return (
@@ -89,7 +88,7 @@ refetch()
                 method='dialog'
                 className='relative max-w-5xl p-0 border w-fit h-fit modal-box'
               >
-                <small className='absolute top-0 right-0 p-1 text-xs'>
+                <small className='absolute top-0 right-0 p-1 text-xs text-primary'>
                   Press ESC key or click outside to close
                 </small>
 

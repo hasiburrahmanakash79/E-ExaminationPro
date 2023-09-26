@@ -7,7 +7,7 @@ const FeedBack = () => {
   return (
     <form
       onSubmit={feedBackHandler}
-      className='w-full p-8 mx-auto space-y-1 border md:space-y-2'
+      className='w-full p-8 mx-auto space-y-1 bg-black/40 backdrop-blur-xl md:space-y-2'
     >
       <h2 className='py-2 text-xl font-semibold md:text-2xl md:py-3'>
         Send us Your Exam Feedback

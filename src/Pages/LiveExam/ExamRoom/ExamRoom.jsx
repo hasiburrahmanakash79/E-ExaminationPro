@@ -1,7 +1,7 @@
 import React, { lazy, Suspense } from 'react'
-import Loading from '../../../Components/Loading/Loading'
 import useInstructor from '../../../Hooks/useInstructor/useInstructor'
 import useAdmin from '../../../Hooks/useAdmin/useAdmin'
+import Loading from '../../../components/Loading/Loading'
 const VideoCall = lazy(() => import('./VideoCall'))
 const WrittenExams = lazy(() => import('../../Exams/WrittenExams/WrittenExams'))
 
@@ -23,7 +23,7 @@ const ExamRoom = () => {
           </div>
         )}
 
-        <div className='w-full col-span-1 mx-auto'>
+        <div className='order-2 w-full col-span-1 mx-auto '>
           <Suspense fallback={<Loading />}>
             <VideoCall />
           </Suspense>
