@@ -83,7 +83,7 @@ const HomePage = () => {
             <Faq />
           </Suspense>
           <Suspense fallback={<Loading />}>
-            <Testimonial />
+            <Testimonial/>
           </Suspense>
         </div>
       </div>

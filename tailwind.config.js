@@ -20,14 +20,14 @@ export default {
         color: '#0b0504',
         background: '#f0f0f0',
         primary: '#4098a0',
-        secondary: '#b0cacb',
+        secondary: '#27272a',
         accent: '#477361',
       },
       customDarkTheme: {
-        color: '#f0f0f0',
+        color: '#ffffff',
         background: '#0b0504',
         primary: '#4098a0',
-        secondary: '#4a4555',
+        secondary: '#27272a',
         accent: '#92d3b8',
       },
     }]

@@ -41,13 +41,13 @@ const Bot = () => {
   }
 
   return (
-    <main className='relative max-w-md overflow-y-auto min-h-3/5 max-h-[700px]  bg-secondary font-inter scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-slate-300 scrollbar-w-2 scrollbar-track-transparent'>
-      <div className='sticky top-0 z-40 p-2 ag-slate-800'>
+    <main className='relative max-w-md overflow-y-auto min-h-3/5 max-h-[700px] z-[999999999px] bg-secondary backdrop-blur-md text-white scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-slate-300 scrollbar-w-2 scrollbar-track-transparent'>
+      <div className='sticky top-0 p-2 ag-slate-800'>
         <h1 className='text-2xl ps-2'>E-Exam Support</h1>
         <p className='text-xs ps-2'>Ask any exam related question you have</p>
         <div className='my-1 divider'></div>
       </div>
-      <section className='z-0 mb-12 overflow-hidden '>
+      <section className='mb-12 overflow-hidden '>
         {chats && chats.length
           ? chats.map((chat, index) => (
               <p
@@ -77,7 +77,7 @@ const Bot = () => {
           </p>
         </div>
 
-        <div className='fixed bottom-0 z-50 w-full p-2'>
+        <div className='fixed bottom-0 w-full p-2'>
           <form onSubmit={e => chat(e, message)} className='flex gap-3 '>
             <textarea
               type='text'
@@ -87,7 +87,7 @@ const Bot = () => {
               onChange={e => setMessage(e.target.value)}
               className='w-full text-sm outline-primary outline textarea textarea-xs placeholder:text-xs placeholder:scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-slate-300 scrollbar-w-2 scrollbar-track-transparent'
             />
-            <button className='px-5 rounded-lg bg-primary '>
+            <button className='px-5 rounded-lg btn btn-primary'>
               <FaArrowRight />
             </button>
           </form>

@@ -2,8 +2,8 @@ import React from "react";
 
 const ChatBotUI = () => {
   return (
-    <div className="h-[600px]  ">
-      <div className="p-3 flex flex-col justify-between">
+    <div className="">
+      {/* <div className="p-3 flex flex-col justify-between">
         <div className="justify-between flex items-center ">
           <div>
             <p className="text-2xl">E-ExamPro</p>
@@ -21,7 +21,7 @@ const ChatBotUI = () => {
           />
           <button className="rounded p-2 border">sent</button>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

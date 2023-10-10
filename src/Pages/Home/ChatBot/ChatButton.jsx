@@ -16,7 +16,7 @@ export default function ChatButton () {
 
   return (
     <div className='z-50'>
-      <div className='fixed z-40 -right-2 bottom-1 md:bottom-4 md:right-4'>
+      <div className='fixed -right-2 bottom-1 md:bottom-4 md:right-4'>
         {!isOpen && (
           <button
             type='button'
@@ -43,10 +43,10 @@ export default function ChatButton () {
             leaveFrom='opacity-100'
             leaveTo='opacity-0'
           >
-            <div className='fixed inset-0 ag-black ag-opacity-25' />
+            <div className='fixed z-50 inset-0' />
           </Transition.Child>
 
-          <div className='fixed inset-0 right-0 overflow-y-auto'>
+          <div className='fixed z-50 inset-0 right-0 overflow-y-auto'>
             <div className='flex items-center justify-end h-full p-4 text-center'>
               <Transition.Child
                 as={Fragment}
@@ -60,10 +60,10 @@ export default function ChatButton () {
                 <Dialog.Panel className='w-full max-w-md overflow-y-auto text-left align-middle transition-all transform shadow-xl rounded-2xl'>
                   <Bot />
 
-                  <div className='absolute z-50 rounded-full top-5 right-5 '>
+                  <div className='absolute rounded-full top-5 right-5 '>
                     <button
                       type='button'
-                      className='inline-flex justify-center p-2 text-sm font-medium text-blue-900 rounded-full ag-blue-100 hover: ag-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2'
+                      className='inline-flex justify-center p-2 text-sm font-medium text-black rounded-full bg-blue-100 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2'
                       onClick={closeModal}
                     >
                       <FaTimes />

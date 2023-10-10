@@ -79,9 +79,9 @@ function OffLine() {
                 left: 0,
                 width: '100%',
                 height: '100%',
-                backgroundColor: 'transparent', // Change this to an appropriate color
-                zIndex: 1000, // Set a high value to ensure it's above other content
-                pointerEvents: 'auto' // Set to 'none' to disable interaction, 'auto' to enable
+                backgroundColor: 'transparent', 
+                zIndex: 1000, 
+                pointerEvents: 'auto'
               }}
             ></div>
           </div>

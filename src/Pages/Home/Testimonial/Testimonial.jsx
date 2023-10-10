@@ -25,7 +25,7 @@ const Testimonial = () => {
     fetchData()
   }, [])
   return (
-    <div className='p-5 mb-7'>
+    <div className='p-5 mb-20 -z-1'>
       <Swiper
         freeMode={true}
         slidesPerView={1}
@@ -57,14 +57,14 @@ const Testimonial = () => {
         {
           testimonials?.map((testimonial, index) => <SwiperSlide key={index}>
 
-            <div className="shadow-xl border card w-96 h-80 mb-7">
+            <div className="shadow-xl border card w-96 -z-10 h-80 mb-7">
               <figure className="pt-5 pb-2">
-              <img className='mx-auto' style={{ height: '100px', width: '100px', objectFit: 'cover', borderRadius: '50%' }} src={testimonial.image} />
+              <img className='mx-auto -z-10' style={{ height: '100px', width: '100px', objectFit: 'cover', borderRadius: '50%' }} src={testimonial.image} />
               </figure>
-              <div className='items-center px-10 text-center '>
+              <div className='items-center px-10 text-center -z-10'>
                 <p className='mb-2 text-xl'> {testimonial.student_name}</p>
                 <p className='text-sm'> {testimonial.feedback_message}</p>
-                <div className='flex justify-center mb-5'>
+                <div className='flex justify-center mb-5 -z-10'>
                   <Rating
                     style={{ maxWidth: 100 }}
                     value={testimonial.rating}

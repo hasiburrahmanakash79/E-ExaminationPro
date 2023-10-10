@@ -225,7 +225,7 @@ const toggleDarkMode = () => {
       <div
         className={` ${
           open ? 'w-56 p-4' : 'w-14 text-center '
-        }  ${isDarkMode? 'bg-slate-800' : 'bg-secondary'} h-screen  fixed left-0 top-0 bottom-0 z-50 pt-8  duration-500 transition-all`}
+        }  ${isDarkMode? 'bg-slate-600' : 'bg-secondary'} h-screen  fixed left-0 top-0 bottom-0 z-50 pt-8  duration-500 transition-all`}
       >
         <img
           src={arrow}
