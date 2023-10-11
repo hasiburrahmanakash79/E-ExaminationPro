@@ -194,9 +194,9 @@ else{
           <option disabled selected>
             Choose Type
           </option>
-          <option value='mcq'>MCQ</option>
-          <option value='multimedia_mcq'>Multimedia MCQ</option>
-          <option value='FillInTheBlank'>Fill in the Blank</option>
+          <option className='text-black' value='mcq'>MCQ</option>
+          <option className='text-black' value='multimedia_mcq'>Multimedia MCQ</option>
+          <option className='text-black' value='FillInTheBlank'>Fill in the Blank</option>
         </select>
       </div>
 

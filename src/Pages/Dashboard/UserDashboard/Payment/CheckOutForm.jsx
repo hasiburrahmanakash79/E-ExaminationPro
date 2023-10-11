@@ -13,6 +13,7 @@ const CheckOutForm = ({ price, packages }) => {
   const [error, setError] = useState('')
   const [clientSecret, setClientSecret] = useState('')
   const [processing, setProcessing] = useState(false)
+  console.log(packages);
 
   useEffect(() => {
     axiosSecure.post('/create-payment-intent', { price }).then(data => {

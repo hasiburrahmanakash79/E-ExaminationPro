@@ -13,13 +13,11 @@ import { useQuery } from '@tanstack/react-query'
 const stripePromise = loadStripe(import.meta.env.VITE_Payment_Gateway_key)
 
 const Payment = () => {
-  // const [subjects] = useSubject()
   const [pricePackage] = usePrice()
-  // const { id } = useParams()
   const location = useLocation()
   const searchParams = new URLSearchParams(location.search)
   const id = searchParams.get('Cardid')
-  // console.log(id, '-----------------------------------------------21');
+  console.log(pricePackage, '-----------------------------------------------21');
 
   const [axiosSecure] = useAxiosSecure()
 
@@ -33,7 +31,7 @@ const Payment = () => {
   })
   //console.log(priceData?.packageAmount, '..............................................................37')
 
-  const packages = pricePackage.filter(price => price.id == id)
+  const packages = pricePackage.filter(price => price._id == id)
   const price = priceData?.packageAmount
   //console.log(price);
   return (
