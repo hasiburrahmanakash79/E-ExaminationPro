@@ -24,17 +24,17 @@ const AdminHome = () => {
   const [answers, setAnswers] = useState([]);
   
   useEffect(() => {
-    fetch('https://e-exam-pro-server.vercel.app/users')
+    fetch('http://localhost:3500/users')
       .then(res => res.json())
       .then(data => setUsers(data))
   }, [])
   useEffect(() => {
-    fetch('https://e-exam-pro-server.vercel.app/allQuestions')
+    fetch('http://localhost:3500/allQuestions')
       .then(res => res.json())
       .then(data => setQuestions(data))
   }, [])
   useEffect(() => {
-    fetch('https://e-exam-pro-server.vercel.app/allResults')
+    fetch('http://localhost:3500/allResults')
       .then(res => res.json())
       .then(data => setAnswers(data))
   }, [])

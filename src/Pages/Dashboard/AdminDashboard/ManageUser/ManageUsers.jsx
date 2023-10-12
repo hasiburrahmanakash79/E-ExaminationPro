@@ -6,12 +6,12 @@ import { useState } from 'react'
 
 const ManageUsers = () => {
   const { data: users = [], refetch } = useQuery(['users'], async () => {
-    const res = await fetch('https://e-exam-pro-server.vercel.app/users')
+    const res = await fetch('http://localhost:3500/users')
     return res.json()
   })
 
   const handleMakeAdmin = user => {
-    fetch(`https://e-exam-pro-server.vercel.app/users/admin/${user._id}`, {
+    fetch(`http://localhost:3500/users/admin/${user._id}`, {
       method: 'PATCH'
     })
       .then(res => res.json())
@@ -29,7 +29,7 @@ const ManageUsers = () => {
   }
 
   const handleMakeInstructor = user => {
-    fetch(`https://e-exam-pro-server.vercel.app/users/instructor/${user._id}`, {
+    fetch(`http://localhost:3500/users/instructor/${user._id}`, {
       method: 'PATCH'
     })
       .then(res => res.json())
@@ -58,7 +58,7 @@ const ManageUsers = () => {
       confirmButtonText: 'Yes, delete it!'
     }).then(result => {
       if (result.isConfirmed) {
-        fetch(`https://e-exam-pro-server.vercel.app/users/${user._id}`, {
+        fetch(`http://localhost:3500/users/${user._id}`, {
           method: 'DELETE'
         })
           .then(res => res.json())

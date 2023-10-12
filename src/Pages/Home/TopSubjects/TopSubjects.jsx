@@ -11,7 +11,7 @@ const TopSubjects = () => {
   const navigate = useNavigate()
 
   useEffect(() => {
-    fetch('https://e-exam-pro-server.vercel.app/topSubjects')
+    fetch('http://localhost:3500/topSubjects')
       .then(res => res.json())
       .then(data => {
         //console.log(data);
@@ -30,7 +30,7 @@ const TopSubjects = () => {
   //   const fetchData = async () => {
   //     try {
   //       const response = await fetch(
-  //         'https://e-exam-pro-server.vercel.app/subjects'
+  //         'http://localhost:3500/subjects'
   //       )
   //       const data = await response.json()
 

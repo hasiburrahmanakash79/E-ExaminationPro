@@ -29,7 +29,7 @@ const AppliedLiveExam = () => {
 
   const getCode = (id, code) => {
     fetch(
-      `https://e-exam-pro-server.vercel.app/liveQuestionPaper?id=${id}&examCode=${code}`
+      `http://localhost:3500/liveQuestionPaper?id=${id}&examCode=${code}`
     )
       .then(res => res.json())
       .then(code => {

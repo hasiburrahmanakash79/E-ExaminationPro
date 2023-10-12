@@ -9,7 +9,7 @@ const useWrittenQuestions = Mathematics => {
     queryKey: ['writtenQuestions'],
     queryFn: async () => {
       const res = await axios.get(
-        `https://e-exam-pro-server.vercel.app/written-questions?subject=${Mathematics}`
+        `http://localhost:3500/written-questions?subject=${Mathematics}`
       ) // to todo add date subject code etc
       return res.data
     }

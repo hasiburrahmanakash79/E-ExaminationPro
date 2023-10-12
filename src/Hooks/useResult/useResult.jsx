@@ -21,7 +21,7 @@ const useResult = (examId,email) => {
     enabled:!loading ,
     queryFn: async () => {
       const res = await axios.get(
-        `https://e-exam-pro-server.vercel.app/result?examId=${examId}&email=${user?.email}`
+        `http://localhost:3500/result?examId=${examId}&email=${user?.email}`
       )
       //console.log(res)
       return res.data

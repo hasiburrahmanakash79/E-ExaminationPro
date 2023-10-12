@@ -3,7 +3,7 @@ import { allPostComment } from "./useForum"
 
 const [postComments, refetch] = allPostComment();
 export const handleSaveEdit = () => {
-    fetch(`https://e-exam-pro-server.vercel.app/forumPost/${postComments?._id}`, {
+    fetch(`http://localhost:3500/forumPost/${postComments?._id}`, {
         method: 'PATCH',
         headers: {
             'Content-Type': 'application/json',
