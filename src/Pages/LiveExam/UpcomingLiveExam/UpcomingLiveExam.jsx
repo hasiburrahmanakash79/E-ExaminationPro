@@ -116,7 +116,7 @@ const UpcomingLiveExam = () => {
           ariaLabel='hourglass-loading'
           wrapperStyle={{}}
           wrapperClass=''
-          colors={['#7710de', '#d6061b']}
+          colors={['#4098A0', '#fcba03']}
         />
       ) : (
         <div>
@@ -125,7 +125,7 @@ const UpcomingLiveExam = () => {
           </div>
           <form
             onSubmit={handleSubmit(onSubmit)}
-            className='mx-auto max-w-[600px] border-4 border-purple-900 rounded-xl p-4 my-4'
+            className='mx-auto max-w-[600px] border-4   rounded-xl p-4 my-4'
           >
             <div className='w-full mb-4 form-control'>
               <label className='label'>
@@ -189,11 +189,11 @@ const UpcomingLiveExam = () => {
               {' '}
               {/* Add 'mt-4' for top margin */}
               <LocalToastTarget name='btn'>
-                {/* <input  disabled={!studentData?.batch } className="primary-btn btn" type="submit" value="Apply for Exam" /> */}
-                <button className='primary-btn btn'>Apply for Exam </button>
+                {/* <input  disabled={!studentData?.batch } className="btn-primary btn" type="submit" value="Apply for Exam" /> */}
+                <button className='btn-primary btn'>Apply for Exam </button>
               </LocalToastTarget>
             </div>
-            <p className='text-center text-green-600'>{msg}</p>
+            <p className='text-center '>{msg}</p>
             {/* {
           data?.msg && <h1 className="mt-2 text-xl text-center text-red-600">You Have Already Applied</h1>
         } */}

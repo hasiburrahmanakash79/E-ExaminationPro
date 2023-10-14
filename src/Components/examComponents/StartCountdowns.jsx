@@ -19,7 +19,7 @@ const StartCountdowns = ({ countdown, setCountdown }) => {
         dispatch(setView(false))
         dispatch(resetResult())
         dispatch(setMcq(null))
-        dispatch( setAnswerIndex(null))
+        dispatch(setAnswerIndex(null))
       } else {
         clearInterval(countdownTimer)
       }

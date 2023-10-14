@@ -12,7 +12,7 @@ const WrittenExams = () => {
   console.log(writtenQuestions)
   return (
     <section className='container w-[calc(100%-8px)] md:my-6 mx-auto'>
-      <h2 className='mb-2 text-2xl text-center text-orange-600 '>
+      <h2 className='mb-2 text-2xl text-center  '>
         Written Exam
       </h2>
 

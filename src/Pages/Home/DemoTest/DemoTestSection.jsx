@@ -3,18 +3,18 @@ import video from '../../../../src/assets/demo.mp4'
 
 const DemoTestSection = () => {
   return (
-    <section className='my-10 md:my-24'>
-      <div className='px-10 py-20 text-center rounded-lg primary-bg md:text-left'>
+    <section className=''>
+      <div className='px-10 md:pb-20 text-center rounded-lg primary-bg md:text-left'>
         <h1
           data-aos='zoom-in-down'
           data-aos-duration='600'
-          className='mb-10 text-4xl font-bold text-center text-white'
+          className='mb-10 text-4xl font-bold text-center '
         >
           Demo Exam
         </h1>
         {/* here will be the muted video for demo test */}
 
-        <div className='grid items-center grid-cols-1 mx-auto w-ful md:w-11/12 md:grid-cols-2 '>
+        <div className='md:grid items-center mx-auto w-ful  grid-cols-2 gap-10'>
           <div
             data-aos='fade-right'
             data-aos-duration='600'
@@ -24,7 +24,7 @@ const DemoTestSection = () => {
               controls
               muted
               autoPlay
-              className='w-full border border-purple-500 rounded-lg h-3/4'
+              className='w-full border border-primary rounded-lg h-3/4'
             >
               <source src={video} type='video/mp4' />
             </video>
@@ -44,12 +44,7 @@ const DemoTestSection = () => {
               options for your convenience. Practice and build your confidence
               in a real exam environment.
             </p>
-            <Link
-              data-aos='fade-down'
-              data-aos-duration='900'
-              to='/demo-test'
-              className='btn primary-btn animate-pulse hover:animate-none'
-            >
+            <Link to='/demo-test' className='btn btn-primary'>
               Explore How We Take Exams
             </Link>
           </div>

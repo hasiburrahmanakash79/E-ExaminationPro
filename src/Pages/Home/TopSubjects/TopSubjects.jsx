@@ -1,36 +1,58 @@
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import SubjectComponent from './SubjectComponent'
+import { useNavigate } from 'react-router-dom'
+import { AuthContext } from '../../../Provider/AuthProvider'
 
 const TopSubjects = () => {
   const [subjects, setSubjects] = useState([])
 
+  const { logOut } = useContext(AuthContext)
+ 
+  const navigate = useNavigate()
+
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch(
-          'https://e-exam-pro-server.vercel.app/subjects'
-        )
-        const data = await response.json()
+    fetch('https://e-exam-pro-server.vercel.app/topSubjects')
+      .then(res => res.json())
+      .then(data => {
+        //console.log(data);
 
+        // if (data.error == true) {
+        //   logOut()
+        //   navigate('/login')
+        // }
         setSubjects(data)
-      } catch (error) {
-        console.error('Error fetching data:', error)
-      }
-    }
-
-    fetchData()
+       
+      })
   }, [])
+  
+
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       const response = await fetch(
+  //         'https://e-exam-pro-server.vercel.app/subjects'
+  //       )
+  //       const data = await response.json()
+
+  //       setSubjects(data)
+  //     } catch (error) {
+  //       console.error('Error fetching data:', error)
+  //     }
+  //   }
+
+  //   fetchData()
+  // }, [])
   return (
     <div className='my-16'>
       <h1
         data-aos='zoom-in-down'
         data-aos-duration='600'
-        className='pt-10 pb-10 text-4xl font-bold text-center text-slate-200 md:pt-0'
+        className='pt-10 pb-10 text-4xl font-bold text-center md:pt-0'
       >
         Our Top subjects
       </h1>
-      <div className='grid grid-cols-1 gap-5 md:grid-cols-4 '>
-        {subjects.map(subject => (
+      <div className='grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 '>
+        {subjects.slice(0,8).map(subject => (
           <SubjectComponent key={subject._id} subject={subject} />
         ))}
       </div>

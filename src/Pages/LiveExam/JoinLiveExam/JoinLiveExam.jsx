@@ -2,6 +2,7 @@ import { useForm } from 'react-hook-form'
 import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { toggleCall } from '../../../redux/features/ExamRoomController/ExamRoomControllerSlice'
+import { Helmet } from 'react-helmet-async'
 
 const JoinLiveExam = () => {
   const dispatch = useDispatch()
@@ -22,7 +23,10 @@ const JoinLiveExam = () => {
   }
   return (
     <div className='p-5'>
-      <div className='mx-auto mt-10 border-4 md:w-2/4 xl:w-1/4 p-7 rounded-2xl border-violet-700 shadow-2xl'>
+      <Helmet>
+        <title> Live Exam | E-ExamPro</title>
+      </Helmet>
+      <div className='mx-auto mt-10 border-4 shadow-md md:w-2/4 xl:w-1/4 p-7 rounded-2xl'>
         <form onSubmit={handleSubmit(onSubmit)} className=''>
           <div className='flex flex-col '>
             <h2 className='my-3 text-2xl text-center'>Live Exam Join Code</h2>
@@ -30,15 +34,14 @@ const JoinLiveExam = () => {
               {...register('name', { required: true })}
               type='text'
               placeholder='Please enter your join Code'
-              className='rounded-md bg-white/10 input input-bordered'
+              className='rounded-md input input-bordered'
             />
           </div>
-
           <div className='flex justify-center gap-5 mt-5 md:justify-end'>
             <div className='mt-5 '>
               <button
                 onClick={() => cancelSubmit()}
-                className='btn primary-bg'
+                className='btn btn-secondary'
                 type='submit'
               >
                 Cancel
@@ -48,7 +51,7 @@ const JoinLiveExam = () => {
               <Link to='/examRoom'>
                 <button
                   onClick={() => handleClick()}
-                  className='btn primary-btn'
+                  className='btn btn-primary'
                   type='submit'
                 >
                   Submit

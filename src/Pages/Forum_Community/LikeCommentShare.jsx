@@ -8,7 +8,7 @@ const LikeCommentShare = ({ postComments, replyHide, comment, setReplyHide, setC
                 setCommentPostText(comment)
                 setReplyHide(!replyHide)
             }}>
-                <span className="text-sm text-slate-300">{postComments?.replies?.length}</span> comment
+                <span className="text-sm  ">{postComments?.replies?.length}</span> comment
             </button>
         </>
     );

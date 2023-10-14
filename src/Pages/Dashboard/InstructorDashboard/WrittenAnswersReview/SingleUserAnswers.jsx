@@ -1,11 +1,11 @@
 import React from 'react'
 import { useParams } from 'react-router-dom'
 import useWrittenReviews from '../../../../Hooks/useWrittenReviews/useWrittenReviews'
-import Loading from '../../../../Components/Loading/Loading'
 import { useForm } from 'react-hook-form'
 import useAuth from '../../../../Hooks/useAuth/useAuth'
 import axios from 'axios'
 import Swal from 'sweetalert2'
+import Loading from '../../../../components/Loading/Loading'
 
 const SingleUserAnswers = () => {
   const { id } = useParams()
@@ -62,14 +62,14 @@ const SingleUserAnswers = () => {
   return (
     <div className='my-6 space-y-4'>
       <header className='justify-between w-9/12 mx-auto md:flex '>
-        <h2 className='text-2xl text-yellow-500'>{stu_name}</h2>
-        <h2 className='text-2xl text-yellow-500'>{examType}</h2>
-        <h2 className='text-2xl text-yellow-500'>{date}</h2>
+        <h2 className='text-2xl text-primary'>{stu_name}</h2>
+        <h2 className='text-2xl text-primary'>{examType}</h2>
+        <h2 className='text-2xl text-primary'>{date}</h2>
       </header>
       <div className='grid grid-cols-1 gap-6 md:grid-cols-2'>
         {userWrittenAnswers.map(ans => (
           <div
-            className='p-4 space-y-3 border rounded-lg shadow-2xl drop-shadow-2xl hover:bg-inherit'
+            className='p-4 space-y-3 border rounded-lg shadow-md drop-shadow-md hover: ag-inherit'
             key={ans.questionId}
           >
             <h3 className='font-semibold '>Question: {ans.questionId}</h3>
@@ -96,7 +96,7 @@ const SingleUserAnswers = () => {
               type='text'
               placeholder='enter mark'
               required
-              className='p-3 bg-transparent border rounded-lg h-14'
+              className='p-3 border rounded-lg ag-transparent h-14'
             />
           </div>
           <div className='w-9/12 col-span-3 form-control'>
@@ -109,13 +109,13 @@ const SingleUserAnswers = () => {
               {...register('answer')}
               id='answer'
               placeholder='feedback'
-              className='w-full p-2 bg-transparent border rounded-lg shadow-lg outline-none h-14 text-slate-100 drop-shadow-lg'
+              className='w-full p-2 border rounded-lg shadow-md outline-none ag-transparent h-14 drop-shadow-md'
             />
           </div>
 
           <div>
             <button
-              className='h-12 col-span-1 btn primary-btn animate-pulse hover:animate-none'
+              className='h-12 col-span-1 btn btn-primary animate-pulse hover:animate-none'
               type='submit'
             >
               Add Mark

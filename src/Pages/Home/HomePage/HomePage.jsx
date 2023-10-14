@@ -10,7 +10,7 @@ import { Helmet } from 'react-helmet-async'
 const MainContact = lazy(() => import('../../Contact/MainContact'))
 const Pricing = lazy(() => import('../Pricing/Pricing'))
 import ChatButton from '../ChatBot/ChatButton'
-import Loading from '../../../Components/Loading/Loading'
+import Loading from '../../../components/Loading/Loading'
 const HomePage = () => {
   //console.log(window.localStorage.getItem('showMainContent'))
   const [showMainContent, setShowMainContent] = useState(
@@ -38,7 +38,7 @@ const HomePage = () => {
     a()
   }
   return (
-    <div className='relative'>
+    <div className='relative my_scroll'>
       <Helmet>
         <title>E-ExamPro </title>
       </Helmet>
@@ -48,19 +48,17 @@ const HomePage = () => {
         }`}
         style={{ backgroundImage: `url(${examPic})` }}
       >
-        <div className='hero-overlay bg-opacity-60'></div>
-        <div className='text-center hero-content text-neutral-content'>
+        <div className='hero-overlay ag-opacity-60'></div>
+        <div className='text-center hero-content '>
           <div className=''>
-            <h1 className='mb-5 text-6xl font-bold text-white'>
-              Welcome to E-ExamPro
-            </h1>
-            <p className='mb-5 text-white'></p>
+            <h1 className='mb-5 text-6xl font-bold'>Welcome to E-ExamPro</h1>
+            <p className='mb-5 '></p>
           </div>
         </div>
       </div>
 
       <div
-        className={`transition-opacity duration-700 ${
+        className={`md:-mt-20 transition-opacity duration-700 ${
           showMainContent ? '  opacity-100' : 'opacity-0'
         } primary-bg2 `}
       >
@@ -85,7 +83,7 @@ const HomePage = () => {
             <Faq />
           </Suspense>
           <Suspense fallback={<Loading />}>
-            <Testimonial />
+            <Testimonial/>
           </Suspense>
         </div>
       </div>

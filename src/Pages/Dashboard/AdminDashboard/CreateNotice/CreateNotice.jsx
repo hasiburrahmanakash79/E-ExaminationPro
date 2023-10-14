@@ -38,7 +38,7 @@ const CreateNotice = () => {
       </div>
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className='mx-auto max-w-screen-sm border-2 border-purple-700 rounded-xl p-7 shadow-2xl'
+        className='mx-auto max-w-screen-sm border-2   rounded-xl p-7 shadow-md'
       >
         <div className='md:grid grid-cols-3 gap-4'>
           <div className='w-full mb-4 form-control'>
@@ -99,7 +99,7 @@ const CreateNotice = () => {
         </div>
         <div className='flex justify-end w-full mt-7'>
           <input
-            className='primary-btn btn'
+            className='btn btn-warning'
             type='submit'
             value='Create Notice'
           />

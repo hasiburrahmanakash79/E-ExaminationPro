@@ -60,21 +60,22 @@ const ReplyField = ({ postId, refetch, setCommentPostText, comment, setReplyHide
                             id="text"
                             name="text"
                             rows="2"
-                            cols="40"
+
                             value={text}
                             onChange={(e) => setText(e.target.value)}
+                            placeholder="Write your comment"
                             required
-                            className="md:block hidden focus:outline-none text-sm text-white rounded-md p-2"
+                            className="md:block hidden focus:outline-none bg-transparent border rounded-md p-2"
                         ></textarea>
                         <textarea
                             id="text"
                             name="text"
                             rows="2"
-                            cols="20"
+                            cols="50"
                             value={text}
                             onChange={(e) => setText(e.target.value)}
                             required
-                            className="block md:hidden focus:outline-none text-sm text-white rounded-md p-2"
+                            className="block md:hidden focus:outline-none text-sm  rounded-md p-2"
                         ></textarea>
                     </div>
                     <div className="flex items-center gap-5">

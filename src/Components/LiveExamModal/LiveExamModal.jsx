@@ -27,7 +27,7 @@ const LiveExamModal = ({ isOpen, setIsOpen }) => {
             {...register('name', { required: true })}
             type='text'
             placeholder='Enter Code'
-            className='bg-transparent rounded-md input input-bordered'
+            className=' ag-transparent rounded-md input input-bordered'
           />
         </div>
 
@@ -42,7 +42,7 @@ const LiveExamModal = ({ isOpen, setIsOpen }) => {
             </button>
           </div>
           <div className='mt-5 '>
-            <button className='btn primary-btn' type='submit'>
+            <button className='btn btn-primary' type='submit'>
               Submit
             </button>
           </div>

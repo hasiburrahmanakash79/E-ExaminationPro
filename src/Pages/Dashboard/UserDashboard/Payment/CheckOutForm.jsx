@@ -13,6 +13,7 @@ const CheckOutForm = ({ price, packages }) => {
   const [error, setError] = useState('')
   const [clientSecret, setClientSecret] = useState('')
   const [processing, setProcessing] = useState(false)
+  console.log(packages);
 
   useEffect(() => {
     axiosSecure.post('/create-payment-intent', { price }).then(data => {
@@ -118,11 +119,11 @@ const CheckOutForm = ({ price, packages }) => {
           }}
         />
         <button
-          // className="bg-gray-400 w-full p-2 mt-7 rounded"
+          // className=" ag-gray-400 w-full p-2 mt-7 rounded"
           className={
             processing
-              ? 'processing primary-btn w-full p-2 mt-7 rounded'
-              : 'primary-btn w-full p-2 mt-7 rounded'
+              ? 'processing btn-primary w-full p-2 mt-7 rounded'
+              : 'btn-primary w-full p-2 mt-7 rounded'
           }
           type='submit'
           disabled={!stripe || processing}

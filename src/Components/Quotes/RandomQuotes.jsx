@@ -31,8 +31,8 @@ const RandomQuotes = () => {
   return (
     <div className='quote-display'>
       <div className='quote-content'>
-        <p className='text-white quote-text'>{currentQuote.q}</p>
-        <p className='text-white quote-author'> - {currentQuote.a}</p>
+        <p className='  quote-text'>{currentQuote.q}</p>
+        <p className='  quote-author'> - {currentQuote.a}</p>
       </div>
     </div>
   )

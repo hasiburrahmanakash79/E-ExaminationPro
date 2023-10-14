@@ -11,10 +11,10 @@ const UserCommentInfo = ({ postComments, setShowContextMenu, showContextMenu }) 
                     </div>
                 </div>
                 <div className=" pl-4">
-                    <p className="leading-none text-slate-200 text-lg font-medium">
+                    <p className="leading-none   text-lg font-medium">
                         {postComments?.userName}
                     </p>
-                    <div className="md:hidden block text-sm text-slate-400">
+                    <div className="md:hidden block text-sm  ">
                         <TimeAgo datetime={new Date(postComments.timeDate).toLocaleString()}
                             locale='GMT+6' />
                     </div>

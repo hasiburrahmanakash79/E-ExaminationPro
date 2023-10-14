@@ -3,7 +3,7 @@ import React from "react";
 const PaymentCard = () => {
   return (
     <div className=" mx-auto">
-      <div className="bg-white/20 w-[330px] rounded-2xl backdrop-blur-lg shadow-2xl p-5">
+      <div className="w-[330px] rounded-2xl bg-[#253646] text-white shadow-md p-5">
         <div>
           <header className="flex justify-between">
             <div>

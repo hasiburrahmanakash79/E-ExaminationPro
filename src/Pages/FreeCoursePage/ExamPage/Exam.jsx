@@ -191,7 +191,7 @@ const Exam = () => {
                           </button>
                         ) : (
                           <button
-                            className='text-white border-none shadow-lg btn primary-bg'
+                            className='  border-none shadow-md btn primary-bg'
                             onClick={toggleHint}
                           >
                             Show Hint
@@ -254,7 +254,7 @@ const Exam = () => {
                           </button>
                         ) : (
                           <button
-                            className='text-white border-none shadow-lg btn primary-bg'
+                            className='  border-none shadow-md btn primary-bg'
                             onClick={toggleHint}
                           >
                             Show Hint

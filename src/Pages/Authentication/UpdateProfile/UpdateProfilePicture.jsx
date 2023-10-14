@@ -47,12 +47,12 @@ const UpdateProfilePicture = ({ onImageCrop }) => {
       </div>
       <div className='flex justify-around'>
         <button
-          className='p-2 mt-5 text-xl rounded-md primary-btn '
+          className='p-2 mt-5 text-xl rounded-md btn-primary '
           onClick={handleClick}
         >
           Change Photo
         </button>
-        <button className='p-2 mt-5 text-xl rounded-md primary-btn '>
+        <button className='p-2 mt-5 text-xl rounded-md btn-primary '>
           Upload Photo
         </button>
       </div>

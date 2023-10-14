@@ -13,7 +13,7 @@ const Video = props => {
       {/* Display screen sharing video track if available */}
       <div className='w-36 '>
         {screenTrack && (
-          <div className='border-black w-36 h-36 hover:w-96 avatar'>
+          <div className=' w-36 h-36 hover:w-96 avatar'>
             <AgoraVideoPlayer
               videoTrack={screenTrack}
               className='mask mask-squircle'
@@ -24,7 +24,7 @@ const Video = props => {
       <div>
         {users?.length > 0 &&
           users?.map(user => (
-            <div key={user.uid} className='w-24 h-24 border-black avatar'>
+            <div key={user.uid} className='w-24 h-24 avatar'>
               {user.videoTrack ? (
                 <AgoraVideoPlayer
                   videoTrack={user.videoTrack}

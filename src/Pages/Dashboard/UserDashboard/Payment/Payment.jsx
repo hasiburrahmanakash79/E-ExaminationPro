@@ -13,13 +13,11 @@ import { useQuery } from '@tanstack/react-query'
 const stripePromise = loadStripe(import.meta.env.VITE_Payment_Gateway_key)
 
 const Payment = () => {
-  // const [subjects] = useSubject()
   const [pricePackage] = usePrice()
-  // const { id } = useParams()
   const location = useLocation()
   const searchParams = new URLSearchParams(location.search)
   const id = searchParams.get('Cardid')
-  // console.log(id, '-----------------------------------------------21');
+  console.log(pricePackage, '-----------------------------------------------21');
 
   const [axiosSecure] = useAxiosSecure()
 
@@ -33,7 +31,7 @@ const Payment = () => {
   })
   //console.log(priceData?.packageAmount, '..............................................................37')
 
-  const packages = pricePackage.filter(price => price.id == id)
+  const packages = pricePackage.filter(price => price._id == id)
   const price = priceData?.packageAmount
   //console.log(price);
   return (
@@ -41,7 +39,7 @@ const Payment = () => {
       {priceData ? (
         <div className='p-5 mt-5'>
           {/* <Helmet><title>E-ExamPro | Payment </title></Helmet> */}
-          <div className='flex flex-col p-12 mx-auto text-white shadow-2xl  bg-white/5 lg:w-5/12 md:w-8/12 lg:mt-32 lg:mb-16 rounded-3xl'>
+          <div className='flex flex-col p-12 mx-auto  shadow-md  border-2  lg:w-5/12 md:w-8/12 lg:mt-32 lg:mb-16 rounded-3xl'>
             <div className='hidden mx-auto lg:-mt-32 md:-mt-16 md:block'>
               <PaymentCard />
             </div>

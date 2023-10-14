@@ -69,7 +69,7 @@ const ShortcutKey = () => {
               onClick={() => handleArrowClick('prev')}
               className='inline-flex items-center gap-3'
             >
-              <span className='ml-3 text-2xl text-white font-bold py-2 px-5 rounded-lg bg-[#5a386e] shadow-xl hover:bg-transparent hover:text-slate-900 transition duration-200'>
+              <span className='ml-3 text-2xl  font-bold py-2 px-5 rounded-lg  ag-[#5a386e] shadow-xl hover: ag-transparent hover: aext-slate-900 transition duration-200'>
                 <AiOutlineLeft />
               </span>{' '}
               <span className='text-lg font-medium'>Previous</span>
@@ -80,7 +80,7 @@ const ShortcutKey = () => {
               className='inline-flex items-center gap-3'
             >
               <span className='text-lg font-medium'>Next</span>{' '}
-              <span className='mr-3 text-2xl text-white font-bold py-2 px-5 rounded-lg bg-[#5a386e]'>
+              <span className='mr-3 text-2xl  font-bold py-2 px-5 rounded-lg  ag-[#5a386e]'>
                 <AiOutlineRight />
               </span>
             </button>
@@ -88,7 +88,7 @@ const ShortcutKey = () => {
           <div>
             <button
               type='submit'
-              className='py-2 px-6 bg-[#61367a] text-white hover:bg-transparent hover:text-slate-900 shadow-lg border rounded-lg transition duration-200'
+              className='py-2 px-6  ag-[#61367a]  hover: ag-transparent hover: aext-slate-900 shadow-md border rounded-lg transition duration-200'
             >
               Submit
             </button>

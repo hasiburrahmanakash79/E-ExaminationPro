@@ -15,8 +15,6 @@ import { Helmet } from 'react-helmet-async'
 import { LocalToastTarget, useLocalToast } from 'react-local-toast'
 
 const CreateQuesPaper = () => {
-
-
   const { showToast, removeToast } = useLocalToast()
   const { user } = useContext(AuthContext)
   const dispatch = useDispatch()
@@ -58,7 +56,10 @@ const CreateQuesPaper = () => {
       .then(data => setIscodeRepeat(data.result))
   }, [codeRepeat])
 
-  console.log(iscodeRepeat,'------------------------------------------------------------52')
+  console.log(
+    iscodeRepeat,
+    '------------------------------------------------------------52'
+  )
 
   const [isDateTimeRepeat, setIsDateTimeRepeat] = useState(null)
   useEffect(() => {
@@ -74,7 +75,7 @@ else{
 }
   }, [formData?.date,formData?.examTime,formData?.batch])
 
-  console.log(isDateTimeRepeat,'date time')
+  console.log(isDateTimeRepeat, 'date time')
 
   // store basic info
   const handleInputChange = event => {
@@ -122,7 +123,12 @@ else{
     }
 
     //console.log('Question Paper Data:', paperData)
-    console.log( paperData.subjectName, paperData.exam_code, paperData.exam_code,paperData.date)
+    console.log(
+      paperData.subjectName,
+      paperData.exam_code,
+      paperData.exam_code,
+      paperData.date
+    )
     if (
       paperData.subjectName == null ||
       paperData.exam_code == null ||
@@ -188,9 +194,9 @@ else{
           <option disabled selected>
             Choose Type
           </option>
-          <option value='mcq'>MCQ</option>
-          <option value='multimedia_mcq'>Multimedia MCQ</option>
-          <option value='FillInTheBlank'>Fill in the Blank</option>
+          <option className='text-black' value='mcq'>MCQ</option>
+          <option className='text-black' value='multimedia_mcq'>Multimedia MCQ</option>
+          <option className='text-black' value='FillInTheBlank'>Fill in the Blank</option>
         </select>
       </div>
 
@@ -272,7 +278,11 @@ else{
               placeholder='Type here'
               className='w-full max-w-xs input input-bordered'
             />
-            {isDateTimeRepeat==true && <p className='mt-2 text-red-500'>Time Already Set For Batch {formData?.batch} On This Date </p> }
+            {isDateTimeRepeat == true && (
+              <p className='mt-2 text-red-500'>
+                Time Already Set For Batch {formData?.batch} On This Date{' '}
+              </p>
+            )}
           </div>
 
           <div className='w-full max-w-xs form-control'>
@@ -288,7 +298,11 @@ else{
               placeholder='Type here'
               className='w-full max-w-xs input input-bordered'
             />
-              {isDateTimeRepeat==true && <p className='mt-2 text-red-500'>Time Already Set For Batch {formData?.batch} On This Date </p> }
+            {isDateTimeRepeat == true && (
+              <p className='mt-2 text-red-500'>
+                Time Already Set For Batch {formData?.batch} On This Date{' '}
+              </p>
+            )}
           </div>
 
           <div className='w-full max-w-xs form-control'>
@@ -342,7 +356,9 @@ else{
           {questions?.map((question, index) => (
             <div key={index} className='mb-3'>
               <label className='label'>
-                <span className='text-xl label-text text-green-500'>Question <span className='text-yellow-500'>{index + 1}</span></span>
+                <span className='text-xl label-text '>
+                  Question <span className='aext-yellow-500'>{index + 1}</span>
+                </span>
               </label>
               <input
                 type='text'
@@ -417,7 +433,11 @@ else{
                     type='text'
                     value={question.correctAnswer}
                     onChange={e =>
-                      handleQuestionChange(index, 'correctAnswer', e.target.value)
+                      handleQuestionChange(
+                        index,
+                        'correctAnswer',
+                        e.target.value
+                      )
                     }
                     className='w-full mt-2 input input-bordered'
                     placeholder='Correct Answer'

@@ -63,23 +63,23 @@ const UserHome = () => {
   ];
 
   return (
-    <div className="px-10 py-20">
+    <div className="md:px-10 py-20">
       <Helmet><title>Dashboard | E-ExamPro </title></Helmet>
       <div className="xl:flex gap-5 mb-5">
-        <div className="bg-transparent border border-violet-700 shadow-2xl w-full rounded-md p-5">
+        <div className=" ag-transparent border   shadow-md w-full rounded-md p-5">
           <div className="flex justify-between items-center">
             <h2 className="text-2xl">Progress Overview</h2>
             <div>
               <FaInfoCircle
-                className="text-xl text-white"
+                className="text-xl  "
                 onClick={() => window.my_modal_2.showModal()}
               ></FaInfoCircle>
               <dialog id="my_modal_2" className="modal ">
                 <form
                   method="dialog"
-                  className="modal-box primary-bg border border-violet-400"
+                  className="modal-box primary-bg border  "
                 >
-                  <p className="py-4 text-white">
+                  <p className="py-4  ">
                     Lorem ipsum dolor sit amet consectetur, adipisicing elit.
                     Eius atque similique ex blanditiis illo qui repellat!
                     Nesciunt delectus et vitae corporis a vero dolorum
@@ -97,6 +97,7 @@ const UserHome = () => {
           </div>
           <div className="">
             <div className="xl:flex justify-between items-center">
+            <ResponsiveContainer width="100%" height={350}>
               <PieChart width={300} height={300}>
                 <Pie
                   dataKey="value"
@@ -108,41 +109,35 @@ const UserHome = () => {
                   fill="#8884d8"
                   label
                 />
-                <Pie
-                  dataKey="value"
-                  data={PieDataInfo}
-                  cx={500}
-                  cy={200}
-                  innerRadius={40}
-                  outerRadius={80}
-                  fill="#82ca9d"
-                />
+                
                 <Tooltip />
               </PieChart>
+              </ResponsiveContainer>
               <div className="md:w-1/2 w-full mx-auto">
                 <h2 className="flex items-center gap-3 ">
-                  <FaFileSignature className="text-xl text-white"></FaFileSignature>
+                  <FaFileSignature className="text-xl  "></FaFileSignature>
                   Quiz Mark
                 </h2>
                 <h2 className="flex items-center gap-3 ">
-                  <FaVideo className="text-xl text-white"></FaVideo>Multimedia mark
+                  <FaVideo className="text-xl  "></FaVideo>Multimedia mark
                 </h2>
                 <h2 className="flex items-center gap-3 pt-2">
-                  <FaFileAlt className="text-xl text-white"></FaFileAlt>
+                  <FaFileAlt className="text-xl  "></FaFileAlt>
                   Assignment Mark
                 </h2>
                 <h2 className="flex items-center gap-3 pt-2">
-                  <FaListAlt className="text-lg text-white"></FaListAlt>All Exam
+                  <FaListAlt className="text-lg  "></FaListAlt>All Exam
                   Mark
                 </h2>
               </div>
             </div>
           </div>
         </div>
-        <div className="bg-transparent border border-violet-700 shadow-2xl w-full rounded-md p-5">
+        <div className=" ag-transparent border   shadow-md w-full rounded-md p-5">
           <h2 className="text-2xl">Quiz Participation</h2>
           <div className="xl:flex items-center gap-10">
             <div>
+            <ResponsiveContainer width="100%" height={350}>
               <PieChart width={300} height={300}>
                 <Pie
                   data={PieDataInfo}
@@ -162,8 +157,9 @@ const UserHome = () => {
                   label
                 />
               </PieChart>
+              </ResponsiveContainer>
             </div>
-            <div className="text-white">
+            <div className=" ">
               <h2 className="flex items-center gap-3 mb-2">
                 <FaRegDotCircle></FaRegDotCircle> Complete Quiz
               </h2>
@@ -176,11 +172,12 @@ const UserHome = () => {
               </h2>
             </div>
           </div>
-          <div></div>
+          
         </div>
       </div>
-      <div className="xl:flex gap-5 rounded-md">
-        <div className="bg-transparent border border-violet-700 shadow-2xl w-full rounded-md p-5">
+      {/* todo  */}
+      {/* <div className="xl:flex gap-5 rounded-md"> */}
+        {/* <div className=" ag-transparent border   shadow-md w-full rounded-md p-5">
           <div className="flex items-center justify-between ">
             <div>
               <h1 className="text-2xl">
@@ -189,16 +186,16 @@ const UserHome = () => {
             </div>
             <div className="">
               <FaInfoCircle
-                className="text-xl text-white "
+                className="text-xl   "
                 onClick={() => window.my_modal_1.showModal()}
               ></FaInfoCircle>
 
               <dialog id="my_modal_1" className="modal ">
                 <form
                   method="dialog"
-                  className="modal-box bg-gradient-to-r from-[#3c1053] to-[#ad5389] ..."
+                  className="modal-box"
                 >
-                  <p className="py-4 text-white">
+                  <p className="py-4  ">
                     
                   </p>
                 </form>
@@ -215,34 +212,34 @@ const UserHome = () => {
               onSelect={setSelected}
             />
           </div>
-        </div>
+        </div> */}
 
-        <div className=" p-5 bg-transparent border border-violet-700 shadow-2xl w-full rounded-md ">
+        {/* <div className=" p-5  ag-transparent border   shadow-md w-full rounded-md ">
           <div className="flex items-center justify-between ">
             <div>
-              <h1 className="text-2xl font-extrabold text-white">
+              <h1 className="text-2xl font-extrabold  ">
                 Video Duration
               </h1>
             </div>
             <div className="flex items-center gap-2">
-              <select className="select bg-transparent text-white border border-violet-700">
+              <select className="select  ag-transparent   border  ">
                 <option selected className="ps-10 ">
                   Weekly
                 </option>
                 <option>Monthly</option>
               </select>
               <FaInfoCircle
-                className="text-xl text-white "
+                className="text-xl   "
                 onClick={() => window.my_modal_1.showModal()}
               ></FaInfoCircle>
 
               <dialog id="my_modal_1" className="modal ">
                 <form
                   method="dialog"
-                  className="modal-box bg-gradient-to-r from-[#3c1053] to-[#ad5389] ..."
+                  className="modal-box"
                 >
-                  <p className="py-4 text-white">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore, asperiores!
+                  <p className="py-4  ">
+                    Nothing
                   </p>
                 </form>
                 <form method="dialog" className="modal-backdrop">
@@ -279,8 +276,8 @@ const UserHome = () => {
             </BarChart>
             </ResponsiveContainer>
           </div>
-        </div>
-      </div>
+        </div> */}
+      {/* </div> */}
     </div>
   );
 };

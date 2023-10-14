@@ -59,18 +59,21 @@ const CreateSubject = () => {
   }
 
   return (
-    <div className="p-5">
-      <h1 className="text-3xl text-center my-5">Add Subject</h1>
-      <form onSubmit={handleSubmit(onSubmit)} className="border md:w-1/2 mx-auto md:p-10 p-5 rounded-2xl">
-        <div className="form-control">
-          <label className="label">
-            <span className="font-bold label-text">Subject Name</span>
+    <div className='p-5'>
+      <h1 className='text-3xl text-center my-5'>Add Subject</h1>
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className='border md:w-1/2 mx-auto md:p-10 p-5 rounded-2xl'
+      >
+        <div className='form-control'>
+          <label className='label'>
+            <span className='font-bold label-text'>Subject Name</span>
           </label>
           <input
             {...register('subject', { required: true })}
             type='text'
             placeholder='Subject Name'
-            className='bg-transparent input input-bordered'
+            className=' ag-transparent input input-bordered'
           />
           {errors.subject && (
             <span className='mt-1 text-red-500'>Subject field is required</span>
@@ -83,7 +86,7 @@ const CreateSubject = () => {
           <input
             {...register('code', { required: true })}
             placeholder='Subject code'
-            className='bg-transparent input input-bordered'
+            className=' ag-transparent input input-bordered'
           />
           {errors.code && (
             <span className='mt-1 text-red-500'>
@@ -97,7 +100,7 @@ const CreateSubject = () => {
           </label>
           <textarea
             placeholder='Subject Description'
-            className='textarea textarea-bordered bg-transparent'
+            className='textarea textarea-bordered  ag-transparent'
             {...register('descrip', { required: true })}
           />
           {errors.descrip && (
@@ -111,12 +114,12 @@ const CreateSubject = () => {
           <label className='label'>
             <span className='label-text'>Subject Image</span>
           </label>
-          <div className='form-control rounded-lg border-2 border-violet-600 items-center '>
+          <div className='form-control rounded-lg border-2   items-center '>
             <input
               {...register('image', { required: true })}
               name='image'
               type='file'
-              className=' col-span-5 file-input w-full bg-transparent'
+              className=' col-span-5 file-input w-full  ag-transparent'
             />
           </div>
           {errors.image && (
@@ -127,9 +130,9 @@ const CreateSubject = () => {
           <LocalToastTarget name='btn'>
             <input
               // disabled={!isButtonEnable}
-              className="btn mt-8 btn-warning "
-              type="submit"
-              value={"Add Subject"}
+              className='btn mt-8 btn-warning '
+              type='submit'
+              value={'Add Subject'}
             />
           </LocalToastTarget>
         </div>

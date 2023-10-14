@@ -158,7 +158,7 @@ const Comments = ({ postComments, refetch }) => {
                                     />
 
                                     <button className="text-sm">
-                                        <span className="text-xs text-slate-300"></span> share
+                                        <span className="text-xs  "></span> share
                                     </button>
                                 </>
                         }

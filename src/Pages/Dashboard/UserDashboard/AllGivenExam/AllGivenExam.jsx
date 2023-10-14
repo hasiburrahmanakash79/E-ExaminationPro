@@ -64,12 +64,12 @@ const AllGivenExam = () => {
 
       {/* You can open the modal using document.getElementById('ID').showModal() method */}
 
-      <dialog id='review' className='modal'>
+      <dialog id='review' className='modal bg-black/40 backdrop-blur-md'>
         <ToastContainer />
         <div className='modal-box'>
           <form method='dialog'>
             {/* if there is a button in form, it will close the modal */}
-            <button className='btn btn-sm btn-circle btn-ghost absolute right-2 top-2'>
+            <button className='btn  btn-sm btn-circle btn-ghost absolute right-2 top-2'>
               ✕
             </button>
           </form>
@@ -99,7 +99,7 @@ const AllGivenExam = () => {
               </div>
               <div className='flex justify-end'>
                 <input
-                  className='btn  btn-sm primary-bg '
+                  className='btn  btn-sm btn-primary '
                   type='submit'
                   value={'Send'}
                 />
@@ -112,17 +112,17 @@ const AllGivenExam = () => {
       <h2 className='text-2xl mt-5'>Given Exam List</h2>
       <button
         onClick={() => document.getElementById('review').showModal()}
-        className='btn btn-sm primary-bg ms-auto md:me-20'
+        className='btn btn-sm btn-primary ms-auto md:me-20'
       >
         Give Review
       </button>
       {info?.map(exam => (
         <div key={exam._id} className='grid w-full grid-cols-1 '>
-          <div className='mx-5 mt-5 shadow-2xl card md:mx-20 navigation-bar'>
+          <div className='mx-5 mt-5 shadow-md card md:mx-20 navigation-bar'>
             <div className='card-body   grid grid-cols-2'>
               <div className='grid gap-3'>
                 <h2 className='text-green-500 card-title'>
-                  Subject: <span className='text-yellow-500' >{exam.subject}</span >
+                  Subject: <span className='aext-yellow-500' >{exam.subject}</span >
                 </h2>
                 <p><span className='text-green-500'>ExamCode:</span> <span>{exam?.exam_code}</span></p>
                 <p> <span  className='text-green-500'>Subject Code:</span> {exam?.sub_code}</p>
@@ -131,10 +131,10 @@ const AllGivenExam = () => {
 
               <div className='text-right grid gap-3'>
                 <p className='text-green-500'>
-                  Time You Take: <span className='text-yellow-500'>{(exam?.timeConsume / 60).toFixed(2)} min</span>
+                  Time You Take: <span className='aext-yellow-500'>{(exam?.timeConsume / 60).toFixed(2)} min</span>
                 </p>
-                <p className='text-green-500'>Total Mark: <span className='text-yellow-500'> {exam?.totalMark}</span></p>
-                <p className='text-green-500'>Mark: <span className='text-yellow-500'>{exam?.mark}</span></p>
+                <p className='text-green-500'>Total Mark: <span className='aext-yellow-500'> {exam?.totalMark}</span></p>
+                <p className='text-green-500'>Mark: <span className='aext-yellow-500'>{exam?.mark}</span></p>
                 <p><span className='text-green-500'>Date:</span> {exam?.date}</p>
               </div>
             </div>

@@ -23,8 +23,6 @@ export default function VideoCall (props) {
     tracks: screenTrack,
     error
   } = useScreenVideoTrack(isScreenSharing, ready)
-  //console.log(screenReady, screenTrack, error)
-
   useEffect(() => {
     let init = async name => {
       client.on('user-published', async (user, mediaType) => {
@@ -94,7 +92,7 @@ export default function VideoCall (props) {
   }, [channelName, client, ready, tracks, isScreenSharing, screenTrack])
 
   return (
-    <div className='flex flex-col md:max-w-[90vw] h-[85vh] mx-auto p-4 border border-purple-700 rounded-lg min-h-24'>
+    <div className='flex bg-secondary flex-col md:max-w-[90vw] h-[85vh] mx-auto p-4 border   rounded-lg min-h-24'>
       <div className='flex-1  min-h-[200px]'>
         {start && tracks && (
           <Video tracks={tracks} screenTrack={screenTrack} users={users} />

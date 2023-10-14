@@ -29,63 +29,63 @@ const Profile = () => {
             <div className='text-center lg:text-left flex flex-col '>
               <img
                 src={info?.photoURL ? info?.photoURL : defaultPic}
-                className=' h-80  border-2 border-violet-600 rounded-lg mb-2 p-3 w-80'
+                className=' h-80  border-2   rounded-lg mb-2 p-3 w-80'
                 alt=''
               />
             </div>
             <div>
               <div className='form-control  grid sm:grid-cols-6 mt-2'>
                 <label className='label col-span-1'>
-                  <span className='label-text text-white'>Name:</span>
+                  <span className='label-text '>Name:</span>
                 </label>
-                <h1 className=' col-span-5 input input-sm text-white bg-transparent shadow-xl'>
+                <h1 className=' col-span-5 input input-sm   ag-transparent shadow-xl'>
                   {info?.displayName}
                 </h1>
               </div>
 
               <div className='form-control  grid sm:grid-cols-6 my-2'>
                 <label className='label col-span-1'>
-                  <span className='label-text text-white'>Email:</span>
+                  <span className='label-text '>Email:</span>
                 </label>
-                <h1 className='col-span-5 input input-sm text-white bg-transparent shadow-xl'>
+                <h1 className='col-span-5 input input-sm   ag-transparent shadow-xl'>
                   {info?.email}
                 </h1>
               </div>
 
               <div className='form-control grid sm:grid-cols-6 my-2'>
                 <label className='label col-span-1'>
-                  <span className='label-text text-white'>Batch:</span>
+                  <span className='label-text '>Batch:</span>
                 </label>
-                <h1 className='col-span-5 input input-sm text-white bg-transparent shadow-xl'>
+                <h1 className='col-span-5 input input-sm   ag-transparent shadow-xl'>
                   {info?.batch ? info.batch : 'Add Batch in Edit Profile'}
                 </h1>
               </div>
               <div className='form-control  grid sm:grid-cols-6 my-2'>
                 <label className='label col-span-1'>
-                  <span className='label-text text-white'>Gender:</span>
+                  <span className='label-text '>Gender:</span>
                 </label>
-                <h1 className='col-span-5 input input-sm text-white bg-transparent shadow-xl'>
+                <h1 className='col-span-5 input input-sm   ag-transparent shadow-xl'>
                   {info?.gender ? info.gender : 'Add Gender in Edit Profile'}
                 </h1>
               </div>
               <div className='form-control grid sm:grid-cols-6 my-2'>
                 <label className='label col-span-1'>
-                  <span className='label-text text-white'>Address:</span>
+                  <span className='label-text '>Address:</span>
                 </label>
-                <h1 className='col-span-5 input input-sm text-white bg-transparent shadow-xl'>
+                <h1 className='col-span-5 input input-sm   ag-transparent shadow-xl'>
                   {info?.address ? info.address : 'Add Address in Edit Profile'}
                 </h1>
               </div>
               <div className='form-control grid h-auto sm:grid-cols-6 my-2'>
                 <label className='label col-span-1'>
-                  <span className='label-text text-white'>Mobile:</span>
+                  <span className='label-text '>Mobile:</span>
                 </label>
-                <h1 className='col-span-5 input input-sm text-white bg-transparent shadow-xl'>
+                <h1 className='col-span-5 input input-sm   ag-transparent shadow-xl'>
                   {info?.mobile ? info.mobile : 'Add Mobile in Edit Profile'}
                 </h1>
               </div>
               <Link to='/updateProfile'>
-                <button className='btn primary-btn mt-5'>Edit Profile</button>
+                <button className='btn btn-primary mt-5'>Edit Profile</button>
               </Link>
             </div>
           </div>
