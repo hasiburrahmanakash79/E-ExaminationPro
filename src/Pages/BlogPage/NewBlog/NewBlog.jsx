@@ -7,7 +7,7 @@ const SingleBlogCard = lazy(() =>
 )
 const NewBlog = () => {
   const { data: blogs = [], refetch } = useQuery(['blogs'], async () => {
-    const res = await fetch('https://e-exam-pro-server.vercel.app/blogs')
+    const res = await fetch('http://localhost:3500/blogs')
     return res.json()
   })
   const [currentPage, setCurrentPage] = useState(1)

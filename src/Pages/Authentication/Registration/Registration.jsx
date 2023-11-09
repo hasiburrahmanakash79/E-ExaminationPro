@@ -56,7 +56,7 @@ const Registration = () => {
                 photoURL: imgURL,
                 role: 'user'
               }
-              fetch('https://e-exam-pro-server.vercel.app/users', {
+              fetch('http://localhost:3500/users', {
                 method: 'POST',
                 headers: {
                   'content-type': 'application/json'

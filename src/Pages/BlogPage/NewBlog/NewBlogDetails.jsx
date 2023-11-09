@@ -14,7 +14,7 @@ const NewBlogDetails = () => {
   const [displayCard, setDisplayCard] = useState(4)
 
   useEffect(() => {
-    fetch('https://e-exam-pro-server.vercel.app/blogs')
+    fetch('http://localhost:3500/blogs')
       .then(res => res.json())
       .then(data => setSmallCard(data))
   }, [])

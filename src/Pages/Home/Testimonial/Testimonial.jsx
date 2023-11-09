@@ -14,7 +14,7 @@ const Testimonial = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('https://e-exam-pro-server.vercel.app/testimonials')
+        const response = await fetch('http://localhost:3500/testimonials')
         const data = await response.json()
         setTestimonials(data)
       } catch (error) {

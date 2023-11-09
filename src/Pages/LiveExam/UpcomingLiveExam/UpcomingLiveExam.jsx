@@ -82,7 +82,7 @@ const UpcomingLiveExam = () => {
       showToast('btn', 'Batch Not Match', { type: 'error' })
     } else {
       fetch(
-        `https://e-exam-pro-server.vercel.app/appliedLiveExam?examId=${e_ID}&studentEmail=${user?.email}`,
+        `http://localhost:3500/appliedLiveExam?examId=${e_ID}&studentEmail=${user?.email}`,
         {
           method: 'POST',
           headers: {
