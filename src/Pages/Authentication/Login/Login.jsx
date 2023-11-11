@@ -51,10 +51,10 @@ const Login = () => {
       </Helmet>
       <div className='min-h-screen hero'>
         <div className='items-center justify-between gap-12 px-3 md:flex'>
-        <div className='md:w-1/2 md:mb-0 mb-8'>
+          <div className='w-full md:mb-0 mb-8'>
             <Lottie
               animationData={loginLottie}
-              loop={true} className="w-full md:h-[500px]" />
+              loop={true} className="w-full md:h-[580px]" />
           </div>
           <div className='flex-shrink-0 w-full  ag-transparent border   rounded-lg shadow-xl md:w-1/2 card backdrop-blur-sm'>
             <div className='text-center '>

@@ -10,6 +10,7 @@ import SaveCancel from "./SaveCancel";
 import EditDeleteShow from "./EditDeleteShow";
 import UserCommentInfo from "./UserCommentInfo";
 import GetReplyField from "./GetReplyField";
+import useAuth from "../../Hooks/useAuth/useAuth";
 
 const Comments = ({ postComments, refetch }) => {
     const [editMode, setEditMode] = useState(false);
@@ -17,6 +18,7 @@ const Comments = ({ postComments, refetch }) => {
     const [showContextMenu, setShowContextMenu] = useState(false);
     const [commentPostText, setCommentPostText] = useState(false)
     const [replyHide, setReplyHide] = useState(false)
+    const { user } = useAuth();
 
     useEffect(() => {
         setCommentText(postComments?.article);
@@ -128,12 +130,18 @@ const Comments = ({ postComments, refetch }) => {
                         <p className="pt-2 text-left pl-3">{postComments?.article}</p>
                     )
                 }
-                <EditDeleteShow
-                    showContextMenu={showContextMenu}
-                    handleContextMenuClick={handleContextMenuClick}
-                    handleDelete={handleDelete}
-                    postComments={postComments}
-                ></EditDeleteShow>
+                {
+                    postComments?.userEmail && user?.email ?
+                        <EditDeleteShow
+                            showContextMenu={showContextMenu}
+                            handleContextMenuClick={handleContextMenuClick}
+                            handleDelete={handleDelete}
+                            postComments={postComments}
+                        ></EditDeleteShow>
+                        :
+                        <>
+                        </>
+                }
                 <div className="flex items-center justify-between mt-5">
                     <div className="flex items-center gap-5">
                         {/* reply and cancel component */}
@@ -162,7 +170,10 @@ const Comments = ({ postComments, refetch }) => {
                                     </button>
                                 </>
                         }
-                        <EditDeleteShow />
+                        {
+                            postComments?.userEmail && user?.email ?
+                                <EditDeleteShow /> : <></>
+                        }
                     </div>
                     <Views postComments={postComments} />
                 </div>
