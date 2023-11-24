@@ -115,7 +115,7 @@ const AboutUs = () => {
         </div>
       </div>
 
-      <div className='py-6 md:mt-20'>
+      {/* <div className='py-6 md:mt-20'>
         <div className='container flex flex-col items-center justify-center p-4 mx-auto sm:p-10'>
           <p
             data-aos='fade-down'
@@ -131,7 +131,6 @@ const AboutUs = () => {
           <div className="flex flex-row flex-wrap-reverse justify-center mt-20">
 
             <div
-              // data-aos="fade-right"
               className="flex flex-col justify-center w-full px-8 mx-6 my-12 text-center rounded-md md:w-96 lg:w-80 xl:w-64  border hover: ag-white/30 shadow-md dark: ">
 
 
@@ -161,11 +160,8 @@ const AboutUs = () => {
             </div>
 
             <div
-              // data-aos="fade-right"
               className="flex flex-col justify-center w-full px-8 mx-6 my-12 text-center rounded-md md:w-96 lg:w-80 xl:w-64  border hover: ag-white/30 shadow-md dark: ">
-              {/* <div className=' avatar -mt-10'>
-                <img alt="" className="rounded-full  w-16     " src="https://i.ibb.co/HzhTQqS/Abir.jpg" />
-              </div> */}
+              
               <div className=" avatar -mt-10">
                 <div className="w-24 rounded-full mx-auto  " >
                   <img src="https://i.ibb.co/19jFGZY/saiful-img1.png" />
@@ -190,11 +186,8 @@ const AboutUs = () => {
             </div>
 
             <div
-              // data-aos="fade-right"
               className="flex flex-col justify-center w-full px-8 mx-6 my-12 text-center rounded-md md:w-96 lg:w-80 xl:w-64  border hover: ag-white/30 shadow-md dark: ">
-              {/* <div className=' avatar -mt-10'>
-                <img alt="" className="rounded-full  w-16     " src="https://i.ibb.co/HzhTQqS/Abir.jpg" />
-              </div> */}
+              
               <div className=" avatar -mt-10">
                 <div className="w-24 rounded-full mx-auto  " >
                   <img src="https://i.ibb.co/zSjMhX5/IMG-20230717-WA0000.jpg" />
@@ -219,11 +212,8 @@ const AboutUs = () => {
             </div>
 
             <div
-              // data-aos="fade-right"
               className="flex flex-col justify-center w-full px-8 mx-6 my-12 text-center rounded-md md:w-96 lg:w-80 xl:w-64  border hover: ag-white/30 shadow-md dark: ">
-              {/* <div className=' avatar -mt-10'>
-                <img alt="" className="rounded-full  w-16     " src="https://i.ibb.co/HzhTQqS/Abir.jpg" />
-              </div> */}
+              
               <div className=" avatar -mt-10">
                 <div className="w-24 rounded-full mx-auto  " >
                   <img src="https://i.ibb.co/s9zYLf1/38085386-10213204290847361-3197807351797121024-n.jpg" />
@@ -248,11 +238,8 @@ const AboutUs = () => {
             </div>
 
             <div
-              // data-aos="fade-right"
               className="flex flex-col justify-center w-full px-8 mx-6 my-12 text-center rounded-md md:w-96 lg:w-80 xl:w-64  border hover: ag-white/30 shadow-md dark: ">
-              {/* <div className=' avatar -mt-10'>
-                <img alt="" className="rounded-full  w-16     " src="https://i.ibb.co/HzhTQqS/Abir.jpg" />
-              </div> */}
+              
               <div className=" avatar -mt-10">
                 <div className="w-24 rounded-full mx-auto  " >
                   <img src="https://i.ibb.co/7ymgLNR/akash.jpg" />
@@ -278,11 +265,8 @@ const AboutUs = () => {
             </div>
 
             <div
-              // data-aos="fade-right"
               className="flex flex-col justify-center w-full px-8 mx-6 my-12 text-center rounded-md md:w-96 lg:w-80 xl:w-64  border hover: ag-white/30 shadow-md dark: ">
-              {/* <div className=' avatar -mt-10'>
-                <img alt="" className="rounded-full  w-16     " src="https://i.ibb.co/HzhTQqS/Abir.jpg" />
-              </div> */}
+              
               <div className=" avatar -mt-10">
                 <div className="w-24 rounded-full mx-auto  " >
                   <img src="https://i.ibb.co/2620B9f/Group-1.jpg" />
@@ -312,7 +296,7 @@ const AboutUs = () => {
 
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   )
 }

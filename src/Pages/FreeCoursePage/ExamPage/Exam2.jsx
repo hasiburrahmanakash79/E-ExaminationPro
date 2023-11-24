@@ -304,7 +304,7 @@ const Exam2 = () => {
                           (examType == 'multimedia_mcq' && start == false)
                         }
                         onClick={onClickPrevious}
-                        className='  btn navigation-bar hover: ag-blue-900 '
+                        className='  btn navigation-bar hover: bg-blue-900 '
                       >
                         Previous
                       </button>
