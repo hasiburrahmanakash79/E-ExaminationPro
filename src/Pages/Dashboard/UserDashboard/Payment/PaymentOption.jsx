@@ -21,7 +21,7 @@ const PaymentOption = () => {
       <div className='flex flex-col items-center'>
         <label
           className={`cursor-pointer grid grid-cols-2  md:w-[400px] rounded-lg border   mt-4  p-10
-          ${selectedOption === 'sslPayment' ? ' bg-primary' : 'bg-secondary'}
+          ${selectedOption === 'sslPayment' ? ' bg-primary' : 'bg-secondary text-white'}
           `}
         >
           <h1>SSL Payment System</h1>
@@ -38,7 +38,7 @@ const PaymentOption = () => {
           className={`cursor-pointer grid grid-cols-2 border-2 shadow-lg
            md:w-[400px] p-10 rounded-lg  mt-4 mb-10
            ${
-             selectedOption === 'stripePayment' ? ' bg-primary' : 'bg-secondary'
+             selectedOption === 'stripePayment' ? ' bg-primary' : 'bg-secondary text-white'
            }
            
            `}

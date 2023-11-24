@@ -10,8 +10,6 @@ const Achievement = () => {
   return (
     <section ref={ref} className="md:my-16 my-10">
       <h1
-        data-aos="zoom-in-down"
-        data-aos-duration="800"
         className="text-center text-4xl font-bold py-10"
       >
         Our Achievement

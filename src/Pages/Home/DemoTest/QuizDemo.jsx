@@ -50,7 +50,7 @@ const QuizDemo = () => {
                     className={`my-4 py-4 border-primary border ${
                       active ? '' : ''
                     } ${
-                      checked ? 'bg-secondary outline-none ' : ''
+                      checked ? 'bg-gray-300 outline-none ' : ''
                     } relative  flex cursor-pointer rounded-lg px-5 shadow-md`}
                   >
                     <div className='flex items-center justify-between w-full'>
