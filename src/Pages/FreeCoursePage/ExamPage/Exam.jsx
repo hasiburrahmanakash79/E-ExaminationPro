@@ -60,7 +60,7 @@ const Exam = () => {
     setView(true)
     setCurrentQuestion(0)
 
-    fetch('http://localhost:3500/examdata', {
+    fetch('https://e-exam-pro-server.vercel.app/examdata', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -126,7 +126,7 @@ const Exam = () => {
       setCurrentQuestion(0)
       //console.log('hit')
       //console.log(result)
-      fetch('http://localhost:3500/examdata', {
+      fetch('https://e-exam-pro-server.vercel.app/examdata', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

@@ -48,7 +48,7 @@ const SingleBlogCard = ({ newBlog, refetch }) => {
 
   const showComment = (id) => {
     fetch(
-      `http://localhost:3500/comments?id=${_id}&userEmail=${user?.email}`
+      `https://e-exam-pro-server.vercel.app/comments?id=${_id}&userEmail=${user?.email}`
     )
       .then((res) => res.json())
       .then((data) => setAllUserComments(data));
@@ -65,7 +65,7 @@ const SingleBlogCard = ({ newBlog, refetch }) => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:3500/blogs/${_id}`, {
+        fetch(`https://e-exam-pro-server.vercel.app/blogs/${_id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())

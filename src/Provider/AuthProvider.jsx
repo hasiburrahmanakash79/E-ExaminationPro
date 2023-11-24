@@ -50,7 +50,7 @@ const AuthProvider = ({ children }) => {
       setLoading(false)
       if (currentUser) {
         axios
-          .post('http://localhost:3500/jwt', {
+          .post('https://e-exam-pro-server.vercel.app/jwt', {
             email: currentUser.email
           })
           .then(data => {

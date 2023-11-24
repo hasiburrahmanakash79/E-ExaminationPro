@@ -5,7 +5,7 @@ export const allPostComment = () => {
     const { data: postComments = [], refetch } = useQuery({
         queryKey: [""],
         queryFn: async () => {
-            const res = await fetch("http://localhost:3500/forumPost")
+            const res = await fetch("https://e-exam-pro-server.vercel.app/forumPost")
             return res.json()
         }
     })
