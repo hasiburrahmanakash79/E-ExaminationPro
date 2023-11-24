@@ -24,7 +24,7 @@ const ReviewAnswerAfterResult = ({ questions, userAnswers }) => {
             )}
             <p className='ml-2 '>
               Correct Answer:{' '}
-              <span className='px-2 py-1 italic font-bold rounded bg-secondary'>
+              <span className='px-2 py-1 italic font-bold rounded bg-green-600'>
                 {question?.correctAnswer}
               </span>
             </p>
